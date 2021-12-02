@@ -51,6 +51,7 @@
              :base-directory "."
              :publishing-function 'org-html-publish-to-html
              :publishing-directory "."
+             :creator "Copyright (C) 2021 The HDF Group"
              :with-author nil           ;; Don't include author name
              :with-creator t            ;; Include Emacs and Org versions in footer
              :with-toc nil              ;; Include a table of contents
