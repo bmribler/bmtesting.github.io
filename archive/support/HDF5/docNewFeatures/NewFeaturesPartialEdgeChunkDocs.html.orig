@@ -1,0 +1,624 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN"
+        "http://www.w3.org/TR/html4/frameset.dtd">
+<html>
+  <head>
+
+<!--
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+  * Copyright by The HDF Group.                                               *
+  * All rights reserved.                                                      *
+  *                                                                           *
+  * This file is part of HDF5.  The full HDF5 copyright notice, including     *
+  * terms governing use, modification, and redistribution, is contained in    *
+  * the files COPYING and Copyright.html.  COPYING can be found at the root   *
+  * of the source code distribution tree; Copyright.html can be found at the  *
+  * root level of an installed copy of the electronic HDF5 document set and   *
+  * is linked from the top-level documents page.  It can also be found at     *
+  * http://hdfgroup.org/HDF5/doc/Copyright.html.  If you do not have          *
+  * access to either file, you may request a copy from help@hdfgroup.org.     *
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ -->
+
+<link href="ed_styles/RMelect.css" rel="stylesheet" type="text/css">
+    <title>
+      HDF5 Partial Edge Chunks Documentation
+    </title>
+  </head>
+
+<body bgcolor="#ffffff">
+
+<font face="Tahoma, Arial, Verdana, Helvetica, sans-serif" size="3">
+
+<!-- BEGIN MAIN BODY -->
+
+
+
+<table width="100%" cellpadding="0" border="0"> 
+  <tr valign="top" align="left">
+    <td>
+      <a href="http://www.hdfgroup.org">
+      <img src="Graphics/THGnoTextSm.jpg" alt="The HDF Group logo" 
+        border="0" width="75"></a>
+        <font size="+2">The HDF Group</font>
+        </td>
+    <td align="right">
+      <img src="Graphics/binder.jpg" alt="Documentation" 
+        border="0" height="60">
+        </td></tr>
+
+<!--    #888888 is a dark gray (dark gray horizontal line under logo 
+        at top of web page. 
+        #004488 is a dark blue (dark horizontal line at top of web pages). 
+        #d2e6ef is a pale bluish gray or grayish aqua (nav bar background).
+        #fbfbfb is almost white (background for nav bar links) 
+        and is very close to #FFFFFF. 
+        #FF0000 is a bright red (use when troubleshooting).
+-->
+
+<tr><td colspan="2" bgcolor="#888888" height="3"></td></tr>
+
+<tr><td colspan="2" bgcolor="#004488" height="7" valign="bottom">&nbsp;
+<!--
+<font face="Tahoma, Arial, Verdana, Helvetica, sans-serif" size="3">&nbsp;</font>
+-->
+</td></tr>
+
+</table>
+
+<table border="0" width="100%" cellpadding="5">
+<!-- change border value from 1 to 0 when finished editing 2.18.2014 -->
+<tr><td rowspan="3" width="13%" bgcolor="#d2e6ef" valign="top" align="left">
+&nbsp;<br />
+<center>
+<table border="0" cellpadding="10">
+<tr><td bgcolor="#fbfbfb">
+    <center><font size="+1">Other HDF Links</font></center>
+    <hr />
+    <font size="-1">
+    <dl>
+
+    <dt><a href="https://support.hdfgroup.org/HDF5/doc/"
+        target="ExtWin">HDF5 1.10 Documentation</a></dt><br />
+    <dt align="center"><hr size=4 color="gray">
+        <a href="index.html">New Features in HDF5 1.10</a>
+        <hr size=1>
+        </dt>
+    <dt><a href="NewFeaturesAdditionalNewFuncsEtc.html">
+        Additional New APIs</a>
+        </dt><br />
+    <dt><a href="NewFeaturesCollectiveMetadataIoDocs.html">
+        Collective Metadata I/O</a>
+        </dt><br />
+    <dt><a href="NewFeaturesFineTuningMetadataCacheDocs.html">
+        Fine-tuning the Metadata Cache</a>
+        </dt><br />
+    <dt><a href="NewFeaturesFileSpaceMgmtDocs.html">
+        File Space Management</a>
+        </dt><br />
+    <dt><a href="NewFeaturesPageBuffering.html">
+        Page Buffering</a>
+        </dt><br />
+    <dt><a href="NewFeaturesPartialEdgeChunkDocs.html">
+        Partial Edge Chunks</a>
+        </dt><br />
+    <dt><a href="NewFeaturesReferenceDocs.html">
+        Reference</a>
+        </dt><br />
+    <dt><a href="NewFeaturesSwmrDocs.html">
+        SWMR</a>
+        </dt><br />
+    <dt><a href="NewFeaturesVirtualDatasetDocs.html">
+        Virtual Datasets (VDS)</a>
+
+    </dl>
+    </font>
+    </td></tr></table></center>
+    </td></tr>
+
+
+
+<!-- 
+The table data element below sets up the middle column 
+between the navigation frame on the left and the content of the 
+web page.
+-->
+<td rowspan="3" bgcolor="#FFFFFF" width="2%">&nbsp;</td>
+
+
+
+<!-- 
+The table data element below is used to hold the content of the 
+web page. 
+-->
+<td bgcolor="#FFFFFF" valign="top" align="center" width="85%">
+
+<table border="0" width="100%">
+<tr>
+<td bgcolor="#fbf3ef" align="center" valign="top" colspan="2">
+    <hr size="1"/>
+    <font size="5" color="#000000">Partial Edge Chunk
+    Documentation
+    </font>
+    <hr size="1"/>
+    </td>
+</tr>
+
+
+
+
+<tr>
+<td bgcolor="#FFFFFF" align="left" valign="top" colspan="2">
+<!--
+    <font size=5 color=#004488>Page Abstract</font>
+    <br />
+-->
+    This page describes the new HDF5 Partial Edge Chunk option
+    and provides links to available reference manual entries.
+    The page includes the following sections:
+    
+    <ul>
+    <li><a href="#Overview">Overview of the Partial Edge Chunk Option</a></li>
+<!--
+    <li><a href="#User+Resource">Partial Edge Chunk Option User 
+           and Resource Documents</a></li>
+    <li><a href="#UserDoc">Partial Edge Chunk Option 
+           User Document</a></li>
+-->
+    <li><a href="#Hdf5LibraryApis">HDF5 Library APIs</a></li>
+<!--
+    <li><a href="#ExpectedAdditional">Expected Updates and 
+           Additional Documentation</a></li>
+    <li><a href="#Tools">Tools</a></li>
+    <li><a href="#DesignDocuments">Partial Edge Chunk Option Design</a></li>
+-->
+    </ul>
+    
+</tr>
+
+
+
+<tr>
+<td bgcolor="#FFFFFF" valign="top" align="center" colspan="2">
+    &nbsp;</td></tr>
+
+
+
+<tr>
+<td bgcolor="#FFFFFF" align="left" valign="top" colspan="2">
+    <font size="5" color="#004488"><a name="Overview">
+    Overview of Partial Edge Chunk Option</a></font>
+    </td></tr>
+
+
+
+<tr>
+<td bgcolor="#FFFFFF" valign="top" align="left" colspan="2">
+    <p>
+    <font size="4" color="#004488">Summary</font>
+    </p>
+    <p>
+    Prior to HDF5 Release 1.10.0, data chunks on the edge of a dataset 
+    were stored with the same size as other chunks, 
+    even if the logical size of the chunk was smaller. 
+    With this feature, HDF5 adds an option controlling 
+    whether filters are applied to partial edge chunks.
+
+    </p>
+    <p>
+    <font size="4" color="#004488">Background and the New Option</font>
+    </p>
+    <p>
+    Data chunking can, in many cases, greatly improve dataset I/O performance. 
+    In some cases, however, chunking can result in performance degradation.
+    </p>
+    <p>
+    Consider an extensible dataset that will be opened, extended, 
+    and closed many times. If the dataset size is large, compression and 
+    chunked storage can yield substantial file size and I/O performance 
+    benefits. 
+    However, since the number of elements per extension may vary, it is 
+    unlikely that the dataset size will always be a multiple of the chunk size, 
+    and partial edge chunks will be present. 
+    Compression of the partial edge chunks in this usage model may 
+    introduce a substantial, and sometimes unacceptable, performance penalty 
+    each time the dataset is extended. The penalty occurs not only because 
+    the filter must be applied twice to all edge chunks after each extension
+    (the original compressed partial chunk is first uncompressed, 
+    new data is then added to the chunk, 
+    and the extended chunk is recompressed),
+    but also because the compressed size of the edge chunks changes as the 
+    dataset grows, requiring new placement of the chunks in the file. 
+    The movement of chunks in the file degrades write performance and 
+    can also cause fragmentation, which adds wasted space in the file. 
+    In order to extend datasets as quickly as possible without this option, 
+    it has been necessary to store the entire dataset uncompressed.
+    </p>
+    <p>
+    A new option to control the filtering of partial edge chunks
+    overcomes the performance degradation described above.
+    With this option, partial edge chunks are stored without compression.  
+    If the dataset is subsequently extended, any partial edge chunk that 
+    becomes a complete chunk will then be compressed for storage and 
+    new partial edge chunks will remain uncompressed in storage.
+    The double filtering of partial edge chunks is eliminated.
+    </p>
+
+    <p>
+    In disabling filters on partial edge chunks, this option not only
+    reduces filtering overhead, it also reduces fragmentation when datasets 
+    are extended and chunks must be moved while still allowing completed chunks 
+    in the dataset to be compressed. 
+    When a dataset expands or shrinks, it is possible that 
+    one or more chunks will go from partial edge to complete, 
+    or complete to partial edge. 
+    When filters are disabled for partial edge chunks in a dataset 
+    and a chunk in that dataset undergoes a change of classification, 
+    the HDF5 Library will reallocate storage for the chunk and apply or
+    disable filters depending on the final classification of the chunk.
+    </p>
+    <p>
+    This option is controlled by a bit flag in a function parameter. 
+    The parameter is manipulated by two API functions, 
+    <a href="/HDF5/doc/RM/RM_H5P.html#Property-SetChunkOpts">
+    <code>H5Pset_chunk_opts</code></a> and 
+    <a href="/HDF5/doc/RM/RM_H5P.html#Property-GetChunkOpts">
+    <code>H5Pget_chunk_opts</code></a>,
+    which act on a dataset creation property list.
+    </p>
+
+    <p>
+    <font size="4" color="#004488">Compatiblity Issue</font>
+    </p>
+    <p>
+    Disabling filters for partial edge chunks was not available 
+    in HDF5 releases prior to 1.10.0 and its implementation
+    requires a modification to the HDF5 file format specification. 
+    Therefore, datasets created with this option 
+    will not be accessible using earlier HDF5 releases. 
+    </p>
+
+<!--          TEXT FOR MULTIPLE EDGE CHUNK OPTIONS                        -->
+<!--          (REPLACED BY TEXT FOR ONLY THE                              -->
+<!--          'H5D_CHUNK_DONT_FILTER_PARTIAL_CHUNKS' OPTION)
+    </p>
+    <p>
+    <font size="4" color="#004488">Background</font>
+    </p>
+    <p>
+    Data chunking can, in many cases, greatly improve dataset I/O performance. 
+    However, chunked storage can also increase file size and limit performance 
+    in some circumstances. Since all chunks in a chunked dataset must 
+    currently be the same size before compression, there will be wasted space 
+    in the file and unnecessary time spent reading or writing chunks that are 
+    not completely filled by the dataset&rsquo;s dataspace. 
+    These partially filled chunks are called <i>partial edge chunks</i>, 
+    in contrast to complete chunks.
+    </p>
+    <p>
+    While the use of compression can mostly negate the space overhead, 
+    the unused portions of the partial edge chunks do not compress to zero. 
+    Furthermore, since compression is not possible when using Parallel HDF5, 
+    the extra space in that mode can be quite significant. 
+    While compression can sometimes mitigate the space overhead, 
+    it can also add a performance burden, 
+    especially when a chunk cannot be held in cache.
+    </p>
+    <p>
+    Consider an extensible dataset that will be opened, extended, 
+    and closed many times. If the dataset size is large, compression and 
+    chunked storage can yield file size and I/O performance benefits. 
+    Since the number of elements per extension may vary, it is unlikely 
+    that the dataset size will be a multiple of the chunk size, 
+    and partial edge chunks will be present. 
+    Compression of the partial edge chunks in this usage model may 
+    introduce a substantial, and sometimes unacceptable, performance penalty 
+    each time the dataset is extended. The penalty occurs not only because 
+    the filter must be applied twice to all edge chunks after each extension, 
+    but also because the compressed size of the edge chunks changes as the 
+    dataset grows, requiring new placement of the chunks in the file. 
+    The movement of chunks in the file degrades write performance and 
+    can also cause fragmentation, which adds wasted space in the file. 
+    In order to extend datasets as quickly as possible, it is currently 
+    necessary to store the entire dataset uncompressed.
+    </p>
+
+    <p>
+    <font size="4" color="#004488">New Options</font>
+    </p>
+    <p>
+    To minimize the storage space when compression is not possible, 
+    and to slightly reduce the storage space when compression is used, 
+    an option is added to store only the used portion of chunks 
+    on the edges of a dataset&rsquo;s dataspace. 
+    Use of this option to store partial chunks is not recommended when 
+    datasets will be regularly extended and write performance is critical.  
+    </p>
+    <p>
+    A second option is added to filter partial chunks, controlling 
+    whether filters, such as compression, will be applied to 
+    partial edge chunks. Disabling filters on partial edge chunks 
+    will reduce overhead and fragmentation when datasets are extended 
+    and chunks must be moved, while still allowing complete chunks 
+    in the dataset to be compressed. 
+    When a dataset expands or shrinks, it is possible that 
+    one or more chunks will go from partial edge to complete, 
+    or complete to partial edge. 
+    When filters are disabled for partial edge chunks in a dataset 
+    and a chunk in that dataset undergoes a change of classification, 
+    the HDF5 Library will reallocate storage for the chunk and apply or
+    disable filters depending on the final classification of the chunk.
+    </p>
+    <p>
+    These options are controlled by bit flags in a single parameter. 
+    This parameter is manipulated by two API functions, 
+    <a href="/HDF5/doc/RM/RM_H5P.html#Property-SetChunkOpts">
+    <code>H5Pset_chunk_opts</code></a> and 
+    <a href="/HDF5/doc/RM/RM_H5P.html#Property-GetChunkOpts">
+    <code>H5Pget_chunk_opts</code></a>,
+    which act on a dataset creation property list.
+    </p>
+
+    <p>
+    <font size="4" color="#004488">Compatiblity Issues</font>
+    </p>
+    <p>
+    Storing only the used portion of partial edge chunks and 
+    disabling filters for partial edge chunks,
+    which were not available in HDF5 releases prior to 1.10.0,
+    both require modifications to the HDF5 file format specification. 
+    Therefore, datasets created with either (or both) of these options 
+    will not be accessible using earlier HDF5 releases. 
+    </p>
+    <p>
+    The option to store partial edge chunks required changes to allow 
+    HDF5 to recognize when chunks are stored with different sizes. 
+    The option to filter partial edge chunks required changes 
+    to indicate whether partial edge chunks have filters applied.
+    </p>
+              END OF TEXT FOR MULTIPLE OPTIONS                            -->
+    
+</td></tr>
+    
+    
+
+<tr>
+<td bgcolor="#FFFFFF" valign="top" align="center" colspan="2">
+    &nbsp;</td></tr>
+
+
+
+<!--
+<tr>
+<td bgcolor="#FFFFFF" align="left" valign="top" colspan="2">
+    <font size="5" color="#004488"><a name="User+Resource">
+    Collective Metadata I/O User and Resource Documents</a></font>
+    </td></tr>
+
+
+<tr>
+<td bgcolor="#FFFFFF" align="left" valign="top" colspan="2">
+    <font size="5" color="#004488"><a name="UserDoc">
+    Collective Metadata I/O User Document</a></font>
+    </td></tr>
+
+
+<tr>
+    <td bgcolor="#FFFFFF" valign="top" colspan="2">
+
+    <dt><a href="CollectiveMetadataIo_UserDoc.html">HDF5 Collective Metadata I/O 
+        User Document</a>
+    <dt>HDF5 Collective Metadata I/O User Document
+        </dt>
+        <dd><font color="aaaaaa"><i>
+            (This document is not yet available.)
+            </i></font>
+    <p>
+    <dt>
+    Until an <cite>HDF5 Collective Metadata I/O User Document</cite>
+    becomes available, users may find the following resources helpful:
+    </p>
+    </dt>
+
+    <dt><a href="CollMDataIO/RFC-CollectiveMetadataReads.pdf">RFC:
+        Collective Metadata Reads</a> (PDF)
+        </dt>
+
+    <dt><a href="CollMDataIO/RFC-CollectiveMetadataWrites.pdf">RFC:
+        Collective Metadata Writes</a> (PDF)
+        </dt>
+        <dd>
+        Taken together, these papers discuss the motivation, design, 
+        implementation, and API for HDF5&rsquo;s Collective Metadata I/O
+        feature.
+        </dd>
+    </dl>
+    </td>
+</tr>
+
+
+
+<tr>
+<td bgcolor="#FFFFFF" valign="top" colspan="2">
+    &nbsp;</td></tr>
+-->
+
+
+
+<tr>
+<td bgcolor="#FFFFFF" valign="top" colspan="2">
+    <br />
+    <font size="5" color="#004488"><a name="Hdf5LibraryApis">
+    HDF5 Library APIs</a></font>
+    </td></tr>
+
+
+
+<tr>
+    <td align="left" valign="top" colspan="2">
+    The APIs listed below will be incorporated into the 
+    <i>HDF5 Reference Manual</i> when the Partial Edge Chunk feature 
+    is fully released.
+    </td>
+</tr>
+
+
+
+
+
+<!-- start nested table -->
+<tr><td><table>
+<tr><td bgcolor="#FFFFFF" colspan="2">&nbsp;</td></tr>
+
+
+
+<tr>
+    <td valign="top" colspan="2">
+    <font size="4" color="#004488">New Functions for 
+          Partial Edge Chunk Option</a></font>
+    </td>
+</tr>
+
+
+
+<tr>
+    <td valign="top" width="25%">
+    <a href="/HDF5/doc/RM/RM_H5P.html#Property-SetChunkOpts">
+    <code>H5Pset_chunk_opts</code></a>&nbsp;&nbsp;&nbsp;</td>
+    <td valign="top" width="75%">
+    Sets a partial edge chunk option in a dataset access property list.</td>
+</tr>
+
+<tr><td bgcolor="#FFFFFF" colspan="2">&nbsp;</td></tr>
+
+
+<tr>
+    <td valign="top" width="25%">
+    <a href="/HDF5/doc/RM/RM_H5P.html#Property-GetChunkOpts">
+    <code>H5Pget_chunk_opts</code></a>&nbsp;</td>
+    <td valign="top" width="75%">
+    Retrieves partial edge chunk option setting 
+    from a dataset access property list.</td>
+</tr>
+
+<tr><td bgcolor="#FFFFFF" colspan="2">&nbsp;</td></tr>
+
+
+
+</table></td></tr>
+<!-- end nested table -->
+
+
+
+
+
+
+<tr><td bgcolor="#FFFFFF" colspan="2">&nbsp;</td></tr>
+
+
+
+
+
+<!--
+
+<tr>
+    <td bgcolor="#FFFFFF" valign="top" colspan="2">
+    <br />
+    <font size="5" color="#004488"><a name="DesignDocuments">
+    Partial Edge Chunk Options Design</a></font>
+    </td></tr>
+
+
+
+<tr>
+    <td align="left" valign="top" colspan="2">
+    The Partial Edge Chunk Options design document below describes 
+    feature requirements, how the feature works,
+    and why design choices were made.
+    </td></tr>
+
+
+
+<tr><td bgcolor="#FFFFFF" colspan="2">&nbsp;</td></tr>
+
+
+
+
+<tr>
+<table border="0" width="100%" cellpadding="5">
+
+<tr>
+    <td valign="top" align="left">
+    Link and title
+    </td>
+    <td valign="top" align="left">
+    Description
+    </td>
+</tr>
+
+
+<tr><td bgcolor="#FFFFFF" colspan="2">&nbsp;</td></tr>
+
+
+
+</table></td></tr>
+
+-->
+
+
+</table>
+<br />
+
+
+
+<!-- BEGIN FOOTER INFO -->
+
+<br />
+<hr />
+<table border="0" width="100%">
+    <tr><td width="45%" align="left" valign="bottom">
+        <font face="arial,helvetica" size="-1">
+        The HDF Group Help Desk: <img src="Graphics/help.png" align="top" 
+        height="14" alt="The HDF Group Help Desk"></font>
+<!--
+        <br />
+        Describes HDF5 Release 1.9.x (development snapshots)
+-->
+        <br />
+        <!-- hhmts start -->
+        <font face="arial,helvetica" size="-1">
+        Last modified:  February 2017
+        <!-- hhmts end -->
+
+        <p>
+        </font>
+    </td><td width="10%" rowspan="2">&nbsp;
+    </td><td width="45%" align="right" valign="top" rowspan="2">
+        <font face="arial,helvetica" size="-1">
+        <a href="https://support.hdfgroup.org/ftp/HDF5/releases/COPYING">Copyright</a> by The HDF Group.
+        <br />
+        All rights reserved.
+        </font>
+<!--
+        <a href="http://www.hdfgroup.org/">
+        <img border=0 src="Graphics/THGwTextSm.jpg" width=130 height="7"8 
+            alt="The HDF Group [Logo]"></a>
+        <a href="http://www.hdfgroup.org/">
+        <img border=0 src="Graphics/THGwTextSm.jpg" width=110 height=65 
+            alt="The HDF Group [Logo]"></a>
+        <a href="http://www.hdfgroup.org/">
+        <img border=0 src="Graphics/THGwTextSm.jpg" width=78 height=48 
+            alt="The HDF Group [Logo]"></a>
+        <a href="http://www.hdfgroup.org/">
+        <img border=0 src="Graphics/THGnoTextSm.jpg" width=78 height=41 
+            alt="The HDF Group [Logo]"></a>
+-->
+    </td></tr>
+</table>
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- HDF4map_attributes -->
+<xs:schema xmlns:h4="/HDF4/XML/schema/HDF4map/1.0.1" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="/HDF4/XML/schema/HDF4map/1.0.1" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0.1">
+    <!--    Include other h4 schema documents -->
+    <xs:include schemaLocation="HDF4map_datum_representation.xsd"/>
+    <xs:include schemaLocation="HDF4map_byteStream_representations.xsd"/>
+    <xs:include schemaLocation="HDF4map_inline_representations.xsd"/>
+    <!--    
+        Global definitions related to Attribute elements
+        HDF4 Annotations and Attributes are mapped to Attribute elements.
+
+        There are separate element types for Object Attributes (attributeT) and 
+        File Attributes (fileAttributeT).  FileAttributes may have undergone transformations 
+        in the mapping process, so they are treated as separate types to allow for information 
+        about the transformations. 
+    -->
+    <!-- 
+        attributeT: Object Attribute element type
+
+        All HDF4 Object Annotations and HDF4 Object Attributes are mapped to this type.
+        + attribute "name" will be 
+            - "Object Label" or "Object Description" for Attributes corresponding to HDF4 Annotations
+            - The name of the HDF4 Attribute for Attributes correponding to HDF4 Attributes.
+        + Attributes with string values are treated separately from attributes with numeric values, as 
+          slightly different information is provided and separate treatment allows for better verification.
+    -->
+    <xs:complexType name="attributeT">
+        <xs:sequence>
+            <xs:element name="datum" type="h4:datumTypeT"/>
+            <!-- attributeData is defined to have a complex type, even though it has only one 
+                 subelement and no attributes.  This was done rather than moving the byteStream 
+                 element contents "up" a level, so that the map file structure for attribute data 
+                 matches that used for the raw data of other elements for which there may be 
+                 other subelement types and/or attributes. -->
+            <xs:element name="attributeData">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="byteStream" type="h4:byteStreamT"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:choice>
+                <xs:element name="stringValue">
+                    <xs:complexType mixed="true">
+                        <xs:sequence>
+                            <xs:any namespace="##any" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="numericValues" type="h4:numericValueListT"/>
+            </xs:choice>
+        </xs:sequence>
+        <xs:attribute name="name" type="xs:string" use="required"/>
+        <xs:attribute name="id" type="h4:attributeID" use="required"/>
+    </xs:complexType>
+    <!-- 
+        fileAttributeT:  File Attribute element type
+
+        All HDF4 File Annotations and HDF4 File Attributes are mapped to this type.
+
+        Similar to Object Attributes:
+        + attribute "name" will be 
+            - "File Label" or "File Description" for Attributes corresponding to HDF4 File Annotations
+            - The name of the HDF4 Attribute for Attributes correponding to HDF4 File (Global) Attributes.
+        + Attributes with string values are treated separately from attributes with numeric values, as 
+          slightly different information is provided and separate treatment allows for better verification.
+                    
+         Specific to File Attributes:
+         + attribute "origin" provides information about the source of the Attribute in the HDF4 file.
+         + attribute "combinesMultipleAttributes" is "true" for Global Attributes associated with 
+           SD (Arrays) where multiple Global Attributes were concatenated into a single Attribute 
+           in the HDF4 File Content Map.  When this occurs, the "originalAttribute" attribute should also 
+           be used with each byteStream element.
+         + The attribute "nNullsTrimmedFromEnd" for the element "stringValue" is only used for Global
+           Array Attributes, and only there if nulls have been trimmed from the end of the string. 
+    -->
+    <xs:complexType name="fileAttributeT">
+        <xs:sequence>
+            <xs:element name="datum" type="h4:datumTypeT"/>
+            <xs:element name="attributeData">
+                <xs:complexType>
+                    <xs:choice>
+                        <xs:element name="byteStream" type="h4:byteStreamT"/>
+                        <xs:element name="byteStreamSet" type="h4:fileAttributesByteStreamSetT"/>
+                    </xs:choice>
+                </xs:complexType>
+            </xs:element>
+            <xs:choice>
+                <xs:element name="stringValue">
+                    <xs:complexType mixed="true">
+                        <xs:sequence>
+                            <xs:any namespace="##any" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+                        </xs:sequence>
+                        <xs:attribute name="nNullsTrimmedFromEnd" type="xs:nonNegativeInteger" use="optional"/>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="numericValues" type="h4:numericValueListT"/>
+            </xs:choice>
+        </xs:sequence>
+        <xs:attribute name="name" type="xs:string" use="required"/>
+        <xs:attribute name="origin" type="h4:fileAttributeOriginT" use="required"/>
+        <xs:attribute name="combinesMultipleAttributes" type="xs:boolean" use="optional"/>
+        <xs:attribute name="id" type="h4:fileAttributeID" use="required"/>
+    </xs:complexType>
+    <!-- 
+        fileAttributeOriginT: File Attribute Origin attribute type
+
+        Used to indicate which of several HDF4 interfaces were used to create the HDF4 object that the
+        FileAttribute is mapped from.
+    -->
+    <xs:simpleType name="fileAttributeOriginT">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="File Annotation: Label"/>
+            <xs:enumeration value="File Annotation: Description"/>
+            <xs:enumeration value="File Attribute: Arrays"/>
+            <xs:enumeration value="File Attribute: Raster Images"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <!--
+        attributeID: Object Attribute ID attribute type.
+
+        Uniquely identifies an Object Attribute element in an XML document.
+        Does not correspond to any HDF4 file content.
+        Of the form "ID_?A" followed by an integer, where ?A varies depending on type of the Object
+        the Attribute is associated with.  May be:
+               AA (Array Attribute)
+               CA (Column Attribute)
+               DA (Dimension Attribute)
+               GA (Group Attribute)
+               PA (Palette Attribute)
+               RA (Raster Attribute)
+               TA (Table Atribute)
+    -->
+    <xs:simpleType name="attributeID">
+        <xs:restriction base="xs:ID">
+            <xs:pattern value="ID_(A|C|D|G|P|R|T)A\d+"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <!--
+        fileAttributeID: File Attribute ID attribute type
+
+        Uniquely identifies a File Attribute element in an XML document.
+        Does not correspond to any HDF4 file content.
+        Of the form ID_FA followed by an integer.
+    -->
+    <xs:simpleType name="fileAttributeID">
+        <xs:restriction base="xs:ID">
+            <xs:pattern value="ID_FA\d+"/>
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>

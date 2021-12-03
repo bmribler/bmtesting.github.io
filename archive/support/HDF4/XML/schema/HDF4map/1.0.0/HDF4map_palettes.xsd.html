@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- HDF4map_palettes -->
+<xs:schema xmlns:h4="/HDF4/XML/schema/HDF4map/1.0.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="/HDF4/XML/schema/HDF4map/1.0.0" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0.0">
+    <!--    Include other h4 schema documents -->
+    <xs:include schemaLocation="HDF4map_attributes.xsd"/>
+    <xs:include schemaLocation="HDF4map_byteStream_representations.xsd"/>
+    <xs:include schemaLocation="HDF4map_datum_representation.xsd"/>
+    <!-- 
+        Global definitions related to Palette element
+
+        HDF4 palettes and color lookup tables (LUTs) are mapped to Palette elements
+
+        The HDF4 implementation currently restricts some things about palettes that are not restricted by the 
+        HDF4 design or User Guide documentation.   The schema includes attributes that allow for future
+        expansion to the full design capabilities, but the current version of the schema restricts the actual 
+        values allowed to those supported by the HDF4 library implementation.
+    -->
+    <!-- 
+        paletteT: Palette element type
+
+        HDF4 palettes and color lookup tables (LUTs) are mapped to Palette elements.
+        HDF4 number of entries in palette is mapped to the nEntries attribute; value fixed at 256.
+        HDF4 number of palette components is mapped to the nComponentsPerEntry attribute; value fixed at 3 (red, 
+          blue, green)
+        HDF4 palette data type is mapped to the datum element; data type value fixed at uint8. 
+        HDF4 palette interlace mode is mapped to the dimensionStorageOrder attribute; 
+           value fixed at "entry,component", which is also the default value when the attribute is unspecified.
+    -->
+    <xs:complexType name="paletteT">
+        <xs:sequence>
+            <xs:element name="PaletteAttribute" type="h4:attributeT" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="datum" type="h4:paletteDatumTypeT"/>
+            <xs:element name="paletteData">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="byteStream" type="h4:byteStreamT"/>
+                    </xs:sequence>
+                    <xs:attribute name="dimensionStorageOrder" type="h4:paletteDimOrderT" use="optional" 
+                                  default="entry,component"/>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="nComponentsPerEntry" type="xs:positiveInteger" use="required" fixed="3"/>
+        <xs:attribute name="nEntries" type="xs:nonNegativeInteger" use="required" fixed="256"/>
+        <xs:attribute name="id" type="h4:paletteID" use="required"/>
+    </xs:complexType>
+    <!--
+        paletteDatumTypeT: Palette datum element type
+
+        Expresses the atomic data type, byte order, and floating point format for palette data.
+
+        Only the atomic data type "uint8" is possible, as the HDF4 library implementation allows only one byte palette
+        data types. Byte order and floating point format is not relevant for type uint8.
+    -->
+    <xs:complexType name="paletteDatumTypeT">
+        <xs:complexContent>
+            <xs:restriction base="h4:datumTypeT">
+                <xs:attribute name="dataType" type="h4:dataTypeT" use="required" fixed="uint8"/>
+            </xs:restriction>
+        </xs:complexContent>
+    </xs:complexType>
+    <!--
+        paletteDimOrderT: Palette dimension storage order type
+
+        Indicates the order in with the dimension of the palette data are stored in the HDF4 file.
+        The last dimension in the list always varies the fastest.
+        The dimensions of any palette are entry and component.
+
+        HDF4 palette interlace mode is mapped to the palette dimension storage order type.
+        HDF4 pixel interlace is mapped to "entry,component".
+        HDF4 component interlace is mapped to "component,entry".  This is currently not supported by the HDF4 library 
+            so is commented out in the schema.
+    -->
+    <xs:simpleType name="paletteDimOrderT">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="entry,component"/>
+            <!-- <xs:enumeration value="component,entry"/> -->
+        </xs:restriction>
+    </xs:simpleType>
+    <!-- 
+        paletteRefT: Palette reference element type
+
+        Appears in a Raster element that has an associated palette.
+        Appears in a Group element that has a palette member.
+        Allows single Palette element to be associated with multiple Rasters and/or Groups.
+        A single Group may have multiple paletteRef elements.
+    -->
+    <xs:complexType name="paletteRefT">
+        <xs:attribute name="ref" type="h4:paletteIDREF" use="required"/>
+    </xs:complexType>
+    <!--
+        paletteID: Palette ID attribute type.
+
+        Uniquely identifies a Palette element in an XML document.
+        Does not correspond to any HDF4 file content.
+        Of the form "ID_P" followed by an integer.
+    -->
+    <xs:simpleType name="paletteID">
+        <xs:restriction base="xs:ID">
+            <xs:pattern value="ID_P\d+"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <!--
+        paletteIDREF: Palette IDREF attribute type.
+
+        Used to reference a Palette element by its unique Palette ID.
+    -->
+    <xs:simpleType name="paletteIDREF">
+        <xs:restriction base="xs:IDREF">
+            <xs:pattern value="ID_P\d+"/>
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>

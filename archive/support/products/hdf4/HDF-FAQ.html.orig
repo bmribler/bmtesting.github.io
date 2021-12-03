@@ -1,0 +1,1145 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+<!-- If no var is set for $page_title on the top of each page than default title will be HDF Group -->
+
+<title>
+Frequently Asked Questions about HDF</title>
+	<meta name="keywords" content="hdf, hdfeos, blog, hdf blog, hdf5 blog, hdf5, hdf4, hdf tools, hdf libraries, hdf viewer, hdf format, hdf file, hdf java, nafxcw.lib, phdf5, open source, hierarchical data format, ncsa, database, python hdf, mike folk, hdfview, hdf5 parallel" />
+	<meta name="description" content="The HDF Group is a not-for-profit corporation with the mission of sustaining the HDF technologies and supporting HDF user communities worldwide with production-quality software and services." />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="expires" content="Wed, 26 Feb 2010 08:21:57 GMT" />
+	<meta name="verify-v1" content="/m03HNmaDgGAcDe0PFtEVnXGtCkoeOocjr/Jwey2gdI=" />
+	<link href="/css/layout.css" rel="stylesheet" type="text/css" media="screen, projection" />
+	<link href="/css/print.css" rel="stylesheet" type="text/css" media="print" />
+	<link rel="stylesheet" type="text/css" href="/css/js_style.css" />
+	<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/prototype/1.7.2.0/prototype.js"></script>
+	<!--<script type="text/javascript" src="/scriptaculous/lib/prototype.js"></script>-->
+	<script type="text/javascript" src="/scriptaculous/src/effects.js"></script>
+	<script type="text/javascript" src="/scriptaculous/validation.js"></script>
+	<script type="text/javascript" src="/scriptaculous/animatedcollapse.js"></script>
+	<script type="text/javascript" src="/scriptaculous/rollover.js"></script>	
+	<script type="text/javascript" src="/scriptaculous/functions.js"></script>
+	<script type="text/javascript" src="/scriptaculous/sorttable.js"></script>
+	<!--<script type="text/javascript" src="/jquery-1.2.2.pack.js"></script>-->
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript" src="/scriptaculous/jssor.slider.min.js"></script>
+
+ 	<link rel="stylesheet" type="text/css" href="/featuredcontentglider.css" />
+    <script type="text/javascript" src="/featuredcontentglider.js"></script>
+
+	</head>
+	<body>
+	<div id="mast_head">
+		<a href="https://www.hdfgroup.org/"><img src="/images/hdf_logo.jpg" height="70" style="display:block; padding-left:10px;" align="left" alt="hdf images" /></a>
+		<img src="/images/logo_5.jpg" height="70" style="display:block;" align="right" alt="hdf images" />
+	</div> 
+				
+	<div id="nav_wrapper">
+		<div>
+		<div id="section-">
+			<ul id="nav">
+				<li id="t-index"><a href="https://www.hdfgroup.org/">Home</a> </li>
+				<li id="t-products"><a href="/products/">Products</a></li>
+				<li id="t-services"><a href="/services/">Services</a></li>
+				<li id="t-about"><a href="/about/">About Us</a></li>
+				<li id="t-news"><a href="/news/">News</a> </li>
+				<li id="t-blog"><a href="https://www.hdfgroup.org/blog">Blog</a></li>
+				<li id="t-contact"><a href="/about/contact.html">Contact Us</a></li> 
+			</ul>
+			<script type="text/javascript">
+			
+  (function() {
+    var cx = '007250492606109219119:sb2eg2bgoyy';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:search></gcse:search>	
+					<script type="text/javascript">
+					    jQuery(document).ready(function ($) {
+					        // var options = {
+					        //     $ArrowNavigatorOptions: {
+					        //         $Class: $JssorArrowNavigator$,
+					        //         $ChanceToShow: 2
+					        //     }
+					        // };					    	
+
+
+							var options = { 
+											$AutoPlay: true, $SlideshowOptions: { $Class: $JssorSlideshowRunner$, $Transitions: [{ $Duration:5000, $Fade: true, $Opacity:2 }] } , 
+											$ArrowNavigatorOptions: { 
+												$Class: $JssorArrowNavigator$, 
+												$ChanceToShow: 2
+											}
+										  };
+
+
+					        var jssor_slider1 = new $JssorSlider$('slider1_container', options);
+					    });
+					</script>
+									                  
+			
+		</div>
+		</div>             
+	</div>
+				
+<!--START: MAIN -->
+<div id="wrapper" style="margin-top:-15px;"> 
+
+<!--START: SIDE_BAR -->
+<div id="side_bar">
+
+<form method="get" action="" class="form" >
+	<select onchange="window.open(this.options[this.selectedIndex].value,'_top')" name="" style="border:2px solid #c1c1c1;">
+		<option value="" class="ql1">- - Quick Links - -</option>
+		<option value="/HDF5/" class="ql">HDF5</option>
+		<option value="/products/hdf4/" class="ql">HDF4</option>
+		<option value="/tools/" class="ql">Tools</option>
+		<option value="/projects/" class="ql">Projects</option>
+		<option value="/downloads/" class="ql">Downloads</option>
+		<option value="/documentation/" class="ql">Documentation</option>
+	        <option value="/pubs/" class="ql">Publications</option>
+		<option value="/about/" class="ql">Contact Us</option>
+	</select>
+</form>
+<ul style="border:1px solid #c1c1c1; margin-top:25px;"> 
+
+	<li style="background:url(/images/menubg.png); padding:0px; padding-left:7px; color:#27343C; font-weight:500; text-align:left;">
+	LINKS</li><li><a href="https://www.hdfgroup.org/">Main Website</a></li><li><a  href="/products/hdf4/whatishdf.html">What is HDF?</a></li><li><a  href="/downloads/index.html">Downloads</a></li><li><a  href="/release4/doc/index.html">Documentation</a></li><li><a  href="/products/hdf4_tools/tools.html">Software using HDF4</a></li><li><a  href="/products/hdf4/users.html">HDF4 Users</a></li><li><a  href="/products/licenses.html">Licenses</a></li></ul> 
+
+</div>
+
+<!--END: SIDE_BAR -->
+
+<!--START: CONTENT -->
+<div id="content">
+<p><font color="red"><center><strong>This web site is no longer maintained (but will remain online).<br /> Please see The HDF Group's new <a href="https://portal.hdfgroup.org">Support Portal</a> for the latest information.</strong></center></font></p>
+	<div class=bc><p style="color:orange; ";><a href="/" title="HOME">HOME</a> &gt; <a href="/products/" title="PRODUCTS">PRODUCTS</a> &gt; <a href="/products/hdf4/" title="HDF4">HDF4</a></p></div><fieldset><h1>Frequently Asked Questions about HDF</h1></fieldset>
+ 
+<!-- BEGIN MAIN BODY -->
+ 
+ 
+
+<H2>Contents</H2>
+<UL>
+<LI> <A HREF="#gen">General Information</a>
+<LI> <A HREF="#getHDF">Obtaining the HDF Software and Documentation</a>
+<LI> <A HREF="#instl">Installing and Compiling</a>
+<LI> <A HREF="#tools">HDF Tools for Conversion and Visualization</A>
+<LI> <A HREF="#compat">Backward/Forward Compatibility</a>
+<LI> <A HREF="#netcdf">Integration of HDF with netCDF</a>
+<LI> <A HREF="#compr">Data Compression Support</a>
+<LI> <A HREF="#other">Other: Mailing List, Contributed Software, Bug Reports</a>
+</UL>
+<UL>
+<hr><H3><A NAME="gen"></a>General Information </H3>
+   <LI> <A HREF="#1">What is HDF? </A>
+   <LI> <A HREF="#1a">Copyright Information </A>
+   <li> <a href="#1b">Should new products be developed in HDF (HDF4) ?</a>
+   <LI> <A HREF="#2">What is in the HDF library? </A>
+   <LI> <A HREF="#3">What are the HDF command line utilities?</A> 
+   <LI> <A HREF="#4"> What is the latest official release of HDF and what 
+platforms does it support?</A>
+   <li> <a href="#4a">When will the next release of HDF4 be?</a>
+   <LI> <A HREF="#5"> What are the new features included in the latest 
+release?</A>
+   <LI> <A HREF="#6">Is there a Java Interface?</A>
+<!--
+   <LI> <A HREF="#6a">Is HDF Y2K compliant?</A>
+-->
+   <LI> <A HREF="#6b">Are there limitations to HDF4 files?</A>
+   <li> <a href="#namelen">Is there a limit on the name of a dataset?</a></li>
+
+<hr><H3><A name="getHDF"></a>Obtaining the HDF Software and Documentation</h3><p>
+   <LI> <A HREF="#7">Where can I get the HDF source code and information 
+relevant to HDF?</A>
+   <LI> <A HREF="#8">What documentation for HDF is available? </A>
+<!--
+  <LI> <A HREF="#9">How do I get hard copies of HDF documentation? </A>
+-->
+   <LI><A HREF="#poc-szip">Who do I contact for information on SZIP licensing issues ?</A>
+
+<hr><H3><A NAME="instl"></a>Installing and Compiling </H3>
+   <LI> <A HREF="#10">How do I install HDF (4)?</A>
+   <LI> <A HREF="/windows/faq.html">Building and Using HDF and Windows</A>
+   <LI> <A HREF="#11">How do I compile application programs that call HDF 
+functions? </A>
+   <LI> <a href="https://bugzilla.redhat.com/show_bug.cgi?id=427639">HDF4.2r2 Patch for Linux Fedora on Sparc architecture</a>
+<!--
+   <LI> <A HREF="#11win">Compiling on Windows: Unresolved symbols _ntohl and _htonl</A>
+-->
+   <LI> <A HREF="#11hdr">What header file are you supposed to use in your application ?</A>
+   <LI> <A HREF="#11unbuf">How to use open (unbuffered I/O) instead of fopen?</A>
+   <LI> <A HREF="#11share">How can you compile HDF with shared libraries?</A>
+<!--
+   <LI> <A HREF="#1164">Tips to port HDF to a new 64-bit platform</A>
+-->
+   <LI> <A HREF="hdf4-quest.html#p-mfc">Windows: Using MFC, getting unresolved external symbol errors for <CODE> __argv</CODE>, <CODE>__argc</CODE>, <CODE>__mbctype</CODE></A>
+   <LI><A HREF="hdf4-quest.html#p-net">Windows: Instructions for building with
+VS .NET (with and without MFC)
+   <LI><A HREF="#11compute">Configure fails, "cannot compute sizeof (int*), 77"</A>
+
+
+<hr><H3><A NAME="tools"></a>HDF Tools for Conversion and Visualization </H3>
+   <LI> <A HREF="#12">Are there any conversion programs available to convert 
+non-HDF image files into HDF files or vise versa? </A>
+   <LI> <A HREF="#13">Which HDF Group tools can I use to view HDF objects? </A>
+  <LI> <A HREF="#14">Is there any commercial or public domain visualization 
+software that accepts HDF files? </A>
+  <LI><A HREF="#convnetcdf">How would you convert a netCDF file to/from HDF?</A>
+
+<hr><H3><A name="compat"></a>Backward/Forward Compatibility </h3> <p>
+  <LI> <A HREF="#15">Can new versions of HDF read hdf files written using 
+older versions of the HDF library? </A>
+   <LI> <A HREF="#16">Can application programs which work with old versions 
+of the HDF library always be compiled with new versions of HDF? </A>
+
+<hr><H3><A NAME="netcdf"></a>Integration of HDF with netCDF </H3>
+   <LI> <A HREF="#17">How does the 'integration of netCDF with HDF'
+    affect application programmers?</A> 
+
+
+<hr><H3><A NAME="compr"></a>Data Compression Support </H3>
+   <LI> <A HREF="#18">Does HDF support data compression? </A>
+
+<hr><H3><A NAME="other"></a>Other: Mailing List, Contributed Software, Bug
+                    Reports </H3>
+
+   <LI> <A HREF="#19">Is there a mailing list for HDF discussions and 
+questions? </A>
+   <LI> <A HREF="#20">How do I contribute my software to the HDF user 
+community? </A>
+   <LI> <A HREF="#21">How do I make a bug report? </A>
+</UL>
+<A NAME="1"></a><hr><H3>What is HDF?</H3>
+
+   HDF stands for Hierarchical Data Format.  It is a library and 
+   multi-object file format for the transfer of graphical and numerical 
+   data between machines.  
+<P>
+   It is freely available.  The distribution consists of the 
+   HDF library, the HDF command line utilities, and a test suite (source code 
+   only). 
+<P>
+   Features of the HDF File Format:
+<P>
+<ul class="ul"> 
+<li class="li3">      It is versatile. HDF supports several different data models.  Each
+      data model defines a specific aggregate data type and provides an
+      API for reading, writing, and organizing data and metadata of the
+      corresponding type.  Data models supported include multidimensional
+      arrays, raster images, and tables.
+<P>
+<li class="li3">      It is self-describing, allowing an application to interpret
+      the structure and contents of a file without any outside information. 
+<P> 
+<li class="li3">      It is flexible.  With HDF, you can mix and match related objects
+      together in one file and then access them as a group or as
+      individual objects.  Users can also create their own grouping
+      structures using an HDF feature called vgroups.
+<P> 
+<li class="li3">      It is extensible.  It can easily accommodate new data models, 
+      regardless of whether they are added by the HDF development team or 
+      by HDF users. 
+<P>
+<li class="li3">      It is portable.  HDF files can be shared across most common platforms,
+      including many workstations and high performance computers.
+      An HDF file created on one computer can be read on a different
+      system without modification.
+<P>
+</UL>
+<A NAME="1a"></a><hr><H3> Copyright Information</H3>
+ 
+   The <A HREF="/ftp/HDF/HDF_Current/src/unpacked/COPYING">COPYING</A> file at the top of the HDF source code tree provides
+   the copyright information regarding HDF.
+
+<a name="1b"></a>
+<hr />
+<h3>Should new products be developed in HDF (HDF4) ?</h3>
+<p>
+No, we do not recommend storing new products in HDF4. You should use HDF5 instead.
+We also want to encourage and help users move from HDF4 to HDF5. Please let us know
+if you need help with this.
+</p>
+
+<p>
+HDF4 still works well for many users, and we are pleased that it has served users
+so well. However, there are good reasons to use or move to HDF5.
+</p>
+
+<p>
+In general, HDF4 is based on technology from the 1980's and 1990's.  
+Some specific reasons to use HDF5 instead of HDF4 are listed below:
+<ul class="ul">
+<li class="li3">
+<p>
+HDF5 is very flexible in determining how to build on unknown platforms.
+In HDF4, code changes must be made to support new platforms or compilers (especially for Fortran).
+</p>
+</li>
+<li class="li3">
+<p>
+HDF5 does not have a file size limitation.
+In theory, HDF4 has a 2 GB limit on file sizes. In reality, the size of the files you can store in 
+HDF4 is less than 2 GB, particularly if you have a lot of objects.
+</p>
+</li>
+
+<li class="li3">
+<p>
+HDF5 has one flexible data model and supports a rich collection of datatypes. 
+HDF4 has several rigid data models and supports a small number of datatypes.  
+</p>
+</li>
+
+<li class="li3">
+<p>
+HDF5 provides an easy mechanism for applications to invoke data filters such as an 
+application-specific compression method. This feature is not available in HDF4.
+
+
+<li class="li3">
+<p>
+HDF5 is designed to support fast I/O on massively parallel systems, as well as for fast 
+serial data acquisition. 
+HDF4 does not support parallel I/O, and is much slower for serial data acquisition.
+</p>
+</li>
+
+<li class="li3">
+<p>
+HDF5 is in active development, and HDF4 is in maintenance mode only.
+</p>
+</li>
+<li class="li3">
+<p>
+Lastly, HDF5 is more powerful than HDF4, and HDF5 continues to become even more powerful
+as new features are added.
+</p>
+</ul>
+<p>
+See the <a href="/products/hdf5_tools/h4toh5/h4vsh5.html">HDF vs. HDF5 table</a> which compares HDF4 and HDF5 features.
+</p>
+
+
+<A NAME="2"></a><hr><H3> What is in the HDF library? </H3>
+
+   HDF currently supports several data structure types:
+   Scientific Datasets (multi-dimensional arrays), vdatas (binary tables),
+   "general" raster images, text entries (annotations), 8-bit 
+   raster images, 24-bit raster images, and color palettes.
+<P>
+   HDF contains: the base library, the multi-file (SDS) library, the 
+   jpeg library, and the gzip library.  HDF library functions can be called 
+   from C or FORTRAN user application programs. 
+<P>
+   The base library contains a general purpose interface and application 
+   level interfaces, one for each data structure type. Each application 
+   level interface is specifically designed to read, write and manipulate 
+   one type.  The general purpose interface contains functions, such as 
+   file I/O, error handling, memory management and physical storage. 
+<P>
+   The multi-file (SDS) library integrates the netCDF model with HDF Scientific data 
+   sets, and supports simultaneous access to multiple files and multiple 
+   objects. This part is referred to as the mfhdf library in the rest 
+   of this FAQ. 
+<P>
+   The jpeg and gzip libraries allow you to use jpeg and gzip compression
+   for those application programming interfaces that support them.
+<P>
+<A NAME="3"></a><hr><H3> What are the HDF command line utilities? </H3>
+
+   The HDF command line utilities are application programs that can be 
+   executed by entering them at the command level, just like UNIX commands. 
+<P>
+   There are HDF utilities to:<P>
+<ul class="ul">
+<li class="li3"> analyze and view HDF files ('hdp' being one of the more useful tools)
+<li class="li3"> convert from one format to another
+<li class="li3"> manipulate HDF files
+</UL>
+<p>
+   They provide capabilities for doing things with HDF files for which you 
+   would normally have to write your own program.
+</p>
+<P>
+   The 'hdp' utility is one of the more useful HDF utilities.  Following is
+   a description of its function:
+<UL>
+      It provides quick information about the contents and data objects 
+      in an HDF file.  It can list the contents of hdf files at various 
+      levels with different details.  It can also dump the data of one or 
+      more objects in the file in binary or ASCII format.  
+</UL>
+<P>
+   The other utilities are:
+<P>
+<ul class="ul">
+    <li class="li3"> gif2hdf  -- converts GIF image into HDF GR image.
+    <li class="li3"> hdf24to8 -- converts a 24-bit image into an 8-bit image
+    <li class="li3"> h4cc     -- compiles an HDF4 C program
+    <li class="li3"> h4fc     -- compiles an HDF4 F90 program
+    <li class="li3"> h4redeploy -- Updates paths in h4cc/h4fc after the HDF4 pre-compiled binaries have been installed in a new
+      location 
+    <li class="li3"> hdf2gif  -- converts HDF GR image into GIF image.
+    <li class="li3"> hdf2jpeg -- converts hdf raster images to jpeg images
+    <li class="li3"> hdf8to24 -- converts an 8-bit image into a 24-bit image 
+    <li class="li3"> hdfcomp  -- re-compresses an 8-bit raster hdf file
+    <li class="li3"> hdfed    -- hdf file editor - requires advanced knowledge of HDF.
+    <li class="li3"> hdfimport -- imports ASCII or binary data into HDF
+    <li class="li3"> hdfls    -- lists basic information about an hdf file
+    <li class="li3"> hdfpack  -- compacts an hdf file by eliminating unused space that
+                  has been created due to file modifications.
+    <li class="li3"> hdftopal -- extracts a palette from an hdf file
+    <li class="li3"> hdftor8  -- extracts 8-bit raster images and palettes from an hdf file
+    <li class="li3"> hdfunpac -- unpacks an HDF file by exporting the scientific
+                  data elements (DFTAG_SD) to external object elements 
+    <li class="li3"> hdiff    -- compares two HDF files and reports the differences
+    <li class="li3"> hrepack  -- copies an HDF file to a new file with/without
+                     compression and/or chunking
+    <li class="li3"> jpeg2hdf -- converts jpeg images to hdf raster images
+    <li class="li3"> paltohdf -- converts a raw palette to hdf
+    <li class="li3"> r8tohdf  -- converts 8-bit raster images to hdf
+    <li class="li3"> ristosds -- converts a raster image into an SDS
+    <li class="li3"> vmake    -- creates vsets
+    <li class="li3"> vshow    -- dumps out vsets from an hdf file
+</UL>
+<p>
+   In addition, the netCDF utilities, ncdump and ncgen, COMPILED with the 
+   HDF library, are included.  
+</p>
+<P>
+<A NAME="4"></a><hr><H3> What is the latest official release of HDF, and what 
+platforms does it support?</H3>
+<p>
+  See the <a href="https://support.hdfgroup.org/release4/obtain.html">download</a> page for the latest official release of HDF and the platforms supported. 
+</p>
+
+<hr>
+<a name="4a"></a>
+<h3>When will the next release of HDF4 be?</h3>
+
+<p>In general, a maintenance release of HDF4 occurs once a year 
+February. HDF5 releases occur every six months around May and November.
+</p>
+ 
+<A NAME="5"></a>
+<hr>
+<H3> What are the new features included in the current 
+release?</H3>
+   Details are listed in the <A HREF="/ftp/HDF/HDF_Current/src/unpacked/release_notes/RELEASE.txt">RELEASE.txt</A> file of the release.
+
+
+<a name="6"></a><hr><H3> Is there a Java Interface?</H3>
+   
+   Yes, there is a Java Interface for HDF.  For information on this
+   please refer to the <a href="/products/java/index.html">HDF Java Products</a> web page, 
+  <!-- 
+<A NAME="6a"><hr><H3> Is HDF Y2K compliant?</H3></A>
+   Yes, it is Y2K compliant.  There are dates used in strings within
+   the HDF library and in the HDF tests.  The strings in the HDF 
+   library are for identification purposes only, and the strings in the 
+   tests are for testing the use of global attributes in the netcdf interface.
+   These strings just happen to have dates in them, but they could very well 
+   have any value.
+   <P>
+   Please see the HDF Y2K Compliance statement under 
+   <A HREF="/support.html">Support Issues</A>
+   off of the HDF home page.
+   <P>
+-->
+
+<A NAME="6b"></a>
+<hr><H3> Are there limitations to HDF4 files?</H3>
+
+Yes. Here are some of the limitations on HDF4 files: 
+<ul class="ul">
+<li class="li3">HDF4 files cannot be larger than 2 GB.
+<li class="li3">There is a limit of 20000 objects in an HDF4 file.  Usually
+    the limit is even less than that, and depends on the type of
+    objects or features used.
+<li class="li3">Minimal parallel I/O support.
+<li class="li3">Supports only 1-D array of compound datatypes.
+<li class="li3">Cannot easily delete or move objects in a file.
+<li class="li3">Supports only 1 unlimited dimension (SD).
+<li class="li3">Datasets with an unlimited dimension cannot be chunked or compressed. (SD)
+</UL>
+
+<hr />
+<a name="namelen"></a>
+  <h3>Is there a limit on the name of a dataset?</h3>
+
+<p>
+ No. HDF has always allowed any length to be specified for a name,
+ when creating an SDS, Vdata, or Vgroup. However, prior to HDF 4.2r2, the
+ behavior was undefined for names that were greater than 64
+ characters, which caused problems for tools reading the data.
+ Either characters were concatenated to the name or, in the
+ case of the hdp tool, a crash occurred due to accessing
+ undefined memory.
+</p>
+
+<p>
+ As of HDF 4.2r2, released in 2007, this issue was fixed and
+ a name with any length could be retrieved. The SDgetnamelen,
+ Vgetnamelen<a href="#note">*</a>, and Vgetclassnamelen<a href="#note">*</a> APIs were introduced for
+ retrieving the length of a name.
+</p>
+
+<a name="note"></a>
+* Vgetnamelen and Vgetclassnamelen were added to the source
+  code in HDF 4.2r2, but were inadvertently left out of the
+  documentation until HDF 4.2.5, and are therefore listed
+  in the Release Notes for HDF 4.2.5.
+
+<A NAME="7"></a><hr>
+<H3> Where can I get the HDF source code and information 
+relevant to HDF?</H3>
+<p>
+   For information, take a look at the <a href="/products/hdf4/">HDF home page</a>.   
+</p>
+
+<a name="8"></a>
+<hr><H3> What documentation for HDF is available?</h3>
+
+<p>
+    See the <a href="/release4/doc/index.html">HDF4 Documentation page</a>.
+</p>
+
+<!--
+<a name="9"></a>
+<hr><H3> How do I get hard copies of HDF documentation?</H3>
+
+   The HDF Group does not provide hard copies of the HDF documentation.  
+   <P>
+-->
+
+<hr><H3><A NAME="poc-szip"></a>Who do I contact for information on SZIP licensing issues ?</H3>
+See the <a href="/doc_resource/SZIP/Commercial_szip.html">SZIP
+Licensing page</a>.
+<P>
+
+<A NAME="10"></a><hr><H3> How do I install HDF (4)? </H3>
+
+<I>Optional:</I> &nbsp; 
+Set environment variables to point to the correct compilers.
+For example:
+ <PRE>
+   setenv CC "/opt/SUNWspro/bin/cc -xarch=v9"
+   setenv F77 "/opt/SUNWspro/bin/f90 -xarch=v9"
+</PRE>
+
+Also, remember that HDF4 builds with Fortran by default. 
+Particularly on 
+systems that support both 32-bit and 64-bit, HDF may pick up the 
+wrong compiler.  
+<P>
+<I>Solaris ONLY:</I> &nbsp;
+Make sure that your PATH variable points to the
+correct <CODE>ar</CODE> and <CODE>tr</CODE> tools:
+ <PRE>
+    tr:  /usr/ucb/tr
+    ar:  /usr/ccs/bin/ar
+</PRE>
+Following are the commands to build HDF.
+The JPEG and ZLIB libraries are required.  You must include them
+when configuring.  The SZIP library is optional.
+<PRE>
+  ./configure --with-zlib=/path_to_ZLIB_install_directory
+                   --with-jpeg=/path_to_JPEG_install_directory
+                   [--with-szlib=/path_to_SZIP_install_directory]
+                   --prefix=/path_to_HDF4_install_directory
+
+  gmake >& gmake.out
+  gmake check >& check.out
+  gmake install
+</PRE>
+To disable fortran:
+<PRE>
+  ./configure --disable-fortran  ... 
+</PRE>
+If you encounter problems where configure can't find the JPEG or ZLIB library,
+but you know that you have specified the location properly, then it
+may have found more than one JPEG/ZLIB installation and is confused. 
+<P>
+<A NAME="11"></a><hr><H3> How do I compile application programs that call HDF 
+functions? </H3>
+
+   To use HDF routines in your C program, you must either have the line 
+   <I>#include "hdf.h"</I> if you do not use the mfhdf library, 
+   or <I>#include "mfhdf.h"</I> if you do, near the beginning of your code. 
+<P>
+   The HDF Group provides the h4cc and h4fc scripts for compiling applications.
+   These tools come with the pre-compiled binaries and source code.
+
+<!--
+<A NAME="11win"></a><hr><H3>Compiling on Windows: Unresolved symbols _ntohl and _htonl</H3>
+   On Windows platforms you must include the <B>ws2_32.lib</B> library under
+   <I>Project->Settings</I> (see "Object/Library Modules") in MSVC++.  
+   For Windows ME (at least) the name of this library is <B>wsock32.lib</B>.
+<P>
+   This library is not included on all Windows platforms.  On Windows 95
+   it is optional, but you can obtain it free of charge from Microsoft at:
+<PRE>
+     <A HREF="http://www.microsoft.com/windows95/downloads/">http://www.microsoft.com/windows95/downloads/</A>
+</PRE>
+   Look for "Windows Socket 2 Update" at the bottom of the page.
+-->
+
+<A NAME="11hdr"></a><hr><H3>What header file are you supposed to use in your application?</H3>
+
+The header file <I>hdf.h</I> must be included in every HDF application
+written in C, except for programs that call routines in the SD interface.
+The header file, <I>mfhdf.h</I>, must be included in all programs that
+call the SD interface routines.  
+<P>
+Fortran programmers who use compilers
+that allow file inclusion can include the files <I>hdf.inc</I> and 
+<I>dffunc.inc</I>.  If a Fortran compiler that does not support file
+inclusion is used, the HDF library definitions must be explicitly defined
+in the Fortran program as they are included in the header files of the 
+HDF library.
+
+<A NAME="11unbuf"></a><hr><H3>How to use open (unbuffered I/O) instead of fopen?</H3>
+
+To use <I>open</I> instead of <I/>fopen</I> in HDF4, you must:
+<OL>
+<LI>Download and uncompress the HDF source code.
+<LI>Edit the <code>./hdf/src/hdfi.h</code> file.
+<LI>Find the section of code for the platform you are on. 
+    For example on Solaris, find this line:
+<PRE>
+      #define DF_MT             DFMT_SUN
+</PRE>
+    Then go down further until you find the section below.
+
+<LI>Change the 2nd define in the following lines in that section, from:
+<PRE>
+   #ifdef  HAVE_FMPOOL
+   #define FILELIB PAGEBUFIO  /* enable page buffering */
+   #else
+   #define FILELIB UNIXBUFIO
+   #endif
+</PRE>
+to:
+<PRE>
+   #ifdef  HAVE_FMPOOL
+   #define FILELIB PAGEBUFIO  /* enable page buffering */
+   #else
+   #define FILELIB UNIXUNBUFIO
+   #endif
+</PRE>
+</OL>
+
+This will make HDF use unbuffered I/O.  
+<P>
+There is an unfixable bug in <CODE>fopen</CODE> on Solaris such that the
+maximum number of open files that are allowed is 256.  The bug is fixed
+in <CODE>open</CODE>.
+
+<!--
+<A NAME="1164"></a><hr><H3>Tips to port HDF to a new 64-bit platform</H3>
+<OL>
+<LI> To get an idea of the kind of changes you might need to do, search 
+     for "CRAY" or "AIX5L64" strings in the files in the hdf/src and 
+     mfhdf/libsrc directories.
+<P>
+<LI> You will definitely need to modify these source  files:
+<PRE>
+         hdf/src/hdfi.h
+         mfhdf/libsrc/array.c
+                      cdf.c
+                      putget.c
+                      xdrposix.c
+
+         mfhdf/libsrc/config/netcdf-?.h
+
+</PRE>
+<LI>In the file <I>xdrposix.c</I>, check the <I>xdr_ops</I> structure and 
+    compare it with the <I>xdr_ops</I> structure in the system <I>xdr.h</I> 
+    file. You will also need to go through the source of all <I>xdrposix_*</I>
+    functions listed in this structure and make sure that types
+   of the arguments are consistent with the types of the arguments
+   of the corresponding functions in the system <I>xdr.h</I> file.
+<P>
+<LI>When compiling use the -DBIG_LONGS compilation flag. If your machine is 
+    little-endian, you would also need to use the -DSWAP compilation flag.  
+<P>
+<LI>To configure, you must create an mh-*  configure file. For example, to
+    create the AIX 64-bit port, the mh-aix file was copied to mh-aix64.
+    Then run configure.
+<P>
+<LI>Known Problems:  We know that there is a bug in the code 
+    (at least for OSF1 V5.1) with NetCDF record variable. If there are 
+    more than one record variables in the pure NetCDF file, 
+   ncdump reads data incorrectly. We never checked it on other 64-bit 
+   platforms. 32-bit platforms seems to be OK (by NASA users). If file is 
+   created from *.cdl file, then data is correct. That tells us that at 
+   least HDF part of the HDF4 Library is OK.
+</OL>
+-->
+<A NAME="11compute"></a>
+<hr><H3>Configure fails, "cannot compute sizeof (int*), 77"</H3>
+The problem is that you have to add the path to the SZIP library to 
+LD_LIBRARY_PATH, since it is a shared library.
+<P>
+To see this, you can edit config.log, go to the end, and search 
+backwards for "compute".  You will find the compute error.  Then go back 
+further, before the example program, and you will see that it cannot open 
+the shared SZIP library.
+<P>
+<a name="11share"> </a>
+<hr><h3> How can you compile HDF with shared libraries?</h3>
+<p>
+Prior to HDF 4.2r4, shared libraries were not supported in HDF4.
+With HDF 4.2r4, shared libraries for C were added.  To build
+the C shared library, configure with these flags:
+</p>
+<pre>
+   --enable-shared --disable-fortran
+</pre>
+<p>
+This is required as Fortran shared libraries are not supported.
+Shared libraries are disabled by default.
+</p>
+
+<A NAME="12"></a><hr><H3> Are there any conversion programs available to convert 
+non-HDF image files into HDF files or vice versa?</H3>
+
+    Many of the HDF command line utilities are conversion programs.  
+    See Question #3 for more information regarding them.
+<P>
+    Take a look at the <A HREF="/products/hdf4_tools/tools.html">What 
+Software uses HDF?</A> page off of the HDF home
+    page for information on other tools.
+
+
+<A NAME="13"></a><hr>
+<H3> Which HDF Group tools can I use to view HDF objects?</H3>
+
+    The HDF Group has several tools for scientific visualization that are based on HDF.
+    <P>
+    The latest tool available is:
+<ul class="ul">
+    <li class="li3"> The The HDF Group Java-based HDF Browser 
+</UL>
+    Please see the <A HREF="/products/hdf4_tools/tools.html">What Software 
+uses HDF?</A> section on the home page for more
+    information regarding these tools. 
+<P>
+<!--
+    Older tools are available that have not been updated to use the current 
+    version of HDF:
+<ul class="ul">
+    <LI> For the Mac, NCSA DataScope and NCSA Collage can be used to view HDF 
+      files.
+    <LI> On the PC, NCSA Audible Image uses HDF. 
+    <LI> X-based workstations can use Collage, NCSA XDataSlice, and NCSA Polyview.
+    <LI> NCSA Collage, a cross-platform collaborative tool, displays and 
+      manipulates HDF files.
+    <LI> NCSA Mosaic 2.6, a networked information browser and World-Wide-Web 
+      client, can display the contents of HDF files. 
+</UL>
+    These tools are available from the NCSA ftp server, 
+    <B>ftp.ncsa.uiuc.edu</B>, in:
+<PRE>
+      Visualization/      : Collage, Datascope, XDataslice
+      SGI/                : Polyview
+      Mosaic/             : Mosaic    
+</PRE>    
+-->
+<A NAME="14"></a><hr><H3> Is there any commercial or public domain visualization 
+software that accepts HDF files? </H3>
+
+    Yes, there are numerous tools that accept HDF files.  Please refer 
+    to the <A HREF="/products/hdf4_tools/tools.html">What Software uses 
+    HDF?</A> section on our home page for more detailed, though not
+    complete, information.
+<p>
+    Commercial tools that accept HDF include IDL and Matlab. 
+</p> 
+<p>
+Comprehensive MATLAB, IDL and NCL example scripts and plots on how to
+access and visualize NASA HDF-EOS and HDF products such as MODIS, MISR,
+AIRS, TRMM, AMSR-E, CERES, QuikSCAT, Aquarius, SeaWIFS,ICESAT-2,MOPITT can
+be found on the <a href="http://hdfeos.org">HDF-EOS Tools and
+Information Center</a> under <a href="http://hdfeos.org/zoo">hdfeos.org/zoo</a>.
+</p>
+
+<p>
+
+
+<hr>
+<A NAME="convnetcdf"></a>
+<H3>How would you convert a netCDF file to/from HDF?</H3>
+
+      The netCDF library from Unidata contains utilities ncdump and ncgen 
+      to convert between the netCDF binary format and a text format called 
+      CDL.  The HDF4 library from the HDF Group also contains
+      utilities ncdump and ncgen that do the same thing, but this time the
+      underlying binary file format is HDF. It is a little tricky to install
+      both, because by default the HDF commands will overwrite the netCDF
+      commands or vice versa.  You may want to rename the HDF commands. 
+      (In the paragraphs below, the HDF versions of these tools are referred  
+      to as hdf_ncdump and hdf_ncgen.)
+      <P>
+      To do the "conversion" you would follow these steps:
+<PRE>
+          ncdump -l 80 foo.nc &gt; foo.cdl
+          # Edit CDL file with a text editor to work around various
+          # problems encountered by hdf_ncgen
+          hdf_ncgen -b -o foo.hdf foo.cdl
+</PRE>
+      HDF uses netCDF 2.3.2 when building the HDF versions of these
+      tools, which is a very old version of netCDF.
+      The need to edit the CDL file arises because hdf_ncgen cannot read 
+      everything that ncdump can write.
+ <P>  
+      The "-l 80" option above is intended
+      to work around one of hdf_ncgen's limitations: a maximum line length of
+      80 characters. When hdf_ncgen encounters a problem, it halts and prints
+      out the relevant line number in the CDL file. The error message will not
+      necessarily make much sense, but when you go to that line you will
+      usually find that the problem is reasonably obvious and easily 
+      corrected. 
+<P>
+      You may also have to do things like strip out attributes containing 
+      zero-length
+      strings, remove netCDF fill values (represented in CDL as an underscore)
+      and replace NaNs with finite floating-point values. (NaNs are illegal in
+      netCDF anyway, though some platforms allow them.)
+<P>
+      There is a Windows executable called ncdf2hdf from  Fortner Software 
+      (defunct) that does the conversion.  It is no longer available, 
+      but may be found
+      by searching the web.   However, the HDF files that it generates
+      have been reported to lack some of the structure that is found in 
+      the ones produced by the route above.
+
+<A NAME="15"></a>
+<hr><H3> Can new versions of HDF read HDF files written using 
+older versions of the HDF library?</H3>
+
+    Our goal is to make HDF backward compatible in the sense that HDF files 
+    can always be read by newer versions of HDF. We have succeeded in doing 
+    this so far, and will continue to follow the principle as much as 
+    possible.  In many instances, HDF is also forward compatible, at least
+    in regards to the data.  Metadata, such as attributes, may not be 
+    readable by previous releases, but the data should be.  Please see the
+    notes following the table below for information on when the data is
+    not forward compatible.
+<P>
+    The table below lists the backward and forward compatibility of HDF in
+    regards to the data (not metadata).  The Vdata and Vgroup interfaces have 
+    been merged into HDF since HDF3.2.  Before then, they were in a separate 
+    library named Vset. 
+<PRE>
+                       |        CAN READ DATA FILES CREATED WITH  
+         Interface     | HDF3.1  |  HDF3.2 |  HDF3.3  |  HDF4.0   | HDF4.1
+        -------------------------------------------------------------------
+        HDF3.1         |         |         |          |           |
+         -RIS8         |  YES    |    YES  |  YES(1)  |  YES(1)   | YES(1)  
+         -RIS24        |  YES    |    YES  |  YES(1)  |  YES(1)   | YES(1)  
+         -PALETTE      |  YES    |    YES  |  YES     |  YES      | YES
+         -ANNOTATION   |  YES    |    YES  |  YES     |  YES      | YES
+         -SDS DFSD     | Float32 | Float32 | Float32  | Float32(2)| Float32(2,3)
+        Vset 2.1       |         |         |          |           |
+         -VData        |  YES    |    YES  |    YES   |  YES      | YES
+         -Vgroup       |  YES    |    YES  |    YES   |  YES      | YES
+        -------------------------------------------------------------------
+        HDF3.2         |         |         |          |           |
+         -RIS8         |  YES    |    YES  |  YES(1)  | YES(1)    | YES(1)
+         -RIS24        |  YES    |    YES  |  YES(1)  | YES(1)    | YES(1)
+         -PALETTE      |  YES    |    YES  |  YES     | YES       | YES
+         -ANNOTATION   |  YES    |    YES  |  YES     | YES       | YES
+         -SDS DFSD     |  YES    |    YES  |  YES     | YES(2)    | YES(2,3)
+         -VData        |  YES    |    YES  |  YES     | YES       | YES
+         -Vgroup       |  YES    |    YES  |  YES     | YES       | YES
+        -------------------------------------------------------------------
+        HDF3.3         |         |         |          |           |
+         -RIS8         |  YES    |    YES  |  YES     | YES       | YES
+         -RIS24        |  YES    |    YES  |  YES     | YES       | YES
+         -PALETTE      |  YES    |    YES  |  YES     | YES       | YES
+         -ANNOTATION   |  YES    |    YES  |  YES     | YES       | YES
+         -SDS SD       |  YES    |    YES  |  YES     | YES(2)    | YES(2,3)
+         -SDS DFSD     |  YES    |    YES  |  YES     | YES(2)    | YES(2,3) 
+         -VData        |  YES    |    YES  |  YES     | YES       | YES
+         -Vgroup       |  YES    |    YES  |  YES     | YES       | YES
+        -------------------------------------------------------------------
+        HDF4.0         |         |         |          |           |
+         -GR           |  YES    |    YES  |  YES     | YES       | YES
+         -RIS8         |  YES    |    YES  |  YES     | YES       | YES
+         -RIS24        |  YES    |    YES  |  YES     | YES       | YES
+         -PALETTE      |  YES    |    YES  |  YES     | YES       | YES
+         -MFAN         |  YES    |    YES  |  YES     | YES       | YES
+         -ANNOTATION   |  YES    |    YES  |  YES     | YES       | YES
+         -SDS SD       |  YES    |    YES  |  YES     | YES       | YES(3) 
+         -SDS DFSD     |  YES    |    YES  |  YES     | YES(2)    | YES(2,3) 
+         -VData        |  YES    |    YES  |  YES     | YES       | YES
+         -Vgroup       |  YES    |    YES  |  YES     | YES       | YES
+        -------------------------------------------------------------------
+        HDF4.1         |         |         |          |           |
+         -GR           |  YES    |    YES  |  YES     | YES       | YES
+         -RIS8         |  YES    |    YES  |  YES     | YES       | YES
+         -RIS24        |  YES    |    YES  |  YES     | YES       | YES
+         -PALETTE      |  YES    |    YES  |  YES     | YES       | YES
+         -MFAN         |  YES    |    YES  |  YES     | YES       | YES
+         -ANNOTATION   |  YES    |    YES  |  YES     | YES       | YES
+         -SDS SD       |  YES    |    YES  |  YES     | YES       | YES
+         -SDS DFSD     |  YES    |    YES  |  YES     | YES       | YES
+         -VData        |  YES    |    YES  |  YES     | YES       | YES
+         -Vgroup       |  YES    |    YES  |  YES     | YES       | YES
+
+   (1)  except for JPEG compression
+   (2)  except for gzip and nbit compression
+   (3)  except for chunking and chunking with compression
+
+   NOTES:
+     - The table above does not include the low-level compression
+       interface, which was introduced in HDF 4.0.
+  
+     - The SD interface should always be able to read an HDF file
+       that was created with the DFSD interface. 
+
+     - With HDF 4.1r2, the SD dimension representation introduced in 4.0r1
+       will ONLY be used by default.  To be read by earlier versions of
+       the software, the SDsetdimval_comp must be called to store the old
+       and new dimension representations in an HDF file.
+ 
+     - Old HDF libraries will NOT always be able to read HDF data written 
+       by newer version HDF libraries. For example, HDF3.1 can not read 
+       16-bit integer SDS's because HDF 3.1 did not support this data type. 
+
+     - In HDF 4.1r1, chunking and Vdata/Vgroup attributes were
+       added.  Previous releases will not be able to read data which
+       was created using these features.
+</PRE>
+<A NAME="16"></a><hr><H3> Can application programs which work with old versions of 
+the HDF library always be compiled with new versions of HDF?</H3>
+
+   As HDF evolves some functions have to be changed or removed. For example, 
+   in HDF3.2 some functions' formal parameters which were passed by value in
+   HDF3.1 have to be passed by reference in order to support new number types. 
+   When this happens, old application programs need to be modified so that
+   they can work with the new library.
+<P>
+   Our policy is as follows: Keep existing functions unchanged as much as 
+   possible; create new functions when necessary to accommodate new
+   features; if a new function covers the feature of an existing old 
+   function, the old function should still be callable by old application 
+   programs; should an old function be phased out, the users
+   will be forewarned and encouraged to switch to the new function; 
+   an old function will be removed from the library only if it is in 
+   conflict with the implementation of new features. 
+
+<A NAME="17"></a><hr><H3> How does the 'integration of netCDF with HDF' affect 
+application programmers? </H3>
+
+   The mfhdf library was designed to be completely transparent 
+   to the programmer.  HDF supports a "multi-file" SDS interface and
+   the complete netCDF interface as defined by Unidata netCDF Release 2.3.2. 
+   (<strong>Please note that HDF4 cannot read
+     <a href="http://www.unidata.ucar.edu/software/netcdf/netcdf/File-Format-Specification.html">NetCDF 64-bit</a>
+    files.</strong>)
+
+<p>
+   Using either interface, you are able to read XDR-based netCDF files, 
+   HDF-based netCDF files and pre-HDF4.x HDF files. The library determines
+   what type of file is being accessed and handles it appropriately. Any of 
+   the above types of files may be modified. However, the library will only 
+   create new files based on HDF (you can't create new XDR-based netCDF files). 
+<P>
+   Summary of HDF and XDR file interoperability for the HDF and netCDF 
+   application interfaces:
+<PRE>
+                 | Files created | Files created    |    Files written         |
+                 | by DFSD       | by SD interface  |    by NC interface       |
+                 | interface     |                  |                          |
+                 |     HDF       |     HDF          |  HDF     | Unidata netCDF|   
+                 | ----------------------------------------------------------- |
+Accessed by DFSD |      Yes      |     Yes          |   Yes    |     No        |
+                 |               |                  |          |               |
+Accessed by SD   |      Yes      |     Yes          |   Yes    |     Yes       |
+                 |               |                  |          |               |
+Accessed by NC   |      Yes      |     Yes          |   Yes    |     Yes       |
+                 |               |                  |          |               |
+</PRE>
+   For more information, you can refer to the section entitled HDF Interface vs.
+   netCDF Interface in the SD chapter of the User's Guide. 
+
+<A NAME="18"></a><hr><H3> Does HDF support data compression?</H3>
+
+   HDF 4.0 (and later releases) supports a low-level compression interface, 
+   which allows any data-object to be compressed using a variety of 
+   algorithms.  
+<P>
+   Currently only three compression algorithms are supported: 
+   Run-Length Encoding (RLE), adaptive Huffman, and an LZ-77 dictionary coder 
+   (the gzip 'deflation' algorithm).  Plans for future algorithms include an 
+   Lempel/Ziv-78 dictionary coding, an arithmetic coder and a faster Huffman 
+   algorithm.
+<P>
+   HDF 4.0 (and later releases) supports n-bit compression for SDSs.
+<P>
+   HDF 4.0 (and later releases) supports RLE (Run Length Encoding), IMCOMP, and 
+   JPEG compression for raster images.
+<P>
+   New with HDF 4.1 is support for "chunking" and "chunking with 
+   compression".  Data chunking allows an n-dimensional SDS or GR image to be 
+   stored as a series of n-dimensional chunks.  See the HDF User's Guide 
+   for more information.
+<P>
+   With HDF4.2r0, HDF supports SZIP compression.  For further 
+   information regarding it, see
+   <CODE>
+     <A HREF="/doc_resource/SZIP/">SZIP Compression in HDF Products</A></CODE>.  
+<P>
+<B>NOTE:</B> &nbsp;  Compression and chunking are limited to <I>fixed</I>
+sized datasets.  You cannot compress or chunk a dataset that has 
+unlimited dimensions.
+
+<A NAME="19"></a><hr><H3> Is there a mailing list for HDF discussions and 
+questions?</H3>
+<p>
+   If you want to broadcast HDF technical questions to other HDF users in
+   order to solicit their assistance, you can subscribe to the HDF-Forum
+   mailing list.  See the 
+   <a href="/services/community_support.html">Community Support</a> 
+   page for information on subscribing to the HDF-Forum and accessing
+   prior postings to this mailing list.
+</p>
+<P> 
+
+
+<A NAME="20"></a><hr><H3> How do I contribute my software to the HDF user 
+community?</H3>
+
+   There are two ways that you can do this:
+<P>
+<ul class="ul">
+   <li class="li3"> You can either give us the software and we will place it on the the HDF Group 
+     ftp server in the directory:
+     <PRE>
+      <A HREF="/ftp/HDF/contrib/">https://support.hdfgroup.org/ftp/HDF/contrib/</A>
+ </PRE>
+   <li class="li3"> You can tell us where the software is located and we will add a pointer
+     to it from our HDF home page, in the section <A HREF="/products/hdf4_tools/tools.html">What Software uses HDF?</A>.
+<P>
+   If you have developed or ported something you think would be helpful to 
+   other users, please contact:
+<PRE>
+   help [at] hdfgroup [dot] org
+</PRE>
+Indicate that you would
+   like to contribute your software to the HDF user community.  
+<P>
+   If you wish to have it placed on the HDF Group ftp server, then for other 
+   users' convenience, your contribution package should include 
+   the software itself, a Makefile if possible, a man-page, test programs
+   and input data files for testing. A README file is required. It should 
+   describe briefly the purpose, function and limitation of the software,
+   on which platforms and operating systems it runs, how to compile, 
+   install, and test it, and who and where to contact for comments, 
+   suggestions, or bug reports. 
+</UL>
+<A NAME="21"></a><hr><H3> How do I make a bug report?</H3>
+
+<p>
+   All bug reports, comments, suggestions and questions should go to:
+   <ul class="ul">
+   <img src="/images/helpdesk.jpg">
+   </ul>
+</p>
+
+<p>
+   Attached below is a bug report template.  It is not required but
+   gives an idea of the kind of information we need in order to resolve
+   a problem.
+</p>
+
+<p>
+<pre>
+------------------  Template for bug report  ------------------------
+
+VERSION:
+   HDF 4.N.N
+
+USER:
+   [Name and Email Address]
+
+SYNOPSIS:
+   [Brief description of the problem and where it is located]
+
+MACHINE / OPERATING SYSTEM:
+   [Platform and platform version.  On Unix platforms, please 
+    include the output from "uname -a".]
+
+COMPILER:
+   [Compiler and compiler version]
+
+DESCRIPTION:
+   [Detailed description of problem. ]
+
+REPEAT BUG BY:
+   [What you did to get the error; include test program or session
+    transcript if at all possible.  If you include a program, make
+    sure it depends only on libraries in the HDF distribution, not
+    on any vendor or third-party libraries.  Please be specific;
+    if we can't reproduce it, we can't fix it. Tell us exactly what
+    we should see when the program is run.  NOTE:  It helps us a lot
+    if the example program can be written in C and can be run 
+    easily on Unix. ]
+
+SAMPLE FIX:
+   [Fix or patch if you have one]
+
+------------------  End of Bug Report Template  ----------------------
+</pre>
+</p>
+
+<hr />
+
+<i>
+- - Last modified: 28 June 2017</i>
+	   </div>
+	   <!--END: CONTENT -->
+<!--END: WRAPPER -->
+<script src="/scriptaculous/gatag.js" type="text/javascript"></script>
+
+<!-- <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script> -->
+				
+<!--
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-3782034-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+-->
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-3782034-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+</body>
+</html>

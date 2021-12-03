@@ -1,0 +1,412 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+<!-- If no var is set for $page_title on the top of each page than default title will be HDF Group -->
+
+<title>
+HDF Tools Related to Earth Sciences</title>
+	<meta name="keywords" content="hdf, hdfeos, blog, hdf blog, hdf5 blog, hdf5, hdf4, hdf tools, hdf libraries, hdf viewer, hdf format, hdf file, hdf java, nafxcw.lib, phdf5, open source, hierarchical data format, ncsa, database, python hdf, mike folk, hdfview, hdf5 parallel" />
+	<meta name="description" content="The HDF Group is a not-for-profit corporation with the mission of sustaining the HDF technologies and supporting HDF user communities worldwide with production-quality software and services." />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="expires" content="Wed, 26 Feb 2010 08:21:57 GMT" />
+	<meta name="verify-v1" content="/m03HNmaDgGAcDe0PFtEVnXGtCkoeOocjr/Jwey2gdI=" />
+	<link href="/css/layout.css" rel="stylesheet" type="text/css" media="screen, projection" />
+	<link href="/css/print.css" rel="stylesheet" type="text/css" media="print" />
+	<link rel="stylesheet" type="text/css" href="/css/js_style.css" />
+	<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/prototype/1.7.2.0/prototype.js"></script>
+	<!--<script type="text/javascript" src="/scriptaculous/lib/prototype.js"></script>-->
+	<script type="text/javascript" src="/scriptaculous/src/effects.js"></script>
+	<script type="text/javascript" src="/scriptaculous/validation.js"></script>
+	<script type="text/javascript" src="/scriptaculous/animatedcollapse.js"></script>
+	<script type="text/javascript" src="/scriptaculous/rollover.js"></script>	
+	<script type="text/javascript" src="/scriptaculous/functions.js"></script>
+	<script type="text/javascript" src="/scriptaculous/sorttable.js"></script>
+	<!--<script type="text/javascript" src="/jquery-1.2.2.pack.js"></script>-->
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript" src="/scriptaculous/jssor.slider.min.js"></script>
+
+ 	<link rel="stylesheet" type="text/css" href="/featuredcontentglider.css" />
+    <script type="text/javascript" src="/featuredcontentglider.js"></script>
+
+	</head>
+	<body>
+	<div id="mast_head">
+		<a href="https://www.hdfgroup.org/"><img src="/images/hdf_logo.jpg" height="70" style="display:block; padding-left:10px;" align="left" alt="hdf images" /></a>
+		<img src="/images/logo_9.jpg" height="70" style="display:block;" align="right" alt="hdf images" />
+	</div> 
+				
+	<div id="nav_wrapper">
+		<div>
+		<div id="section-">
+			<ul id="nav">
+				<li id="t-index"><a href="https://www.hdfgroup.org/">Home</a> </li>
+				<li id="t-products"><a href="/products/">Products</a></li>
+				<li id="t-services"><a href="/services/">Services</a></li>
+				<li id="t-about"><a href="/about/">About Us</a></li>
+				<li id="t-news"><a href="/news/">News</a> </li>
+				<li id="t-blog"><a href="https://www.hdfgroup.org/blog">Blog</a></li>
+				<li id="t-contact"><a href="/about/contact.html">Contact Us</a></li> 
+			</ul>
+			<script type="text/javascript">
+			
+  (function() {
+    var cx = '007250492606109219119:sb2eg2bgoyy';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:search></gcse:search>	
+					<script type="text/javascript">
+					    jQuery(document).ready(function ($) {
+					        // var options = {
+					        //     $ArrowNavigatorOptions: {
+					        //         $Class: $JssorArrowNavigator$,
+					        //         $ChanceToShow: 2
+					        //     }
+					        // };					    	
+
+
+							var options = { 
+											$AutoPlay: true, $SlideshowOptions: { $Class: $JssorSlideshowRunner$, $Transitions: [{ $Duration:5000, $Fade: true, $Opacity:2 }] } , 
+											$ArrowNavigatorOptions: { 
+												$Class: $JssorArrowNavigator$, 
+												$ChanceToShow: 2
+											}
+										  };
+
+
+					        var jssor_slider1 = new $JssorSlider$('slider1_container', options);
+					    });
+					</script>
+									                  
+			
+		</div>
+		</div>             
+	</div>
+				
+<!--START: MAIN -->
+<div id="wrapper" style="margin-top:-15px;"> 
+
+<!--START: SIDE_BAR -->
+<div id="side_bar">
+
+<form method="get" action="" class="form" >
+	<select onchange="window.open(this.options[this.selectedIndex].value,'_top')" name="" style="border:2px solid #c1c1c1;">
+		<option value="" class="ql1">- - Quick Links - -</option>
+		<option value="/HDF5/" class="ql">HDF5</option>
+		<option value="/products/hdf4/" class="ql">HDF4</option>
+		<option value="/tools/" class="ql">Tools</option>
+		<option value="/projects/" class="ql">Projects</option>
+		<option value="/downloads/" class="ql">Downloads</option>
+		<option value="/documentation/" class="ql">Documentation</option>
+	        <option value="/pubs/" class="ql">Publications</option>
+		<option value="/about/" class="ql">Contact Us</option>
+	</select>
+</form>
+<ul style="border:1px solid #c1c1c1; margin-top:25px;"> 
+
+	<li style="background:url(/images/menubg.png); padding:0px; padding-left:7px; color:#27343C; font-weight:500; text-align:left;">
+	LINKS</li><li><a href="https://www.hdfgroup.org/">Main Website</a></li><li><a href="/HDF5/">HDF5</a></li><li><a href="/products/hdf4/">HDF4</a></li><li><a href="/tools/">Tools</a></li><li><a href="/projects/">Projects</a></li><li><a href="/downloads/">Downloads</a></li><li><a href="/documentation/">Documentation</a></li><li><a  href="/pubs/">Publications</a></li></ul> 
+
+</div>
+
+<!--END: SIDE_BAR -->
+
+<!--START: CONTENT -->
+<div id="content">
+<p><font color="red"><center><strong>This web site is no longer maintained (but will remain online).<br /> Please see The HDF Group's new <a href="https://portal.hdfgroup.org">Support Portal</a> for the latest information.</strong></center></font></p>
+	<div class=bc><p style="color:orange; ";><a href="/" title="HOME">HOME</a> &gt; <a href="/tools/" title="TOOLS">TOOLS</a></p></div><fieldset><h1>HDF Tools Related to Earth Sciences</h1></fieldset>
+
+			
+
+<p>
+This page contains links to third-party tools and utilities that use HDF that are related to
+Earth Sciences. 
+</p>
+
+<a name="hdfeos"></a>
+<h2>Tools to access NASA HDF and HDF-EOS data</h2>
+<ul>
+<p>
+There are many tools that can access and visualize NASA HDF and HDF-EOS Earth 
+Science data products. Detailed information including examples on how to use 
+some widely used tools can be found from the URLs below. Information on other 
+tools can be found on the
+<a href="http://hdfeos.org/software/index.php">HDF-EOS Software Tools</a> 
+web page.
+</p>
+
+<ul class="ul">
+
+<table border=0 cellspacing=0 cellpadding=0 style="margin:20px 0;">
+   <tr bgcolor="#e1e1e1">
+     <td width=130 valign=top>Tools</td>
+     <td width=150 valign=top>Descriptions</td>
+     <td width=150 valign=top>URLS</td>
+   </tr>
+
+    <tr>
+     <td width=130 valign=top>GDAL</td>
+     <td width=150 valign=top>
+       A translator library for geospatial data formats.
+     </td>
+     <td width=150 valign=top> 
+       <a href="http://www.gdal.org/">http://www.gdal.org/</a>
+     </td>
+    </tr>
+
+    <tr>
+     <td width=130 valign=top>GrADS</td>
+     <td width=150 valign=top>
+        Examples to access and visualize the HDF4,HDF5,HDF-EOS2 and 
+        HDF-EOS5 via GrADS
+      </td>
+     <td width=150 valign=top>
+       <a href="http://hdfeos.org/software/grads.php">http://hdfeos.org/software/grads.php</a>
+      </td>
+     </tr>
+      
+     <tr>
+       <td width=130 valign=top>HDFLook</td>
+       <td width=150 valign=top>
+        A tool for visualizing and analyzing MODIS HDF-EOS2 files.
+       </td>
+       <td width=150 valign=top>
+         <a href="http://hdfeos.org/software/HDFLook.php">http://hdfeos.org/software/HDFLook.php</a> 
+      </td>
+    </tr>
+
+    <tr>
+     <td width=130 valign=top>HEG</td>
+     <td width=150 valign=top>Convert HDF-EOS2 to GeoTIFF</td>
+     <td width=150 valign=top><a href="http://hdfeos.org/software/heg.php">http://hdfeos.org/software/heg.php</a></td>
+   </tr>
+
+   <tr>
+     <td width=130 valign=top>IDL</td>
+     <td width=150 valign=top>
+         Examples to access and visualize the HDF4,HDF5,HDF-EOS2 and 
+         HDF-EOS5 via IDL
+     </td>
+     <td width=150 valign=top>
+       <a href="http://hdfeos.org/examples/idl.php">http://hdfeos.org/examples/idl.php</a>
+       and <a href="http://hdfeos.org/zoo">http://hdfeos.org/zoo</a>
+     </td>
+    </tr>
+
+    <tr>
+     <td width=130 valign=top>IDV via OPeNDAP</td>
+     <td width=150 valign=top>
+        Examples to visualize the HDF4,HDF5, HDF-EOS2 and HDF-EOS5 
+        via IDV through OPeNDAP
+      </td>
+     <td width=150 valign=top>
+       <a href="http://hdfeos.org/software/tool.php#IDV">http://hdfeos.org/software/tool.php#IDV</a>
+      </td>
+     </tr>
+
+
+   <tr>
+     <td width=130 valign=top>MATLAB</td>
+     <td width=150 valign=top>
+         Examples to access and visualize the HDF4, HDF5, HDF-EOS2 and 
+         HDF-EOS5 via MATLAB     
+     </td>
+     <td width=150 valign=top>
+     <a href="http://hdfeos.org/examples/matlab.php">http://hdfeos.org/examples/matlab.php</a> 
+       and <a href="http://hdfeos.org/zoo">http://hdfeos.org/zoo</a>
+     </td>
+   </tr>
+
+    <tr>
+     <td width=130 valign=top>McIDAS-V</td>
+     <td width=150 valign=top>
+       Examples to visualize the HDF4,HDF5, HDF-EOS2 and HDF-EOS5 via McIDAS through OPeNDAP 
+     </td>
+     <td width=150 valign=top>
+       <a href="http://hdfeos.org/software/mcidas.php">http://hdfeos.org/software/mcidas.php</a>
+     </td>  
+    </tr>
+     
+    <tr>
+     <td width=130 valign=top>NCL</td>
+     <td width=150 valign=top>
+       Examples to access and visualize the HDF4,HDF5,HDF-EOS2 and 
+       HDF-EOS5 via NCL
+      </td>
+     <td width=150 valign=top>
+       <a href="http://hdfeos.org/software/ncl.php">http://hdfeos.org/software/ncl.php</a>
+       and <a href="http://hdfeos.org/zoo">http://hdfeos.org/zoo</a>
+     </td>
+    </tr>
+
+    <tr>
+     <td width=130 valign=top>Panoply via OPeNDAP</td>
+     <td width=150 valign=top>
+        Examples to visualize the HDF4,HDF5, HDF-EOS2 and HDF-EOS5 via Panoply through OPeNDAP
+     </td>
+     <td width=150 valign=top>
+        <a href="http://hdfeos.org/software/panoply.php">http://hdfeos.org/software/panoply.php</a>
+      </td>
+     </tr>
+
+   </table>    
+</ul>
+     
+
+</ul>
+
+<h2>Other Earth Science Related Tools</h2>
+
+<ul>
+<a name="beat">
+<p><A HREF="http://www.science-and-technology.nl/beat/">BEAT</A>
+</p>
+<p>
+The Basic ENVISAT Atmospheric Toolbox (BEAT) is an open source toolbox
+that includes data access to a wide range of atmospheric data products,
+including HDF4 and HDF5. The BEAT project, funded by the European Space
+Agency,  aims to provide scientists with tools for ingesting, processing,
+and analyzing atmospheric remote sensing data.
+</p>
+
+<p>See BEAT's <a href="http://www.extreme-engineers.com/beat/documentation/coda/codadef//codadef-hdf4.html">CODA HDF4 Mapping Description</a>.
+</p>
+
+<p>
+<a name="coast"></a>
+<p>
+<a href="http://coastwatch.noaa.gov/cwn/cw_software.html">CoastWatch Software Library and Utilities</A>
+</p>
+<p>
+The CoastWatch Software Library and Utilities is a package of software tools
+for working with earth data sets distributed by the NOAA/NESDIS CoastWatch
+program. The tools allow data users to easily manipulate and visualize data
+from the newer CoastWatch HDF4 files (local and network-accessible), the older
+CoastWatch IMGMAP files (.cwf extension), and NOAA 1b AVHRR.  The package
+includes both a GUI visualization tool and a library of command-line utilities.
+</p>
+
+<A NAME="cv"></a>
+<p><a href="http://isis.astrogeology.usgs.gov/Isis2/isis-bin/release_notes.cgi?cv_standalone.html">Cube Visualization (cv) tool</a>
+</p>
+<p>
+  The Cube Visualization or "cv" program is part
+  of the ISIS image processing system (Integrated Software for Imagers
+  and Spectrometers), and includes many image processing functions.
+  It runs on several versions of Unix. It is not supported on Windows
+  because it uses CALL_EXTERNAL.
+</p>
+<P>
+  It has recently been enhanced to directly read the HDF and HDF-EOS file
+  formats in addition to the native ISIS cube format.  "cv" is also packaged
+  to run separately from the ISIS software system.
+</p>
+<P>
+  "cv" is written in IDL and is available from the U.S Geological
+   Survey.
+</p>
+
+<p>
+<a name="hdfclean"</a>
+<p><a href="https://earth.esa.int/web/guest/content?p_r_p_564233524_assetIdentifier=hdfclean-v2-4409">HDFClean</a>
+</p>
+
+<p>
+HDFClean is a program for reprocessing images captured by the CHRIS hyper-spectral imager on PROBA satellite.
+</p>
+
+<p>
+<a name="ingrid"></a>
+<p><A HREF="http://ingrid.ldgo.columbia.edu/">IRI/LDEO CLimate Data Library</a>
+</p>
+<p>
+This tool is designed to manipulate large datasets and model
+input/output.  It reads and writes netCDF files, writes HDF files, and
+generates plots, including line, contour, vector, and scatter plots, as
+well as histograms.
+</p>
+
+<a name="mspec"></a>
+<p><a href="http://dynamo.ecn.purdue.edu/~biehl/MultiSpec/">MultiSpec</a>
+</p>
+<p>
+MultiSpec is a processing system for interactively analyzing Earth
+observational multispectral image data such as that produced by the
+Landsat series of Earth satellites and hyperspectral image data from
+current and future airborne and spaceborne systems such as AVIRIS.
+It runs on the Macintosh and PC platforms.
+</p>
+
+<a name="ww"></a>
+<p><A HREF="http://www.openchannelsoftware.com/projects/WebWinds">WebWinds</A>
+</p> 
+<p>
+  WebWinds, the successor to LinkWinds, is an interactive science data
+      visualization system written in Java.  It is modular, allowing
+      flexibility in tool construction and application, and largely platform
+      and operating system independent.  It can handle large datasets
+      by subsetting and subsampling data on input or display output, and
+      allows you to present and manipulate 2 and 3 dimensional data in a
+      variety of 1 and 2 dimensional display tools. Formats supported are
+      raw binary data (see web page for details), HDF, NetCDF, PDS, VICAR,
+      FITS, ASCII, and HDF-EOS.
+</p>
+
+</ul>
+
+<h2>Archived Tools Related to Earth Science</h2>
+
+<ul>
+<p>Several HDF Tools related to Earth Science that have not been updated recently
+have been <a href="./archive-earthsci.html">archived</a>. Although old, some of these
+tools may still be useful.
+</p>
+</ul>
+
+<hr>
+
+<i>
+- - Last modified: 13 October 2016</i>
+	   </div>
+	   <!--END: CONTENT -->
+<!--END: WRAPPER -->
+<script src="/scriptaculous/gatag.js" type="text/javascript"></script>
+
+<!-- <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script> -->
+				
+<!--
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-3782034-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+-->
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-3782034-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+</body>
+</html>
+ 

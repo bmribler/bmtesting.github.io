@@ -1,0 +1,388 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+<!-- If no var is set for $page_title on the top of each page than default title will be HDF Group -->
+
+<title>
+The HDF Group - Information, Support, and Software</title>
+	<meta name="keywords" content="hdf, hdfeos, blog, hdf blog, hdf5 blog, hdf5, hdf4, hdf tools, hdf libraries, hdf viewer, hdf format, hdf file, hdf java, nafxcw.lib, phdf5, open source, hierarchical data format, ncsa, database, python hdf, mike folk, hdfview, hdf5 parallel" />
+	<meta name="description" content="The HDF Group is a not-for-profit corporation with the mission of sustaining the HDF technologies and supporting HDF user communities worldwide with production-quality software and services." />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="expires" content="Wed, 26 Feb 2010 08:21:57 GMT" />
+	<meta name="verify-v1" content="/m03HNmaDgGAcDe0PFtEVnXGtCkoeOocjr/Jwey2gdI=" />
+	<link href="/css/layout.css" rel="stylesheet" type="text/css" media="screen, projection" />
+	<link href="/css/print.css" rel="stylesheet" type="text/css" media="print" />
+	<link rel="stylesheet" type="text/css" href="/css/js_style.css" />
+	<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/prototype/1.7.2.0/prototype.js"></script>
+	<!--<script type="text/javascript" src="/scriptaculous/lib/prototype.js"></script>-->
+	<script type="text/javascript" src="/scriptaculous/src/effects.js"></script>
+	<script type="text/javascript" src="/scriptaculous/validation.js"></script>
+	<script type="text/javascript" src="/scriptaculous/animatedcollapse.js"></script>
+	<script type="text/javascript" src="/scriptaculous/rollover.js"></script>	
+	<script type="text/javascript" src="/scriptaculous/functions.js"></script>
+	<script type="text/javascript" src="/scriptaculous/sorttable.js"></script>
+	<!--<script type="text/javascript" src="/jquery-1.2.2.pack.js"></script>-->
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript" src="/scriptaculous/jssor.slider.min.js"></script>
+
+ 	<link rel="stylesheet" type="text/css" href="/featuredcontentglider.css" />
+    <script type="text/javascript" src="/featuredcontentglider.js"></script>
+
+	</head>
+	<body>
+	<div id="mast_head">
+		<a href="https://www.hdfgroup.org/"><img src="/images/hdf_logo.jpg" height="70" style="display:block; padding-left:10px;" align="left" alt="hdf images" /></a>
+		<img src="/images/logo_5.jpg" height="70" style="display:block;" align="right" alt="hdf images" />
+	</div> 
+				
+	<div id="nav_wrapper">
+		<div>
+		<div id="section-">
+			<ul id="nav">
+				<li id="t-index"><a href="https://www.hdfgroup.org/">Home</a> </li>
+				<li id="t-products"><a href="/products/">Products</a></li>
+				<li id="t-services"><a href="/services/">Services</a></li>
+				<li id="t-about"><a href="/about/">About Us</a></li>
+				<li id="t-news"><a href="/news/">News</a> </li>
+				<li id="t-blog"><a href="https://www.hdfgroup.org/blog">Blog</a></li>
+				<li id="t-contact"><a href="/about/contact.html">Contact Us</a></li> 
+			</ul>
+			<script type="text/javascript">
+			
+  (function() {
+    var cx = '007250492606109219119:sb2eg2bgoyy';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:search></gcse:search>	
+					<script type="text/javascript">
+					    jQuery(document).ready(function ($) {
+					        // var options = {
+					        //     $ArrowNavigatorOptions: {
+					        //         $Class: $JssorArrowNavigator$,
+					        //         $ChanceToShow: 2
+					        //     }
+					        // };					    	
+
+
+							var options = { 
+											$AutoPlay: true, $SlideshowOptions: { $Class: $JssorSlideshowRunner$, $Transitions: [{ $Duration:5000, $Fade: true, $Opacity:2 }] } , 
+											$ArrowNavigatorOptions: { 
+												$Class: $JssorArrowNavigator$, 
+												$ChanceToShow: 2
+											}
+										  };
+
+
+					        var jssor_slider1 = new $JssorSlider$('slider1_container', options);
+					    });
+					</script>
+									                  
+			
+		</div>
+		</div>             
+	</div>
+				
+<!--START: MAIN -->
+<div id="wrapper" style="margin-top:-15px;"> 
+
+<!--START: SIDE_BAR -->
+<div id="side_bar">
+
+<form method="get" action="" class="form" >
+	<select onchange="window.open(this.options[this.selectedIndex].value,'_top')" name="" style="border:2px solid #c1c1c1;">
+		<option value="" class="ql1">- - Quick Links - -</option>
+		<option value="/HDF5/" class="ql">HDF5</option>
+		<option value="/products/hdf4/" class="ql">HDF4</option>
+		<option value="/tools/" class="ql">Tools</option>
+		<option value="/projects/" class="ql">Projects</option>
+		<option value="/downloads/" class="ql">Downloads</option>
+		<option value="/documentation/" class="ql">Documentation</option>
+	        <option value="/pubs/" class="ql">Publications</option>
+		<option value="/about/" class="ql">Contact Us</option>
+	</select>
+</form>
+<ul style="border:1px solid #c1c1c1; margin-top:25px;"> 
+
+	<li style="background:url(/images/menubg.png); padding:0px; padding-left:7px; color:#27343C; font-weight:500; text-align:left;">
+	LINKS</li><li><a href="https://www.hdfgroup.org/">Main Website</a></li><li><a  href="/HDF5/whatishdf5.html">What is HDF5?</a></li><li><a  href="/about/HDF5Brochure_2012.pdf">Online Brochure</a></li><li><a  href="/downloads/index.html">Downloads</a></li><li><a  href="/HDF5/doc/index.html">Documentation</a></li><li><a  href="/products/hdf5_tools/">Software using HDF5</a></li><li><a  href="/HDF5/users5.html">HDF5 Users</a></li><li><a  href="/HDF5/hdf5-files.html">Sample HDF5 Files</a></li><li><a  href="/HDF5/acknowledge5.html">Acknowledgments</a></li><li><a  href="/products/licenses.html">Licenses</a></li></ul> 
+
+</div>
+
+<!--END: SIDE_BAR -->
+
+<!--START: CONTENT -->
+<div id="content">
+<p><font color="red"><center><strong>This web site is no longer maintained (but will remain online).<br /> Please see The HDF Group's new <a href="https://portal.hdfgroup.org">Support Portal</a> for the latest information.</strong></center></font></p>
+	<div class=bc><p style="color:orange; ";><a href="/" title="HOME">HOME</a> &gt; <a href="/HDF5/" title="HDF5">HDF5</a> &gt; <a href="/HDF5/Tutor/" title="TUTOR">TUTOR</a></p></div>
+<fieldset>
+<h1>
+Writing Datasets by Contiguous Hyperslab</h1></fieldset>
+
+
+<P>
+This example shows how to write a contiguous buffer in memory to a contiguous 
+hyperslab in a file.  In this case, each parallel process writes a contiguous 
+hyperslab to the file.
+
+<P>
+In the C example (<I>figure a</I>), each hyperslab in memory consists of 
+an equal number of consecutive rows.  In the FORTRAN 90 example 
+(<I>figure b</I>), each hyperslab in memory consists of an equal number 
+of consecutive columns.  This reflects the difference in the storage order 
+for C and FORTRAN 90.
+<P>
+<table width="50%" border="0" cellspacing="4" bordercolor="#FFFFFF">
+  <tr bordercolor="#FFFFFF">
+    <td><b>Figure a</b> &nbsp; <i><code>C Example</code></i>
+ </td>
+    <td><b>Figure b</b> &nbsp; <i><code>FORTRAN 90 Example</code></i> </td>
+  </tr>
+  <tr bordercolor="#000000">
+    <td width="35%">
+<IMG SRC="image/pimg022.gif" BORDER=1>
+    </td>
+    <td width="35%">
+<IMG SRC="image/pf90cont.gif" BORDER=1>
+</td>
+</tr>
+</table>
+<H2>Writing a Contiguous Hyperslab in C</H2>
+<P>
+In this example, you have a dataset of 8 (rows) x 5 (columns) and 
+each process writes an equal number of rows to the dataset. The
+dataset hyperslab is defined as follows:
+<P>
+&nbsp; &nbsp; &nbsp;count [0] = dimsf [0] / number_processes 
+<BR>
+&nbsp; &nbsp; &nbsp;count [1] = dimsf [1]
+<P>
+<I>where</I>, 
+<BR>&nbsp; &nbsp;
+dimsf [0] is the number of rows in the dataset 
+<BR>&nbsp; &nbsp;
+dimsf [1] is the number of columns in the dataset
+<P>
+The offset for the hyperslab is different for each process:
+<P>
+&nbsp; &nbsp; &nbsp;offset [0] = k * count[0] 
+<BR>
+&nbsp; &nbsp; &nbsp;offset [1] = 0 
+<P>
+<I>where</I>,
+<BR>&nbsp; &nbsp;
+"k" is the process id number
+<BR>&nbsp; &nbsp;
+count [0] is the number of rows written in each hyperslab
+<BR>&nbsp; &nbsp;
+offset [1] = 0 indicates to start at the beginning of the row
+<P>
+The number of processes that you could use would be 1, 2, 4, or 8.
+The number of rows that would be written by each slab is as follows:
+<PRE>
+      Processes        Size of count[0] 
+                         (# of rows)
+          1                 8
+          2                 4
+          4                 2
+          8                 1                           
+</PRE>
+
+If using 4 processes, then process 1 would look like:
+<P>
+<IMG SRC="image/pimg024.gif" BORDER=1> 
+<P>
+The code would look like the following:
+<PRE>
+    71      /*
+    72       * Each process defines dataset in memory and writes it to the hyperslab
+    73       * in the file.
+    74       */
+    75      count[0] = dimsf[0]/mpi_size;
+    76      count[1] = dimsf[1];
+    77      offset[0] = mpi_rank * count[0];
+    78      offset[1] = 0;
+    79      memspace = H5Screate_simple(RANK, count, NULL);
+    80
+    81      /*
+    82       * Select hyperslab in the file.
+    83       */
+    84      filespace = H5Dget_space(dset_id);
+    85      H5Sselect_hyperslab(filespace, H5S_SELECT_SET, offset, NULL, count, NULL);
+</PRE>
+
+Below is the example program:
+<PRE>
+   <A HREF="/ftp/HDF5/examples/parallel/Hyperslab_by_row.c">Hyperslab_by_row.c</A>
+</PRE>
+
+If using this example with 4 processes, then, 
+<BR>
+&nbsp; &nbsp;
+  Process 0 writes "10"s to the file.<BR>
+&nbsp; &nbsp;
+  Process 1 writes "11"s. <BR>
+&nbsp; &nbsp;
+  Process 2 writes "12"s.<BR>
+&nbsp; &nbsp;
+  Process 3 writes "13"s.
+<P>
+<A NAME="h5dump"> </a>
+The following is the output from <I>h5dump</I> for the HDF5 file 
+created by this example using 4 processes:
+<PRE>
+HDF5 "SDS_row.h5" {
+GROUP "/" {
+   DATASET "IntArray" {
+      DATATYPE  H5T_STD_I32BE  
+      DATASPACE  SIMPLE { ( 8, 5 ) / ( 8, 5 ) } 
+      DATA {
+         10, 10, 10, 10, 10,
+         10, 10, 10, 10, 10,
+         11, 11, 11, 11, 11,
+         11, 11, 11, 11, 11,
+         12, 12, 12, 12, 12,
+         12, 12, 12, 12, 12,
+         13, 13, 13, 13, 13,
+         13, 13, 13, 13, 13
+      } 
+   } 
+} 
+} 
+</PRE>
+ 
+<H2>Writing a Contiguous Hyperslab in FORTRAN 90</H2>
+In this example you have a dataset of 5 (rows) x 8 (columns).  Since a
+contiguous hyperslab in Fortran 90 consists of consecutive columns, each
+process will be writing an equal number of columns to the dataset.
+<P>
+You would define the size of the hyperslab to write to the dataset as
+follows:
+<P>
+&nbsp; &nbsp; &nbsp;    count(1) = dimsf(1) 
+<BR>
+&nbsp; &nbsp; &nbsp;    count(2) = dimsf(2) / number_of_processes 
+<P>
+<I>where</I>,
+<BR>
+&nbsp; &nbsp; dimsf(1) is the number of rows in the dataset
+<BR>
+&nbsp; &nbsp; dimsf(2) is the number of columns 
+<P>
+
+The offset for the hyperslab dimension would be different for each
+process:
+<P>
+&nbsp; &nbsp; &nbsp;   offset (1) = 0  
+<BR>
+&nbsp; &nbsp; &nbsp;    offset (2) = k * count (2)
+<P>
+<I>where</I>,
+<BR>
+&nbsp; &nbsp; offset (1) = 0 indicates to start at the beginning of the
+                             column
+<BR>
+&nbsp; &nbsp; "k" is the process id number
+<BR>
+&nbsp; &nbsp; "count(2) is the number of columns to be written by each
+            hyperslab
+<P>
+The number of processes that could be used in this example are
+1, 2, 4, or 8.  The number of columns that could be written by
+each slab is as follows:
+<PRE>
+      Processes        Size of count (2)
+                         (# of columns)
+          1                 8
+          2                 4
+          4                 2
+          8                 1
+</PRE>
+
+If using 4 processes, the <I>offset</I> and <I>count</I> parameters for
+Process 1 would look like:
+<P>
+<P>
+<IMG SRC="image/pf90cont1.gif" BORDER=1> 
+<P>
+
+The code would look like the following:
+<PRE>
+    69       ! Each process defines dataset in memory and writes it to the hyperslab
+    70       ! in the file.
+    71       !
+    72       count(1) = dimsf(1)
+    73       count(2) = dimsf(2)/mpi_size
+    74       offset(1) = 0
+    75       offset(2) = mpi_rank * count(2)
+    76       CALL h5screate_simple_f(rank, count, memspace, error)
+    77       !
+    78       ! Select hyperslab in the file.
+    79       !
+    80       CALL h5dget_space_f(dset_id, filespace, error)
+    81       CALL h5sselect_hyperslab_f (filespace, H5S_SELECT_SET_F, offset, 
+               count, error)
+</PRE>
+
+Below is the F90 example program which illustrates how to write
+contiguous hyperslabs by column in Parallel HDF5:
+<PRE>
+   <A HREF="/ftp/HDF5/examples/parallel/hyperslab_by_col.f90">hyperslab_by_col.f90</A>
+</PRE>
+
+If you run this program with 4 processes and look at the output with
+<I>h5dump</I> you will notice that the output is much like 
+the output <A HREF="#h5dump">shown above</A> for the C example.  
+This is because <I>h5dump</I>
+is written in C.  The data would be displayed in columns if it was
+printed using Fortran 90 code.
+
+ 
+<br />
+<hr>
+<i>
+- - Last modified: 05 July 2016</i>
+	   </div>
+	   <!--END: CONTENT -->
+<!--END: WRAPPER -->
+<script src="/scriptaculous/gatag.js" type="text/javascript"></script>
+
+<!-- <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script> -->
+				
+<!--
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-3782034-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+-->
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-3782034-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+</body>
+</html>
+
+

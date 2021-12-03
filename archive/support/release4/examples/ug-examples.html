@@ -1,0 +1,675 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+<!-- If no var is set for $page_title on the top of each page than default title will be HDF Group -->
+
+<title>
+HDF User's Guide Examples</title>
+	<meta name="keywords" content="hdf, hdfeos, blog, hdf blog, hdf5 blog, hdf5, hdf4, hdf tools, hdf libraries, hdf viewer, hdf format, hdf file, hdf java, nafxcw.lib, phdf5, open source, hierarchical data format, ncsa, database, python hdf, mike folk, hdfview, hdf5 parallel" />
+	<meta name="description" content="The HDF Group is a not-for-profit corporation with the mission of sustaining the HDF technologies and supporting HDF user communities worldwide with production-quality software and services." />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="expires" content="Wed, 26 Feb 2010 08:21:57 GMT" />
+	<meta name="verify-v1" content="/m03HNmaDgGAcDe0PFtEVnXGtCkoeOocjr/Jwey2gdI=" />
+	<link href="../../css/layout.css" rel="stylesheet" type="text/css" media="screen, projection" />
+	<link href="../../css/print.css" rel="stylesheet" type="text/css" media="print" />
+	<link rel="stylesheet" type="text/css" href="../../css/js_style.css" />
+	<link rel="shortcut icon" href="../../images/favicon.ico" type="image/x-icon" />
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/prototype/1.7.2.0/prototype.js"></script>
+	<!--<script type="text/javascript" src="/scriptaculous/lib/prototype.js"></script>-->
+	<script type="text/javascript" src="../../scriptaculous/src/effects.js"></script>
+	<script type="text/javascript" src="../../scriptaculous/validation.js"></script>
+	<script type="text/javascript" src="../../scriptaculous/animatedcollapse.js"></script>
+	<script type="text/javascript" src="../../scriptaculous/rollover.js"></script>	
+	<script type="text/javascript" src="../../scriptaculous/functions.js"></script>
+	<script type="text/javascript" src="../../scriptaculous/sorttable.js"></script>
+	<!--<script type="text/javascript" src="/jquery-1.2.2.pack.js"></script>-->
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript" src="../../scriptaculous/jssor.slider.min.js"></script>
+
+ 	<link rel="stylesheet" type="text/css" href="../../featuredcontentglider.css" />
+    <script type="text/javascript" src="../../featuredcontentglider.js"></script>
+
+	</head>
+	<body>
+	<div id="mast_head">
+		<a href="https://www.hdfgroup.org/"><img src="../../images/hdf_logo.jpg" height="70" style="display:block; padding-left:10px;" align="left" alt="hdf images" /></a>
+		<img src="../../images/logo_5.jpg" height="70" style="display:block;" align="right" alt="hdf images" />
+	</div> 
+				
+	<div id="nav_wrapper">
+		<div>
+		<div id="section-">
+			<ul id="nav">
+				<li id="t-index"><a href="https://www.hdfgroup.org/">Home</a> </li>
+				<li id="t-products"><a href="../../products/index.html">Products</a></li>
+				<li id="t-services"><a href="../../services/index.html">Services</a></li>
+				<li id="t-about"><a href="../../about/index.html">About Us</a></li>
+				<li id="t-news"><a href="../../news/index.html">News</a> </li>
+				<li id="t-blog"><a href="https://www.hdfgroup.org/blog">Blog</a></li>
+				<li id="t-contact"><a href="../../about/contact.html">Contact Us</a></li> 
+			</ul>
+			<script type="text/javascript">
+			
+  (function() {
+    var cx = '007250492606109219119:sb2eg2bgoyy';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:search></gcse:search>	
+					<script type="text/javascript">
+					    jQuery(document).ready(function ($) {
+					        // var options = {
+					        //     $ArrowNavigatorOptions: {
+					        //         $Class: $JssorArrowNavigator$,
+					        //         $ChanceToShow: 2
+					        //     }
+					        // };					    	
+
+
+							var options = { 
+											$AutoPlay: true, $SlideshowOptions: { $Class: $JssorSlideshowRunner$, $Transitions: [{ $Duration:5000, $Fade: true, $Opacity:2 }] } , 
+											$ArrowNavigatorOptions: { 
+												$Class: $JssorArrowNavigator$, 
+												$ChanceToShow: 2
+											}
+										  };
+
+
+					        var jssor_slider1 = new $JssorSlider$('slider1_container', options);
+					    });
+					</script>
+									                  
+			
+		</div>
+		</div>             
+	</div>
+				
+<!--START: MAIN -->
+<div id="wrapper" style="margin-top:-15px;"> 
+
+<!--START: SIDE_BAR -->
+<div id="side_bar">
+
+<form method="get" action="ug-examples.html" class="form" >
+	<select onchange="window.open(this.options[this.selectedIndex].value,'_top')" name="" style="border:2px solid #c1c1c1;">
+		<option value="" class="ql1">- - Quick Links - -</option>
+		<option value="/HDF5/" class="ql">HDF5</option>
+		<option value="/products/hdf4/" class="ql">HDF4</option>
+		<option value="/tools/" class="ql">Tools</option>
+		<option value="/projects/" class="ql">Projects</option>
+		<option value="/downloads/" class="ql">Downloads</option>
+		<option value="/documentation/" class="ql">Documentation</option>
+	        <option value="/pubs/" class="ql">Publications</option>
+		<option value="/about/" class="ql">Contact Us</option>
+	</select>
+</form>
+<ul style="border:1px solid #c1c1c1; margin-top:25px;"> 
+
+	<li style="background:url(../../images/menubg.png); padding:0px; padding-left:7px; color:#27343C; font-weight:500; text-align:left;">
+	LINKS</li><li><a href="https://www.hdfgroup.org/">Main Website</a></li><li><a href="../../products/hdf5/index.html">HDF5</a></li><li><a href="../../products/hdf4/index.html">HDF4</a></li><li><a href="../../tools/index.html">Tools</a></li><li><a href="../../projects/index.html">Projects</a></li><li><a href="../../downloads/index.html">Downloads</a></li><li><a href="../../documentation/index.html">Documentation</a></li><li><a  href="../../pubs/index.html">Publications</a></li></ul> 
+
+</div>
+
+<!--END: SIDE_BAR -->
+
+<!--START: CONTENT -->
+<div id="content">
+<p><font color="red"><center><strong>This web site is no longer maintained (but will remain online).<br /> Please see The HDF Group's new <a href="https://portal.hdfgroup.org">Support Portal</a> for the latest information.</strong></center></font></p>
+	<div class=bc><p style="color:orange; ";><a href="../../index.html" title="HOME">HOME</a> &gt; <a href="../index.html" title="RELEASE4">RELEASE4</a> &gt; <a href="index.html" title="EXAMPLES">EXAMPLES</a></p></div>
+<fieldset><h1>HDF User's Guide Examples</H1></fieldset>
+
+<p>
+These examples are used in the <a href="../doc/UG_PDF.pdf">HDF User's 
+Guide</a>. The examples are included in the HDF source code, and the links below are to locations 
+in the unpacked source code, available from the
+<a href="../obtain.html">Obtain the HDF Software</a> page.
+</p>
+
+
+<table border=0>
+   <tr bgcolor=#ccdddd>
+      <td width=100 height=25>
+      &nbsp; &nbsp;<a href="ug-examples.html#ann"><strong>AN</strong></a> 
+      </td>
+      <td width=100 height=25>
+      &nbsp; &nbsp;<a href="ug-examples.html#gr"><strong>GR</strong></a>
+      </td>
+      <td width=100 height=25>
+      &nbsp; &nbsp;<a href="ug-examples.html#sd"><strong>SD</strong></a>
+      </td>
+      <td width=100 height=25>
+      &nbsp; &nbsp;<a href="ug-examples.html#vdata"><strong>VD</strong></a>
+      </td>
+      <td width=100 height=25>
+      &nbsp; &nbsp;<a href="ug-examples.html#vgroup"><strong>VG</strong></a>
+      </td>
+   </tr>
+ </table>
+
+
+<hr noshade size=1>
+
+<a name="ann"></a>
+<h3>Annotations (AN):</h3>
+
+<p>These examples are used in 
+<em>Chapter 10 -- Annotations (AN API)</em> 
+of the HDF User's Guide.
+</p>
+
+<p>
+
+<table border=0>
+<tr bgcolor=#ccdddd>
+ <td> Example Description</td>
+ <td> C Example</td>
+ <td> Fortran Example</td>
+</tr>
+
+<tr>
+ <td>1. <a href="ug-examplesdesc.html#an1">Creating File and Data Annotations</a></td>
+ <td><a href="https://support.hdfgroup.org/ftp/HDF/HDF_Current/src/unpacked/hdf/examples/AN_create_annotation.c">AN_create_annotation.c</a></td>
+ <td><a href="https://support.hdfgroup.org/ftp/HDF/HDF_Current/src/unpacked/hdf/fortran/examples/AN_create_annotation.f">AN_create_annotation.f</a></td>
+</tr>
+
+<tr>
+  <td>2. <a href="ug-examplesdesc.html#an2">Reading File and Data Annotations</a> 
+ </td>
+  <td><a href="https://support.hdfgroup.org/ftp/HDF/HDF_Current/src/unpacked/hdf/examples/AN_read_annotation.c">AN_read_annotation.c</a>
+  </td>
+  <td><a href="https://support.hdfgroup.org/ftp/HDF/HDF_Current/src/unpacked/hdf/fortran/examples/AN_read_annotation.f">AN_read_annotation.f</a>
+  </td>
+</tr>
+
+<tr>
+  <td>3. <a href="ug-examplesdesc.html#an3">Obtaining Annotation Information</a> 
+  </td>
+  <td><a href="https://support.hdfgroup.org/ftp/HDF/HDF_Current/src/unpacked/hdf/examples/AN_get_annotation_info.c">AN_get_annotation_info.c</a>
+  </td>
+  <td><a href="https://support.hdfgroup.org/ftp/HDF/HDF_Current/src/unpacked/hdf/fortran/examples/AN_get_annotation_info.f">AN_get_annotation_info.f</a>
+  </td>
+</tr>
+
+</table>
+<br />
+</p>
+
+<a name="gr"></a>
+<h3> General Raster (GR):</h3>
+
+<p>
+These examples are used in 
+<em>Chapter 8 -- General Raster Images (GR API)</em> 
+of the HDF User's Guide.
+</p>
+
+
+
+<p>
+<table border=0>
+<tr bgcolor=#ccdddd>
+ <td> Example Description</td>
+ <td> C Example</td>
+ <td> Fortran Example</td>
+</tr>
+
+<tr>
+ <td> 1. <a href="ug-examplesdesc.html#gr1">Creating and Writing a RI</a></td>
+ <td><a href="https://support.hdfgroup.org/ftp/HDF/HDF_Current/src/unpacked/hdf/examples/GR_create_and_write_image.c">GR_create_and_write_image.c</a></td>
+ <td><a href="https://support.hdfgroup.org/ftp/HDF/HDF_Current/src/unpacked/hdf/fortran/examples/GR_create_and_write_image.f">GR_create_and_write_image.f</a></td>
+</tr>
+
+<tr>
+ <td> 2. <a href="ug-examplesdesc.html#gr2">Modifying an Existing RI</a></td>
+ <td><a href="https://support.hdfgroup.org/ftp/HDF/HDF_Current/src/unpacked/hdf/examples/GR_modify_image.c">GR_modify_image.c</a></td>
+ <td><a href="https://support.hdfgroup.org/ftp/HDF/HDF_Current/src/unpacked/hdf/fortran/examples/GR_modify_image.f">GR_modify_image.f</a></td>
+</tr>
+
+<tr>
+ <td> 3. <a href="ug-examplesdesc.html#gr3">Reading a RI</a></td>
+ <td><a href="https://support.hdfgroup.org/ftp/HDF/HDF_Current/src/unpacked/hdf/examples/GR_read_image.c">GR_read_image.c</a></td>
+ <td><a href="https://support.hdfgroup.org/ftp/HDF/HDF_Current/src/unpacked/hdf/fortran/examples/GR_read_image.f">GR_read_image.f</a></td>
+</tr>
+
+
+<tr>
+ <td> 4. <a href="ug-examplesdesc.html#gr4">Obtaining File and Image Information</a></td>
+ <td><a href="https://support.hdfgroup.org/ftp/HDF/HDF_Current/src/unpacked/hdf/examples/GR_image_info.c">GR_image_info.c</a></td>
+ <td><a href="https://support.hdfgroup.org/ftp/HDF/HDF_Current/src/unpacked/hdf/fortran/examples/GR_image_info.f">GR_image_info.f</a></td>
+</tr>
+
+<tr>
+ <td> 5. <a href="ug-examplesdesc.html#gr5">Operations on File and RI Attributes</a></td>
+ <td><a href="https://support.hdfgroup.org/ftp/HDF/HDF_Current/src/unpacked/hdf/examples/GR_set_attribute.c">GR_set_attribute.c</a></td>
+ <td><a href="https://support.hdfgroup.org/ftp/HDF/HDF_Current/src/unpacked/hdf/fortran/examples/GR_set_attribute.f">GR_set_attribute.f</a></td>
+</tr>
+
+<tr>
+ <td> 6. <a href="ug-examplesdesc.html#gr6">Obtaining File and Image Attribute</a></td>
+ <td><a href="https://support.hdfgroup.org/ftp/HDF/HDF_Current/src/unpacked/hdf/examples/GR_get_attribute.c">GR_get_attribute.c</a></td>
+ <td><a href="https://support.hdfgroup.org/ftp/HDF/HDF_Current/src/unpacked/hdf/fortran/examples/GR_get_attribute.f">GR_get_attribute.f</a></td>
+</tr>
+
+<tr>
+ <td> 7. <a href="ug-examplesdesc.html#gr7">Writing a Palette</a></td>
+ <td><a href="https://support.hdfgroup.org/ftp/HDF/HDF_Current/src/unpacked/hdf/examples/GR_write_palette.c">GR_write_palette.c</a></td>
+ <td><a href="https://support.hdfgroup.org/ftp/HDF/HDF_Current/src/unpacked/hdf/fortran/examples/GR_write_palette.f">GR_write_palette.f</a></td>
+</tr>
+
+<tr>
+ <td> 8. <a href="ug-examplesdesc.html#gr8">Reading a Palette</a></td>
+ <td><a href="https://support.hdfgroup.org/ftp/HDF/HDF_Current/src/unpacked/hdf/examples/GR_read_palette.c">GR_read_palette.c</a></td>
+ <td><a href="https://support.hdfgroup.org/ftp/HDF/HDF_Current/src/unpacked/hdf/fortran/examples/GR_read_palette.f">GR_read_palette.f</a></td>
+</tr>
+
+<tr>
+ <td> 9. <a href="ug-examplesdesc.html#gr9">Creating and Writing a Chunked RI</a></td>
+ <td> &nbsp; </td>
+ <td> &nbsp; </td>
+<!--
+ <td><a href="/ftp/HDF/HDF_Current/src/unpacked/hdf/examples/GR_read_palette.c">GR_read_palette.c</a></td>
+ <td><a href="/ftp/HDF/HDF_Current/src/unpacked/hdf/fortran/examples/GR_read_palette.f">GR_read_palette.f</a></td>
+-->
+</tr>
+
+</table>
+<br />
+</p>
+
+<a name="sd"></a>
+<h3> Scientific Datasets (SD):</h3>
+
+<p>
+These examples are used in 
+<em>Chapter 3 --Scientific Data Sets (SD API)</em> 
+of the HDF User's Guide.
+</p>
+
+<p>
+<table border=0>
+<tr bgcolor=#ccdddd>
+ <td> Example Description</td>
+ <td> C Example</td>
+ <td> Fortran Example</td>
+</tr>
+<tr>
+
+ <td> 1. <a href="ug-examplesdesc.html#sd1">Creating an HDF File and Empty SDS</a> </td>
+ <td>
+  <a href="https://support.hdfgroup.org/ftp/HDF/HDF_Current/src/unpacked/mfhdf/examples/SD_create_sds.c">SD_create_sds.c</a>
+ </td>
+
+ <td>
+  <a href="https://support.hdfgroup.org/ftp/HDF/HDF_Current/src/unpacked/mfhdf/fortran/examples/SD_create_sds.f">SD_create_sds.f</a>
+ </td>
+
+</tr>
+
+<tr>
+ <td> 2. <a href="ug-examplesdesc.html#sd2">Writing to an SDS</a></td>
+ <td>
+   <a href="https://support.hdfgroup.org/ftp/HDF/HDF_Current/src/unpacked/mfhdf/examples/SD_write_to_sds.c">SD_write_to_sds.c</a>
+ </td>
+ <td>
+   <a href="https://support.hdfgroup.org/ftp/HDF/HDF_Current/src/unpacked/mfhdf/fortran/examples/SD_write_to_sds.f">SD_write_to_sds.f</a>
+ </td>
+  
+</tr>
+
+<tr>
+  <td> 3. <a href="ug-examplesdesc.html#sd3">Writing a Slab of Data to an SDS</a></td>
+ <td>
+   <a href="https://support.hdfgroup.org/ftp/HDF/HDF_Current/src/unpacked/mfhdf/examples/SD_write_slab.c">SD_write_slab.c</a>
+ </td>
+ <td>
+   <a href="https://support.hdfgroup.org/ftp/HDF/HDF_Current/src/unpacked/mfhdf/fortran/examples/SD_write_slab.f">SD_write_slab.f</a>
+ </td>
+  
+</tr>
+
+<tr>
+ <td> 4. <a href="ug-examplesdesc.html#sd4">Altering Values within an SDS Array</a></td>
+ <td>
+   <a href="https://support.hdfgroup.org/ftp/HDF/HDF_Current/src/unpacked/mfhdf/examples/SD_alter_sds_values.c">SD_alter_sds_values.c</a>
+ </td>
+ <td>
+   <a href="https://support.hdfgroup.org/ftp/HDF/HDF_Current/src/unpacked/mfhdf/fortran/examples/SD_alter_sds_values.f">SD_alter_sds_values.f</a>
+ </td>
+</tr>
+
+
+<tr>
+  <td> 5. <a href="ug-examplesdesc.html#sd5">Appending Data to an SDS Array  w/Unlimited Dim</a></td>
+ <td>
+   <a href="https://support.hdfgroup.org/ftp/HDF/HDF_Current/src/unpacked/mfhdf/examples/SD_unlimited_sds.c">SD_unlimited_sds.c</a>
+ </td>
+ <td>
+   <a href="https://support.hdfgroup.org/ftp/HDF/HDF_Current/src/unpacked/mfhdf/fortran/examples/SD_unlimited_sds.f">SD_unlimited_sds.f</a>
+ </td>
+  
+
+<tr>
+  <td> 6. <a href="ug-examplesdesc.html#sd6">Compressing SDS Data</a></td>
+ <td>
+   <a href="https://support.hdfgroup.org/ftp/HDF/HDF_Current/src/unpacked/mfhdf/examples/SD_compress_sds.c">SD_compress_sds.c</a>
+ </td>
+ <td>
+   <a href="https://support.hdfgroup.org/ftp/HDF/HDF_Current/src/unpacked/mfhdf/fortran/examples/SD_compress_sds.f">SD_compress_sds.f</a>
+ </td>
+  
+</tr>
+
+<tr>
+ <td> 7. <a href="ug-examplesdesc.html#sd7">Moving Data to the External File</a></td>
+ <td>
+   <a href="https://support.hdfgroup.org/ftp/HDF/HDF_Current/src/unpacked/mfhdf/examples/SD_mv_sds_to_external.c">SD_mv_sds_to_external.c</a>
+ </td>
+ <td>
+   <a href="https://support.hdfgroup.org/ftp/HDF/HDF_Current/src/unpacked/mfhdf/fortran/examples/SD_mv_sds_to_external.f">SD_mv_sds_to_external.f</a>
+ </td>
+</tr>
+
+
+<tr>
+ <td> 8. <a href="ug-examplesdesc.html#sd8">Reading from an SDS</td>
+ <td>
+   <a href="https://support.hdfgroup.org/ftp/HDF/HDF_Current/src/unpacked/mfhdf/examples/SD_read_from_sds.c">SD_read_from_sds.c</a>
+ </td>
+ <td>
+   <a href="https://support.hdfgroup.org/ftp/HDF/HDF_Current/src/unpacked/mfhdf/fortran/examples/SD_read_from_sds.f">SD_read_from_sds.f</a>
+ </td>
+  
+</tr>
+
+<tr>
+ <td> 9. <a href="ug-examplesdesc.html#sd9">Reading Subsets of an SDS</a></td>
+ <td>
+   <a href="https://support.hdfgroup.org/ftp/HDF/HDF_Current/src/unpacked/mfhdf/examples/SD_read_subsets.c">SD_read_subsets.c</a>
+ </td>
+ <td>
+   <a href="https://support.hdfgroup.org/ftp/HDF/HDF_Current/src/unpacked/mfhdf/fortran/examples/SD_read_subsets.f">SD_read_subsets.f</a>
+ </td>
+</tr>
+
+<tr>
+ <td> 10. <a href="ug-examplesdesc.html#sd10">Getting Information about a File and SDS</a></td>
+ <td>
+   <a href="https://support.hdfgroup.org/ftp/HDF/HDF_Current/src/unpacked/mfhdf/examples/SD_get_info.c">SD_get_info.c</a>
+ </td>
+ <td>
+   <a href="https://support.hdfgroup.org/ftp/HDF/HDF_Current/src/unpacked/mfhdf/fortran/examples/SD_get_info.f">SD_get_info.f</a>
+ </td>
+</tr>
+
+
+<tr>
+ <td> 11. <a href="ug-examplesdesc.html#sd11">Locating an SDS by its Name</a></td>
+ <td>
+   <a href="https://support.hdfgroup.org/ftp/HDF/HDF_Current/src/unpacked/mfhdf/examples/SD_find_sds_by_name.c">SD_find_sds_by_name.c</a>
+ </td>
+ <td>
+   <a href="https://support.hdfgroup.org/ftp/HDF/HDF_Current/src/unpacked/mfhdf/fortran/examples/SD_find_sds_by_name.f">SD_find_sds_by_name.f</a>
+ </td>
+</tr>
+
+<tr>
+ <td> 12. <a href="ug-examplesdesc.html#sd12">Setting and Retrieving Dimension Information</a></td>
+ <td>
+   <a href="https://support.hdfgroup.org/ftp/HDF/HDF_Current/src/unpacked/mfhdf/examples/SD_set_get_dim_info.c">SD_set_get_dim_info.c</a>
+ </td>
+ <td>
+   <a href="https://support.hdfgroup.org/ftp/HDF/HDF_Current/src/unpacked/mfhdf/fortran/examples/SD_set_get_dim_info.f">SD_set_get_dim_info.f</a>
+ </td>
+</tr>
+
+
+<tr>
+ <td> 13. <a href="ug-examplesdesc.html#sd13">Distinguishing a Dimension Scale from a Data Set</a></td>
+ <td>
+   <a href="https://support.hdfgroup.org/ftp/HDF/HDF_Current/src/unpacked/mfhdf/examples/SD_dimscale_vs_sds.c">SD_dimscale_vs_sds.c</a>
+ </td>
+ <td>
+   <a href="https://support.hdfgroup.org/ftp/HDF/HDF_Current/src/unpacked/mfhdf/fortran/examples/SD_dimscale_vs_sds.f">SD_dimscale_vs_sds.f</a>
+ </td>
+</tr>
+
+
+
+<tr>
+ <td> 14. <a href="ug-examplesdesc.html#sd14">Setting Attributes</a></td>
+ <td>
+   <a href="https://support.hdfgroup.org/ftp/HDF/HDF_Current/src/unpacked/mfhdf/examples/SD_set_attr.c">SD_set_attr.c</a>
+ </td>
+ <td>
+   <a href="https://support.hdfgroup.org/ftp/HDF/HDF_Current/src/unpacked/mfhdf/fortran/examples/SD_set_attr.f">SD_set_attr.f</a>
+ </td>
+</tr>
+
+<tr>
+ <td> 15. <a href="ug-examplesdesc.html#sd15">Reading Attributes</a></td>
+ <td>
+   <a href="https://support.hdfgroup.org/ftp/HDF/HDF_Current/src/unpacked/mfhdf/examples/SD_get_attr.c">SD_get_attr.c</a>
+ </td>
+ <td>
+   <a href="https://support.hdfgroup.org/ftp/HDF/HDF_Current/src/unpacked/mfhdf/fortran/examples/SD_get_attr.f">SD_get_attr.f</a>
+ </td>
+</tr>
+
+  
+<tr>
+ <td> 16. <a href="ug-examplesdesc.html#sd16">Calibrating Data</a></td>
+ <td> N/A </td>
+ <td> N/A </td>
+</tr>
+
+<tr>
+  <td> 17. <a href="ug-examplesdesc.html#sd17">Writing and Reading a Chunked SDS</a></td>
+ <td>
+   <a href="https://support.hdfgroup.org/ftp/HDF/HDF_Current/src/unpacked/mfhdf/examples/SD_chunking_example.c">SD_chunking_example.c</a>
+ </td>
+ <td>
+   <a href="https://support.hdfgroup.org/ftp/HDF/HDF_Current/src/unpacked/mfhdf/fortran/examples/SD_chunking_example.f">SD_chunking_example.f</a>
+ </td>
+  
+</tr>
+
+
+</table>
+<br />
+ 
+</p>
+
+<a name="vdata"></a>
+<h3>Vdatas (VD):</h3>
+
+<p>
+These examples are used in
+<em>Chapter 4 -- Vdatas (VS API)</em>
+of the HDF User's Guide.
+</p>
+
+<p>
+<table border=0>
+<tr bgcolor=#ccdddd>
+ <td> Example Description</td>
+ <td> C Example</td>
+ <td> Fortran Example</td>
+</tr>
+<tr>
+ <td> 1. <a href="ug-examplesdesc.html#vd1">Accessing a Vdata in an HDF File</a></td>
+ <td><a href="https://support.hdfgroup.org/ftp/HDF/HDF_Current/src/unpacked/hdf/examples/VD_create_vdatas.c">VD_create_vdatas.c</a></td>
+ <td><a href="https://support.hdfgroup.org/ftp/HDF/HDF_Current/src/unpacked/hdf/fortran/examples/VD_create_vdatas.f">VD_create_vdatas.f</a></td>
+</tr>
+
+<tr>
+ <td> 2. <a href="ug-examplesdesc.html#vd2">Creating and Storing One-Field Vdatas</a></td>
+ <td><a href="https://support.hdfgroup.org/ftp/HDF/HDF_Current/src/unpacked/hdf/examples/VD_create_onefield_vdatas.c">VD_create_onefield_vdatas.c</a></td>
+ <td><a href="https://support.hdfgroup.org/ftp/HDF/HDF_Current/src/unpacked/hdf/fortran/examples/VD_create_onefield_vdatas.f">VD_create_onefield_vdatas.f</a></td>
+</tr>
+
+<tr>
+ <td> 3. <a href="ug-examplesdesc.html#vd3">Writing a Vdata of Homogenous Type</a></td>
+ <td><a href="https://support.hdfgroup.org/ftp/HDF/HDF_Current/src/unpacked/hdf/examples/VD_write_to_vdata.c">VD_write_to_vdata.c</a></td>
+ <td><a href="https://support.hdfgroup.org/ftp/HDF/HDF_Current/src/unpacked/hdf/fortran/examples/VD_write_to_vdata.f">VD_write_to_vdata.f</a></td>
+</tr>
+
+<tr>
+ <td> 4. <a href="ug-examplesdesc.html#vd4">Writing a Multi-field and Mixed Vdata with Packing</a></td>
+ <td><a href="https://support.hdfgroup.org/ftp/HDF/HDF_Current/src/unpacked/hdf/examples/VD_write_mixed_vdata.c">VD_write_mixed_vdata.c</a></td>
+ <td><a href="https://support.hdfgroup.org/ftp/HDF/HDF_Current/src/unpacked/hdf/fortran/examples/VD_write_mixed_vdata.f">VD_write_mixed_vdata.f</a></td>
+</tr>
+
+
+<tr>
+ <td> 5. <a href="ug-examplesdesc.html#vd5">Reading a Vdata of Homogenous Type</a></td>
+ <td><a href="https://support.hdfgroup.org/ftp/HDF/HDF_Current/src/unpacked/hdf/examples/VD_read_from_vdata.c">VD_read_from_vdata.c</a></td>
+ <td><a href="https://support.hdfgroup.org/ftp/HDF/HDF_Current/src/unpacked/hdf/fortran/examples/VD_read_from_vdata.f">VD_read_from_vdata.f</a></td>
+</tr>
+
+<tr>
+ <td> 6. <a href="ug-examplesdesc.html#vd6">Reading a Multi-field Mixed-type Vdata w/Packing</a></td>
+ <td><a href="https://support.hdfgroup.org/ftp/HDF/HDF_Current/src/unpacked/hdf/examples/VD_read_mixed_vdata.c">VD_read_mixed_vdata.c</a></td>
+ <td><a href="https://support.hdfgroup.org/ftp/HDF/HDF_Current/src/unpacked/hdf/fortran/examples/VD_read_mixed_vdata.f">VD_read_mixed_vdata.f</a></td>
+</tr>
+
+
+<tr>
+ <td> 7. <a href="ug-examplesdesc.html#vd7">Locating a VData Containing Specified Field Names</a></td>
+ <td><a href="https://support.hdfgroup.org/ftp/HDF/HDF_Current/src/unpacked/hdf/examples/VD_locate_vdata.c">VD_locate_vdata.c</a></td>
+ <td><a href="https://support.hdfgroup.org/ftp/HDF/HDF_Current/src/unpacked/hdf/fortran/examples/VD_locate_vdata.f">VD_locate_vdata.f</a></td>
+</tr>
+
+<tr>
+ <td> 8. <a href="ug-examplesdesc.html#vd8">Operations on Field and Vdata Attributes</a></td>
+ <td><a href="https://support.hdfgroup.org/ftp/HDF/HDF_Current/src/unpacked/hdf/examples/VD_set_get_vdata_attr.c">VD_set_get_vdata_attr.c</a></td>
+ <td><a href="https://support.hdfgroup.org/ftp/HDF/HDF_Current/src/unpacked/hdf/fortran/examples/VD_set_get_vdata_attr.f">VD_set_get_vdata_attr.f</a></td>
+</tr>
+
+<tr>
+ <td> 9. <a href="ug-examplesdesc.html#vd9">Obtaining Vdata Information</a></td>
+ <td><a href="https://support.hdfgroup.org/ftp/HDF/HDF_Current/src/unpacked/hdf/examples/VD_get_vdata_info.c">VD_get_vdata_info.c</a></td>
+ <td><a href="https://support.hdfgroup.org/ftp/HDF/HDF_Current/src/unpacked/hdf/fortran/examples/VD_get_vdata_info.f">VD_get_vdata_info.f</a></td>
+</tr>
+
+<!--
+<tr>
+ <td> Write Mixed Vdata Struct</td>
+ <td><a href="/ftp/HDF/HDF_Current/src/unpacked/hdf/examples/VD_write_mixed_vdata_struct.c">VD_write_mixed_vdata_struct.c</a></td>
+ <td><a href="/ftp/HDF/HDF_Current/src/unpacked/hdf/fortran/examples/VD_write_mixed_vdata_struct.f">VD_write_mixed_vdata_struct.f</a></td>
+</tr>
+-->
+
+</table>
+<br />
+</p>
+
+<a name="vgroup"></a>
+<h3>Vgroups (VG):</h3>
+
+<p>
+These examples are used in
+<em>Chapter 5 -- Vgroups (V API)</em>
+of the HDF User's Guide.
+</p>
+
+<p>
+<table border=0>
+<tr bgcolor=#ccdddd>
+ <td> Example Description</td>
+ <td> C Example</td>
+ <td> Fortran Example</td>
+</tr>
+
+<tr>
+ <td> 1. <a href="ug-examplesdesc.html#vg1">Creating HDF Files and Vgroups</a></td>
+ <td><a href="https://support.hdfgroup.org/ftp/HDF/HDF_Current/src/unpacked/hdf/examples/VG_create_vgroup.c">VG_create_vgroup.c</a></td>
+ <td><a href="https://support.hdfgroup.org/ftp/HDF/HDF_Current/src/unpacked/hdf/fortran/examples/VG_create_vgroup.f">VG_create_vgroup.f</a></td>
+</tr>
+
+<tr>
+ <td> 2. <a href="ug-examplesdesc.html#vg2">Adding an SDS to a New Vgroup</a></td>
+ <td><a href="https://support.hdfgroup.org/ftp/HDF/HDF_Current/src/unpacked/hdf/examples/VG_add_sds_to_vgroup.c">VG_add_sds_to_vgroup.c</a></td>
+ <td><a href="https://support.hdfgroup.org/ftp/HDF/HDF_Current/src/unpacked/hdf/fortran/examples/VG_add_sds_to_vgroup.f">VG_add_sds_to_vgroup.f</a></td>
+</tr>
+
+<tr>
+ <td> 3. <a href="ug-examplesdesc.html#vg3">Adding Three Vdatas into a Vgroup</a></td>
+ <td><a href="https://support.hdfgroup.org/ftp/HDF/HDF_Current/src/unpacked/hdf/examples/VG_insert_vdatas_to_vgroup.c">VG_insert_vdatas_to_vgroup.c</a></td>
+ <td><a href="https://support.hdfgroup.org/ftp/HDF/HDF_Current/src/unpacked/hdf/fortran/examples/VG_insert_vdatas_to_vgroup.f">VG_insert_vdatas_to_vgroup.f</a></td>
+</tr>
+
+<tr>
+ <td> 4. <a href="ug-examplesdesc.html#vg4">Obtaining Information about Lone Vgroups</a></td>
+ <td><a href="https://support.hdfgroup.org/ftp/HDF/HDF_Current/src/unpacked/hdf/examples/VG_get_vgroup_info.c">VG_get_vgroup_info.c</a></td>
+ <td><a href="https://support.hdfgroup.org/ftp/HDF/HDF_Current/src/unpacked/hdf/fortran/examples/VG_get_vgroup_info.f">VG_get_vgroup_info.f</a></td>
+</tr>
+
+
+<tr>
+ <td> 5. <a href="ug-examplesdesc.html#vg5">Operations on Vgroup Attributes</a> </td>
+ <td><a href="https://support.hdfgroup.org/ftp/HDF/HDF_Current/src/unpacked/hdf/examples/VG_set_get_vgroup_attr.c">VG_set_get_vgroup_attr.c</a></td>
+ <td><a href="https://support.hdfgroup.org/ftp/HDF/HDF_Current/src/unpacked/hdf/fortran/examples/VG_set_get_vgroup_attr.f">VG_set_get_vgroup_attr.f</a></td>
+</tr>
+
+<tr>
+ <td> 6. <a href="ug-examplesdesc.html#vg6">Obtaining Information about Contents of Vgroup</a> </td>
+ <td><a href="https://support.hdfgroup.org/ftp/HDF/HDF_Current/src/unpacked/hdf/examples/VG_vgroup_contents.c">VG_vgroup_contents.c</a></td>
+ <td><a href="https://support.hdfgroup.org/ftp/HDF/HDF_Current/src/unpacked/hdf/fortran/examples/VG_vgroup_contents.f">VG_vgroup_contents.f</a></td>
+</tr>
+
+</table>
+
+<br />
+</p>
+
+ 
+
+
+
+<hr noshade size=1>
+
+<i>
+- - Last modified: 08 August 2017</i>
+	   </div>
+	   <!--END: CONTENT -->
+<!--END: WRAPPER -->
+<script src="../../scriptaculous/gatag.js" type="text/javascript"></script>
+
+<!-- <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script> -->
+				
+<!--
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-3782034-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+-->
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-3782034-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+</body>
+</html>
+
+

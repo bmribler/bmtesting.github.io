@@ -1,0 +1,221 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+<!-- If no var is set for $page_title on the top of each page than default title will be HDF Group -->
+
+<title>
+HDF Group Downloads</title>
+	<meta name="keywords" content="hdf, hdfeos, blog, hdf blog, hdf5 blog, hdf5, hdf4, hdf tools, hdf libraries, hdf viewer, hdf format, hdf file, hdf java, nafxcw.lib, phdf5, open source, hierarchical data format, ncsa, database, python hdf, mike folk, hdfview, hdf5 parallel" />
+	<meta name="description" content="The HDF Group is a not-for-profit corporation with the mission of sustaining the HDF technologies and supporting HDF user communities worldwide with production-quality software and services." />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="expires" content="Wed, 26 Feb 2010 08:21:57 GMT" />
+	<meta name="verify-v1" content="/m03HNmaDgGAcDe0PFtEVnXGtCkoeOocjr/Jwey2gdI=" />
+	<link href="/css/layout.css" rel="stylesheet" type="text/css" media="screen, projection" />
+	<link href="/css/print.css" rel="stylesheet" type="text/css" media="print" />
+	<link rel="stylesheet" type="text/css" href="/css/js_style.css" />
+	<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/prototype/1.7.2.0/prototype.js"></script>
+	<!--<script type="text/javascript" src="/scriptaculous/lib/prototype.js"></script>-->
+	<script type="text/javascript" src="/scriptaculous/src/effects.js"></script>
+	<script type="text/javascript" src="/scriptaculous/validation.js"></script>
+	<script type="text/javascript" src="/scriptaculous/animatedcollapse.js"></script>
+	<script type="text/javascript" src="/scriptaculous/rollover.js"></script>	
+	<script type="text/javascript" src="/scriptaculous/functions.js"></script>
+	<script type="text/javascript" src="/scriptaculous/sorttable.js"></script>
+	<!--<script type="text/javascript" src="/jquery-1.2.2.pack.js"></script>-->
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript" src="/scriptaculous/jssor.slider.min.js"></script>
+
+ 	<link rel="stylesheet" type="text/css" href="/featuredcontentglider.css" />
+    <script type="text/javascript" src="/featuredcontentglider.js"></script>
+
+	</head>
+	<body>
+	<div id="mast_head">
+		<a href="https://www.hdfgroup.org/"><img src="/images/hdf_logo.jpg" height="70" style="display:block; padding-left:10px;" align="left" alt="hdf images" /></a>
+		<img src="/images/logo_8.jpg" height="70" style="display:block;" align="right" alt="hdf images" />
+	</div> 
+				
+	<div id="nav_wrapper">
+		<div>
+		<div id="section-">
+			<ul id="nav">
+				<li id="t-index"><a href="https://www.hdfgroup.org/">Home</a> </li>
+				<li id="t-products"><a href="/products/">Products</a></li>
+				<li id="t-services"><a href="/services/">Services</a></li>
+				<li id="t-about"><a href="/about/">About Us</a></li>
+				<li id="t-news"><a href="/news/">News</a> </li>
+				<li id="t-blog"><a href="https://www.hdfgroup.org/blog">Blog</a></li>
+				<li id="t-contact"><a href="/about/contact.html">Contact Us</a></li> 
+			</ul>
+			<script type="text/javascript">
+			
+  (function() {
+    var cx = '007250492606109219119:sb2eg2bgoyy';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:search></gcse:search>	
+					<script type="text/javascript">
+					    jQuery(document).ready(function ($) {
+					        // var options = {
+					        //     $ArrowNavigatorOptions: {
+					        //         $Class: $JssorArrowNavigator$,
+					        //         $ChanceToShow: 2
+					        //     }
+					        // };					    	
+
+
+							var options = { 
+											$AutoPlay: true, $SlideshowOptions: { $Class: $JssorSlideshowRunner$, $Transitions: [{ $Duration:5000, $Fade: true, $Opacity:2 }] } , 
+											$ArrowNavigatorOptions: { 
+												$Class: $JssorArrowNavigator$, 
+												$ChanceToShow: 2
+											}
+										  };
+
+
+					        var jssor_slider1 = new $JssorSlider$('slider1_container', options);
+					    });
+					</script>
+									                  
+			
+		</div>
+		</div>             
+	</div>
+				
+<!--START: MAIN -->
+<div id="wrapper" style="margin-top:-15px;"> 
+
+<!--START: SIDE_BAR -->
+<div id="side_bar">
+
+<form method="get" action="" class="form" >
+	<select onchange="window.open(this.options[this.selectedIndex].value,'_top')" name="" style="border:2px solid #c1c1c1;">
+		<option value="" class="ql1">- - Quick Links - -</option>
+		<option value="/HDF5/" class="ql">HDF5</option>
+		<option value="/products/hdf4/" class="ql">HDF4</option>
+		<option value="/tools/" class="ql">Tools</option>
+		<option value="/projects/" class="ql">Projects</option>
+		<option value="/downloads/" class="ql">Downloads</option>
+		<option value="/documentation/" class="ql">Documentation</option>
+	        <option value="/pubs/" class="ql">Publications</option>
+		<option value="/about/" class="ql">Contact Us</option>
+	</select>
+</form>
+<ul style="border:1px solid #c1c1c1; margin-top:25px;"> 
+
+	<li style="background:url(/images/menubg.png); padding:0px; padding-left:7px; color:#27343C; font-weight:500; text-align:left;">
+	LINKS</li><li><a href="https://www.hdfgroup.org/">Main Website</a></li><li><a href="/HDF5/">HDF5</a></li><li><a href="/products/hdf4/">HDF4</a></li><li><a href="/tools/">Tools</a></li><li><a href="/projects/">Projects</a></li><li><a href="/downloads/">Downloads</a></li><li><a href="/documentation/">Documentation</a></li><li><a  href="/pubs/">Publications</a></li></ul> 
+
+</div>
+
+<!--END: SIDE_BAR -->
+
+<!--START: CONTENT -->
+<div id="content">
+<p><font color="red"><center><strong>This web site is no longer maintained (but will remain online).<br /> Please see The HDF Group's new <a href="https://portal.hdfgroup.org">Support Portal</a> for the latest information.</strong></center></font></p>
+	<div class=bc><p style="color:orange; ";><a href="/" title="HOME">HOME</a> &gt; <a href="/downloads/" title="DOWNLOADS">DOWNLOADS</a></p></div><fieldset>
+	<h1>Downloads</h1>
+	</fieldset>
+	
+	
+	
+<a name="hdf5"> </a>
+        <p><h2>HDF5 (and utilities)</h2></p>
+<ul class="ul">
+          <a href="/ftp/HDF5/releases/">Previous Releases</a><br />
+</ul>
+        </p>
+
+
+
+<a name="hdf4"> </a>
+  <p><h2>HDF4 (and utilities)</h2></p>
+<ul class="ul">
+         <a href="/ftp/HDF/releases/">Previous Releases</a><br />
+</ul>
+</p>
+
+<a name="hdfview"> </a>
+
+  <p><h2>HDFView and HDF-Java Products</h2></p>
+   <ul class="ul" >
+<!--
+<img name="download" src="../images/downloadc.jpg" width="151" height="79" border="0" id="downloadb" usemap="#m_downloadb" alt="" /><map name="m_downloadb" id="m_downloadb">
+<area shape="rect" coords="0,0,135,77" href="/products/java/release/download.html" alt="" />
+-->
+<p>
+      <a href="/ftp/HDF5/releases/HDF-JAVA/">Previous Releases</a>
+</p>
+
+</ul>
+
+<a name="tools"> </a>
+<p>
+<h2>HDF5 Standalone Tools</h2>
+
+<ul class="ul">
+
+<a name="h4h5"> </a>
+ <note>H4toH5 Conversion Software:</note><br />
+  &nbsp;  &nbsp; <a href="/ftp/HDF5/releases/tools/h4toh5/">Previous
+      Releases</a>
+</p>
+
+<p>
+ <a name="h5check"> </a>
+ <note>h5check:</note><br />
+   &nbsp;  &nbsp; <a href="./h5check-download.html">Current Release</a><br>
+   &nbsp;  &nbsp; <a href="/ftp/HDF5/releases/tools/h5check/">Previous Releases</a>
+
+</p>
+
+<p>
+ <a name="h5edit"> </a> 
+ <note>h5edit</note> &nbsp; (See <a href="/projects/jpss/jpss_downloads.html">JPSS Downloads</a>)
+</p>
+
+<p>
+  <note>Other HDF5 Tools and Software:</note><br />
+   &nbsp; &nbsp;   <a href="/ftp/HDF5/tools/h5fix_obj_nmsgs/">h5fix_obj_nsmgs</a><br>
+   &nbsp; &nbsp;  <a href="/HDF5/XML/software.html">HDF5 XML Software</a>
+</p>
+
+</ul>
+
+<a name="projects"> </a>
+<h2>Projects</h2>
+ <ul class="ul">
+
+ <note>HDF Compass:</note><br />
+  &nbsp; &nbsp; 
+ <a href="/projects/compass/index.html"><img src="/images/hdfcompass.png" width=150></img></a>
+   
+  <p>
+  <note>HDF4 Mapping:</note><br />
+    &nbsp; &nbsp; <a href="/projects/h4map/h4map_writer.html">h4mapwriter</a>
+  </p>
+
+  <p>
+  <note>HDF5 and .NET</note><br />
+     &nbsp; &nbsp; <a href="/projects/hdf.net/index.html">Project Page</a> 
+  </p>
+  <p>
+  <note>JPSS:</note><br />
+    &nbsp; &nbsp; <a href="/projects/jpss/jpss_downloads.html">Downloads</a> 
+  </p>
+ 
+ </ul>
+</p>
+
+<hr>
+
+

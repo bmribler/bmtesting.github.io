@@ -1,0 +1,4086 @@
+<html>
+<head><title>
+HDF5/H5F API Specification
+</title>
+<link href="../ed_styles/RMelect.css" rel="stylesheet" type="text/css">
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<!-- #BeginLibraryItem "/ed_libs/styles_RM.lbi" -->
+<!--
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+  * Copyright by The HDF Group.                                               *
+  * Copyright by the Board of Trustees of the University of Illinois.         *
+  * All rights reserved.                                                      *
+  *                                                                           *
+  * This file is part of HDF5.  The full HDF5 copyright notice, including     *
+  * terms governing use, modification, and redistribution, is contained in    *
+  * the files COPYING and Copyright.html.  COPYING can be found at the root   *
+  * of the source code distribution tree; Copyright.html can be found at the  *
+  * root level of an installed copy of the electronic HDF5 document set and   *
+  * is linked from the top-level documents page.  It can also be found at     *
+  * http://www.hdfgroup.org/HDF5/doc/Copyright.html.  If you do not have      *
+  * access to either file, you may request a copy from help@hdfgroup.org.     *
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ -->
+<!-- #EndLibraryItem --><!-- HEADER RIGHT " " -->
+
+
+<!-- #BeginLibraryItem "/ed_libs/NavBar_RM.lbi" -->
+<hr>
+<center>
+<table border=0 width=98%>
+<tr><td valign=top align=left>
+<a href="../index.html">HDF5 documents and links</a>&nbsp;<br>
+<a href="../H5.intro.html">Introduction to HDF5</a>&nbsp;<br>
+<a href="../UG/HDF5_Users_Guide-Responsive&#32;HTML5/index.html">HDF5 User&rsquo;s Guide</a>&nbsp;<br>
+<!--
+<a href="Glossary.html">Glossary</a><br>
+-->
+</td>
+<td valign=top align=right>
+In the 
+<a href="RM_H5Front.html">HDF5 Reference Manual</a>&nbsp;
+<font size="-1"><br>
+<a href="../HL/RM_H5DS.html">H5DS</a>&nbsp;&nbsp;
+<a href="../HL/RM_H5IM.html">H5IM</a>&nbsp;&nbsp;
+<a href="../HL/RM_H5LT.html">H5LT</a>&nbsp;&nbsp;
+<a href="../HL/RM_H5PT.html">H5PT</a>&nbsp;&nbsp;
+<a href="../HL/RM_H5TB.html">H5TB</a>&nbsp;
+<a href="../HL/RM_HDF5Optimized.html">Optimized</a>&nbsp;
+<br>
+<a href="RM_H5.html">H5</a>&nbsp;&nbsp;
+<a href="RM_H5A.html">H5A</a>&nbsp;&nbsp;
+<a href="RM_H5D.html">H5D</a>&nbsp;&nbsp;
+<a href="RM_H5E.html">H5E</a>&nbsp;&nbsp;
+<a href="RM_H5F.html">H5F</a>&nbsp;&nbsp;
+<a href="RM_H5G.html">H5G</a>&nbsp;&nbsp;
+<a href="RM_H5I.html">H5I</a>&nbsp;&nbsp;
+<a href="RM_H5L.html">H5L</a>&nbsp;
+<br>
+<a href="RM_H5O.html">H5O</a>&nbsp;&nbsp;
+<a href="RM_H5P.html">H5P</a>&nbsp;&nbsp;
+<a href="RM_H5PL.html">H5PL</a>&nbsp;&nbsp;
+<a href="RM_H5R.html">H5R</a>&nbsp;&nbsp;
+<a href="RM_H5S.html">H5S</a>&nbsp;&nbsp;
+<a href="RM_H5T.html">H5T</a>&nbsp;&nbsp;
+<a href="RM_H5Z.html">H5Z</a>&nbsp;
+<br>
+<a href="Tools.html">Tools</a>&nbsp;&nbsp;
+<a href="PredefDTypes.html">Datatypes</a>&nbsp;&nbsp;
+<a href="../fortran/index.html">Fortran</a>&nbsp;&nbsp;
+<a href="APICompatMacros.html">Compatibility Macros</a>&nbsp;
+<br>
+<a href="CollectiveCalls.html">Collective Calls in Parallel</a>&nbsp;
+</font>
+<!--
+<br>
+<i><font size=-1>(Printable <a href="http://hdfgroup.org/HDF5/doc/PSandPDF/HDF5_RefManual.PDF">PDF</a> of this Reference Manual)</font></i>&nbsp;
+-->
+
+</td></tr>
+</table>
+</center>
+<hr>
+<!-- #EndLibraryItem --><center>
+<h1>H5F: File Interface</h1>
+</center>
+
+<h2>File API Functions</h2>
+
+These functions are designed to provide file-level access to HDF5 files.
+Further manipulation of objects inside a file is performed through one of APIs
+documented below.
+
+<p>
+<strong>The C Interfaces:</strong>
+
+<table border=0>
+<tr><td valign=top>
+<ul>
+    <li><a href="RM_H5F.html#File-Create">H5Fcreate</a>
+    <li><a href="RM_H5F.html#File-Open">H5Fopen</a>
+    <li><a href="RM_H5F.html#File-GetFileImage">H5Fget_file_image</a>
+    <li><a href="RM_H5F.html#File-Reopen">H5Freopen</a>
+    <li><a href="RM_H5F.html#File-Close">H5Fclose</a>
+    <li><a href="RM_H5F.html#File-Flush">H5Fflush</a>
+    <li><a href="RM_H5F.html#File-IsHDF5">H5Fis_hdf5</a>
+    <li><a href="RM_H5F.html#File-Mount">H5Fmount</a>
+    <li><a href="RM_H5F.html#File-Unmount">H5Funmount</a>
+</ul>
+</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign=top>
+<ul>
+    <li><a href="RM_H5F.html#File-GetVfdHandle">H5Fget_vfd_handle</a>
+    <li><a href="RM_H5F.html#File-GetFilesize">H5Fget_filesize</a>
+    <li><a href="RM_H5F.html#File-GetCreatePlist">H5Fget_create_plist</a>
+    <li><a href="RM_H5F.html#File-GetAccessPlist">H5Fget_access_plist</a>
+    <li><a href="RM_H5F.html#File-GetInfo">H5Fget_info</a>
+    <li><a href="RM_H5F.html#File-GetIntent">H5Fget_intent</a>
+    <li><a href="RM_H5F.html#File-GetName">H5Fget_name</a>
+    <li><a href="RM_H5F.html#File-GetObjCount">H5Fget_obj_count</a>
+    <li><a href="RM_H5F.html#File-GetObjIDs">H5Fget_obj_ids</a>
+</ul>
+</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign=top>
+<ul>
+    <li><a href="RM_H5F.html#File-GetFreespace">H5Fget_freespace</a>
+    <li><a href="RM_H5F.html#File-ClearELinkFileCache">H5Fclear_elink_file_cache</a>
+    <li><a href="RM_H5F.html#File-SetMdcConfig">H5Fset_mdc_config</a>
+    <li><a href="RM_H5F.html#File-GetMdcConfig">H5Fget_mdc_config</a>
+    <li><a href="RM_H5F.html#File-GetMdcHitRate">H5Fget_mdc_hit_rate</a>
+    <li><a href="RM_H5F.html#File-ResetMdcHitRateStats">H5Freset_mdc_hit_rate_stats</a>
+    <li><a href="RM_H5F.html#File-GetMdcSize">H5Fget_mdc_size</a>
+    <li><a href="RM_H5F.html#File-SetMpiAtomicity">H5Fset_mpi_atomicity</a>
+    <li><a href="RM_H5F.html#File-GetMpiAtomicity">H5Fget_mpi_atomicity</a>
+</ul>
+</td></tr>
+</table>
+<br>
+
+<i>Alphabetical Listing</i>
+
+<table border="0">
+  <tr>
+    <td valign="top">
+    <ul>
+      <li><a href="RM_H5F.html#File-ClearELinkFileCache">H5Fclear_elink_file_cache</a>
+      <li><a href="RM_H5F.html#File-Close">H5Fclose</a>
+      <li><a href="RM_H5F.html#File-Create">H5Fcreate</a>
+      <li><a href="RM_H5F.html#File-Flush">H5Fflush</a>
+      <li><a href="RM_H5F.html#File-GetAccessPlist">H5Fget_access_plist</a>
+      <li><a href="RM_H5F.html#File-GetCreatePlist">H5Fget_create_plist</a>
+      <li><a href="RM_H5F.html#File-GetFileImage">H5Fget_file_image</a>
+      <li><a href="RM_H5F.html#File-GetFilesize">H5Fget_filesize</a>
+      <li><a href="RM_H5F.html#File-GetFreespace">H5Fget_freespace</a> 
+    </ul>      
+    </td>
+    
+    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    
+    <td valign="top">
+    <ul>
+      <li><a href="RM_H5F.html#File-GetInfo">H5Fget_info</a>
+      <li><a href="RM_H5F.html#File-GetIntent">H5Fget_intent</a>
+      <li><a href="RM_H5F.html#File-GetMdcConfig">H5Fget_mdc_config</a>
+      <li><a href="RM_H5F.html#File-GetMdcHitRate">H5Fget_mdc_hit_rate</a>
+      <li><a href="RM_H5F.html#File-GetMdcSize">H5Fget_mdc_size</a>
+      <li><a href="RM_H5F.html#File-GetMpiAtomicity">H5Fget_mpi_atomicity</a>
+      <li><a href="RM_H5F.html#File-GetName">H5Fget_name</a>
+      <li><a href="RM_H5F.html#File-GetObjCount">H5Fget_obj_count</a>
+      <li><a href="RM_H5F.html#File-GetObjIDs">H5Fget_obj_ids</a>
+    </ul>
+    </td>
+    
+    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    
+    <td valign="top">
+    <ul>
+      <li><a href="RM_H5F.html#File-GetVfdHandle">H5Fget_vfd_handle</a>
+      <li><a href="RM_H5F.html#File-IsHDF5">H5Fis_hdf5</a>
+      <li><a href="RM_H5F.html#File-Mount">H5Fmount</a>
+      <li><a href="RM_H5F.html#File-Open">H5Fopen</a>
+      <li><a href="RM_H5F.html#File-Reopen">H5Freopen</a>
+      <li><a href="RM_H5F.html#File-ResetMdcHitRateStats">H5Freset_mdc_hit_rate_stats</a>
+      <li><a href="RM_H5F.html#File-SetMdcConfig">H5Fset_mdc_config</a>
+      <li><a href="RM_H5F.html#File-SetMpiAtomicity">H5Fset_mpi_atomicity</a>
+      <li><a href="RM_H5F.html#File-Unmount">H5Funmount</a>
+    </ul>
+    </td>
+  </tr>
+</table>
+
+<br>
+<strong>The Fortran Interface:</strong>
+<br>
+In general, each Fortran subroutine performs exactly the same task 
+as the corresponding C function.  
+<br>
+
+<table border=0>
+<tr><td valign=top>
+<ul>
+    <li><a href="RM_H5F.html#File-Create">h5fcreate_f</a>
+    <li><a href="RM_H5F.html#File-Open">h5fopen_f</a>
+    <li><a href="RM_H5F.html#File-GetFileImage">h5fget_file_image_f</a>
+    <li><a href="RM_H5F.html#File-Reopen">h5freopen_f</a>
+    <li><a href="RM_H5F.html#File-Close">h5fclose_f</a>
+    <li><a href="RM_H5F.html#File-Flush">h5fflush_f</a>
+    <li><a href="RM_H5F.html#File-IsHDF5">h5fis_hdf5_f</a>
+</ul>
+</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign=top>
+<ul>
+    <li><a href="RM_H5F.html#File-Mount">h5fmount_f</a>
+    <li><a href="RM_H5F.html#File-Unmount">h5funmount_f</a>
+<!--    <li><a href="#File-GetVfdHandle">h5fget_vfd_handle_f</a>            -->
+    <li><a href="RM_H5F.html#File-GetFilesize">h5fget_filesize_f</a>
+    <li><a href="RM_H5F.html#File-GetFreespace">h5fget_freespace_f</a>
+<!--<li><a href="#File-GetInfo">H5Fget_info</a>-->
+<!--<li><a href="#File-GetIntent">H5Fget_intent</a>-->
+    <li><a href="RM_H5F.html#File-GetName">h5fget_name_f</a>
+    <li><a href="RM_H5F.html#File-GetCreatePlist">h5fget_create_plist_f</a>
+</ul>
+</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign=top>
+<ul>
+    <li><a href="RM_H5F.html#File-GetAccessPlist">h5fget_access_plist_f</a>
+    <li><a href="RM_H5F.html#File-GetObjCount">h5fget_obj_count_f</a>
+    <li><a href="RM_H5F.html#File-GetObjIDs">h5fget_obj_ids_f</a>
+<!--<li><a href="#File-GetMdcConfig">h5fget_mdc_config_f</a>                    -->
+<!--<li><a href="#File-GetMdcHitRate">h5fget_mdc_hit_rate_f</a>                 -->
+<!--<li><a href="#File-GetMdcSize">h5fget_mdc_size_f</a>                        -->
+<!--<li><a href="#File-ResetMdcHitRateStats">h5freset_mdc_hit_rate_stats_f</a>  -->
+<!--<li><a href="#File-SetMdcConfig">h5fset_mdc_config_f</a>                    -->
+    <li><a href="RM_H5F.html#File-SetMpiAtomicity">h5fset_mpi_atomicity_f</a>
+    <li><a href="RM_H5F.html#File-GetMpiAtomicity">h5fget_mpi_atomicity_f</a>
+</ul>
+</td></tr>
+</table>
+
+<!-- NEW PAGE -->
+<!-- HEADER RIGHT " " -->
+
+<!--  ---  ---  ---  ---  ---  ---  ---  ---  ---  ---  ---  -->
+<!--       Include special topic files                       -->
+<!--  ---  ---  ---  ---  ---  ---  ---  ---  ---  ---  ---  -->
+
+
+<!--  ---  ---  ---  ---  ---  ---  ---  ---  ---  ---  ---  -->
+<!--       Include function files                            -->
+<!--  ---  ---  ---  ---  ---  ---  ---  ---  ---  ---  ---  -->
+
+
+
+<!--
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+  * Copyright by The HDF Group.                                               *
+  * Copyright by the Board of Trustees of the University of Illinois.         *
+  * All rights reserved.                                                      *
+  *                                                                           *
+  * This file is part of HDF5.  The full HDF5 copyright notice, including     *
+  * terms governing use, modification, and redistribution, is contained in    *
+  * the files COPYING and Copyright.html.  COPYING can be found at the root   *
+  * of the source code distribution tree; Copyright.html can be found at the  *
+  * root level of an installed copy of the electronic HDF5 document set and   *
+  * is linked from the top-level documents page.  It can also be found at     *
+  * http://hdfgroup.org/HDF5/doc/Copyright.html.  If you do not have          *
+  * access to either file, you may request a copy from help@hdfgroup.org.     *
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ -->
+
+
+<!-- NEW PAGE -->
+<!-- HEADER RIGHT "H5Fclear_elink_file_cache" -->
+<hr>
+<dl>
+
+  <dt><div align=right><font color=999999 size=-1><i>
+      Last modified: 11 May 2011
+      </i></font></div>
+
+  <dt><strong>Name:</strong> 
+      <a name="File-ClearELinkFileCache">H5Fclear_elink_file_cache</a>
+
+  <dt><strong>Signature:</strong>
+      <dd><em>herr_t </em><code>H5Fclear_elink_file_cache</code>(
+                     <em>hid_t </em><code>file_id</code>
+          )
+
+  <p>
+  <dt><strong>Purpose:</strong>
+      <dd>Clears the external link open file cache.
+
+  <p>
+  <dt><strong>Motivation:</strong>
+      <dd><code>H5Fclear_elink_file_cache</code>
+          releases all the child files cached in a file&rsquo;s 
+          external link open file cache, possibly causing them to be closed.  
+          This function can be used to release memory and 
+          to allow files to be accessed by another process.
+
+  <p>
+  <dt><strong>Description:</strong>
+      <dd><code>H5Fclear_elink_file_cache</code>
+          evicts all the cached child files in the specified file&rsquo;s 
+          external file cache, causing them to be closed if there is nothing 
+          else holding them open.  
+          <p>
+          <code>H5Fclear_elink_file_cache</code> does not close the cache 
+          itself; subsequent external link traversals from the parent file 
+          will again cache the target file.
+          See <a href="RM_H5P.html#Property-SetELinkFileCacheSize">
+          <code>H5Pset_elink_file_cache_size</code></a> 
+          for information on closing the file cache.
+
+  <p>
+  <dt><strong>Parameters:</strong>
+      <dd>
+      <table>
+        <tr valign="top">
+            <td><em>hid_t </em><code>file_id</code>
+                </td><td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td>IN: File identifier
+                </td></tr>
+    </table>
+
+  <p>
+  <dt><strong>Returns:</strong>
+      <dd>Returns a non-negative value if successful;
+          otherwise returns a negative value.
+
+  <p>
+  <dt><strong>Example Usage:</strong>
+      <dd>The following code clears the external file cache for the file
+          specified by <code>file_id</code>:
+          <pre>
+    status = H5Fclear_elink_file_cache(file_id)         </pre>
+
+
+<!--__ *** FORTRAN90 INTERFACE  **********************************  -->
+<!--__ When the Fortran90 interface is complete, replace this       -->
+<!--__ section with the Fortran90 subroutine description.           -->
+<!--__                                                              -->
+<!--__ See the file h5fortran_f_insert.htm for a template and       -->
+<!--__ instructions.                                                -->
+<!--__ ***********************************************************  -->
+
+
+  <p>
+  <dt><strong>See Also:</strong>
+      <dd><a href="RM_H5P.html#Property-SetELinkFileCacheSize">
+          <code>H5Pset_elink_file_cache_size</code></a>
+          <br>
+          <a href="RM_H5P.html#Property-GetELinkFileCacheSize">
+          <code>H5Pget_elink_file_cache_size</code></a>
+
+  <p>
+  <dt><strong>History:</strong>
+      <dd>
+      <table width="90%">
+        <tr>
+            <td valign="top" align="left" width="10%">
+                <strong>Release</strong>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td valign="top" align="left">
+                <strong>Change</strong></td>
+        </tr>
+
+        <tr>
+            <td valign="top">1.8.7</td>
+            <td valign="top">
+                C function introduced in this release.</td>
+        </tr>
+
+      </table>
+</dl>
+
+
+
+
+<!--
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+  * Copyright by The HDF Group.                                               *
+  * Copyright by the Board of Trustees of the University of Illinois.         *
+  * All rights reserved.                                                      *
+  *                                                                           *
+  * This file is part of HDF5.  The full HDF5 copyright notice, including     *
+  * terms governing use, modification, and redistribution, is contained in    *
+  * the files COPYING and Copyright.html.  COPYING can be found at the root   *
+  * of the source code distribution tree; Copyright.html can be found at the  *
+  * root level of an installed copy of the electronic HDF5 document set and   *
+  * is linked from the top-level documents page.  It can also be found at     *
+  * http://hdfgroup.org/HDF5/doc/Copyright.html.  If you do not have          *
+  * access to either file, you may request a copy from help@hdfgroup.org.     *
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ -->
+
+
+<!-- NEW PAGE -->
+<!-- HEADER RIGHT "H5Fclose" -->
+<hr>
+<dl>
+<dt><div align=right><font color=999999 size=-1><i>
+      Last modified: 9 April 2009
+      </i></font></div>
+
+<dt><strong>Name:</strong> <a name="File-Close">H5Fclose</a>
+<dt><strong>Signature:</strong>
+    <dd><em>herr_t </em><code>H5Fclose</code>(
+        <em>hid_t</em> <code>file_id</code>
+        )
+
+<p>
+<dt><strong>Purpose:</strong>
+        <dd>Terminates access to an HDF5 file.  
+
+<p>
+<dt><strong>Description:</strong>
+        <dd><code>H5Fclose</code> terminates access to an HDF5 file
+            by flushing all data to storage and terminating access
+            to the file through <code>file_id</code>.  
+            <p>
+            If this is the last file identifier open for the file 
+            and no other access identifier is open (e.g., a dataset 
+            identifier, group identifier, or shared datatype identifier),
+            the file will be fully closed and access will end.
+            <p>
+            <strong>Delayed close:</strong> 
+            <br>
+            Note the following deviation from the above-described behavior.
+            If <code>H5Fclose</code> is called for a file but one or more 
+            objects within the file remain open, those objects will remain 
+            accessible until they are individually closed.  
+            Thus, if the dataset <code>data_sample</code> is open when 
+            <code>H5Fclose</code> is called for the file containing it, 
+            <code>data_sample</code> will remain open and accessible 
+            (including writable) until it is explicitely closed.  
+            The file will be automatically closed once all objects in the
+            file have been closed.
+            <p>
+            Be warned, however, that there are circumstances where it is 
+            not possible to delay closing a file.  
+            For example, an MPI-IO file close is a collective call; all of
+            the processes that opened the file must close it collectively.
+            The file cannot be closed at some time in the future by each 
+            process in an independent fashion.
+            Another example is that an application using an AFS token-based 
+            file access privilage may destroy its AFS token after 
+            <code>H5Fclose</code> has returned successfully.  
+            This would make any future access to the file, or any object 
+            within it, illegal. 
+            <p>
+            In such situations, applications must close all open objects 
+            in a file before calling <code>H5Fclose</code>.  
+            It is generally recommended to do so in all cases.
+
+<p>
+<dt><strong>Parameters:</strong>
+    <ul><table>
+        <tr>
+          <td valign="top"><em>hid_t</em>&nbsp;<code>file_id&nbsp;&nbsp;&nbsp;&nbsp;</code></td>
+          <td valign="top">IN: Identifier of a file to terminate access
+              to.</td></tr>
+    </table></ul>
+
+<p>
+<dt><strong>Returns:</strong>
+    <dd>Returns a non-negative value if successful;
+        otherwise returns a negative value.
+
+<p>
+<dt><strong>Fortran90 Interface:</strong> h5fclose_f
+    <dd>
+    <pre>
+SUBROUTINE h5fclose_f(file_id, hdferr) 
+  IMPLICIT NONE
+  INTEGER(HID_T), INTENT(IN) :: file_id ! File identifier
+  INTEGER, INTENT(OUT) :: hdferr        ! Error code
+                                        ! 0 on success and -1 on failure
+END SUBROUTINE h5fclose_f 
+    </pre>
+
+</dl>
+
+
+
+<!--
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+  * Copyright by The HDF Group.                                               *
+  * Copyright by the Board of Trustees of the University of Illinois.         *
+  * All rights reserved.                                                      *
+  *                                                                           *
+  * This file is part of HDF5.  The full HDF5 copyright notice, including     *
+  * terms governing use, modification, and redistribution, is contained in    *
+  * the files COPYING and Copyright.html.  COPYING can be found at the root   *
+  * of the source code distribution tree; Copyright.html can be found at the  *
+  * root level of an installed copy of the electronic HDF5 document set and   *
+  * is linked from the top-level documents page.  It can also be found at     *
+  * http://hdfgroup.org/HDF5/doc/Copyright.html.  If you do not have          *
+  * access to either file, you may request a copy from help@hdfgroup.org.     *
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ -->
+
+
+<!-- NEW PAGE -->
+<!-- HEADER RIGHT "H5Fcreate" -->
+<hr>
+<dl>
+<dt><div align=right><font color=999999 size=-1><i>
+  Last modified: 1 June 2015</i></font></div></dt>
+
+<dt><strong>Name:</strong> <a name="File-Create">H5Fcreate</a></dt>
+<br />
+<dt><strong>Signature:</strong>
+    <dd><em>hid_t </em><code>H5Fcreate</code>(
+            <em>const char *</em><code>name</code>,
+            <em>unsigned</em> <code>flags</code>,
+            <em>hid_t</em> <code>fcpl_id</code>,
+            <em>hid_t</em> <code>fapl_id</code>
+        )
+
+<p>
+<dt><strong>Purpose:</strong>
+        <dd>Creates an HDF5 file.
+
+<p>
+<dt><strong>Description:</strong>
+        <dd><code>H5Fcreate</code> is the primary function for creating 
+            HDF5 files; it creates a new HDF5 file with the specified 
+            name and property lists and specifies whether an existing file of 
+            same name should be overwritten.
+            <p>
+            The <code>name</code> parameter specifies the name of the new file.
+            <p>
+            The <code>flags</code> parameter specifies whether an 
+            existing file is to be overwritten.
+            It should be set to either <code>H5F_ACC_TRUNC</code> to 
+            overwrite an existing file or <code>H5F_ACC_EXCL</code>, 
+            instructing the function to fail if the file already exists.
+            <p>
+            New files are always created in read-write mode,
+            so the read-write and read-only flags, <code>H5F_ACC_RDWR</code> 
+            and <code>H5F_ACC_RDONLY</code>, respectively, are not relevant 
+            in this function. 
+            Further note that a specification of <code>H5F_ACC_RDONLY</code> 
+            will be ignored; the file will be created in read-write mode, 
+            regardless.
+            <p>
+            More complex behaviors of file creation and access
+            are controlled through the file creation and file access
+            property lists, <code>fcpl_id</code> and <code>fapl_id</code>,
+            respectively.  The value of <code>H5P_DEFAULT</code> for 
+            any property list value indicates that the library should use
+            the default values for that appropriate property list.
+            <p>
+            The return value is a file identifier for the newly-created file;
+            this file identifier should be closed by calling 
+            <code>H5Fclose</code> when it is no longer needed. 
+            <p>
+
+            <b>Special case -- File creation in the case of an 
+            already-open file:</b>
+            <br>
+            If a file being created is already opened, by either a 
+            previous <code>H5Fopen</code> or <code>H5Fcreate</code> call, 
+            the HDF5 library may or may not detect that the open file and 
+            the new file are the same physical file. 
+            (See <a href="RM_H5F.html#File-Open"><code>H5Fopen</code></a> regarding 
+            the limitations in detecting the re-opening of an already-open 
+            file.) 
+            <p>
+            If the library detects that the file is already opened, 
+            <code>H5Fcreate</code> will return a failure, regardless 
+            of the use of <code>H5F_ACC_TRUNC</code>.
+            <p>
+            If the library does not detect that the file is already opened 
+            and <code>H5F_ACC_TRUNC</code> is not used, 
+            <code>H5Fcreate</code> will return a failure because the file 
+            already exists.  Note that this is correct behavior.
+            <p>
+            But if the library does not detect that the file is already 
+            opened and <code>H5F_ACC_TRUNC</code> is used, 
+            <code>H5Fcreate</code> will truncate the existing file
+            and return a valid file identifier.
+            Such a truncation of a currently-opened file will almost 
+            certainly result in errors. 
+            While unlikely, the HDF5 library may not be able to detect,
+            and thus report, such errors.
+            <p>
+            Applications should avoid calling <code>H5Fcreate</code> 
+            with an already opened file.
+
+
+<!-- NEW PAGE -->
+<p>
+<dt><strong>Parameters:</strong>
+    <dd><table>
+        <tr>
+            <td valign="top"><em>const&nbsp;char&nbsp;*</em><code>name&nbsp;&nbsp;&nbsp;&nbsp;</code></td>
+            <td valign="top">IN: Name of the file to access.</td></tr>
+        <tr>
+            <td valign="top"><em>unsigned</em> <code>flags</code></td>
+            <td valign="top">IN: File access flags.  Allowable values are:
+                <ul><dl>
+                    <dt><code>H5F_ACC_TRUNC</code>
+                        <dd>Truncate file, if it already exists,  
+                            erasing all data previously stored in the file.
+                    <dt><code>H5F_ACC_EXCL</code>
+                        <dd>Fail if file already exists.
+                </dl></ul>
+                <li><code>H5F_ACC_TRUNC</code> and <code>H5F_ACC_EXCL</code> 
+                are mutually exclusive; use exactly one.
+                <li>An additional flag, <code>H5F_ACC_DEBUG</code>, prints 
+                debug information.  This flag can be combined with one of the 
+                above values using the bit-wise OR operator (`|'), 
+                but it is used only by HDF5 Library developers; <i>it is neither 
+                tested nor supported</i> for use in applications.</td></tr>
+        <tr>
+            <td valign="top"><em>hid_t</em> <code>fcpl_id</code></td>
+            <td valign="top">IN: File creation property list identifier, 
+                used when modifying default file meta-data.
+                Use <code>H5P_DEFAULT</code> to specify default file creation 
+                properties.</td></tr>
+        <tr>
+            <td valign="top"><em>hid_t</em> <code>fapl_id</code></td>
+            <td valign="top">IN: File access property list identifier.
+                If parallel file access is desired, this is a collective
+                call according to the communicator stored in the
+                <code>fapl_id</code>. 
+                Use <code>H5P_DEFAULT</code> for default file access 
+                properties.</td></tr>
+    </table></dd>
+
+<p>
+<dt><strong>Returns:</strong>
+    <dd>Returns a file identifier if successful;
+        otherwise returns a negative value.
+
+<p>
+<dt><strong>Fortran90 Interface:</strong> h5fcreate_f
+    <dd>
+    <pre>
+SUBROUTINE h5fcreate_f(name, access_flags, file_id, hdferr, &  
+                       creation_prp, access_prp)
+  IMPLICIT NONE 
+  CHARACTER(LEN=*), INTENT(IN) :: name   ! Name of the file
+  INTEGER, INTENT(IN) :: access_flag     ! File access flags 
+                                         ! Valid values are:
+                                         !     H5F_ACC_TRUNC_F  
+                                         !     H5F_ACC_EXCL_F    
+                                         !     H5F_ACC_DEBUG_F   
+  INTEGER(HID_T), INTENT(OUT) :: file_id ! File identifier 
+  INTEGER, INTENT(OUT) :: hdferr         ! Error code 
+                                         ! 0 on success and -1 on failure
+  INTEGER(HID_T), OPTIONAL, INTENT(IN) :: creation_prp 
+                                         ! File creation propertly 
+                                         ! list identifier, if not 
+                                         ! specified its value is
+                                         ! H5P_DEFAULT_F  
+  INTEGER(HID_T), OPTIONAL, INTENT(IN) :: access_prp  
+                                         ! File access property list 
+                                         ! identifier, if not 
+                                         ! specified its value is
+                                         ! H5P_DEFAULT_F  
+END SUBROUTINE h5fcreate_f
+    </pre>
+
+  <dt><strong>See Also:</a></strong></dt>
+    <dd>
+    <a href="http://www.hdfgroup.org/HDF5/doc/Advanced/UsingIdentifiers/index.html">
+    &ldquo;Using Identifiers&rdquo;</a></dd>
+
+
+  <p>
+  <dt><strong>History:</strong>
+    <dd><table width="90%">
+        <tr>
+          <td valign="top" align="left" width="10%">
+            <strong>Release</strong>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <td valign="top" align="left">
+            <strong>Change</strong></td></tr>
+        <tr>
+          <td valign="top">1.8.10</td>
+          <td valign="top">
+            Removed H5F_ACC_RDWR_F and H5F_ACC_RDONLY_F from comments for 
+            access_flag field in Fortran subroutine, and changed 
+            &ldquo;Possible values&rdquo; to &ldquo;Valid values&rdquo;.</td></tr>
+    </table>
+
+</dl>
+
+
+
+<!--
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+  * Copyright by The HDF Group.                                               *
+  * Copyright by the Board of Trustees of the University of Illinois.         *
+  * All rights reserved.                                                      *
+  *                                                                           *
+  * This file is part of HDF5.  The full HDF5 copyright notice, including     *
+  * terms governing use, modification, and redistribution, is contained in    *
+  * the files COPYING and Copyright.html.  COPYING can be found at the root   *
+  * of the source code distribution tree; Copyright.html can be found at the  *
+  * root level of an installed copy of the electronic HDF5 document set and   *
+  * is linked from the top-level documents page.  It can also be found at     *
+  * http://hdfgroup.org/HDF5/doc/Copyright.html.  If you do not have          *
+  * access to either file, you may request a copy from help@hdfgroup.org.     *
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ -->
+
+
+<!-- NEW PAGE -->
+<!-- HEADER RIGHT "H5Fflush" -->
+<hr>
+<dl>
+<dt><strong>Name:</strong> <a name="File-Flush">H5Fflush</a>
+<dt><strong>Signature:</strong>
+    <dd><em>herr_t </em><code>H5Fflush</code>(<em>hid_t </em><code>object_id</code>,
+        <em>H5F_scope_t</em> <code>scope</code>
+        )
+<dt><strong>Purpose:</strong>
+        <dd>Flushes all buffers associated with a file to disk.
+<dt><strong>Description:</strong>
+        <dd><code>H5Fflush</code> causes all buffers associated with a
+        file to be immediately flushed to disk without removing the
+        data from the cache.  
+        <p>
+        <code>object_id</code> can be any object associated with the file, 
+        including the file itself, a dataset, a group, an attribute, or 
+        a named datatype.
+        <p>
+        <code>scope</code> specifies whether the scope of the flushing 
+        action is global or local.  Valid values are as follows:
+        <table border=0>
+            <tr><td><code>&nbsp;&nbsp;&nbsp;&nbsp;</code></td>
+                <td align=left valign=top><code>H5F_SCOPE_GLOBAL</code></td>
+                <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                <td align=left valign=top>Flushes the entire virtual file.</td></tr>
+            <tr><td>&nbsp;</td>
+                <td align=left valign=top><code>H5F_SCOPE_LOCAL</code></td>
+                <td>&nbsp;</td>
+                <td align=left valign=top>Flushes only the specified file.</td></tr>
+        </table>
+<dt><strong>Note:</strong>
+        <dd>HDF5 does not possess full control over buffering.
+        <code>H5Fflush</code> flushes the internal HDF5 buffers then 
+        asks the operating system (the OS) to flush the system buffers for the 
+        open files.  After that, the OS is responsible for ensuring that
+        the data is actually flushed to disk.
+<dt><strong>Parameters:</strong>
+    <ul><table>
+        <tr>
+            <td valign="top"><em>hid_t </em><code>object_id</code></td>
+            <td valign="top">IN: Identifier of object used to identify the file.</td></tr>
+        <tr>
+            <td valign="top"><em>H5F_scope_t</em>&nbsp;<code>scope&nbsp;&nbsp;&nbsp;&nbsp;</code></td>
+            <td valign="top">IN: Specifies the scope of the flushing action.</td></tr>
+    </table></ul>
+<dt><strong>Returns:</strong>
+    <dd>Returns a non-negative value if successful;
+        otherwise returns a negative value.
+<dt><strong>Fortran90 Interface:</strong> h5fflush_f
+    <dd>
+    <pre>
+SUBROUTINE h5fflush_f(obj_id, scope, hdferr)
+  IMPLICIT NONE 
+  INTEGER(HID_T), INTENT(IN)  :: obj_id      ! Object identifier
+  INTEGER, INTENT(IN)         :: scope       ! Flag with two possible values:
+                                             !     H5F_SCOPE_GLOBAL_F  
+                                             !     H5F_SCOPE_LOCAL_F  
+  INTEGER, INTENT(OUT)        :: hdferr      ! Error code 
+                                             ! 0 on success and -1 on failure
+END SUBROUTINE h5fflush_f
+    </pre>
+
+</dl>
+
+
+
+<!--
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+  * Copyright by The HDF Group.                                               *
+  * Copyright by the Board of Trustees of the University of Illinois.         *
+  * All rights reserved.                                                      *
+  *                                                                           *
+  * This file is part of HDF5.  The full HDF5 copyright notice, including     *
+  * terms governing use, modification, and redistribution, is contained in    *
+  * the files COPYING and Copyright.html.  COPYING can be found at the root   *
+  * of the source code distribution tree; Copyright.html can be found at the  *
+  * root level of an installed copy of the electronic HDF5 document set and   *
+  * is linked from the top-level documents page.  It can also be found at     *
+  * http://hdfgroup.org/HDF5/doc/Copyright.html.  If you do not have          *
+  * access to either file, you may request a copy from help@hdfgroup.org.     *
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ -->
+
+
+<!-- NEW PAGE -->
+<!-- HEADER RIGHT "H5Fget_access_plist" -->
+<hr>
+<dl>
+
+<dt><div align=right><font color=999999 size=-1><i>
+    Last modified: 16 September 2014
+    </i></font></div>
+
+<dt><strong>Name:</strong> <a name="File-GetAccessPlist">H5Fget_access_plist</a>
+<dt><strong>Signature:</strong>
+    <dd><em>hid_t </em><code>H5Fget_access_plist</code>(<em>hid_t</em> <code>file_id</code>)
+<dt><strong>Purpose:</strong>
+        <dd>Returns a file access property list identifier.
+<dt><strong>Description:</strong>
+        <dd><code>H5Fget_access_plist</code> returns the 
+            file access property list identifier of the specified file.
+            <p>
+            See &ldquo;File Access Properties&rdquo; in 
+            <a href="RM_H5P.html">H5P: Property List Interface</a> 
+            in this reference manual and 
+            &ldquo;File Access Properties&rdquo; 
+            in 
+            <a href="../UG/HDF5_Users_Guide-Responsive&#32;HTML5/index.html#t=HDF5_Users_Guide%2FTheFile%2FThe_HDF5_File.htm%23TOC_3_10_3_File_Accessbc-16&rhtocid=3.2.0_3">
+            &ldquo;The HDF5 File&rdquo;</a> chapter in the 
+            <cite>HDF5 User&rsquo;s Guide</cite> for more information.
+<dt><strong>Parameters:</strong>
+    <ul><table>
+        <tr>
+            <td valign="top"><em>hid_t</em>&nbsp;<code>file_id&nbsp;&nbsp;&nbsp;&nbsp;</code></td>
+            <td valign="top">IN: Identifier of file to get access property list of</td></tr>
+    </table></ul>
+<dt><strong>Returns:</strong>
+    <dd>Returns a file access property list identifier if successful;
+        otherwise returns a negative value.
+<dt><strong>Fortran90 Interface:</strong> h5fget_access_plist_f
+    <dd>
+    <pre>
+SUBROUTINE h5fget_access_plist_f(file_id, fcpl_id, hdferr)
+
+  IMPLICIT NONE 
+  INTEGER(HID_T), INTENT(IN)   :: file_id ! File identifier
+  INTEGER(HID_T), INTENT(OUT)  :: fapl_id ! File access property list identifier
+  INTEGER, INTENT(OUT)         :: hdferr  ! Error code 
+                                          ! 0 on success and -1 on failure
+END SUBROUTINE h5fget_access_plist_f
+    </pre>
+
+        <!--<dt><strong>Non-C API(s):</strong>
+        <dd>
+        
+        <img src="Graphics/Java.gif"> 
+        <img src="Graphics/C++.gif">
+        -->
+</dl>
+
+
+
+<!--
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+  * Copyright by The HDF Group.                                               *
+  * Copyright by the Board of Trustees of the University of Illinois.         *
+  * All rights reserved.                                                      *
+  *                                                                           *
+  * This file is part of HDF5.  The full HDF5 copyright notice, including     *
+  * terms governing use, modification, and redistribution, is contained in    *
+  * the files COPYING and Copyright.html.  COPYING can be found at the root   *
+  * of the source code distribution tree; Copyright.html can be found at the  *
+  * root level of an installed copy of the electronic HDF5 document set and   *
+  * is linked from the top-level documents page.  It can also be found at     *
+  * http://hdfgroup.org/HDF5/doc/Copyright.html.  If you do not have          *
+  * access to either file, you may request a copy from help@hdfgroup.org.     *
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ -->
+
+
+<!-- NEW PAGE -->
+<!-- HEADER RIGHT "H5Fget_create_plist" -->
+<hr>
+<dl>
+
+<dt><div align=right><font color=999999 size=-1><i>
+    Last modified: 16 September 2014
+    </i></font></div>
+
+<dt><strong>Name:</strong> <a name="File-GetCreatePlist">H5Fget_create_plist</a>
+<dt><strong>Signature:</strong>
+    <dd><em>hid_t </em><code>H5Fget_create_plist</code>(<em>hid_t</em> <code>file_id</code>
+        )
+<dt><strong>Purpose:</strong>
+        <dd>Returns a file creation property list identifier.
+<dt><strong>Description:</strong>
+        <dd><code>H5Fget_create_plist</code> returns a file creation 
+            property list identifier identifying the creation properties 
+            used to create this file.  This function is useful for 
+            duplicating properties when creating another file.
+            <p>
+            See &ldquo;File Creation Properties&rdquo; in 
+            <a href="RM_H5P.html">H5P: Property List Interface</a> 
+            in this reference manual and 
+            &ldquo;File Creation Properties&rdquo; 
+            in 
+            <a href="../UG/HDF5_Users_Guide-Responsive&#32;HTML5/index.html#t=HDF5_Users_Guide%2FTheFile%2FThe_HDF5_File.htm%23TOC_3_10_2_File_Creationbc-15&rhtocid=3.2.0_2">
+            &ldquo;The HDF5 File&rdquo;</a> chapter in the 
+            <cite>HDF5 User&rsquo;s Guide</cite> for more information.
+            <p>
+            The creation property list identifier should be released with 
+            <a href="RM_H5P.html#Property-Close"><code>H5Pclose</code></a>.
+<dt><strong>Parameters:</strong>
+    <ul><table>
+        <dt>
+            <td valign="top"><em>hid_t</em>&nbsp;<code>file_id&nbsp;&nbsp;&nbsp;&nbsp;</code></td>
+            <td valign="top">IN: File identifier</td></tr>
+    </table></ul>
+<dt><strong>Returns:</strong>
+    <dd>Returns a file creation property list identifier if successful;
+        otherwise returns a negative value.
+<dt><strong>Fortran90 Interface:</strong> h5fget_create_plist_f
+    <dd>
+    <pre>
+SUBROUTINE h5fget_create_plist_f(file_id, fcpl_id, hdferr)
+
+  IMPLICIT NONE 
+  INTEGER(HID_T), INTENT(IN)   :: file_id ! File identifier
+  INTEGER(HID_T), INTENT(OUT)  :: fcpl_id ! File creation property list 
+                                          ! identifier
+  INTEGER, INTENT(OUT)         :: hdferr  ! Error code 
+                                          ! 0 on success and -1 on failure
+END SUBROUTINE h5fget_create_plist_f
+    </pre>
+
+        <!--<dt><strong>Non-C API(s):</strong>
+        <dd>
+        
+        <img src="Graphics/Java.gif"> 
+        <img src="Graphics/C++.gif">
+        -->
+</dl>
+
+
+
+
+<!--
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+  * Copyright by The HDF Group.                                               *
+  * All rights reserved.                                                      *
+  *                                                                           *
+  * This file is part of HDF5.  The full HDF5 copyright notice, including     *
+  * terms governing use, modification, and redistribution, is contained in    *
+  * the files COPYING and Copyright.html.  COPYING can be found at the root   *
+  * of the source code distribution tree; Copyright.html can be found at the  *
+  * root level of an installed copy of the electronic HDF5 document set and   *
+  * is linked from the top-level documents page.  It can also be found at     *
+  * http://www.hdfgroup.org/HDF5/doc/Copyright.html.  If you do not have      *
+  * access to either file, you may request a copy from help@hdfgroup.org.     *
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ -->
+
+
+<!-- NEW PAGE -->
+<!-- HEADER RIGHT "H5Fget_file_image" -->
+<hr>
+<dl>
+
+  <dt><div align=right><font color=999999 size=-1><i>
+      Last modified: 2 May 2014
+      </i></font></div>
+
+  <dt><strong>Name:</strong> <a name="File-GetFileImage">H5Fget_file_image</a>
+
+  <dt><strong>Signature:</strong>
+    <dd><em>ssize_t</em> <code>H5Fget_file_image</code>(
+            <em>hid_t </em><code>file_id</code>,
+            <em>void *</em><code>buf_ptr</code>,
+            <em>size_t *</em><code>buf_len</code>
+        )
+
+  <p>
+  <dt><strong>Purpose:</strong>
+    <dd>Retrieves a copy of the image of an existing, open file.
+
+
+  <p>
+  <dt><strong>Motivation:</strong>
+    <dd><code>H5Fget_file_image</code> and other elements of HDF5 are
+      used to load an image of an HDF5 file into system memory and open 
+      that image as a regular HDF5 file.
+      An application can then use the file without the overhead of disk I/O.
+
+  <p>
+  <dt><strong>Recommended Reading:</strong>
+    <dd>This function is part of the file image operations feature set.
+      It is highly recommended to study the guide
+      &ldquo;<a href="../Advanced/FileImageOperations/HDF5FileImageOperations.pdf"
+      >HDF5 File Image Operations</a>&rdquo; before using this feature set.
+      <p>
+      See the &ldquo;See Also&rdquo; section below for links to 
+      other elements of HDF5 file image operations.
+
+  <p>
+  <dt><strong>Description:</strong>
+    <dd><code>H5Fget_file_image</code> 
+      retrieves a copy of the image of an existing, open file.
+      This routine can be used with files opened using the 
+      <small>SEC2</small> (or <small>POSIX</small>), 
+      <small>STDIO,</small> and 
+      Core (or Memory) virtual file drivers (VFDs).
+      <p>
+      If the return value of <code>H5Fget_file_image</code> 
+      is a positive value, it will be the length in bytes of the buffer 
+      required to store the file image. 
+      So if the file size is unkown, it can be safely determined 
+      with an initial <code>H5Fget_file_image</code> call with 
+      <code>buf_ptr</code> set to <code>NULL</code>.
+      The file image can then be retrieved with a second 
+      <code>H5Fget_file_image</code> with <code>buf_len</code> 
+      set to the initial call&rsquo;s return value.
+      <p>
+      While the current file size can also be retrieved with 
+      <code>H5Fget_filesize</code>, that call may produce a larger 
+      value than is needed.  
+      The value returned by <code>H5Fget_filesize</code> includes 
+      the user block, if it exists, and any unallocated space
+      at the end of the file.  
+      It is safe in all situations to get the file size with 
+      <code>H5Fget_file_image</code> and it often produces a value 
+      that is more appropriate for the size of a file image buffer.
+
+
+<!--__ *** NOTES AND WARNINGS ************************************  -->
+
+<!--
+      <p>
+      <b>Note/Warning:</b> 
+
+
+<font color="red">
+Anything here?
+</font>
+-->
+
+  <p>
+  <dt><strong>Parameters:</strong>
+    <dd>
+    <table>
+      <tr valign="top">
+        <td><em>hid_t </em><code>file_id</code>
+            </td><td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        <td>IN: Target file identifier
+            </td></tr>
+      <tr valign="top">
+        <td><em>void *</em><code>buf_ptr</code>
+            </td><td>&nbsp;</td>
+        <td>IN: Pointer to the buffer into which the image of the HDF5 file 
+                is to be copied
+                <p>
+                If <code>buf_ptr</code> is <code>NULL</code>, 
+                no data will be copied but the function&rsquo;s 
+                return value will still indicate the buffer size required
+                (or a negative value on error).
+            </td></tr>
+      <tr valign="top">
+        <td><em>size_t&nbsp;*</em><code>buf_len</code>
+            </td><td>&nbsp;</td>
+        <td>IN: Size of the supplied buffer
+            </td></tr>
+    </table>
+
+  <p>
+  <dt><strong>Returns:</strong>
+    <dd>If successful, returns the size in bytes of the 
+        buffer required to store the file image  if successful;
+        otherwise returns a negative value.
+
+  <p>
+  <dt><strong>Failure Modes:</strong>
+    <dd><code>H5Pget_file_image</code> will fail, returning a negative value,
+      if the file is too large for the supplied buffer.
+
+<!--
+<font color="red">
+<p>
+Others?
+</font>
+-->
+
+<!--
+  <p>
+  <dt><strong>Example Usage:</strong>
+
+    <dd>Discuss the elements in the first usage example here.
+<dir><pre>
+Complete usage example line(s) for the first example here
+</pre></dir>
+    <p>
+
+    <dd>Discuss the elements in the second usage example here.
+<dir><pre>
+Complete usage example line(s) for the second example here
+</pre></dir>
+  <p>
+-->
+
+  <p>
+  <dt><strong>Fortran2003 Interface:</strong> h5fget_file_image_f
+    <dd>
+
+        <a name="h5fget_file_image_f_F03"></a>
+
+<p class="item_name"><strong>Signature</strong>:</p>
+<pre class="source">  SUBROUTINE h5fget_file_image_f(file_id, buf_ptr, buf_len, hdferr, buf_size)
+    USE, INTRINSIC :: ISO_C_BINDING
+    IMPLICIT NONE
+    INTEGER(HID_T) , INTENT(IN)              :: file_id
+    TYPE(C_PTR)    , INTENT(INOUT)           :: buf_ptr
+    INTEGER(SIZE_T), INTENT(IN)              :: buf_len
+    INTEGER        , INTENT(OUT)             :: hdferr
+    INTEGER(SIZE_T), INTENT(OUT)  , OPTIONAL :: buf_size
+</pre>
+<p class="item_name"><strong>Inputs:</strong></p>
+<pre>  file_id    - Target file identifier.
+  buf_ptr    - Pointer to the buffer into which the image of the HDF5 file is to be copied.
+  buf_len    - Size of the supplied buffer.
+</pre>
+<p class="item_name"><strong>Outputs:</strong></p>
+<pre>  hdferr     - error code:
+                 0 on success and -1 on failure
+</pre>
+<p class="item_name"><strong>Optional parameters:</strong></p>
+<pre>  buf_size   - Returns the size in bytes of the buffer required to store the file image,
+               no data will be copied.
+</pre>
+
+
+  <p>
+  <dt><strong>See Also:</strong>
+    <dd><table width="100%" border="0">
+      <tr valign="top"><td>
+        <a href="../HL/RM_H5LT.html#H5LTopen_file_image">
+            <code>H5LTopen_file_image</code></a>
+        <br>&nbsp;
+        <br>
+<!--
+        <a href="../RM/RM_H5F.html#File-GetFileImage">
+            <code>H5Fget_file_image</code></a>
+        <br>&nbsp;
+        <br>
+-->
+        <a href="RM_H5P.html#Property-SetFileImage">
+            <code>H5Pset_file_image</code></a>
+        <br>
+        <a href="RM_H5P.html#Property-GetFileImage">
+            <code>H5Pget_file_image</code> </a>
+        <br>&nbsp;
+        <br>
+        <a href="RM_H5P.html#Property-SetFileImageCallbacks">
+            <code>H5Pset_file_image_callbacks</code></a>
+        <br>
+        <a href="RM_H5P.html#Property-GetFileImageCallbacks">
+            <code>H5Pget_file_image_callbacks</code></a>
+      </td><td><code>&nbsp;&nbsp;&nbsp;&nbsp;</code></td>
+      <td>
+        &ldquo;<a 
+        href="../Advanced/FileImageOperations/HDF5FileImageOperations.pdf">HDF5 
+            File Image Operations</a>&rdquo;
+            <br><code>&nbsp;&nbsp;&nbsp;&nbsp;</code>
+            in <a href="../Advanced.html"><cite>Advanced Topics in HDF5</cite></a>
+        <br>&nbsp;
+        <br>
+        Within <code>H5Pset_file_image_callbacks</code></a>:
+        <br>
+        Callback struct &nbsp; 
+        <a href="RM_H5P.html#Property-SetFileImageCallbacksStruct,Enum">
+            <code>H5_file_image_callbacks_t</code></a>
+        <br>
+        Callback <small>ENUM</small> &nbsp; 
+        <a href="RM_H5P.html#Property-SetFileImageCallbacksStruct,Enum">
+            <code>H5_file_image_op_t</code></a>
+      </td>
+      </table>
+
+  <p>
+  <dt><strong>History:</strong>
+    <dd><table width="90%">
+        <tr>
+          <td valign="top" align="left" width="10%">
+            <strong>Release</strong>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <td valign="top" align="left">
+            <strong>Change</strong></td>
+        </tr>
+        <tr>
+          <td valign="top">1.8.13</td>
+          <td valign="top">
+              Fortran subroutine added in this release.</td></tr>
+        <tr>
+          <td valign="top">1.8.9</td>
+          <td valign="top">
+            C function introduced in this release.</td>
+        </tr>
+        </table>
+
+</dl>
+
+
+
+<!--
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+  * Copyright by The HDF Group.                                               *
+  * Copyright by the Board of Trustees of the University of Illinois.         *
+  * All rights reserved.                                                      *
+  *                                                                           *
+  * This file is part of HDF5.  The full HDF5 copyright notice, including     *
+  * terms governing use, modification, and redistribution, is contained in    *
+  * the files COPYING and Copyright.html.  COPYING can be found at the root   *
+  * of the source code distribution tree; Copyright.html can be found at the  *
+  * root level of an installed copy of the electronic HDF5 document set and   *
+  * is linked from the top-level documents page.  It can also be found at     *
+  * http://hdfgroup.org/HDF5/doc/Copyright.html.  If you do not have          *
+  * access to either file, you may request a copy from help@hdfgroup.org.     *
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ -->
+
+
+<!-- NEW PAGE -->
+<!-- HEADER RIGHT "H5Fget_filesize" -->
+<hr>
+<dl>
+<dt><div align=right><font color=999999 size=-1><i>
+    Last modified: 17 November 2010
+    </i></font></div>
+
+<dt><strong>Name:</strong> <a name="File-GetFilesize">H5Fget_filesize</a>
+<dt><strong>Signature:</strong>
+    <dd><em>herr_t </em><code>H5Fget_filesize</code>(
+                        <em>hid_t</em> <code>file_id</code>,
+                        <em>hsize_t *</em><code>size</code>
+        )
+
+<p />
+<dt><strong>Purpose:</strong>
+        <dd>Returns the size of an HDF5 file.
+
+<p />
+<dt><strong>Description:</strong>
+    <dd><code>H5Fget_filesize</code> returns the size
+        of the HDF5 file specified by <code>file_id</code>.
+        <p>
+        The returned size is that of the entire file, 
+        as opposed to only the HDF5 portion of the file.
+        I.e., <code>size</code> includes the user block, if any, 
+        the HDF5 portion of the file, and
+        any data that may have been appended 
+        beyond the data written through the HDF5 Library.
+
+<p />
+<dt><strong>Parameters:</strong>
+    <dl>
+        <dt><em>hid_t</em> <code>file_id</code>
+            <dd>IN: Identifier of a currently-open HDF5 file
+        <dt><em>hsize_t *</em><code>size</code>
+            <dd>OUT: Size of the file, in bytes.
+    </dl>
+
+<p />
+<dt><strong>Returns:</strong>
+    <dd>Returns a non-negative value if successful;
+        otherwise returns a negative value.
+
+<p />
+<dt><strong>Fortran90 Interface:</strong> h5fget_filesize_f
+    <dd>
+    <pre>
+SUBROUTINE h5fget_filesize_f(file_id, size, hdferr)
+
+  IMPLICIT NONE
+  INTEGER(HID_T), INTENT(IN) :: file_id    ! file identifier
+  INTEGER(HSIZE_T), INTENT(OUT) :: size    ! Size of the file 
+  INTEGER, INTENT(OUT) :: hdferr           ! Error code: 0 on success,
+                                           ! -1 if fail
+END SUBROUTINE h5fget_filesize_f 
+    </pre>
+
+<p />
+<dt><strong>History:</strong>
+    <ul><table width="90%">
+        <tr>
+          <td valign="top" align="left" width="10%">
+            <strong>Release</strong>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <td valign="top" align="left">
+            <strong>C</strong></td></tr>
+        <tr>
+          <td valign="top">1.6.3</td>
+          <td valign="top">
+            Function introduced in this release.<br>
+            Fortran subroutine introduced in this release.</td></tr>
+    </table></ul>
+</dl>
+
+
+
+
+<!--
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+  * Copyright by The HDF Group.                                               *
+  * Copyright by the Board of Trustees of the University of Illinois.         *
+  * All rights reserved.                                                      *
+  *                                                                           *
+  * This file is part of HDF5.  The full HDF5 copyright notice, including     *
+  * terms governing use, modification, and redistribution, is contained in    *
+  * the files COPYING and Copyright.html.  COPYING can be found at the root   *
+  * of the source code distribution tree; Copyright.html can be found at the  *
+  * root level of an installed copy of the electronic HDF5 document set and   *
+  * is linked from the top-level documents page.  It can also be found at     *
+  * http://hdfgroup.org/HDF5/doc/Copyright.html.  If you do not have          *
+  * access to either file, you may request a copy from help@hdfgroup.org.     *
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ -->
+
+
+<!-- NEW PAGE -->
+<!-- HEADER RIGHT "H5Fget_freespace" -->
+<hr>
+<dl>
+<dt><strong>Name:</strong> <a name="File-GetFreespace">H5Fget_freespace</a>
+<dt><strong>Signature:</strong>
+    <dd><em>hssize_t </em><code>H5Fget_freespace</code>(<em>hid_t</em> <code>file_id</code>)
+<dt><strong>Purpose:</strong>
+        <dd>Returns the amount of free space in a file.
+<dt><strong>Description:</strong>
+    <dd>Given the identifier of an open file, <code>file_id</code>, 
+        <code>H5Fget_freespace</code> returns the amount of space that is
+        unused by any objects in the file.
+        <p>
+        Currently, the HDF5 library only tracks free space in a file from a
+        file open or create until that file is closed, so this routine will
+        only report the free space that has been created during that
+        interval.
+<dt><strong>Parameters:</strong>
+    <ul><table>
+        <tr>
+            <td valign="top"><em>hid_t</em>&nbsp;<code>file_id&nbsp;&nbsp;&nbsp;&nbsp;</code></td>
+            <td valign="top">IN: Identifier of a currently-open HDF5 file</td></tr>
+    </table></ul>
+<dt><strong>Returns:</strong>
+    <dd>Returns the amount of free space in the file if successful;
+        otherwise returns a negative value.
+<dt><strong>Fortran90 Interface:</strong> h5fget_freespace_f
+    <dd>
+    <pre>
+SUBROUTINE h5fget_freespace_f(file_id, free_space, hdferr)
+
+  IMPLICIT NONE 
+  INTEGER(HID_T), INTENT(IN)  :: file_id       ! File identifier
+  INTEGER(HSSIZE_T), INTENT(OUT) :: free_space ! Amount of free space in file
+  INTEGER, INTENT(OUT)        :: hdferr        ! Error code 
+                                               ! 0 on success and -1 on failure
+END SUBROUTINE h5fget_freespace_f 
+    </pre>
+
+        <!--<dt><strong>Non-C API(s):</strong>
+        <dd>
+        
+        <img src="Graphics/Java.gif"> 
+        <img src="Graphics/C++.gif">
+        -->
+<dt><strong>History:</strong>
+	<ul><table width="90%">
+        <tr>
+		  <td valign="top" align="left" width="10%">
+		    <strong>Release</strong>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <td valign="top" align="left">
+		    <strong>C</strong></td></tr>
+        <tr>
+		  <td valign="top">1.6.1</td>
+          <td valign="top">
+		    Function introduced in this release.</td></tr>
+    </table></ul>
+</dl>
+
+
+
+
+<!--
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+  * Copyright by The HDF Group.                                               *
+  * Copyright by the Board of Trustees of the University of Illinois.         *
+  * All rights reserved.                                                      *
+  *                                                                           *
+  * This file is part of HDF5.  The full HDF5 copyright notice, including     *
+  * terms governing use, modification, and redistribution, is contained in    *
+  * the files COPYING and Copyright.html.  COPYING can be found at the root   *
+  * of the source code distribution tree; Copyright.html can be found at the  *
+  * root level of an installed copy of the electronic HDF5 document set and   *
+  * is linked from the top-level documents page.  It can also be found at     *
+  * http://hdfgroup.org/HDF5/doc/Copyright.html.  If you do not have          *
+  * access to either file, you may request a copy from help@hdfgroup.org.     *
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ -->
+
+
+<!-- NEW PAGE -->
+<!-- HEADER RIGHT "H5Fget_info" -->
+<hr>
+<dl>
+  <dt><strong>Name:</strong> <a name="File-GetInfo">H5Fget_info</a>
+  <dt><strong>Signature:</strong>
+    <dd><em>herr_t</em> <code>H5Fget_info</code>(
+    <em>hid_t</em> <code>obj_id</code>, 
+    <em>H5F_info_t *</em><code>file_info</code>
+    )
+  <p>
+  <dt><strong>Purpose:</strong>
+    <dd>Returns global information for a file.
+  <p>
+  <dt><strong>Description:</strong>
+    <dd><code>H5Fget_info</code> returns global information 
+      for the file associated with the object identifier <code>obj_id</code>
+      in the <em>H5F_info_t</em> struct named <code>file_info</code>.
+      <p>
+      <code>obj_id</code> is an identifier for any object 
+      in the file of interest.
+      <p>
+      An <em>H5F_info_t</em> struct is defined as follows 
+      (in <code>H5Fpublic.h</code>):
+<pre>
+        typedef struct H5F_info_t {
+            hsize_t           super_ext_size; 
+            struct {
+                hsize_t       hdr_size;      
+                H5_ih_info_t  msgs_info;      
+            } sohm;
+        } H5F_info_t; 
+</pre>
+      <code>super_ext_size</code> is the size of the superblock extension.
+      <p>
+      The <em>sohm</em> sub-struct contains shared object header message
+      information:
+      <code>hdr_size</code> is the size of shared of object header messages.
+      <code>msgs_info</code> is a <code>H5_ih_info_t</code> struct 
+      containing the cumulative shared object header message index size 
+      and heap size;
+      an <em>H5_ih_info_t</em> struct is defined as follows 
+      (in <code>H5public.h</code>):
+<pre>
+        typedef struct H5_ih_info_t {
+            hsize_t     index_size;     
+            hsize_t     heap_size;
+        } H5_ih_info_t;
+</pre>
+      <code>index_size</code> is the summed size of all of the 
+      shared of object header indexes.  
+      Each index might be either a B-tree or a list.
+      <code>heap_size</code> is the size of the heap.
+  <p>
+  <dt><strong>Parameters:</strong>
+    <dd><table>
+      <tr>
+        <td valign="top"><em>hid_t</em> <code>obj_id</code>, 
+        </td>
+        <td valign="top">IN: Object identifier for any object in the file.
+        </td></tr>
+      <tr>
+        <td valign="top"><em>H5F_info_t&nbsp;*</em><code>file_info&nbsp;&nbsp;</code>
+        </td>
+        <td valign="top">OUT: Struct containing global file information.
+        </td></tr>
+    </table>
+  <p>
+  <dt><strong>Returns:</strong>
+    <dd>Returns a non-negative value if successful;
+        otherwise returns a negative value.
+  <p>
+  <dt><strong>Fortran90 Interface:</strong> <!-- h5fget_info_f -->
+    <dd>None.
+<!--
+    <pre>
+  
+    </pre>
+-->
+  <p>
+  <dt><strong>History:</strong>
+    <dd><table width="90%">
+        <tr>
+          <td valign="top" align="left" width="10%">
+            <strong>Release</strong>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <td valign="top" align="left">
+            <strong>C</strong></td></tr>
+        <tr>
+          <td valign="top">1.8.0</td>
+          <td valign="top">
+            Function introduced in this release.</td></tr>
+    </table>
+</dl>
+
+
+
+
+<!--
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+  * Copyright by The HDF Group.                                               *
+  * Copyright by the Board of Trustees of the University of Illinois.         *
+  * All rights reserved.                                                      *
+  *                                                                           *
+  * This file is part of HDF5.  The full HDF5 copyright notice, including     *
+  * terms governing use, modification, and redistribution, is contained in    *
+  * the files COPYING and Copyright.html.  COPYING can be found at the root   *
+  * of the source code distribution tree; Copyright.html can be found at the  *
+  * root level of an installed copy of the electronic HDF5 document set and   *
+  * is linked from the top-level documents page.  It can also be found at     *
+  * http://hdfgroup.org/HDF5/doc/Copyright.html.  If you do not have          *
+  * access to either file, you may request a copy from help@hdfgroup.org.     *
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ -->
+
+
+<!-- NEW PAGE -->
+<!-- HEADER RIGHT "H5Fget_intent" -->
+<hr />
+<dl>
+
+<dt><div align="right"><font color="999999" size="-1"><i>
+    Last modified: 17 March 2014
+    </i></font></div></dt>
+    <br />
+
+<dt><strong>Name:</strong> <a name="File-GetIntent">H5Fget_intent</a>
+</dt><br />
+
+<dt><strong>Signature:</strong></dt>
+    <dd><code><em>herr_t </em> H5Fget_intent(<em>hid_t</em> file_id,
+        <em>unsigned</em> *intent</code>)</dd>
+        <br />
+<dt><strong>Purpose:</strong></dt>
+    <dd>Determines the read/write or read-only status of a file.</dd>
+    <br />
+    
+<dt><strong>Description:</strong>
+    <dd>Given the identifier of an open file, <code>file_id</code>, 
+    <code>H5Fget_intent</code> retrieves the 
+    &ldquo;intended access mode&rdquo; flag 
+    passed with <a href="RM_H5F.html#File-Open"><code>H5Fopen</code></a> 
+	when the file was opened.
+    <br />
+    
+    <p>The value of the flag is returned in <code>intent</code>.
+    Valid values are as follows:</p>
+    
+    <dir>
+    <table width="100%">
+        <tr>
+        <td width="10%"><code>H5F_ACC_RDWR</code></td>
+        <td width="90%">File was opened with read/write access.</td></tr>
+        <tr>
+        <td><code>H5F_ACC_RDONLY</code></td>
+        <td>File was opened with read-only access.</td></tr>
+        </table>
+        </dir>
+        
+        <p>The function will not return an error if <code>intent</code>
+        is <code>NULL</code>; it will simply do nothing.</p></dd>
+        
+<dt><strong>Parameters:</strong></dt>
+    <dd><table width="100%">
+        <tr>
+        <td width="10%"><code><em>hid_t</em> file_id</code></td>
+        <td width="90%">IN: File identifier for a 
+            currently-open HDF5 file.</td></tr>
+        <tr>
+            <td><code><em>unsigned</em> *intent</code></td>
+            <td>OUT: Intended access mode flag 
+            as originally passed with <code>H5Fopen</code>.</td>
+        </tr></table></dd>
+        <br />
+        
+<dt><strong>Returns:</strong></dt>
+    <dd>Returns a non-negative value if successful; otherwise returns 
+    a negative value.</dd>
+        <br />
+        
+<dt><strong>Fortran90 Interface:</strong></dt>
+    <dd>None</dd>
+    <br />
+<!--
+<dt><strong>Fortran90 Interface:</strong> h5fget_intent_f
+    <dd>
+    <pre>
+    </pre>
+-->
+        <!--<dt><strong>Non-C API(s):</strong>
+        <dd>
+        
+        <img src="Graphics/Java.gif"> 
+        <img src="Graphics/C++.gif">
+        -->
+        
+<dt><strong>History:</strong></dt>
+	<dd><table width="90%">
+        <tr>
+          <td valign="top" align="left" width="10%">
+          <strong>Release</strong>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <td valign="top" align="left">
+            <strong>Change</strong></td></tr>
+        <tr>
+          <td>1.8.0</td>
+          <td>C function introduced in this release.</td></tr>
+
+    </table></dd>
+</dl>
+<br />
+<br />
+<br />
+
+
+
+
+<!--
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+  * Copyright by The HDF Group.                                               *
+  * Copyright by the Board of Trustees of the University of Illinois.         *
+  * All rights reserved.                                                      *
+  *                                                                           *
+  * This file is part of HDF5.  The full HDF5 copyright notice, including     *
+  * terms governing use, modification, and redistribution, is contained in    *
+  * the files COPYING and Copyright.html.  COPYING can be found at the root   *
+  * of the source code distribution tree; Copyright.html can be found at the  *
+  * root level of an installed copy of the electronic HDF5 document set and   *
+  * is linked from the top-level documents page.  It can also be found at     *
+  * http://hdfgroup.org/HDF5/doc/Copyright.html.  If you do not have          *
+  * access to either file, you may request a copy from help@hdfgroup.org.     *
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ -->
+
+
+<!-- NEW PAGE -->
+<!-- HEADER RIGHT "H5Fget_mdc_config" -->
+<hr>
+<dl>
+<dt><strong>Name:</strong> <a name="File-GetMdcConfig">H5Fget_mdc_config</a>
+<dt><strong>Signature:</strong>
+    <dd><em>herr_t</em> <code>H5Fget_mdc_config</code>(<em>hid_t</em> 
+      <code>file_id</code>, <em>H5AC_cache_config_t *</em><code>config_ptr</code>)
+<dt><strong>Purpose:</strong>
+    <dd>Obtain current metadata cache configuration for target file.
+<dt><strong>Description:</strong>
+    <dd><code>H5Fget_mdc_config</code> loads the current metadata cache 
+      configuration into the instance of <code>H5AC_cache_config_t</code> 
+      pointed to by the <code>config_ptr</code> parameter.
+
+    <p>Note that the version field of *<code>config_ptr</code> must 
+      be initialized --this allows the library to support old versions 
+      of the <code>H5AC_cache_config_t</code> structure.
+
+    <p>See the overview of the metadata cache in the special topics section 
+      of the user manual for details on metadata cache configuration. 
+      If you haven't read and understood that documentation, the results 
+      of this call will not make much sense.
+<dt><strong>Parameters:</strong>
+    <ul><table>
+        <tr>
+            <td valign="top"><em>hid_t</em>&nbsp;<code>file_id&nbsp;&nbsp;&nbsp;&nbsp;</code></td>
+            <td valign="top">IN: Identifier of the target file</td></tr>
+        <tr>
+            <td valign="top"><em>H5AC_cache_config_t&nbsp;*</em><code>config_ptr</code>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td valign="top">IN/OUT: Pointer to the instance of H5AC_cache_config_t 
+              in which the current metadata cache configuration is to be reported. 
+              The fields of this structure are discussed below:</td></tr>
+        <tr>
+          <td colspan="2">&nbsp;</td>
+        </tr>
+        <tr>
+          <td colspan="2"><strong>General configuration section:</strong></td>
+        </tr>
+        <tr>
+            <td valign="top"><em>int</em> <code>version</code>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td valign="top">IN: Integer field indicating the the version 
+              of the H5AC_cache_config_t in use.  This field should be 
+              set to H5AC__CURR_CACHE_CONFIG_VERSION 
+              (defined in H5ACpublic.h).</td></tr>
+        <tr>
+            <td valign="top"><em>hbool_t</em> <code>rpt_fcn_enabled</code>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td valign="top">OUT: Boolean flag indicating whether the adaptive 
+              cache resize report function is enabled.  This field should almost 
+              always be set to FALSE. Since resize algorithm activity is reported 
+              via stdout, it MUST be set to FALSE on Windows machines.
+              <p>The report function is not supported code, and can be 
+              expected to change between versions of the library.  
+              Use it at your own risk.</td></tr>
+
+
+
+        <tr>    
+            <td valign="top"><em>hbool_t</em> <code>open_trace_file</code>
+              &nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td valign="top">OUT: Boolean field indicating whether 
+              the <code>trace_file_name</code> field should be 
+              used to open a trace file for the 
+              cache.  This field will always be 
+              set to <code>FALSE</code> in this context.</td></tr>
+        <tr>    
+            <td valign="top"><em>hbool_t</em> <code>close_trace_file</code>
+              &nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td valign="top">OUT: Boolean field indicating whether 
+              the current trace file (if any) should 
+              be closed.  This field will always 
+              be set to <code>FALSE</code> in this context.</td></tr>
+
+<!-- NEW PAGE -->
+
+        <tr>    
+            <td valign="top"><em>char *</em><code>trace_file_name</code>
+              &nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td valign="top">OUT:  Full path name of the trace file
+              to be opened if the <code>open_trace_file</code>
+              field is <code>TRUE</code>.  This field will always
+              be set to the empty string in this context.</td></tr>
+        <tr>
+            <td valign="top"><em>hbool_t</em> <code>evictions_enabled</code>
+              &nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td valign="top">OUT:  Boolean flag indicating whether 
+                metadata cache entry evictions are enabled.
+                </td></tr>
+        <tr>
+            <td valign="top"><em>hbool_t</em> <code>set_initial_size</code>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td valign="top">OUT: Boolean flag indicating whether the cache 
+              should be created with a user specified initial maximum size.
+              <p>If the configuration is loaded from the cache, 
+              this flag will always be FALSE.</td></tr>
+        <tr>
+            <td valign="top"><em>size_t</em> <code>initial_size</code>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td valign="top">OUT: Initial maximum size of the cache in bytes, 
+              if applicable.
+              <p>If the configuration is loaded from the cache, this 
+              field will contain the cache maximum size as of the 
+              time of the call.</td></tr>
+		<tr>
+            <td valign="top"><em>double</em> <code>min_clean_fraction</code>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td valign="top">OUT: Float value specifing the minimum fraction of the cache 
+	      that must be kept either clean or empty when possible.</td></tr>
+        <tr>
+            <td valign="top"><em>size_t</em> <code>max_size</code>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td valign="top">OUT: Upper bound (in bytes) on the range of 
+              values that the adaptive cache resize code can select as 
+              the maximum cache size.</td></tr>
+        <tr>
+            <td valign="top"><em>size_t</em> <code>min_size</code>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td valign="top">OUT: Lower bound (in bytes) on the range 
+              of values that the adaptive cache resize code can 
+              select as the maximum cache size.</td></tr>
+        <tr>
+            <td valign="top"><em>long int</em> <code>epoch_length</code>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td valign="top">OUT: Number of cache accesses between runs 
+              of the adaptive cache resize code.</td></tr>
+        <tr>
+          <td colspan="2">&nbsp;</td>
+        </tr>
+        <tr>
+          <td colspan="2"><strong>Increment configuration section:</strong></td>
+        </tr>
+        <tr>
+            <td valign="top"><em>enum&nbsp;H5C_cache_incr_mode</em>&nbsp;<code>incr_mode</code>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td valign="top">OUT: Enumerated value indicating the operational 
+              mode of the automatic cache size increase code.  At present,
+              only the following values are legal:
+              <p>H5C_incr__off: Automatic cache size increase is disabled.
+              <p>H5C_incr__threshold: Automatic cache size increase is 
+              enabled using the hit rate threshold algorithm.</td></tr>
+        <tr>
+            <td valign="top"><em>double</em> <code>lower_hr_threshold</code>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td valign="top">OUT: Hit rate threshold used in the hit rate 
+              threshold cache size increase algorithm.</td></tr>
+
+<!-- NEW PAGE -->
+
+        <tr>
+            <td valign="top"><em>double</em> <code>increment</code>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td valign="top">OUT: The factor by which the current maximum 
+              cache size is multiplied to obtain an initial new maximum cache
+              size if a size increase is triggered in the hit rate 
+              threshold cache size increase algorithm.</td></tr>
+        <tr>
+            <td valign="top"><em>hbool_t</em> <code>apply_max_increment</code>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td valign="top">OUT: Boolean flag indicating whether an upper 
+              limit will be applied to the size of cache size increases.</td></tr>
+        <tr>
+            <td valign="top"><em>size_t</em> <code>max_increment</code>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td valign="top">OUT: The maximum number of bytes by which the 
+              maximum cache size can be increased in a single step -- if
+              applicable.</td></tr>
+        <tr>
+            <td valign="top"><em>enum&nbsp;H5C_cache_flash_incr_mode</em>&nbsp;<code>flash_incr_mode</code>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td valign="top">OUT: Enumerated value indicating the operational mode of
+                          the flash cache size increase code.  At present, only the following
+                          values are legal:
+              <p>H5C_flash_incr__off:  Flash cache size increase is disabled.
+              <p>H5C_flash_incr__add_space:  Flash cache size increase is enabled using
+                          the add space algorithm.</td></tr>
+
+        <tr>
+                    <td valign="top"><em>double</em> <code>flash_threshold</code>
+                          &nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td valign="top">OUT: The factor by which the current maximum cache
+                          size is multiplied to obtain the minimum size
+                          entry / entry size increase which may trigger a
+                          flash cache size increase.</td></tr>
+
+        <tr>
+                    <td valign="top"><em>double</em> <code>flash_multiple</code>
+                          &nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td valign="top">OUT: The factor by which the size of the triggering
+                          entry / entry size increase is multiplied to obtain
+                          the initial cache size increment.  This increment
+                          may be reduced to reflect existing free space in
+                          the cache and the <code>max_size</code> field
+                          above.</td></tr>
+          <td colspan="2">&nbsp;</td>
+        </tr>
+<!-- NEW PAGE -->
+        <tr>
+          <td colspan="2"><strong>Decrement configuration section:</strong></td>
+        </tr>
+        <tr>
+            <td valign="top"><em>enum&nbsp;H5C_cache_decr_mode</em>&nbsp;<code>decr_mode</code>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td valign="top">OUT: Enumerated value indicating the operational 
+              mode of the automatic cache size decrease code.  At present,
+              the following values are legal:
+              <p>H5C_decr__off:  Automatic cache size decrease is disabled, 
+              and the remaining decrement fields are ignored.
+              <p>H5C_decr__threshold:  Automatic cache size decrease is 
+              enabled using the hit rate threshold algorithm.
+              <p>H5C_decr__age_out:  Automatic cache size decrease is enabled 
+              using the ageout algorithm.
+              <p>H5C_decr__age_out_with_threshold: Automatic cache size 
+              decrease is enabled using the ageout with hit rate 
+              threshold algorithm</td></tr>
+        <tr>
+            <td valign="top"><em>double</em> <code>upper_hr_threshold</code>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td valign="top">OUT: Upper hit rate threshold. This value is only 
+              used if the decr_mode is either H5C_decr__threshold or 
+              H5C_decr__age_out_with_threshold.</td></tr>
+        <tr>
+            <td valign="top"><em>double</em> <code>decrement</code>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td valign="top">OUT: Factor by which the current max cache size 
+              is multiplied to obtain an initial value for the new cache 
+              size when cache size reduction is triggered in the hit rate 
+              threshold cache size reduction algorithm.</td></tr>
+        <tr>
+            <td valign="top"><em>hbool_t</em> <code>apply_max_decrement</code>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td valign="top">OUT: Boolean flag indicating whether an upper 
+              limit should be applied to the size of cache size 
+              decreases.</td></tr>
+        <tr>
+            <td valign="top"><em>size_t</em> <code>max_decrement</code>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td valign="top">OUT: The maximum number of bytes by which cache 
+              size can be decreased if any single step, if applicable.</td></tr>
+        <tr>
+            <td valign="top"><em>int</em> <code>epochs_before_eviction</code>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td valign="top">OUT: The minimum number of epochs that an entry 
+              must reside unaccessed in cache before being evicted under 
+              either of the ageout cache size reduction algorithms.</td></tr>
+        <tr>
+            <td valign="top"><em>hbool_t</em> <code>apply_empty_reserve</code>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td valign="top">OUT: Boolean flag indicating whether an empty 
+              reserve should be maintained under either of the ageout 
+              cache size reduction algorithms.</td></tr>
+        <tr>
+            <td valign="top"><em>double</em> <code>empty_reserve</code>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td valign="top">OUT: Empty reserve for use with the ageout 
+              cache size reduction algorithms, if applicable.</td></tr>
+
+<!-- NEW PAGE -->
+
+        <tr>
+          <td colspan="2"><strong>Parallel configuration section:</strong></td>
+        </tr>
+		<tr>
+		    <td valign="top"><em>int</em> <code>dirty_bytes_threshold</code>
+			  &nbsp;&nbsp;&nbsp;&nbsp;</td>
+			<td valign="top">OUT: Threshold number of bytes of dirty metadata 
+			  generation for triggering synchronizations of the metadata caches 
+			  serving the target file in the parallel case.
+              <p>Synchronization occurs whenever the number of bytes of dirty 
+			  metadata created since the last synchronization exceeds this limit.</td>
+		</tr>
+
+    </table></ul>
+<dt><strong>Returns:</strong>
+  <dd>Returns a non-negative value if successful; otherwise returns a negative value.
+
+</dl>
+
+
+
+<!--
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+  * Copyright by The HDF Group.                                               *
+  * Copyright by the Board of Trustees of the University of Illinois.         *
+  * All rights reserved.                                                      *
+  *                                                                           *
+  * This file is part of HDF5.  The full HDF5 copyright notice, including     *
+  * terms governing use, modification, and redistribution, is contained in    *
+  * the files COPYING and Copyright.html.  COPYING can be found at the root   *
+  * of the source code distribution tree; Copyright.html can be found at the  *
+  * root level of an installed copy of the electronic HDF5 document set and   *
+  * is linked from the top-level documents page.  It can also be found at     *
+  * http://hdfgroup.org/HDF5/doc/Copyright.html.  If you do not have          *
+  * access to either file, you may request a copy from help@hdfgroup.org.     *
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ -->
+
+
+<!-- NEW PAGE -->
+<!-- HEADER RIGHT "H5Fget_mdc_hit_rate" -->
+<hr>
+<dl>
+<dt><strong>Name:</strong> <a name="File-GetMdcHitRate">H5Fget_mdc_hit_rate</a>
+<dt><strong>Signature:</strong>
+    <dd><em>herr_t</em> <code>H5Fget_mdc_hit_rate</code>(<em>hid_t</em> 
+      <code>file_id</code>, <em>double *</em><code>hit_rate_ptr</code>)
+<dt><strong>Purpose:</strong>
+    <dd>Obtain target file's metadata cache hit rate.
+<dt><strong>Description:</strong>
+    <dd>H5Fget_mdc_hit_rate queries the metadata cache of the target 
+      file to obtain its hit rate (cache hits / (cache hits + cache misses)) 
+      since the last time hit rate statistics were reset.  If the cache has 
+      not been accessed since the last time the hit rate stats were reset, 
+      the hit rate is defined to be 0.0.
+      <p>The hit rate stats can be reset either manually (via 
+      H5Freset_mdc_hit_rate_stats()), or automatically.  If the cache's 
+      adaptive resize code is enabled, the hit rate stats will be reset 
+      once per epoch.  If they are reset manually as well, 
+      the cache may behave oddly.
+      <p>See the overview of the metadata cache in the special 
+      topics section of the user manual for details on the metadata 
+      cache and its adaptive resize algorithms.
+<dt><strong>Parameters:</strong>
+    <ul><table>
+        <tr>
+            <td valign="top"><em>hid_t</em> <code>file_id</code></td>
+            <td valign="top">IN: Identifier of the target file.</td></tr>
+        <tr>
+            <td valign="top"><em>double&nbsp;*</em>&nbsp;<code>hit_rate_ptr</code>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td valign="top">OUT: Pointer to the double in which the 
+              hit rate is returned.  Note that *<code>hit_rate_ptr</code> is 
+              undefined if the API call fails.</td></tr>
+    </table></ul>
+<dt><strong>Returns:</strong>
+    <dd>Returns a non-negative value if successful; otherwise 
+      returns a negative value.
+
+</dl>
+
+
+
+<!--
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+  * Copyright by The HDF Group.                                               *
+  * Copyright by the Board of Trustees of the University of Illinois.         *
+  * All rights reserved.                                                      *
+  *                                                                           *
+  * This file is part of HDF5.  The full HDF5 copyright notice, including     *
+  * terms governing use, modification, and redistribution, is contained in    *
+  * the files COPYING and Copyright.html.  COPYING can be found at the root   *
+  * of the source code distribution tree; Copyright.html can be found at the  *
+  * root level of an installed copy of the electronic HDF5 document set and   *
+  * is linked from the top-level documents page.  It can also be found at     *
+  * http://hdfgroup.org/HDF5/doc/Copyright.html.  If you do not have          *
+  * access to either file, you may request a copy from help@hdfgroup.org.     *
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ -->
+
+
+<!-- NEW PAGE -->
+<!-- HEADER RIGHT "H5Fget_mdc_size" -->
+<hr>
+<dl>
+<dt><strong>Name:</strong> <a name="File-GetMdcSize">H5Fget_mdc_size</a>
+<dt><strong>Signature:</strong>
+    <dd><em>herr_t</em> <code>H5Fget_mdc_size</code>(<em>hid_t</em> <code>file_id</code>,
+                               <em>size_t *</em><code>max_size_ptr</code>,
+                               <em>size_t *</em><code>min_clean_size_ptr</code>,
+                               <em>size_t *</em><code>cur_size_ptr</code>,
+                               <em>int *</em><code>cur_num_entries_ptr</code>)
+<dt><strong>Purpose:</strong>
+    <dd>Obtain current metadata cache size data for specified file.
+<dt><strong>Description:</strong>
+    <dd>H5Fget_mdc_size queries the metadata cache of the target file 
+      for the desired size information, and returns this information in 
+      the locations indicated by the pointer parameters.  If any pointer 
+      parameter is NULL, the associated data is not returned.
+      <p>If the API call fails, the values returned via the pointer 
+      parameters are undefined.
+      <p>If adaptive cache resizing is enabled, the cache maximum size 
+      and minimum clean size may change at the end of each epoch. Current 
+      size and current number of entries can change on each cache access.
+      <p>Current size can exceed maximum size under certain conditions. 
+      See the overview of the metadata cache in the special topics 
+      section of the user manual for a discussion of this.
+<dt><strong>Parameters:</strong>
+    <ul><table>
+        <tr>
+            <td valign="top"><em>hid_t</em> <code>file_id</code></td>
+            <td valign="top">IN: Identifier of the target file.</td></tr>
+        <tr>
+            <td valign="top"><em>size_t *</em><code>max_size_ptr</code></td>
+            <td valign="top">OUT: Pointer to the location in which the 
+              current cache maximum size is to be returned, or NULL if 
+              this datum is not desired.</td></tr>
+        <tr>
+            <td valign="top"><em>size_t&nbsp;*</em><code>min_clean_size_ptr</code>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td valign="top">OUT: Pointer to the location in which the 
+              current cache minimum clean size is to be returned, or 
+              NULL if that datum is not desired.</td></tr>
+        <tr>
+            <td valign="top"><em>size_t *</em><code>cur_size_ptr</code></td>
+            <td valign="top">OUT: Pointer to the location in which the 
+              current cache size is to be returned, or NULL if that 
+              datum is not desired.</td></tr>
+        <tr>
+            <td valign="top"><em>int&nbsp;*</em><code>cur_num_entries_ptr
+              </code></td>
+            <td valign="top">OUT: Pointer to the location in which the 
+              current number of entries in the cache is to be returned, 
+              or NULL if that datum is not desired.</td></tr>
+    </table></ul>
+<dt><strong>Returns:</strong>
+    <dd>Returns a non-negative value if successful; otherwise returns a
+        negative value.
+
+</dl>
+
+
+
+<!--
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+  * Copyright by The HDF Group.                                               *
+  * All rights reserved.                                                      *
+  *                                                                           *
+  * This file is part of HDF5.  The full HDF5 copyright notice, including     *
+  * terms governing use, modification, and redistribution, is contained in    *
+  * the files COPYING and Copyright.html.  COPYING can be found at the root   *
+  * of the source code distribution tree; Copyright.html can be found at the  *
+  * root level of an installed copy of the electronic HDF5 document set and   *
+  * is linked from the top-level documents page.  It can also be found at     *
+  * http://www.hdfgroup.org/HDF5/doc/Copyright.html.  If you do not have      *
+  * access to either file, you may request a copy from help@hdfgroup.org.     *
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ -->
+
+
+<!-- NEW PAGE -->
+<!-- HEADER RIGHT "H5Fget_mpi_atomicity" -->
+<hr>
+<dl>
+
+  <dt><div align=right><font color=999999 size=-1><i>
+      Last modified: 18 April 2012
+      </i></font></div>
+
+  <dt><strong>Name:</strong> <a name="File-GetMpiAtomicity">H5Fget_mpi_atomicity</a>
+
+  <dt><strong>Signature:</strong>
+    <dd><em>herr_t</em> <code>H5Fget_mpi_atomicity</code>(
+            <em>hid_t</em> <code>file_id</code>,
+            <em>hbool_t *</em><code>flag</code>
+        )
+
+  <p>
+  <dt><strong>Purpose:</strong>
+    <dd>Retrieves the atomicity mode in use.
+
+  <p>
+  <dt><strong>Description:</strong>
+    <dd><code>H5Fget_mpi_atomicity</code> 
+      retrieves the current consistency semantics mode for data access
+      for the file <code>file_id</code>.
+      <p>
+      Upon successful return, <code>flag</code> will be set to 
+      <code>TRUE</code> if file access is set to atomic mode and
+      <code>FALSE</code> if file access is set to nonatomic mode.
+
+  <p>
+  <dt><strong>Parameters:</strong>
+    <dd>
+    <table>
+      <tr valign="top">
+        <td><em>hid_t</em> <code>file_id</code>
+            </td><td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        <td>IN: HDF5 file identifier
+            </td></tr>
+      <tr valign="top">
+        <td><em>hbool_t *</em><code>flag</code>
+            </td><td>&nbsp;</td>
+        <td>OUT: Logical flag for atomicity setting
+                <br>
+                Valid values are:
+                <li>
+                <code>TRUE&nbsp;</code>
+                  &nbsp; MPI file access is set to atomic mode.
+                <li>
+                <code>FALSE</code>
+                  &nbsp; MPI file access is set to nonatomic mode.
+            </td></tr>
+    </table>
+
+  <p>
+  <dt><strong>Returns:</strong>
+    <dd>Returns a non-negative value if successful;
+        otherwise returns a negative value.
+
+<!--
+  <p>
+  <dt><strong>Failure Modes:</strong>
+    <dd>
+
+  <p>
+  <dt><strong>Example Usage:</strong>
+
+    <dd>Discuss the elements in the first usage example here.
+<dir><pre>
+Complete usage example line(s) for the first example here
+</pre></dir>
+    <p>
+
+    <dd>Discuss the elements in the second usage example here.
+<dir><pre>
+Complete usage example line(s) for the second example here
+</pre></dir>
+-->
+
+  <p>
+  <dt><strong>Fortran90 Interface:</strong> h5fget_mpi_atomicity_f
+    <dd>
+    <pre>
+SUBROUTINE h5fget_mpi_atomicity_f(file_id, flag, hdferr) 
+  IMPLICIT NONE
+  INTEGER(HID_T), INTENT(IN) :: file_id ! File identifier
+  INTEGER(HBOOL_T), INTENT(OUT) :: flag ! Atomicity flag
+  INTEGER, INTENT(OUT) :: hdferr        ! Error code:
+                                        ! 0 on success, -1 on failure
+END SUBROUTINE h5fget_mpi_atomicity_f </pre>
+    </dd>
+
+  <p>
+  <dt><strong>See Also:</strong>
+    <dd><a href="../Advanced/PHDF5FileConsistencySemantics/PHDF5FileConsistencySemantics.pdf">
+        Enabling a Strict Consistency Semantics Model in Parallel HDF5</a>
+        <p>
+        <a href="RM_H5F.html#File-SetMpiAtomicity">
+        <code>H5Fset_mpi_atomicity</code></a>
+
+  <p>
+  <dt><strong>History:</strong>
+    <dd><table width="90%">
+        <tr>
+          <td valign="top" align="left" width="10%">
+            <strong>Release</strong>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <td valign="top" align="left">
+            <strong>Change</strong></td>
+        </tr>
+        <tr>
+          <td valign="top">1.8.9</td>
+          <td valign="top">
+            C function and Fortran subroutine introduced in this release.</td>
+        </tr>
+        </table>
+
+</dl>
+
+
+
+
+<!--
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+  * Copyright by The HDF Group.                                               *
+  * Copyright by the Board of Trustees of the University of Illinois.         *
+  * All rights reserved.                                                      *
+  *                                                                           *
+  * This file is part of HDF5.  The full HDF5 copyright notice, including     *
+  * terms governing use, modification, and redistribution, is contained in    *
+  * the files COPYING and Copyright.html.  COPYING can be found at the root   *
+  * of the source code distribution tree; Copyright.html can be found at the  *
+  * root level of an installed copy of the electronic HDF5 document set and   *
+  * is linked from the top-level documents page.  It can also be found at     *
+  * http://hdfgroup.org/HDF5/doc/Copyright.html.  If you do not have          *
+  * access to either file, you may request a copy from help@hdfgroup.org.     *
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ -->
+
+
+<!-- NEW PAGE -->
+<!-- HEADER RIGHT "H5Fget_name" -->
+<hr>
+<dl>
+<dt><strong>Name:</strong> <a name="File-GetName">H5Fget_name</a>
+<dt><strong>Signature:</strong>
+    <dd><em>ssize_t</em> <code>H5Fget_name</code>(<em>hid_t</em> <code>obj_id</code>,
+                     <em>char *</em><code>name</code>,
+                     <em>size_t</em> <code>size</code>
+        )
+
+<dt><strong>Purpose:</strong>
+        <dd>Retrieves name of file to which object belongs.
+<dt><strong>Description:</strong>
+        <dd><code>H5Fget_name</code> retrieves the name of the file 
+	    to which the object <code>obj_id</code> belongs.
+	    The object can be a group, dataset, attribute, or 
+	    named datatype.
+            <p> 
+	    Up to <code>size</code> characters of the filename 
+	    are returned in <code>name</code>; 
+	    additional characters, if any, are not returned to 
+	    the user application. 
+            <p>
+	    If the length of the name, 
+	    which determines the required value of <code>size</code>, 
+	    is unknown, a preliminary <code>H5Fget_name</code> call 
+	    can be made by setting <code>name</code> to NULL. 
+	    The return value of this call will be the size of the filename;
+	    that value plus one (1) can then be assigned to <code>size</code> 
+	    for a second <code>H5Fget_name</code> call, 
+	    which will retrieve the actual name. 
+            (The value passed in with the parameter <code>size</code> must be 
+            one greater than size in bytes of the actual name in order to
+            accommodate the null terminator; if <code>size</code> is set to
+            the exact size of the name, the last byte passed back will 
+            contain the null terminator and the last character will be 
+            missing from the name passed back to the calling application.)
+            <p>
+            If an error occurs, the buffer pointed to by 
+	    <code>name</code> is unchanged and 
+	    the function returns a negative value.
+<dt><strong>Parameters:</strong>
+    <dd>
+    <dl>
+        <dt><em>hid_t</em> <code>obj_id</code>
+            <dd>IN: Identifier of the object for which the 
+	        associated filename is sought.
+	        The object can be a group, dataset, attribute, or 
+	        named datatype.
+        <dt><em>char *</em><code>name</code>
+            <dd>OUT: Buffer to contain the returned filename.
+        <dt><em>size_t</em> <code>size</code>
+            <dd>IN: Size, in bytes, of the <code>name</code> buffer.
+    </dl>
+    </dd>
+<dt><strong>Returns:</strong>
+    <dd>Returns the length of the filename if successful;
+        otherwise returns a negative value.
+<dt><strong>Fortran90 Interface:</strong> h5fget_name_f
+    <dd>
+    <pre>
+SUBROUTINE h5fget_name_f(obj_id, buf, size, hdferr)
+
+  IMPLICIT NONE
+  INTEGER(HID_T), INTENT(IN) :: obj_id     ! Object identifier 
+  CHARACTER(LEN=*), INTENT(INOUT) :: buf   ! Buffer to hold filename
+  INTEGER(SIZE_T), INTENT(OUT) :: size     ! Size of the filename
+  INTEGER, INTENT(OUT) :: hdferr           ! Error code: 0 on success,
+                                           ! -1 if fail
+END SUBROUTINE h5fget_name_f
+    </pre>
+
+        <!--<dt><strong>Non-C API(s):</strong>
+    	<dd>
+        
+        <img src="Graphics/Java.gif"> 
+        <img src="Graphics/C++.gif">
+        -->
+<dt><strong>History:</strong>
+	<ul><table width="90%">
+        <tr>
+		  <td valign="top" align="left" width="10%">
+		    <strong>Release</strong>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <td valign="top" align="left">
+		    <strong>C</strong></td></tr>
+        <tr>
+		  <td valign="top">1.6.3</td>
+          <td valign="top">
+		    Function introduced in this release.<br>
+			Fortran subroutine introduced in this release.</td></tr>
+    </table></ul>
+</dl>
+
+
+
+
+<!--
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+  * Copyright by The HDF Group.                                               *
+  * Copyright by the Board of Trustees of the University of Illinois.         *
+  * All rights reserved.                                                      *
+  *                                                                           *
+  * This file is part of HDF5.  The full HDF5 copyright notice, including     *
+  * terms governing use, modification, and redistribution, is contained in    *
+  * the files COPYING and Copyright.html.  COPYING can be found at the root   *
+  * of the source code distribution tree; Copyright.html can be found at the  *
+  * root level of an installed copy of the electronic HDF5 document set and   *
+  * is linked from the top-level documents page.  It can also be found at     *
+  * http://hdfgroup.org/HDF5/doc/Copyright.html.  If you do not have          *
+  * access to either file, you may request a copy from help@hdfgroup.org.     *
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ -->
+
+
+<!-- NEW PAGE -->
+<!-- HEADER RIGHT "H5Fget_obj_count" -->
+<hr>
+<dl>
+<dt><strong>Name:</strong> <a name="File-GetObjCount">H5Fget_obj_count</a>
+
+<dt><div align=right><font color=999999 size=-1><i>
+    Last modified: 5 November 2009
+    </i></font></div>
+
+<dt><strong>Signature:</strong>
+    <dd><em>ssize_t </em><code>H5Fget_obj_count</code>(
+            <em>hid_t</em> <code>file_id</code>,
+	    <em>unsigned int</em> <code>types</code>
+            )
+
+<p>
+<dt><strong>Purpose:</strong>
+        <dd>Returns the number of open object identifiers for an open file.
+
+<p>
+<dt><strong>Description:</strong>
+    <dd>Given the identifier of an open file, <code>file_id</code>, 
+	and the desired object types, <code>types</code>,
+	<code>H5Fget_obj_count</code> returns the number of 
+        open object identifiers for the file.
+        <p>
+        To retrieve a count of open identifiers for open objects in 
+	all HDF5 application files that are currently open, 
+        pass the value <code>(hid_t)H5F_OBJ_ALL</code> (<i>Fortran</i>: <code>INT(H5F_OBJ_ALL_F,HID_T)</code>) in <code>file_id</code>.
+        <p>
+        The types of objects to be counted are specified 
+	in <code>types</code> as follows:
+	<center>
+        <table width=90% border=0>
+          <tr><td valign=top>
+            <code>H5F_OBJ_FILE</code>
+            </td><td valign=top>
+            Files only
+          </td></tr><tr><td valign=top>
+            <code>H5F_OBJ_DATASET</code>
+            </td><td valign=top>
+            Datasets only
+          </td></tr><tr><td valign=top>
+            <code>H5F_OBJ_GROUP</code>
+            </td><td valign=top>
+            Groups only
+          </td></tr><tr><td valign=top>
+            <code>H5F_OBJ_DATATYPE&nbsp;&nbsp;</code>
+            </td><td valign=top>
+            Named datatypes only
+          </td></tr><tr><td valign=top>
+            <code>H5F_OBJ_ATTR&nbsp;&nbsp;</code>
+            </td><td valign=top>
+            Attributes only
+          </td></tr><tr><td valign=top>
+            <code>H5F_OBJ_ALL</code>
+            </td><td valign=top>
+            All of the above
+	    <br>
+	    (That is, <code>H5F_OBJ_FILE</code> <code>|</code> 
+	    <code>H5F_OBJ_DATASET</code> <code>|</code> 
+            <code>H5F_OBJ_GROUP</code> <code>|</code> 
+	    <code>H5F_OBJ_DATATYPE</code> <code>|</code> 
+            <code>H5F_OBJ_ATTR</code>)
+          </td></tr><tr><td valign=top>
+            <code>H5F_OBJ_LOCAL</code>
+            </td><td valign=top>
+            Restrict search to objects opened through current file identifier.
+            <br />
+            <b>Note:</b> <code>H5F_OBJ_LOCAL</code> does not stand alone;
+            it is effective only when used in combination with one or more
+            of the preceding types.
+	    For example, 
+            <br>
+            <code>&nbsp;&nbsp;&nbsp;&nbsp;H5F_OBJ_DATASET</code> 
+            <code>|</code> <code>H5F_OBJ_GROUP</code> 
+            <code>|</code> <code>H5F_OBJ_LOCAL</code> 
+            <br>would count all datasets and groups 
+            opened through the current file identifier.
+          </td></tr>
+        </table>
+	</center>
+        <p>
+	Multiple object types can be combined with the 
+	logical <code>OR</code> operator (<code>|</code>).
+	For example, the expression <code>(H5F_OBJ_DATASET|H5F_OBJ_GROUP)</code> 
+	would call for datasets and groups.
+
+<p>
+<dt><strong>Parameters:</strong>
+    <ul><table>
+        <tr>
+            <td valign="top"><em>hid_t</em> <code>file_id</code></td>
+            <td valign="top">IN: Identifier of a currently-open HDF5 file or 
+	        <code>H5F_OBJ_ALL</code> for all currently-open HDF5 files.</td></tr>
+        <tr>
+            <td valign="top"><em>unsigned&nbsp;int</em>&nbsp;<code>types&nbsp;&nbsp;&nbsp;&nbsp;</code></td>
+            <td valign="top">IN: Type of object for which identifiers are to be returned.</td></tr>
+    </table></ul>
+
+<p>
+<dt><strong>Returns:</strong>
+    <dd>Returns the number of open objects if successful;
+        otherwise returns a negative value.
+
+<!-- NEW PAGE -->	
+<p>
+<dt><strong>Fortran90 Interface:</strong> h5fget_obj_count_f
+    <dd>
+    <pre>
+SUBROUTINE h5fget_obj_count_f(file_id, obj_type, obj_count, hdferr)
+
+  IMPLICIT NONE 
+  INTEGER(HID_T), INTENT(IN)  :: file_id    ! File identifier
+  INTEGER, INTENT(IN)         :: obj_type   ! Object types, possible values are:
+                                            !     H5F_OBJ_FILE_F
+                                            !     H5F_OBJ_GROUP_F
+                                            !     H5F_OBJ_DATASET_F
+                                            !     H5F_OBJ_DATATYPE_F
+                                            !     H5F_OBJ_ALL_F
+  INTEGER(SIZE_T), INTENT(OUT) :: obj_count ! Number of opened objects
+  INTEGER, INTENT(OUT)        :: hdferr     ! Error code 
+                                            ! 0 on success and -1 on failure
+END SUBROUTINE h5fget_obj_count_f
+    </pre>
+
+<p>
+<dt><strong>History:</strong>
+	<ul><table width="90%">
+        <tr>
+          <td valign="top" align="left" width="10%">
+            <strong>Release</strong>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <td valign="top" align="left">
+            <strong>Change</strong></td></tr>
+        <tr>
+          <td valign="top">1.6.5</td>
+          <td valign="top">
+            <code>H5F_OBJ_LOCAL</code> has been added as a qualifier 
+            on the types of objects to be counted. 
+            <code>H5F_OBJ_LOCAL</code> restricts the search to objects 
+            opened through current file identifier.</td></tr>
+        <tr>
+          <td valign="top">1.6.8&nbsp;and&nbsp;1.8.2&nbsp;&nbsp;</td>
+          <td valign="top">
+              C function return type changed to <code><em>ssize_t</em></code>.
+              </td></tr>
+    </table></ul>
+
+</dl>
+
+
+
+<!--
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+  * Copyright by The HDF Group.                                               *
+  * Copyright by the Board of Trustees of the University of Illinois.         *
+  * All rights reserved.                                                      *
+  *                                                                           *
+  * This file is part of HDF5.  The full HDF5 copyright notice, including     *
+  * terms governing use, modification, and redistribution, is contained in    *
+  * the files COPYING and Copyright.html.  COPYING can be found at the root   *
+  * of the source code distribution tree; Copyright.html can be found at the  *
+  * root level of an installed copy of the electronic HDF5 document set and   *
+  * is linked from the top-level documents page.  It can also be found at     *
+  * http://hdfgroup.org/HDF5/doc/Copyright.html.  If you do not have          *
+  * access to either file, you may request a copy from help@hdfgroup.org.     *
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ -->
+
+
+<!-- NEW PAGE -->
+<!-- HEADER RIGHT "H5Fget_obj_ids" -->
+<hr>
+<dl>
+<dt><strong>Name:</strong> <a name="File-GetObjIDs">H5Fget_obj_ids</a></dt>
+    <br />
+<dt><strong>Signature:</strong>
+    <dd><em>ssize_t </em><code>H5Fget_obj_ids</code>(
+            <em>hid_t</em> <code>file_id</code>,
+            <em>unsigned int</em> <code>types</code>,
+            <em>size_t</em> <code>max_objs</code>,
+            <em>hid_t *</em><code>obj_id_list</code>
+            )</dd></dt>
+    <br />
+<dt><strong>Purpose:</strong>
+    <dd>Returns a list of open object identifiers.</dd></dt>
+    <br />
+<dt><strong>Description:</strong>
+    <dd>Given the file identifier <code>file_id</code> and 
+        the type of objects to be identified, <code>types</code>,
+        <code>H5Fget_obj_ids</code> returns the list of identifiers 
+        for all open HDF5 objects fitting the specified criteria. 
+        <p>
+        To retrieve identifiers for open objects in all HDF5 application 
+        files that are currently open, pass the value 
+        <code>H5F_OBJ_ALL</code> in <code>file_id</code>.
+        <p>
+        The types of object identifiers to be retrieved are specified 
+        in <code>types</code> using the codes listed for the same 
+        parameter in <a href="RM_H5F.html#File-GetObjCount"><code>H5Fget_obj_count</code></a>.
+        <p>
+        To retrieve identifiers for all open objects, pass a negative value
+        for <code>max_objs</code>.
+        <p>
+        To retrieve a count of open objects, use the 
+        <code>H5Fget_obj_count</code> function. This count can be used to 
+        set the <code>max_objs</code> parameter.</p>
+        
+        </dd></dt>
+    <br />
+<dt><strong>Parameters:</strong>
+    <ul><table>
+        <tr>
+            <td valign="top"><em>hid_t</em> <code>file_id</code></td>
+            <td valign="top">IN: Identifier of a currently-open HDF5 file or 
+	        <code>H5F_OBJ_ALL</code> for all currently-open HDF5 files.</td></tr>
+        <tr>
+            <td valign="top"><em>unsigned int</em> <code>types</code></td>
+            <td valign="top">IN: Type of object for which identifiers are to be returned.</td></tr> 
+        <tr>
+            <td valign="top"><em>size_t</em> <code>max_objs</code></td>
+            <td valign="top">IN: Maximum number of object identifiers to place into 
+            <code>obj_id_list</code>.</td></tr>
+        <tr>
+            <td valign="top"><em>hid_t&nbsp;*</em><code>obj_id_list&nbsp;&nbsp;&nbsp;&nbsp;</code></td>
+            <td valign="top">OUT: Pointer to the returned list of open object identifiers.</td></tr>
+    </table></ul>
+    </dt>
+    <br />
+<dt><strong>Returns:</strong>
+    <dd>Returns number of objects placed into <code>obj_id_list</code> if successful;
+        otherwise returns a negative value.</dd></dt>
+    <br />
+<dt><strong>Fortran90 Interface:</strong> h5fget_obj_ids_f
+    <dd>
+    <pre>
+SUBROUTINE h5fget_obj_ids_f(file_id, obj_type, max_objs, obj_ids, hdferr)
+
+  IMPLICIT NONE 
+  INTEGER(HID_T), INTENT(IN)   :: file_id  ! File identifier
+  INTEGER,        INTENT(IN)   :: obj_type ! Object types, possible values are:
+                                           !     H5F_OBJ_FILE_F
+                                           !     H5F_OBJ_GROUP_F
+                                           !     H5F_OBJ_DATASET_F
+                                           !     H5F_OBJ_DATATYPE_F
+                                           !     H5F_OBJ_ALL_F
+  INTEGER, INTENT(IN)          :: max_objs ! Maximum number of object 
+                                           ! identifiers to retrieve
+  INTEGER(HID_T), DIMENSION(*), INTENT(OUT) :: obj_ids
+                                           ! Array of requested object 
+                                           ! identifiers
+  INTEGER, INTENT(OUT)        :: hdferr    ! Error code 
+                                           ! 0 on success and -1 on failure
+END SUBROUTINE h5fget_obj_ids_f
+    </pre>
+
+        <!--<dt><strong>Non-C API(s):</strong>
+    	<dd>
+        
+        <img src="Graphics/Java.gif"> 
+        <img src="Graphics/C++.gif">
+        -->
+    </dd></dt>
+    <br />
+<dt><strong>History:</strong>
+    <ul><table width="90%">
+        <tr>
+          <td valign="top" align="left" width="10%">
+              <strong>Release</strong>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <td valign="top" align="left">
+              <strong>Change</strong></td></tr>
+        <tr>
+          <td valign="top">1.6.0</td>
+          <td valign="top">
+              C function introduced in this release.</td></tr>
+        <tr>
+          <td valign="top">1.6.8 &<br>&nbsp;&nbsp;&nbsp;&nbsp;1.8.2</td>
+          <td valign="top">
+              C function return type changed to <code><em>ssize_t</em></code>
+              <br>&nbsp;&nbsp;&nbsp;&nbsp;
+              and <code>max_objs</code> parameter datatype changed to 
+              <code><em>size_t</em></code>.</td></tr>
+    </table></ul>
+</dl>
+    <br />
+
+
+
+<!--
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+  * Copyright by The HDF Group.                                               *
+  * Copyright by the Board of Trustees of the University of Illinois.         *
+  * All rights reserved.                                                      *
+  *                                                                           *
+  * This file is part of HDF5.  The full HDF5 copyright notice, including     *
+  * terms governing use, modification, and redistribution, is contained in    *
+  * the files COPYING and Copyright.html.  COPYING can be found at the root   *
+  * of the source code distribution tree; Copyright.html can be found at the  *
+  * root level of an installed copy of the electronic HDF5 document set and   *
+  * is linked from the top-level documents page.  It can also be found at     *
+  * http://hdfgroup.org/HDF5/doc/Copyright.html.  If you do not have          *
+  * access to either file, you may request a copy from help@hdfgroup.org.     *
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ -->
+
+
+<!-- NEW PAGE -->
+<!-- HEADER RIGHT "H5Fget_vfd_handle" -->
+<hr>
+<dl>
+<dt><strong>Name:</strong> <a name="File-GetVfdHandle">H5Fget_vfd_handle</a>
+<dt><strong>Signature:</strong>
+    <dd><em>herr_t </em><code>H5Fget_vfd_handle</code>(<em>hid_t</em> <code>file_id</code>,
+                <em>hid_t</em> <code>fapl_id</code>,
+                <em>void **</em><code>file_handle</code>
+                )
+<dt><strong>Purpose:</strong>
+    <dd>Returns pointer to the file handle from the virtual file driver.
+<dt><strong>Description:</strong>
+    <dd>Given the file identifier <code>file_id</code> and 
+    the file access property list <code>fapl_id</code>, 
+    <code>H5Fget_vfd_handle</code> returns a pointer to the file handle 
+    from the low-level file driver currently being used by the 
+    HDF5 library for file I/O.
+<dt><strong>Notes:</strong>
+    <dd>Users are not supposed to modify any file through this file handle.
+    <p>
+    This file handle is dynamic and is valid only while the file remains
+    open; it will be invalid if the file is closed and reopened or 
+    opened during a subsequent session.
+<dt><strong>Parameters:</strong>
+    <ul><table>
+        <tr>
+            <td valign="top"><em>hid_t</em> <code>file_id</code></td>
+            <td valign="top">IN: Identifier of the file to be queried.</td></tr>
+        <tr>
+            <td valign="top"><em>hid_t</em> <code>fapl_id</code></td>
+            <td valign="top">IN: File access property list  identifier.
+	        For most drivers, the value will be <code>H5P_DEFAULT</code>. 
+                For the <code>FAMILY</code> or <code>MULTI</code> drivers,
+                this value should be defined through the property list
+                functions: 
+                <code>H5Pset_family_offset</code> for the <code>FAMILY</code> 
+                driver and <code>H5Pset_multi_type</code> for the 
+                <code>MULTI</code> driver.</td></tr>
+        <tr>
+            <td valign="top"><em>void&nbsp;**</em><code>file_handle&nbsp;&nbsp;&nbsp;&nbsp;</code></td>
+            <td valign="top">OUT: Pointer to the file handle being used by 
+	        the low-level virtual file driver.</td></tr>
+    </table></ul>
+<dt><strong>Returns:</strong>
+    <dd>Returns a non-negative value if successful;
+        otherwise returns a negative value.
+<dt><strong>Fortran90 Interface:</strong>
+    <dd>None.
+	
+<!--
+    <pre>
+SUBROUTINE
+    </pre>
+-->
+
+        <!--<dt><strong>Non-C API(s):</strong>
+    	<dd>
+        
+        <img src="Graphics/Java.gif"> 
+        <img src="Graphics/C++.gif">
+        -->
+<dt><strong>History:</strong>
+    <ul><table width="90%">
+        <tr>
+		  <td valign="top" align="left" width="10%">
+		    <strong>Release</strong>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <td valign="top" align="left">
+		    <strong>C</strong></td></tr>
+        <tr>
+		  <td valign="top">1.6.0</td>
+          <td valign="top">
+		    Function introduced in this release.</td></tr>
+    </table></ul>
+</dl>
+
+
+
+<!--
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+  * Copyright by The HDF Group.                                               *
+  * Copyright by the Board of Trustees of the University of Illinois.         *
+  * All rights reserved.                                                      *
+  *                                                                           *
+  * This file is part of HDF5.  The full HDF5 copyright notice, including     *
+  * terms governing use, modification, and redistribution, is contained in    *
+  * the files COPYING and Copyright.html.  COPYING can be found at the root   *
+  * of the source code distribution tree; Copyright.html can be found at the  *
+  * root level of an installed copy of the electronic HDF5 document set and   *
+  * is linked from the top-level documents page.  It can also be found at     *
+  * http://hdfgroup.org/HDF5/doc/Copyright.html.  If you do not have          *
+  * access to either file, you may request a copy from help@hdfgroup.org.     *
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ -->
+
+
+<!-- NEW PAGE -->
+<!-- HEADER RIGHT "H5Fis_hdf5" -->
+<hr>
+<dl>
+<dt><strong>Name:</strong> <a name="File-IsHDF5">H5Fis_hdf5</a>
+<dt><strong>Signature:</strong>
+    <dd><em>htri_t </em><code>H5Fis_hdf5</code>(<em>const char *</em><code>name</code>
+        )
+<dt><strong>Purpose:</strong>
+        <dd>Determines whether a file is in the HDF5 format.
+<dt><strong>Description:</strong>
+        <dd><code>H5Fis_hdf5</code> determines whether a file is in 
+            the HDF5 format.
+<dt><strong>Parameters:</strong>
+    <ul><table>
+        <tr>
+            <td valign="top"><em>const&nbsp;char&nbsp;*</em><code>name&nbsp;&nbsp;&nbsp;&nbsp;</code></td>
+            <td valign="top">IN: File name to check format.</td></tr>
+    </table></ul>
+<dt><strong>Returns:</strong>
+    <dd>When successful, returns a positive value, for <code>TRUE</code>,
+        or <code>0</code> (zero), for <code>FALSE</code>.
+        <br>
+        On any error, including the case that the file does not exist, 
+        returns a negative value.
+<dt><strong>Fortran90 Interface:</strong> h5fis_hdf5_f
+    <dd>
+    <pre>
+SUBROUTINE h5fis_hdf5_f(name, status, hdferr)   
+  IMPLICIT NONE 
+  CHARACTER(LEN=*), INTENT(IN) :: name   ! Name of the file
+  LOGICAL, INTENT(OUT) :: status         ! This parameter indicates 
+                                         ! whether file is an HDF5 file 
+                                         ! ( TRUE or FALSE ) 
+  INTEGER, INTENT(OUT) :: hdferr         ! Error code 
+                                         ! 0 on success and -1 on failure
+END SUBROUTINE h5fis_hdf5_f
+    </pre>
+
+        <!--<dt><strong>Non-C API(s):</strong>
+        <dd>
+        
+        <img src="Graphics/Java.gif"> 
+        <img src="Graphics/C++.gif">
+        -->
+</dl>
+
+
+
+<!--
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+  * Copyright by The HDF Group.                                               *
+  * Copyright by the Board of Trustees of the University of Illinois.         *
+  * All rights reserved.                                                      *
+  *                                                                           *
+  * This file is part of HDF5.  The full HDF5 copyright notice, including     *
+  * terms governing use, modification, and redistribution, is contained in    *
+  * the files COPYING and Copyright.html.  COPYING can be found at the root   *
+  * of the source code distribution tree; Copyright.html can be found at the  *
+  * root level of an installed copy of the electronic HDF5 document set and   *
+  * is linked from the top-level documents page.  It can also be found at     *
+  * http://hdfgroup.org/HDF5/doc/Copyright.html.  If you do not have          *
+  * access to either file, you may request a copy from help@hdfgroup.org.     *
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ -->
+
+
+<!-- NEW PAGE -->
+<!-- HEADER RIGHT "H5Fmount" -->
+<hr>
+<dl>
+
+<dt><div align=right><font color=999999 size=-1><i>
+    Last modified: 26 March 2014
+      </i></font></div>
+
+<dt><strong>Name:</strong> <a name="File-Mount">H5Fmount</a>
+<dt><strong>Signature:</strong>
+    <dd><em>herr_t</em> <code>H5Fmount</code>(<em>hid_t</em> <code>loc_id</code>,
+            <em>const char *</em><code>name</code>,
+            <em>hid_t</em> <code>child_id</code>,
+            <em>hid_t</em> <code>fmpl_id</code>
+        )
+
+<p>
+<dt><strong>Purpose:</strong>
+        <dd>Mounts a file.
+
+<p>
+<dt><strong>Description:</strong>
+        <dd><code>H5Fmount</code> mounts the file specified by 
+            <code>child_id</code> onto the group specified by 
+            <code>loc_id</code> and <code>name</code> using 
+            the mount properties <code>fmpl_id</code>.
+            <p>
+            <code>loc_id</code> can be either a file or group identifier;
+            <code>name</code> is relative to <code>loc_id</code>.
+
+<p>
+<dt><strong>Note:</strong>
+    <dd>To date, no file mount properties have been defined in HDF5.
+        The proper value to pass for <code>fmpl_id</code>
+        is <code>H5P_DEFAULT</code>, indicating the default 
+        file mount property list.
+
+<p>
+<dt><strong>Parameters:</strong>
+    <dd><table>
+        <tr>
+            <td valign="top"><em>hid_t</em> <code>loc_id</code></td>
+            <td valign="top">IN: Identifier for of file or group in 
+                which <code>name</code> is defined.</td>
+        <tr>
+            <td valign="top"><em>const&nbsp;char&nbsp;*</em><code>name&nbsp;&nbsp;&nbsp;&nbsp;</code></td>
+            <td valign="top">IN: Name of the group onto which the 
+                file specified by <code>child_id</code> 
+                is to be mounted.</td>
+        <tr>
+            <td valign="top"><em>hid_t</em> <code>child_id</code></td>
+            <td valign="top">IN: Identifier of the file to be mounted.</td>
+        <tr>
+            <td valign="top"><em>hid_t</em> <code>fmpl_id</code></td>
+            <td valign="top">IN: File mount property list identifier.
+                <br />
+                <i>Pass <code>H5P_DEFAULT</code> (see note above).</i>
+                </td>
+    </table></dd>
+
+<p>
+<dt><strong>Returns:</strong>
+    <dd>Returns a non-negative value if successful;
+        otherwise returns a negative value.
+
+<p>
+<dt><strong>Fortran90 Interface:</strong> h5fmount_f
+    <dd>
+    <pre>
+SUBROUTINE h5fmount_f(loc_id, name, child_id, hdferr)
+  IMPLICIT NONE 
+  INTEGER(HID_T), INTENT(IN)  :: loc_id      ! File or group identifier
+  CHARACTER(LEN=*), INTENT(IN):: name        ! Group name at locationloc_id
+  INTEGER(HID_T), INTENT(IN)  :: child_id    ! File(to be mounted) identifier
+  INTEGER, INTENT(OUT)        :: hdferr      ! Error code 
+                                             ! 0 on success and -1 on failure
+END SUBROUTINE h5fmount_f
+    </pre>
+
+</dl>
+
+
+
+<!--
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+  * Copyright by The HDF Group.                                               *
+  * Copyright by the Board of Trustees of the University of Illinois.         *
+  * All rights reserved.                                                      *
+  *                                                                           *
+  * This file is part of HDF5.  The full HDF5 copyright notice, including     *
+  * terms governing use, modification, and redistribution, is contained in    *
+  * the files COPYING and Copyright.html.  COPYING can be found at the root   *
+  * of the source code distribution tree; Copyright.html can be found at the  *
+  * root level of an installed copy of the electronic HDF5 document set and   *
+  * is linked from the top-level documents page.  It can also be found at     *
+  * http://hdfgroup.org/HDF5/doc/Copyright.html.  If you do not have          *
+  * access to either file, you may request a copy from help@hdfgroup.org.     *
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ -->
+
+
+<!-- NEW PAGE -->
+<!-- HEADER RIGHT "H5Fopen" -->
+<hr>
+<dl>
+<dt><div align=right><font color=999999 size=-1><i>
+  Last modified: 9 October 2014</i></font></div></dt>
+
+<dt><strong>Name:</strong> <a name="File-Open">H5Fopen</a></dt>
+<br />
+<dt><strong>Signature:</strong>
+    <dd><em>hid_t </em><code>H5Fopen</code>(
+            <em>const char *</em><code>name</code>,
+            <em>unsigned</em> <code>flags</code>,
+            <em>hid_t</em> <code>fapl_id</code>
+        )
+
+<p>
+<dt><strong>Purpose:</strong>
+        <dd>Opens an existing HDF5 file.
+
+<p>
+<dt><strong>Description:</strong>
+        <dd><code>H5Fopen</code> is the primary function for accessing 
+            existing HDF5 files.  
+            This function opens the named file in the specified access mode
+            and with the specified access property list.
+            <p>
+            Note that <code>H5Fopen</code> does not create a file 
+            if it does not already exist;  
+            see <a href="RM_H5F.html#File-Create"><code>H5Fcreate</code></a>.
+            <p>
+            The <code>name</code> parameter specifies the name of the file
+            to be opened.
+            <p>
+            The <code>fapl_id</code> parameter specifies the file access 
+            property list.  Use of <code>H5P_DEFAULT</code> specifies that
+            default I/O access properties are to be used  
+            <p>
+            The <code>flags</code> parameter specifies whether the file
+            will be opened in read-write or read-only mode,
+            <code>H5F_ACC_RDWR</code> or <code>H5F_ACC_RDONLY</code>,
+            respectively.
+            More complex behaviors of file access are controlled 
+            through the file-access property list.
+            <p>
+            The return value is a file identifier for the open file;
+            this file identifier should be closed by calling 
+            <code>H5Fclose</code> when it is no longer needed. 
+            <p>
+
+            <b>Special cases &mdash; Multiple opens:</b>
+            <br>
+            A file can often be opened with a new <code>H5Fopen</code> 
+            call without closing an already-open identifier established 
+            in a previous <code>H5Fopen</code> or <code>H5Fcreate</code> 
+            call.  Each such <code>H5Fopen</code> call will return a 
+            unique identifier and the file can be accessed through any 
+            of these identifiers as long as the identifier remains valid.
+            In such multiply-opened cases, 
+            the open calls must use the same <code>flags</code> argument 
+            and the file access property lists must use the same 
+            file close degree property setting 
+            (see the external link discussion below and 
+            <a href="RM_H5P.html#Property-SetFcloseDegree">
+            <code>H5Pset_fclose_degree</code></a>).
+            <p>
+            In some cases, such as files on a local Unix file system, 
+            the HDF5 library can detect that a file is multiply opened and 
+            will maintain coherent access among the file identifiers.
+            <p>
+            But in many other cases, such as parallel file systems or
+            networked file systems, it is not always possible to detect 
+            multiple opens of the same physical file.  
+            In such cases, HDF5 will treat the file identifiers 
+            as though they are accessing different files and
+            will be unable to maintain coherent access.
+            Errors are likely to result in these cases.
+            While unlikely, the HDF5 library may not be able to detect,
+            and thus report, such errors.
+            <p>
+            It is generally recommended that applications avoid 
+            multiple opens of the same file.
+            <p>
+            <b>Special restriction on multiple opens of a file first 
+            opened by means of an external link:</b>
+            When an external link is followed, the external file is always 
+            opened  with the weak file close degree property setting, 
+            <code>H5F_CLOSE_WEAK</code>  (see 
+            <a href="RM_H5L.html#Link-CreateExternal">
+            <code>H5Lcreate_external</code></a> and
+            <a href="RM_H5P.html#Property-SetFcloseDegree">
+            <code>H5Pset_fclose_degree</code></a>).
+            If the file is reopened with <code>H5Fopen</code> while 
+            it remains held open from such an external link call, 
+            the file access proeprty list used in the open call must include 
+            the file close degree setting <code>H5F_CLOSE_WEAK</code> 
+            or the open will fail.
+
+<p>
+<dt><strong>Parameters:</strong>
+    <dd><table>
+        <tr>
+            <td valign="top"><em>const&nbsp;char&nbsp;*</em><code>name&nbsp;&nbsp;&nbsp;&nbsp;</code></td>
+            <td valign="top">IN: Name of the file to be opened.</td></tr>
+        <tr>
+            <td valign="top"><em>unsigned</em> <code>flags</code></td>
+            <td valign="top">IN: File access flags.  Allowable values are:
+                <ul><dl>
+                    <dt><code>H5F_ACC_RDWR</code>
+                        <dd>Allow read and write access to file.
+                    <dt><code>H5F_ACC_RDONLY</code>
+                        <dd>Allow read-only access to file.
+                </dl></ul>
+                <p>
+                <code>H5F_ACC_RDWR</code> and <code>H5F_ACC_RDONLY</code> 
+                are mutually exclusive; use exactly one.
+<!-- NEW PAGE -->
+                <p>
+                An additional flag, <code>H5F_ACC_DEBUG</code>, prints 
+                debug information.  This flag can be combined with one of the 
+                above values using the bit-wise OR operator (`|'), 
+                but it is used only by HDF5 Library developers; <i>it is neither 
+                tested nor supported</i> for use in applications.</td></tr>
+                </td></tr>
+        <tr>
+            <td valign="top"><em>hid_t</em> <code>fapl_id</code></td>
+            <td valign="top">IN: Identifier for the file access properties list.
+                If parallel file access is desired, this is a collective
+                call according to the communicator stored in the
+                <code>fapl_id</code>. 
+                Use <code>H5P_DEFAULT</code> for default file access 
+                properties.</td></tr>
+    </table></dd>
+
+<p>
+<dt><strong>Returns:</strong>
+    <dd>Returns a file identifier if successful;
+        otherwise returns a negative value.
+
+<p>
+<dt><strong>Fortran90 Interface:</strong> h5fopen_f
+    <dd>
+    <pre>
+SUBROUTINE h5fopen_f(name, access_flags, file_id, hdferr, &  
+                     access_prp)
+  IMPLICIT NONE 
+  CHARACTER(LEN=*), INTENT(IN) :: name   ! Name of the file
+  INTEGER, INTENT(IN) :: access_flag     ! File access flags  
+                                         ! Possible values are:
+                                         !     H5F_ACC_RDWR_F   
+                                         !     H5F_ACC_RDONLY_F    
+  INTEGER(HID_T), INTENT(OUT) :: file_id ! File identifier 
+  INTEGER, INTENT(OUT) :: hdferr         ! Error code 
+                                         ! 0 on success and -1 on failure
+  INTEGER(HID_T), OPTIONAL, INTENT(IN) :: access_prp  
+                                         ! File access property list 
+                                         ! identifier  
+END SUBROUTINE h5fopen_f
+    </pre>
+
+  <dt><strong>See Also:</a></strong></dt>
+    <dd>
+    <a href="http://www.hdfgroup.org/HDF5/doc/Advanced/UsingIdentifiers/index.html">
+    &ldquo;Using Identifiers&rdquo;</a></dd>
+
+
+</dl>
+
+
+
+<!--
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+  * Copyright by The HDF Group.                                               *
+  * Copyright by the Board of Trustees of the University of Illinois.         *
+  * All rights reserved.                                                      *
+  *                                                                           *
+  * This file is part of HDF5.  The full HDF5 copyright notice, including     *
+  * terms governing use, modification, and redistribution, is contained in    *
+  * the files COPYING and Copyright.html.  COPYING can be found at the root   *
+  * of the source code distribution tree; Copyright.html can be found at the  *
+  * root level of an installed copy of the electronic HDF5 document set and   *
+  * is linked from the top-level documents page.  It can also be found at     *
+  * http://hdfgroup.org/HDF5/doc/Copyright.html.  If you do not have          *
+  * access to either file, you may request a copy from help@hdfgroup.org.     *
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ -->
+
+
+<!-- NEW PAGE -->
+<!-- HEADER RIGHT "H5Freopen" -->
+<hr>
+<dl>
+
+<dt><div align=right><font color=999999 size=-1><i>
+Last modified: 9 October 2014</i></font></div></dt>
+
+
+<dt><strong>Name:</strong> <a name="File-Reopen">H5Freopen</a></dt>
+<br />
+<dt><strong>Signature:</strong></dt>
+    <dd><em>hid_t </em><code>H5Freopen</code>(<em>hid_t</em> <code>file_id</code>
+        )</dd>
+<br />
+<dt><strong>Purpose:</strong></dt>
+        <dd>Returns a new identifier for a previously-opened HDF5 file.</dd>
+<br />
+<dt><strong>Description:</strong></dt>
+        <dd><code>H5Freopen</code> returns a new file identifier for an
+            already-open HDF5 file, as specified by <code>file_id</code>.  
+            Both identifiers share caches and other information.  
+            The only difference between the identifiers is that the 
+            new identifier is not mounted anywhere and no files are 
+            mounted on it.
+            <p>
+            Note that there is no circumstance under which 
+            <code>H5Freopen</code> can actually open a closed file; 
+            the file  must already be open and have an active 
+            <code>file_id</code>.  E.g., one cannot close a file with 
+            <code> H5Fclose&nbsp;(file_id) </code> then use 
+            <code> H5Freopen&nbsp;(file_id) </code> to reopen it.
+            <p>
+            The new file identifier should be closed by calling
+            <code>H5Fclose</code> when it is no longer needed.</dd>
+<br />
+<dt><strong>Parameters:</strong></dt>
+    <ul><table>
+        <tr>
+            <td valign="top"><em>hid_t</em>&nbsp;<code>file_id&nbsp;&nbsp;&nbsp;&nbsp;</code></td>
+            <td valign="top">IN: Identifier of a file for which an additional identifier 
+                is required.</td></tr>
+    </table></ul>
+<br />
+<dt><strong>Returns:</strong></dt>
+    <dd>Returns a new file identifier if successful;
+        otherwise returns a negative value.</dd>
+<br />
+<dt><strong>Fortran90 Interface:</strong> h5freopen_f</dt>
+    <dd>
+    <pre>
+SUBROUTINE h5freopen_f(file_id, new_file_id, hdferr)
+  IMPLICIT NONE 
+  INTEGER(HID_T), INTENT(IN)  :: file_id     ! File identifier 
+  INTEGER(HID_T), INTENT(OUT) :: new_file_id ! New file identifier 
+  INTEGER, INTENT(OUT)        :: hdferr      ! Error code 
+                                             ! 0 on success and -1 on failure
+END SUBROUTINE h5freopen_f 
+    </pre></dd>
+
+  <dt><strong>See Also:</a></strong></dt>
+    <dd>
+    <a href="http://www.hdfgroup.org/HDF5/doc/Advanced/UsingIdentifiers/index.html">
+    &ldquo;Using Identifiers&rdquo;</a></dd>
+
+
+
+        <!--<dt><strong>Non-C API(s):</strong>
+        <dd>
+        
+        <img src="Graphics/Java.gif"> 
+        <img src="Graphics/C++.gif">
+        -->
+</dl>
+
+
+
+<!--
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+  * Copyright by The HDF Group.                                               *
+  * Copyright by the Board of Trustees of the University of Illinois.         *
+  * All rights reserved.                                                      *
+  *                                                                           *
+  * This file is part of HDF5.  The full HDF5 copyright notice, including     *
+  * terms governing use, modification, and redistribution, is contained in    *
+  * the files COPYING and Copyright.html.  COPYING can be found at the root   *
+  * of the source code distribution tree; Copyright.html can be found at the  *
+  * root level of an installed copy of the electronic HDF5 document set and   *
+  * is linked from the top-level documents page.  It can also be found at     *
+  * http://hdfgroup.org/HDF5/doc/Copyright.html.  If you do not have          *
+  * access to either file, you may request a copy from help@hdfgroup.org.     *
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ -->
+
+
+<!-- NEW PAGE -->
+<!-- HEADER RIGHT "H5Freset_mdc_hit_rate_stats" -->
+<hr>
+<dl>
+<dt><strong>Name:</strong> <a name="File-ResetMdcHitRateStats">H5Freset_mdc_hit_rate_stats</a>
+<dt><strong>Signature:</strong>
+    <dd><em>herr_t</em> <code>H5Freset_mdc_hit_rate_stats</code>(<em>hid_t</em> 
+      <code>file_id</code>)
+<dt><strong>Purpose:</strong>
+    <dd>Reset hit rate statistics counters for the target file.
+<dt><strong>Description:</strong>
+    <dd>H5Freset_mdc_hit_rate_stats resets the hit rate statistics 
+      counters in the metadata cache associated with the specified 
+      file. 
+      <p>If the adaptive cache resizing code is enabled, the hit 
+      rate statistics are reset at the beginning of each epoch.  
+      This API call allows you to do the same thing from your program. 
+      <p>The adaptive cache resizing code may behave oddly if you use 
+      this call when adaptive cache resizing is enabled.  However, 
+      the call should be useful if you choose to control metadata 
+      cache size from your program. 
+      <p>See the overview of the metadata cache in the special topics 
+      section of the user manual for details of the metadata cache and 
+      the adaptive cache resizing algorithms.  If you haven't read, 
+      understood, and thought about the material covered in that 
+      documentation, you shouldn't be using this API call.
+<dt><strong>Parameters:</strong>
+    <ul><table>
+        <tr>
+            <td valign="top"><em>hid_t</em>&nbsp;<code>file_id&nbsp;&nbsp;&nbsp;&nbsp;</code></td>
+            <td valign="top">IN: Identifier of the target file.</td></tr>
+    </table></ul>
+<dt><strong>Returns:</strong>
+    <dd>Returns a non-negative value if successful; otherwise returns a 
+      negative value.
+
+</dl>
+
+
+
+<!--
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+  * Copyright by The HDF Group.                                               *
+  * Copyright by the Board of Trustees of the University of Illinois.         *
+  * All rights reserved.                                                      *
+  *                                                                           *
+  * This file is part of HDF5.  The full HDF5 copyright notice, including     *
+  * terms governing use, modification, and redistribution, is contained in    *
+  * the files COPYING and Copyright.html.  COPYING can be found at the root   *
+  * of the source code distribution tree; Copyright.html can be found at the  *
+  * root level of an installed copy of the electronic HDF5 document set and   *
+  * is linked from the top-level documents page.  It can also be found at     *
+  * http://hdfgroup.org/HDF5/doc/Copyright.html.  If you do not have          *
+  * access to either file, you may request a copy from help@hdfgroup.org.     *
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ -->
+
+
+<!-- NEW PAGE -->
+<!-- HEADER RIGHT "H5Fset_mdc_config" -->
+<hr>
+<dl>
+<dt><div align=right><font color=999999 size=-1><i>
+      Last modified: 18 November 2011
+      </i></font></div>
+
+<dt><strong>Name:</strong> <a name="File-SetMdcConfig">H5Fset_mdc_config</a>
+<dt><strong>Signature:</strong>
+    <dd><em>herr_t</em> <code>H5Fset_mdc_config</code>(<em>hid_t</em> 
+      <code>file_id</code>, <em>H5AC_cache_config_t *</em><code>config_ptr</code>)
+
+<p>
+<dt><strong>Purpose:</strong>
+    <dd>Attempt to configure metadata cache of target file.
+
+<p>
+<dt><strong>Description:</strong>
+    <dd>H5Fset_mdc_config attempts to configure the file's metadata cache 
+      according configuration supplied in *config_ptr. 
+      <p>
+      See the overview of the metadata cache in the special topics 
+      section of the user manual for details on what is being configured.  
+      If you haven't read and understood that documentation, you really 
+      shouldn't be using this API call.
+
+<p>
+<dt><strong>Parameters:</strong>
+    <dd><table>
+        <tr>
+            <td colspan="2"><em>hid_t</em>&nbsp;<code>file_id</code></td>
+            </tr><tr>
+            <td valign="top" width="20%">&nbsp;
+                <!-- THIS CELL SETS THE WIDTH OF THIS "INDENT COLUMN" -->
+                <!-- FOR THE ENTIRE PARAMETERS TABLE.                 -->
+                </td>
+            <td valign="top">IN: Identifier of the target file</td></tr>
+        <tr>
+            <td colspan="2"><em>H5AC_cache_config_t&nbsp;*</em>
+                <code>config_ptr</code></td>
+            </tr><tr>
+            <td valign="top">&nbsp;</td>
+            <td valign="top">IN: Pointer to the instance of 
+                <code>H5AC_cache_config_t</code> containing the desired 
+                configuration.  The fields in this structure can be
+                placed in several categories:
+                    <br>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <a href="RM_H5F.html#SetFileGenConfigFields">General configuration</a>
+                    <br>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <a href="RM_H5F.html#SetFileIncConfigFields">Increment configuration</a>
+                    <br>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <a href="RM_H5F.html#SetFileDecConfigFields">Decrement configuration</a>
+                    <br>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <a href="RM_H5F.html#SetFileParConfigFields">Parallel configuration</a>
+                <br>
+                Specific fields are described below.
+                </td></tr>
+        <tr>
+            <td colspan="2">&nbsp;</td>
+        </tr>
+
+
+        <tr>
+            <td colspan="2"><a name="SetFileGenConfigFields">
+                <strong>General configuration fields:</strong></a></td>
+        </tr>
+        <tr>
+            <td colspan="2"><em>int</em> <code>version</code></td>
+            </tr><tr>
+            <td valign="top">&nbsp;</td>
+            <td valign="top">IN: Integer field indicating the the version of 
+                the <code>H5AC_cache_config_t</code> in use.  
+                This field should be set to 
+                <code>H5AC__CURR_CACHE_CONFIG_VERSION</code>
+                (defined in <code>H5ACpublic.h</code>).
+                </td></tr>
+        <tr>
+            <td colspan="2"><em>hbool_t</em> <code>rpt_fcn_enabled</code></td>
+            </tr><tr>
+            <td valign="top">&nbsp;</td>
+            <td valign="top">IN: Boolean flag indicating whether the adaptive 
+                cache resize report function is enabled.  
+                This field should almost always be set to <code>FALSE</code>. 
+                Since resize algorithm activity is reported via stdout, 
+                it MUST be set to <code>FALSE</code> on Windows machines.
+                <p>
+                The report function is not supported code, and can be expected to 
+                change between versions of the library.  Use it at your own risk.
+                </td></tr>
+        <tr>
+            <td colspan="2"><em>hbool_t</em> <code>open_trace_File</code></td>
+            </tr><tr>
+            <td valign="top">&nbsp;</td>
+            <td valign="top">IN: Boolean field indicating whether 
+                the <code>trace_file_name</code> field should be 
+                used to open a trace file for the cache.
+                <p>
+                The trace file is a debuging feature 
+                that allows the capture of top level 
+                metadata cache requests for purposes 
+                of debugging and/or optimization.  
+                This field should normally be set to 
+                <code>FALSE</code>, as trace file collection 
+                imposes considerable overhead.
+                <p>
+                This field should only be set to 
+                <code>TRUE</code> when the <code>trace_file_name</code> contains 
+                the full path of the desired trace 
+                file, and either there is no open 
+                trace file on the cache, or the 
+                <code>close_trace_file</code> field is also <code>TRUE</code>.
+                <p>
+                The trace file feature is unsupported
+                unless used at the direction of The HDF Group.
+                It is intended to allow The HDF Group to collect 
+                a trace of cache activity in cases of 
+                occult failures and/or poor performance 
+                seen in the field, so as to aid in
+                reproduction in the lab.  If you use 
+                it absent the direction of The HDF Group, you 
+                are on your own.</td></tr>
+        <tr>
+            <td colspan="2"><em>hbool_t</em> <code>close_trace_file</code></td>
+            </tr><tr>
+            <td valign="top">&nbsp;</td>
+            <td valign="top">IN: Boolean field indicating whether 
+                the current trace file (if any) should be closed.
+                <p>
+                See the above comments on the 
+                <code>open_trace_file</code> field.  This field
+                should be set to <code>FALSE</code> unless there 
+                is an open trace file on the cache 
+                that you wish to close.
+                <p>
+                The trace file feature is unsupported
+                unless used at the direction of The HDF Group.
+                It is intended to allow The HDF Group to collect 
+                a trace of cache activity in cases of 
+                occult failures and/or poor performance 
+                seen in the field, so as to aid in
+                reproduction in the lab.  If you use 
+                it absent the direction of The HDF Group, you 
+                are on your own.</td></tr>
+        <tr>
+            <td colspan="2"><em>char</em> <code>trace_file_name[]</code></td>
+            </tr><tr>
+            <td valign="top">&nbsp;</td>
+            <td valign="top">IN: Full path of the trace file to be 
+                opened if the <code>open_trace_file</code> field 
+                is <code>TRUE</code>.
+                <p>
+                In the parallel case, an ascii 
+                representation of the mpi rank of
+                the process will be appended to the 
+                file name to yield a unique trace 
+                file name for each process.
+                <p>
+                The length of the path must not 
+                exceed <code>H5AC__MAX_TRACE_FILE_NAME_LEN</code> 
+                characters.
+                <p>
+                The trace file feature is unsupported
+                unless used at the direction of The HDF Group.
+                It is intended to allow The HDF Group to collect 
+                a trace of cache activity in cases of 
+                occult failures and/or poor performance 
+                seen in the field, so as to aid in
+                reproduction in the lab.  If you use 
+                it absent the direction of The HDF Group, you 
+                are on your own.</td></tr>
+        <tr>
+           <td colspan="2"><em>hbool_t</em> <code>evictions_enabled</code></td>
+            </tr><tr>
+            <td valign="top">&nbsp;</td>
+            <td valign="top">IN: A boolean flag indicating whether evictions
+                from the metadata cache are enabled.  This flag is initially
+                set to <code>TRUE</code>.
+                <p>
+                In rare circumstances, the raw data throughput requirements
+                may be so high that the user wishes to postpone metadata
+                writes so as to reserve I/O throughput for raw data.  The
+                <code>evictions_enabled</code> field exists to allow this.
+                However, this is an extreme step, and you have no business
+                doing it unless you have read the User Guide section on 
+                metadata caching, and have considered all other options 
+                carefully.
+                <p>
+                The <code>evictions_enabled</code> field may not be set to
+                <code>FALSE</code> unless all adaptive cache resizing code
+                is disabled via the <code>incr_mode</code>,
+                <code>flash_incr_mode</code>, and <code>decr_mode</code>
+                fields.
+                <p>
+                When this flag is set to <code>FALSE</code>,
+                the metadata cache will not attempt to evict entries
+                to make space for new entries, and thus will grow without
+                bound.
+                <p>
+                Evictions will be re-enabled when this field is set back
+                to <code>TRUE</code>.  This should be done as soon as
+                possible.
+                <p>
+                </td></tr>
+        <tr>
+            <td colspan="2"><em>hbool_t</em> <code>set_initial_size</code></td>
+            </tr><tr>
+            <td valign="top">&nbsp;</td>
+            <td valign="top">IN: Boolean flag indicating whether the cache 
+                should be forced to the user specified initial size.</td></tr>
+        <tr>
+            <td colspan="2"><em>size_t</em> <code>initial_size</code></td>
+            </tr><tr>
+            <td valign="top">&nbsp;</td>
+            <td valign="top">IN: If set_initial_size is <code>TRUE</code>, initial_size must 
+                contains the desired initial size in bytes.  This value must lie 
+                in the closed interval [min_size, max_size]. (see below)</td></tr>
+        <tr>
+            <td colspan="2"><em>double</em> <code>min_clean_fraction</code></td>
+            </tr><tr>
+            <td valign="top">&nbsp;</td>
+            <td valign="top">IN: This field specifies the minimum fraction of the 
+                cache that must be kept either clean or empty.
+                <p>
+                The value must lie in the interval [0.0, 1.0].  0.01 is a 
+                good place to start in the serial case.  In the parallel case,
+                a larger value is needed -- see 
+                &ldquo;<a href="../Advanced/HDF5_Metadata/index.html">Metadata 
+                Caching in HDF5</a>&rdquo; in the collection
+                &ldquo;<a href="../Advanced.html">Advanced Topics 
+                in HDF5</a>.&rdquo;
+                </td></tr>
+        <tr>
+            <td colspan="2"><em>size_t</em> <code>max_size</code></td>
+            </tr><tr>
+            <td valign="top">&nbsp;</td>
+            <td valign="top">IN: Upper bound (in bytes) on the range of values 
+                that the adaptive cache resize code can select as the maximum 
+                cache size.</td></tr>
+        <tr>
+            <td colspan="2"><em>size_t</em> <code>min_size</code></td>
+            </tr><tr>
+            <td valign="top">&nbsp;</td>
+            <td valign="top">IN: Lower bound (in bytes) on the range of values 
+                that the adaptive cache resize code can select as the maximum 
+                cache size.</td></tr>
+        <tr>
+            <td colspan="2"><em>long int</em> <code>epoch_length</code></td>
+            </tr><tr>
+            <td valign="top">&nbsp;</td>
+            <td valign="top">IN: Number of cache accesses between runs of the 
+                adaptive cache resize code. 50,000 is a good starting number.</td></tr>
+        <tr>
+            <td colspan="2">&nbsp;</td>
+        </tr>
+
+
+        <tr>
+            <td colspan="2"><a name="SetFileIncConfigFields">
+                <strong>Increment configuration fields:</strong></a></td>
+        </tr>
+        <tr>
+            <td colspan="2"><em>enum H5C_cache_incr_mode</em> 
+                <code>incr_mode</code></td>
+            </tr><tr>
+            <td valign="top">&nbsp;</td>
+            <td valign="top">
+                IN: Enumerated value indicating the operational mode 
+                of the automatic cache size increase code.  At present, only two 
+                values are legal:
+                <p>
+                H5C_incr__off:  Automatic cache size increase is disabled, 
+                and the remaining increment fields are ignored.
+                <p>
+                H5C_incr__threshold:  Automatic cache size increase is enabled 
+                using the hit rate threshold algorithm.</td></tr>
+        <tr>
+            <td colspan="2"><em>double</em> <code>lower_hr_threshold</code></td>
+            </tr><tr>
+            <td valign="top">&nbsp;</td>
+            <td valign="top">IN: Hit rate threshold used by the hit rate threshold 
+                cache size increment algorithm.
+                <p>
+                When the hit rate over an epoch is below this threshold and the 
+                cache is full, the maximum size of the cache is multiplied by 
+                increment (below), and then clipped as necessary to stay within 
+                max_size, and possibly max_increment.
+                <p>
+                This field must lie in the interval [0.0, 1.0].  0.8 or 0.9 
+                is a good starting point.</td></tr>
+        <tr>
+            <td colspan="2"><em>double</em> <code>increment</code></td>
+            </tr><tr>
+            <td valign="top">&nbsp;</td>
+            <td valign="top">IN: Factor by which the hit rate threshold cache 
+                size increment algorithm multiplies the current maximum cache size 
+                to obtain a tentative new cache size.
+                <p>
+                The actual cache size increase will be clipped to satisfy the 
+                max_size specified in the general configuration, and possibly 
+                max_increment below.
+                <p>
+                The parameter must be greater than or equal to 1.0 -- 2.0 
+                is a reasonable value.
+                <p>
+                If you set it to 1.0, you will effectively disable cache size 
+                increases.</td></tr>
+        <tr>
+            <td colspan="2"><em>hbool_t</em> <code>apply_max_increment</code></td>
+            </tr><tr>
+            <td valign="top">&nbsp;</td>
+            <td valign="top">IN: Boolean flag indicating whether an upper limit 
+                should be applied to the size of cache size increases.</td></tr>
+        <tr>
+            <td colspan="2"><em>size_t</em> <code>max_increment</code></td>
+            </tr><tr>
+            <td valign="top">&nbsp;</td>
+            <td valign="top">IN: Maximum number of bytes by which cache size can 
+                be increased in a single step -- if applicable.</td></tr>
+        <tr>
+            <td colspan="2"><em>enum H5C_cache_flash_incr_mode</em> 
+                <code>flash_incr_mode</code></td>
+            </tr><tr>
+            <td valign="top">&nbsp;</td>
+            <td valign="top">IN: Enumerated value indicating the operational mode of
+                the flash cache size increase code.  At present, 
+                only the following values are legal:
+                <p>
+                H5C_flash_incr__off:  Flash cache size increase is disabled.
+                <p>
+                H5C_flash_incr__add_space:  Flash cache size increase is 
+                enabled using the add space algorithm.</td></tr>
+
+        <tr>
+            <td colspan="2"><em>double</em> <code>flash_threshold</code></td>
+            </tr><tr>
+            <td valign="top">&nbsp;</td>
+            <td valign="top">IN: The factor by which the current maximum cache
+                size is multiplied to obtain the minimum size
+                entry / entry size increase which may trigger a
+                flash cache size increase.
+                <p>
+                At present, this value must lie in the range
+                [0.1, 1.0].</td></tr>
+
+        <tr>
+            <td colspan="2"><em>double</em> <code>flash_multiple</code></td>
+            </tr><tr>
+            <td valign="top">&nbsp;</td>
+            <td valign="top">IN: The factor by which the size of the triggering
+                entry / entry size increase is multiplied to obtain
+                the initial cache size increment.  This increment
+                may be reduced to reflect existing free space in
+                the cache and the <code>max_size</code> field above.
+                <p>
+                At present, this field must lie in the range
+                [0.1, 10.0].</td></tr>
+        <tr>
+            <td colspan="2">&nbsp;</td>
+        </tr>
+
+
+        <tr>
+            <td colspan="2"><a name="SetFileDecConfigFields">
+                <strong>Decrement configuration fields:</strong></a></td>
+        </tr>
+        <tr>
+            <td colspan="2"><em>enum&nbsp;H5C_cache_decr_mode</em>&nbsp;<code>decr_mode</code></td>
+            </tr><tr>
+            <td valign="top">&nbsp;</td>
+            <td valign="top">
+                IN: Enumerated value indicating the operational 
+                mode of the automatic cache size decrease code.  At present,
+                the following values are legal:
+                <p>
+                H5C_decr__off:  Automatic cache size decrease is disabled.
+                <p>
+                H5C_decr__threshold:  Automatic cache size decrease is 
+                enabled using the hit rate threshold algorithm.
+                <p>
+                H5C_decr__age_out:  Automatic cache size decrease is enabled 
+                using the ageout algorithm.
+                <p>
+                H5C_decr__age_out_with_threshold:  Automatic cache size 
+                decrease is enabled using the ageout with hit rate threshold 
+                algorithm</td></tr>
+        <tr>
+            <td colspan="2"><em>double</em> <code>upper_hr_threshold</code></td>
+            </tr><tr>
+            <td valign="top">&nbsp;</td>
+            <td valign="top">IN: Hit rate threshold for the hit rate threshold and 
+                ageout with hit rate threshold cache size decrement algorithms.
+                <p>
+                When decr_mode is H5C_decr__threshold, and the hit rate over a 
+                given epoch exceeds the supplied threshold, the current maximum 
+                cache size is multiplied by decrement to obtain a tentative new
+                (and smaller) maximum cache size.
+                <p>
+                When decr_mode is H5C_decr__age_out_with_threshold, there is no 
+                attempt to find and evict aged out entries unless the hit rate in 
+                the previous epoch exceeded the supplied threshold.
+                <p>
+                This field must lie in the interval [0.0, 1.0].
+                <p>
+                For H5C_incr__threshold, .9995 or .99995 is a good place to start.
+                <p>
+                For H5C_decr__age_out_with_threshold, .999 might be 
+                more useful.</td></tr>
+        <tr>
+            <td colspan="2"><em>double</em> <code>decrement</code></td>
+            </tr><tr>
+            <td valign="top">&nbsp;</td>
+            <td valign="top">IN: In the hit rate threshold cache size decrease 
+                algorithm, this parameter contains the factor by which the
+                current max cache size is multiplied to produce a tentative 
+                new cache size.
+                <p>
+                The actual cache size decrease will be clipped to satisfy the 
+                min_size specified in the general configuration, and possibly 
+                max_decrement below.
+                <p>
+                The parameter must be be in the interval [0.0, 1.0].
+                <p>
+                If you set it to 1.0, you will effectively disable cache size
+                decreases.  0.9 is a reasonable starting point.</td></tr>
+        <tr>
+            <td colspan="2"><em>hbool_t</em> <code>apply_max_decrement</code></td>
+            </tr><tr>
+            <td valign="top">&nbsp;</td>
+            <td valign="top">IN: Boolean flag indicating whether an upper limit 
+                should be applied to the size of cache size decreases.</td></tr>
+        <tr>
+            <td colspan="2"><em>size_t</em> <code>max_decrement</code></td>
+            </tr><tr>
+            <td valign="top">&nbsp;</td>
+            <td valign="top">IN: Maximum number of bytes by which the maximum cache 
+                size can be decreased in any single step -- if applicable.</td></tr>
+        <tr>
+            <td colspan="2"><em>int</em> <code>epochs_before_eviction</code></td>
+            </tr><tr>
+            <td valign="top">&nbsp;</td>
+            <td valign="top">IN: In the ageout based cache size reduction 
+                algorithms, this field contains the minimum number of epochs an 
+                entry must remain unaccessed in cache before the cache size 
+                reduction algorithm tries to evict it. 
+                3 is a reasonable value.</td></tr>
+        <tr>
+            <td colspan="2"><em>hbool_t</em> <code>apply_empty_reserve</code></td>
+            </tr><tr>
+            <td valign="top">&nbsp;</td>
+            <td valign="top">IN: Boolean flag indicating whether the ageout based 
+                decrement algorithms will maintain a empty reserve when decreasing 
+                cache size.</td></tr>
+        <tr>
+            <td colspan="2"><em>double</em> <code>empty_reserve</code></td>
+            </tr><tr>
+            <td valign="top">&nbsp;</td>
+            <td valign="top">IN: Empty reserve as a fraction of maximum cache 
+                size if applicable.
+                <p>
+                When so directed, the ageout based algorithms will not decrease 
+                the maximum cache size unless the empty reserve can be met.
+                <p>
+                The parameter must lie in the interval [0.0, 1.0].  
+                0.1 or 0.05 is a good place to start.</td></tr>
+        <tr>
+            <td colspan="2">&nbsp;</td>
+        </tr>
+
+
+        <tr>
+          <td colspan="2"><a name="SetFileParConfigFields">
+                <strong>Parallel configuration field:</strong></a></td>
+        </tr>
+        <tr>
+            <td colspan="2"><em>int</em> <code>dirty_bytes_threshold</code></td>
+            </tr><tr>
+            <td valign="top">&nbsp;</td>
+            <td valign="top">IN: Threshold number of bytes of dirty metadata 
+                generation for triggering synchronizations of the metadata caches 
+                serving the target file in the parallel case.
+                <p>
+                Synchronization occurs whenever the number of bytes of dirty 
+                metadata created since the last synchronization exceeds this limit.
+                <p>
+                This field only applies to the parallel case.  While it is ignored 
+                elsewhere, it can still draw a value out of bounds error.
+                <p>
+                It must be consistant across all caches on any given file.
+                <p>
+                By default, this field is set to 256 KB.  It shouldn't be more 
+                than half the current maximum cache size times the 
+                minimum clean fraction.</td>
+        </tr>
+    </table></dd>
+
+<p>
+<dt><strong>Returns:</strong>
+    <dd>Returns a non-negative value if successful; otherwise returns a
+        negative value.
+
+</dl>
+
+
+
+<!--
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+  * Copyright by The HDF Group.                                               *
+  * All rights reserved.                                                      *
+  *                                                                           *
+  * This file is part of HDF5.  The full HDF5 copyright notice, including     *
+  * terms governing use, modification, and redistribution, is contained in    *
+  * the files COPYING and Copyright.html.  COPYING can be found at the root   *
+  * of the source code distribution tree; Copyright.html can be found at the  *
+  * root level of an installed copy of the electronic HDF5 document set and   *
+  * is linked from the top-level documents page.  It can also be found at     *
+  * http://www.hdfgroup.org/HDF5/doc/Copyright.html.  If you do not have      *
+  * access to either file, you may request a copy from help@hdfgroup.org.     *
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ -->
+
+
+<!-- NEW PAGE -->
+<!-- HEADER RIGHT "H5Fset_mpi_atomicity" -->
+<hr>
+<dl>
+
+  <dt><div align=right><font color=999999 size=-1><i>
+      Last modified: 18 April 2012
+      </i></font></div>
+
+  <dt><strong>Name:</strong> <a name="File-SetMpiAtomicity">H5Fset_mpi_atomicity</a>
+
+  <dt><strong>Signature:</strong>
+    <dd><em>herr_t </em><code>H5Fset_mpi_atomicity</code>(
+            <em>hid_t</em> <code>file_id</code>,
+            <em>hbool_t</em> <code>flag</code>
+        )
+
+  <p>
+  <dt><strong>Purpose:</strong>
+    <dd>Sets the MPI atomicity mode.
+
+  <p>
+  <dt><strong>Motivation:</strong>
+    <dd><code>H5Fset_mpi_atomicity</code> 
+      is applicable only in parallel environments using MPI I/O.
+      The function is one of the tools used to ensure sequential consistency.
+      This means that a set of operations will behave as though they
+      were performed in a serial order consistent with the program order.
+
+  <p>
+  <dt><strong>Description:</strong>
+    <dd><code>H5Fset_mpi_atomicity</code> 
+      sets MPI consistency semantics for data access 
+      to the file, <code>file_id</code>.
+      <p>
+      If <code>flag</code> is set to <code>TRUE</code>, 
+      all file access operations will appear atomic, 
+      guaranteeing sequential consistency.
+      If <code>flag</code> is set to <code>FALSE</code>, 
+      enforcement of atomic file access will be turned off.
+      <p>
+      <code>H5Fset_mpi_atomicity</code> is a collective function and 
+      all participating processes must pass the same values for 
+      <code>file_id</code> and <code>flag</code>. 
+      <p>
+      This function is available only when the HDF5 Library is configured 
+      with parallel support (<code>--enable-parallel</code>). 
+      It is useful only when used with the <code>H5FD_MPIO</code> driver
+      (see <a href="RM_H5P.html#Property-SetFaplMpio">
+      <code>H5Pset_fapl_mpio</code></a>).
+
+      <p>
+      <strong>Limitations:</strong>
+      <br>
+      <code>H5Fset_mpi_atomicity</code> calls 
+      <code>MPI_File_set_atomicity</code> underneath
+      and is not supported if the execution platform does not support 
+      <code>MPI_File_set_atomicity</code>. 
+      When it is supported and used,
+      the performance of data access operations may drop significantly. 
+      <p>
+      In certain scenarios, even when <code>MPI_File_set_atomicity</code> 
+      is supported, setting atomicity with <code>H5Fset_mpi_atomicity</code> 
+      and <code>flag</code> set to <code>TRUE</code> does not always yield 
+      strictly atomic updates.  For example, some <code>H5Dwrite</code> calls
+      translate to multiple <code>MPI_File_write_at</code> calls. 
+      This happens in all cases where the high-level file access routine 
+      translates to multiple lower level file access routines. 
+      The following scenarios will raise this issue:
+      <ul>
+          <li>Non-contiguous file access using independent I/O
+          <li>Partial collective I/O using chunked access
+          <li>Collective I/O using filters 
+              or when data conversion is required 
+      </ul>
+      <p>
+      This issue arises because MPI atomicity is a matter of 
+      MPI file access operations rather than HDF5 access operations.  
+      But the user is normally seeking atomicity at the HDF5 level.  
+      To accomplish this, the application must set a barrier 
+      after a write, <code>H5Dwrite</code>, 
+      but before the next read, <code>H5Dread</code>, 
+      in addition to calling <code>H5Fset_mpi_atomicity</code>.
+      The barrier will guarantee that all underlying write operations 
+      execute atomically before the read operations starts.
+      This ensures additional ordering semantics and 
+      will normally produce the desired behavior. 
+      <p>
+
+  <p>
+  <dt><strong>Parameters:</strong>
+    <dd>
+    <table>
+      <tr valign="top">
+        <td><em>hid_t</em> <code>file_id</code>,
+            </td><td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        <td>IN: HDF5 file identifier
+            </td></tr>
+      <tr valign="top">
+        <td><em>hbool_t</em> <code>flag</code>
+            </td><td>&nbsp;</td>
+        <td>IN: Logical flag for atomicity setting
+                <br>
+                Valid values are:
+                <li>
+                <code>TRUE&nbsp;</code>
+                  &nbsp; Sets MPI file access to atomic mode.
+                <li>
+                <code>FALSE</code>
+                  &nbsp; Sets MPI file access to nonatomic mode.
+            </td></tr>
+    </table>
+
+  <p>
+  <dt><strong>Returns:</strong>
+    <dd>Returns a non-negative value if successful;
+        otherwise returns a negative value.
+
+<!--
+  <p>
+  <dt><strong>Failure Modes:</strong>
+    <dd>
+
+  <p>
+  <dt><strong>Example Usage:</strong>
+
+    <dd>Discuss the elements in the first usage example here.
+<dir><pre>
+Complete usage example line(s) for the first example here
+</pre></dir>
+    <p>
+
+    <dd>Discuss the elements in the second usage example here.
+<dir><pre>
+Complete usage example line(s) for the second example here
+</pre></dir>
+-->
+
+  <p>
+  <dt><strong>Fortran90 Interface:</strong> h5fset_mpi_atomicity_f
+    <dd>
+    <pre>
+SUBROUTINE h5fset_mpi_atomicity_f(file_id, flag, hdferr) 
+  IMPLICIT NONE
+  INTEGER(HID_T), INTENT(IN) :: file_id    ! File identifier
+  INTEGER(HBOOL_T), INTENT(IN) :: flag     ! Atomicity flag
+  INTEGER, INTENT(OUT) :: hdferr           ! Error code
+                                           ! 0 on success; -1 on failure
+END SUBROUTINE h5fset_mpi_atomicity_f </pre>
+    </dd>
+
+  <p>
+  <dt><strong>See Also:</strong>
+    <dd><a href="../Advanced/PHDF5FileConsistencySemantics/PHDF5FileConsistencySemantics.pdf">
+        Enabling a Strict Consistency Semantics Model in Parallel HDF5</a>
+        <p>
+        <a href="RM_H5F.html#File-GetMpiAtomicity">
+        <code>H5Fget_mpi_atomicity</code></a>
+
+  <p>
+  <dt><strong>History:</strong>
+    <dd><table width="90%">
+        <tr>
+          <td valign="top" align="left" width="10%">
+            <strong>Release</strong>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <td valign="top" align="left">
+            <strong>Change</strong></td>
+        </tr>
+        <tr>
+          <td valign="top">1.8.9</td>
+          <td valign="top">
+            C function and Fortran subroutine 
+            introduced in this release.</td>
+        </tr>
+        </table>
+</dl>
+
+
+
+
+<!--
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+  * Copyright by The HDF Group.                                               *
+  * Copyright by the Board of Trustees of the University of Illinois.         *
+  * All rights reserved.                                                      *
+  *                                                                           *
+  * This file is part of HDF5.  The full HDF5 copyright notice, including     *
+  * terms governing use, modification, and redistribution, is contained in    *
+  * the files COPYING and Copyright.html.  COPYING can be found at the root   *
+  * of the source code distribution tree; Copyright.html can be found at the  *
+  * root level of an installed copy of the electronic HDF5 document set and   *
+  * is linked from the top-level documents page.  It can also be found at     *
+  * http://hdfgroup.org/HDF5/doc/Copyright.html.  If you do not have          *
+  * access to either file, you may request a copy from help@hdfgroup.org.     *
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ -->
+
+
+<!-- NEW PAGE -->
+<!-- HEADER RIGHT "H5Funmount" -->
+<hr>
+<dl>
+<dt><strong>Name:</strong> <a name="File-Unmount">H5Funmount</a>
+<dt><strong>Signature:</strong>
+    <dd><em>herr_t</em> <code>H5Funmount</code>(<em>hid_t</em> <code>loc_id</code>,
+            <em>const char *</em><code>name</code>
+        )
+<dt><strong>Purpose:</strong>
+        <dd>Unmounts a file.
+<dt><strong>Description:</strong>
+        <dd>Given a mount point, <code>H5Funmount</code> 
+            dissassociates the mount point's file
+            from the file mounted there.  This function
+            does  not close either file.
+            <p> 
+            The mount point can be either the group in the
+            parent or the root group of the mounted file 
+            (both groups have the same name).  If the mount 
+            point was opened before the mount then it is the 
+            group in the parent; if it was opened after the 
+            mount then it is the root group of the child.
+            <p>
+            Note that <code>loc_id</code> is either a file or group identifier
+            and <code>name</code> is relative to <code>loc_id</code>.
+<dt><strong>Parameters:</strong>
+    <ul><table>
+        <tr>
+            <td valign="top"><em>hid_t</em> <code>loc_id</code></td>
+            <td valign="top">IN: File or group identifier for the location at which
+                the specified file is to be unmounted.</td></tr>
+        <tr>
+            <td valign="top"><em>const&nbsp;char&nbsp;*</em><code>name&nbsp;&nbsp;&nbsp;&nbsp;</code></td>
+            <td valign="top">IN: Name of the mount point.</td></tr>
+    </table></ul>
+<dt><strong>Returns:</strong>
+    <dd>Returns a non-negative value if successful;
+        otherwise returns a negative value.
+<dt><strong>Fortran90 Interface:</strong> h5funmount_f
+    <dd>
+    <pre>
+SUBROUTINE h5funmount_f(loc_id, name, child_id, hdferr)
+  IMPLICIT NONE 
+  INTEGER(HID_T), INTENT(IN)  :: loc_id      ! File or group identifier
+  CHARACTER(LEN=*), INTENT(IN):: name        ! Group name at location loc_id
+  INTEGER, INTENT(OUT)        :: hdferr      ! Error code 
+                                             ! 0 on success and -1 on failure
+END SUBROUTINE h5funmount_f
+    </pre>
+
+        <!--<dt><strong>Non-C API(s):</strong>
+        <dd>
+        
+        <img src="Graphics/Java.gif"> 
+        <img src="Graphics/C++.gif">
+        -->
+</dl>
+
+
+
+<!-- HEADER RIGHT " " -->
+<!-- #BeginLibraryItem "/ed_libs/NavBar_RM.lbi" -->
+<hr>
+<center>
+<table border=0 width=98%>
+<tr><td valign=top align=left>
+<a href="../index.html">HDF5 documents and links</a>&nbsp;<br>
+<a href="../H5.intro.html">Introduction to HDF5</a>&nbsp;<br>
+<a href="../UG/HDF5_Users_Guide-Responsive&#32;HTML5/index.html">HDF5 User&rsquo;s Guide</a>&nbsp;<br>
+<!--
+<a href="Glossary.html">Glossary</a><br>
+-->
+</td>
+<td valign=top align=right>
+In the 
+<a href="RM_H5Front.html">HDF5 Reference Manual</a>&nbsp;
+<font size="-1"><br>
+<a href="../HL/RM_H5DS.html">H5DS</a>&nbsp;&nbsp;
+<a href="../HL/RM_H5IM.html">H5IM</a>&nbsp;&nbsp;
+<a href="../HL/RM_H5LT.html">H5LT</a>&nbsp;&nbsp;
+<a href="../HL/RM_H5PT.html">H5PT</a>&nbsp;&nbsp;
+<a href="../HL/RM_H5TB.html">H5TB</a>&nbsp;
+<a href="../HL/RM_HDF5Optimized.html">Optimized</a>&nbsp;
+<br>
+<a href="RM_H5.html">H5</a>&nbsp;&nbsp;
+<a href="RM_H5A.html">H5A</a>&nbsp;&nbsp;
+<a href="RM_H5D.html">H5D</a>&nbsp;&nbsp;
+<a href="RM_H5E.html">H5E</a>&nbsp;&nbsp;
+<a href="RM_H5F.html">H5F</a>&nbsp;&nbsp;
+<a href="RM_H5G.html">H5G</a>&nbsp;&nbsp;
+<a href="RM_H5I.html">H5I</a>&nbsp;&nbsp;
+<a href="RM_H5L.html">H5L</a>&nbsp;
+<br>
+<a href="RM_H5O.html">H5O</a>&nbsp;&nbsp;
+<a href="RM_H5P.html">H5P</a>&nbsp;&nbsp;
+<a href="RM_H5PL.html">H5PL</a>&nbsp;&nbsp;
+<a href="RM_H5R.html">H5R</a>&nbsp;&nbsp;
+<a href="RM_H5S.html">H5S</a>&nbsp;&nbsp;
+<a href="RM_H5T.html">H5T</a>&nbsp;&nbsp;
+<a href="RM_H5Z.html">H5Z</a>&nbsp;
+<br>
+<a href="Tools.html">Tools</a>&nbsp;&nbsp;
+<a href="PredefDTypes.html">Datatypes</a>&nbsp;&nbsp;
+<a href="../fortran/index.html">Fortran</a>&nbsp;&nbsp;
+<a href="APICompatMacros.html">Compatibility Macros</a>&nbsp;
+<br>
+<a href="CollectiveCalls.html">Collective Calls in Parallel</a>&nbsp;
+</font>
+<!--
+<br>
+<i><font size=-1>(Printable <a href="http://hdfgroup.org/HDF5/doc/PSandPDF/HDF5_RefManual.PDF">PDF</a> of this Reference Manual)</font></i>&nbsp;
+-->
+
+</td></tr>
+</table>
+</center>
+<hr>
+<!-- #EndLibraryItem -->
+
+
+<!-- INCLUDE VIA PHP FROM <doc_root>/ed_libs/Footer2.htm -->
+
+<address>
+<table width="100%" border="0">
+  <tr valign="top">
+      <td align="left">
+          <address>
+          The HDF Group Help Desk: <img src="../Graphics/help.png" align=top height=16>
+          <br>
+          Describes HDF5 Release 1.8.20, November 2017.
+          </address>
+      </td><td width="5%">&nbsp;</td>
+      <td align="right">
+          <a href="https://support.hdfgroup.org/ftp/HDF5/releases/COPYING">Copyright</a> by
+          <a href="https://www.hdfgroup.org/">The HDF Group</a>
+          <br>
+          and the Board of Trustees of the University of Illinois
+      </td>   
+  </tr>   
+</table>
+</address>
+
+<!-- END PHP INCLUDE FROM <doc_root>/ed_libs/Footer2.htm -->
+
+
+<SCRIPT LANGUAGE="JAVASCRIPT">
+<!--
+document.writeln("Last modified: 1 June 2015");
+-->
+</SCRIPT>
+ 
+
+</body>
+</html>
+

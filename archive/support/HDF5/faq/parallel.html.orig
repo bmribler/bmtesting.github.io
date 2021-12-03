@@ -1,0 +1,687 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+<!-- If no var is set for $page_title on the top of each page than default title will be HDF Group -->
+
+<title>
+Parallel HDF5 Questions</title>
+	<meta name="keywords" content="hdf, hdfeos, blog, hdf blog, hdf5 blog, hdf5, hdf4, hdf tools, hdf libraries, hdf viewer, hdf format, hdf file, hdf java, nafxcw.lib, phdf5, open source, hierarchical data format, ncsa, database, python hdf, mike folk, hdfview, hdf5 parallel" />
+	<meta name="description" content="The HDF Group is a not-for-profit corporation with the mission of sustaining the HDF technologies and supporting HDF user communities worldwide with production-quality software and services." />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="expires" content="Wed, 26 Feb 2010 08:21:57 GMT" />
+	<meta name="verify-v1" content="/m03HNmaDgGAcDe0PFtEVnXGtCkoeOocjr/Jwey2gdI=" />
+	<link href="/css/layout.css" rel="stylesheet" type="text/css" media="screen, projection" />
+	<link href="/css/print.css" rel="stylesheet" type="text/css" media="print" />
+	<link rel="stylesheet" type="text/css" href="/css/js_style.css" />
+	<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/prototype/1.7.2.0/prototype.js"></script>
+	<!--<script type="text/javascript" src="/scriptaculous/lib/prototype.js"></script>-->
+	<script type="text/javascript" src="/scriptaculous/src/effects.js"></script>
+	<script type="text/javascript" src="/scriptaculous/validation.js"></script>
+	<script type="text/javascript" src="/scriptaculous/animatedcollapse.js"></script>
+	<script type="text/javascript" src="/scriptaculous/rollover.js"></script>	
+	<script type="text/javascript" src="/scriptaculous/functions.js"></script>
+	<script type="text/javascript" src="/scriptaculous/sorttable.js"></script>
+	<!--<script type="text/javascript" src="/jquery-1.2.2.pack.js"></script>-->
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript" src="/scriptaculous/jssor.slider.min.js"></script>
+
+ 	<link rel="stylesheet" type="text/css" href="/featuredcontentglider.css" />
+    <script type="text/javascript" src="/featuredcontentglider.js"></script>
+
+	</head>
+	<body>
+	<div id="mast_head">
+		<a href="https://www.hdfgroup.org/"><img src="/images/hdf_logo.jpg" height="70" style="display:block; padding-left:10px;" align="left" alt="hdf images" /></a>
+		<img src="/images/logo_5.jpg" height="70" style="display:block;" align="right" alt="hdf images" />
+	</div> 
+				
+	<div id="nav_wrapper">
+		<div>
+		<div id="section-">
+			<ul id="nav">
+				<li id="t-index"><a href="https://www.hdfgroup.org/">Home</a> </li>
+				<li id="t-products"><a href="/products/">Products</a></li>
+				<li id="t-services"><a href="/services/">Services</a></li>
+				<li id="t-about"><a href="/about/">About Us</a></li>
+				<li id="t-news"><a href="/news/">News</a> </li>
+				<li id="t-blog"><a href="https://www.hdfgroup.org/blog">Blog</a></li>
+				<li id="t-contact"><a href="/about/contact.html">Contact Us</a></li> 
+			</ul>
+			<script type="text/javascript">
+			
+  (function() {
+    var cx = '007250492606109219119:sb2eg2bgoyy';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:search></gcse:search>	
+					<script type="text/javascript">
+					    jQuery(document).ready(function ($) {
+					        // var options = {
+					        //     $ArrowNavigatorOptions: {
+					        //         $Class: $JssorArrowNavigator$,
+					        //         $ChanceToShow: 2
+					        //     }
+					        // };					    	
+
+
+							var options = { 
+											$AutoPlay: true, $SlideshowOptions: { $Class: $JssorSlideshowRunner$, $Transitions: [{ $Duration:5000, $Fade: true, $Opacity:2 }] } , 
+											$ArrowNavigatorOptions: { 
+												$Class: $JssorArrowNavigator$, 
+												$ChanceToShow: 2
+											}
+										  };
+
+
+					        var jssor_slider1 = new $JssorSlider$('slider1_container', options);
+					    });
+					</script>
+									                  
+			
+		</div>
+		</div>             
+	</div>
+				
+<!--START: MAIN -->
+<div id="wrapper" style="margin-top:-15px;"> 
+
+<!--START: SIDE_BAR -->
+<div id="side_bar">
+
+<form method="get" action="" class="form" >
+	<select onchange="window.open(this.options[this.selectedIndex].value,'_top')" name="" style="border:2px solid #c1c1c1;">
+		<option value="" class="ql1">- - Quick Links - -</option>
+		<option value="/HDF5/" class="ql">HDF5</option>
+		<option value="/products/hdf4/" class="ql">HDF4</option>
+		<option value="/tools/" class="ql">Tools</option>
+		<option value="/projects/" class="ql">Projects</option>
+		<option value="/downloads/" class="ql">Downloads</option>
+		<option value="/documentation/" class="ql">Documentation</option>
+	        <option value="/pubs/" class="ql">Publications</option>
+		<option value="/about/" class="ql">Contact Us</option>
+	</select>
+</form>
+<ul style="border:1px solid #c1c1c1; margin-top:25px;"> 
+
+	<li style="background:url(/images/menubg.png); padding:0px; padding-left:7px; color:#27343C; font-weight:500; text-align:left;">
+	LINKS</li><li><a href="https://www.hdfgroup.org/">Main Website</a></li><li><a  href="/HDF5/whatishdf5.html">What is HDF5?</a></li><li><a  href="/about/HDF5Brochure_2012.pdf">Online Brochure</a></li><li><a  href="/downloads/index.html">Downloads</a></li><li><a  href="/HDF5/doc/index.html">Documentation</a></li><li><a  href="/products/hdf5_tools/">Software using HDF5</a></li><li><a  href="/HDF5/users5.html">HDF5 Users</a></li><li><a  href="/HDF5/hdf5-files.html">Sample HDF5 Files</a></li><li><a  href="/HDF5/acknowledge5.html">Acknowledgments</a></li><li><a  href="/products/licenses.html">Licenses</a></li></ul> 
+
+</div>
+
+<!--END: SIDE_BAR -->
+
+<!--START: CONTENT -->
+<div id="content">
+<p><font color="red"><center><strong>This web site is no longer maintained (but will remain online).<br /> Please see The HDF Group's new <a href="https://portal.hdfgroup.org">Support Portal</a> for the latest information.</strong></center></font></p>
+	<div class=bc><p style="color:orange; ";><a href="/" title="HOME">HOME</a> &gt; <a href="/HDF5/" title="HDF5">HDF5</a> &gt; <a href="/HDF5/faq/" title="FAQ">FAQ</a></p></div>
+<fieldset><h1>Parallel HDF5</H1></fieldset>
+
+<a name="serialvsparallel"></a>
+<h3>Are serial HDF5 and Parallel HDF5 in the same source code?</h3>
+
+<p>
+Yes, serial HDF5 and Parallel HDF5 (PHDF5) are part of the same HDF5 source code. Parallel HDF5 is a
+configure option that you can specify to build HDF5 with:
+<pre>
+  ./configure --enable-parallel
+</pre>
+</p>
+<p>
+HDF5 &quot;knows&quot; certain parallel compilers and will automatically enable
+Parallel HDF5 if one of those compilers is specified in the CC environment variable.
+See the <a href="/ftp/HDF5/current/src/unpacked/release_docs/INSTALL_parallel">parallel
+installation instructions</a> in the source code for more details.
+</p>
+
+<hr />
+<a name="attr"></a>
+
+<h3>Why must attributes be written collectively?</h3>
+<p>
+Attributes in general are meant to be very small. Attributes (both the
+attribute information and the data it holds) are considered to be metadata on an
+object. Because of this, they are held in the
+metadata cache. The HDF library has a requirement that all metadata updates be
+done collectively so all processes see the same stream of metadata updates.
+This is how HDF5 was designed. Breaking the collective
+requirements for metadata updates has been discussed previously and we know
+that it is worth having for certain scenarios, but it is just not possible 
+at the moment without a lot of research and funding.
+</p>
+
+<p>
+Attribute data is treated as metadata because it is
+perceived as something that is present on all processes and not really
+generated by one process and sent to other processes. An example would be a
+label indicating that a given dataset is stored as of timestep 1 or at a given 
+setting.
+</p>
+
+<p>
+If you  want to avoid sending the attribute's data to all processes, you 
+may wish to consider using a dataset instead. Datasets can be created with any
+dimensions like attributes, and can be even created with a scalar dataspace to
+hold one element (see <a href="http://www.hdfgroup.org/HDF5/doc/RM/RM_H5S.html#Dataspace-Create">H5Screate</a>).
+</p>
+
+<hr />
+
+
+<a name="perf"></a>
+
+<h3>How to improve performance with Parallel HDF5</h3>
+
+<p>
+Tuning parallel HDF5 for a specific application on a specific system requires playing with a 
+lot of tunable parameters many of which are specific to certain platforms. Not all hints are 
+applicable to all platforms, and some hints may be ignored even if they can be applied. The 
+best practice here is to look at each system's webpage on how to tune I/O parameters. For 
+example, Hopper, a Cray XE6 supercomputer at NERSC, has a webpage specifically on how to tune 
+parallel I/O parameters for specific file systems:
+<pre>
+   <a href="http://www.nersc.gov/users/computational-systems/hopper/file-storage-and-i-o/">http://www.nersc.gov/users/computational-systems/hopper/file-storage-and-i-o/</a>
+</pre>
+</p>
+
+<p>
+Here are some general parameters that users should consider tuning when they see slow I/O 
+performance from HDF5:
+</p>
+<p><strong> HDF5 parameters:</strong></p>
+
+<ol class="ol">
+<li>
+<p>
+Chunk size and dimensions: If the application is using chunked dataset storage, performance usually 
+varies depending on the chunk size and how the chunks are aligned with block boundaries of the 
+underlying parallel filesystem. Extra care must be taken on how the application is accessing the 
+data to be able to set the chunk dimensions.
+</p>
+</li>
+<li>
+<p>
+Metadata cache: it is usually a good idea to increase the metadata cache size if possible to avoid 
+small writes to the file system. See:
+<pre>
+   <a href="http://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-SetMdcConfig">http://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-SetMdcConfig</a>
+</pre>
+</p>
+</li>
+<li>
+<p>
+Alignment properties: For MPI IO and other parallel systems, choose an alignment which is a multiple of the disk block size. See:
+<pre>
+   <a href="http://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-SetAlignment">http://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-SetAlignment</a>
+</pre>
+</p>
+</ol>
+
+<p><strong>MPI-IO parameters:</strong></p>
+<p>
+There are several MPI-I/O parameters to tune. Usually it is done by setting info keys in the 
+info object passed to HDF5. Some implementations might allow other ways to pass those hints to the 
+MPI library. The MPI standard reserves some key values. An implementation is not required to 
+interpret these key values, but if it does interpret the key value, it must provide the
+functionality described. The best thing to do again here is to consult with the specific MPI 
+implementation and system used documentation to see what parameters are available to tune. For 
+example, ROMIO in MPICH provides a user-guide with a section describing the hints that are available to tune:
+<pre>
+   <a href="http://www.mcs.anl.gov/research/projects/romio/doc/users-guide.pdf">http://www.mcs.anl.gov/research/projects/romio/doc/users-guide.pdf</a>
+</pre>
+</p>
+
+<p>
+Here are some general parameters that are usually tunable:
+</p>
+<ol class="ol">
+<li>
+<p>
+cb_block_size (integer): This hint specifies the block size to be used for collective buffering file 
+access. Target nodes access data in chunks of this size. The chunks are distributed among target 
+nodes in a round-robin (CYCLIC) pattern.
+</p>
+</li>
+<li>
+<p>
+cb_buffer_size (integer): This hint specifies the total buffer space that can be used for collective 
+buffering on each target node, usually a multiple of cb_block_size.
+</p>
+</li>
+<li>
+<p>
+cb_nodes (integer): This hint specifies the number of target nodes to be used for collective buffering.
+</p>
+</li>
+</ol>
+
+<p>
+MPI implementations other than ROMIO might provide a way to tune those parameters, but not necessarily through info hints. OMPIO (an Open MPI native MPI-IO implementation) for example uses OMPI MCA parameters to tune those hints.
+</p>
+
+<p><strong>Parallel File System parameters:</strong></p>
+<p>
+Depending on the parallel file system and what version it is, there are several ways to tune 
+performance. It is very hard to come up with a general list of tunable parameters for all file 
+systems, since there are not many common ones. Users should individually check the documentation 
+for the particular file system they are using.
+<p>
+<p>
+For most parallel file systems the two parameters that are usually tunable and very important to consider are:
+<ol class="ol">
+<li>
+Stripe size: Controls the striping unit (in bytes).
+</li>
+<li>
+Stripe Count: Controls the number of I/O devices to stripe across.
+</li>
+</ol>
+</p>
+
+<p>
+For Blue Gene /P and /Q, one can set the environment variable BGLOCKLESSMPIO_F_TYPE to 0x47504653 
+(the GPFS file system magic number). ROMIO will then pretend GPFS is like PVFS and not issue any 
+fcntl() lock commands.
+</p>
+
+<p>
+Some IBM specific hints:
+</p>
+<p>
+<pre>
+   <a href="http://www-01.ibm.com/support/knowledgecenter/SSFK3V_1.3.0/com.ibm.cluster.pe.v1r3.pe500.doc/am107_ifopen.htm?lang=en">http://www-01.ibm.com/support/knowledgecenter/SSFK3V_1.3.0/com.ibm.cluster.pe.v1r3.pe500.doc/am107_ifopen.htm?lang=en</a>
+</pre>
+</p>
+
+<p>
+Some Cray specific hints:
+</p>
+<p>
+<pre>
+   <a href="https://fs.hlrs.de/projects/craydoc/docs/man/xe_mptm/51/cat3/intro_mpi.3.html">https://fs.hlrs.de/projects/craydoc/docs/man/xe_mptm/51/cat3/intro_mpi.3.html</a>
+</pre>
+</p>
+
+<hr />
+<a name="perfgpfs"></a>
+
+<h3>GPFS Optimizations</h3>
+
+<p>
+If encountering issues with performance on GPFS, there are two parameters that you can tune: 
+</p>
+
+<ol class="ol">
+<li><p>
+ The &quot;bglockless&quot; prefix: <a href="https://press3.mcs.anl.gov/romio/2013/08/05/bglockless/">https://press3.mcs.anl.gov/romio/2013/08/05/bglockless/</a>
+</p>
+<p>
+With MPICH-3.1.1 and beyond this is no longer a problem:
+
+<a href="http://press3.mcs.anl.gov/romio/2014/06/05/new-romio-optimizations-for-blue-gene-q/">http://press3.mcs.anl.gov/romio/2014/06/05/new-romio-optimizations-for-blue-gene-q/</a>
+</p>
+</li>
+<li>
+<p> &quot;bg_nodes_pset&quot; controls the number of aggregators. (See <a href="#sethints">How to pass hints to MPI from HDF5</a>.)
+</p>
+</ol>
+
+<hr />
+
+<a name="sethints"></a>
+<h3>How to pass hints to MPI from HDF5</h3>
+
+<p>
+To set hints for MPI using HDF5, see:
+<a href="http://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-SetFaplMpio">http://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-SetFaplMpio</a>
+</p>
+<p>
+You use the 'info' parameter to pass these kinds of low-level MPI-IO tuning tweaks.
+In C, the calls are like this:
+<pre>
+   MPI_Info info;
+   MPI_Info_create(&info);
+
+   /* strange thing about MPI hints: the key and value are strings */ 
+   MPI_Info_set(info, "bg_nodes_pset", "1");
+
+   H5Pset_fapl_mpio(plist_id, MPI_COMM_WORLD, info);
+
+   /* and now pass plist_id to H5Fopen or H5Fcreate */
+   file_id = H5Fcreate(H5FILE_NAME, H5F_ACC_TRUNC, H5P_DEFAULT, plist_id);
+</pre>
+</p>
+
+
+<hr />
+<p>
+<a name="1proc"></a>
+<h3>How do you set up HDF5 so only one MPI rank 0 process does I/O?</h3>
+
+<p>
+Several scientific HDF5 applications use this approach,  and we know it
+works very well. You should use the <em>sequential</em> HDF5 library.
+</p>
+<p>
+<strong>Pros:</strong> one HDF5 file<br />
+<strong>Cons:</strong> Probably a lot of communications will be going on.
+</p>
+
+
+<hr />
+
+
+<a name="sepfiles"></a>
+<h3>How would you create separate files for each compute
+node in a cluster using HDF5?</h3>
+
+<P>
+<OL>
+<LI> If you use the Parallel HDF5 library, open a communicator for each node 
+and add just one process to that communicator. 
+<P>
+<LI> You may also try to use the sequential library, but then you have to make
+sure that only a particular process creates/modifies/closes the file
+that is written to. This approach has not been tested.
+<P>
+<B>Pros:</B> should be faster than 1) <BR>
+<B>Cons:</B> multiple files to handle, not tested 
+
+<P>
+Also there can be other approaches if you decide to go with multiple
+files.  For example, each process writes a flat binary file and one can 
+use the HDF5 external datasets storage feature to create a wrapper HDF5 
+file to combine all data.  See the section on Dataset Creation Property
+Lists under <A HREF="http://hdfgroup.org/HDF5/Tutor/property.html">Property 
+Lists</A> in the HDF5 Tutorial. 
+</OL>
+<P>
+
+<!--
+<hr />
+<a name="shared"></a>
+<h3>Why do shared libraries not work with Parallel HDF5? </h3>
+
+<p>
+Shared libraries are explicitly disabled by configure when building
+Parallel HDF5.
+</p>
+
+<p>
+A major benefit of using a shared library is that different processes (even
+of different users) can co-use the shared library code, resulting
+in fewer paging faults in a system with multiple processes.
+</p>
+
+<p>
+However, this benefit is not available in the MPI environment since it uses
+distributed memory and is often a single process per processor system. Also,
+there are two ways to make a shared library available during run-time:
+</p>
+
+<ul class="ul">
+<li class="li3">
+<p>
+    Each processor has a copy of the shared library in its local file system.
+     This way incurs a consistency problem across all processors. (Imagine
+     thousands of local disks for a cluster of thousands of processors.)
+</p>
+</li>
+
+<li class="li3">
+<p>
+     The shared library is on a shared file system to ALL processors.
+     This way incurs run-time network traffic. (Imagine thousands of
+     processors "pounding" on that single file server.)
+</p>
+</li>
+</ul>
+
+<p>
+Therefore, many distributed memory systems choose not to support shared libraries.
+The front end just "broadcasts" the executable file to all back end compute nodes before
+starting the MPI execution. Then the compute nodes just compute on their own until they
+are done and then report to the frontend that they are available for another job.
+</p>
+
+<p>
+For these reasons the HDF5 configure disables the shared library option by default
+when building parallel HDF5 (--enable-parallel). The resultant executable file is
+larger, but avoids the issues that can occur.
+</p>
+--> 
+<hr />
+
+
+<a name="chunk"></a>
+<h3>Performance:  Parallel I/O with Chunking Storage</h3>
+<p>
+HDF5 has to map the coordinate of data from the file space to the memory
+space in chunked storage. If the shape of the memory and file space
+is the same, HDF5 can optimize the mapping process significantly.
+Otherwise, a general mapping routine will map the coordinate one by one.
+We recommend that applications use the same shape for both the memory space 
+and file space.
+</p>
+
+<p>
+For example, the following case may cause bad performance:
+
+<p>
+<ul>
+<strong>file space:</strong> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+   <CODE> 2-D: the first dimension 1, the second dimension FSIZE</CODE>
+<br />
+<strong>memory space: </strong>&nbsp; <CODE>1-D: The fist dimension DMAX </CODE>
+</UL>
+
+<p>
+If you change it as follows:
+</p>
+
+<P>
+<UL>
+<strong>file space: </strong>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  <CODE>2-D: the first dimension 1, the second dimension FSIZE</CODE>
+<br />
+<strong>memory space:</strong> &nbsp;
+<CODE>2-D: the first dimension 1, the second dimension DMAX </CODE>
+</UL>
+</p>
+
+<p>
+Then, the performance may be much improved.
+</p>
+
+<hr />
+
+<a name="filelock"></a>
+<h3>What if Parallel HDF5 tests fail with a ROMIO error: File locking failed in ADIOI_Set_lock ... ?</h3>
+<p>
+This means that ROMIO, the MPI-I/O implementation used in mpich and openmpi and many other
+implementations, is attempting to use file locking when it is not supported by your file system.
+To resolve that, first you should attempt to rebuild your MPI library to disable file locking.
+This is the best way to resolve this error for your HDF5 application or any MPI-I/O application on
+your file system.
+</p>
+
+<p>
+If that is not possible, there is a manual way to do this within your program. Unfortunately, this
+will require updating your programs and also updating the internal parallel HDF5 tests if you want
+them to succeed. The following steps are required:
+</p>
+
+<ul class="ul">
+ <li class="li3">
+   <p>
+    In your application code set "romio_ds_read" to "disable" and
+   "romio_ds_write" to "disable" as hints in an MPI_Info object.
+   </p>
+  </li>
+ 
+ <li class="li3">
+  <p> 
+   Use this MPI_Info object to set the info parameter in every call to
+   H5Pset_fapl_mpio(). Most likely this parameter was set to MPI_INFO_NULL.
+  </p>
+ </li>
+</ul>
+
+<hr />
+
+<a name="ph5difftest"></a>
+<h3>Testing ph5diff ... Expected result differs from actual result</h3>
+<p>
+When I run <em>make check</em>, it fails with errors similar to this:
+  <pre>
+  Testing ph5diff -v -p 0.05 --use-system-epsilon h5diff_basic1.h5 h5dif*FAILED*
+  ====Expected result (expect_sorted) differs from actual result (actual_sorted)
+  </pre>
+</p>
+<p>What can I do to resolve these errors?</p>
+
+<p>
+These are not valid errors. The test is comparing saved output in HDF5 with the output
+from running the test, and the two do not match.
+</p>
+
+<p>
+When running the tests, ignore the errors by either specifying "make -i" or 
+setting the HDF5_Make_Ignore environment variable. Also, redirect
+the output to a file. For example:
+  <pre>
+  env HDF5_Make_Ignore=yes gmake check &gt;& check.out
+  </pre>
+</p>
+
+<p>
+Then edit the resulting check.out file and search for:
+  <pre>
+  *** Error ignored
+  </pre>
+</p>
+
+<p>
+If the only tests that fail are those that compare saved output with
+the test output, then your installation should be okay. You can run ph5diff
+manually from the command line, to be certain it is working properly.
+</p>
+
+<hr />
+<a name="diffdset"></a>
+<h3>How do you write to a single file in parallel in which different processes write to
+separate datasets?</h3>
+
+<p>
+All processes have to call H5Dcreate() to create a dataset, even if the dataset will be 
+accessed by one process.
+</p>
+
+<p>
+If you want to create a dataset for every process you could do something like this:
+</p>
+
+<p>
+<pre>
+for(i=0 ; i &lt; mpi_size; i++) {
+    char dataSetName[256];
+    sprintf(dataSetName, "a%d", i + 1);
+    printf("Creating dataset %s ... \n", dataSetName);
+
+    dset_id = H5Dcreate2(file_id, dataSetName, H5T_NATIVE_INT, filespace,
+                        H5P_DEFAULT, H5P_DEFAULT, H5P_DEFAULT);
+}
+</pre>
+</p>
+
+<p>
+This will create n datasets, where n is the number of processes in the communicator.
+</p>
+ 
+<hr />
+<a name="mpi_finalize"></a>
+
+<h3>Error: &quot;The MPI_Comm_free() function was called after MPI_FINALIZE was invoked&quot;</h3>
+<p>
+I obtain the following error at the end of my program:<br />
+<pre>
+   *** The MPI_Comm_free() function was called after MPI_FINALIZE was invoked.
+   *** This is disallowed by the MPI standard. 
+   *** Your MPI job will now abort. 
+</pre>
+</p>
+<p>
+What should I look for to resolve this issue?
+</p>
+<p>
+Make sure that <em>all</em> open objects are closed before calling MPI_FINALIZE.
+This includes not just the file, groups, and datasets, but also property lists, dataspaces,
+etc.  If you are sure that all objects are closed and you still get this error, then please 
+send an example program that reproduces the issue to the 
+<a href="http://www.hdfgroup.org/services/">The HDF Helpdesk</a>.
+</p> 
+
+<hr />
+<a name="set_size"></a>
+<h3>Closing my HDF5 file, I get a segfault  with an error "MPI_FILE_SET_SIZE(76): Inconsistent arguments to collective routine"</h3>
+
+<p>
+This indicates that you have created datasets or groups or attributes in
+the file &quot;uncollectively&quot;, meaning either not all processes called the create,
+or the creation was done with different parameters.
+</p>
+
+<p>
+For example, a common mistake is to create a dataset with chunk dimensions
+(using H5Pset_chunk) that are not the same on all processes. Mistakes like that
+result in a different size of the file on all the processes and hence the
+MPI_File_set_size fails with different arguments between all the ranks.
+</p>
+
+
+
+<hr />
+<i>
+- - Last modified: 23 February 2017</i>
+	   </div>
+	   <!--END: CONTENT -->
+<!--END: WRAPPER -->
+<script src="/scriptaculous/gatag.js" type="text/javascript"></script>
+
+<!-- <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script> -->
+				
+<!--
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-3782034-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+-->
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-3782034-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+</body>
+</html>

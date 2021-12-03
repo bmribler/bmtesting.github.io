@@ -1,0 +1,464 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+<!-- If no var is set for $page_title on the top of each page than default title will be HDF Group -->
+
+<title>
+Software using HDF (4)</title>
+	<meta name="keywords" content="hdf, hdfeos, blog, hdf blog, hdf5 blog, hdf5, hdf4, hdf tools, hdf libraries, hdf viewer, hdf format, hdf file, hdf java, nafxcw.lib, phdf5, open source, hierarchical data format, ncsa, database, python hdf, mike folk, hdfview, hdf5 parallel" />
+	<meta name="description" content="The HDF Group is a not-for-profit corporation with the mission of sustaining the HDF technologies and supporting HDF user communities worldwide with production-quality software and services." />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="expires" content="Wed, 26 Feb 2010 08:21:57 GMT" />
+	<meta name="verify-v1" content="/m03HNmaDgGAcDe0PFtEVnXGtCkoeOocjr/Jwey2gdI=" />
+	<link href="../../css/layout.css" rel="stylesheet" type="text/css" media="screen, projection" />
+	<link href="../../css/print.css" rel="stylesheet" type="text/css" media="print" />
+	<link rel="stylesheet" type="text/css" href="../../css/js_style.css" />
+	<link rel="shortcut icon" href="../../images/favicon.ico" type="image/x-icon" />
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/prototype/1.7.2.0/prototype.js"></script>
+	<!--<script type="text/javascript" src="/scriptaculous/lib/prototype.js"></script>-->
+	<script type="text/javascript" src="../../scriptaculous/src/effects.js"></script>
+	<script type="text/javascript" src="../../scriptaculous/validation.js"></script>
+	<script type="text/javascript" src="../../scriptaculous/animatedcollapse.js"></script>
+	<script type="text/javascript" src="../../scriptaculous/rollover.js"></script>	
+	<script type="text/javascript" src="../../scriptaculous/functions.js"></script>
+	<script type="text/javascript" src="../../scriptaculous/sorttable.js"></script>
+	<!--<script type="text/javascript" src="/jquery-1.2.2.pack.js"></script>-->
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript" src="../../scriptaculous/jssor.slider.min.js"></script>
+
+ 	<link rel="stylesheet" type="text/css" href="../../featuredcontentglider.css" />
+    <script type="text/javascript" src="../../featuredcontentglider.js"></script>
+
+	</head>
+	<body>
+	<div id="mast_head">
+		<a href="https://www.hdfgroup.org/"><img src="../../images/hdf_logo.jpg" height="70" style="display:block; padding-left:10px;" align="left" alt="hdf images" /></a>
+		<img src="../../images/logo_5.jpg" height="70" style="display:block;" align="right" alt="hdf images" />
+	</div> 
+				
+	<div id="nav_wrapper">
+		<div>
+		<div id="section-">
+			<ul id="nav">
+				<li id="t-index"><a href="https://www.hdfgroup.org/">Home</a> </li>
+				<li id="t-products"><a href="../index.html">Products</a></li>
+				<li id="t-services"><a href="../../services/index.html">Services</a></li>
+				<li id="t-about"><a href="../../about/index.html">About Us</a></li>
+				<li id="t-news"><a href="../../news/index.html">News</a> </li>
+				<li id="t-blog"><a href="https://www.hdfgroup.org/blog">Blog</a></li>
+				<li id="t-contact"><a href="../../about/contact.html">Contact Us</a></li> 
+			</ul>
+			<script type="text/javascript">
+			
+  (function() {
+    var cx = '007250492606109219119:sb2eg2bgoyy';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:search></gcse:search>	
+					<script type="text/javascript">
+					    jQuery(document).ready(function ($) {
+					        // var options = {
+					        //     $ArrowNavigatorOptions: {
+					        //         $Class: $JssorArrowNavigator$,
+					        //         $ChanceToShow: 2
+					        //     }
+					        // };					    	
+
+
+							var options = { 
+											$AutoPlay: true, $SlideshowOptions: { $Class: $JssorSlideshowRunner$, $Transitions: [{ $Duration:5000, $Fade: true, $Opacity:2 }] } , 
+											$ArrowNavigatorOptions: { 
+												$Class: $JssorArrowNavigator$, 
+												$ChanceToShow: 2
+											}
+										  };
+
+
+					        var jssor_slider1 = new $JssorSlider$('slider1_container', options);
+					    });
+					</script>
+									                  
+			
+		</div>
+		</div>             
+	</div>
+				
+<!--START: MAIN -->
+<div id="wrapper" style="margin-top:-15px;"> 
+
+<!--START: SIDE_BAR -->
+<div id="side_bar">
+
+<form method="get" action="tools.html" class="form" >
+	<select onchange="window.open(this.options[this.selectedIndex].value,'_top')" name="" style="border:2px solid #c1c1c1;">
+		<option value="" class="ql1">- - Quick Links - -</option>
+		<option value="/HDF5/" class="ql">HDF5</option>
+		<option value="/products/hdf4/" class="ql">HDF4</option>
+		<option value="/tools/" class="ql">Tools</option>
+		<option value="/projects/" class="ql">Projects</option>
+		<option value="/downloads/" class="ql">Downloads</option>
+		<option value="/documentation/" class="ql">Documentation</option>
+	        <option value="/pubs/" class="ql">Publications</option>
+		<option value="/about/" class="ql">Contact Us</option>
+	</select>
+</form>
+<ul style="border:1px solid #c1c1c1; margin-top:25px;"> 
+
+	<li style="background:url(../../images/menubg.png); padding:0px; padding-left:7px; color:#27343C; font-weight:500; text-align:left;">
+	LINKS</li><li><a href="https://www.hdfgroup.org/">Main Website</a></li><li><a  href="../hdf4/whatishdf.html">What is HDF?</a></li><li><a  href="../../downloads/index.html">Downloads</a></li><li><a  href="../../release4/doc/index.html">Documentation</a></li><li><a  href="tools.html">Software using HDF4</a></li><li><a  href="../hdf4/users.html">HDF4 Users</a></li><li><a  href="../licenses.html">Licenses</a></li></ul> 
+
+</div>
+
+<!--END: SIDE_BAR -->
+
+<!--START: CONTENT -->
+<div id="content">
+<p><font color="red"><center><strong>This web site is no longer maintained (but will remain online).<br /> Please see The HDF Group's new <a href="https://portal.hdfgroup.org">Support Portal</a> for the latest information.</strong></center></font></p>
+	<div class=bc><p style="color:orange; ";><a href="../../index.html" title="HOME">HOME</a> &gt; <a href="../index.html" title="PRODUCTS">PRODUCTS</a> &gt; <a href="index.html" title="HDF4_TOOLS">HDF4_TOOLS</a></p></div><style>
+ul {
+	line-height:1.7; 
+}
+
+</style>
+
+<fieldset><h1>Software using HDF (4)</h1></fieldset>
+
+
+<P>
+
+<BR>Please help us keep your software information up to date by sending your HDF related research and software links
+to <CODE>help at hdfgroup.org</CODE>.
+<P>
+<b>Disclaimer:
+
+<p>Although the HDF Group is pleased that these products support the HDF file format,
+the HDF Group is not in a position to endorse any particular product.  Descriptions
+on this page come from the official pages of the software vendors, and any
+claims made are theirs.
+</b> 
+
+<hr>
+
+<h3>CONTENTS:</h3>
+ <ul class="ul">
+   <li class="li3"><a href="../../tools/earthscience.html">Earth Science Related Software</a></li>
+
+ <p>
+   <li class="li3">Freely Available Software:
+    <ul class="ul">
+       <em>The HDF Group Software:</em>
+        <br />
+        &nbsp; &nbsp; <a href="tools.html#util">The HDF Group Utilities</a><br />
+        &nbsp; &nbsp; <a href="tools.html#hjava">The HDF Group Java Products</a><br />
+        &nbsp; <br />
+       <em>Third Party Tools:</em>
+        <br />
+        &nbsp; &nbsp; <a href="http://www.iges.org/grads/">GrADS</a>*<br />
+        &nbsp; &nbsp; <a href="tools.html#hdf4import">HDF4Import</a><br />
+        &nbsp; &nbsp; <a href="http://www.ncl.ucar.edu">NCL</a>*<br />
+        &nbsp; &nbsp; <a href="tools.html#nco">NCO (netCDF Operators)</a><br />
+        &nbsp; &nbsp; <a href="http://www.opendap.org">OPeNDAP / Hyrax</a>*<br /> 
+        &nbsp; &nbsp; <a href="http://www.giss.nasa.gov/tools/panoply">Panoply</a>*<br />
+        &nbsp; &nbsp; <a href="tools.html#pomegranate">Pomegranate</a>
+    </ul>
+     <p>
+     * Also see <a href="../../tools/earthscience.html">Earth Science Related Software</a>
+     </p>
+  </li>
+
+ <li class="li3">Commercial Tools:
+   <ul class="ul">
+    <li><A HREF="tools.html#actran">ACTRAN</a></li>
+    <li><A HREF="tools.html#ep">EASI/PACE</a></li>
+    <li><A HREF="tools.html#envi">ENVI</a></li>
+    <li><A HREF="tools.html#erdas">ERDAS IMAGINE</a></li>
+    <li><A HREF="tools.html#hexp">HDF Explorer</a></li>
+    <li><A HREF="tools.html#idl">IDL</a></li>
+    <li><A HREF="tools.html#igor">IGOR Pro</a></li>
+    <li><A HREF="tools.html#math">Mathematica</a></li>
+    <li><A HREF="tools.html#ml">MATLAB</a></li>
+    <li><a href="tools.html#pvw">PV-Wave</a></li>
+    <li><A HREF="tools.html#sd">Slicer Dicer</a></li>
+    <li><A HREF="tools.html#tecplot">Tecplot</a></li>
+    <li><A HREF="tools.html#wim">WIM</a></li>
+   </ul>
+  </li>
+
+  <li class="li3"><a href="../../tools/hdftools-archive.html">Archived Tools</a></li>
+
+</ul>
+
+<hr />
+<A NAME="free"></a>
+<P><h2>Freely Available Software</h2><p>
+
+
+ <A NAME="ncsa"></a>
+ <h3>The HDF Group Software</h3>
+ <DL>
+<ul>
+<A NAME="util">
+    <DT><A HREF="index.html">The HDF Group Utilities</a> 
+    <DD>Utilities included in the HDF distribution are of the following type:
+         <ul>
+         <li> conversion utilities (for eg. jpeg2hdf, hdftor8)
+         <li> tools for analyzing the contents of an HDF file (<i>hdp</i> being
+              one of the more useful)
+         <li> tools for manipulating HDF files (for eg. hdfcomp, hdfpack, ...)<p>
+         </ul>
+<A NAME="hjava">
+    <DT><A HREF="../java/index.html">
+The HDF Group Java Products</A>
+    <DD>The HDF Java Products are a revised and reorganized version of the
+    earlier  Java HDF Products.  They include: a) the Java HDF Interface
+    for HDF4, b) the Java HDF5 Interface for HDF5, c) a NEW hdf-object packages
+    which is a pure Java implementation of an abstract model of data and
+    can read either HDF4 or HDF5 files, and d) HDFView, a Java-based tool 
+    for browsing and editing HDF4 and HDF5 files.
+<P>
+
+</dl>
+</ul>
+
+<A NAME="other"></a>
+ <h3>Third-Party Tools</h3>
+<DL>
+
+<ul>
+
+<p>
+<a name="hdf4import"> </a>
+<dt>
+<a href="http://www.astro.uni-koeln.de/staff/roellig/HDF4">HDF4Import</a>
+</dt>
+
+<dd>This is a Mathematica Package to allow Vdata import of HDF4 files in
+Mathematica.
+</dd>
+</p>
+
+<p>
+<A NAME="nco">
+    <DT><A HREF="http://nco.sourceforge.net">NCO (netCDF Operators)</A>
+    <DD>
+    The netCDF Operators, or NCO, are a suite of file operators which
+    facilitate manipulation and analysis of self-describing data stored in
+    the (freely available) netCDF or HDF4 formats.
+<p>
+
+
+<a name="pomegranate">
+ <dt><a href="http://pomegranate.nasa.gov/">Pomegranate</a></dt>
+ <dd>Pomegranate is an open source python application that implements w10n-sci API.
+It can be installed to provide web services for remote access of science data files,
+or used as a standalone library/command line tool.
+Supported formats include NetCDF, HDF4, HDF5, GRIB and FITS.
+</p>
+
+      
+   </dl>
+</ul>
+
+<hr>
+<A NAME="com"></a>
+<p><h2>Commercial software</h2><p>
+<ul>
+    <DL>
+
+
+<P>
+<A NAME="actran">
+<DT><A HREF="http://www.fft.be/">ACTRAN</A>
+<DD>ACTRAN is an acoustic code based on the use of Finite and Infinite 
+Element Methods, developed by Free Field Technologies.  For aeroacoustic 
+applications, the sources are predicted separately, e.g. by CFD software. 
+The use of HDF files allows for a much more efficient exchange of this 
+huge amount of data across different platforms.
+
+<p>
+
+<A NAME="ep">
+	<DT><A HREF="http://www.pcigeomatics.com/">EASI/PACE</a>  
+    <DD>This application is a powerful remote sensing software package, offering 
+    extensive capabilities in image classification, geometric correction, 
+    orthorectification,
+    enhancement filtering, vector edit with image backdrop, terrain
+    analysis and visualization, radar image processing, DEM extraction,
+    atmospheric correction, and hyperspectral data analysis.  It operates
+    on Windows, Macintosh, and several UNIX platforms, and is available from 
+    PCI.
+<P>
+
+<A NAME="envi">
+    <DT><A HREF="http://www.exelisvis.com/ProductsServices/ENVI/ENVI.aspx">ENVI</A>
+    <DD>ENVI, the Environment for Visualizing Images, is an image 
+    application for processing, analyzing, and displaying 
+    multispectral, hyperspectral or radar remote sensing data.
+    It operates on Windows, Unix, and Macintosh platforms.  It supports 
+    numerous formats, 
+    including HDF.
+<P>
+
+<!--
+<A NAME="em">
+    <DT><A HREF="http://www.ermapper.com/">ER Mapper</A>
+    <DD>This application is an advanced digital image processing and remote 
+    sensing system created to help earth scientists integrate, enhance, 
+    visualize, and 
+    interpret their geographic data.  It allows truly interactive "real time"
+    integration and processing of data. 
+-->
+<P>
+
+<A NAME="erdas">
+  <DT><A HREF="http://www.erdas.com/">ERDAS Imagine</A>
+  <DD>IMAGINE is a mapping and visualization tools that allows 
+different types of geographic data to be combined with imagery and
+organized into a mapping project.  It supports HDF-EOS and Landsat
+data, as well as SPOT data.  Refer to the <A HREF="http://www2.erdas.com/supportsite/">FAQs</A>
+<P>
+
+<A NAME="hexp">
+	<DT><A HREF="http://www.space-research.org/">HDF Explorer</A>
+    <DD>
+HDF Explorer is a data visualization program designed to read HDF and HDF5
+files. Its main features are: reads all HDF data types, supports image
+generation from both scalar and vector data, easy browsing through 3D
+datasets, data exporting facilities, and an easy-to-use yet powerful
+interface. HDF Explorer is available for Windows NT/95. More information
+about HDF Explorer is available from 
+<A HREF="http://www.space-research.org/">Space Research, Inc.</A>
+<P>     
+<A NAME="idl">
+	<DT><A HREF="http://www.exelisvis.com/language/en-US/ProductsServices/IDL.aspx">IDL</A> 
+    <DD>IDL is a software package for data analysis, visualization, and 
+    application development. IDL's features include: advanced image processing, 
+    interactive 2D and 3D graphics, insightful volume visualization, a 
+    high-level programming language, integrated mathematics and statistics, 
+    flexible data I/O, a cross-platform GUI toolkit, and versatile program 
+    linking tools. 
+	IDL offers support for virtually any data format including CDF, netCDF and HDF.
+<P>
+<A NAME="igor">
+   <DT><A HREF="http://www.wavemetrics.com/">IGOR Pro</A>
+   <DD>WaveMetrics' IGOR Pro is a
+   graphing, data analysis, and programming tool for scientists and engineers.
+   It can handle large data sets, and imports data from a variety of 
+   file formats, including HDF.  It is available on Macintosh and 
+   Windows. 
+
+<P>
+
+
+<P>
+<A NAME="math">
+<DT><A HREF="http://www.wolfram.com/">Mathematica</A>
+<DD>Mathematica, from Wolfram Research, Inc. supports HDF. 
+Mathematica is an integrated technical computing system, which combines
+interactive calculation, visualization tools, and a programming
+language.
+<P>
+
+<A NAME="ml">
+<DT><A HREF="http://www.mathworks.com">MATLAB</A>
+<DD>MATLAB from The MathWorks, Inc. supports the HDF format.  It is a 
+high-level programming language for technical computing that combines numeric 
+computation, advanced graphics and visualization. 
+<P>
+
+
+<A NAME="pvw">
+	<DT><A HREF="http://www.vni.com/products/wave">PV-Wave</A>
+    <DD>This is a software environment from 
+    <A HREF="http://www.vni.com/index_hi.html">Visual Numerics</a> for 
+    solving problems requiring the application of graphics, mathematics,
+    numerics, and statistics to data and equations.
+<P>
+
+
+<A NAME="sd">
+    <DT><A HREF="http://www.slicerdicer.com/">Slicer Dicer</A>
+<DD>
+Slicer Dicer (formerly Spyglass Dicer) is a volumetric-data visualization
+program currently available for Windows XP, ME, 2000, NT, and 98 platforms.
+It reads netCDF and HDF data and DICOM, as well as arbitrary binary array  
+data. You literally &quot;slice and dice&quot; the data volume to create
+3D renderings of selected portions of the data rendered on orthogonal and
+oblique slices and on arbitrary rectilinear blocks and cutouts. Isosurface
+and projected volume renderings are also available. You can generate
+animation sequences featuring continuous rotations, moving slices, blocks,      
+etc., parametric variation (time animation), oblique slice rotation, and
+varying transparency. Slicer Dicer comes with the optional program Seeker, a
+powerful browser for DICOM medical image files. Slicer Dicer is owned and
+marketed by PIXOTEC, LLC.
+<P>
+
+
+<A NAME="tecplot">
+    <DT><A HREF="http://www.tecplot.com/">Tecplot</A>
+    <DD>Tecplot, from Amtec Engineering Inc., is a fast, interactive 
+        visualization program that allows
+        users to view their data in a wide variety of ways:  wire-mesh
+        plots, contour lines and flooding, vector fields, light-source
+        shared plots, and many types of XY plots.  It supports reading and
+        writing of HDF files.  Tecplot runs on most UNIX platforms and on
+        IBM PCs running most versions of MicroSoft Windows (and soon on VMS). 
+<P>
+
+
+
+<A NAME="wim">
+  <DT><A HREF="http://www.wimsoft.com/">Windows Image Manager (WIM)</A>
+  <DD>WIM is a general purpose image display and analysis program for MS
+      Windows, with special features for Satellite Images.
+<P>
+
+</DL>
+</ul>
+
+<hr>
+
+<i>
+- - Last modified: 31 January 2017</i>
+	   </div>
+	   <!--END: CONTENT -->
+<!--END: WRAPPER -->
+<script src="../../scriptaculous/gatag.js" type="text/javascript"></script>
+
+<!-- <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script> -->
+				
+<!--
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-3782034-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+-->
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-3782034-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+</body>
+</html>

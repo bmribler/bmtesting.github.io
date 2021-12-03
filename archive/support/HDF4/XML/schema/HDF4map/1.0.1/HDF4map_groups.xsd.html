@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- HDF4map_groups -->
+<xs:schema xmlns:h4="/HDF4/XML/schema/HDF4map/1.0.1" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="/HDF4/XML/schema/HDF4map/1.0.1" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0.1">
+    <!--    Include other h4 schema documents -->
+    <xs:include schemaLocation="HDF4map_attributes.xsd"/>
+    <xs:include schemaLocation="HDF4map_tables.xsd"/>
+    <xs:include schemaLocation="HDF4map_arrays.xsd"/>
+    <xs:include schemaLocation="HDF4map_rasters.xsd"/>
+    <xs:include schemaLocation="HDF4map_palettes.xsd"/>
+    <!-- 
+        Global definitions related to Group element
+
+        HDF4 user-created Vgroups are mapped to Group elements.
+    -->
+    <!--
+        groupT: Group element type
+
+        HDF4 user-created Vgroups are mapped to Group elements.  Group elements and their members form a graph of some
+        Objects in the HDF4 file. The graph formed by the Groups may have cycles.  Objects may exist that are not be 
+        members of any Group. 
+
+        Note that Vgroups in the HDF4 file that were created by the HDF4 library for organization or "bookkeeping" 
+        are not mapped to Group elements as they do not represent information supplied by the creator of the HDF4 file.
+    -->
+    <xs:complexType name="groupT">
+        <xs:sequence>
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:element name="GroupAttribute" type="h4:attributeT"/>
+                <xs:element name="Group" type="h4:groupT"/>
+                <xs:element name="Table" type="h4:tableT"/>
+                <xs:element name="Array" type="h4:arrayT"/>
+                <!-- NOTE: h4mapwriter currently does not support GR-created Rasters in Groups -->
+                <xs:element name="Raster" type="h4:rasterT"/>
+                <xs:element name="paletteRef" type="h4:paletteRefT"/>
+                <!-- NOTE: h4mapwriter currently does not support cycles in groups, so does not use groupCycleRef -->
+                <xs:element name="groupCycleRef" type="h4:groupRefT"/>
+            </xs:choice>
+        </xs:sequence>
+        <xs:attribute name="name" type="xs:string" use="required"/>
+        <xs:attribute name="path" type="xs:string" use="required"/>
+        <xs:attribute name="class" type="xs:string" use="optional"/>
+        <xs:attribute name="id" type="h4:groupID" use="required"/>
+    </xs:complexType>
+    <!--
+        groupRefT: Group reference element type
+
+        Used when there are cycles in the Group graph.
+        Appears as a subelement of a Group (A) to represent another Group (B) that is both a member and an ancestor 
+        of Group A. 
+            The groupRef subelement of Group A would reference Group B.  
+        A single Group may have multiple groupRef elements.
+    -->
+    <xs:complexType name="groupRefT">
+        <xs:attribute name="name" type="xs:string" use="required"/>
+        <xs:attribute name="ref" type="h4:groupIDREF" use="required"/>
+    </xs:complexType>
+    <!--
+        groupID: Group ID attribute type.
+
+        Uniquely identifies a Group element in an XML document.
+        Does not correspond to any HDF4 file content.
+        Of the form "ID_G" followed by an integer.
+    -->
+    <xs:simpleType name="groupID">
+        <xs:restriction base="xs:ID">
+            <xs:pattern value="ID_G\d+"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <!--
+        groupIDREF: Group IDREF attribute type.
+
+        Used to reference a Group element by its unique Group ID.
+    -->
+    <xs:simpleType name="groupIDREF">
+        <xs:restriction base="xs:IDREF">
+            <xs:pattern value="ID_G\d+"/>
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>

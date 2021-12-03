@@ -1,0 +1,894 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+<!-- If no var is set for $page_title on the top of each page than default title will be HDF Group -->
+
+<title>
+HDF5 Users</title>
+	<meta name="keywords" content="hdf, hdfeos, blog, hdf blog, hdf5 blog, hdf5, hdf4, hdf tools, hdf libraries, hdf viewer, hdf format, hdf file, hdf java, nafxcw.lib, phdf5, open source, hierarchical data format, ncsa, database, python hdf, mike folk, hdfview, hdf5 parallel" />
+	<meta name="description" content="The HDF Group is a not-for-profit corporation with the mission of sustaining the HDF technologies and supporting HDF user communities worldwide with production-quality software and services." />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="expires" content="Wed, 26 Feb 2010 08:21:57 GMT" />
+	<meta name="verify-v1" content="/m03HNmaDgGAcDe0PFtEVnXGtCkoeOocjr/Jwey2gdI=" />
+	<link href="../css/layout.css" rel="stylesheet" type="text/css" media="screen, projection" />
+	<link href="../css/print.css" rel="stylesheet" type="text/css" media="print" />
+	<link rel="stylesheet" type="text/css" href="../css/js_style.css" />
+	<link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon" />
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/prototype/1.7.2.0/prototype.js"></script>
+	<!--<script type="text/javascript" src="/scriptaculous/lib/prototype.js"></script>-->
+	<script type="text/javascript" src="../scriptaculous/src/effects.js"></script>
+	<script type="text/javascript" src="../scriptaculous/validation.js"></script>
+	<script type="text/javascript" src="../scriptaculous/animatedcollapse.js"></script>
+	<script type="text/javascript" src="../scriptaculous/rollover.js"></script>	
+	<script type="text/javascript" src="../scriptaculous/functions.js"></script>
+	<script type="text/javascript" src="../scriptaculous/sorttable.js"></script>
+	<!--<script type="text/javascript" src="/jquery-1.2.2.pack.js"></script>-->
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript" src="../scriptaculous/jssor.slider.min.js"></script>
+
+ 	<link rel="stylesheet" type="text/css" href="../featuredcontentglider.css" />
+    <script type="text/javascript" src="../featuredcontentglider.js"></script>
+
+	</head>
+	<body>
+	<div id="mast_head">
+		<a href="https://www.hdfgroup.org/"><img src="../images/hdf_logo.jpg" height="70" style="display:block; padding-left:10px;" align="left" alt="hdf images" /></a>
+		<img src="../images/logo_5.jpg" height="70" style="display:block;" align="right" alt="hdf images" />
+	</div> 
+				
+	<div id="nav_wrapper">
+		<div>
+		<div id="section-">
+			<ul id="nav">
+				<li id="t-index"><a href="https://www.hdfgroup.org/">Home</a> </li>
+				<li id="t-products"><a href="../products/index.html">Products</a></li>
+				<li id="t-services"><a href="../services/index.html">Services</a></li>
+				<li id="t-about"><a href="../about/index.html">About Us</a></li>
+				<li id="t-news"><a href="../news/index.html">News</a> </li>
+				<li id="t-blog"><a href="https://www.hdfgroup.org/blog">Blog</a></li>
+				<li id="t-contact"><a href="../about/contact.html">Contact Us</a></li> 
+			</ul>
+			<script type="text/javascript">
+			
+  (function() {
+    var cx = '007250492606109219119:sb2eg2bgoyy';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:search></gcse:search>	
+					<script type="text/javascript">
+					    jQuery(document).ready(function ($) {
+					        // var options = {
+					        //     $ArrowNavigatorOptions: {
+					        //         $Class: $JssorArrowNavigator$,
+					        //         $ChanceToShow: 2
+					        //     }
+					        // };					    	
+
+
+							var options = { 
+											$AutoPlay: true, $SlideshowOptions: { $Class: $JssorSlideshowRunner$, $Transitions: [{ $Duration:5000, $Fade: true, $Opacity:2 }] } , 
+											$ArrowNavigatorOptions: { 
+												$Class: $JssorArrowNavigator$, 
+												$ChanceToShow: 2
+											}
+										  };
+
+
+					        var jssor_slider1 = new $JssorSlider$('slider1_container', options);
+					    });
+					</script>
+									                  
+			
+		</div>
+		</div>             
+	</div>
+				
+<!--START: MAIN -->
+<div id="wrapper" style="margin-top:-15px;"> 
+
+<!--START: SIDE_BAR -->
+<div id="side_bar">
+
+<form method="get" action="users5.html" class="form" >
+	<select onchange="window.open(this.options[this.selectedIndex].value,'_top')" name="" style="border:2px solid #c1c1c1;">
+		<option value="" class="ql1">- - Quick Links - -</option>
+		<option value="/HDF5/" class="ql">HDF5</option>
+		<option value="/products/hdf4/" class="ql">HDF4</option>
+		<option value="/tools/" class="ql">Tools</option>
+		<option value="/projects/" class="ql">Projects</option>
+		<option value="/downloads/" class="ql">Downloads</option>
+		<option value="/documentation/" class="ql">Documentation</option>
+	        <option value="/pubs/" class="ql">Publications</option>
+		<option value="/about/" class="ql">Contact Us</option>
+	</select>
+</form>
+<ul style="border:1px solid #c1c1c1; margin-top:25px;"> 
+
+	<li style="background:url(../images/menubg.png); padding:0px; padding-left:7px; color:#27343C; font-weight:500; text-align:left;">
+	LINKS</li><li><a href="https://www.hdfgroup.org/">Main Website</a></li><li><a  href="whatishdf5.html">What is HDF5?</a></li><li><a  href="../about/HDF5Brochure_2012.pdf">Online Brochure</a></li><li><a  href="../downloads/index.html">Downloads</a></li><li><a  href="doc/index.html">Documentation</a></li><li><a  href="../products/hdf5_tools/index.html">Software using HDF5</a></li><li><a  href="users5.html">HDF5 Users</a></li><li><a  href="hdf5-files.html">Sample HDF5 Files</a></li><li><a  href="acknowledge5.html">Acknowledgments</a></li><li><a  href="../products/licenses.html">Licenses</a></li></ul> 
+
+</div>
+
+<!--END: SIDE_BAR -->
+
+<!--START: CONTENT -->
+<div id="content">
+<p><font color="red"><center><strong>This web site is no longer maintained (but will remain online).<br /> Please see The HDF Group's new <a href="https://portal.hdfgroup.org">Support Portal</a> for the latest information.</strong></center></font></p>
+	<div class=bc><p style="color:orange; ";><a href="../index.html" title="HOME">HOME</a> &gt; <a href="../products/hdf5/index.html" title="HDF5">HDF5</a></p></div>
+<fieldset><h1>HDF5 Users</h1></fieldset>
+
+<H2>Some organizations who use HDF5</H2>
+<p>
+(For user-developed tools, see <a href="../products/hdf5_tools/index.html#all">Software Using HDF5</a>.)
+</p>
+
+<DL>
+<DT><A HREF="http://www.aer.com/">AER, Inc</A>
+<DD>Using HDF5 in satellite meteorology (NPOESS).  
+<P>
+<DT><A HREF="http://vision.atc.army.mil/">Aberdeen Test Center</A>
+<DD>Uses HDF5 to store test data collected at the Aberdeen Test Center
+(ATC) at Aberdeen Proving Ground (APG) in Maryland, USA. 
+<P>
+<!--
+<DT><A HREF="http://www.antdevco.com">Antenna Development Corporation</A>
+<DD>We are always looking for better ways to visualize the radiation fields of
+our antennas (on small spacecraft).
+<P>
+-->
+<dt><a href="http://nci.org.au">Australian National Computational Infrastructure (NCI)</a>
+<dd>NCI is Australia’s national research computing facility which provides services to Australian researchers, industry 
+and government.
+
+<p>
+<DT><A HREF="http://www.aqualinc.com">Aqualinc Research Ltd.</A>, New Zealand
+<DD>Using HDF5 in field of groundwater hydrology.  
+
+<p>
+<dt><a href="http://www.aquaveo.com">Aquaveo, LLC</a>
+<dd>Aquaveo is a water resources engineering consulting firm and the developer
+of the Groundwater, Surface-water, and Watershed Modeling Systems. HDF5 is
+the foundation of a standard format for the geometry data storage of river
+cross-sections, 2D/3D structured grids, 2D/3D unstructured meshes, geometric
+paths through space, and associated time data.
+</dd>
+</p>
+
+
+<p>
+<DT>Argonne National Laboratory</dt>
+<DD>Using HDF5 in field of Accelerator/Plasma Science.  
+<P> 
+<DT><A HREF="http://www.globus.org">Argonne National Laboratory Globus Project</A>
+<DD>The Globus Project at Argonne National Laboratory develops fundamental
+technologies needed to build computational grids.  
+<P>
+
+<DT><A HREF="http://flash.uchicago.edu/">ASCI/Alliances Center for Astrophysical
+ Thermonuclear Flashes</A>
+<P>
+<DT><A HREF="http://www.ansto.gov.au/ResearchHub/Bragg/">Australian Nuclear Science and Technology Organisation</A>
+<DD>Using HDF5 in field of Neutron and X-Ray Scattering.  
+
+<p />
+<dt><a href="http://baltrad.eu">BALTRAD</a>
+<dd>BALTRAD is a sustainable weather radar network for the Baltic Sea Region,
+operating in real-time, with high-quality data.
+
+<p />
+<DT><A HREF="http://ncmi.bcm.tmc.edu">Baylor College of Medicine</A>
+<DD>
+  The National Center for Macromolecular Imaging (NCMI) is a national facility 
+supported mainly by the NIH National Center for Research Resources. Other 
+support includes the National Institute of Allergy and Infectious Disease, the 
+National Library of Medicine, the National 
+ Science Foundation, the R. Welch Foundation, the Agouron Institute and the WM 
+Keck Foundation. 
+<P>
+The long-term goal of the NCMI is to establish the infrastructure for fast, 
+routine, atomic structure determination of subcellular complexes by electron 
+cryo-microscopy and computer reconstruction. Our emphasis is on specimens that 
+cannot currently be studied by conventional 
+ structural techniques such as x-ray crystallography. The ultimate outcome of 
+our research is a three-dimensional image of the complex that we can use for 
+design of drugs and vaccines for a variety of diseases. 
+<P>
+<DT><A HREF="http://www.bcdsp.net">Boston Collaborative Drug Surveillance Program</A>
+<DD>Using HDF5 in field of Pharmacoepidemiology. HDF5 is used to monitor and 
+analyze drug usage for purposes of drug safety, 
+using Python (through the PyTables module) to access HDF5.  
+<P>
+<DT><A HREF="http://www.cactuscode.org/">Cactus</A>
+<DD>Supports HDF5 in the Cactus code, which is an open source problem
+solving environment designed for scientists and engineers.
+<P>
+<DT>California Air Resources Board
+<DD>Uses HDF5 for their Aircraft Emissions Database
+<P>
+<DT><A HREF="http://mechmat.caltech.edu">CalTech</A>
+<DD>The Bhattacharya group, ME, Division of Engineering at CalTech, is
+using HDF5 in the field of Ferroelectric materials.  
+<P>
+<DT><A HREF="http://www.ccrs.nrcan.gc.ca">Canada Centre for Remote Sensing</A>, Ontario, Canada
+<DD>Using HDF5 in Atmospheric radiation. 
+<P>
+<DT><A HREF="http://www.trianacode.org/">Cardiff University</A>
+<DD>Using HDF5 in problem solving environments/grid computing.  
+<P>
+<DT>CAREERI, CAS, China                                                         
+<DD>Using HDF and HDF5 in field of desertification.              
+<!--
+<P>
+<DT>CCMC/NASA/GSFC
+<DD>The <A HREF="http://ccmc.gsfc.nasa.gov/~preitan/CCMC/SWX">SWX: Space Weather Explorer</A> from CCMC/NASA/GSFC is a program written to visualize in 3D
+output from space weather models. (EOS User, 03/02)
+-->
+
+<p>
+<dt><a href="http://www.ceemple.com">Ceemple</a>
+<dd>
+Ceemple is an innovative solution enabling rapid C++ based technical computing. It features the
+productivity of MATLAB and Python, combined with the performance and power of standard C++. 
+Ceemple also enables rapid development using the HDF library, greatly simplifying writing HDF based
+C++ code.
+</p>
+
+<P>
+<DT><A HREF="http://www.ensight.com/">CEI</A>
+<DD>CEI offers a suite of tools for engineering and scientific simulation, 
+including meshing, plotting, animation and data visualization.  The company's
+software can be run on every type of computer, from laptops to clusters to 
+supercomputers. It interfaces seamlessly to all popular CAE software and most
+scientific research codes, and can drive the most advanced VR displays. 
+CEI has corporate headquarters in Apex, N.C., and authorized distributors 
+around the world. </P>
+<P>
+<DT><A HREF="http://www.cct.lsu.edu/">Center for Computation and Technology, Louisiana State</A>
+<DD>Using HDF5 in numerical relativity. 
+<P>
+<!--
+<DT><A HREF="http://www-cger2.nies.go.jp">Center for Global Environmental Research</A>
+<DD>Using HDF5 to archive meteorological datasets and other monitoring
+data.  (7/03)
+<P>
+-->
+<DT>Center for Space Science and Applied Research, China 
+<P>
+
+<DT><A HREF="http://www.cse.sn">Centre de Suivi Ecologique</A>, Senegal  
+<DD>Using HDF5 for land use and land cover maps in Senegal.  
+<P>
+<!--
+<DT><A HREF="http://www.cprsig.cl/">Centro de Percepcion Remota y SIG</A>, Chile 
+<P>
+-->
+<DT><A HREF="http://www.cesbio.ups-tlse.fr/">CESBIO Unite Mixte CNES-CNRS-UPS-IRD</A>, France
+<DD>Develop software functions to process ASTER, VEGETATION and other satellite 
+data within the "Sud-Ouest" project, dealing with carbon and water fluxes 
+modeling at meso-scale. 
+<P>
+<DT><A HREF="http://www.cineca.it">CINECA</A>, Italy 
+<P>
+<DT><A HREF="http://www.cira.it">C.I.R.A.</A> 
+- Italian Aerospace Research Center
+<DD>Using HDF5 in field of Computational AeroAcoustics.  
+<P>
+<DT>CIRAD
+<DD>Using HDF5 for GIS and remote sensing applications in Guinean 
+Research Institute Support.
+<P>
+<DT><A HREF="http://www.ija.csic.es">CSIC-Institute of Earth Sciences</A>, Spain
+<DD>Using HDF5 in field of geophysics.   
+<P>
+
+<DT><!--<A HREF="http://www.conabio.gob.mx/conocimiento/hotspots/doctos/puntos_calor.html"> -->CONABIO, Mexico
+<DD>Using HDF5 in MODIS fire detection. 
+<P>
+<DT><A HREF="http://www.conae.gov.ar/principal.html">CONAE</A> - Comision Nacional De Actividades Espaciales, Argentina
+<DD>Using HDF5 in remote sensing.  
+<P>
+<DT>Department of Energy's ASC project 
+<DD>ASC (Advanced Simulation and Computing) is a Department of Energy 
+program involving the Lawrence Livermore, Los Alamos and Sandia National
+Laboratories. ASC's goal is "to shift promptly from nuclear test-based 
+methods to computational-based methods of
+ensuring the safety, reliability, and performance of our nuclear weapons 
+stockpile." These methods must achieve
+high-resolution, three-dimensional calculations of full-systems using 
+high-fidelity physical models. The ASCI Data Models and Formats group 
+(ASCI DMF) is working closely with NCSA on the development of HDF5 to address 
+I/O and data sharability issues, to replace existing mesh data management 
+software with a unified mesh API, and to replace
+storage formats with HDF5. This involves not only supporting ASC data 
+requirements in the new HDF5 format, but also
+implementing the HDF5 IO library on the three multi-teraflop ASC machines.
+<P>
+<DT><A HREF="http://www.db.com">Deutsche Bank</A>
+<DD>Using HDF5 in field of Financial Engineering.  
+<P>
+<DT><A HREF="http://www.dwd.de/">Deutscher Wetterdienst</A>, Germany
+<DD>Using HDF5 in Satellite Climate Monitoring.  
+<P>
+<DT><A HREF="http://www.diamond.ac.uk">Diamond Light Source</A>                 
+<DD>Using HDF5 in Synchrotron Science (using NeXus)                       
+<P>
+<DT>Duke University Nicholas School of the Environment
+<DD>Using HDF5 in Antarctic Biological Oceanography. 
+<P>
+<DT>Dynamics Research Corporation, CA
+<DD>Using HDF5 in electronics  (Alliance/NPACI user).  
+<P>
+<DT>Edith Cowan University, Australia
+<DD> Using HDF5 in field of photonics.    
+<P>
+
+<dt><a href="http://www.esi-group.com">ESI Group</a> </dt>
+
+<dd>The ESI Group is using HDF5 as the data container for their
+new solver result database format, called ERF (ESI Result Database Format).
+ERF will be supported by all PAM-CSM FEM-solvers (PAM-CRASH and derivatives,
+explicit and implicit solution schemes) from version v2009. 
+</dd>
+
+<p>
+
+
+<DT><A HREF="http://www.eso.org/">European Southern Observatory (ESO)</A>
+<DD> Using HDF5 in numerical modeling of optical fibers.  
+<P>
+<DT><!--<A HREF="http://www.ewre.com">-->EWRE, ltd., Israel
+<DD>Using HDF5 if field of groundwater flow and transport modeling -
+visualization.  
+<P>
+
+<dt><a href="http://www.fmf.uni-freiburg.de">Freiburg Materials Research Center</a>  
+<dd>The service group Scientific Information Processing of the 
+<a href="http://www.fmf.uni-freiburg.de">Freiburg Materials Research Center 
+(FMF)</a> uses HDF for its Open Source Data Analysis Framework Pyphant, which uses HDF as native file format
+for saving scientific data and flow based data analysis algorithms.
+
+
+<P>
+<DT>Gazi University, Turkey
+<DD>Using HDF5 in field of mechanical engineering.  
+<P>
+<DT><A HREF="http://www.gemini.edu">Gemini Observatory</A>
+<DD>Using HDF5 in field of Adaptive Optics / Astronomy.  
+<P>
+<DT>Geological Institute, Univ. of Copenhagen, Denmark
+<DD>Using HDF5 in field of Hydrogeology. 
+<P>
+<DT>Geological Survey Of Austria
+<DD>Using HDF5 in interpretation of Aeroelectromagnetic Data. 
+</p>
+
+<p>
+<dt><a href="http://www.globeclaritas.com">GLOBE Claritas (GNS Science)</a>, New Zealand
+<dd>Using HDF5 in seismic processing software (Geophysics).
+</p>
+
+<p>
+<dt>Grassland Institute of CAAS, China
+<DD>Using HDF5 for grassland monitoring.  
+<P>
+<DT>Hankyong National University, Korea
+<DD>Using HDF4 and HDF5 in air pollution modeling.  
+<P>
+<DT>Hydrometeorological Research Centre Of Russia (RHMC)
+<DD>Using HDF5 in Atmospheric Physics & Dynamical Meteorology.
+<P>
+<DT><A HREF="http://www.ibama.gov.br">IBAMA</A>, Brazil
+<DD>Using HDF5 in remote sensing.  
+<P>
+<DT><a href="https://www.inl.gov/">INL</a>
+<DD>Using HDF5 in the Advanced Fuel Cycle program. 
+<P>
+<DT><A HREF="http://www.ifremer.fr/cersat">Ifremer</A>, France
+<DD>CERSAT, the processing and archiving facility for satellite
+data at Ifremer (French Research Institute for Exploitation of
+the Sea), is using HDF5.  
+<P>
+<DT>Innovative Management & Technology Services (IMTS)
+<DD>Using HDF5 in Scientific Data Visualization.  
+<P>
+<DT>Institut Laue-Langevin, Grenoble, France
+<DD>Using HDF5 in neutron scattering simulation/NeXus format. 
+<P>
+<DT>Institute of Mineralogy and Geochemistry, University 
+Karlsruhe, Germany
+<DD>Using HDF5 on project to study arsenic groundwater contamination. 
+<P>
+
+<dt><a href="http://www.nasa.gov/mission_pages/station/main/index.html">International Space Station</A>   
+
+<P>
+
+<DT><A HREF="http://www.isro.org">ISRO</A>, India  
+<P>
+<DT><A HREF="http://www.itu.edu.tr">Istanbul Technical University</A>, Aerospace Department
+<DD>Using HDF5 in field of Gas Dynamics.      
+
+<p>
+<dt><a href="http://itseez.com">itseez</a>
+<dd>Developers of <a href="http://opencv.org">OpenCV</a>, an open
+source computer vision and machine learning software library.
+<a href="http://opencv.org/opencv-3-1.html">OpenCV 3.1</a> supports HDF5.
+</dd>
+
+
+<P>
+<DT>IWR, University of Heidelberg
+<DD>Using HDF5 in Advanced Parallel Numerical Simulation (scalable
+I/O on Linux clusters).  
+
+<p>
+<dt><a href="http://www.jaxa.jp/index_e.html">Japan Aerospace Exploration Agency (JAXA)</a>
+<dd> The <a href="http://disc.sci.gsfc.nasa.gov/acdisc/documentation/ACOS.shtml">ACOS (Atmospheric CO2 Observations from Space) Team</a>, 
+in collaboration with the Japan Aerospace Exploration Agency (JAXA), is 
+participating in the analyses of <a href="http://www.gosat.nies.go.jp/eng/gosat/page2.htm">GOSAT "IBUKI"</a> observation <a href="http://www.gosat.nies.go.jp/eng/gosat/page5.htm">data</a>.
+</p>
+
+<p>
+<DT><A HREF="http://ab-initio.mit.edu/">The Joannopoulos Research Group at MIT</A>
+<DD>Physics department at MIT head by Professor John D. Joannopoulos.
+See <A HREF="http://ab-initio.mit.edu/mpb/index.html">MIT Photonic-Bands</A>
+and 
+<A HREF="http://ab-initio.mit.edu/mpb/hdf.html">Software for HDF5</A>
+<P>
+<DT>Johns Hopkins University Applied Physics Lab
+<DD>Using HDF5 in Aerospace Engineering.  
+<P>
+<DT>Kell S.R.L.
+<!--<DT><A HREF="http://www.kell.it/">Kell srl</A> -->
+<DD>Uses HDF5 in GIS and Remote Sensing. 
+<P> 
+<DT><A HREF="http://www.itk.org">KITWARE Inc.</A>
+<DD>Using HDF5 in medical image processing. 
+<P>
+<DT><A HREF="http://www.spacetec.no">Kongsberg Spacetec AS</A>
+<DD>Using HDF4 and HDF5 in remote sensing applications.  
+<P>
+<dt><a href="http://kosc.kiost.ac/kosc_eng/main/">Korea Ocean Satellite Center (KOSC)</a>
+<dd>GOCI is one of three payloads on the COMS satellite, and GOCI L1B and L2 data is stored in HDF-EOS5. 
+<p>
+<DT><A HREF="http://www.riam.kyushu-u.ac.jp">Kyushu University</A>
+<DD>Using HDF5 in field of oceanography.   
+<P>
+<DT>Laboratory for Computational Astrophysics
+<DD>(See LCA Vision).
+
+<p>
+
+
+<DT>Laboratory of Theoretical Physics and Modelization,  Universite de Cergy-Pontoise, France
+<DD>Using HDF5 in the study of the propagation of light and different
+phenomena about light in photonic crystals. 
+<P>
+<DT>Laboratory for Neural Computation, USC
+<DD>Uses HDF5 in field of bioengineering.
+<P>
+<DT><A HREF="http://rainbow.ldeo.columbia.edu">Lamont-Doherty Earth Observatory of Columbia University</A>
+<DD>Trying to parallellize (in MPI) the I/O of their ocean and atmosphere 
+models, which is in sequential mode mostly using UNIDATA/UCAR's 
+netCDF.
+<P>
+
+<DT><A HREF="http://landsaf.meteo.pt/">LandSAF</A>
+<DD> The Instituto de Meteorologia in Portugal is using HDF5 to store LandSAF 
+products derived from METEOSAT SECOND GENERATION & EUMETSAT POLAR SYSTEM 
+satellite images.  
+<P>
+<DT>Lawrence Berkeley National Laboratory, Applied Numerical Algorithms and 
+Visualization Group
+<DD>The Applied Numerical Algorithms Group and Visualization Group at 
+Lawrence Berkeley National Laboratory have developed the ChomboVis 
+application, which uses HDF5. ChomboVis is
+a visualization tool for 2D and 3D AMR data sets. It is layered on top
+of the Visualization Toolkit (VTK) and provides a simple graphical
+user interface for interacting with a 2D or 3D data set.
+<P>
+<DT>Lawrence Berkeley National Laboratory, Free-electron lasers, light sources
+
+<P>
+
+<DT>LENS, Italy
+<DD>Using HDF5 in field of physics.  
+<P>
+<DT><A HREF="http://www.lin.irk.ru/">Limnological Institute SD RAS</A> Irkutsk, Russia
+<DD>Using HDF5 in hydrology and hydrophysics.  
+<P>
+<DT><A HREF="http://www-ssrl.slac.stanford.edu/lcls/">Linac Coherent Light Source - Xray Free-Electron Laser</A> 
+<DD>The LCLS is a multi-institutional proposal for a single-pass x-ray Free
+Electron Laser (FEL) operating in the 1-15  wavelength region, using
+electron beams.
+<P>
+<DT>LITA - POLITECNICO of Milan, Italy
+<DD>Uses HDF5 in Water Resources Management - Computer Science.
+<P>
+
+<dt><a href="http://www.nrao.edu/meetings/bigdata/presentations/May4/10-d/IDIA-Talks/BigData_LightningTalk1_v3.pdf">LOFAR</a>
+<dd>Astronomy data from the <a href="http://www.lofar.org">LOFAR</a> (Low Frequency 
+Array) telescope is stored in HDF5. 
+</p>
+
+
+
+<DT>Los Alamos National Laboratory (Parallel Architectures and Performance Team)
+<DD>The Parallel Architectures and Performance Team investigates the issues that contribute to optimal application and computer system performance on extreme-scale advanced architectures.  
+
+<P>
+<DT>Lupine Logic, Inc.
+<DD>Lupine Logic, Inc. is a commercial firm working within the NASA EOS program (primarily land data products) developing EOS operational ECS
+<A HREF="http://modarch.gsfc.nasa.gov">MODIS</A> algorithms as well as 
+exploring commercial applications of NASA EOS data products.
+They use both HDF4 and HDF5.
+<P>
+
+<p>
+<dt>Machine Learning Data Set Repositiory (mldata.org)
+<dd>This is a repository for Machine Learning (ML) data, which uses HDF5 internally.
+Machine Learning (ML) is a branch of artificial intelligence concerned with the design and development of
+algorithms that allow computers to evolve behaviors based on empirical data.
+</p>
+
+<p>
+<DT><A HREF="http://www.mathworks.com/">The MathWorks</A>
+<DD>The MathWorks is a developer and supplier of software for technical 
+computing and Model-Based Design. MATLAB, one of the core products
+from The Mathworks, stores its  data  in the HDF5 format.
+<P>
+
+<DT>Matrix Metals Limited
+<DD>Matrix Metals Limited is an Australian copper producer that uses both 
+HDF4 and HDF5 in earth science applications.
+<P>
+
+<dt><a href="http://www.astron.nl/calim2010/presentations/26_MeerKATDataStorage_Bennett.pdf">MeerKAT</a>
+</dt>
+<dd>Astronomy data from the <a href="http://www.ska.ac.za/meerkat/index.php">MeerKAT</a> Array is stored in HDF5.
+</p>
+
+<p>
+<DT><A HREF="http://wizard.roma2.infn.it/pamela">MEPhI</A>, Russia              
+<DD>Using HDF5 in Astroparticle Physics, PAMELA.                          
+</p>
+
+
+<p />
+<dt>Military Hospital Instruction Mohammed V Rabat, Morocco
+<dd>Using HDF5 in field of Radiotherapy.  See the open source project, 
+<a href="https://github.com/EL-Bakkali-Jaafar/G4Linac_MT">G4Linac_MT</a>,
+a Geant4 application for accurately modeling a Medical linear Accelerator used in
+Radiotherapy to treat cancer diseases, by employing ionizing radiations.
+
+<p>
+<dt><a href="https://mosaik.offis.de/">mosaik</a>
+<dd>Mosaik is an open-source flexible smart Grid co-simulation framework, written in
+Python. It uses existing simulators in a common context to perform a coordinated
+simulation of a given (Smart Grid) scenario.
+</p>
+
+<p>
+<DT><A HREF="http://www.earth.nasa.gov">NASA Earth Science Enterprise</A>
+<DD> See the <A HREF="http://hdfeos.org">HDF-EOS Tools and Information Center</A>.
+<P>
+<DT>NASA Glenn Research Center
+<DD>Use HDF as a platform-independent binary file format to store 
+massive amounts of airplane engine simulation data for later analysis.  Our 
+tool, NPSS, or Numerical Propulsion Simulation System, allows multi-user, 
+distributed simulations with the ability to hide proprietary codes.  These 
+simulations are then distributed to airframe manufacturers and other customers 
+to link into their simulations.  The storage of 0-D, 1-D, 2-D, and 3-D geometry 
+data and engine parameters in a platform-independent data format is crucial to 
+the ability to perform analyses and make use of this data in various 
+applications, at various sites on various platforms.
+<P>
+<DT>NASA LaRC
+<DD>Using HDF5 in Aerospace Engineering.  
+<P>
+<DT><A HREF="http://www.ncmrwf.gov.in/">National Centre for 
+       Medium Range Weather Forecasting (NCMRWF), Govt. of India</A>
+<DD>Use HDF5 for some of meteorological and satellite data. 
+<P>
+<DT><A HREF="http://www.nersc.gov/">National Energy Research 
+Scientific Computing Center</A>
+<P>
+<DT><A HREF="http://www.llnl.gov/nif/">National Ignition Facility</A>
+<DD>Target Diagnostics computer software development, 
+gathering of data for NIF experiments.  
+<P>
+<DT><A HREF="http://pathfinder.nodc.noaa.gov/">National Oceanographic Data 
+Center (NOAA)</A>
+<DD>Using HDF5 in oceanography.  
+<P>
+
+<DT><A HREF="http://www.noc.soton.ac.uk/JRD/OCCAM">National Oceanography Centre</A>, Southampton, UK  &nbsp; 
+<DD>
+  NOCS has several large scale ocean modelling projects using low to high
+  resolution global ocean and sea-ice models to investigate the physics 
+  underlying the ocean circulation and to understand its impact on biological 
+  systems and climate.  
+ <P> 
+  The high resolution ocean models, in particular, make good use of HDF5's 
+  chunking and compression facilities to store model output efficiently. 
+  They are able to use HDF5 with 
+<A HREF="http://ferret.wrc.noaa.gov/Ferret/">Ferret</A>, 
+by deriving "Ferret external functions", which can read HDF5 data directly. 
+Helpful tips on doing this can be found at:
+<PRE>
+   <A HREF="http://www.noc.soton.ac.uk/JRD/OCCAM/OME/?page=ferret">http://www.noc.soton.ac.uk/JRD/OCCAM/OME/?page=ferret</A>
+</PRE>
+
+<P>
+
+<DT><A HREF="http://www.nrel.gov">National Renewable Energy Laboratory</A>
+<DD>Using HDF5 in Solid State Physics.  
+<P>
+<DT><A HREF="http://www.nsmc.cma.gov.cn/">National Satellite Meteorological 
+Center</A>, Beijing, China
+<DD>Uses HDF in satellite remote sensing.  
+<P>
+<DT><A HREF="http://www.ipta.demokritos.gr">NCSR "Demokritos"</A>, Greece
+<DD>Using HDF5 for neutron scattering data aqcuisition and analysis.  
+
+<p>
+<DT><A HREF="http://www.nexusformat.org/">NeXus Format</A>
+<dd>
+NeXus is a common data format for neutron, x-ray, and muon science. It is
+being developed as an international standard by scientists and programmers
+representing major scientific facilities in Europe, Asia, Australia, and
+North America in order to facilitate greater cooperation in the analysis and
+visualization of neutron, x-ray, and muon data.
+The NeXus API provides a unified interface for writing hierarchical data files in HDF4, HDF5, and XML formats.
+</p>
+</dd>
+
+<P>
+
+<DT>Northwestern University, IL 
+<DD>Uses HDF5 in the field of astrophysics. 
+<P>
+<DT><A HREF="http://www.ffi.no">Norwegian Defence Research Establishment</A>
+<DD>Using HDF5 with regards to radar.    
+<P>
+<DT>NPL, India
+<DD>Using HDF5 in Atmospheric dispersion modeling. 
+</P>
+
+<P>
+<DT>NPOESS
+<DD>The National Polar-orbiting Operational Environmental Satellite System 
+(NPOESS) is a satellite system used to monitor global environmental 
+conditions, and collect and disseminate data related to: weather, 
+atmosphere, oceans, land and near-space environment.
+</P>
+<p>
+
+<dt><a href="https://openmsi.nersc.gov/openmsi/client/">OpenMSI</a>
+<dd>
+Advanced visualization, analysis and management of mass spectrometry imaging data via the web.
+</p>
+
+<p>
+<DT><A HREF="http://www.opennavsurf.org/">Open Navigation Surface Working Group</A>
+<DD>The Open Navigation Surface Working Group has collaborated on the
+Bathymetric Attributed Grid data format, which relies on HDF5 for the
+underlying file structure.  We also provide an API for interacting with
+this data, driven by the needs of the community.  In the tradition of
+open source, the code base is openly available.
+<P>
+<DT>ORNL
+<DD>Using HDF5 in magnetohydrodynamics.  
+<P>
+
+
+<dt><a href="http://www.pacificbiosciences.com/">Pacific Biosciences</a>  
+<dd>Pacific Biosciences is a biotechnology company which produces
+third-generation DNA sequencing instruments.  It uses HDF5 for raw
+data storage and provides conversion tools to extract the 
+data into common bioinformatics formats.
+</p>
+
+<P>
+<DT><A HREF="http://www.photon.com/">Photon Research Associates, Inc.</A>
+<DD>A mission planning software application has been developed using HDF
+files to store all mission planning parameters. HDF was chosen because
+performance, storage precision, and portability were primary requirements.
+Mission planning scripts are developed on users' laptop computers
+(Windows/NT/95).  The mission scripts are then uploaded to the aircraft-based
+control computer (Sun/Solaris).  The mission planning application was
+developed to support the USAF Advanced Remote Earth Sensing (ARES) project.
+See
+<P>
+<DT><A HREF="http://www.R-project.org/">The R Project for Statistical Computing</A>
+<DD>See <A HREF="http://lib.stat.cmu.edu/R/CRAN/">R</A>.
+<P>
+<DT><A HREF="http://www.exelisvis.com">Exelis Visual Information Solutions</A>
+<DD>Exelis Visual Information Solutions is a leading developer of data analysis and
+visualization software. Its flagship product is IDL (the Interactive
+Data Language), an advanced fourth-generation language used to build
+visualization applications for science, medical, financial, and
+engineering data analysis. RSI also markets ENVI (written in
+IDL), the industry-leading remote sensing software.
+<P>
+
+
+<dt><a href="http://smap.jpl.nasa.gov/">SMAP</a> (Soil Moisture Active &
+Passive) 
+<dd>SMAP is one of four <em>Tier-1</em> missions recommended by the U.S. National
+Research Council Committee on Earth Science and Applications from Space.
+It will provide global measurements of soil moisture and its freeze/thaw state.  
+These measurements will be used to enhance understanding of processes that 
+link the water, energy and carbon cycles and extend the capabilities of weather and 
+climate prediction models. SMAP data will also be used to quantify net 
+carbon flux in boreal landscapes and improve flood prediction and drought 
+monitoring capabilities.
+SMAP Data Products are stored in the HDF5 format.
+</p>
+
+
+<DT>Southern California Earthquake Center
+<DD>Using HDF5 in predictive earthquake simulations for seismic 
+hazard analysis. 
+<P>
+
+<DT><!--<A HREF="http://www.sjce.ac.in/instituteprofile_visage.htm">-->S J College o f Engineering</A>, Mysore, India
+<DD>Using HDF5 in Electrical and Electronics Engineering. 
+<P>
+
+<p>
+<dt><a href="http://opensource.imageworks.com/">Sony Pictures Imageworks</a> and <a href="http://www.lucasfilm.com/">Lucasfilm</a>
+<dd>The <a href="http://www.alembic.io">Alembic</a> open computer graphics interchange
+framework, which uses HDF5, was co-developed by Sony Imageworks and Lucasfilm.
+</p>
+
+<p>
+
+
+<DT><A HREF="http://www.sccas.cn">Supercomputing Center, Chinese Academy of Science</A>
+<DD>Using HDF5 in scientific visualization.  
+<P>
+<DT>SSAI
+<DD>SSAI is using HDF-EOS5 as the standard file format for SIPS on the
+Ozone Monitoring Instrument project.  
+<P>
+<DT><A HREF="http://www.smhi.se/">Swedish Meteorilogical and 
+Hydrological Institute</A>
+<DD>See <A HREF="https://support.hdfgroup.org/ftp/HDF5/contrib/hl-hdf5/README.html">HL-HDF5</A>.
+<P>
+<DT><A HREF="http://www.mohid.com/">Technical University of Lisbon</A>, Portugal
+<DD>Uses MOHID, a three-dimensional water modelling system, developed at MARETEC
+(Marine and Environmental Technology Research Center) from the Technical
+Superior Institute (IST) which belongs to Technical University of Lisbon. 
+The output from MOHID is stored in HDF files and can be analyzed with 
+a post processor able to browse the HDF files.
+<P>
+<!--
+<DT><A HREF="https://collaborate.txcorp.com">Tech-X</A>
+<DD>Worked on a project that resulted in a Web Service allowing for
+remote HDF5 data access.  [ <A HREF="https://collaborate.txcorp.com/collaborate/distributed-technologies/fusion-data-grids-project/">More Information</A> ]  
+-->
+<P>
+
+
+<DT><A HREF="http://labbi.uesc.br/">UESC</A>, Brazil
+<DD>Using HDF5 in bioinformatics.
+<P>
+<dt><a href="http://www.unidata.ucar.edu/">Unidata</a>
+<dd>The <a href="http://www.unidata.ucar.edu/software/netcdf/">NetCDF-4</a> format from Unidata is stored
+using the HDF5 format.
+<p>
+
+<DT><A HREF="http://www.esipfed.org">The University of Alabama (Huntsville) ESIPFED project</A>
+<P>
+<DT>University of Alabama, Information Technology and Systems Center (ITSC)
+<DD>The ITSC uses HDF and HDF5 primarily in conjunction with 
+HDF-EOS (v2 and v5). They have generated software for
+subsetting HDF-EOS (v2.x) datasets, and are working on a version
+for HDF-EOS-5.    
+
+<P>
+<DT>University of Antioquia, Institute of Physics, Medellin, Colombia
+<DD>The Computational Physics and Astrophysics group is using HDF5
+in the field of Galactic Astronomy.  They are doing N-body simulations to study the dynamics of stellar systems.   
+<P>
+<DT>The University of California, Berkeley 
+<DD>The Chemistry Department at UC Berkeley has developed 
+<A HREF="http://zori.aspuru.com">Zori</A>, a quantum Monte Carlo program
+(soon-to-be-released as open source). It uses a combination of XML files and 
+HDF5 for checkpoint/restart. 
+
+<p>
+<dt><a href="http://ctix.ucdavis.edu">The University of California, Davis, Compact Torus Injection Experiment (CTIX)</a>  </dt>
+<dd>CTIX studies basic plasma phenomena of the acceleration and formation of spheromak like
+ compact toroids (CT or SCT). The HDF5 format is used for the experimental data.
+</dd>
+</p>
+
+<P>
+<DT><A HREF="http://plasma.physics.ucla.edu">The University of California, Los Angeles, Basic Plasma Science Facility</A>
+<DD>
+The HDF5 format was adopted by the Basic Plasma Science Facility at UCLA
+to store time-series data as well as diagnostic information about the
+twenty-meter experimental device.
+<P>
+As a national facility for basic plasma science research, multi-gigabyte
+datasets are routinely acquired by groups from around the country which
+dictates the use of a widely supported, portable, and scalable means to
+store and analyze data. HDF5 best fulfilled our requirements.
+<P>
+
+<DT><A HREF="http://www.unisannio.it">University of Sannio at Benevento</A>, Italy
+<DD>Using HDF4 and HDF5 in field of Electromagnetics, Gravitational Waves, and
+Remote Sensing:
+<UL><LI>We work extensively in applied electromagnetics (antennas, special and
+meta materials, scattering).
+<LI>We work in gravitational wave detection experiments (e.g. LIGO), with
+special reference to data analysis.
+<LI>We work on remote sensing (we have access to two direct-broadcast X-band and
+L-S band groundstations, in Salerno and Benevento).
+</UL>
+<P>
+<DT><A HREF="http://www.utt.fr">Universite de Technologie Troyes</A>, France
+<DD>Using HDF5 in Scanning Near Field Optical Microscopy.
+<P>
+<DT><A HREF="http://rrsl.ee.washington.edu">University of Washington</A>
+<DD>Using HDF5 in field of Upper Atmospheric/Ionospheric Physics</A>  
+<P>
+
+
+<p>
+<DT><A HREF="http://www.epa.gov/asmdnerl/">U.S. Environmental Protection Agency</A>
+<DD>Using MODIS data in HDF EOS5 for evaluating air quality model 
+especially aerosol optical depth for the CONUS.   
+<P>
+
+
+</DL>
+
+<hr />
+
+<i>
+- - Last modified: 05 September 2017</i>
+	   </div>
+	   <!--END: CONTENT -->
+<!--END: WRAPPER -->
+<script src="../scriptaculous/gatag.js" type="text/javascript"></script>
+
+<!-- <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script> -->
+				
+<!--
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-3782034-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+-->
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-3782034-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+</body>
+</html>

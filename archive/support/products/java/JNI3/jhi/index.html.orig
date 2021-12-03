@@ -1,0 +1,329 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+<!-- If no var is set for $page_title on the top of each page than default title will be HDF Group -->
+
+<title>
+The HDF Group - Information, Support, and Software</title>
+	<meta name="keywords" content="hdf, hdfeos, blog, hdf blog, hdf5 blog, hdf5, hdf4, hdf tools, hdf libraries, hdf viewer, hdf format, hdf file, hdf java, nafxcw.lib, phdf5, open source, hierarchical data format, ncsa, database, python hdf, mike folk, hdfview, hdf5 parallel" />
+	<meta name="description" content="The HDF Group is a not-for-profit corporation with the mission of sustaining the HDF technologies and supporting HDF user communities worldwide with production-quality software and services." />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="expires" content="Wed, 26 Feb 2010 08:21:57 GMT" />
+	<meta name="verify-v1" content="/m03HNmaDgGAcDe0PFtEVnXGtCkoeOocjr/Jwey2gdI=" />
+	<link href="/css/layout.css" rel="stylesheet" type="text/css" media="screen, projection" />
+	<link href="/css/print.css" rel="stylesheet" type="text/css" media="print" />
+	<link rel="stylesheet" type="text/css" href="/css/js_style.css" />
+	<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/prototype/1.7.2.0/prototype.js"></script>
+	<!--<script type="text/javascript" src="/scriptaculous/lib/prototype.js"></script>-->
+	<script type="text/javascript" src="/scriptaculous/src/effects.js"></script>
+	<script type="text/javascript" src="/scriptaculous/validation.js"></script>
+	<script type="text/javascript" src="/scriptaculous/animatedcollapse.js"></script>
+	<script type="text/javascript" src="/scriptaculous/rollover.js"></script>	
+	<script type="text/javascript" src="/scriptaculous/functions.js"></script>
+	<script type="text/javascript" src="/scriptaculous/sorttable.js"></script>
+	<!--<script type="text/javascript" src="/jquery-1.2.2.pack.js"></script>-->
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript" src="/scriptaculous/jssor.slider.min.js"></script>
+
+ 	<link rel="stylesheet" type="text/css" href="/featuredcontentglider.css" />
+    <script type="text/javascript" src="/featuredcontentglider.js"></script>
+
+	</head>
+	<body>
+	<div id="mast_head">
+		<a href="https://www.hdfgroup.org/"><img src="/images/hdf_logo.jpg" height="70" style="display:block; padding-left:10px;" align="left" alt="hdf images" /></a>
+		<img src="/images/logo_5.jpg" height="70" style="display:block;" align="right" alt="hdf images" />
+	</div> 
+				
+	<div id="nav_wrapper">
+		<div>
+		<div id="section-">
+			<ul id="nav">
+				<li id="t-index"><a href="https://www.hdfgroup.org/">Home</a> </li>
+				<li id="t-products"><a href="/products/">Products</a></li>
+				<li id="t-services"><a href="/services/">Services</a></li>
+				<li id="t-about"><a href="/about/">About Us</a></li>
+				<li id="t-news"><a href="/news/">News</a> </li>
+				<li id="t-blog"><a href="https://www.hdfgroup.org/blog">Blog</a></li>
+				<li id="t-contact"><a href="/about/contact.html">Contact Us</a></li> 
+			</ul>
+			<script type="text/javascript">
+			
+  (function() {
+    var cx = '007250492606109219119:sb2eg2bgoyy';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:search></gcse:search>	
+					<script type="text/javascript">
+					    jQuery(document).ready(function ($) {
+					        // var options = {
+					        //     $ArrowNavigatorOptions: {
+					        //         $Class: $JssorArrowNavigator$,
+					        //         $ChanceToShow: 2
+					        //     }
+					        // };					    	
+
+
+							var options = { 
+											$AutoPlay: true, $SlideshowOptions: { $Class: $JssorSlideshowRunner$, $Transitions: [{ $Duration:5000, $Fade: true, $Opacity:2 }] } , 
+											$ArrowNavigatorOptions: { 
+												$Class: $JssorArrowNavigator$, 
+												$ChanceToShow: 2
+											}
+										  };
+
+
+					        var jssor_slider1 = new $JssorSlider$('slider1_container', options);
+					    });
+					</script>
+									                  
+			
+		</div>
+		</div>             
+	</div>
+				
+<!--START: MAIN -->
+<div id="wrapper" style="margin-top:-15px;"> 
+
+<!--START: SIDE_BAR -->
+<div id="side_bar">
+
+<form method="get" action="" class="form" >
+	<select onchange="window.open(this.options[this.selectedIndex].value,'_top')" name="" style="border:2px solid #c1c1c1;">
+		<option value="" class="ql1">- - Quick Links - -</option>
+		<option value="/HDF5/" class="ql">HDF5</option>
+		<option value="/products/hdf4/" class="ql">HDF4</option>
+		<option value="/tools/" class="ql">Tools</option>
+		<option value="/projects/" class="ql">Projects</option>
+		<option value="/downloads/" class="ql">Downloads</option>
+		<option value="/documentation/" class="ql">Documentation</option>
+	        <option value="/pubs/" class="ql">Publications</option>
+		<option value="/about/" class="ql">Contact Us</option>
+	</select>
+</form>
+<ul style="border:1px solid #c1c1c1; margin-top:25px;"> 
+
+	<li style="background:url(/images/menubg.png); padding:0px; padding-left:7px; color:#27343C; font-weight:500; text-align:left;">
+	LINKS</li><li><a href="https://www.hdfgroup.org/">Main Website</a></li><li><a  href="/downloads/index.html">Downloads</a></li><li><a  href="/products/java/hdfview/">HDFView</a></li><li><a  href="/products/java/JNI3/">JNI3 Libraries</a></li><li><a  href="/HDF5/hdf5-files.html">Sample HDF5 Files</a></li><li><a  href="/products/licenses.html">Licenses</a></li></ul> 
+
+</div>
+
+<!--END: SIDE_BAR -->
+
+<!--START: CONTENT -->
+<div id="content">
+<p><font color="red"><center><strong>This web site is no longer maintained (but will remain online).<br /> Please see The HDF Group's new <a href="https://portal.hdfgroup.org">Support Portal</a> for the latest information.</strong></center></font></p>
+	<div class=bc><p style="color:orange; ";><a href="/" title="HOME">HOME</a> &gt; <a href="/products/" title="PRODUCTS">PRODUCTS</a> &gt; <a href="/products/java/" title="JAVA">JAVA</a> &gt; <a href="/products/java/JNI3/" title="JNI3">JNI3</a> &gt; <a href="/products/java/JNI3/jhi/" title="JHI">JHI</a></p></div>
+   <fieldset> <h1>Java HDF Interface (JHI)</h1></fieldset>
+<p>
+<h2>
+1. What it is</h2>
+The <b>Java HDF Interface (JHI)</b> is a Java package
+(<em>hdf.hdflib</em>)
+that ``wraps'' the HDF-4 library*. The JHI may be used by any Java
+application that needs to access HDF-4 files. This product cannot be used
+in most network browsers because it accesses the local disk using native
+code.
+<center><table BORDER=1 bgcolor="#FFFFCC" >
+<tr>
+<td><b>Note:</b> The JHI does not support HDF-5. See the
+<a href="../jhi5/index.html">JHI5</a>.</td>
+</tr>
+</table></center>
+
+<p>A central part of the JHI is the Java class 
+<em>hdf.hdflib.HDFLibrary</em>.
+The <i>HDFLibrary </i>class calls the standard (<i>i.e.</i>, `native' code)
+HDF library, with native methods for most of the HDF functions.
+<p>It is extremely important to emphasize that <i>this package is not a
+pure Java implementation of the HDF library.</i> The JHI calls the same
+HDF library that is used by C or FORTRAN programs.
+<p>The Java HDF Interface consists of Java classes and dynamically linked
+native libraries. The Java classes declare <i>static native</i> methods,
+and the library contains C functions which implement the native methods.
+The C functions call the standard HDF library, which is linked as part
+of the same library on most platforms.<hr>
+<h3>
+Intended purpose</h3>
+The Java HDF Interface is intended to be the standard interface for accessing
+HDF-4 files from Java programs. The JHI is a foundation upon which application
+classes can be built. All classes that use this interface package should
+interoperate easily on any platform that has HDF-4 installed.
+<p>It is unlikely that Java programs will want to directly call the HDF
+library. More likely, data will be represented by Java classes that meet
+the needs of the application. These classes can implement methods to store
+and retrieve data from HDF files using the Java HDF library.<hr>
+<h3>
+Important Changes</h3>
+
+<center><table BORDER=1 bgcolor="#FFFFCC">
+<tr>
+<td><b>Very Important Change:</b> Version 3.0 (and above) of the JHI packages
+all HDF library
+<br>calls as "hdf.hdflib", note that the "ncsa" has been removed.
+<br>Source code which used earlier versions of the JHI should be changed
+to
+<br>reflect this new implementation.</td>
+</tr>
+</table></center>
+
+<p>Other changes include:
+<ul class="ul">
+<li class="li2">
+Support for Macintosh and PC path names, e.g., in <i>Hopen()</i>.</li>
+
+<li class="li2">
+A separate distribution of the JHI. This contains everything from the full
+source distribution, omitting all the packages not used by the JHI.</li>
+
+<li class="li2">
+The <b>HDFArray</b> class was extended to support more types of Java arrays,
+including arrays of any sub-class of <b>Number </b>(<b>Integer</b>, <b>Float</b>,
+etc.) and arrays of <b>String</b>.</li>
+</ul>
+<hr>
+<h2>
+2. How to use it</h2>
+For example, the HDF library had the function <b>Hopen</b> to open an HDF
+file. The Java interface is the class 
+<em>hdf.hdflib.HDFLibrary</em>,
+which has a method:
+<pre><b>static</b> <b>native int Hopen(String filename, int access);</b></pre>
+The native method is implemented in C using the
+<!-- <a href="http://java.sun.com/j2se/1.7/docs/guide/jni/index.html"> -->
+Java Native Method Interface (JNI). This is written something like the following: <pre><b>JNIEXPORT jint
+JNICALL Java_hdf_hdflib_HDFLibrary_Hopen
+(JNIEnv *env, jclass class, jstring hdfFile, jint access)
+{
+
+/* ... */
+
+/* call the HDF library */
+retVal = Hopen((char *)file, access, 0);
+
+/* ... */
+}</b></pre>
+This C function calls the HDF library and returns the result appropriately.
+<p>There is one native method for each HDF entry point (several hundred
+in all), which are compiled with the HDF library into a dynamically loaded
+library (<i>libhdf</i>). Note that this library must be built for each
+platform.
+<p>To call the HDF `<i>Hopen</i>' function, a Java program would import
+the package '<i>hdf.hdflib.*'</i>, and then invoke the '<i>Hopen</i>'
+method on the object '<i>HDFLibrary</i>'. The Java program would look something
+like this:
+<pre><b>import hdf.hdflib.*;
+
+{
+/* ... */
+
+HDFLibrary.Hopen("myFile.hdf", access);
+
+/* ... */
+}</b></pre>
+The <i>HDFLibrary </i>class automatically loads the HDF-4 library with
+the native method implementations and the HDF-4 library.<hr>
+<h2>
+3. Technical notes</h2>
+The following is a list of a few important technical notes of the JHI.
+For more details, please read <a href="jhi-design.html">JHI Design Notes</a>.
+<p>
+<center><table BORDER=1 bgcolor="#FFFFCC" >
+<tr>
+<td><b>Very Important Change:</b> Please note that Version 2.6 (and above)
+of the JHI
+<br>declares all HDF library calls as "static native" methods, and loads
+the library with
+<br>a 'static' constructor. Source code which used earlier versions of
+the JHI
+<br>should be changed to reflect this new, more efficient implementation.</td>
+</tr>
+</table></center>
+<p>
+<ul class="ul">
+<li class="li2">
+<b>Data conversion and copying.</b> The Java HDF Interface must translate
+data between C data types and Java data types. For instance, when a Java
+program reads a two dimensional array of floating point numbers (<b>float
+[][]</b>), the HDF native library actually returns an array of bytes. The
+Java HDF Interface converts this to the correct Java object, and returns
+that to the calling program. This process uses the Java Core Reflection
+package to discover the type of the array, and then calls native code routines
+to convert the bytes from native (C) order to the correct Java object(s).
+This data conversion is platform specific and clearly adds overhead to
+the program.</li>
+
+<li class="li2">
+<b>The JHI Interface to HDF.</b> The Java HDF interface follows the HDF
+C interface as closely as possible. However, Java does not support pass-by-reference
+parameters, so all parameters that must be returned to the caller require
+special treatment for Java. In general, such parameters are passed as elements
+of an array. For example, to return an integer parameter, the Java native
+method would be declared to use an integer array. For instance, the C
+function</li>
+
+<pre><b>void foo( int inVar /* IN */, int *outVar /* OUT */ )</b></pre>
+would be rendered in Java as:
+<pre><b>static public native void foo( int inVar, int []outVar )</b></pre>
+where the value of 'outVar' would be returned as 'outVar[0]'.
+<li class="li2">
+<b>Exceptions.</b> The JHI declares all the methods of HDF to throw Java
+exceptions of type `<i>HDFLibraryException</i>'. Errors returned by the
+native HDF library will be detected and the appropriate <i>Exception </i>raised,
+just as from regular Java methods. There is no need for the Java program
+to analyze HDF library error codes or return values. However, in this release
+many HDF library errors are not detected as exceptions, so exceptions will
+not be raised except when opening a file. Error handling will be completed
+in a future release.</li>
+</ul><hr>
+
+<h2>
+<a NAME="DOWNLOAD"></a>4. To Obtain</h2>
+The JHI is included with the HDF-Java Products, which can be downloaded
+from the <a href="/products/java/index.html">HDF-Java Home Page</a>.
+
+<i>
+- - Last modified: 25 July 2017</i>
+	   </div>
+	   <!--END: CONTENT -->
+<!--END: WRAPPER -->
+<script src="/scriptaculous/gatag.js" type="text/javascript"></script>
+
+<!-- <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script> -->
+				
+<!--
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-3782034-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+-->
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-3782034-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+</body>
+</html>

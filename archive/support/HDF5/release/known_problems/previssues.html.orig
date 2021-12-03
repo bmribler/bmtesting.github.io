@@ -1,0 +1,771 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+<!-- If no var is set for $page_title on the top of each page than default title will be HDF Group -->
+
+<title>
+HDF5 Known Problems</title>
+	<meta name="keywords" content="hdf, hdfeos, blog, hdf blog, hdf5 blog, hdf5, hdf4, hdf tools, hdf libraries, hdf viewer, hdf format, hdf file, hdf java, nafxcw.lib, phdf5, open source, hierarchical data format, ncsa, database, python hdf, mike folk, hdfview, hdf5 parallel" />
+	<meta name="description" content="The HDF Group is a not-for-profit corporation with the mission of sustaining the HDF technologies and supporting HDF user communities worldwide with production-quality software and services." />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="expires" content="Wed, 26 Feb 2010 08:21:57 GMT" />
+	<meta name="verify-v1" content="/m03HNmaDgGAcDe0PFtEVnXGtCkoeOocjr/Jwey2gdI=" />
+	<link href="/css/layout.css" rel="stylesheet" type="text/css" media="screen, projection" />
+	<link href="/css/print.css" rel="stylesheet" type="text/css" media="print" />
+	<link rel="stylesheet" type="text/css" href="/css/js_style.css" />
+	<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/prototype/1.7.2.0/prototype.js"></script>
+	<!--<script type="text/javascript" src="/scriptaculous/lib/prototype.js"></script>-->
+	<script type="text/javascript" src="/scriptaculous/src/effects.js"></script>
+	<script type="text/javascript" src="/scriptaculous/validation.js"></script>
+	<script type="text/javascript" src="/scriptaculous/animatedcollapse.js"></script>
+	<script type="text/javascript" src="/scriptaculous/rollover.js"></script>	
+	<script type="text/javascript" src="/scriptaculous/functions.js"></script>
+	<script type="text/javascript" src="/scriptaculous/sorttable.js"></script>
+	<!--<script type="text/javascript" src="/jquery-1.2.2.pack.js"></script>-->
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript" src="/scriptaculous/jssor.slider.min.js"></script>
+
+ 	<link rel="stylesheet" type="text/css" href="/featuredcontentglider.css" />
+    <script type="text/javascript" src="/featuredcontentglider.js"></script>
+
+	</head>
+	<body>
+	<div id="mast_head">
+		<a href="https://www.hdfgroup.org/"><img src="/images/hdf_logo.jpg" height="70" style="display:block; padding-left:10px;" align="left" alt="hdf images" /></a>
+		<img src="/images/logo_5.jpg" height="70" style="display:block;" align="right" alt="hdf images" />
+	</div> 
+				
+	<div id="nav_wrapper">
+		<div>
+		<div id="section-">
+			<ul id="nav">
+				<li id="t-index"><a href="https://www.hdfgroup.org/">Home</a> </li>
+				<li id="t-products"><a href="/products/">Products</a></li>
+				<li id="t-services"><a href="/services/">Services</a></li>
+				<li id="t-about"><a href="/about/">About Us</a></li>
+				<li id="t-news"><a href="/news/">News</a> </li>
+				<li id="t-blog"><a href="https://www.hdfgroup.org/blog">Blog</a></li>
+				<li id="t-contact"><a href="/about/contact.html">Contact Us</a></li> 
+			</ul>
+			<script type="text/javascript">
+			
+  (function() {
+    var cx = '007250492606109219119:sb2eg2bgoyy';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:search></gcse:search>	
+					<script type="text/javascript">
+					    jQuery(document).ready(function ($) {
+					        // var options = {
+					        //     $ArrowNavigatorOptions: {
+					        //         $Class: $JssorArrowNavigator$,
+					        //         $ChanceToShow: 2
+					        //     }
+					        // };					    	
+
+
+							var options = { 
+											$AutoPlay: true, $SlideshowOptions: { $Class: $JssorSlideshowRunner$, $Transitions: [{ $Duration:5000, $Fade: true, $Opacity:2 }] } , 
+											$ArrowNavigatorOptions: { 
+												$Class: $JssorArrowNavigator$, 
+												$ChanceToShow: 2
+											}
+										  };
+
+
+					        var jssor_slider1 = new $JssorSlider$('slider1_container', options);
+					    });
+					</script>
+									                  
+			
+		</div>
+		</div>             
+	</div>
+				
+<!--START: MAIN -->
+<div id="wrapper" style="margin-top:-15px;"> 
+
+<!--START: SIDE_BAR -->
+<div id="side_bar">
+
+<form method="get" action="" class="form" >
+	<select onchange="window.open(this.options[this.selectedIndex].value,'_top')" name="" style="border:2px solid #c1c1c1;">
+		<option value="" class="ql1">- - Quick Links - -</option>
+		<option value="/HDF5/" class="ql">HDF5</option>
+		<option value="/products/hdf4/" class="ql">HDF4</option>
+		<option value="/tools/" class="ql">Tools</option>
+		<option value="/projects/" class="ql">Projects</option>
+		<option value="/downloads/" class="ql">Downloads</option>
+		<option value="/documentation/" class="ql">Documentation</option>
+	        <option value="/pubs/" class="ql">Publications</option>
+		<option value="/about/" class="ql">Contact Us</option>
+	</select>
+</form>
+<ul style="border:1px solid #c1c1c1; margin-top:25px;"> 
+
+	<li style="background:url(/images/menubg.png); padding:0px; padding-left:7px; color:#27343C; font-weight:500; text-align:left;">
+	LINKS</li><li><a href="https://www.hdfgroup.org/">Main Website</a></li><li><a  href="/HDF5/whatishdf5.html">What is HDF5?</a></li><li><a  href="/about/HDF5Brochure_2012.pdf">Online Brochure</a></li><li><a  href="/downloads/index.html">Downloads</a></li><li><a  href="/HDF5/doc/index.html">Documentation</a></li><li><a  href="/products/hdf5_tools/">Software using HDF5</a></li><li><a  href="/HDF5/users5.html">HDF5 Users</a></li><li><a  href="/HDF5/hdf5-files.html">Sample HDF5 Files</a></li><li><a  href="/HDF5/acknowledge5.html">Acknowledgments</a></li><li><a  href="/products/licenses.html">Licenses</a></li></ul> 
+
+</div>
+
+<!--END: SIDE_BAR -->
+
+<!--START: CONTENT -->
+<div id="content">
+<p><font color="red"><center><strong>This web site is no longer maintained (but will remain online).<br /> Please see The HDF Group's new <a href="https://portal.hdfgroup.org">Support Portal</a> for the latest information.</strong></center></font></p>
+	<div class=bc><p style="color:orange; ";><a href="/" title="HOME">HOME</a> &gt; <a href="/HDF5/" title="HDF5">HDF5</a> &gt; <a href="/HDF5/release/" title="RELEASE">RELEASE</a> &gt; <a href="/HDF5/release/known_problems/" title="KNOWN_PROBLEMS">KNOWN_PROBLEMS</a></p></div><fieldset><h1>HDF5 Known Problems</h1></fieldset>
+
+<fieldset>Problems Reported as of HDF5 1.8.17</fieldset>
+<p>
+The HDF5 compile scripts (h5cc, h5fc, h5c++, h5pcc, and h5pfc)
+contained a syntax error when using the options: 
+<pre>
+  -o &lt;output&gt; -c &lt;source&gt;
+</pre>
+</p>
+<p>The &lt;output&gt; gets dropped, producing  &quot;-c -o &lt;source&gt;&quot;
+which resulted in a compiler error.
+</p>
+<p>
+If the options are switched there is no error:
+<pre>
+   -c &lt;source&gt; -o &lt;output&gt; 
+</pre>
+</p>
+<p>
+This problem will be fixed in a future release.
+</p>
+
+<fieldset>Problems Reported as of HDF5 1.8.12</fieldset>
+
+<h3>SELECTED_REAL_KIND gives a different result at compile and at run-time</h3>
+<p>
+HDF5 currently does not compile with gfortran 4.5 and earlier (on my
+MacOS X 10.8 installation). This is because in the file,
+<pre>
+  fortran/src/H5test_kind_SIZEOF.f90
+</pre>
+</p>
+
+<p>
+the call to SELECTED_REAL_KIND gives a different result at compile and
+at run-time. When running the H5test_kind_SIZEOF program,
+<pre>
+  SELECTED_REAL_KIND(i)
+</pre>
+</p>
+<p>
+ gives 16 when i=20, but if one simply writes
+<pre>
+  SELECTED_REAL_KIND(20)
+</pre>
+</p>
+<p>
+ and compiles it, the result is -1. Because the call uses (i) at
+ run-time, it succeeds, which makes the HDF5 installer believe that the
+ compiler supports KIND=16, so the H5fortran_detect file contains a
+ KIND=16 case. However, this then fails because the compiler does not
+ *really* support it. 
+</p>
+<p>
+ANSWER: There is a mismatch of the LD_LIBRARY_PATH and the gcc version used to compile the code.
+See: <a href="http://gcc.gnu.org/bugzilla/show_bug.cgi?id=48404">gnu bug 48404</a>
+</p>
+
+
+<fieldset>Problems Reported as of HDF5 1.8.9</fieldset>
+
+<h3>On Mac OS X 10.8 (Mountain Lion), HDFView fails to install with an error that the file is damaged and can't be opened</h3>
+
+<p>
+When you run the HDFView installer on Mac Mountain Lion, you may get an error
+message indicating that <q>the software is damaged and needs to be moved to the trash</q>.
+The error message is because of the Mac OS X 10.8 GateKeeper that defaults to only
+running applications that are code-signed. Please use this workaround if you encounter
+the problem:
+<ul class="ul">
+Before you run the HDFView installer, run this command on the installer: <br />
+<code>xattr -d com.apple.quarantine ~/Downloads/hdfview_install_macosx_intel64.app</code>
+</ul>
+
+<p>
+We are working on a long-term solution for the problem.
+</p>
+
+
+
+<h3>HDF5 Installation Fails using CMake on Linux</h3>
+
+<p>
+The HDF5-1.8.9 installation fails using CMake on Linux. This is due to a misnamed file. (In the top level 
+CMakeLists.txt file the capitalization of a file name does NOT match what is on the 
+file system. It should be "USING_CMake.txt" instead of "Using_CMake.txt".) 
+
+<p>To correct this issue please apply the <a href="/ftp/HDF5/releases/hdf5-1.8.9/src/cmake_patch.txt">cmake_patch.txt</a> 
+patch in the top directory of the HDF5-1.8.9 source code.
+</p>
+
+<fieldset>Problems Reported as of HDF5 1.8.8</fieldset>
+
+<h3>The h5cc script always uses the static libraries not the shared</h3>
+
+<p>
+The h5cc "script" correctly forms the build options and executes, however, it is using *.a 
+file endings for all of the libraries instead of *.so. If the library was
+built with --disable-static, there are no static libraries, so h5cc will not find
+them by default (see workaround below). 
+</p>
+
+<p>The h5cc script checks the environment variable HDF5_USE_SHLIB, and if it is set
+assigns its value to a variable USE_SHARED_LIB. If USE_SHARED_LIB is not "yes",
+then h5cc will substitute <path>libhdf5.a for -lhdf5 and <path>/libhdf5_hl.a
+for -lhdf5_hl.
+</p>
+
+<p>There are also h5cc command arguments -shlib and -noshlib that will have the same
+effect as setting the environment variable. For example: <em>h5cc -shlib prog.c</em>
+</p>
+
+
+
+<h3>Mac OS X 10.5 support dropped as as of HDF-Java 2.8</h3>
+
+<p>
+As of HDF-Java version 2.8, Mac OS X 10.5 is no longer supported.
+<a href="/ftp/HDF5/releases/HDF-JAVA/HDF-JAVA-2.7/">HDF-Java version 2.7</a>
+will work with Mac OS X 10.5, and is still available for use. 
+</p>
+
+
+<h3>Conversion Tests Fail on Ubuntu 11.10 with gcc 4.6.1</h3>
+<p>
+  The data conversion test dt_arith.c fails in "long double" to integer
+  conversion on Ubuntu 11.10 (3.0.0.13 kernal) with GCC 4.6.1 if the library
+  is built with optimization -O3 or -O2.  The older GCC (4.5) or newer kernal
+  (3.2.2 on Fedora) does not have the problem.  Users should lower the
+  optimization level (-O1 or -O0) by defining CFLAGS in the command line of
+  "configure" like:
+<pre>
+      CFLAGS=-O1 ./configure
+</pre>
+</p>
+
+<p>
+  It will overwrite the library's default optimization level. 
+</p>
+
+<fieldset>Problems Reported as of HDF5 1.8.7</fieldset>
+
+
+<h3>Cannot Read a Variable Length String Attribute with Fortran (F90)</h3>
+
+<p>
+Prior to HDF5-1.8.8, reading and writing of variable length string attributes
+was not supported in Fortran. Fortran 2003 support was added in HDF5-1.8.8, which
+enabled this to be supported. For an example of reading a variable length string 
+attribute in Fortran with Fortran 2003, see: 
+<a href="/ftp/HDF5/examples/howto/vlenatt_F03.f90">vlenatt_F03.f90</a>
+
+</p>
+
+
+
+<h3>Conversion Tests fail on Mac OS X 10.7 and 10.8</h3>
+<p>
+Users have reported that when building HDF5, the conversion
+tests failed (make check) in dt_arith.chk. Users should lower the
+optimization level to -O0 (oh zero), by adding it to CFLAGS prior to
+calling configure. For example:
+<pre>
+      CFLAGS=-O0 ./configure ...
+</pre>
+</p>
+
+<fieldset>Problems Reported in HDF5 1.8.6</fieldset>
+
+<h3>HDFView: <em>Unsupported fileformat</em> error opening an HDF/HDF5 file on Mac OS X</h3>
+<p>
+
+If you are on Mac OS X and attempt to open an HDF/HDF5 file in HDFView 2.7,
+and it fails with this error, 
+<pre>
+  HDF file :"Failed to open file xxx.hdf java.io.IOException: Unsupported fileformat - xxx.hdf"
+</pre>
+then you may be running the wrong version of HDFView for your system.
+</p>
+
+<p>
+If you get this error with the 64-bit version of HDFView, then try the
+32-bit version. If you get this error for the 32-bit version, then try
+the 64-bit version.  See the <a href="/products/java/hdf-java-html/hdfview/index.html">HDFView Home page</a> to obtain the 32-bit or 64-bit
+version of HDFView for Mac OS X.
+</p>
+
+<a name="pread"> </a>
+<h3>Problem Reading A Collectively Written Dataset In Parallel</h3>
+<p>
+While working on the 1.8.6 release of HDF5, a bug was discovered that can
+occur when reading from a dataset in parallel shortly after it has been 
+written to collectively.  The issue was exposed by a new test in the 
+parallel HDF5 test suite, but had existed before that.  We believe the 
+problem lies with certain MPI implementations and/or filesystems.
+</p>
+<p>
+We have provided a <a href="/ftp/HDF5/examples/known_problems/tmpi.c">pure MPI test program</a>, as well as a 
+<a href="/ftp/HDF5/examples/known_problems/t_mpi_bug_hdf5.c">standalone HDF5 program</a>,
+that can be used to determine if this is an issue on your system.  They should
+be run across multiple nodes with a varying number of processes.  These
+programs can be found at: 
+<p>
+<pre>
+  <a href="/ftp/HDF5/examples/known_problems/">https://support.hdfgroup.org/ftp/HDF5/examples/known_problems/</a>
+</pre>
+</p>
+<p>
+Although it does not affect the above issue, this is a good time to 
+point out that the HDF5 library does not make any attempt to guarantee sequential 
+consistency of MPI I/O calls.  It is the application's responsibility to
+enforce sequential consistency as needed, as described in section 13.6.1 of 
+the MPI Standard.  If sequential consistency is needed, the application should close
+the file, issue an MPI_Barrier(), then reopen the file before and after each
+collective write.
+</p>
+
+<p>
+It is also possible to guarantee sequential consistency using
+MPI_File_set_atomicity(), however there is currently no way to do this
+within
+HDF5.  We are planning to add an API function to allow users to set the
+atomicity in a future release.
+</p>
+
+
+<h3>HDF5 1.8.5 Problem Affecting Files with Non-default Addresses</h3>
+<p>
+A problem was discovered in HDF5 1.8.5 that affects files with non-default
+ sizes of addresses and lengths as set by H5Pset_sizes(). The problem occurs 
+when (sizeof_addr + 2*sizeof_size) is not a multiple of 8, unless using the 
+new file format (H5Pset_libver_bounds()). Files created under these conditions 
+by 1.8.5 will be readable by 1.8.5 but not by any other version of HDF5. Files
+ created under these conditions by other versions of HDF5 will not be readable 
+by 1.8.5.
+</p>
+<p>
+We recommend that those who use H5Pset_sizes or may deal with files that use 
+this feature move to the latest snapshot (snap4) of HDF5 1.8.5. If you have 
+files created by 1.8.5 under these conditions that you wish to keep, you can
+fix this problem by using "h5repack -L" with the 1.8.5 version of h5repack to 
+recreate the file with the new file format. You can then read this file with
+any version since 1.8.0, and if desired use h5repack (without -L) again to 
+move back to the old file format.
+</p>
+<p>
+Please see the <a href="/downloads/">HDF Downloads</a> page for obtaining
+HDF5 releases and snapshots.
+</p>
+
+<h3>HDFView 2.6.1 Problem on Some Windows XP Machines</h3>
+
+<p>HDFView 2.6.1 works properly on most Windows XP machines. However, on others, 
+HDF5 is greyed out under the Help menu, and HDF5 is not supported. 
+This occurs if a required package is missing on that machine.  A user reported
+that <em>.NET 3.5 Service Pack 1</em> is the missing package.  This can
+be obtained from here:
+<pre>
+ <a href="http://download.microsoft.com/download/2/0/e/20e90413-712f-438c-988e-fdaa79a8ac3d/dotnetfx35.exe">http://download.microsoft.com/download/2/0/e/20e90413-712f-438c-988e-fdaa79a8ac3d/dotnetfx35.exe</a>
+
+</pre>
+</p>
+
+
+<h3>HDFView 2.6.1 Does Not Display the User's Guide on Macintosh</h3>
+<p>
+On the Macintosh, you cannot access the User's Guide in HDFView 2.6.1 by
+either selecting it under the Help menu bar or clicking on the 
+small book icon.  The workaround is to access the on-line version for now. 
+This is located here:
+</p>
+<pre>
+   <a href="/products/java/hdf-java-html/hdfview/UsersGuide/index.html">https://support.hdfgroup.org/products/java/hdf-java-html/hdfview/UsersGuide/index.html</a>
+</pre>
+
+<p>
+In HDFView, you can select the <em>Tools -> User Options</em> pull-down menu item, to 
+modify the path to the User's Guide to point to the on-line version. This will
+work while HDFView is running, but once it is closed, this information will be
+lost. 
+<br>&nbsp;
+</p>
+
+
+<h3>Corruption Problem In HDF5 1.8.0 through HDF5 1.8.4</h3>
+<p>
+A corruption problem was found in the HDF5 1.8 release, which affects
+versions 1.8.0 through 1.8.4.  The problem has been fixed in 
+HDF5 1.8.4 Patch 1.
+</p>
+
+<p><strong>What Causes The Problem</strong></p>
+<p>
+Files that have this corruption problem meet  <strong>all</strong> of the following
+circumstances:
+</p>
+<ul class="ul">
+<li class="li3">
+<p>
+The version of HDF5 was before the HDF5 1.8.4 Patch 1 release (which
+includes the 1.8.4 release).
+</p>
+</li>
+
+<li class="li3">
+<p>
+The file was created on a big-endian platform (SPARC/Solaris,
+POWER/AIX, etc).
+</p>
+</li>
+
+<li class="li3">
+<p>
+NetCDF-4 was used to create the file, OR the
+H5Pset_libver_bounds(fapl, H5F_LIBVER_LATEST, H5F_LIBVER_LATEST) call was made,
+OR shared object header messages were enabled with H5Pset_shared_mesg_nindexes()
+when creating the file.
+</p>
+</li>
+
+<li class="li3">
+<p>
+More than 8 attributes were added to an object in the file (in the
+case of using netCDF-4 or calling H5Pset_libver_bounds), OR if messages of the
+type specified to be shared were stored in the file (in the case of calling
+H5Pset_shared_mesg_nindexes).
+</p>
+</li>
+</ul>
+
+<p>
+If your data matches these criteria, then you may have generated files that have
+incorrectly encoded IDs for attributes and shared object header messages.
+</p>
+
+<p><strong>How To Determine If Your Files Are Corrupted</strong></p>
+<p>
+There is no foolproof way to detect a file with these IDs incorrectly
+encoded, but if the h5dump tool reports an error message similar to the
+following when displaying information about the file, it is likely that you have
+a file with this problem: 
+</p>
+<pre>
+      h5dump error: error getting attribute information
+</pre>
+<p>
+For files created with netCDF-4, this message will generally display when
+dumping information about the root group.  If your application is generating an 
+error stack similar to this, it is also likely that the file has this problem:
+</p>
+<pre>
+       .
+       .
+       .
+       #008: ../../hdf5_v1.8/src/H5B2int.c line 1951 in H5B2_iterate_node():
+   iterator function failed major: B-Tree node minor: Unable to list node
+       #009: ../../hdf5_v1.8/src/H5Adense.c line 1076 in
+   H5A_dense_iterate_bt2_cb(): heap op callback failed major: Attribute minor:
+   Can't operate on object
+       #010: ../../hdf5_v1.8/src/H5HF.c line 680 in H5HF_op(): can't operate on
+   object from fractal heap major: Heap minor: Can't operate on object
+       #011: ../../hdf5_v1.8/src/H5HFman.c line 462 in H5HF_man_op(): unable to
+   operate on heap object major: Heap minor: Can't operate on object
+       #012: ../../hdf5_v1.8/src/H5HFman.c line 276 in H5HF_man_op_real():
+   fractal heap object offset too large major: Heap minor: Out of range
+</pre>
+
+<p><strong>Fixing The Problem</strong></p>
+<p>
+A tool is being developed that can be run on a corrupted file to correct it.
+</p>
+<p>
+Please contact the <a href="/services/support.html">HDF Helpdesk</a>
+if you are unable to wait for this tool.
+</p>
+
+<!--
+The <a href="/HDF5/doc/RM/Tools/h5fix_swapped_ids.htm">h5fix_swapped_ids</a>
+ tool can be run on the affected files to correct them.  This tool can be obtained from the 
+following location (it is not yet available):
+</p>
+<pre>
+   <a href="/ftp/HDF5/special_tools/h5fix_swapped_ids">https://support.hdfgroup.org/ftp/HDF5/special_tools/h5fix_swapped_ids/</a>
+</pre> 
+</p>
+-->
+
+<fieldset>Problems Reported in HDF5 1.8.3</fieldset>
+
+<h3>HDF5-1.8.3 and HDFView 2.5 always modify an HDF5 file opened in
+read/write mode</h3>
+<p>
+HDF5-1.8.3 and HDFView 2.5 always re-wrote the superblock of an HDF5
+file with a later version of the superblock if the file was opened for 
+read-write access. Therefore an HDF5 file would inadvertently be 
+upgraded to a later version of the file format. This issue was fixed in 
+HDF5-1.8.4.
+</p>
+
+<h3>CFLAGS Getting Overwritten by HDF5</h3>
+<p>
+A user should be able to set CFLAGS and have those options
+be used to build HDF5. However, HDF5 sets CFLAGS in the
+Makefiles when it should not, so a user cannot do this.
+We are planning on fixing this for the HDF5 1.8.4 release.
+</p>
+
+<fieldset>
+Problems Reported in HDF5 1.8.2</fieldset>
+
+
+<h3>The dt_arith conversion test fails with gcc</h3>
+<p>
+Optimization does not handle conversion well with gcc 3.* and 4.*.
+</p>
+
+<p>
+To get around the problem, turn off optimization. You can do this by editting the ./config/gnu-flags file in the HDF5 source code and setting PROD_CFLAGS from "-O" to "-O0".
+</p>
+<p>
+Here is the code that needs to be modified:
+<pre>
+     gcc-3.[0-4]*|gcc-4.[0123]*)
+        # The optimization level is reduced for gcc 3.* and 4.* due to problems
+        # with code generation for src/H5Tconv.c with the -O2 & -O3
+        # optimization levels (which shows up as failures for various integer
+        # types -> long long conversions in the test/dtypes test).  Perhaps
+        # later versions of gcc will fix this bug... - QAK - 2003/10/20
+        PROD_CFLAGS="-O"
+        ;;
+</pre>
+</p>
+
+<h3>HDFView: Dataset Displayed Incorrectly When Viewed As Image</h3>
+<p>
+With HDFView 2.5, a dataset that is not an image
+gets displayed incorrectly when viewed as an image.  This does not occur if the
+dataset is an image to begin with.  If you select "Open As" and
+choose to view a dataset as an image, the resulting image displayed
+will not have a smooth color scale, and it may look like the
+palette is recycled midway through.
+</p>
+
+<p>
+A patch is available for HDFView to correct this problem.  You can
+download the
+<a href="/ftp/HDF5/hdf-java/v25p1/bin/jarfiles/">jar files</a>
+containing the fix to the problem.  Only the <em>jhdfview.jar</em> file is
+strictly necessary to correct this problem.  See the
+<a href="/ftp/HDF5/hdf-java/v25p1/README">README</a> for
+other problems fixed with these jar files.
+</p>
+
+
+
+<h3>High Level Packet Table APIs and Variable Length Datatypes</h3>
+<p>
+Variable length Packet Tables are not supported. There are no tests
+or examples for using variable length fields in Packet Tables.  Please
+use the HDF5 APIs to work with Variable Length datatypes.
+</p>
+
+
+<h3>The Linux 32-bit version of HDF-Java 2.5 fails on a Linux 64-bit machine</h3>
+<p>
+This problem is known to occur on a machine with gcc 3.4 on it, but may
+also occur with other versions of gcc.  HDF-Java 2.5 was built with
+gcc 4.2.  If you encounter this problem, try upgrading the version of
+gcc on your machine to gcc 4.2.
+</p>
+<p>
+The problem also occurs with HDF5.
+</p>
+
+<h3>Building HDF5 1.8.2 w/gfortran 4.3, make fails with undefined reference to__h5global_MOD*</h3>
+
+<p>
+HDF5 1.8.2 was tested with gfortran 4.2.  There is a known compiler bug
+in gfortran 4.3, which causes the HDF5 build to fail with
+"undefined reference to__h5global_MOD*" errors.  This bug has been
+fixed. See:
+<pre>
+   gcc bugzilla #38171
+
+   [Bug fortran/38171] [regression] equivalence and nested modules broken
+</pre>
+</p>
+
+<h3>Building HDF5 1.8.2, error: call to __open_missing_mode declared with attribute error: open with O_CREAT in second argument needs 3 arguments</h3>
+<p>
+This problem has been fixed for the next release.  A workaround is to
+edit the ./perform/zip_perf.c file in the source and change line 552 to:
+<pre>
+    output = open(filename, O_RDWR | O_CREAT, S_IRWXU);
+</pre>
+
+</p>
+<br>&nbsp;
+
+<fieldset>Problems Reported with HDF5 1.8.1</fieldset>
+
+<h3>Tools tests fail when build HDF5 1.8.1 with "make check install"</h3>
+<p>
+There is a bug in HDF5 1.8.1 when building the library with
+"make check install". We will be fixing this bug for the next release.
+</p>
+<p>
+The workaround is to run each step separately:
+</p>
+<p>
+<ul class="ul">
+    ./configure ... &gt;& configure.out<br />
+    make &gt;& make.out<br />
+    make check &gt;& check.out<br />
+    make install<br />
+</ul>
+</p>
+<p>
+If the .out files look good, proceed to the next step.
+</p>
+
+<h3>Building HDF5, the Object Header Test, "Testing message deletion",
+fails with the error "H5O_mtime_decode(): badly formatted".</h3>
+<p>This problem is due to an incorrect timestamp, and it will be
+fixed in HDF5 1.8.2.  To ignore this test for now, see this
+<a href="/HDF5-FAQ.html#build-ignore">Frequently Asked Question</a>.
+You can also temporarily change the timezone to resolve the problem.
+</p>
+<p>
+Here are details on the problem:
+</p>
+<p>
+This problem can be reproduced by setting the TZ variable to
+"EET-2EEST", which is the timezone for Eastern Europe.  The timestamp
+ which causes this error is encoded as "19700101003321", which represents
+Jan. 1, 1970 00:33:21.  When translating this to UTC time from
+mktime, 2 hours are subtracted, thus putting it pre-Epoch.
+</p>
+<br>&nbsp;
+
+<fieldset>Problems Reported in HDF5 1.6.7</fieldset>
+
+<h3>"make check" fails  when testing h5dump with the
+error, "...tail: cannot open '+41'"</h3>
+
+<p>
+This indicates that your system is a new platform that is not
+supported by The HDF Group yet.  It uses the newer Gnu Coreutil syntax.
+The "tail -n +4" syntax is the newer POSIX syntax that is
+not recognized by systems that conform to the older POSIX syntax.
+Changing the command to use this new syntax
+will not work on some of the current platforms (e.g.,
+SunOS, ...) that we support.  Therefore, this change has not been
+added to the software.
+</p>
+<p>
+Run the HDF5 "make check" by first setting the environment
+variable,  _POSIX2_VERSION to the value "199209".  For example,
+<pre>
+setenv _POSIX2_VERSION 199209
+</pre>
+<p>
+This solution is documented in the Gnu coreutils manual page:
+<pre>
+   <a href="http://www.gnu.org/software/coreutils/manual/coreutils.txt">http://www.gnu.org/software/coreutils/manual/coreutils.txt</a>
+</pre>
+<br>&nbsp;
+</p>
+
+<fieldset>Problems Reported in HDF5 1.6.6</fieldset>
+
+<h3>Solaris and gcc</h3>
+<p>HDF5 was not built and tested with the GNU compilers, and users have
+reported problems. One user was able to build on Solaris by removing the
+-std=c99 option from CFLAGS in all of the Makefiles.</p>
+
+<h3>tar on Solaris</h3>
+<p>If you encounter a problem untarring the HDF5 distribution using
+Sun's tar, then use GNU tar.</p>
+
+<fieldset>Problem Reported in HDF5 1.6.2(3)</fieldset>
+
+<h3>Building 5-1.6.2(3) using Intel 8.1, get ULLONG_MAX error</h3>
+
+<ul class="ul">
+ <p>
+ When building HDF5-1.6.2 (or 5-1.6.3) using Intel 8.1, the make
+ fails with the error:
+ <pre>
+   ...src/H5S.c(842): error: identifier "ULLONG_MAX" is undefined
+ </pre>
+ </p>
+
+ <p>
+ The problem is resolved by adding the -c99 option when building.  
+ With 5-1.6.4, we added this option to the build so the problem no
+ longer occurs.
+ </p>
+ 
+ <p>
+ This error does not occur with versions of Intel prior to 8.1.
+ </p>
+</ul>
+
+
+<hr>
+
+
+
+
+<i>
+- - Last modified: 14 October 2016</i>
+	   </div>
+	   <!--END: CONTENT -->
+<!--END: WRAPPER -->
+<script src="/scriptaculous/gatag.js" type="text/javascript"></script>
+
+<!-- <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script> -->
+				
+<!--
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-3782034-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+-->
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-3782034-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+</body>
+</html>

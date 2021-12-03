@@ -1,0 +1,573 @@
+<html>
+<body>
+
+<fieldset><h1>Tests of the NCSA <i>h4toh5</i> utility with NASA Datasets</h1></fieldset>
+<b>Robert E. McGrath</b>
+<br><i>mcgrath@ncsa.uiuc.edu</i>
+<br>NCSA
+<p>August, 2001
+<hr>
+
+<h2>
+<b>Abstract</b></h2>
+This paper reports tests of the <i>h4toh5</i> utility using real NASA data.&nbsp;
+The utility converted files, usually in less than one second per file.&nbsp;
+These results show that conversion of HDF4 files to HDF5 is feasible for
+large collections or on demand.
+<h3>Contents</h3>
+<p>
+	<ul class="ul">
+		<p><a href="#Intro"><li class="li3">Introduction</li></a></p>
+		
+		<p><a href="#Method"><li class="li3">Method</li></a></p>
+		
+		<p><a href="#Results"><li class="li3">Results</li></a></p>
+		
+		<p><a href="#Conclusions"><li class="li3">Conclusions</li></a></p>
+		
+		<p><a href="#Notes"><li class="li3">Notes</li></a></p>
+		
+		<p><a href="#Ack"><li class="li3">Acknowledgments</li></a></p>
+		
+		<p><a href="#References"><li class="li3">References</li></a></p>
+	</ul>
+</p>
+
+<hr>
+
+<h2><a NAME="Intro"></a>1. Introduction</h2>
+<p>Since HDF5 is not backward compatible with earlier versions of HDF, many
+users must transition from HDF4 to HDF5.&nbsp; This transition may require
+rewriting software and possibly rewriting datasets. The details depend
+on the goals and situation of the users.
+<p>NCSA has published a default mapping of HDF4 objects to HDF5 [<a href="#Ref1">1</a>].&nbsp;
+This mapping provides guidance and recommendations for how HDF4 files and
+objects should be represented in HDF5.&nbsp; Of course, users may wish
+to do something other than the default, in order to take best advantage
+of HDF5.</p>
+
+<p>The <i>h4toh5</i> utility is provided as part of the HDF5.1.4.2 release
+[<a href="#Ref2">2</a>].&nbsp; This tool converts one HDF4 file to an equivalent
+HDF5 file, using the HDF4 to HDF5 mapping [<a href="#Ref3">1</a>].&nbsp;
+It is important to realize that this is a default conversion, which may
+not preserve some of the 'semantics' of the HDF4 data, particularly if
+the file is complicated.&nbsp; If the default conversion is not adequate
+for some purpose, it may serve as an example or prototype from which to
+construct a customized conversion.</p>
+
+<p>This experiment tested the <i>h4toh5</i> utility using NASA HDF4 datasets
+as input. The goal is to test the utility with a set of real files, to
+assure that it works, and to assess it's performance.</p>
+
+<p>The input data was all real NASA science data, provided to the public
+in HDF4.&nbsp; Thus, this is a realistic test in that it used real data.
+<p>Some of the NASA datasets were created with the HDF-EOS library (using
+HDF4).&nbsp; It is important to realize that the <i>h4toh5</i> converter
+does not 'understand' HDF-EOS.&nbsp; In this case, the native HDF4 components
+of Grids, Swaths, etc., were converted into HDF5 objects.&nbsp; The result
+is definitely <i>not</i> a legal HDF-EOS5 file.&nbsp; The HDF-EOS5 library
+stores the HDF-EOS objects in ways that are optimized for HDF5, which are
+not the default translation of how they were stored in HDF4.</p>
+
+<p>Therefore, the conversions performed on these datasets should be seen
+as a demonstration that conversion is feasible, although custom conversions
+may well be needed to create the desired HDF5 file.</p>
+
+<hr>
+<h2><a NAME="Method"></a>2. Method</h2>
+
+<h3><a NAME="2.1"></a>2.1. Description of Data</h3>
+
+<p>A sample of NASA datasets were acquired from DAACs and DIAL. All were obtained
+from public sources of sample or real data.&nbsp; These datasets included
+data from approximately 33<a href="#N1">*</a> data products, from 8 instruments
+(avhrr, ACRIM, CERES, MISR, MODIS, MOPITT, SSMI).&nbsp; The total number
+of granules (HDF4 files) was 1776.&nbsp; The data sets are listed in the
+<a href="#appendix">Appendix</a>.</p>
+
+<p>This sample of data was chosen arbitrarily from what could be obtained
+from DIAL [7] and from public FTP services at DAACs. Therefore, it is not
+statistically representative of NASA data or of any specific body of data.&nbsp;
+However, it is all real or sample data from NASA.</p>
+
+<h3><a NAME="2.2"></a>2.2. Experimental Environment</h3>
+
+<p>The experiment was run on a dual 550 MHz Pentium III, Linux 2.2.18smp,
+using a local disk. The <i>h4toh5</i> utility is from the HDF5.1.4.2 release
+(August 2001), uses HDF4.2r3. The sizes are from the Linux file system,
+and times were collected with the system 'time' function.</p>
+
+<p>Each file was converted at least 5 times, with the average time reported.</p>
+
+<p>The output files were visually inspected with the <i>H5View</i> utility
+[<a href="#Ref3">3</a>] and compared to the original HDF4 file (using the
+<i>JHV</i> tool [<a href="#Ref4">4</a>]).</p>
+
+<hr>
+<h2><a NAME="Results"></a>3. Results</h2>
+
+All but four files were successfully converted by the <i>h4toh5</i> utility.
+The resulting HDF5 files contained all the data from the HDF4 file.&nbsp;
+The conversions were extremely fast, in all cases the conversion was faster
+than the download from the original data server.
+
+<h3><a NAME="3.1"></a>3.1. Failures</h3>
+
+<p>Two files could not be converted by the converter. These files exposed
+bugs in the converter, which will be fixed in the next release. These are
+included in the data.</p>
+
+<p>Two files were damaged in transfer and could not be used. These are
+excluded from the data.</p>
+
+<h3><a NAME="3.2"></a>3.2. Converted File Size</h3>
+
+<p>With one exception, the HDF5 files were all within a few percent of the
+same size as the HDF4 file, with HDF5 usually slightly smaller.&nbsp; The
+exception was one group of browse files which contain compressed images.&nbsp;
+These are stored uncompressed in the HDF5 file, resulting in a 3 times
+larger file.&nbsp; In the future, the <i>h4oth5</i> conversion will apply
+compression when used in the HDF4 file, and then the compressed HDF5 file
+should be approximately the same size as the HDF4 file in all cases.&nbsp;
+Of course, individual cases will vary.</p>
+
+<h3><a NAME="3.3"></a>3.3. Conversion Times</h3>
+
+<p>Of the 1776 files tested, 98% were converted in 1 second or less.&nbsp;
+The longest conversion time observed was 332 seconds (5 minutes 32 sec)
+(for a 117 MB HDF4 file). Only 4 files averaged longer than 1 minute conversion
+(117MB, 781MB, 75 MB and 68 MB respectively).&nbsp; <a href="#Table1">Table
+1</a> shows these statistics.&nbsp; <a href="#Figure1">Figure 1</a> shows
+a histogram of the top 20.</p>
+
+<p><a NAME="Table1"></a></p>
+<table BORDER COLS=2 WIDTH="100%" >
+<caption><b>Table 1.&nbsp; File Conversion Time<a href="#n2">**</a></b></caption>
+
+<tr>
+<td>Highest single time of 1776 datasets</td>
+
+<td>332 s (MOP02-19970814-L2V0.1.1.hdf)</td>
+</tr>
+
+<tr>
+<td>Average time > 1 min</td>
+
+<td>4 out of 1776 datasets (.2%)</td>
+</tr>
+
+<tr>
+<td>Average time > 1 sec</td>
+
+<td>19 (1.1%) datasets</td>
+</tr>
+
+<tr>
+<td>Average time &lt; 1 sec</td>
+
+<td>98.6% datasets</td>
+</tr>
+</table>
+(<a NAME="n2"></a>**Based on 1776 granules.&nbsp; 2 granules could not
+be used because of errors in downloading.)
+<center>
+
+<p><img SRC="table2.jpg" height=365 width=516>
+<br><a NAME="Figure1"></a><b>Figure 1. Longest 20 Conversion times.</b></center>
+
+<p>In general, larger files take more time to convert, but the relationship
+is not simply linear with the size of the file.&nbsp; There wasn't enough
+variability to analyze this.&nbsp; Generally, any file under 4 MB was converted
+in much less than 1 s.&nbsp; <a href="#Figure2">Figure 2</a> shows a scatter
+plot for the 1776 files.</p>
+
+<center>
+<p><a NAME="Figure2"></a><img SRC="table1.jpg" height=412 width=630>
+<br><b>Figure 2.&nbsp; Summary of conversion times by the size of the original
+HDF4 file.</b></p></center>
+
+<hr>
+<h2><a NAME="Conclusions"></a>4. Conclusions</h2>
+
+<p>These tests show that the <i>h4toh5</i> utility works reliably on a variety
+of real data, including data written by older versions of HDF4. The small
+number of failures have been traced to a couple of bugs in the converter
+which will be fixed in the next release.</p>
+
+<p>The output files appear to contain all the data, and are readily recognized
+as faithful (if simpleminded) translations of the HDF4 original.&nbsp;
+The files have similar size to the HDF4 originals, as should be the case.
+<p>In the past,&nbsp; there has been considerable concern about the performance
+of the conversion utility and similar custom programs.&nbsp; This test
+shows that performance is not a problem, even using a fairly inexpensive
+PC. Of course, these figures would be much slower if a network disk is
+used, or on a slower system.</p>
+
+<p>The speed of the conversion is, of course, related to the size of the
+files.&nbsp; However, the slowest conversion was not the largest file.&nbsp;
+It is possible that the speed of conversion is limited by the size of the
+largest object, or the number of objects, or some combination of factors.&nbsp;
+This cannot be determined from this limited sample of data. Also, the next
+release of the <i>h4toh5</i> utility should have even better performance,
+especially for large objects.</p>
+
+<p>This study shows that converting HDF4 files into HDF5 is feasible, even
+for files in the range of 800 MB. With conversion times of a few seconds
+to a few minutes, it is clear that whole archives could be converted in
+a few hours. Alternatively most data could be converted "on the fly" when
+requested from a server.</p>
+
+<p>As discussed above, the <i>h4toh5</i> utility would not be appropriate
+to convert HDF-EOS files.&nbsp; The <i>heconvert</i> tool [<a href="#Ref5">5</a>]
+will provide a similar conversion for HDF-EOS files.&nbsp; The <i>heconvert</i>
+tool could not be tested for this study, because it is not available for
+Linux.</p>
+
+<p>For some data products, default conversions may not be sufficient.&nbsp;
+A custom converter would be needed, perhaps using functions from the <i>libh4toh5<a href="#N3">***</a></i>&nbsp;
+to convert individual objects. This study shows that once created, a custom
+converter should work reliably and efficiently.
+<p>Overall, this study suggests that converting files from HDF4 to HDF5
+is technically viable.</p>
+
+<hr>
+<h2><a NAME="Notes"></a>5. Notes</h2>
+
+<p><a NAME="N1"></a>*In some cases I'm not certain what officially counts
+as a 'data product'.&nbsp; There are 33 different 'kinds' of HDF4 file,
+with many instances (e.g., multiple days or months) in some cases.</p>
+
+<p><a NAME="N3"></a>***The NCSA <i>libh4toh5</i> is a library of C functions
+to perform a default conversion of individual HDF4 objects. This library
+will be available in Fall 2001.</p>
+
+<hr>
+<h2><a NAME="Ack"></a>6. Acknowledgments</h2>
+
+<p>This report is based upon work supported in part by a Cooperative Agreement
+with NASA under NASA grant NAG 5-2040. Any opinions, findings, and conclusions
+or recommendations expressed in this material are those of the author(s)
+and do not necessarily reflect the views of the National Aeronautics and
+Space Administration.</p>
+
+<p>Other support provided by NCSA and other sponsors and agencies [<a href="#Ref6">6</a>].</p>
+<hr>
+<h2><a NAME="References"></a>7. References</h2>
+
+<p><a NAME="Ref1"></a>1. Mike Folk, Robert E. McGrath, and Kent Yang, "Mapping HDF4 Objects to HDF5 Objects",
+<br><a href="/HDF5/doc/ADGuide/H4toH5Mapping.pdf">H4toH5Mapping.pdf</a>.</p>
+<p><a NAME="Ref2"></a>2.&nbsp; <a href="/h4toh5/">H4toh5 utility </a></p>
+<p><a NAME="Ref3"></a>3.&nbsp; <a href="/products/java/">Java HDF5 </a></p>
+<p><a NAME="Ref4"></a>4.&nbsp; <a href="/products/java/">Java HDF</a></p>
+<p><a NAME="Ref5"></a>5. <a href="http://hdfeos.org">HDF-EOS and Related Software </a></p>
+<p><a NAME="Ref6"></a>6. <a href="/acknowledge.html">Acknowledgments</a></p>
+<p><a NAME="Ref7"></a>7. DIAL</p>
+
+<p>
+<hr>
+<h2><a NAME="appendix"></a>Appendix: Data Sources</h2>
+
+<p><br>The data was obtained from publicly available NASA datasets.
+<br>&nbsp;
+<table BORDER WIDTH="100%" >
+<tr>
+<td><b>Data From DIAL</b></td>
+
+<td><b>Observation Date</b></td>
+
+<td><b>Description</b></td>
+</tr>
+
+<tr>
+<td>avhrr8kmmonthly</td>
+
+<td>1993</td>
+
+<td>AVHRR 8KM 10 Day Composites - Southeast Asia</td>
+</tr>
+
+<tr>
+<td>avhrr1km10day (transfer failed--not converted)</td>
+
+<td>1993</td>
+
+<td>AVHRR</td>
+</tr>
+
+<tr>
+<td>avhrr8km10day (transfer failed--not converted)</td>
+
+<td>1993</td>
+
+<td>AVHRR</td>
+</tr>
+
+<tr>
+<td>tahoe-north-middle</td>
+
+<td>1998</td>
+
+<td>ASTER L1BT, Lake tahoe</td>
+</tr>
+
+<tr>
+<td>ASTL1B_000830185</td>
+
+<td>1998?</td>
+
+<td>ASTER L1 test?</td>
+</tr>
+
+<tr>
+<td>CER_ES8_Terra-FM2_Test_SCF_016011.20000830.
+<br>subset_70_20_-140_-40.20001012_204110Z</td>
+
+<td>1998?</td>
+
+<td></td>
+</tr>
+
+<tr>
+<td>CER_ES4_Terra-FM1_Beta_015013.200004</td>
+
+<td>2000</td>
+
+<td>Preliminary data (do not use)</td>
+</tr>
+
+<tr>
+<td>CER_FSW_TRMM-PFM-VIRS_Sample_000000.199801Z06</td>
+
+<td>2000</td>
+
+<td>Preliminary data (do not use)</td>
+</tr>
+
+<tr>
+<td>98034001632_GOES08_IMAGER</td>
+
+<td>1998?</td>
+
+<td>GOES Imager?</td>
+</tr>
+
+<tr>
+<td>MISR_AM1_AS_LANDSFC_P027_O000027_01.dw</td>
+
+<td>1996</td>
+
+<td>Prelaunch Land surface</td>
+</tr>
+
+<tr>
+<td>MISR_AM1_AS_AEROSOL_P027_O000027_01_dw</td>
+
+<td>1996</td>
+
+<td>Prelaunch aerosols over ocean</td>
+</tr>
+
+<tr>
+<td>MOD021KM.A2000080.1815.002.2000083151033</td>
+
+<td>2000</td>
+
+<td>Hudson's Bay</td>
+</tr>
+
+<tr>
+<td>MOD02HKM.A2000242.0140.002.2000247230108</td>
+
+<td>1999</td>
+
+<td>MODIS Preliminary</td>
+</tr>
+
+<tr>
+<td>NISE_SSMIF11_19911227</td>
+
+<td>1999</td>
+
+<td>Ice and Snow</td>
+</tr>
+
+<tr>
+<td>ballon_sp</td>
+
+<td>1996-1997</td>
+
+<td>HDFEOS Point data for balloon launches</td>
+</tr>
+
+<tr>
+<td>misr_l1a_ccd_df.new.nominal</td>
+
+<td>2001</td>
+
+<td>MISR L1A</td>
+</tr>
+
+<tr>
+<td>MOP02-19970814-L2V0.1.1</td>
+
+<td>1997</td>
+
+<td>Sample MOPITT L2</td>
+</tr>
+</table>
+
+<br>&nbsp;
+<table BORDER WIDTH="100%" >
+<tr>
+<td><b>Data From DAACS</b></td>
+
+<td><b>Source</b></td>
+
+<td><b>Observation Date</b></td>
+
+<td><b>Description</b></td>
+</tr>
+
+<tr>
+<td>MOAPWBM1.P1.ADD2000321.002.2001034035708</td>
+
+<td>Goddard</td>
+
+<td>2000</td>
+
+<td>MODIS L4 ocean data</td>
+</tr>
+
+<tr>
+<td>MOAPWBM2.P2.ADD2000321.002.2001034035718</td>
+
+<td>Goddard</td>
+
+<td>2000</td>
+
+<td>MODIS Ocean Level 4 data</td>
+</tr>
+
+<tr>
+<td>MOAPWBME.PAR.ADD2000321.002.2001034035728</td>
+
+<td>Goddard</td>
+
+<td>2000</td>
+
+<td>MODIS L4 ocean data</td>
+</tr>
+
+<tr>
+<td>MOD03.A2000106.1540.001.2000109075312</td>
+
+<td>Goddard</td>
+
+<td>2000</td>
+
+<td>MODIS radiometric geolocation</td>
+</tr>
+
+<tr>
+<td>MOD03.A2000110.0220.002.2000193195357</td>
+
+<td>Goddard</td>
+
+<td>2000</td>
+
+<td>MODIS radiometric geolocation</td>
+</tr>
+
+<tr>
+<td>MOD08_E3.A2000337.002.2001037044240</td>
+
+<td>Goddard</td>
+
+<td>2000</td>
+
+<td>Sample MODIS L3</td>
+</tr>
+
+<tr>
+<td>&nbsp;C1986151201607.L2_BRS</td>
+
+<td>PODAAC</td>
+
+<td>1986</td>
+
+<td>Coastal Zone Color (hourly--all data for May, 827 granules)</td>
+</tr>
+
+<tr>
+<td>&nbsp;C1986151201607.L2_GAC</td>
+
+<td>PODAAC</td>
+
+<td>1986</td>
+
+<td>Coastal Zone Color (hourly--all data for May, 827 granules)</td>
+</tr>
+
+<tr>
+<td>f13_Tb_01220_01D</td>
+
+<td>MSFC</td>
+
+<td>2001</td>
+
+<td>SSMI Brightness temperature
+<br>(All 29 passes, 1 day)</td>
+</tr>
+
+<tr>
+<td>f13_hn_01220_01D</td>
+
+<td>MSFC</td>
+
+<td>2001</td>
+
+<td>SSMI geolocation
+<br>(All 29 passes, 1 day)</td>
+</tr>
+
+<tr>
+<td>f13_ln_01220_01D</td>
+
+<td>MSFC</td>
+
+<td>2001</td>
+
+<td>SSMI geolocation
+<br>(All 29 passes, 1 day)</td>
+</tr>
+</table>
+
+<table BORDER WIDTH="100%" >
+<tr>
+<td><b>Other MODIS data</b></td>
+
+<td></td>
+
+<td></td>
+
+<td></td>
+</tr>
+
+<tr>
+<td>MOD04_L2.A2000242.0140.002.2000264223516
+<br>MOD04_L2.A2000243.1850.002.2000252164712
+<br>MOD05_L2.A2000243.1850.002.2000252164414
+<br>MOD06_L2.A2000243.1850.002.2000252173103
+<br>MOD35_L2.A2000243.1850.002.2000244222700</td>
+
+<td></td>
+
+<td></td>
+
+<td></td>
+</tr>
+</table>
+<hr />
+</body>
+</html>
+

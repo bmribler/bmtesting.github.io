@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema version="1.0.1" targetNamespace="/HDF4/XML/schema/HDF4map/1.0.1" xmlns:h4="/HDF4/XML/schema/HDF4map/1.0.1" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+<!-- 
+    Global definitions related to HDF4 companion and external files.
+-->
+    <!-- 
+        hdf4FileInformationT: Information about the companion HDF4 file (the file
+        the HDF4 File Content Map applies to)
+
+        fileName is the name of the companion HDF4 file. 
+        fileLocation provides information to help retrieve the companion HDF4 file, 
+          such as absolute path to the file.
+        fileSize and md5Checksum help verify the HDF4 file has not been 
+          changed or corrupted since the HDF4 File Content Map was generated.
+    -->
+    <xs:complexType name="hdf4FileInformationT">
+        <xs:sequence>
+            <xs:element name="fileName" type="xs:string"/>
+            <xs:element name="fileLocation" type="h4:fileLocationT" minOccurs="0"/>
+            <xs:element name="fileSize" type="xs:integer"/>
+            <xs:element name="md5Checksum" type="h4:md5ChecksumT" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <!--
+        externalFileInformationT: Information about an external file (a file that 
+        is referenced by the companion HDF4 file)
+
+        fileName is the name of the external file.  It should not include a pathname, 
+          and may be different from the ExternalFile:originalFileName attribute if 
+          the external file has been renamed or moved.
+        fileLocation provides information to help retrieve the external file, 
+          such as absolute path to the file.
+        fileSize and md5Checksum help verify the external file has not been 
+          changed or corrupted.
+    -->
+    <xs:complexType name="externalFileInformationT">
+        <xs:sequence>
+            <xs:element name="fileName" type="xs:string"/>
+            <xs:element name="fileLocation" type="h4:fileLocationT" minOccurs="0"/>
+            <xs:element name="fileSize" type="xs:integer" minOccurs="0"/>
+            <xs:element name="md5Checksum" type="h4:md5ChecksumT" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <!--
+        fileLocationT: Information to help retrieve a file.
+
+        fileLocationType indicates the type of reference provided to locate the file.
+        fileLocationValue is the reference to the location of the file.
+    -->
+    <xs:complexType name="fileLocationT">
+        <xs:sequence>
+            <xs:element name="fileLocationType" type="h4:fileLocationTypeT"/>
+            <xs:element name="fileLocationValue" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <!--
+        fileLocationTypeT: The type of information (reference) provided in the 
+          fileLocationValue to locate the file.
+
+        Possible values:
+         filepath - full directory path to the file
+    -->
+    <xs:simpleType name="fileLocationTypeT">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="filepath"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <!--
+        md5ChecksumT: The 128-bit MD5 message digest as described by RFC 1321.  
+        Expressed as a 32-digit hexadecimal number (16 binary octets)
+    -->
+    <xs:simpleType name="md5ChecksumT">
+        <xs:restriction base="xs:hexBinary">
+            <xs:length value="16"/>
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>

@@ -1,0 +1,834 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+<!-- If no var is set for $page_title on the top of each page than default title will be HDF Group -->
+
+<title>
+HDF UG Example Descriptions</title>
+	<meta name="keywords" content="hdf, hdfeos, blog, hdf blog, hdf5 blog, hdf5, hdf4, hdf tools, hdf libraries, hdf viewer, hdf format, hdf file, hdf java, nafxcw.lib, phdf5, open source, hierarchical data format, ncsa, database, python hdf, mike folk, hdfview, hdf5 parallel" />
+	<meta name="description" content="The HDF Group is a not-for-profit corporation with the mission of sustaining the HDF technologies and supporting HDF user communities worldwide with production-quality software and services." />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="expires" content="Wed, 26 Feb 2010 08:21:57 GMT" />
+	<meta name="verify-v1" content="/m03HNmaDgGAcDe0PFtEVnXGtCkoeOocjr/Jwey2gdI=" />
+	<link href="../../css/layout.css" rel="stylesheet" type="text/css" media="screen, projection" />
+	<link href="../../css/print.css" rel="stylesheet" type="text/css" media="print" />
+	<link rel="stylesheet" type="text/css" href="../../css/js_style.css" />
+	<link rel="shortcut icon" href="../../images/favicon.ico" type="image/x-icon" />
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/prototype/1.7.2.0/prototype.js"></script>
+	<!--<script type="text/javascript" src="/scriptaculous/lib/prototype.js"></script>-->
+	<script type="text/javascript" src="../../scriptaculous/src/effects.js"></script>
+	<script type="text/javascript" src="../../scriptaculous/validation.js"></script>
+	<script type="text/javascript" src="../../scriptaculous/animatedcollapse.js"></script>
+	<script type="text/javascript" src="../../scriptaculous/rollover.js"></script>	
+	<script type="text/javascript" src="../../scriptaculous/functions.js"></script>
+	<script type="text/javascript" src="../../scriptaculous/sorttable.js"></script>
+	<!--<script type="text/javascript" src="/jquery-1.2.2.pack.js"></script>-->
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript" src="../../scriptaculous/jssor.slider.min.js"></script>
+
+ 	<link rel="stylesheet" type="text/css" href="../../featuredcontentglider.css" />
+    <script type="text/javascript" src="../../featuredcontentglider.js"></script>
+
+	</head>
+	<body>
+	<div id="mast_head">
+		<a href="https://www.hdfgroup.org/"><img src="../../images/hdf_logo.jpg" height="70" style="display:block; padding-left:10px;" align="left" alt="hdf images" /></a>
+		<img src="../../images/logo_5.jpg" height="70" style="display:block;" align="right" alt="hdf images" />
+	</div> 
+				
+	<div id="nav_wrapper">
+		<div>
+		<div id="section-">
+			<ul id="nav">
+				<li id="t-index"><a href="https://www.hdfgroup.org/">Home</a> </li>
+				<li id="t-products"><a href="../../products/index.html">Products</a></li>
+				<li id="t-services"><a href="../../services/index.html">Services</a></li>
+				<li id="t-about"><a href="../../about/index.html">About Us</a></li>
+				<li id="t-news"><a href="../../news/index.html">News</a> </li>
+				<li id="t-blog"><a href="https://www.hdfgroup.org/blog">Blog</a></li>
+				<li id="t-contact"><a href="../../about/contact.html">Contact Us</a></li> 
+			</ul>
+			<script type="text/javascript">
+			
+  (function() {
+    var cx = '007250492606109219119:sb2eg2bgoyy';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:search></gcse:search>	
+					<script type="text/javascript">
+					    jQuery(document).ready(function ($) {
+					        // var options = {
+					        //     $ArrowNavigatorOptions: {
+					        //         $Class: $JssorArrowNavigator$,
+					        //         $ChanceToShow: 2
+					        //     }
+					        // };					    	
+
+
+							var options = { 
+											$AutoPlay: true, $SlideshowOptions: { $Class: $JssorSlideshowRunner$, $Transitions: [{ $Duration:5000, $Fade: true, $Opacity:2 }] } , 
+											$ArrowNavigatorOptions: { 
+												$Class: $JssorArrowNavigator$, 
+												$ChanceToShow: 2
+											}
+										  };
+
+
+					        var jssor_slider1 = new $JssorSlider$('slider1_container', options);
+					    });
+					</script>
+									                  
+			
+		</div>
+		</div>             
+	</div>
+				
+<!--START: MAIN -->
+<div id="wrapper" style="margin-top:-15px;"> 
+
+<!--START: SIDE_BAR -->
+<div id="side_bar">
+
+<form method="get" action="ug-examplesdesc.html" class="form" >
+	<select onchange="window.open(this.options[this.selectedIndex].value,'_top')" name="" style="border:2px solid #c1c1c1;">
+		<option value="" class="ql1">- - Quick Links - -</option>
+		<option value="/HDF5/" class="ql">HDF5</option>
+		<option value="/products/hdf4/" class="ql">HDF4</option>
+		<option value="/tools/" class="ql">Tools</option>
+		<option value="/projects/" class="ql">Projects</option>
+		<option value="/downloads/" class="ql">Downloads</option>
+		<option value="/documentation/" class="ql">Documentation</option>
+	        <option value="/pubs/" class="ql">Publications</option>
+		<option value="/about/" class="ql">Contact Us</option>
+	</select>
+</form>
+<ul style="border:1px solid #c1c1c1; margin-top:25px;"> 
+
+	<li style="background:url(../../images/menubg.png); padding:0px; padding-left:7px; color:#27343C; font-weight:500; text-align:left;">
+	LINKS</li><li><a href="https://www.hdfgroup.org/">Main Website</a></li><li><a href="../../products/hdf5/index.html">HDF5</a></li><li><a href="../../products/hdf4/index.html">HDF4</a></li><li><a href="../../tools/index.html">Tools</a></li><li><a href="../../projects/index.html">Projects</a></li><li><a href="../../downloads/index.html">Downloads</a></li><li><a href="../../documentation/index.html">Documentation</a></li><li><a  href="../../pubs/index.html">Publications</a></li></ul> 
+
+</div>
+
+<!--END: SIDE_BAR -->
+
+<!--START: CONTENT -->
+<div id="content">
+<p><font color="red"><center><strong>This web site is no longer maintained (but will remain online).<br /> Please see The HDF Group's new <a href="https://portal.hdfgroup.org">Support Portal</a> for the latest information.</strong></center></font></p>
+	<div class=bc><p style="color:orange; ";><a href="../../index.html" title="HOME">HOME</a> &gt; <a href="../index.html" title="RELEASE4">RELEASE4</a> &gt; <a href="index.html" title="EXAMPLES">EXAMPLES</a></p></div>
+<fieldset><h1>HDF UG Example Descriptions</H1></fieldset>
+
+<h2>Annotations (AN):</h2>
+
+<p>These examples are used in Chapter 10 -- Annotations (AN API) of the HDF User's Guide.
+</p>
+
+<p>
+<a name="an1"></a>
+
+<h3>EXAMPLE 1. Creating File and Data Annotations</h3>
+
+<p>
+This example illustrates the use of ANcreatef/affcreate to create file annotations and ANcreate/afcreate 
+to create data annotations.
+</p>
+<p>
+In this example, the program creates an HDF file named "General_HDFobjects.hdf" then attaches two 
+annotations to it, a file label and a file description. Within the HDF file, the program creates a vgroup 
+named "AN Vgroup" and attaches two annotations to it, a data label and a data description. Refer to 
+Chapter 5, Vgroups (V API), for a discussion of the V interface routines used in this example.
+</p>
+
+<p>
+Note that the names AN_FILE_LABEL, AN_FILE_DESC, AN_DATA_LABEL, and AN_DATA_DESC are defined by 
+the library to specify the type of the annotation to be accessed. 
+</p>
+
+
+<a name="an2"></a>
+<h3>EXAMPLE 2. Reading File and Data Annotations</h3>
+
+<p>
+This example illustrates the use of ANfileinfo/affileinfo to get the number of data and file annotations 
+in the file. ANselect/afselect gets an annotation, ANannlen/afannlen gets the 
+length of the annotation, and ANreadann/afreadann reads the contents of the annotation.
+</p>
+<p>
+In this example, the program reads some of the annotations created in the file 
+"General_HDFobjects.hdf" by Example 1. The program first gets the information on the annotations 
+in the file so that the number of existing annotations of each kind is available prior to reading. 
+The program then gets the length of each annotation and allocates sufficient space for the contents 
+of the annotation to be read. For the simplicity of this example, only the data labels are read. 
+Any other annotations can be read by adding the for loop with appropriate values as noted below.
+</p>
+
+<p>
+This example uses the ANfileinfo/affileinfo routine to get annotation information.
+
+<a name="an3"></a>
+<h3> EXAMPLE 3. Obtaining Annotation Information</h3>
+
+<p>
+This example illustrates the use of ANnumann/afnumann to obtain the number of annotations of an object, 
+ANannlist/afannlist to obtain the list of annotation identifiers, and ANid2tagref/afidtagref, 
+ANatype2tag/afatypetag, and ANtag2atype/aftagatype to perform some identifier conversions.
+</p>
+
+<p>
+In this example, the program locates the vgroup named "AN Vgroup" that was created in the file 
+"General_HDFobjects.hdf" by Example 1. The program then gets the number of data descriptions that 
+this vgroup has and the list of their identifiers. If there are any identifiers in the list, the 
+program displays the corresponding reference numbers. Finally, the program makes two simple 
+conversions, from an annotation type to a tag and from a tag to an annotation type, and displays 
+the results. 
+</p>
+
+<hr noshade size=1>
+
+<h2> General Raster (GR):</h2>
+
+<p>
+These examples are used in Chapter 8 -- General Raster Images (GR API) of the HDF User's Guide.
+</p>
+
+<a name="gr1"></a>
+<h3>EXAMPLE 1. Creating and Writing a Raster Image</h3>
+
+<p>
+This example illustrates the use of the routines Hopen/hopen, GRstart/mgstart, GRcreate/mgcreat, 
+GRwriteimage/mgwrimg, GRendaccess/mgendac, GRend/mgend, and Hclose/hclose to create an HDF file and 
+store a raster image in it.
+</p>
+
+<p>
+In this example, the program creates the HDF file called "General_RImages.hdf" and a raster image in 
+the file. The image created is of size 5x10 and named "Image Array 1", and has data of the int16 data 
+type, 2 components, and interlace mode MFGR_INTERLACE_PIXEL. Then the program writes the image data, 
+terminates access to the image and the GR interface, and closes the file.
+</p>
+
+<a name="gr2"></a>
+<h3> EXAMPLE 2. Modifying an Existing Raster Image</h3>
+
+<p>
+This example illustrates the use of the routines GRselect/mgselct to obtain an existing raster image and 
+GRwrite/mgwrimg to modify image data.
+</p>
+
+<p>
+In this example, the program selects the only raster image in the file "General_RImages.hdf" created and 
+written in Example 1, and modifies image data. The program also creates another raster image that is 
+named "Image Array 2" and has 3 components with dimension size of 4x6, data type of DFNT_CHAR8, and 
+interlace mode of MFGR_INTERLACE_PIXEL. 
+</p>
+
+<a name="gr3"></a>
+<h3>EXAMPLE 3. Reading a Raster Image</h3>
+
+<p>
+This example illustrates the use of the routine GRreadimage/mgrdimg to read an image and its subsets.
+</p>
+
+<p>
+In this example, the program reads the image written by Example 1 and modified by Example 2 in the file 
+"General_RImages.hdf". Recall that this image has two components and has 5 rows and 10 columns. The 
+program first reads the entire image, then reads a subset of the image, 3 rows and 2 columns starting 
+at the 2nd row and the 4th column, and finally reads the image skipping all the even rows and all the 
+odd columns. Reading patterns are applied to all components. 
+</p>
+
+<a name="gr4"></a>
+
+<h3>EXAMPLE 4. Obtaining File and Image Information</h3>
+
+<p>
+This example illustrates the use of the routines GRfileinfo/mgfinfo and GRgetiminfo/mggiinf to obtain 
+information such as the number of images and attributes in an HDF file and the characteristics of a 
+raster image in the file.
+</p>
+
+<p>
+In this example, the program gets the number of images in the file using the routine GRfileinfo/mgfinfo. 
+For each image, the program then obtains and displays its name, number of components, data type, 
+interlace mode, dimension sizes, and number of attributes using the routine GRgetiminfo/mggiinf. 
+</p>
+
+<a name="gr5"></a>
+<h3>EXAMPLE 5. Operations on File and Raster Image Attributes</h3>
+
+<p>
+This example illustrates the use of the routines GRsetattr/mgsnatt/mgscatt to assign attributes to an 
+HDF file and to an image.
+</p>
+
+<p>
+In this example, the program sets two attributes to the existing file "General_RImages.hdf" and two 
+attributes to the image named "Image Array 2". The file is created by the program in Example 1 and 
+the image is created by the program in Example 2. The values of the second attribute of the image 
+are of type int16 and the values of the other three attributes are of type char8. 
+</p>
+
+<a name="gr6"></a>
+<h3>EXAMPLE 6. Obtaining File and Image Attribute</h3>
+
+<p>
+This example illustrates the use of the routines GRattrinfo/mgatinf, GRfindattr/mgfndat, and 
+GRgetattr/mggnatt/mggcatt to extract information and values of file and image attributes that were 
+set by the program in Example 5.
+</p>
+
+<p>
+In this example, the program gets the information about each file attribute, then extracts its values. 
+The program then selects the second image in the file, finds the attribute named "Image Attribute 2", 
+obtains the data type and the number of values in the attribute, and extracts its stored values. 
+</p>
+
+<a name="gr7"></a>
+<h3>EXAMPLE 7. Writing a Palette</h3>
+
+<p>
+This example illustrates the use of the routines GRgetlutid/mggltid and GRwritelut/mgwclut to attach a 
+palette to a raster image and write data to it.
+</p>
+
+<p>
+In this example, the program creates an image named "Image with Palette" in the file 
+"Image_with_Palette.hdf". A palette is then attached to the image and data is written to it. 
+</p>
+
+<a name="gr8"></a>
+<h3>EXAMPLE 8. Reading a Palette</h3>
+
+<p>
+This example illustrates the use of the routines GRgetlutinfo/mgglinf and GRreadlut/mgrclut to obtain 
+information about a palette and to read palette data.
+</p>
+
+<p>
+In this example, the program finds and selects the image named "Image with Palette" in the file 
+"Image_with_Palette.hdf". Then the program obtains information about the palette and reads the palette data.
+</p>
+
+<a name="gr9"></a>
+<h3>EXAMPLE 9. Creating and Writing a Chunked Raster Image</h3>
+
+<p>
+This example illustrates the use of the routines Hopen/hopen, GRstart/mgstart, GRcreate/mgcreat, 
+GRwritechunk/mgwchnk, GRendaccess/mgendac, GRend/mgend, and Hclose/hclose to create an HDF file and 
+store a raster image in it.
+</p>
+
+<p>
+In this example, the program creates an image of 6 rows by 10 columns in C and 10 rows by 6 columns in 
+FORTRAN. The image is set up to be chunked with a chunk size of 3x2 in C and 2x3 in FORTRAN and 
+compressed with the GZIP method. Three chunks are then written to the image.
+</p>
+
+<hr noshade size=1>
+
+<h2> Scientific Datasets (SD):</h2>
+
+<p>
+These examples are used in Chapter 3 -- Scientific Data Sets (SD API) of the HDF User's Guide.
+</p>
+
+<a name="sd1"></a>
+<h3>EXAMPLE 1. Creating an HDF file and an Empty SDS</h3>
+
+<p>
+This example illustrates the use of SDstart/sfstart, SDcreate/sfcreate, SDendaccess/sfendacc, and 
+SDend/sfend to create the HDF file named SDS.hdf, and an empty data set with the name SDStemplate in the file.
+</p>
+
+<p>
+Note that the Fortran program uses a transformed array to reflect the difference between C and Fortran 
+internal data storages. When the actual data is written to the data set, SDS.hdf will contain the same 
+data regardless of the language being used. 
+</p>
+
+<a name="sd2"></a>
+<h3>EXAMPLE 2. Writing to an SDS</h3>
+
+<p>
+This example illustrates the use of the routines SDselect/sfselect and SDwritedata/sfwrite to select 
+the first SDS in the file SDS.hdf created in Example 1 and to write actual data to it. 
+</p>
+
+<a name="sd3"></a>
+<h3>EXAMPLE 3. Writing a Slab of Data to an SDS</h3>
+
+<p>
+This example shows how to fill a 3-dimensional SDS array with data by writing a series of 2-dimensional 
+slabs to it. 
+</p>
+
+<a name="sd4"></a>
+<h3>EXAMPLE 4. Altering Values within an SDS Array</h3>
+
+<p>
+This example demonstrates how the routine SDwritedata can be used to alter the values of the elements 
+in the 10th and 11th rows, at the 2nd column, in the SDS array created in the Example 1 and written in 
+Example 2. The FORTRAN-77 routine sfwdata is used to alter the elements in the 2nd row, 10th and 11th columns, 
+to reflect the difference between C and Fortran internal storage. 
+</p>
+
+<a name="sd5"></a>
+<h3>EXAMPLE 5. Appending Data to an SDS Array with an Unlimited Dimension</h3>
+
+<p>
+This example creates a 10x10 SDS array with one unlimited dimension and writes data to it. The file is 
+reopened and the routine SDisrecord/sfisrcrd is used to determine whether the selected SDS array is 
+appendable. Then new data is appended, starting at the 11th row. 
+</p>
+
+<a name="sd6"></a>
+<h3>EXAMPLE 6. Compressing SDS Data</h3>
+
+<p>
+This example uses the routine SDsetcompress/sfscompress to compress SDS data with the GZIP compression 
+method. See comments in the program regarding the use of the Skipping Huffman or RLE compression methods. 
+</p>
+
+<a name="sd7"></a>
+<h3>EXAMPLE 7. Moving Data to an External File</h3>
+
+<p>
+This example illustrates the use of the routine SDsetexternalfile/sfsextf to move the SDS data written in 
+Example 2 to an external file. 
+</p>
+
+<a name="sd8"></a>
+<h3>EXAMPLE 8. Reading from an SDS</h3>
+
+<p>
+This example uses the routine SDreaddata/sfrdata to read the data that has been written in Example 2, 
+modified in Example 4, and moved to the external file in Example 7. Note that the original file 
+SDS.hdf that contains the SDS metadata and the external file ExternalSDS that contains the SDS raw data 
+should reside in the same directory. The fact that raw data is in the external file is transparent to 
+the user's program. 
+</p>
+
+<a name="sd9"></a>
+<h3>EXAMPLE 9. Reading Subsets of an SDS</h3>
+ 
+<p>
+This example shows how parameters start, stride, and edges of the routine SDreadata/sfrdata can be used 
+to read three subsets of an SDS array. 
+</p>
+
+<p>
+C:<br />
+For the first subset, the program reads every 3rd element of the 2nd column starting at the 4th row of 
+the data set created in Example 1 and modified in Examples 2, 4 and 7.<br />
+For the second subset the program reads the first 4 elements of the 10th row.<br />
+For the third subset, the program reads from the same data set every 6th element of each column and 
+4th element of each row starting at 1st column, 3d row.
+</p>
+
+<p>
+FORTRAN-77:<br />
+Fortran program reads transposed data to reflect the difference in C and Fortran internal storage. 
+</p>
+
+<a name="sd10"></a>
+<h3>EXAMPLE 10. Getting Information about a File and SDS</h3>
+
+<p>
+This example illustrates the use of the routine SDfileinfo/sffinfo to obtain the number of data sets 
+in the file SDS.hdf and the routine SDgetinfo/sfginfo to retrieve the name, rank, dimension sizes, 
+data type and number of attributes of the selected data set. 
+</p>
+
+<a name="sd11"></a>
+<h3>EXAMPLE 11. Locating an SDS by Its Name</h3>
+
+<p>
+This example uses the routine SDnametoindex/sfn2index to locate the SDS with the specified name and 
+then reads the data from it. 
+</p>
+
+<a name="sd12"></a>
+<h3>EXAMPLE 12. Setting and Retrieving Dimension Information</h3>
+
+This example illustrates the use of the routines SDgetdimid/sfdimid, SDsetdimname/sfsdmname, SDsetdimscale/sfsdscale, SDdiminfo/sfgdinfo, and SDgetdimscale/sfgdscale to set and retrieve the dimensions names and dimension scales of the SDS created in Example 1 and modified in Examples 2, 4 and 7. 
+
+<a name="sd13"></a>
+<h3>EXAMPLE 13. Distinguishing a Dimension Scale from a Data Set in a File</h3>
+
+<p>
+This example illustrates the use of the routine SDiscoordvar/sfiscvar to determine whether the selected 
+SDS array is a data set or a dimension stored as an SDS array (coordinate variable) (see discussion in 
+Section 3.8.4) and displays the name of the data set or dimension. 
+</p>
+
+<a name="sd14"></a>
+<h3>EXAMPLE 14. Setting Attributes</h3>
+
+<p>
+This example shows how the routines SDsetattr/sfscatt/sfsnatt are used to set the attributes of the file, 
+data set, and data set dimension created in the Examples 2, 4, and 12. 
+</p>
+
+<a name="sd15"></a>
+<h3>EXAMPLE 15. Reading Attributes</h3>
+
+<p>
+This example uses the routines SDfindattr/sffattr, SDattrinfo/sfgainfo, and SDreadattr/sfrattr to find 
+and read attributes of the file, data set, and data set dimension created in the Example 14. 
+</p>
+
+<a name="sd16"></a>
+<h3>EXAMPLE 16. Calibrating Data</h3>
+
+<p>
+Suppose the values in the calibrated array cal_val are the following integers:
+<pre>
+    cal_val[6] = {2, 4, 5, 11, 26, 81} 
+</pre>
+</p>
+
+<p>
+By applying the calibration equation orig = cal * (cal_val - offset) with cal = 0.50 and 
+offset = -2000.0, the calibrated array cal_val[] returns to its original floating-point form:
+<pre>
+    original_val[6] = {1001.0, 1002.0, 1002.5, 1005.5, 1013.0, 1040.5} 
+</pre>
+</p>
+
+<a name="sd17"></a>
+<h3>EXAMPLE 17. Writing and Reading a Chunked SDS</h3>
+
+<p>
+This example demonstrates the use of the routines SDsetchunk/sfschnk, SDwritedata/sfwdata, 
+SDwritechunk/sfwchnk, SDgetchunkinfo/sfgichnk, SDreaddata/sfrdata, and SDreadchunk/sfrchnk to create 
+a chunked data set, write data to it, get information about the data set, and read the data back. 
+Note that the Fortran example uses transposed data to reflect the difference between C and Fortran 
+internal storage. 
+</p>
+
+<hr noshade size=1>
+
+<h2>Vdatas (VD):</h2>
+
+<p>
+These examples are used in Chapter 4 -- Vdatas (VS API) of the HDF User's Guide.
+</p>
+
+<a name="vd1"></a>
+<h3>EXAMPLE 1. Accessing a Vdata in an HDF File</h3>
+
+<p>
+This example illustrates the use of Hopen/hopen, Vstart/vfstart, VSattach/vsfatch, VSdetach/vsfdtch, 
+Vend/vfend, and Hclose/hclose to create and to access different vdatas from different HDF files.
+</p>
+
+<p>
+The program creates an HDF file, named "General_Vdatas.hdf", containing a vdata. The program also 
+creates a second HDF file, named "Two_Vdatas.hdf", containing two vdatas. Note that, in this example, 
+the program does not write data to these vdatas. Also note that before closing the file, the access 
+to its vdatas and its corresponding Vdata interface must be terminated. These examples request 
+information about a specific vdata. 
+</p>
+
+<a name="vd2"></a>
+<h3>EXAMPLE 2. Creating and Storing One-field Vdatas Using VHstoredata and VHstoredatam</h3>
+
+<p>
+This example illustrates the use of VHstoredata/vhfscd and VHstoredatam/vhfsdm to create single-field vdatas.
+</p>
+
+<p>
+This example creates and writes two vdatas to the file "General_Vdatas.hdf". The first vdata is named 
+"First Vdata", contains 5 records, and belongs to a class named "5x1 Array". The second vdata is named 
+"Second Vdata", contains 6 records, and belongs to a class named "6x4 Array". The field of the first 
+vdata is a single-component field, i.e., order of 1, and named "Single-component Field". The field of 
+the second vdata has an order of 4 and is named "Multi-component Field".
+</p>
+
+<p>
+In these examples two vdatas are created. The first vdata has five records with one field of order 1 
+and is created from a 5 x 1 array in memory. The second vdata has six records with one field of order 4 
+and is created from a 6 x 4 array in memory. 
+</p>
+
+<a name="vd3"></a>
+<h3>EXAMPLE 3. Writing a Vdata of Homogeneous Type</h3>
+
+<p>
+This example illustrates the use of VSfdefine/vsffdef, VSsetname/vsfsnam, VSsetclass/vsfscls, 
+VSsetfields/vsfsfld, and VSwrite/vsfwrt to create and write a three-field vdata to the file 
+"General_Vdatas.hdf". Although the fields have data of the same type, they have different orders.
+</p>
+
+<p>
+To clarify the illustration, let us assume that the vdata is used to contain the data of some particles 
+collected from an experiment. Each record of the data includes the position of a particle, its weight, 
+and the minimum and maximum temperature the particle can endure. The vdata is named "Solid Particle", 
+contains 10 records, and belongs to a class, named "Particle Data". The fields of the vdata include 
+"Position", "Mass", and "Temperature". The field "Position" has an order of 3 for the x, y, and z values 
+representing the position of a particle. The field "Mass" has an order of 1. The field "Temperature" 
+has an order of 2 for the minimum and maximum temperature. The program creates the vdata, sets its name 
+and class name, defines its fields, and then writes the data to it. 
+</p>
+
+<a name="vd4"></a>
+<h3>EXAMPLE 4. Writing a Multi-field and Mixed-type Vdata with Packing</h3>
+
+<p>
+This example illustrates the use of VSfpack/vsfnpak/vsfcpak and VSwrite/vsfwrit to write a vdata with 
+data of different types. Note that the approach used in Example 3 makes it difficult for the vdata to 
+have mixed-type data.
+</p>
+
+<p>
+In this example, the program creates an HDF file, named "Packed_Vdata.hdf", then defines a vdata which 
+is named "Mixed Data Vdata" and belongs to class "General Data Class". The vdata contains four order-1 
+fields, "Temp", "Height", "Speed", and "Ident" of type float32, int16, float32, and char8, respectively. 
+The program then packs the data in fully interlaced mode into the buffer "databuf" and writes the packed data to 
+the vdata. Note that, in the C example, a VSfpack call packs all N_RECORDS and a VSwrite call writes 
+out all N_RECORDS records. In the Fortran example, N_RECORDS of each field are packed using separate 
+calls to vsfnpak and vsfcpak; vsfwrit writes packed data to the vdata. 
+</p>
+
+<a name="vd5"></a>
+<h3>EXAMPLE 5. Reading a Vdata of Homogeneous Type</h3>
+
+<p>
+This example illustrates the use of VSfind/vsffnd to locate a vdata given its name, VSseek/vsfseek to 
+move the current position to a desired record, and VSread/vsfrd to read the data of several records. 
+The function VSfind will be discussed in Section 4.7.3. The approach used in this example can only 
+read data written by a program such as that in Example 3, i.e., without packing. Reading mixed data 
+vdatas must use the approach illustrated in Example 6.
+</p>
+
+<p>
+The program reads 5 records starting from the fourth record of the two fields "Position" and "Temperature" 
+in the vdata "Solid Particle" from the file "General_Vdatas.hdf". After the program uses VSfind/vsffnd 
+to obtain the reference number of the vdata, it uses VSseek/vsfseek to place the current position at the 
+fourth record, then starts reading 5 records, and displays the data. 
+</p>
+
+<a name="vd6"></a>
+<h3>EXAMPLE 6. Reading a Multi-field and Mixed-type Vdata with Packing</h3>
+
+<p>
+This example illustrates the use of VSread/vsfread to read part of a mixed data vdata and 
+VSfpack/vsfnpak/vsfcpak to unpack the data read.
+</p>
+
+<p>
+The program reads the vdata "Mixed Data Vdata" that was written to the file "Packed_Vdata.hdf" 
+by the program in Example 4. In Example 6, all values of the fields "Temp" and "Ident" are read. 
+The program unpacks and displays all the values after reading is complete. Again, note that in C 
+only one call to VSread and one call to VSfpack are made to read and unpack all N_RECORDS records. 
+In Fortran, data is read with one call to vsfread, but each field is unpacked using separate calls 
+to vsfnpak and vsfcpak.
+</p>
+ 
+<a name="vd7"></a>
+<h3>EXAMPLE 7. Locating a Vdata Containing Specified Field Names</h3>
+
+<p>
+This example illustrates the use of VSgetid/vsfgid to obtain the reference number of each vdata 
+in an HDF file and the use of VSfexist/vsfex to determine whether a vdata contains specific fields.
+</p>
+
+<p>
+In this example, the program searches the HDF file "General_Vdatas.hdf" to locate the first 
+vdata containing the fields "Position" and "Temperature". The HDF file is created in Example 1 and modified in Examples 2 and 3. 
+</p>
+
+<a name="vd8"></a> 
+<h3>EXAMPLE 8. Operations on Field and Vdata Attributes</h3>
+
+<p>
+This example illustrates the use of VSsetattr/vsfscat/vsfsnat to attach an attribute to a vdata and 
+to a field in a vdata, the use of VSattrinfo/vsfainf to get information about a field attribute and 
+a vdata attribute, and the use of VSgetattr/vsfgcat/vsfgnat to get the values of an attribute of a 
+vdata and the values of an attribute of a field in a vdata. The example also shows the use of 
+VSfnattrs/vsffnas to obtain the number of attributes attached to a field of a vdata and the use of 
+VSnattrs/vsfnats to obtain the total number of attributes attached to both a vdata and its fields.
+</p>
+
+<p>
+In this example, the program finds the vdata, named "Solid Particle", in the HDF file 
+"General_Vdatas.hdf" is created in Example 1 and modified in Examples 2 and 3. It then obtains the index of the field, named "Mass", 
+in the vdata. An attribute named "Site Ident" is attached to the vdata to contain the identification 
+of the experiment sites. Another attribute named "Scales" is attached to the field for its scale 
+values. The vdata attribute has 3 character values and the field attribute has 4 integer values. 
+</p>
+
+<a name="vd9"></a>
+<h3>EXAMPLE 9. Obtaining Vdata Information</h3>
+
+<p>
+This example illustrates the use of VSgetid/vsfgid and VSinquire/vsfinq to obtain information 
+about all vdatas in an HDF file.
+</p>
+
+<p>
+In this example, the program uses VSgetid to locate all vdatas in the HDF file "General_Vdatas.hdf", 
+which is created in Example 1 and modified in Examples 2 and 3. For each vdata found, if it is not the storage of an attribute, 
+the program uses VSinquire/vsfinq to obtain information about the vdata and displays its 
+information. Recall that an attribute is also stored as a vdata; the function VSisattr/vsfisat 
+checks whether a vdata is a storage of an attribute. 
+</p>
+
+<hr noshade size=1>
+
+<h2>Vgroups (VG):</h2>
+
+<p>
+These examples are used in Chapter 5 -- Vgroups (V API) of the HDF User's Guide.
+</p>
+
+<a name="vg1"></a>
+<h3>EXAMPLE 1. Creating HDF Files and Vgroups</h3>
+
+<p>
+This example illustrates the use of Hopen/hopen, Vstart/vfstart, Vattach/vfatch, Vdetach/vfdtch, 
+Vend/vfend, and Hclose/hclose to create and to access two vgroups in an HDF file.
+</p>
+
+<p>
+The program creates the HDF file, named "Two_Vgroups.hdf", and two vgroups stored in the file. 
+Note that, in this example, the program only create two empty vgroups. 
+</p>
+
+<a name="vg2"></a>
+<h3>EXAMPLE 2. Adding an SDS to a New Vgroup</h3>
+
+<p>
+This example illustrates the use of Vaddtagref/vfadtr to add an HDF data object, an SDS specifically, to a 
+vgroup.
+</p>
+
+<p>
+In this example, the program first creates the HDF file "General_Vgroups.hdf", then an SDS in the 
+SD interface, and a vgroup in the Vgroup interface. The SDS is named "Test SD" and is a one-dimensional 
+array of type int32 of 10 elements. The vgroup is named "SD Vgroup" and is of class "Common Vgroups". 
+The program then adds the SDS to the vgroup using Vaddtagref/vfadtr. Notice that, when the operations 
+are complete, the program explicitly terminates access to the SDS, the vgroup, the SD interface, and 
+the Vgroup interface before closing the HDF file. Refer to Chapter 3, Scientific Data Sets (SD API) 
+for the discussion of the SD routines used in this example. 
+</p>
+
+<a name="vg3"></a>
+<h3>EXAMPLE 3. Adding Three Vdatas into a Vgroup</h3>
+
+<p>
+This example illustrates the use of Vinsert/vfinsrt to add a vdata to a vgroup. Note that 
+Vaddtagref/vfadtrf, used in the previous example, performs the same task and only differs in the 
+argument list.
+</p>
+
+<p>
+In this example, the program creates three vdatas and a vgroup in the existing HDF file 
+"General_Vgroups.hdf" then adds the three vdatas to the vgroup. Notice that the vdatas and the 
+vgroup are created in the same interface that is initialized by the call Vstart/vfstart. The first 
+vdata is named "X,Y Coordinates" and has two order-1 fields of type float32. The second vdata is 
+named "Temperature" and has one order-1 field of type float32. The third vdata is named "Node List" 
+and has one order-3 field of type int16. The vgroup is named "Vertices" and is of class "Vertex Set". 
+The program uses Vinsert/vfinsrt to add the vdatas to the vgroup using the vdata identifiers. 
+Refer to Chapter 4, Vdatas (VS API), for the discussion of the VS routines used in this example. 
+</p>
+
+<a name="vg4"></a>
+<h3>EXAMPLE 4. Obtaining Information about Lone Vgroups</h3>
+
+<p>
+This example illustrates the use of Vlone/vflone to obtain the list of reference numbers of all lone 
+vgroups in the file and the use of Vgetname/vfgnam and Vgetclass/vfgcls to obtain the name and the 
+class of a vgroup.
+</p>
+
+<p>
+In this example, the program calls Vlone/vflone twice. The first call is to obtain the number of 
+lone vgroups in the file so that sufficient space can be allocated; the later call is to obtain 
+the actual reference numbers of the lone vgroups. The program then goes through the list of lone 
+vgroup reference numbers to get and display the name and class of each lone vgroup. The file used 
+in this example is "General_Vgroups.hdf". 
+</p>
+
+<a name="vg5"></a>
+<h3>EXAMPLE 5. Operations on Vgroup Attributes</h3>
+
+<p>
+This example illustrates the use of Vfind/vfind to locate a vgroup by its name, Vsetattr/vfscatt to 
+attach an attribute to the vgroup, Vattrinfo/vfainfo to obtain information about the vgroup attribute, 
+and Vgetattr/vfgcatt to obtain the attribute values.
+</p>
+
+<p>
+The program obtains the version of the group then sets an attribute named "First Attribute" for 
+the vgroup named "SD Vgroup". Next, the program gets the number of attributes that the vgroup has, 
+and obtains and displays the name, the number of values, and the values of each attribute. 
+</p>
+
+<a name="vg6"></a>
+<h3>EXAMPLE 6. Obtaining Information about the Contents of a Vgroup</h3>
+
+<p>
+This example illustrates the use of Vgetid/vfgid to get the reference number of a vgroup, 
+Vntagrefs/vfntr to get the number of HDF data objects in the vgroup, Vgettagref/vfgttr to get the 
+tag/reference number pair of a data object within the vgroup, and Visvg/vfisvg and Visvs/vfisvs 
+to determine whether a data object is a vgroup and a vdata, respectively.
+</p>
+
+<p>
+In the example, the program traverses the HDF file "General_Vgroups.hdf" from the beginning and 
+obtains the reference number of each vgroup so it can be attached. Once a vgroup is attached, the 
+program gets the total number of tag/reference number pairs in the vgroup and displays some 
+information about the vgroup. The information displayed includes the position of the vgroup in 
+the file, the tag/reference number pair of each of its data objects, and the message stating 
+whether the object is a vdata, vgroup, or neither. 
+</p>
+ 
+
+<hr noshade size=1>
+
+<i>
+- - Last modified: 18 October 2016</i>
+	   </div>
+	   <!--END: CONTENT -->
+<!--END: WRAPPER -->
+<script src="../../scriptaculous/gatag.js" type="text/javascript"></script>
+
+<!-- <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script> -->
+				
+<!--
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-3782034-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+-->
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-3782034-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+</body>
+</html>
+
+

@@ -1,0 +1,787 @@
+<html>
+<head>
+    <title>HDF5 Software Changes</title>
+<link href="../ed_styles/GenElect.css" rel="stylesheet" type="text/css">
+</head>
+
+<body bgcolor="#FFFFFF">
+  
+<!-- #BeginLibraryItem "/ed_libs/styles_Gen.lbi" -->
+<!--
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+  * Copyright by The HDF Group.                                               *
+  * Copyright by the Board of Trustees of the University of Illinois.         *
+  * All rights reserved.                                                      *
+  *                                                                           *
+  * This file is part of HDF5.  The full HDF5 copyright notice, including     *
+  * terms governing use, modification, and redistribution, is contained in    *
+  * the files COPYING and Copyright.html.  COPYING can be found at the root   *
+  * of the source code distribution tree; Copyright.html can be found at the  *
+  * root level of an installed copy of the electronic HDF5 document set and   *
+  * is linked from the top-level documents page.  It can also be found at     *
+  * http://www.hdfgroup.org/HDF5/doc/Copyright.html.  If you do not have      *
+  * access to either file, you may request a copy from help@hdfgroup.org.     *
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ -->
+<!-- #EndLibraryItem --><!-- #BeginLibraryItem "/ed_libs/NavBar_ADevG.lbi" -->
+<hr />
+<center>
+<table border="0" width="98%">
+<tr><td valign="top" align="left">
+    <a href="../index.html">HDF5 documents and links</a>&nbsp;<br>
+    <a href="../H5.intro.html">Introduction to HDF5</a>&nbsp;<br>
+    <!--
+    <a href="Glossary.html">Glossary</a><br>
+    -->
+</td>
+<td valign="top" align="right">
+    <a href="../UG/HDF5_Users_Guide-Responsive&#32;HTML5/index.html">HDF5 User&rsquo;s Guide</a>&nbsp;<br>
+    <a href="../RM/RM_H5Front.html">HDF5 Reference Manual</a>&nbsp;<br>
+    <a href="../ADGuide.html">HDF5 Application Developer's Guide</a>&nbsp;<br>
+</td></tr>
+</table>
+</center>
+<hr />
+<!-- #EndLibraryItem -->
+
+<br />
+<center>
+<h1>HDF5 Software Changes from Release to Release</h1>
+</center>
+<br />
+
+
+<!-- *********************************************************** -->
+<!-- IN THIS FILE, DOCUMENT ONLY                                 -->
+<!--   - interface changes and                                   -->
+<!--   - changes in library or tool behavior that might affect   -->
+<!--         an application.                                     -->
+<!-- *********************************************************** -->
+
+
+<p>This document is designed to help developers maintain 
+HDF5-based applications as they are used with successive releases
+of HDF5.
+To that end, this document lists the changes at each release that
+a maintenance developer needs to be aware of:
+<ul>
+    <li>New or changed features or tools
+    <li>Syntax and behavioral changes in the existing application 
+        programming interface (the API) 
+    <li>Certain types of changes in configuration or build processes 
+</ul></p>
+
+<p>Bugfixes and performance enhancements in the C library 
+are automatically picked up by the C++ and Fortran libraries.  
+The Java library will pick up the same bugfixes and enhancements
+at its next subsequent release as it is always built with
+the latest released version of the C library.
+
+<p>The release notes also list changes made to the library, but these 
+notes tend to be more at a more detail oriented level. The release 
+notes may include new features, bugs fixed, supported configuration 
+features, platforms on which the library has been tested, and known 
+problems. The release note files are listed below and can be found 
+at the top level of the HDF5 source code tree in the release_docs 
+directory of the distributed HDF5 source code.</p>
+
+<dir>
+<table>
+
+<tr><td style="padding-right:10px">
+    <a href="http://www.hdfgroup.org/ftp/HDF5/current18/src/unpacked/release_docs/RELEASE.txt" 
+    target="ExtWin"><code>RELEASE.txt</code></a></td>
+    <td style="padding-right:10px">Technical notes regarding the current release 
+    of the HDF5 Library 
+    </td></tr>
+
+<tr><td style="padding-right:10px">
+    <a href="http://www.hdfgroup.org/ftp/HDF5/current18/src/unpacked/release_docs/HISTORY-1_8.txt" 
+    target="ExtWin"><code>HISTORY-1_8.txt</code></a></td>
+    <td style="padding-right:10px">Technical notes for previous 1.8 
+    releases of the HDF5 Library by release
+    </td></tr>
+
+<tr valign="top"><td style="padding-right:10px">
+    <a href="http://www.hdfgroup.org/ftp/HDF5/current18/src/unpacked/release_docs/HISTORY-1_0-1_8_0_rc3.txt" 
+    target="ExtWin"><code>HISTORY-1_0-1_8_0_rc3.txt</code></a>
+    <br >
+    <code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code></td>
+    <td style="padding-right:10px">Technical notes for releases prior 
+    to the 1.8.0 release of the HDF5 Library by release
+    </td></tr>
+
+</table>
+</dir>
+
+<p><strong>Are you porting an existing application from 
+HDF5 Release 1.6.x to HDF5 Release 1.8.x?</strong>
+<br />
+If you are porting an existing application 
+from any HDF5 version in the Release 1.6.x series 
+to any version in the Release 1.8.x series, 
+refer to &ldquo;<a href="WhatsNew180.html">What's New in 
+HDF5 1.8.0</a>&rdquo;.
+This document, with the documents linked in its introduction,
+provides a guide to the changes introduced in the transition 
+from the 1.6.x series to HDF5 Release 1.8.0
+and discussions of various compatibility issues.</p>
+
+<br />
+
+
+<!-- TABLE TO REGULATE PRINTED PAGE WIDTH -->
+<!--
+<table><tr><td>
+<font color="white">
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+</font>
+</td></tr></table>
+-->
+<!-- END REGULATING TABLE -->
+
+<a name="1820">
+<h2>Release 1.8.20 of November 2017 versus Release 1.8.19</h2>
+</a>
+<dir>
+This section lists interface-level changes and other user-visible changes in behavior 
+in the transition from HDF5 Release 1.8.19 to Release 1.8.20.
+
+    <h3>New and Changed Functions, Classes, Subroutines, Wrappers, 
+        and Macros</h3>
+        <dir>
+            <dt><strong>In the C Interface (main library)</strong></dt>
+            <dt>None.</dt> 
+            <p />
+
+            <dt><strong>In the C High Level Interface</strong>
+            </dt>
+            <dt>None.</dt> 
+            <p />
+        
+            <dt><strong>In the C++ Wrapper</strong>
+            </dt>
+        <dl>    
+        Many changes were made to improve the C++ API model. Please review the
+        RELEASE.txt file or the compatibility report below for complete information on the C++ changes in
+        this release. 
+        </dl>
+        </dir>
+
+    <h3>Compatibility Notes and Report and Comments</h3>
+        <dir>
+        <dl>    
+            <dt><strong>Compatibility report for Release 1.8.20 versus 
+                Release 1.8.19</strong>
+                </dt>
+                <dd>
+                    The following interface compatibility report
+                    provides a full list of the changed symbols:
+                    <p />
+                    <a href="Compatibility_Report/CR_1.8.20.html">API
+                    compatibility report for the HDF5 Library
+                    between 1.8.19 and 1.8.20 versions on x86_64 </a>
+
+                </dd>
+        </dl>    
+        </dir>
+</dir>
+
+
+
+
+<a name="1819">
+<h2>Release 1.8.19 of June 2017 versus Release 1.8.18</h2>
+</a>
+<dir>
+This section lists interface-level changes and other user-visible changes in behavior 
+in the transition from HDF5 Release 1.8.18 to Release 1.8.19.
+
+    <h3>New and Changed Functions, Classes, Subroutines, Wrappers, 
+        and Macros</h3>
+        <dir>
+            <dt><strong>In the C Interface (main library)</strong>
+            </dt>
+
+            <dt>The following new C functions were added:
+                <dir><table border="0">
+                     <tr valign="top">
+                         <td><a href="../RM/RM_H5D.html#Dataset-GetChunkStorageSize">
+                             <code>H5Dget_chunk_storage_size</code></a>
+                         </td></tr>
+                     <tr valign="top">
+                         <td><a href="../RM/RM_H5PL.html#Plugin-Append">
+                             <code>H5PLappend</code></a>
+                         </td></tr>
+                     <tr valign="top">
+                         <td><a href="../RM/RM_H5PL.html#Plugin-Get">
+                             <code>H5PLget</code></a>
+                         </td></tr>
+                     <tr valign="top">
+                         <td><a href="../RM/RM_H5PL.html#Plugin-Insert">
+                             <code>H5PLinsert</code></a>
+                         </td></tr>
+                     <tr valign="top">
+                         <td><a href="../RM/RM_H5PL.html#Plugin-Prepend">
+                             <code>H5PLprepend</code></a>
+                         </td></tr>
+                     <tr valign="top">
+                         <td><a href="../RM/RM_H5PL.html#Plugin-Remove">
+                             <code>H5PLremove</code></a>
+                         </td></tr>
+                     <tr valign="top">
+                         <td><a href="../RM/RM_H5PL.html#Plugin-Replace">
+                             <code>H5PLreplace</code></a>
+                     <tr valign="top">
+                         <td><a href="../RM/RM_H5PL.html#Plugin-Size">
+                             <code>H5PLsize</code></a>
+                             <br />&nbsp;
+                     </table>
+                </dir>
+                </dt>
+
+
+            <dt><strong>In the C High Level Interface</strong>
+            </dt>
+            <dt>The following new C function was added:
+                <dir><table border="0">
+                     <tr valign="top">
+                         <td><a href="../HL/RM_HDF5Optimized.html#H5DOread_chunk">
+                             <code>H5DOread_chunk</code></a>
+                             <br />&nbsp;
+                         </td></tr>
+                     </table>
+                </dir>
+                </dt>
+
+
+        
+            <dt><strong>In the C++ Wrapper</strong>
+            </dt>
+        <dl>    
+        Many changes were made to improve the C++ API model. Please review the
+        RELEASE.txt file or Compatibility report below for complete information on the C++ changes in
+        this release. 
+        </dl>
+        </dir>
+
+    <h3>Compatibility Notes and Report and Comments</h3>
+        <dir>
+        <dl>    
+            <dt><strong>Compatibility report for Release 1.8.19 versus 
+                Release 1.8.18</strong>
+                </dt>
+                <dd>
+                    The following interface compatibility report
+                    provides a full list of the changed symbols:
+                    <p />
+                    <a href="Compatibility_Report/CR_1.8.19.html">API
+                    compatibility report for the HDF5 Library
+                    between 1.8.18 and 1.8.19 versions on x86_64 </a>
+
+                </dd>
+        </dl>    
+        </dir>
+</dir>
+
+
+<a name="1818">
+<h2>Release 1.8.18 of November 2016 versus Release 1.8.17</h2>
+</a>
+
+<dir>
+
+
+This section lists interface-level changes and 
+other user-visible changes in behavior 
+in the transition from HDF5 Release 1.8.17 to Release 1.8.18.
+
+    <h3>New and Changed Functions, Classes, Subroutines, Wrappers, 
+        and Macros</h3>
+        <dir>
+        <dl>    
+            <dt><strong>In the C Interface (main library)</strong>
+            <dt>None.</dt> 
+            <p />
+
+            <dt><strong>In the C++ Interface (main library wrappers)</strong>
+            <dt>The macro <code>H5_NO_NAMESPACE</code> was deprecated.</dt>
+            <br />
+            <dt>
+            <dt>New member functions added to provide <code>const</code> versions:
+                </dt>
+                <dd><code>DSetCreatPropList::allFiltersAvail() const</code></dd>
+                <dd><code>DSetCreatPropList::getAllocTime () const</code></dd>
+                <dd><code>DSetCreatPropList::getFillTime () const</code></dd>
+                <dd><code>DSetCreatPropList::isFillValueDefined () const</code></dd>
+                <dd><code>DSetCreatPropList::setAllocTime (H5D_alloc_time_t alloc_time) const</code></dd>
+                <dd><code>DSetCreatPropList::setFillTime (H5D_fill_time_t fill_time) const</code></dd>
+                <dd><code>DSetMemXferPropList::getEDCCheck () const</code></dd>
+                <dd><code>DSetMemXferPropList::getHyperVectorSize () const</code></dd>
+                <dd><code>DSetMemXferPropList::getSmallDataBlockSize () const</code></dd>
+                <dd><code>DSetMemXferPropList::setEDCCheck (H5Z_EDC_t check) const</code></dd>
+                <dd><code>DSetMemXferPropList::setHyperVectorSize (size_t vector_size) const</code></dd>
+                <dd><code>DSetMemXferPropList::setSmallDataBlockSize (hsize_t size) const</code></dd>
+                <dd><code>FileAccPropList::getFcloseDegree () const</code></dd>
+                <dd><code>FileAccPropList::setFcloseDegree (H5F_close_degree_t degree) const</code></dd>
+            </dt>
+
+ <br />
+
+            <dt>The following member functions were removed:</dt>
+            <dd><code>ArrayType::getArrayDims (hsize_t* dims)</code></dd>
+            <dd><code>ArrayType::getArrayNDims ()</code></dd>
+
+            <dd><code>DataType::commit (H5Location& loc, char const* name)</code></dd>
+            <dd><code>DataType::commit (H5Location& loc, std::string const& name)</code></dd>
+            <dd><code>DSetCreatPropList::allFiltersAvail ()</code></dd>
+            <dd><code>DSetCreatPropList::getAllocTime ()</code></dd>
+            <dd><code>DSetCreatPropList::getFillTime ()</code></dd>
+            <dd><code>DSetCreatPropList::isFillValueDefined ()</code></dd>
+            <dd><code>DSetCreatPropList::setAllocTime (H5D_alloc_time_t alloc_time)</code></dd>
+            <dd><code>DSetCreatPropList::setFillTime (H5D_fill_time_t fill_time)</code></dd>
+
+            <dd><code>DSetMemXferPropList::getEDCCheck ()</code></dd>
+            <dd><code>DSetMemXferPropList::getHyperVectorSize ()</code></dd>
+            <dd><code>DSetMemXferPropList::getSmallDataBlockSize ()</code></dd>
+            <dd><code>DSetMemXferPropList::setEDCCheck (H5Z_EDC_t check)</code></dd>
+            <dd><code>DSetMemXferPropList::setHyperVectorSize (size_t vector_size)</code></dd>
+            <dd><code>DSetMemXferPropList::setSmallDataBlockSize (hsize_t size)</code></dd>
+
+            <dd><code>FileAccPropList::getFcloseDegree ()</code></dd>
+            <dd><code>FileAccPropList::setFcloseDegree (H5F_close_degree_t degree)</code></dd>
+            
+            <dd><code>H5Location::H5Location [in-charge] (hid_t const loc_id)</code></dd>
+            <dd><code>H5Location::H5Location [not-in-charge] (hid_t const loc_id)</code></dd>
+
+            <dd><code>H5Object::H5Object [in-charge] (hid_t const object_id)</code></dd>
+            <dd><code>H5Object::H5Object [not-in-charge] (hid_t const object_id)</code></dd>
+
+            <dd><code>CommonFG::mount (char const* name, H5File& child, PropList& plist) const</code></dd>
+            <dd><code>DataSet::getVlenBufSize (DataType& type, DataSpace& space) const</code></dd>
+            <dd><code>DataType::commit (H5Location& loc, char const* name)</code></dd>
+            <dd><code>DataType::commit (H5Location& loc, std::string const& name) </code></dd>
+
+               
+
+            </dl>    
+            <font color="brown"><i>
+            </i></font>
+
+        </dl>    
+        </dir>
+
+
+    <h3>Compatibility Notes and Report and Comments</h3>
+        <dir>
+        <dl>    
+            <dt><strong>Compatibility report for Release 1.8.18 versus 
+                Release 1.8.17</strong>
+                </dt>
+                <dd>
+                    The following interface compatibility report
+                    provides a full list of the changed symbols:
+                    <p />
+                    <a href="Compatibility_Report/CR_1.8.18.html">API
+                    compatibility report for the HDF5 Library
+                    between 1.8.17 and 1.8.18 versions on x86_64 </a>
+
+                </dd>
+        </dl>    
+        </dir>
+
+</dir>
+
+
+<br />&nbsp;
+<br />
+
+ 
+<a name="1817">
+<h2>Release 1.8.17 of May 2016 versus Release 1.8.16</h2>
+</a>
+<dir>
+
+This section lists interface-level changes and 
+other user-visible changes in behavior 
+in the transition from HDF5 Release 1.8.16 to Release 1.8.17.
+
+    <h3>New and Changed Functions, Classes, Subroutines, Wrappers, 
+        and Macros</h3>
+        <dir>
+        <dl>    
+            <dt><strong>In the C Interface (main library)</strong>
+                </dt>
+
+            <dt>The following new C functions and environment variable 
+                enable setting a relative path for raw data files 
+                associated with datasets using external storage:
+                <dir><table border="0">
+                     <tr valign="top">
+                         <td>Functions:</td>
+                         <td><a href="../RM/RM_H5P.html#Property-SetEfilePrefix">
+                             <code>H5Pset_efile_prefix</code></a>
+                             <br />
+                             <a href="../RM/RM_H5P.html#Property-GetEfilePrefix">
+                             <code>H5Pget_efile_prefix</code></a>
+                             <br />&nbsp;
+                         </td></tr>
+                     <tr valign="middle">
+                         <td>Environment&nbsp;variable:&nbsp;&nbsp;&nbsp;</td>
+                         <td><a href="../RM/RM_H5P.html#Property-SetEfilePrefix">
+                             <code>HDF5_EXTFILE_PREFIX</code></a>
+                         </td></tr>
+                     </table>
+                </dir>
+                </dt>
+
+
+
+            <p />
+            <dt><strong>In the C High-Level Interface</strong>
+                </dt>
+
+            <dt>The following new functions have been added in the
+                Packet Table (H5PT) high-level interface:
+                <dir><code>H5PTcreate</code>
+                    <br>
+                    <code>H5PTget_dataset</code>
+                    <br>
+                    <code>H5PTget_type</code>
+                </dir> 
+                </dt> 
+            <dt><code>H5PTcreate</code> replaces <code>H5PTcreate_fl</code>,
+                which is deprecated and may be removed in a future release.
+                </dt>
+            <p />
+            <dt>The following functions were previously removed from the 
+                library distribution but are once again publicly available.
+                </dt>
+                <dir><dl>
+                <dt>Reinstated in its original form:
+                <dir><code>H5PTis_varlen</code>
+                </dir>
+                </dt>
+                <dt>An updated form of <code>H5PTfree_vlen_readbuff</code>
+                reinstated as: 
+                <dir><code>H5PTfree_vlen_buff</code>
+                </dir>
+                </dt>
+                </dl></dir>
+
+
+
+            <p />
+            <dt><strong>In the C++ Interface (main library wrappers)</strong>
+                </dt>
+
+            <dt>New member function added in <code>DSetCreatPropList</code>:
+                </dt>
+
+                <dd><code>DSetCreatPropList::setNbit()</code>
+                    was added to set up N-bit compression for a dataset.
+                    </dd>
+
+
+            <p />
+            <dt>New overloaded <code>const</code> member functions added in 
+                <code>ArrayType</code>:
+                </dt>
+
+                <dd>The following functions were added to provide const versions; 
+                    the non-const versions have been marked deprecated.
+                    <pre>
+    ArrayType::getArrayNDims() const
+    ArrayType::getArrayDims() const
+                    </pre>
+                    
+            <dt>The datamembers <code>ArrayType::rank</code>
+                and <code>ArrayType::dimensions</code> have been removed. 
+                This is an implementation detail and should not affect 
+                applications.
+                </dt>
+
+
+
+            <p />
+            <dt><strong>In the C++ High-Level Interface</strong>
+                </dt>
+
+            <dt>New constructor added in <code>FL_PacketTable</code>:
+                </dt>
+
+                <dd>An overloaded constructor has been added to 
+                    <code>FL_PacketTable</code>. The function now takes 
+                    a property list identifier to provide flexibility 
+                    on creation properties such as compression.
+                    <pre>
+    FL_PacketTable(hid_t fileID, const char* name, hid_t dtypeID,
+                   hsize_t chunkSize = 0, hid_t plistID = H5P_DEFAULT)
+                    </pre>
+                </dd>
+
+
+            <dt>New member functions added in <code>PacketTable</code>:
+                </dt>
+
+                <dd>Two accessor wrappers were added to class 
+                    <code>PacketTable</code>.
+                    <dir>
+                    <p />
+                    <code>PacketTable::GetDataset()</code> returns the 
+                    identifier of the dataset associated with the 
+                    packet table.
+                    <p />
+                    <code>PacketTable::GetDatatype()</code> returns the 
+                    identifier of the datatype that the packet table uses.
+                    </dir>
+                </dd>
+
+
+            <dt>New member functions added with a <code>char*</code> 
+                argument:
+                </dt>
+
+                <dd>Overloaded functions have been added to provide a 
+                    <code>const char*</code> argument.
+                    The existing versions of these functions will be 
+                    deprecated in future releases. 
+                    <p />
+                    This also removes the following warning:
+                    <pre>
+    deprecated conversion from string constant to "char*" [-Wwrite-strings]
+                    </pre>
+                </dd>
+
+
+            <dt>Ifdef blocks removed:
+                </dt>
+
+                <dd>The <code>#ifdef VLPT_REMOVED</code> blocks have been 
+                    removed from the packet table library source code 
+                    except for the following functions:
+                    <p />
+                    <code>VL_PacketTable::IsVariableLength()</code>
+                    was moved to <code>PacketTable</code>.
+                    <p />
+                    <code>VL_PacketTable::FreeReadBuff()</code>
+                    is now <code>PacketTable::FreeBuff()</code>.
+                </dd>
+
+
+
+        </dl>    
+        </dir>
+
+
+    <h3>Compatibility Notes and Report</h3>
+        <dir>
+        <dl>    
+<!--
+            <dt><strong>Notes (there aren't always any):</strong>
+                </dt>
+                <dd><Notes>
+                    <p />
+                </dd>
+-->
+
+            <dt><strong>Changed shared library interface version 
+                numbers (<code>soname</code>)</strong>
+                </dt>
+                <dd>
+                    For HDF5 Release 1.8.17, the shared object version numbers 
+                    have changed as follows.
+                    <dir>
+                    <table width="100%" border="0">
+                    <tr valign="bottom" align="left">
+                      <th>Library</td>
+                      <th>Release<br />1.8.16&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                      <th>Release<br />1.8.17&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                      <th>Reason for Change</td>
+                    </tr>
+                    <tr valign="top" align="left">
+                      <td>HDF5 C Library</td>
+                      <td>10.1.0</td>
+                      <td>10.2.0</td>
+                      <td>Added APIs</td>
+                    </tr>
+                    <tr valign="top" align="left">
+                      <td>HDF5&nbsp;High-level&nbsp;C&nbsp;Library&nbsp;&nbsp;</td>
+                      <td>10.0.2</td>
+                      <td>10.1.0</td>
+                      <td>Added APIs</td>
+                    </tr>
+                    <tr valign="top" align="left">
+                      <td>C++ Library</td>
+                      <td>11.0.0</td>
+                      <td>12.0.0</td>
+                      <td>Changes in existing APIs</td>
+                    </tr>
+                    <tr valign="top" align="left">
+                      <td>High-level C++ Library</td>
+                      <td>11.0.0</td>
+                      <td>11.1.0</td>
+                      <td>Added APIs</td>
+                    </tr>
+                    <tr valign="top" align="left">
+                      <td>All others</td>
+                      <td>10.0.2</td>
+                      <td>10.0.3</td>
+                      <td>Code changes that did not result in 
+                          interface changes</td>
+                    </tr>
+                    </table>
+                    </dir>
+                    <p />
+                </dd>
+
+            <dt><strong>Compatibility report for Release 1.8.17 versus 
+                Release 1.8.16</strong>
+                </dt>
+                <dd>
+                    The following interface compatibility report 
+                    provides a full list of the changed symbols:
+                    <p />
+                    <a href="Compatibility_Report/CR_1.8.17.html">API 
+                    compatibility report for the HDF5 Library 
+                    between 1.8.16 and 1.8.17 versions on 
+                    x86</a>
+                </dd>
+
+
+        </dl>
+        </dir>
+
+
+
+
+
+    <br />
+</dir>
+
+
+</dir>
+
+
+
+<a name="18x">
+<h2>Prior Releases in the 1.8.x Series</h2> 
+</a>
+
+<dir>
+
+Change notes for HDF5 Release 1.8.0 to the release immediately 
+preceding the current release are published in 
+&ldquo;<a href="Changes_1_8_x.html">HDF5 Software Changes from 
+Release to Release for HDF5 Releases 1.8.x</a>&rdquo;.
+
+</dir>
+<br />
+
+
+<a name="1610">
+<h2>Releases 1.6.x and 1.4.x</h2> 
+</a>
+
+<dir>
+
+Change notes for HDF5 Release 1.6.10 and earlier releases
+are published in 
+&ldquo;<a href="Changes_1_4-1_6.html">HDF5 Software Changes from 
+Release to Release for HDF5 Releases 1.4.0 through 1.6.10</a>&rdquo;.
+
+</dir>
+<br />
+
+
+<!--
+<a name="RELEASE-HISTORY">
+<h2>This and Prior Releases: The RELEASE.txt and HISTORY.txt Files</h2>
+</a>
+
+<dir>
+    The HDF5 source code, as distributed to users and developers, 
+    contains two files that will be of interest to readers of this 
+    document.  Both files are located at the top level of the 
+    source code tree and are duplicated here for your reference:
+    <p>
+    <dl>
+      <dt><a href="RELEASE.txt" target="ExtWin">RELEASE.txt</a>
+        <dd>Technical notes regarding the release, including 
+            new features and the changes since the last release, 
+            notes regarding new or revised utilities,
+            notes regarding alternative language APIs (Fortran90, C++),
+            bugs fixed since the last release,
+            platforms on which the release has been tested, and
+            known problems. 
+            This is the file commonly known as "the release notes."
+      <p>
+      <dt><a href="HISTORY.txt" target="ExtWin">HISTORY.txt</a>
+        <dd>A release-by-release history of the HDF5 Library.  
+            This file is a compiled set of the release notes
+            (i.e., the RELEASE.txt files) from prior releases.
+    <dl>
+</dir>
+-->
+
+
+
+<!-- #BeginLibraryItem "/ed_libs/NavBar_ADevG.lbi" -->
+<hr />
+<center>
+<table border="0" width="98%">
+<tr><td valign="top" align="left">
+    <a href="../index.html">HDF5 documents and links</a>&nbsp;<br>
+    <a href="../H5.intro.html">Introduction to HDF5</a>&nbsp;<br>
+    <!--
+    <a href="Glossary.html">Glossary</a><br>
+    -->
+</td>
+<td valign="top" align="right">
+    <a href="../UG/HDF5_Users_Guide-Responsive&#32;HTML5/index.html">HDF5 User&rsquo;s Guide</a>&nbsp;<br>
+    <a href="../RM/RM_H5Front.html">HDF5 Reference Manual</a>&nbsp;<br>
+    <a href="../ADGuide.html">HDF5 Application Developer's Guide</a>&nbsp;<br>
+</td></tr>
+</table>
+</center>
+<hr>
+<!-- #EndLibraryItem -->
+
+
+
+<!-- INCLUDE VIA PHP FROM <doc_root>/ed_libs/Footer2.htm -->
+
+<address>
+<table width="100%" border="0">
+  <tr valign="top">
+      <td align="left">
+          <address>
+          The HDF Group Help Desk: <img src="../Graphics/help.png" align=top height=16>
+          <br>
+          Describes HDF5 Release 1.8.20, November 2017.
+          </address>
+      </td><td width="5%">&nbsp;</td>
+      <td align="right">
+          <a href="https://support.hdfgroup.org/ftp/HDF5/releases/COPYING">Copyright</a> by
+          <a href="https://www.hdfgroup.org/">The HDF Group</a>
+          <br>
+          and the Board of Trustees of the University of Illinois
+      </td>   
+  </tr>   
+</table>
+</address>
+
+<!-- END PHP INCLUDE FROM <doc_root>/ed_libs/Footer2.htm -->
+
+
+<!-- Created: Spring 1999 -->
+<!-- hhmts start -->
+<hr />
+Last modified: November 2017 
+<!-- hhmts end -->
+<br />
+<br />
+<br />
+
+</body>
+</html>

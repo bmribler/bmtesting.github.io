@@ -1,0 +1,224 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+<!-- If no var is set for $page_title on the top of each page than default title will be HDF Group -->
+
+<title>
+HDFView User's Guide -- Text</title>
+	<meta name="keywords" content="hdf, hdfeos, blog, hdf blog, hdf5 blog, hdf5, hdf4, hdf tools, hdf libraries, hdf viewer, hdf format, hdf file, hdf java, nafxcw.lib, phdf5, open source, hierarchical data format, ncsa, database, python hdf, mike folk, hdfview, hdf5 parallel" />
+	<meta name="description" content="The HDF Group is a not-for-profit corporation with the mission of sustaining the HDF technologies and supporting HDF user communities worldwide with production-quality software and services." />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="expires" content="Wed, 26 Feb 2010 08:21:57 GMT" />
+	<meta name="verify-v1" content="/m03HNmaDgGAcDe0PFtEVnXGtCkoeOocjr/Jwey2gdI=" />
+	<link href="../../../../css/layout.css" rel="stylesheet" type="text/css" media="screen, projection" />
+	<link href="../../../../css/print.css" rel="stylesheet" type="text/css" media="print" />
+	<link rel="stylesheet" type="text/css" href="../../../../css/js_style.css" />
+	<link rel="shortcut icon" href="../../../../images/favicon.ico" type="image/x-icon" />
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/prototype/1.7.2.0/prototype.js"></script>
+	<!--<script type="text/javascript" src="/scriptaculous/lib/prototype.js"></script>-->
+	<script type="text/javascript" src="../../../../scriptaculous/src/effects.js"></script>
+	<script type="text/javascript" src="../../../../scriptaculous/validation.js"></script>
+	<script type="text/javascript" src="../../../../scriptaculous/animatedcollapse.js"></script>
+	<script type="text/javascript" src="../../../../scriptaculous/rollover.js"></script>	
+	<script type="text/javascript" src="../../../../scriptaculous/functions.js"></script>
+	<script type="text/javascript" src="../../../../scriptaculous/sorttable.js"></script>
+	<!--<script type="text/javascript" src="/jquery-1.2.2.pack.js"></script>-->
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript" src="../../../../scriptaculous/jssor.slider.min.js"></script>
+
+ 	<link rel="stylesheet" type="text/css" href="../../../../featuredcontentglider.css" />
+    <script type="text/javascript" src="../../../../featuredcontentglider.js"></script>
+
+	</head>
+	<body>
+	<div id="mast_head">
+		<a href="https://www.hdfgroup.org/"><img src="../../../../images/hdf_logo.jpg" height="70" style="display:block; padding-left:10px;" align="left" alt="hdf images" /></a>
+		<img src="../../../../images/logo_5.jpg" height="70" style="display:block;" align="right" alt="hdf images" />
+	</div> 
+				
+	<div id="nav_wrapper">
+		<div>
+		<div id="section-">
+			<ul id="nav">
+				<li id="t-index"><a href="https://www.hdfgroup.org/">Home</a> </li>
+				<li id="t-products"><a href="../../../index.html">Products</a></li>
+				<li id="t-services"><a href="../../../../services/index.html">Services</a></li>
+				<li id="t-about"><a href="../../../../about/index.html">About Us</a></li>
+				<li id="t-news"><a href="../../../../news/index.html">News</a> </li>
+				<li id="t-blog"><a href="https://www.hdfgroup.org/blog">Blog</a></li>
+				<li id="t-contact"><a href="../../../../about/contact.html">Contact Us</a></li> 
+			</ul>
+			<script type="text/javascript">
+			
+  (function() {
+    var cx = '007250492606109219119:sb2eg2bgoyy';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:search></gcse:search>	
+					<script type="text/javascript">
+					    jQuery(document).ready(function ($) {
+					        // var options = {
+					        //     $ArrowNavigatorOptions: {
+					        //         $Class: $JssorArrowNavigator$,
+					        //         $ChanceToShow: 2
+					        //     }
+					        // };					    	
+
+
+							var options = { 
+											$AutoPlay: true, $SlideshowOptions: { $Class: $JssorSlideshowRunner$, $Transitions: [{ $Duration:5000, $Fade: true, $Opacity:2 }] } , 
+											$ArrowNavigatorOptions: { 
+												$Class: $JssorArrowNavigator$, 
+												$ChanceToShow: 2
+											}
+										  };
+
+
+					        var jssor_slider1 = new $JssorSlider$('slider1_container', options);
+					    });
+					</script>
+									                  
+			
+		</div>
+		</div>             
+	</div>
+				
+<!--START: MAIN -->
+<div id="wrapper" style="margin-top:-15px;"> 
+
+<!--START: SIDE_BAR -->
+<div id="side_bar">
+
+<form method="get" action="ug07textview.html" class="form" >
+	<select onchange="window.open(this.options[this.selectedIndex].value,'_top')" name="" style="border:2px solid #c1c1c1;">
+		<option value="" class="ql1">- - Quick Links - -</option>
+		<option value="/HDF5/" class="ql">HDF5</option>
+		<option value="/products/hdf4/" class="ql">HDF4</option>
+		<option value="/tools/" class="ql">Tools</option>
+		<option value="/projects/" class="ql">Projects</option>
+		<option value="/downloads/" class="ql">Downloads</option>
+		<option value="/documentation/" class="ql">Documentation</option>
+	        <option value="/pubs/" class="ql">Publications</option>
+		<option value="/about/" class="ql">Contact Us</option>
+	</select>
+</form>
+<ul style="border:1px solid #c1c1c1; margin-top:25px;"> 
+
+	<li style="background:url(../../../../images/menubg.png); padding:0px; padding-left:7px; color:#27343C; font-weight:500; text-align:left;">
+	LINKS</li><li><a href="https://www.hdfgroup.org/">Main Website</a></li><li><a  href="../../../../downloads/index.html">Downloads</a></li><li><a  href="https://support.hdfgroup.org/products/java/hdfview/">HDFView</a></li><li><a  href="../../JNI3/index.html">JNI3 Libraries</a></li><li><a  href="../../../../HDF5/hdf5-files.html">Sample HDF5 Files</a></li><li><a  href="../../../licenses.html">Licenses</a></li></ul> 
+
+</div>
+
+<!--END: SIDE_BAR -->
+
+<!--START: CONTENT -->
+<div id="content">
+<p><font color="red"><center><strong>This web site is no longer maintained (but will remain online).<br /> Please see The HDF Group's new <a href="https://portal.hdfgroup.org">Support Portal</a> for the latest information.</strong></center></font></p>
+	<div class=bc><p style="color:orange; ";><a href="../../../../index.html" title="HOME">HOME</a> &gt; <a href="../../../index.html" title="PRODUCTS">PRODUCTS</a> &gt; <a href="../../index.html" title="JAVA">JAVA</a> &gt; <a href="https://support.hdfgroup.org/products/java/hdfview/" title="HDFVIEW">HDFVIEW</a> &gt; <a href="index.html" title="USERSGUIDE">USERSGUIDE</a></p></div><link href="https://support.hdfgroup.org/products/java/hdfview/UsersGuide/edit.css" rel="stylesheet" type="text/css" />
+ 
+<p>
+<a href="../../hdf-java-html/hdfview/UsersGuide/index.html">[Index]</a>
+<a href="../../hdf-java-html/hdfview/UsersGuide/ug01introduction.html">[1]</a>
+<a href="ug02start.html">[2]</a>
+<a href="ug03objects.html">[3]</a>
+<a href="ug04treeview.html">[4]</a>
+<a href="ug05spreadsheet.html">[5]</a>
+<a href="ug06imageview.html">[6]</a>
+<a href="ug07textview.html">[7]</a>
+<a href="ug08useroptions.html">[8]</a>
+</p>
+<fieldset><h1>Chapter 7: Text Viewer</h1></fieldset>
+
+<p>
+This chapter provides information on editing text datasets in the TextView panel.
+</p>
+
+<ul class="ul">
+  <li class="li2"><a href="ug07textview.html#ug07copying">7.1 Copy and Paste Text</a></li>
+  <li class="li2"><a href="ug07textview.html#ug07moving">7.2 Moving Text</a></li>
+  <li class="li2"><a href="ug07textview.html#ug07save">7.3 Saving Text</a></li>
+</ul>
+
+<p>
+Datasets with data of type &ldquo;String&rdquo; are displayed in a Text 
+Viewer window. The Text Viewer provides a scroller for a large string 
+dataset. Users can scroll up or down and left or right, as needed, to view 
+the full content of the dataset.</p>
+
+<p>
+TextView shows the text of a one-dimension text dataset in rows of text areas. 
+For multiple-dimension datasets, you can select one dimension to display 
+using the &ldquo;Open As&rdquo; command from the TreeView. The following 
+figure shows that two rows of 1-D text
+(dim[0] = 2) are displayed in separate text areas.</p>
+
+<center>
+<p><img src="images/dataset_text.gif" />
+<br /><b>A dataset with string data</b></p></center>
+
+<p>
+You can modify the text content by typing new text in the text area. The modified
+text is chopped based on the maximum length of the string dataset. A string dataset of variable length is not supported.</p>
+
+
+<h2><a name="ug07copying"></a>7.1 Copy and Paste Text</h2>
+
+<p>
+To copy and paste text between cells of a text dataset, first select the cell or 
+cells containing the text you wish to copy and then press Ctrl+C on the keyboard.
+Then, begin editing the cell you wish to copy into by double clicking on that cell
+and finally, press Ctrl+V on the keyboard. The previously copied text is pasted
+into the new cell. If multiple cells were pasted into one new cell, the data
+will span multiple lines in the new cell.
+</p>
+
+<h2><a name="ug07moving"></a>7.2 Moving Text</h2>
+
+<p>
+To move text between cells, begin editing the cell containing the data you wish to
+move by double clicking on the cell. Highlight the text you wish to move and then
+press Ctrl+X on the keyboard. Finally, begin editing the cell you wish to move the
+text to by double clicking on the cell and press Ctrl+V on the keyboard. The
+previously cut text is pasted into the new cell.
+</p>
+
+<h2><a name="ug07save"></a>7.3 Saving Text</h2>
+
+<p>
+To save changes made to the text dataset, choose "Save Changes" from the Text menu.
+To export the data to a text file, choose "Save to Text File" from the menu. 
+<b>Note: Currently, only the entire contents of the dataset can be exported to
+a text file</b>.
+</p>
+
+
+<!-- BEGIN OF FOOTER INFO -->
+<hr noshade size=1 />
+
+<p>
+<a href="../../hdf-java-html/hdfview/UsersGuide/index.html">[Index]</a>
+<a href="../../hdf-java-html/hdfview/UsersGuide/ug01introduction.html">[1]</a>
+<a href="ug02start.html">[2]</a>
+<a href="ug03objects.html">[3]</a>
+<a href="ug04treeview.html">[4]</a>
+<a href="ug05spreadsheet.html">[5]</a>
+<a href="ug06imageview.html">[6]</a>
+<a href="ug07textview.html">[7]</a>
+<a href="ug08useroptions.html">[8]</a>
+</p>
+<p>
+<!-- END OF FOOTER INFO -->
+<!-- 
+<br />
+<b>Warning</b>:  include(../../../includes/footer.html): failed to open stream: No such file or directory in <b>/home/hdfgroup/public_html/products/java/hdfview/UsersGuide/ug07textview.html</b> on line <b>102</b><br />
+<br />
+<b>Warning</b>:  include(): Failed opening '../../../includes/footer.html' for inclusion (include_path='.:/usr/lib/php:/usr/local/lib/php') in <b>/home/hdfgroup/public_html/products/java/hdfview/UsersGuide/ug07textview.html</b> on line <b>102</b><br />
+ -->

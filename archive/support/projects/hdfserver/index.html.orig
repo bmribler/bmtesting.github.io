@@ -1,0 +1,453 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+<!-- If no var is set for $page_title on the top of each page than default title will be HDF Group -->
+
+<title>
+HDF Server</title>
+	<meta name="keywords" content="hdf, hdfeos, blog, hdf blog, hdf5 blog, hdf5, hdf4, hdf tools, hdf libraries, hdf viewer, hdf format, hdf file, hdf java, nafxcw.lib, phdf5, open source, hierarchical data format, ncsa, database, python hdf, mike folk, hdfview, hdf5 parallel" />
+	<meta name="description" content="The HDF Group is a not-for-profit corporation with the mission of sustaining the HDF technologies and supporting HDF user communities worldwide with production-quality software and services." />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="expires" content="Wed, 26 Feb 2010 08:21:57 GMT" />
+	<meta name="verify-v1" content="/m03HNmaDgGAcDe0PFtEVnXGtCkoeOocjr/Jwey2gdI=" />
+	<link href="/css/layout.css" rel="stylesheet" type="text/css" media="screen, projection" />
+	<link href="/css/print.css" rel="stylesheet" type="text/css" media="print" />
+	<link rel="stylesheet" type="text/css" href="/css/js_style.css" />
+	<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/prototype/1.7.2.0/prototype.js"></script>
+	<!--<script type="text/javascript" src="/scriptaculous/lib/prototype.js"></script>-->
+	<script type="text/javascript" src="/scriptaculous/src/effects.js"></script>
+	<script type="text/javascript" src="/scriptaculous/validation.js"></script>
+	<script type="text/javascript" src="/scriptaculous/animatedcollapse.js"></script>
+	<script type="text/javascript" src="/scriptaculous/rollover.js"></script>	
+	<script type="text/javascript" src="/scriptaculous/functions.js"></script>
+	<script type="text/javascript" src="/scriptaculous/sorttable.js"></script>
+	<!--<script type="text/javascript" src="/jquery-1.2.2.pack.js"></script>-->
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript" src="/scriptaculous/jssor.slider.min.js"></script>
+
+ 	<link rel="stylesheet" type="text/css" href="/featuredcontentglider.css" />
+    <script type="text/javascript" src="/featuredcontentglider.js"></script>
+
+	</head>
+	<body>
+	<div id="mast_head">
+		<a href="https://www.hdfgroup.org/"><img src="/images/hdf_logo.jpg" height="70" style="display:block; padding-left:10px;" align="left" alt="hdf images" /></a>
+		<img src="/images/logo_5.jpg" height="70" style="display:block;" align="right" alt="hdf images" />
+	</div> 
+				
+	<div id="nav_wrapper">
+		<div>
+		<div id="section-">
+			<ul id="nav">
+				<li id="t-index"><a href="https://www.hdfgroup.org/">Home</a> </li>
+				<li id="t-products"><a href="/products/">Products</a></li>
+				<li id="t-services"><a href="/services/">Services</a></li>
+				<li id="t-about"><a href="/about/">About Us</a></li>
+				<li id="t-news"><a href="/news/">News</a> </li>
+				<li id="t-blog"><a href="https://www.hdfgroup.org/blog">Blog</a></li>
+				<li id="t-contact"><a href="/about/contact.html">Contact Us</a></li> 
+			</ul>
+			<script type="text/javascript">
+			
+  (function() {
+    var cx = '007250492606109219119:sb2eg2bgoyy';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:search></gcse:search>	
+					<script type="text/javascript">
+					    jQuery(document).ready(function ($) {
+					        // var options = {
+					        //     $ArrowNavigatorOptions: {
+					        //         $Class: $JssorArrowNavigator$,
+					        //         $ChanceToShow: 2
+					        //     }
+					        // };					    	
+
+
+							var options = { 
+											$AutoPlay: true, $SlideshowOptions: { $Class: $JssorSlideshowRunner$, $Transitions: [{ $Duration:5000, $Fade: true, $Opacity:2 }] } , 
+											$ArrowNavigatorOptions: { 
+												$Class: $JssorArrowNavigator$, 
+												$ChanceToShow: 2
+											}
+										  };
+
+
+					        var jssor_slider1 = new $JssorSlider$('slider1_container', options);
+					    });
+					</script>
+									                  
+			
+		</div>
+		</div>             
+	</div>
+				
+<!--START: MAIN -->
+<div id="wrapper" style="margin-top:-15px;"> 
+
+<!--START: SIDE_BAR -->
+<div id="side_bar">
+
+<form method="get" action="" class="form" >
+	<select onchange="window.open(this.options[this.selectedIndex].value,'_top')" name="" style="border:2px solid #c1c1c1;">
+		<option value="" class="ql1">- - Quick Links - -</option>
+		<option value="/HDF5/" class="ql">HDF5</option>
+		<option value="/products/hdf4/" class="ql">HDF4</option>
+		<option value="/tools/" class="ql">Tools</option>
+		<option value="/projects/" class="ql">Projects</option>
+		<option value="/downloads/" class="ql">Downloads</option>
+		<option value="/documentation/" class="ql">Documentation</option>
+	        <option value="/pubs/" class="ql">Publications</option>
+		<option value="/about/" class="ql">Contact Us</option>
+	</select>
+</form>
+<ul style="border:1px solid #c1c1c1; margin-top:25px;"> 
+
+	<li style="background:url(/images/menubg.png); padding:0px; padding-left:7px; color:#27343C; font-weight:500; text-align:left;">
+	HDF Server</li><li><a href="index.html">About</a></li><li><a href="hdfserver_team_members.html">Team Members</a></li><li><a href="hdfserver_documentation.html">Documentation</a></li><li><a href="hdfserver_download.html">Download</a></li><li><a target="_blank" href="http://h5serv.readthedocs.org/en/latest/FAQ/index.html">FAQ</a></li></ul> 
+
+</div>
+
+<!--END: SIDE_BAR -->
+
+<!--START: CONTENT -->
+<div id="content">
+<p><font color="red"><center><strong>This web site is no longer maintained (but will remain online).<br /> Please see The HDF Group's new <a href="https://portal.hdfgroup.org">Support Portal</a> for the latest information.</strong></center></font></p>
+	<div class=bc><p style="color:orange; ";><a href="/" title="HOME">HOME</a> &gt; <a href="/projects/" title="PROJECTS">PROJECTS</a> &gt; <a href="/projects/hdfserver/" title="HDFSERVER">HDFSERVER</a></p></div><fieldset>
+	<h1>HDF Server</h1>
+</fieldset>
+<p>
+
+<h2>Announcing HDF Server (h5serv) 0.2.0</h2>
+
+<p>
+We are proud to announce the availability of HDF Server (h5serv) 0.2.0!
+</p>
+<p>
+HDF Server is a Python-based web service that can be used to send and receive HDF5 data using an 
+HTTP-based REST interface. HDF Server supports CRUD (create, read, update, delete) operations on the 
+full spectrum of HDF5 objects including: groups, links, datasets, attributes, and committed data types. 
+As a REST service a variety of clients can be developed in JavaScript, Python, C, and other common languages. 
+</p>
+
+<p>
+The HDF Server extends the HDF5 data model to efficiently store large data objects (e.g. up to multi-TB data arrays) 
+and access them over the web using a RESTful API. As datasets get larger and larger, it becomes impractical to download 
+files to access data. Using HDF Server, data can be kept in one central location and content vended via well-defined 
+URIs. This enables exploration and analysis of the data while minimizing the number of bytes that need to 
+be transmitted over the network. 
+</p>
+
+<p>
+Since HDF Server supports both reading and writing of data, it enables some interesting scenarios such as:
+<ul class="ul">
+<li class="li3">Collaborative annotation of data sets</li>
+<li class="li3">Compute clusters that use HDF Server for data access</li>
+<li class="li3">Continually updated data shares (e.g. Stock Market quotes, sensor data)</li>
+<li class="li3">Storing the analysis of the data (say a visualization) with the original source data</li>
+</ul>
+</p>
+
+<p>
+In addition to these, we would like to hear your ideas of how HDF Server could be utilized (as well
+ as any other feedback you might have).  Additional information follows below.
+</p>
+<p>
+Thanks to everyone who helped and advised on this project.
+</p>
+<p><strong>Contents:</strong></p>
+<ul class="ul">
+  <li class="li3"><a href="#rest">HDF REST</a></li>
+  <li class="li3"><a href="#json">HDF5 JSON</a></li>
+  <li class="li3"><a href="#aws">AWS Instance</a></li>
+  <li class="li3"><a href="#iloc">Install Locally</a></li>
+  <li class="li3"><a href="#new">What's new in HDF Server (h5serv) 0.2.0</a></li>
+  <li class="li3"><a href="#prev">Previous release HDF Server 0.1.0</a></li>
+  <li class="li3"><a href="#feat">Features not included in this release (but planned for future releases)</a>
+  <li class="li3"><a href="#feedback">Feedback</a></li>
+  <li class="li3"><a href="#links">Links</a></li>
+</ul>
+</p>
+<hr />
+<a name="rest"></a>
+<h2>HDF REST</h2>
+
+<p>
+The HDF REST API enables access to HDF5 data objects via a combination of standard HTTP verbs: 
+GET, PUT, POST, DELETE acting on HDF5 objects identified via   URIs (Uniform Resource Identifier).  
+For example, <code>POST /groups</code> creates a new group.   Collections of HDF objects 
+(that would normally be stored in a file) are mapped as Internet domains.
+</p>
+<a href="/images/RESTfulHDF5.png"><img src="/images/RESTfulHDF5.png" width=770></a>
+
+<p>
+To see how this works, you can try this out using an instance of the server we set up on AWS.  
+Go to this link: <a target="_blank" href="https://data.hdfgroup.org:7258/?host=tall.data.hdfgroup.org">https://data.hdfgroup.org:7258/?host=tall.data.hdfgroup.org</a> 
+and you should see text that provides basic information about the data collection &quot;tall&quot; 
+(originally from the file tall.h5 that is included in the HDF5 library release).  The text displayed 
+is the JSON representation of the domain (if you install a JSON plugin for your browser that will 
+&quot;prettify&quot; the rendering).  As you can see from the somewhat cryptic response text, <em>the 
+server is designed to be used as a Web API rather than a Web UI</em> (though it is certainly possible to 
+write a Web UI using the server as the data source). 
+</p>
+
+
+<p>
+Similarly, each group, dataset, and attribute is accessible as a URI within that domain. 
+For example, to read an attribute you would use a URL like this: 
+<a target="_blank" href="https://data.hdfgroup.org:7258/groups/4af80138-3e8a-11e6-a48f-0242ac110003/attributes/attr2?host=tall.data.hdfgroup.org">https://data.hdfgroup.org:7258/groups/4af80138-3e8a-11e6-a48f-0242ac110003/attributes/attr2?host=tall.data.hdfgroup.org</a>. 
+When reading the dataset values, you may desire to only request a sub-region of the dataset. To 
+do so, use a select query that specifies that start, stop, and step values that defines 
+the region to be returned. E.g.: this request: 
+<a target="_blank" href="https://data.hdfgroup.org:7258/datasets/4af8bc72-3e8a-11e6-a48f-0242ac110003/value?host=tall.data.hdfgroup.org&select=[0:4,0:4]">https://data.hdfgroup.org:7258/datasets/4af8bc72-3e8a-11e6-a48f-0242ac110003/value?host=tall.data.hdfgroup.org&select=[0:4,0:4]</a> returns a 4x4 subset of a 10x10 array. 
+
+
+<p>
+As you may have noticed from the URLs above, objects are identified via a UUID (universally unique identifier) rather than (potentially ambiguous) path names.  This has the advantage that each group and dataset object has a unique representation.  HDF5 links can then reference the UUID of the linked object. Furthermore, this uniformity of the URL structure decouples server and client, since no a priori knowledge of the HDF5 path name space is necessary.
+</p>
+
+<p>
+Besides reading data, HDF Server supports the full set of create, update, and delete operations (comparable to what you would find in the HDF5 library) using respectively the http POST, PUT, and DELETE operations.  Though PUT, POST, and DELETE operations can't be invoked directly from the browser address bar, the release includes a large set of test programs that provides examples of how to use all the operations supported by the server.
+</p>
+
+<a name="json"></a>
+<h2>HDF5 JSON</h2>
+<p>
+HDF Server uses JSON as the default representation for requests and responses, so one aspect of this project was defining JSON representations of HDF5 objects.  We were able to utilize this code to create utilities which can convert from HDF5 to JSON formats and vice-versa (these are included with the project).  An HDF5 JSON grammar can be found here: <a target="_blank" href="http://hdf5-json.readthedocs.org/">http://hdf5-json.readthedocs.org/</a>.
+</p>
+
+<a name="aws"></a>
+<h2>AWS Instance</h2>
+<p>
+The HDF Group is running an instance of the service on Amazon AWS reachable via the endpoint: data.hdgroup.org:7253 for non-SSL or data.hdgroup.org:7258 for SSL. This endpoint can be used to read and write data using the REST API (for experimentation purposes only!). 
+</p>
+
+<a name="webui"></a>
+<h2>Web UI</h2>
+<p>
+An experimental AJAX_based web UI is available at: <a target="_blank" href="https://data.hdfgroup.org">https://data.hdfgroup.org</a>. 
+The Web UI provides an HDFView like interface in a browser for viewing data that is hosted by the HDF Server. In addition 
+to a grid view, simple line, image, and 3D plots can be displayed. For example:
+</p>
+<p>
+<a href="/images/hdfserver-webUI.png"><img src="/images/hdfserver-webUI.png" width=770></a>
+</p>
+
+<a name="iloc"></a>
+<h2>Install Locally</h2>
+<p>
+As a self-contained web service, HDF Server is quite easy to install and run on your own 
+system (no Apache server required!).  Complete instructions can be found here: 
+<p>&nbsp; &nbsp; &nbsp;
+<a target="_blank" href="http://h5serv.readthedocs.org/en/latest/Installation/ServerSetup.html">http://h5serv.readthedocs.org/en/latest/Installation/ServerSetup.html</a>
+</p>
+
+<a name="new"></a>
+<h2>What's new in HDF Server (h5serv) 0.2.0</h2>
+
+<ul class="ul">
+
+  <li class="li3">
+  <p>
+  Authentication is supported via HTTP Basic authentication. Other authentication methods can be supported via plugins. 
+  See the blog post: <a href="https://www.hdfgroup.org/2015/12/serve-protect-web-security-hdf5/">https://www.hdfgroup.org/2015/12/serve-protect-web-security-hdf5/</a> for a review of authentication with HDF Server. This covers ACLs (see below) as well.
+  </p>
+  </li>
+
+  <li class="li3">
+  <p>
+   Access Control - Permissions for Read and write access to entire files or individual HDF objects 
+   (groups, datasets, named data types) can be controlled using Access Control Lists (ACL). ACL's can 
+   be associated with any object to define which users can perform which action. ACLs can be setup 
+   either through the REST API itself or using admin tools included with the release.
+  </p>
+  </li>
+
+  <li class="li3">
+  <p>
+  Table of Contents - All the files hosted by the Server are not discoverable via the "Table of Contents" (TOC). 
+  The TOC is a special HDF5 file that contains external links to other files hosted by the server. You can 
+  see the root group of the TOC here: <a href="https://data.hdfgroup.org:7258/groups/65a37100-45a3-11e6-9008-0242ac110003/links">https://data.hdfgroup.org:7258/groups/65a37100-45a3-11e6-9008-0242ac110003/links</a>. The TOC is automatically updated as 
+  new files (domains) are added or deleted.
+  </p>
+  </li>
+
+  <li class="li3">
+  <p>
+  Binary Data Transfer - Request to read or write dataset values can be done using JSON or binary data. 
+  If the client supports it binary transfers are much faster for large requests.
+  </p>
+  </li>
+
+  <li class="li3">
+  <p>
+  Variable length datatypes - Variable length datatypes are now supported.
+  </p>
+  </li>
+
+  <li class="li3">
+  <p>
+  Python client SDK - Python developers can use the h5pyd package: 
+   <a href="https://github.com/HDFGroup/h5pyd">https://github.com/HDFGroup/h5pyd</a> 
+  to access HDF Server content without directly using the REST API. h5pyd is compatible with the high-level 
+  routines in the commonly used h5py package (see for a guide of methods supported in h5py and h5pyd).
+  </p>
+  </li>
+
+</ul>
+
+
+<a name="prev"></a>
+<h2>Previous Release -  HDF Server (h5serv) 0.1.0</h2>
+<p>
+This was the first release of HDF Server.  Major aspects of this release are:
+<ul class="ul">
+
+  <li class="li3">
+  <p>
+  Implementation of the REST API as outlined in the RESTful HDF5 
+  paper: <br />
+ <a target="_blank" href="/pubs/papers/RESTful_HDF5.pdf">https://support.hdfgroup.org/pubs/papers/RESTful_HDF5.pdf</a>
+  </p>
+  </li>
+
+  <li class="li3">
+  <p>
+  A simple DNS Server that maps DNS domains to HDF5 collections (i.e. files)
+  </p>
+  </li>
+
+
+  <li class="li3">
+  <p>
+  Utilities to convert native HDF5 files to HDF5-JSON and HDF5-JSON to HDF5
+  </p>
+  </li>
+
+  <li class="li3">
+  <p>
+  UUID and timestamp extensions for HDF5 datasets, groups, and committed data types
+  </p>
+  </li>
+</ul>
+</p>
+
+<p>
+Note: This release of h5serv should be viewed as a reference release of the HDF5 REST API, and 
+not suitable for production use on the public Internet.
+</p>
+
+<a name="feat"></a>
+<h2>Features not included in this release (but planned for future releases)</h2>
+
+<p>
+<ul class="ul">
+  <li class="li3">
+  <p>
+ HDF5 compatible library &dash; C/C++ applications can invoke http requests using libraries such as libcurl, but an HDF5 library compatible client is not part of the current release.
+   </p>
+  </li>
+  <li class="li3">
+  <p>
+ High Performance usage &dash; the current release of h5serv serializes all requests, so would not be 
+suitable for a demanding environment with a large number of clients and/or high throughput rates.
+   </p>
+  </li>
+
+  <li class="li3">
+  <p>
+  Some HDF5 data types are not yet supported.  Namely: Bitfields and Opaque types.
+   </p>
+  </li>
+</ul>
+</p>
+
+
+<a name="feedback"></a>
+<h2>Feedback</h2>
+<p>
+We would like to hear your thoughts on HDF Server, including:
+<ul class="ul">
+<li class="li3">
+Issues with the code or documentation
+<li class="li3">
+ Ideas or questions on how it could be utilized
+</li>
+<li class="li3">
+Suggestions for features or enhancements
+ </li>
+<li class="li3">
+ Questions on how well HDF Server would work for different data sets or use cases
+</li>
+</ul>
+</p>
+
+<p>
+Please submit feedback using one of the links below.
+</p>
+
+<p>
+Watch <a href="https://www.hdfgroup.org/blog">https://www.hdfgroup.org/blog</a> for previous and upcoming posts about HDF Server. 
+</p>
+
+<a name="links"></a>
+<h2>Links</h2>
+<p>
+Download: &nbsp; <a target="_blank" href="https://github.com/HDFGroup/h5serv">https://github.com/HDFGroup/h5serv</a><br />
+Documentation: &nbsp; <a target="_blank "href="http://h5serv.readthedocs.org/en/latest/index.html">http://h5serv.readthedocs.org/en/latest/index.html</a><br />
+Report bugs at: &nbsp; <a target="_blank" href="https://github.com/HDFGroup/h5serv/issues">https://github.com/HDFGroup/h5serv/issues</a><br />
+Submit fixes/enhancements at: &nbsp; <a target="_blank" href="https://github.com/HDFGroup/h5serv/pulls">https://github.com/HDFGroup/h5serv/pulls</a><br />
+</p>
+<p>
+General comments or feedback should be sent to the HDF-Forum. See the <a target="_blank" href="/services/community_support.html">Community Support</a> page for more details on joining and viewing HDF-Forum messages.
+</p>
+
+
+<hr />
+
+<i>
+- - Last modified: 12 October 2016</i>
+	   </div>
+	   <!--END: CONTENT -->
+<!--END: WRAPPER -->
+<script src="/scriptaculous/gatag.js" type="text/javascript"></script>
+
+<!-- <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script> -->
+				
+<!--
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-3782034-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+-->
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-3782034-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+</body>
+</html>
+ 

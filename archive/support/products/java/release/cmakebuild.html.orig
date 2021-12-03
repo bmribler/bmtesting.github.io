@@ -1,0 +1,527 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+<!-- If no var is set for $page_title on the top of each page than default title will be HDF Group -->
+
+<title>
+HDF5 - Build HDF Java with CMake for HDF5-1.8 (with 32-bit object IDs) </title>
+	<meta name="keywords" content="hdf, hdfeos, blog, hdf blog, hdf5 blog, hdf5, hdf4, hdf tools, hdf libraries, hdf viewer, hdf format, hdf file, hdf java, nafxcw.lib, phdf5, open source, hierarchical data format, ncsa, database, python hdf, mike folk, hdfview, hdf5 parallel" />
+	<meta name="description" content="The HDF Group is a not-for-profit corporation with the mission of sustaining the HDF technologies and supporting HDF user communities worldwide with production-quality software and services." />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="expires" content="Wed, 26 Feb 2010 08:21:57 GMT" />
+	<meta name="verify-v1" content="/m03HNmaDgGAcDe0PFtEVnXGtCkoeOocjr/Jwey2gdI=" />
+	<link href="/css/layout.css" rel="stylesheet" type="text/css" media="screen, projection" />
+	<link href="/css/print.css" rel="stylesheet" type="text/css" media="print" />
+	<link rel="stylesheet" type="text/css" href="/css/js_style.css" />
+	<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/prototype/1.7.2.0/prototype.js"></script>
+	<!--<script type="text/javascript" src="/scriptaculous/lib/prototype.js"></script>-->
+	<script type="text/javascript" src="/scriptaculous/src/effects.js"></script>
+	<script type="text/javascript" src="/scriptaculous/validation.js"></script>
+	<script type="text/javascript" src="/scriptaculous/animatedcollapse.js"></script>
+	<script type="text/javascript" src="/scriptaculous/rollover.js"></script>	
+	<script type="text/javascript" src="/scriptaculous/functions.js"></script>
+	<script type="text/javascript" src="/scriptaculous/sorttable.js"></script>
+	<!--<script type="text/javascript" src="/jquery-1.2.2.pack.js"></script>-->
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript" src="/scriptaculous/jssor.slider.min.js"></script>
+
+ 	<link rel="stylesheet" type="text/css" href="/featuredcontentglider.css" />
+    <script type="text/javascript" src="/featuredcontentglider.js"></script>
+
+	</head>
+	<body>
+	<div id="mast_head">
+		<a href="https://www.hdfgroup.org/"><img src="/images/hdf_logo.jpg" height="70" style="display:block; padding-left:10px;" align="left" alt="hdf images" /></a>
+		<img src="/images/logo_5.jpg" height="70" style="display:block;" align="right" alt="hdf images" />
+	</div> 
+				
+	<div id="nav_wrapper">
+		<div>
+		<div id="section-">
+			<ul id="nav">
+				<li id="t-index"><a href="https://www.hdfgroup.org/">Home</a> </li>
+				<li id="t-products"><a href="/products/">Products</a></li>
+				<li id="t-services"><a href="/services/">Services</a></li>
+				<li id="t-about"><a href="/about/">About Us</a></li>
+				<li id="t-news"><a href="/news/">News</a> </li>
+				<li id="t-blog"><a href="https://www.hdfgroup.org/blog">Blog</a></li>
+				<li id="t-contact"><a href="/about/contact.html">Contact Us</a></li> 
+			</ul>
+			<script type="text/javascript">
+			
+  (function() {
+    var cx = '007250492606109219119:sb2eg2bgoyy';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:search></gcse:search>	
+					<script type="text/javascript">
+					    jQuery(document).ready(function ($) {
+					        // var options = {
+					        //     $ArrowNavigatorOptions: {
+					        //         $Class: $JssorArrowNavigator$,
+					        //         $ChanceToShow: 2
+					        //     }
+					        // };					    	
+
+
+							var options = { 
+											$AutoPlay: true, $SlideshowOptions: { $Class: $JssorSlideshowRunner$, $Transitions: [{ $Duration:5000, $Fade: true, $Opacity:2 }] } , 
+											$ArrowNavigatorOptions: { 
+												$Class: $JssorArrowNavigator$, 
+												$ChanceToShow: 2
+											}
+										  };
+
+
+					        var jssor_slider1 = new $JssorSlider$('slider1_container', options);
+					    });
+					</script>
+									                  
+			
+		</div>
+		</div>             
+	</div>
+				
+<!--START: MAIN -->
+<div id="wrapper" style="margin-top:-15px;"> 
+
+<!--START: SIDE_BAR -->
+<div id="side_bar">
+
+<form method="get" action="" class="form" >
+	<select onchange="window.open(this.options[this.selectedIndex].value,'_top')" name="" style="border:2px solid #c1c1c1;">
+		<option value="" class="ql1">- - Quick Links - -</option>
+		<option value="/HDF5/" class="ql">HDF5</option>
+		<option value="/products/hdf4/" class="ql">HDF4</option>
+		<option value="/tools/" class="ql">Tools</option>
+		<option value="/projects/" class="ql">Projects</option>
+		<option value="/downloads/" class="ql">Downloads</option>
+		<option value="/documentation/" class="ql">Documentation</option>
+	        <option value="/pubs/" class="ql">Publications</option>
+		<option value="/about/" class="ql">Contact Us</option>
+	</select>
+</form>
+<ul style="border:1px solid #c1c1c1; margin-top:25px;"> 
+
+	<li style="background:url(/images/menubg.png); padding:0px; padding-left:7px; color:#27343C; font-weight:500; text-align:left;">
+	LINKS</li><li><a href="https://www.hdfgroup.org/">Main Website</a></li><li><a  href="/downloads/index.html">Downloads</a></li><li><a  href="/products/java/hdfview/">HDFView</a></li><li><a  href="/products/java/JNI3/">JNI3 Libraries</a></li><li><a  href="/HDF5/hdf5-files.html">Sample HDF5 Files</a></li><li><a  href="/products/licenses.html">Licenses</a></li></ul> 
+
+</div>
+
+<!--END: SIDE_BAR -->
+
+<!--START: CONTENT -->
+<div id="content">
+<p><font color="red"><center><strong>This web site is no longer maintained (but will remain online).<br /> Please see The HDF Group's new <a href="https://portal.hdfgroup.org">Support Portal</a> for the latest information.</strong></center></font></p>
+	<div class=bc><p style="color:orange; ";><a href="/" title="HOME">HOME</a> &gt; <a href="/products/" title="PRODUCTS">PRODUCTS</a> &gt; <a href="/products/java/" title="JAVA">JAVA</a> &gt; <a href="/products/java/release/" title="RELEASE">RELEASE</a></p></div>
+
+<!-- TEMPORARY link
+$ftpjava = "http://www.hdfgroup.org/ftp/HDF5/current";
+-->
+<fieldset><h1>Build HDF Java with CMake for HDF5-1.8 (with 32-bit object IDs)</h1></fieldset>
+
+<p><span style="color:#2A5454;"><strong>Latest Release:</strong></span> &nbsp; 3.3.2</p>
+
+<p>
+The HDF Java software is built with CMake. To simplify building HDF Java with
+CMake, a CTest script and platform configuration file can be used, as shown below.
+</p>
+
+<p>
+<ul class="ul">
+<li class="li3"><a href="#precon">Preconditions</a></li>
+<li class="li3"><a href="#build">Build Instructions</a></li>
+<li class="li3"><a href="#tshoot">Troubleshooting</a></li>
+
+<!--
+<li class="li3"><a href="chgcmkbuild.html#chg">Changing Options in the Configuration File (with ADD_BUILD_OPTIONS)</a>
+<li class="li3"><a href="chgcmkbuild.html#options">Common CMake and configure Options</a>
+-->
+</ul>
+</p>
+
+<hr>
+
+
+<a name="precon"></a>
+<h2>Preconditions:</h2>
+<ul class="ul">
+<li class="li3">
+<p>
+<a href="http://www.cmake.org">CMake</a> <strong>MUST</strong> be installed. The configuration
+scripts were tested with CMake 3.2.
+</p>
+</li>
+
+<li class="li3">
+<p>
+Blank spaces <strong>MUST NOT</strong> be used in directory path names as this will cause the build to fail. 
+</p>
+</li>
+
+<li class="li3">
+<p>(Optional) On Windows, an <a href="http://nsis.sourceforge.net/Main_Page">NSIS</a> or <a href="http://www.wixtoolset.org">WiX</a> should be
+installed in order to create an install image with CPack. NSIS will create a .exe installer. WiX will create a .msi installer.
+</p>
+</li>
+
+</ul>
+
+<hr />
+<a name="build"></a>
+<h2>Build Instructions</h2>
+
+<p>
+Please follow the instructions below for building.
+</p>
+
+<p>
+<ul class="ul">
+<li class="li3">
+ <p>
+  Review the <a href="#precon">preconditions</a> to be sure all needed software is on your machine.
+ </p>
+</li>
+
+<li class="li3">
+  <p>
+  Create a working directory.
+  </p>
+</li>
+
+<li class="li3">
+  <p>
+  From the table below download the appropriate file for your platform to your working directory. 
+  Uncompress it. It will contain a <font face="calibri">CMake-hdfjava-3.3.2</font> directory. 
+  </p>
+
+  <p>
+  <table border=1>
+  <tr bgcolor=#ccdddd>
+  <td>Software</td>
+  <td>Comments</td>
+  </tr>
+
+  <tr>
+  <td><a href="http://www.hdfgroup.org/ftp/HDF5/releases/HDF-JAVA/hdfjni-3.3.2/src/CMake-hdfjava-3.3.2.zip">Windows</a>
+  ( <a href="http://www.hdfgroup.org/ftp/HDF5/releases/HDF-JAVA/hdfjni-3.3.2/src/CMake-hdfjava-3.3.2.zip.md5">md5</a> ) </td>
+  <td>Contains files to build HDF Java with CMake on Windows
+  </td>
+  </tr>
+
+  <tr>
+  <td><a href="http://www.hdfgroup.org/ftp/HDF5/releases/HDF-JAVA/hdfjni-3.3.2/src/CMake-hdfjava-3.3.2.tar.gz">Unix</a>
+  ( <a href="http://www.hdfgroup.org/ftp/HDF5/releases/HDF-JAVA/hdfjni-3.3.2/src/CMake-hdfjava-3.3.2.tar.gz.md5">md5</a> ) 
+  </td>
+  <td>Contains files to build HDF Java with CMake on Unix
+  </td>
+  </tr>
+
+  </table>
+  </p>
+<p>
+<!--
+The MD5 Checksums for these files are optionally provided:  
+[ <a href="http://www.hdfgroup.org/ftp/HDF5/releases/HDF-JAVA/hdfjni-3.3.2/src/HDFJava-3.2.1-CMake.tgz.md5">Unix</a> ] 
+[ <a href="http://www.hdfgroup.org/ftp/HDF5/releases/HDF-JAVA/hdfjni-3.3.2/src/HDFJava-3.2.1-CMake.zip.md5">Windows</a> ]
+-->
+ </li>
+
+<li class="li3">
+  <p>
+  Move to the <font face="calibri">CMake-hdfjava-3.3.2</font> directory. You will see the following files:
+  <ul class="ul"> 
+<pre>
+    build*.sh (.bat)                           Build Script(s)
+    CTestScript.cmake                          ctest Command
+    HDF4.tar.gz                                HDF4 source code
+    HDF5.tar.gz                                HDF5 source code
+    hdfjava-3.3.2/                             HDF-Java source code
+    HDFJavaconfig.cmake                        Configuration File
+    HDFJNIExamples-0.1.1-Source.tar.gz (.zip)  Example Programs
+    HDFoptions.cmake                           User definable options
+    JPEG8d.tar.gz                              External Library for JPEG 8 Compression
+    SZip.tar.gz                                External Library for SZIP Compression
+    ZLib.tar.gz                                External Library for ZLIB Compression
+</pre>
+ </ul>
+  </p>
+<p>
+These files will build HDF Java with HDF4, HDF5, SZIP, ZLIB, and JPEG included.
+</p>
+</li>
+
+
+<li class="li3">
+<p>
+Select the build script to use. It contains the    
+  <font face="calibri">ctest</font> command that you need to run to build HDF Java. 
+  (See <a href="#tshoot">Troubleshooting</a> if you do not see your platform).
+</p>
+<p>
+OPTIONAL: Change build options as needed in the build script. <!--See the <a href="./chgcmkbuild.html">Changing CMake Build Options</a> page for details.<br />
+-->
+REQUIRED: Visual Studio Express users must change the build options to turn off packaging or the build will fail.
+</p>
+
+<p>Build scripts that you may see depending on the distribution (Unix or Windows):
+  </p>
+  <p>
+
+  <table border=1>
+  <tr bgcolor=#ccdddd>
+  <td>Platform</td>
+  <td>Batch File / Shell Script</td>
+  <td>Contains following <font face="calibri">ctest</font> command</td>
+  </tr>
+
+  <tr>
+  <td>
+  Windows 64-bit VS 2015
+  </td>
+  <td>
+    <font face="calibri">build-VS2015-64.bat</font>
+  </td>
+  <td>
+   <font face="calibri">ctest -S HDFJavaconfig.cmake,64-VS2015 -C Release -V -O hdfJava.log</font>
+  </td>
+  </tr>
+
+  <tr>
+  <td>
+  Windows 32-bit VS 2015
+  </td>
+  <td>
+    <font face="calibri">build-VS2015-32.bat</font>
+   </td>
+   <td><font face="calibri">ctest -S HDFJavaconfig.cmake,32-VS2015 -C Release -V -O hdfJava.log</font>
+   </td>
+  </tr>
+ <tr>
+  <td>
+  Windows 64-bit VS 2013
+  </td>
+  <td> <font face="calibri">build-VS2013-64.bat</font>
+  </td>
+  <td><font face="calibri">ctest -S HDFJavaconfig.cmake,64-VS2013 -C Release -V -O hdfJava.log</font>
+   </td>
+  </tr>
+
+  <tr>
+  <td>
+  Windows 32-bit VS 2013
+  </td>
+  <td>
+    <font face="calibri">build-VS2013-32.bat</font></td>
+  <td><font face="calibri">ctest -S HDFJavaconfig.cmake,32-VS2013 -C Release -V -O hdfJava.log</font>
+   </td>
+  </tr>
+
+ <tr>
+  <td>
+   Unix
+   </td>
+   <td>
+   <font face="calibri">build-hdfjava-unix.sh</font>
+   </td>
+   <td><font face="calibri">ctest -S HDFJavaconfig.cmake -C Release -V -O hdfJava.log</font>
+   </td>
+   </tr>
+  </table>
+<p>
+Where the <font face="calibri">ctest</font> command is using these options:
+</p>
+<ul class="ul">
+<li class="li3">
+   The <span style="font-family:calibri">-S</span> option uses the script version of ctest. <span style="font-family:calibri">HDFJavaconfig.cmake</span> is
+   the configuration file. 
+</li>
+<li class="li3">
+   The  <span style="font-family:calibri">-C</span> option specifies the build configuration which matches CTEST_BUILD_CONFIGURATION in the
+   configuration file.
+</li>
+<li class="li3">
+   The <span style="font-family:calibri">-V</span> option indicates verbose. Using the <span style="font-family:calibri">-VV</span> option indicates more verbose.
+</li>
+<li class="li3">
+   The <span style="font-family:calibri">-O</span> option saves the output to a log file, <em>hdfJava.log</em>.
+</li>
+
+
+<li class="li3">
+ <p>
+ Locate the built binary.<br /> 
+The built binary will be copied to the working directory if successful. It will have the format: 
+<pre>
+  HDFJava-&lt;platform&gt;.&lt;zip or tar.gz&gt;
+</pre>
+</p>
+<p>
+On Unix, &lt;platform&gt; will be &quot;Linux&quot;. A similar <font face="calibri">.sh</font> file will also be
+created.
+<br />
+On Windows, &lt;platform&gt; will be &quot;win64&quot; or &quot;win32&quot;. If you have an installer on 
+your system, you will also see a similar file that ends in 
+either <font face="calibri">.exe</font>  (NSIS) or <font face="calibri">.msi</font>  (WiX).
+</p>
+
+ If the built binary is not there, then
+ see <a href="#tshoot">Troubleshooting</a> for help.<br />
+</ul>
+<li class="li3">
+  <p>
+   Execute the batch file or shell script for your platform.
+  </p>
+</li>
+
+</p>
+</li>
+
+<!--
+<li class="li3">
+<p>
+Check what is included with your built binaries.<br />
+You will find the <span style="font-family:calibri">libhdf5.settings</span> file in the 
+<span style="font-family:calibri">build</span> directory. It contains information on how the binaries were built.
+</p>
+<p>
+If you uncompress the built binary, you will find the <span style="font-family:calibri">hdf5-config.cmake</span>,
+<span style="font-family:calibri">hdf5-targets.cmake</span>, and <span style="font-family:calibri">libhdf5.settings</span> files
+(among others) in a <span style="font-family:calibri">cmake</span> directory. This <span style="font-family:calibri">cmake</span> directory
+can be found in the same location as the 
+<span style="font-family:calibri">lib</span>, <span style="font-family:calibri">include</span>, and 
+<span style="font-family:calibri">bin</span> directories on Windows and under <span style="font-family:calibri">share/</span> on Unix.
+The options in the <span style="font-family:calibri">hdf5-config.cmake</span>  file match those in
+the <span style="font-family:calibri">libhdf5.settings</span> file.
+</p>
+
+<p>
+The binaries by default will include the static HDF5 C and C++ libraries, as well as the SZIP and ZLIB external 
+libraries. Please NOTE that they will NOT include the HDF5 Fortran library. See 
+the <a href="chgcmkbuild.html">Changing CMake Build Options</a> page for instructions 
+on building with Fortran.
+</p>
+
+</li>
+-->
+</ul>
+<hr />
+
+<a name="tshoot"></a>
+<h2>Troubleshooting</h2>
+
+
+<ul class="ul">
+<li class="li3">
+  <p><strong>My platform/compiler is not included. Can I still use the configuration files?</strong></p>
+  <p>
+  Yes, you can but you will have to edit the <font face="calibri">HDFJavaconfig.cmake</font> file
+  and update the variable:
+  <pre>
+   CTEST_CMAKE_GENERATOR
+  </pre>
+  Other variables may be updated for informational purposes but are not required (for example,
+  <font face="calibri">SITE_OS_BITS</font>).
+  </p>
+  <p>
+  The generators for your platform can be seen by typing:
+  <pre>
+   cmake --help
+  </pre>
+ </p>
+ </li>
+
+<li class="li3">
+  <p><strong>What do I do if the build fails?</strong></p>
+  <p>
+  I received an error during the build and the built and compressed 
+  binary is not in the <font face="calibri">build</font> directory 
+  as I expected. How do I determine what the problem is?
+  </p>
+  <p>
+  If the error is not clear, then the first thing you may want to do is
+  replace the <font face="calibri">-V</font> (Dash Vee) option for <font face="calibri">ctest</font> in the build 
+  script to <font face="calibri">-VV</font> (Dash Vee Vee). 
+  Then remove the <font face="calibri">build</font> directory and re-run
+  the build script. The output should be more verbose.
+  </p>
+  <p>
+  If the error is still not clear, then check the log files. You will find those 
+  in the <font face="calibri">build</font> directory.
+  For example, on Unix the log files will be in:
+  <pre>
+   build/Testing/Temporary/
+  </pre>
+  There are log files for the configure, test, and build.
+  <br />&nbsp;
+  </p>
+   
+  </li>
+
+<li class="li3">
+  <p><strong>What do I do if I need to rebuild the software?</strong></p>
+  <p>
+   If you have to rebuild HDF Java, remove the <font face="calibri">build</font>
+   directory first.
+  <br />&nbsp;
+  </p>
+  </li>
+<li class="li3">
+ <p><strong>The library was built but there are no binaries. What do I do?</strong></p>
+<p>
+ To install or package the binaries, run either <font face="calibri">make install</font> or <font face="calibri">cpack</font> in the
+<font face="calibri">build/</font> directory.
+  <br />&nbsp;
+</p>
+</li>
+
+</ul>
+
+<hr />
+
+
+<i>
+- - Last modified: 04 January 2018</i>
+	   </div>
+	   <!--END: CONTENT -->
+<!--END: WRAPPER -->
+<script src="/scriptaculous/gatag.js" type="text/javascript"></script>
+
+<!-- <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script> -->
+				
+<!--
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-3782034-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+-->
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-3782034-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+</body>
+</html>

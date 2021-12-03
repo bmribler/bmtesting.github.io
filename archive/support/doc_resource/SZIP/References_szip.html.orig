@@ -1,0 +1,88 @@
+<html>
+<head><title>
+Szip References
+</title>
+
+<!--
+<link href="ed_styles/RMelect.css" rel="stylesheet" type="text/css">
+-->
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<div align=right><font size=-2>
+<a href="index.html">Return to "Szip Compression in HDF Products"</a>
+</font></div>
+
+<h1>References to Publications Describing Szip Compression or Its Use</h1>
+
+<hr>
+    <ol>
+    <a name="PerfAnalysis">
+    <li>Pen-Shu Yeh, Wei Xia-Serafino, Lowell Miles, Ben Kobler, 
+        Daniel Menasce,</a>
+        "Implementation of CCSDS Lossless Data Compression in HDF," 
+        <cite>Earth Science Technology Conference&ndash;2002</cite>, 
+        11&ndash;13 June 2002, Pasadena, California.<br>
+        Paper: <code><a href="http://esto.nasa.gov/conferences/estc-2002/Papers/A3P2(Yeh).pdf">http://esto.nasa.gov/conferences/estc-2002/Papers/A3P2(Yeh).pdf</a></code><br>
+        Conference: <code><a href="http://esto.nasa.gov/conferences/estc-2002/">http://esto.nasa.gov/conferences/estc-2002/</a></code>
+
+    <li>J. Venbrux, P.S. Yeh, G. Zweigle, J. Vesel, 
+        "A VLSI Chip Solution for Lossless Medical Imagery Compression,"
+        <cite>SPIE Conference on Medical Imaging 1994</cite>. 
+        Vol. 2164, pp. 561-572, February 13-14, 1994, 
+        Newport Beach, California.
+
+    <li>J. Venbrux, J. Gambles, D. Wiseman, G. Zweigle, W.H. Miller, P.S. Yeh, 
+        "A VLSI Chip Set Development for Lossless Data Compression,"
+        <cite>AIAA Computing in Aerospace 9 Conference</cite>. 
+        October 1993, San Diego, California.
+
+    <li>J. Venbrux, G. Zweigle, J. Gambles, D.Wiseman, W. Miller, P. Yeh,
+        "An Adaptive, Lossless Data Compression Algorithm and VLSI 
+        Implementations,"
+        <cite>NASA Symposium on VLSI Design</cite>. 
+        Pp 1.2.1-1.2.16, November 1993.
+
+    <li>J. Venbrux, P.S. Yeh, and M. N. Liu,
+        "A VLSI Chip Set for High Speed Lossless Data Compression,"
+        <cite>IEEE Transactions on Circuits and Systems for Video 
+        Technology</cite>.
+        Pp. 381-391, December 1992.
+
+    <a name="CCSDS1">
+    <li>CCSDS 120.0-G-1. 
+        <cite>Lossless Data Compression</cite>.</a>
+        Green Book. Issue 1, May 1997.
+        This Report presents a summary of the key operational concepts and 
+        rationale underlying the requirements for the CCSDS Recommendation, 
+        Lossless Data Compression. Supporting performance information along 
+        with illustrations are also included. This Report also provides a 
+        broad tutorial overview of the CCSDS Lossless Data Compression 
+        algorithm and is aimed at helping first-time readers
+        to understand the Recommendation.
+        <br>
+        Appears In: CCSDS Publications TGannett 02/04/2003 387K Services 
+        Check Out View
+
+    <a name="CCSDS2">
+    <li>CCSDS 121.0-B-1. 
+        <cite>Lossless Data Compression</cite>.</a>
+        Blue Book. Issue 1, May 1997.
+        This Recommendation defines a source-coding data-compression 
+        algorithm and specifies how data compressed using the algorithm 
+        are inserted into source packets for retrieval and decoding.  
+        <br>
+        Appears In: CCSDS Publications
+
+    </ol>
+
+
+<div align=right><font size=-2>
+<a href="index.html">Return to "Szip Compression in HDF Products"</a>
+</font></div>
+
+<hr>
+ 
+</body>
+</html>

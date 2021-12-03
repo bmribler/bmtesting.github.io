@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- HDF4map_arrays -->
+<xs:schema xmlns:h4="/HDF4/XML/schema/HDF4map/1.0.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="/HDF4/XML/schema/HDF4map/1.0.0" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0.0">
+    <!--    Include other h4 schema documents -->
+    <xs:include schemaLocation="HDF4map_attributes.xsd"/>
+    <xs:include schemaLocation="HDF4map_inline_representations.xsd"/>
+    <xs:include schemaLocation="HDF4map_byteStream_representations.xsd"/>
+    <xs:include schemaLocation="HDF4map_datum_representation.xsd"/>
+    <xs:include schemaLocation="HDF4map_externalFiles.xsd"/>
+    <!--
+        Global definitions related to Array and Dimension elements.
+
+        HDF4 SDS objects are mapped to Array elements.
+        HDF4 Dimension records are mapped to Dimension elements.
+    -->
+    <!--
+        arrayT: Array element type.
+
+        HDF4 SDS objects are mapped to Array elements.
+
+        SDS rank is mapped to nDimensions attribute.
+        SDS dimensions are mapped to dataDimensionSizes, which is absent if nDimensions is 0.
+        If SDS has chunked storage and ghost cells, the allocatedDimensionSizes element gives dimensions including 
+          ghost cells.
+        If any SDS dimension has name, attribute, or scale it is mapped to a Dimension Object that is referenced 
+          by dimensionRef.
+        SDS data type, as well as information about endian and floating point, are mapped to datum. 
+            Schema Limitation: Non-standard length data specified via the HDF4 SDsetnbitdataset routine is currently 
+            not supported.
+        Information necessary to retrieve SDS raw data values from file is mapped to arrayData.
+    -->
+    <xs:complexType name="arrayT">
+        <xs:sequence>
+            <xs:element name="ArrayAttribute" type="h4:attributeT" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="dataDimensionSizes" type="h4:numericValueListT" minOccurs="0"/>
+            <xs:element name="allocatedDimensionSizes" type="h4:numericValueListT" minOccurs="0"/>
+            <xs:element name="dimensionRef" type="h4:dimensionRefT" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="datum" type="h4:datumTypeT"/>
+            <xs:element name="arrayData" type="h4:arrayDataT" minOccurs="0"/>
+        </xs:sequence>
+        <xs:attribute name="name" type="xs:string" use="required"/>
+        <xs:attribute name="path" type="xs:string" use="required"/>
+        <xs:attribute name="nDimensions" type="xs:nonNegativeInteger" use="required"/>
+        <xs:attribute name="id" type="h4:arrayID" use="required"/>
+    </xs:complexType>
+    <!-- 
+        arrayDataT: Array Data element type
+
+        Possible data storage schemes for array data in the companion HDF4 file.
+        Although compression is specified as attribute for entire element, external file storage won't be compressed.  
+
+        The attribute "fastestVaryingDimensionIndex" indicates the order the array data is stored in the file.  It will
+        either be 0 (corresponding to column-major order for a 2D array) or nDimensions-1 (corresponding to row-major 
+        order for a 2-d array). Column-major order has not been seen in any of the HDF4 files examined for the Mapping 
+        project.  Such data would be indicated via an HDF4 Data-Descriptor with the tag DFTAG_SDT (Transpose).  
+        This tag is no longer written by the HDF4 library.
+    -->
+    <xs:complexType name="arrayDataT">
+        <xs:choice>
+            <!-- array data not stored in full in HDF4 file as all cells contain fill values -->
+            <xs:element name="fillValues" type="h4:fillValuesT"/>
+            <!-- contiguous -->
+            <xs:element name="byteStream" type="h4:byteStreamT"/>
+            <!-- linked -->
+            <xs:element name="byteStreamSet" type="h4:byteStreamSetT"/>
+            <!-- chunked -->
+            <xs:element name="chunks">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="chunkDimensionSizes" type="h4:numericValueListT"/>
+                        <xs:choice maxOccurs="unbounded">
+                            <xs:element name="byteStream" type="h4:positionedByteStreamT"/>
+                            <xs:element name="byteStreamSet" type="h4:positionedByteStreamSetT"/>
+                            <xs:element name="fillValues" type="h4:positionedFillValuesT"/>
+                        </xs:choice>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <!-- external file -->
+            <!-- NOTE: h4mapwriter currently does not support data stored in external files -->
+            <xs:element name="dataInExternalFile">
+                <xs:complexType>
+                    <xs:all>
+                        <xs:element name="byteStream" type="h4:byteStreamT"/>
+                    </xs:all>
+                    <xs:attribute name="ref" type="h4:externalFileIDREF" use="required"/>
+                </xs:complexType>
+            </xs:element>
+        </xs:choice>
+        <!-- NOTE: h4mapwriter currently does not support a fastestVaryingDimensionIndex=0 unless nDimensions = 1 -->
+        <xs:attribute name="fastestVaryingDimensionIndex" type="xs:nonNegativeInteger" use="required"/>
+        <xs:attributeGroup ref="h4:compressionAttributesG"/>
+    </xs:complexType>
+    <!-- 
+        dimensionT: Dimension element type.
+
+        HDF4 dimensions with names, attributes, or scales, are mapped to Dimension Objects.
+        Dimension names are unique within the HDF4 file.  
+        Data are not compressed or chunked, and must be stored in the HDF4 file.
+    -->
+    <xs:complexType name="dimensionT">
+        <xs:sequence>
+            <xs:element name="DimensionAttribute" type="h4:attributeT" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="datum" type="h4:datumTypeT" minOccurs="0"/>
+            <xs:element name="dimensionData" minOccurs="0">
+                <xs:complexType>
+                    <xs:choice>
+                        <xs:element name="byteStream" type="h4:byteStreamT"/>
+                        <xs:element name="byteStreamSet" type="h4:byteStreamSetT"/>
+                    </xs:choice>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="name" type="xs:string" use="required"/>
+        <xs:attribute name="id" type="h4:dimensionID" use="required"/>
+    </xs:complexType>
+    <!-- 
+        dimensionRefT: Dimension reference element type
+
+        Appears in an Array element that has a dimension with a name, attribute, or scale.
+        Allows single Dimension element to be associated with multiple Arrays.
+        A single Array may have multiple dimensionRef elements.
+    -->
+    <xs:complexType name="dimensionRefT">
+        <xs:attribute name="name" type="xs:string" use="required"/>
+        <xs:attribute name="dimensionIndex" type="xs:nonNegativeInteger" use="required"/>
+        <xs:attribute name="ref" type="h4:dimensionIDREF" use="required"/>
+    </xs:complexType>
+    <!--
+        arrayID: Array ID attribute type.
+
+        Uniquely identifies an Array element in an XML document.
+        Does not correspond to any HDF4 file content.
+        Of the form "ID_A" followed by an integer.
+    -->
+    <xs:simpleType name="arrayID">
+        <xs:restriction base="xs:ID">
+            <xs:pattern value="ID_A\d+"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <!--
+        dimensionID: Dimension ID attribute type.
+
+        Uniquely identifies a Dimension element in an XML document.
+        Does not correspond to any HDF4 file content.
+        Of the form "ID_D" followed by an integer.
+    -->
+    <xs:simpleType name="dimensionID">
+        <xs:restriction base="xs:ID">
+            <xs:pattern value="ID_D\d+"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <!--
+        dimensionIDREF: Dimension IDREF attribute type.
+
+        Used to reference a Dimension element by its unique Dimension ID.
+    -->
+    <xs:simpleType name="dimensionIDREF">
+        <xs:restriction base="xs:IDREF">
+            <xs:pattern value="ID_D\d+"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <!-- -->
+</xs:schema>

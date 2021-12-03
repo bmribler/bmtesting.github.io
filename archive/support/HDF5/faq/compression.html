@@ -1,0 +1,305 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+<!-- If no var is set for $page_title on the top of each page than default title will be HDF Group -->
+
+<title>
+Using Compresion in HDF5</title>
+	<meta name="keywords" content="hdf, hdfeos, blog, hdf blog, hdf5 blog, hdf5, hdf4, hdf tools, hdf libraries, hdf viewer, hdf format, hdf file, hdf java, nafxcw.lib, phdf5, open source, hierarchical data format, ncsa, database, python hdf, mike folk, hdfview, hdf5 parallel" />
+	<meta name="description" content="The HDF Group is a not-for-profit corporation with the mission of sustaining the HDF technologies and supporting HDF user communities worldwide with production-quality software and services." />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="expires" content="Wed, 26 Feb 2010 08:21:57 GMT" />
+	<meta name="verify-v1" content="/m03HNmaDgGAcDe0PFtEVnXGtCkoeOocjr/Jwey2gdI=" />
+	<link href="../../css/layout.css" rel="stylesheet" type="text/css" media="screen, projection" />
+	<link href="../../css/print.css" rel="stylesheet" type="text/css" media="print" />
+	<link rel="stylesheet" type="text/css" href="../../css/js_style.css" />
+	<link rel="shortcut icon" href="../../images/favicon.ico" type="image/x-icon" />
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/prototype/1.7.2.0/prototype.js"></script>
+	<!--<script type="text/javascript" src="/scriptaculous/lib/prototype.js"></script>-->
+	<script type="text/javascript" src="../../scriptaculous/src/effects.js"></script>
+	<script type="text/javascript" src="../../scriptaculous/validation.js"></script>
+	<script type="text/javascript" src="../../scriptaculous/animatedcollapse.js"></script>
+	<script type="text/javascript" src="../../scriptaculous/rollover.js"></script>	
+	<script type="text/javascript" src="../../scriptaculous/functions.js"></script>
+	<script type="text/javascript" src="../../scriptaculous/sorttable.js"></script>
+	<!--<script type="text/javascript" src="/jquery-1.2.2.pack.js"></script>-->
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript" src="../../scriptaculous/jssor.slider.min.js"></script>
+
+ 	<link rel="stylesheet" type="text/css" href="../../featuredcontentglider.css" />
+    <script type="text/javascript" src="../../featuredcontentglider.js"></script>
+
+	</head>
+	<body>
+	<div id="mast_head">
+		<a href="https://www.hdfgroup.org/"><img src="../../images/hdf_logo.jpg" height="70" style="display:block; padding-left:10px;" align="left" alt="hdf images" /></a>
+		<img src="../../images/logo_5.jpg" height="70" style="display:block;" align="right" alt="hdf images" />
+	</div> 
+				
+	<div id="nav_wrapper">
+		<div>
+		<div id="section-">
+			<ul id="nav">
+				<li id="t-index"><a href="https://www.hdfgroup.org/">Home</a> </li>
+				<li id="t-products"><a href="../../products/index.html">Products</a></li>
+				<li id="t-services"><a href="../../services/index.html">Services</a></li>
+				<li id="t-about"><a href="../../about/index.html">About Us</a></li>
+				<li id="t-news"><a href="../../news/index.html">News</a> </li>
+				<li id="t-blog"><a href="https://www.hdfgroup.org/blog">Blog</a></li>
+				<li id="t-contact"><a href="../../about/contact.html">Contact Us</a></li> 
+			</ul>
+			<script type="text/javascript">
+			
+  (function() {
+    var cx = '007250492606109219119:sb2eg2bgoyy';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:search></gcse:search>	
+					<script type="text/javascript">
+					    jQuery(document).ready(function ($) {
+					        // var options = {
+					        //     $ArrowNavigatorOptions: {
+					        //         $Class: $JssorArrowNavigator$,
+					        //         $ChanceToShow: 2
+					        //     }
+					        // };					    	
+
+
+							var options = { 
+											$AutoPlay: true, $SlideshowOptions: { $Class: $JssorSlideshowRunner$, $Transitions: [{ $Duration:5000, $Fade: true, $Opacity:2 }] } , 
+											$ArrowNavigatorOptions: { 
+												$Class: $JssorArrowNavigator$, 
+												$ChanceToShow: 2
+											}
+										  };
+
+
+					        var jssor_slider1 = new $JssorSlider$('slider1_container', options);
+					    });
+					</script>
+									                  
+			
+		</div>
+		</div>             
+	</div>
+				
+<!--START: MAIN -->
+<div id="wrapper" style="margin-top:-15px;"> 
+
+<!--START: SIDE_BAR -->
+<div id="side_bar">
+
+<form method="get" action="compression.html" class="form" >
+	<select onchange="window.open(this.options[this.selectedIndex].value,'_top')" name="" style="border:2px solid #c1c1c1;">
+		<option value="" class="ql1">- - Quick Links - -</option>
+		<option value="/HDF5/" class="ql">HDF5</option>
+		<option value="/products/hdf4/" class="ql">HDF4</option>
+		<option value="/tools/" class="ql">Tools</option>
+		<option value="/projects/" class="ql">Projects</option>
+		<option value="/downloads/" class="ql">Downloads</option>
+		<option value="/documentation/" class="ql">Documentation</option>
+	        <option value="/pubs/" class="ql">Publications</option>
+		<option value="/about/" class="ql">Contact Us</option>
+	</select>
+</form>
+<ul style="border:1px solid #c1c1c1; margin-top:25px;"> 
+
+	<li style="background:url(../../images/menubg.png); padding:0px; padding-left:7px; color:#27343C; font-weight:500; text-align:left;">
+	LINKS</li><li><a href="https://www.hdfgroup.org/">Main Website</a></li><li><a  href="../whatishdf5.html">What is HDF5?</a></li><li><a  href="../../about/HDF5Brochure_2012.pdf">Online Brochure</a></li><li><a  href="../../downloads/index.html">Downloads</a></li><li><a  href="../doc/index.html">Documentation</a></li><li><a  href="../../products/hdf5_tools/index.html">Software using HDF5</a></li><li><a  href="../users5.html">HDF5 Users</a></li><li><a  href="../hdf5-files.html">Sample HDF5 Files</a></li><li><a  href="../acknowledge5.html">Acknowledgments</a></li><li><a  href="../../products/licenses.html">Licenses</a></li></ul> 
+
+</div>
+
+<!--END: SIDE_BAR -->
+
+<!--START: CONTENT -->
+<div id="content">
+<p><font color="red"><center><strong>This web site is no longer maintained (but will remain online).<br /> Please see The HDF Group's new <a href="https://portal.hdfgroup.org">Support Portal</a> for the latest information.</strong></center></font></p>
+	<div class=bc><p style="color:orange; ";><a href="../../index.html" title="HOME">HOME</a> &gt; <a href="../../products/hdf5/index.html" title="HDF5">HDF5</a> &gt; <a href="index.html" title="FAQ">FAQ</a></p></div><h1><fieldset>Using Compression in HDF5</fieldset></h1>
+
+
+
+<p>
+HDF5 allows compression filters to be applied to a dataset to minimize the amount of space it
+consumes.  There are both pre-defined compression filters (ZLIB and SZIP) and user-defined
+filters that can be applied.
+</p>
+
+<p>
+To apply a compression filter to a dataset it must be created with a chunked dataset storage layout. 
+This can be done by modifying the dataset creation property list. 
+For a brief introduction to using compression in HDF5  see the following <a href="../Tutor.html">HDF5 Tutorial</a> topics that discuss property lists, the storage layout and creating a
+compressed dataset: 
+<ul class="ul">
+ <a href="../Tutor/propertyintro.html">Property Lists</a>
+ <br />
+ <a href="../Tutor/layout.html">Dataset Storage Layout: Contiguous, Chunked, Compact</a>
+ <br />
+ <a href="../Tutor/compress.html">Creating a Compressed Dataset</a>
+</ul>
+</p>
+
+<p>
+For tuning I/O performance with chunked and compressed datasets see:
+<a href="TechNote-HDF5-ImprovingCompressionPerformance.docx">TechNote-HDF5-ImprovingCompressionPerformance.docx</a>
+<br />
+For diagnosing situations where a dataset may not be compressed as well as expected, see:
+<a href ="../doc/TechNotes/TechNote-HDF5-CompressionTroubleshooting.pdf">HDF5
+Compression Troubleshooting</a>
+</p> 
+
+<p>
+Below are a variety of links to more information regarding compression:
+<ul class="ul">
+<li class="li3">
+<p>
+<a href="https://support.hdfgroup.org/HDF5/hdf5-quest.html#gcomp">What kind of compression methods does HDF5 support ?</a>
+</p>
+</li>
+
+<li class="li3">
+<p>
+<a href="../doc/UG/HDF5_Users_Guide.pdf">HDF5 User's Guide</a>, Chapter 5, <em>HDF5 Datasets</em>, section 5.6 <em>Using HDF5 Filters</em></a>
+</p>
+</li>
+
+<li class="li3">
+<p>
+<a href="compression.html#thirdp">Third-Party Compression Filters</a>
+</p>
+</li>
+
+
+<li class="li3">
+<p>
+<a href="../../doc_resource/SZIP/index.html">SZIP Compression in HDF Products</a>
+</p>
+</li>
+
+<li class="li3">
+<p>
+<a href="https://www.dkrz.de/redmine/projects/aec/wiki/Downloads">Open Source SZIP Compression</a> (from
+the <a href="http://www.dkrz.de/">German Climate Computing Center</a>)
+</p>
+</li>
+
+<!--
+
+<li class="li3">
+<p>
+<a href="/HDF5/doc1.6/Filters.html">Introductory information on filters (from HDF5-1.6 documentation)</a>
+</p>
+</li>
+
+<li class="li3">
+<p>
+<a href="/ftp/HDF5/examples/howto/compression/Topic-4.2-DatasetFilters.pptx">HDF5 Filters presentation</a>
+</p>
+</li>
+-->
+
+
+</ul>
+
+
+
+<a name="thirdp"></a>
+<h2>Third-Party Compression Filters</h2>
+
+<p>
+HDF5 provides two pre-defined filters for compression (ZLIB and SZIP). All other compression
+methods must be registered with HDF5 before they can be used. Before formally using a third-party
+filter in an application, it should be registered with The HDF Group, as well. For information
+on how to register a user-specified compression method with The HDF Group, as well as
+information on compression methods that are already registered, see: 
+<a href="../../services/contributions.html">Registered Third-Party Filters (Compression)</a>
+</p>
+
+<h3>Example Code for Registering a Compression Method</h3>
+
+<p>
+The
+<a href="https://support.hdfgroup.org/ftp/HDF5/examples/howto/compression/bz_example.tar.gz">bz_example.tar.gz</a> 
+file contains an example of implementing the BZIP2 filter to enable BZIP2 compression in HDF5. 
+(This example is based on PyTables code that uses BZIP2 compression.). Download and uncompress this
+file as follows:
+<pre>
+   gzip -cd bz_example.tar.gz | tar xvf -
+</pre>
+</p>
+
+<p>
+To compile the example, you will need to install the HDF5 library and use the h5cc compile script
+found in the bin/ directory of the HDF5 installation. For information on obtaining HDF5, see:
+<a href="../release/obtain5.html">Obtain the Latest HDF5 Software</a>
+</p>
+
+<p>
+For information on h5cc, see: <a href="../Tutor/compile.html">Compiling
+Your HDF5 Application</a>
+</p>
+
+<p>
+Please note that tools like h5dump that display information in an HDF5 file will not be
+able to display data that is compressed with BZIP2 compression, since BZIP2 is not implemented
+in HDF5.
+
+<p>
+However, as of HDF5-1.8.11, a new HDF5 feature will enable the h5dump tool to 
+determine that the data is compressed with an external compression filter such as BZIP2, and will
+automatically load the appropriate library and display the uncompressed data.
+</p>
+
+<p>
+The bz_example example code can be used for modifying the HDF5 source to "include" BZIP2 as one
+of the "internal" filters. For information on how to do this, see how ZLIB (the deflate filter)
+is implemented in the HDF5 source code. Specifically look at these files: 
+<pre>
+   H5Z.c, H5Zdeflate.c and H5Pocpl.c
+</pre>
+</p>
+
+<hr />
+<i>
+- - Last modified: 27 January 2017</i>
+	   </div>
+	   <!--END: CONTENT -->
+<!--END: WRAPPER -->
+<script src="../../scriptaculous/gatag.js" type="text/javascript"></script>
+
+<!-- <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script> -->
+				
+<!--
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-3782034-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+-->
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-3782034-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+</body>
+</html>

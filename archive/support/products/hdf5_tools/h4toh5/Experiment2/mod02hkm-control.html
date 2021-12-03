@@ -1,0 +1,82 @@
+<html>
+<body>
+<pre>
+HDF5 "mod02hkm-control-1-2253.he5" {
+GROUP "/" {
+   GROUP "HDFEOS" {
+      GROUP "ADDITIONAL" {
+         GROUP "FILE_ATTRIBUTES" {
+         } 
+      } 
+      GROUP "SWATHS" {
+         GROUP "MODIS_SWATH_Type_L1B" {
+            GROUP "Data Fields" {
+               DATASET "Band_250M" {
+                  DATATYPE  H5T_IEEE_F32BE  
+                  DATASPACE  SIMPLE { ( 2 ) / ( 2 ) } 
+               } 
+               DATASET "Band_500M" {
+                  DATATYPE  H5T_IEEE_F32BE  
+                  DATASPACE  SIMPLE { ( 5 ) / ( 5 ) } 
+               } 
+               DATASET "EV_250_Aggr500_RefSB" {
+                  DATATYPE  H5T_STD_U16BE  
+                  DATASPACE  SIMPLE { ( 2, 4060, 2708 ) / ( 2, 4060, 2708 ) } 
+               } 
+               DATASET "EV_250_Aggr500_RefSB_Samples_Used" {
+                  DATATYPE  H5T_STD_I8LE  
+                  DATASPACE  SIMPLE { ( 2, 4060, 2708 ) / ( 2, 4060, 2708 ) } 
+               } 
+               DATASET "EV_250_Aggr500_RefSB_Uncert_Indexes" {
+                  DATATYPE  H5T_STD_U8LE  
+                  DATASPACE  SIMPLE { ( 2, 4060, 2708 ) / ( 2, 4060, 2708 ) } 
+               } 
+               DATASET "EV_500_RefSB" {
+                  DATATYPE  H5T_STD_U16BE  
+                  DATASPACE  SIMPLE { ( 5, 4060, 2708 ) / ( 5, 4060, 2708 ) } 
+               } 
+               DATASET "EV_500_RefSB_Uncert_Indexes" {
+                  DATATYPE  H5T_STD_U8LE  
+                  DATASPACE  SIMPLE { ( 5, 4060, 2708 ) / ( 5, 4060, 2708 ) } 
+               } 
+            } 
+            GROUP "Geolocation Fields" {
+               DATASET "Latitude" {
+                  DATATYPE  H5T_IEEE_F32BE  
+                  DATASPACE  SIMPLE { ( 2030, 1354 ) / ( 2030, 1354 ) } 
+               } 
+               DATASET "Longitude" {
+                  DATATYPE  H5T_IEEE_F32BE  
+                  DATASPACE  SIMPLE { ( 2030, 1354 ) / ( 2030, 1354 ) } 
+               } 
+            } 
+            GROUP "Profile Fields" {
+            } 
+         } 
+      } 
+   } 
+   GROUP "HDFEOS INFORMATION" {
+      ATTRIBUTE "HDFEOSVersion" {
+         DATATYPE  H5T_STRING {
+               STRSIZE 32;
+               STRPAD H5T_STR_NULLTERM;
+               CSET H5T_CSET_ASCII;
+               CTYPE H5T_C_S1;
+            }           
+         DATASPACE  SCALAR  
+      } 
+      DATASET "StructMetadata.0" {
+         DATATYPE  H5T_STRING {
+               STRSIZE 1000000;
+               STRPAD H5T_STR_NULLTERM;
+               CSET H5T_CSET_ASCII;
+               CTYPE H5T_C_S1;
+            }           
+         DATASPACE  SCALAR  
+      } 
+   } 
+} 
+} 
+</pre>
+</body>
+</html>

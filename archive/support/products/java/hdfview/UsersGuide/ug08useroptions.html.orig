@@ -1,0 +1,405 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+<!-- If no var is set for $page_title on the top of each page than default title will be HDF Group -->
+
+<title>
+HDFView User's Guide - User Options</title>
+	<meta name="keywords" content="hdf, hdfeos, blog, hdf blog, hdf5 blog, hdf5, hdf4, hdf tools, hdf libraries, hdf viewer, hdf format, hdf file, hdf java, nafxcw.lib, phdf5, open source, hierarchical data format, ncsa, database, python hdf, mike folk, hdfview, hdf5 parallel" />
+	<meta name="description" content="The HDF Group is a not-for-profit corporation with the mission of sustaining the HDF technologies and supporting HDF user communities worldwide with production-quality software and services." />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="expires" content="Wed, 26 Feb 2010 08:21:57 GMT" />
+	<meta name="verify-v1" content="/m03HNmaDgGAcDe0PFtEVnXGtCkoeOocjr/Jwey2gdI=" />
+	<link href="/css/layout.css" rel="stylesheet" type="text/css" media="screen, projection" />
+	<link href="/css/print.css" rel="stylesheet" type="text/css" media="print" />
+	<link rel="stylesheet" type="text/css" href="/css/js_style.css" />
+	<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/prototype/1.7.2.0/prototype.js"></script>
+	<!--<script type="text/javascript" src="/scriptaculous/lib/prototype.js"></script>-->
+	<script type="text/javascript" src="/scriptaculous/src/effects.js"></script>
+	<script type="text/javascript" src="/scriptaculous/validation.js"></script>
+	<script type="text/javascript" src="/scriptaculous/animatedcollapse.js"></script>
+	<script type="text/javascript" src="/scriptaculous/rollover.js"></script>	
+	<script type="text/javascript" src="/scriptaculous/functions.js"></script>
+	<script type="text/javascript" src="/scriptaculous/sorttable.js"></script>
+	<!--<script type="text/javascript" src="/jquery-1.2.2.pack.js"></script>-->
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript" src="/scriptaculous/jssor.slider.min.js"></script>
+
+ 	<link rel="stylesheet" type="text/css" href="/featuredcontentglider.css" />
+    <script type="text/javascript" src="/featuredcontentglider.js"></script>
+
+	</head>
+	<body>
+	<div id="mast_head">
+		<a href="https://www.hdfgroup.org/"><img src="/images/hdf_logo.jpg" height="70" style="display:block; padding-left:10px;" align="left" alt="hdf images" /></a>
+		<img src="/images/logo_5.jpg" height="70" style="display:block;" align="right" alt="hdf images" />
+	</div> 
+				
+	<div id="nav_wrapper">
+		<div>
+		<div id="section-">
+			<ul id="nav">
+				<li id="t-index"><a href="https://www.hdfgroup.org/">Home</a> </li>
+				<li id="t-products"><a href="/products/">Products</a></li>
+				<li id="t-services"><a href="/services/">Services</a></li>
+				<li id="t-about"><a href="/about/">About Us</a></li>
+				<li id="t-news"><a href="/news/">News</a> </li>
+				<li id="t-blog"><a href="https://www.hdfgroup.org/blog">Blog</a></li>
+				<li id="t-contact"><a href="/about/contact.html">Contact Us</a></li> 
+			</ul>
+			<script type="text/javascript">
+			
+  (function() {
+    var cx = '007250492606109219119:sb2eg2bgoyy';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:search></gcse:search>	
+					<script type="text/javascript">
+					    jQuery(document).ready(function ($) {
+					        // var options = {
+					        //     $ArrowNavigatorOptions: {
+					        //         $Class: $JssorArrowNavigator$,
+					        //         $ChanceToShow: 2
+					        //     }
+					        // };					    	
+
+
+							var options = { 
+											$AutoPlay: true, $SlideshowOptions: { $Class: $JssorSlideshowRunner$, $Transitions: [{ $Duration:5000, $Fade: true, $Opacity:2 }] } , 
+											$ArrowNavigatorOptions: { 
+												$Class: $JssorArrowNavigator$, 
+												$ChanceToShow: 2
+											}
+										  };
+
+
+					        var jssor_slider1 = new $JssorSlider$('slider1_container', options);
+					    });
+					</script>
+									                  
+			
+		</div>
+		</div>             
+	</div>
+				
+<!--START: MAIN -->
+<div id="wrapper" style="margin-top:-15px;"> 
+
+<!--START: SIDE_BAR -->
+<div id="side_bar">
+
+<form method="get" action="" class="form" >
+	<select onchange="window.open(this.options[this.selectedIndex].value,'_top')" name="" style="border:2px solid #c1c1c1;">
+		<option value="" class="ql1">- - Quick Links - -</option>
+		<option value="/HDF5/" class="ql">HDF5</option>
+		<option value="/products/hdf4/" class="ql">HDF4</option>
+		<option value="/tools/" class="ql">Tools</option>
+		<option value="/projects/" class="ql">Projects</option>
+		<option value="/downloads/" class="ql">Downloads</option>
+		<option value="/documentation/" class="ql">Documentation</option>
+	        <option value="/pubs/" class="ql">Publications</option>
+		<option value="/about/" class="ql">Contact Us</option>
+	</select>
+</form>
+<ul style="border:1px solid #c1c1c1; margin-top:25px;"> 
+
+	<li style="background:url(/images/menubg.png); padding:0px; padding-left:7px; color:#27343C; font-weight:500; text-align:left;">
+	LINKS</li><li><a href="https://www.hdfgroup.org/">Main Website</a></li><li><a  href="/downloads/index.html">Downloads</a></li><li><a  href="/products/java/hdfview/">HDFView</a></li><li><a  href="/products/java/JNI3/">JNI3 Libraries</a></li><li><a  href="/HDF5/hdf5-files.html">Sample HDF5 Files</a></li><li><a  href="/products/licenses.html">Licenses</a></li></ul> 
+
+</div>
+
+<!--END: SIDE_BAR -->
+
+<!--START: CONTENT -->
+<div id="content">
+<p><font color="red"><center><strong>This web site is no longer maintained (but will remain online).<br /> Please see The HDF Group's new <a href="https://portal.hdfgroup.org">Support Portal</a> for the latest information.</strong></center></font></p>
+	<div class=bc><p style="color:orange; ";><a href="/" title="HOME">HOME</a> &gt; <a href="/products/" title="PRODUCTS">PRODUCTS</a> &gt; <a href="/products/java/" title="JAVA">JAVA</a> &gt; <a href="/products/java/hdfview/" title="HDFVIEW">HDFVIEW</a> &gt; <a href="/products/java/hdfview/UsersGuide/" title="USERSGUIDE">USERSGUIDE</a></p></div>   <link href="edit.css" rel="stylesheet" type="text/css" />
+<p>
+   <a href="index.html">[Index]</a>
+   <a href="ug01introduction.html">[1]</a>
+   <a href="ug02start.html">[2]</a>
+   <a href="ug03objects.html">[3]</a>
+   <a href="ug04treeview.html">[4]</a>
+   <a href="ug05spreadsheet.html">[5]</a>
+   <a href="ug06imageview.html">[6]</a>
+   <a href="ug07textview.html">[7]</a>   
+   <a href="ug08useroptions.html">[8]</a>   </p>
+   
+   <h1><fieldset>Chapter 8: User Options</fieldset></h1>
+   <p>
+   This chapter explains the different options of HDFView
+   accessible from the Tools menu.</p>
+   
+   <ul class="ul">
+   <li><a href="ug08useroptions.html#ug08general">8.1 General Settings</a></li>
+       <ul class="ul">
+       <li><a href="ug08useroptions.html#ug08directory">8.1.1 Working Directory</a></li>
+       <li><a href="ug08useroptions.html#ug08help">8.1.2 User's Guide Path</a></li>
+       <li><a href="ug08useroptions.html#ug08fileaccess">8.1.3 File Access Mode</a></li>
+       <li><a href="ug08useroptions.html#ug08extension">8.1.4 File Extensions</a></li>
+       <li><a href="ug08useroptions.html#ug08libversion">8.1.5 Library Versions</a></li>
+       <li><a href="ug08useroptions.html#ug08font">8.1.6 Text Font</a></li>
+       <li><a href="ug08useroptions.html#ug08imageopt">8.1.7 Image Options</a></li>
+       <li><a href="ug08useroptions.html#ug08dataopt">8.1.8 Data Options</a></li>
+       <li><a href="ug08useroptions.html#ug08objectcount">8.1.9 Number of Open Objects</a></li>
+       <li><a href="ug08useroptions.html#ug08displayind">8.1.10 Display Indexing</a></li>
+       </ul>
+   <li><a href="ug08useroptions.html#ug08module">8.2 Default Modules</a></li>
+   </ul>
+       
+       
+   <hr />
+   
+   <h2><a name="ug08general"></a>8.1 General Settings</h2>
+   
+   <p>
+   HDFView comes with an array of configurable options that determine the way it 
+   operates on or displays data. These can be changed by clicking on "User Options"
+   from the Tools menu.
+   </p>
+   
+   <center>
+   <p>
+   <img src="images/user_options.png" />
+   <br />
+   <b>User Options dialog box</b>
+   </p>
+   </center>
+   
+   <p>
+   Upon exit, HDFView saves all the current settings to a properties file in the
+   user's home directory. The file's name follows the format '.hdfview{version number}'
+   where version number is the current version number of HDFView.
+   
+   
+   <h3><a name="ug08directory"></a>8.1.1 Working Directory</h3>
+   <p>
+   By default, HDFView will open with the current directory being set to the path
+   specified in the text field under this section. If "Current Working Directory"
+   is selected instead, HDFView will open with the current directory set to the
+   folder from which HDFView was launched. Setting the current directory
+   affects where HDFView first opens to when opening/saving files, locating 
+   files, etc.</p>
+   
+   
+   <h3><a name="ug08help"></a>8.1.2 User's Guide Path</h3>
+   <p>
+   This section contains a single field which holds the path to the HDFView User's
+   Guide. The path can either be entered as an absolute file name, file path, 
+   or URL to a remote file, or the browse button can be used to locate the guide from
+   the filesystem. When the user clicks the <img src="images/help.gif" /> icon on 
+   the tool bar, the program goes to the path specified here and opens the User's Guide 
+   if it is able to locate it.</p>
+   
+   
+   <h3><a name="ug08fileaccess"></a>8.1.3 File Access Mode</h3>
+   <p>
+   By default, HDFView opens files in editing mode, allowing both reading and writing to
+   files, as well as the ability to save changes. However, by changing the default mode
+   to read only, the user can force HDFView to open all files as read-only, disabling
+   editing and preventing changes to opened files.</p>
+   
+   
+   <h3><a name="ug08extension"></a>8.1.4 File Extensions</h3>
+   <p>
+   The text field located here displays a list of all file formats currently recognized
+   by HDFView. This is used when choosing a file to open, as HDFView will look for
+   and show files that have an extension matching any from this list. If needed,
+   the user can type into this field and add their own file types for HDFView to look for.
+   </p>
+   
+   
+   <h3><a name="ug08libversion"></a>8.1.5 Library Versions</h3>
+   <p>
+   Here the user can choose which version, the earliest version or latest version,
+   of the HDF5 library to be used as the default when creating objects.
+   </p>
+   
+   
+   <h3><a name="ug08font"></a>8.1.6 Text Font</h3>
+   <p>
+   Under this section, the user can specify what size of font, as well as font type, to use.
+   The newly selected font takes place immediately and affects all text displayed inside
+   HDFView.</p>
+   
+   <h3><a name="ug08imageopt"></a>8.1.7 Image Options</h3>
+   <p>
+   The "Autogain Image Contrast" option here calculates a gain and bias combination that 
+   stretches images to match with the graphics system's pixel values. Further information 
+   is provided by the <img src="images/help.gif"> icon in the User Options.
+   </p>
+   
+   <p>
+   The "Show Values" option enables showing the values of individual pixels in an image.
+   While this option is selected, moving the cursor over a pixel of an image inside the 
+   ImageViewer will display that pixel's location (in relative terms from the origin), as
+   well as the value of the pixel.
+   </p>
+   
+   <p>
+   The Image Origin dropbox in this section allows the user to select which of the four corners, 
+   Upper left, Upper right, Lower left or Lower right, to use as the origin for images.
+   </p>
+   
+   <h3><a name="ug08dataopt"></a>8.1.8 Data Options</h3> 
+   <p>
+   The "Convert Enum" option enforces conversion of enum type data into a string equivalent.
+   Further information is provided by the <img src="images/help.gif"> icon next to the
+   "Convert Enum" option.
+   </p>
+   
+   <p>
+   "Show RegRef Values" allows the user to see the data pointed to by a Dataset Region Reference 
+   inline with the selected reference. If this option is not selected, the user must right click 
+   on a region reference and choose to display as a table or image in order to view the associated
+   data.
+   </p>
+   
+   <p>
+   The Index Base determines whether indexed objects, such as numbered cells or the
+   coordinates of an image's origin, should start with 0 or 1 as the first index.
+   </p>
+   
+   <p>
+   The Data Delimiter section allows the user to select a character to use as a separator
+   for data when performing operations such as saving data to a file, importing data from
+   a file or copying/pasting data between HDFView and other applications. The delimiter 
+   selected will be appended to data written to files, as shown below.    
+   <b>Note: When importing data from a file, the user must know the delimiter used 
+   for the file, else data may not be able to be imported properly</b>.
+   </p>
+   
+   <center>
+   <p>
+   <img src="images/delimiter_example.png">
+   <br />
+   <b>Dataset saved to file with ':' delimiter</b>
+   </p>
+   </center>
+
+   
+   <h3><a name="ug08objectcount"></a>8.1.9 Number of Open Objects</h3>
+   <p>
+   By default, HDFView loads all objects in a file upon loading the file. In some cases,
+   however, it is useful to load a subset of the objects. To do so, first click on
+   "Open All" in the "Objects to Open" section to unselect it, then pick a suitable start 
+   member (with member 0 being the root group) and the number of members to load in total.
+   <b>Note: Groups count towards the member count, as does the root group</b>.
+   </p>
+   
+   <center>
+   <p>
+   <img src="images/member_count.png">
+   <br />
+   <b>Start Member = 0, Member Count = 10</b>
+   </p>
+   </center>
+   
+   
+   <h3><a name="ug08displayind"></a>8.1.10 Display Indexing</h3>
+   <p>
+   Display Indexing options change the order in which objects are displayed in the HDFView
+   TreeView panel.
+   </p>
+   
+   <p>
+   The Indexing Type determines the way in which the objects get sorted. Objects can either
+   be sorted by name or by the order in which they were created.
+   </p>
+   
+   <p>
+   Indexing Order further sorts the objects by ascending or descending order. If "Increments"
+   is chosen, objects that would come first after sorting will be displayed at the top of the
+   TreeView, with all following objects arranged below. If "Decrements" is chosen, these objects 
+   would instead be displayed at the bottom of the TreeView, with all following objects arranged
+   above.
+   </p>
+   
+   
+   <h2><a name="ug08module"></a>8.2 Default Modules</h2>
+   <p>
+   HDFView displays data with a default GUI module when opening a dataset by default. You can 
+   set default modules from the "Default Modules" tab in the User Options window. Provided that 
+   modules have been implemented and are available (see <a href="../ModularGuide/index.html">How to 
+   Implement HDFView Modules</a>), clicking on the drop-down boxes will allow you to select
+   a new default module for the individual components. The new default module takes effect only 
+   after you restart HDFView.</p>
+   
+<center><p>
+   <img src="images/module_defaults.gif" />
+   <br /><b>Set default modules</b></p></center>
+   
+   <p>
+   By default, data and attributes are displayed with default modules. You can 
+   also select a specific module for display. Use the &ldquo;Open As&rdquo; option 
+   from an object's popup menu from the TreeView to choose an optional TableView 
+   or ImageView.
+   </p>
+   
+<center><p>
+   <img src="images/module_select_imageview.gif" />
+   <br /><b>Select an ImageView</b></p></center>
+   
+   
+   <!-- BEGIN OF FOOTER INFO -->
+   <hr noshade size=1 />
+   
+   <p>
+   <a href="index.html">[Index]</a>
+   <a href="ug01introduction.html">[1]</a>
+   <a href="ug02start.html">[2]</a>
+   <a href="ug03objects.html">[3]</a>
+   <a href="ug04treeview.html">[4]</a>
+   <a href="ug05spreadsheet.html">[5]</a>
+   <a href="ug06imageview.html">[6]</a>
+   <a href="ug07textview.html">[7]</a>
+   <a href="ug08useroptions.html">[8]</a>   </p>
+   <p>
+   <!-- END OF FOOTER INFO -->
+<hr />
+
+ <i>
+- - Last modified: 21 July 2014</i>
+	   </div>
+	   <!--END: CONTENT -->
+<!--END: WRAPPER -->
+<script src="/scriptaculous/gatag.js" type="text/javascript"></script>
+
+<!-- <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script> -->
+				
+<!--
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-3782034-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+-->
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-3782034-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+</body>
+</html>

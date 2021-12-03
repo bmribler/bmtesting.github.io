@@ -1,0 +1,28 @@
+
+# set the location of your C compiler
+CC = /bin/cc
+
+# compiler options 
+# Solaris example: CCOPTS = -Xc -xO2 -O -s 
+CCOPTS = -Xc -xO2 -O -s
+
+#set the appropriate directory locations
+HDF_INCLUDE_DIR = /HDF4.1r2/include
+HDF_LIB_DIR = /HDF4.1r2/lib
+
+##########################################################################
+#Do not change anything below this line unless you are absolutely sure!  #
+
+HDF_LIBS = -lmfhdf -ldf -ljpeg -lz 
+
+chunkbinary: chunkbinary.o
+	$(CC) $(CCOPTS) chunkbinary.o -o ../bin/chunkbinary \
+	-I$(HDF_INCLUDE_DIR) -L$(HDF_LIB_DIR) $(HDF_LIBS)
+
+chunkbinary.o: chunkbinary.c
+	$(CC) $(CCOPTS) -c chunkbinary.c -I$(HDF_INCLUDE_DIR) -L$(HDF_LIB_DIR) \
+	$(HDF_LIBS)
+
+clean:
+	rm ../bin/chunkbinary chunkbinary.o
+

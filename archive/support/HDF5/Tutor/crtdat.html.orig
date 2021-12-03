@@ -1,0 +1,669 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+<!-- If no var is set for $page_title on the top of each page than default title will be HDF Group -->
+
+<title>
+The HDF Group - Information, Support, and Software</title>
+	<meta name="keywords" content="hdf, hdfeos, blog, hdf blog, hdf5 blog, hdf5, hdf4, hdf tools, hdf libraries, hdf viewer, hdf format, hdf file, hdf java, nafxcw.lib, phdf5, open source, hierarchical data format, ncsa, database, python hdf, mike folk, hdfview, hdf5 parallel" />
+	<meta name="description" content="The HDF Group is a not-for-profit corporation with the mission of sustaining the HDF technologies and supporting HDF user communities worldwide with production-quality software and services." />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="expires" content="Wed, 26 Feb 2010 08:21:57 GMT" />
+	<meta name="verify-v1" content="/m03HNmaDgGAcDe0PFtEVnXGtCkoeOocjr/Jwey2gdI=" />
+	<link href="/css/layout.css" rel="stylesheet" type="text/css" media="screen, projection" />
+	<link href="/css/print.css" rel="stylesheet" type="text/css" media="print" />
+	<link rel="stylesheet" type="text/css" href="/css/js_style.css" />
+	<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/prototype/1.7.2.0/prototype.js"></script>
+	<!--<script type="text/javascript" src="/scriptaculous/lib/prototype.js"></script>-->
+	<script type="text/javascript" src="/scriptaculous/src/effects.js"></script>
+	<script type="text/javascript" src="/scriptaculous/validation.js"></script>
+	<script type="text/javascript" src="/scriptaculous/animatedcollapse.js"></script>
+	<script type="text/javascript" src="/scriptaculous/rollover.js"></script>	
+	<script type="text/javascript" src="/scriptaculous/functions.js"></script>
+	<script type="text/javascript" src="/scriptaculous/sorttable.js"></script>
+	<!--<script type="text/javascript" src="/jquery-1.2.2.pack.js"></script>-->
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript" src="/scriptaculous/jssor.slider.min.js"></script>
+
+ 	<link rel="stylesheet" type="text/css" href="/featuredcontentglider.css" />
+    <script type="text/javascript" src="/featuredcontentglider.js"></script>
+
+	</head>
+	<body>
+	<div id="mast_head">
+		<a href="https://www.hdfgroup.org/"><img src="/images/hdf_logo.jpg" height="70" style="display:block; padding-left:10px;" align="left" alt="hdf images" /></a>
+		<img src="/images/logo_5.jpg" height="70" style="display:block;" align="right" alt="hdf images" />
+	</div> 
+				
+	<div id="nav_wrapper">
+		<div>
+		<div id="section-">
+			<ul id="nav">
+				<li id="t-index"><a href="https://www.hdfgroup.org/">Home</a> </li>
+				<li id="t-products"><a href="/products/">Products</a></li>
+				<li id="t-services"><a href="/services/">Services</a></li>
+				<li id="t-about"><a href="/about/">About Us</a></li>
+				<li id="t-news"><a href="/news/">News</a> </li>
+				<li id="t-blog"><a href="https://www.hdfgroup.org/blog">Blog</a></li>
+				<li id="t-contact"><a href="/about/contact.html">Contact Us</a></li> 
+			</ul>
+			<script type="text/javascript">
+			
+  (function() {
+    var cx = '007250492606109219119:sb2eg2bgoyy';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:search></gcse:search>	
+					<script type="text/javascript">
+					    jQuery(document).ready(function ($) {
+					        // var options = {
+					        //     $ArrowNavigatorOptions: {
+					        //         $Class: $JssorArrowNavigator$,
+					        //         $ChanceToShow: 2
+					        //     }
+					        // };					    	
+
+
+							var options = { 
+											$AutoPlay: true, $SlideshowOptions: { $Class: $JssorSlideshowRunner$, $Transitions: [{ $Duration:5000, $Fade: true, $Opacity:2 }] } , 
+											$ArrowNavigatorOptions: { 
+												$Class: $JssorArrowNavigator$, 
+												$ChanceToShow: 2
+											}
+										  };
+
+
+					        var jssor_slider1 = new $JssorSlider$('slider1_container', options);
+					    });
+					</script>
+									                  
+			
+		</div>
+		</div>             
+	</div>
+				
+<!--START: MAIN -->
+<div id="wrapper" style="margin-top:-15px;"> 
+
+<!--START: SIDE_BAR -->
+<div id="side_bar">
+
+<form method="get" action="" class="form" >
+	<select onchange="window.open(this.options[this.selectedIndex].value,'_top')" name="" style="border:2px solid #c1c1c1;">
+		<option value="" class="ql1">- - Quick Links - -</option>
+		<option value="/HDF5/" class="ql">HDF5</option>
+		<option value="/products/hdf4/" class="ql">HDF4</option>
+		<option value="/tools/" class="ql">Tools</option>
+		<option value="/projects/" class="ql">Projects</option>
+		<option value="/downloads/" class="ql">Downloads</option>
+		<option value="/documentation/" class="ql">Documentation</option>
+	        <option value="/pubs/" class="ql">Publications</option>
+		<option value="/about/" class="ql">Contact Us</option>
+	</select>
+</form>
+<ul style="border:1px solid #c1c1c1; margin-top:25px;"> 
+
+	<li style="background:url(/images/menubg.png); padding:0px; padding-left:7px; color:#27343C; font-weight:500; text-align:left;">
+	LINKS</li><li><a href="https://www.hdfgroup.org/">Main Website</a></li><li><a  href="/HDF5/whatishdf5.html">What is HDF5?</a></li><li><a  href="/about/HDF5Brochure_2012.pdf">Online Brochure</a></li><li><a  href="/downloads/index.html">Downloads</a></li><li><a  href="/HDF5/doc/index.html">Documentation</a></li><li><a  href="/products/hdf5_tools/">Software using HDF5</a></li><li><a  href="/HDF5/users5.html">HDF5 Users</a></li><li><a  href="/HDF5/hdf5-files.html">Sample HDF5 Files</a></li><li><a  href="/HDF5/acknowledge5.html">Acknowledgments</a></li><li><a  href="/products/licenses.html">Licenses</a></li></ul> 
+
+</div>
+
+<!--END: SIDE_BAR -->
+
+<!--START: CONTENT -->
+<div id="content">
+<p><font color="red"><center><strong>This web site is no longer maintained (but will remain online).<br /> Please see The HDF Group's new <a href="https://portal.hdfgroup.org">Support Portal</a> for the latest information.</strong></center></font></p>
+	<div class=bc><p style="color:orange; ";><a href="/" title="HOME">HOME</a> &gt; <a href="/HDF5/" title="HDF5">HDF5</a> &gt; <a href="/HDF5/Tutor/" title="TUTOR">TUTOR</a></p></div>
+<fieldset><h1>HDF5 Tutorial: &nbsp; Learning The Basics<br />Creating
+a Dataset</h1> </fieldset>
+
+
+<h2>Contents:</h2>
+   <ul class="ul">
+    <li> <a href="#def">What is a Dataset ?</a></li>
+         <ul class="ul">
+         <li><a href="#datatypes">Datatypes</a></li>
+         <li><a href="#dataspaces">Datasets and Dataspaces</a></li>
+         <li><a href="#pl">Property Lists</a></li>
+         <li><a href="#steps">Steps to Create a Dataset</a></li>
+         </ul>
+    <li> <p><a href ="#hl">High Level APIs</a></p></li>
+    <li> <p>Programming Example (C, Fortran, Java, C++, Python): </li>
+		<ul class="ul">
+		  <LI> <a href="#desc">Description</A> </li>
+		  <LI> <a href="#rem">Remarks</A> </li>
+		  <LI> <a href="#fc">File Contents</A></li>
+		  <LI> <a href="#ddl">Dataset Definition in DDL</A></li>
+		</UL>
+    </p>
+    </ul>
+
+	<hr>
+
+	<a name="def"> </a>
+	<h2>What is a Dataset?</h2>
+	<p>
+	A dataset is a multidimensional array of data elements, together with
+	supporting metadata. To create a dataset, the application program must specify
+	the location at which to create the dataset, the dataset name, the datatype 
+	and dataspace of the data array, and the property lists.
+       <br />
+       </p>
+
+<a name="datatypes"> </a>
+  <h3> Datatypes</h3>
+<p>
+    A datatype is a collection of properties, all of which can
+    be stored on disk, and which, when taken as a whole, provide complete
+    information for data conversion to or from that datatype.
+</p>
+
+<p>
+    There are two categories of datatypes in HDF5: 
+</p>
+    <p>
+    <ul class="ul">
+     <li class="li3"><b>Pre-defined:</b> &nbsp; These datatypes are opened and closed by HDF5.
+     <p>Pre-defined datatypes can be atomic or composite:</p> 
+
+     <ul class="ul">
+       <li><p> Atomic datatypes cannot be decomposed into smaller datatype units
+        at the API level.  For example: integer, float, reference, string.</p></li>
+    
+       <li><p>Composite datatypes are aggregations of one or more datatypes.
+        For example:  array, variable length, enumeration, compound.</p></li>
+     </ul>
+     </li>
+
+     <li class="li3"><b>Derived:</b> &nbsp; These datatypes are created or derived from
+          the pre-defined types.
+     <p>
+     A simple example of creating a derived datatype is using the string 
+     datatype, H5T_C_S1, to create strings of more than one character:
+     <pre>
+      hid_t strtype;                     /* Datatype ID */
+      herr_t status;
+
+      strtype = H5Tcopy (H5T_C_S1);
+      status = H5Tset_size (strtype, 5); /* create string of length 5 */
+     </pre>
+     </p>
+     </li>
+    </ul>
+ 
+<P>
+    Figure 5.1 shows the HDF5 pre-defined datatypes. Some of the HDF5 predefined
+    atomic datatypes are listed in Figures 5.2a and 5.2b. 
+</p>
+<p>
+    In this tutorial, we consider only HDF5 predefined integers. 
+</p>
+<p>
+    For further information on datatypes, see 
+    The Datatype Interface (H5T) in the 
+    <cite>HDF5 User's Guide</cite>, in addition to the 
+    <A HREF="./datatypes.html">Datatypes</A>  
+    tutorial topic.
+</p>
+<P>
+    <B>Fig 5.1</B> &nbsp;  <I>HDF5 datatypes</I>
+<PRE>
+
+                                          +--  integer
+                                          +--  floating point
+                        +---- atomic  ----+--  date and time
+                        |                 +--  character string
+       HDF5 datatypes --|                 +--  bitfield
+                        |                 +--  opaque
+                        |
+                        +---- compound
+
+</PRE>
+
+<!--
+<table width="100%" border="0" cellpadding="4">
+<tr><td valign=top>
+-->
+
+    <B>Fig. 5.2a</B> &nbsp;  <I>Examples of HDF5 predefined datatypes</I>
+
+<table width="62%" border="1" cellpadding="0">
+  <tr bgcolor="#ccdff" bordercolor="#FFFFFF"> 
+    <td width="20%"><b>Datatype</b></td>
+    <td width="80%"><b>Description</b></td>
+  </tr>
+  <tr bordercolor="#FFFFFF"> 
+    <td bgcolor="#ccddcc" width="20%"><code>H5T_STD_I32LE</code></td>
+    <td width="80%">Four-byte, little-endian, signed, two's complement integer</td>
+  </tr>
+  <tr bordercolor="#FFFFFF"> 
+    <td bgcolor="#ccddcc" width="20%"><code>H5T_STD_U16BE</code></td>
+    <td width="80%">Two-byte, big-endian, unsigned integer</td>
+  </tr>
+  <tr bordercolor="#FFFFFF"> 
+    <td bgcolor="#ccddcc" width="20%"><code>H5T_IEEE_F32BE</code></td>
+    <td width="80%">Four-byte, big-endian, IEEE floating point</td>
+  </tr>
+  <tr bordercolor="#FFFFFF"> 
+    <td bgcolor="#ccddcc" width="20%"><code>H5T_IEEE_F64LE</code></td>
+    <td width="80%">Eight-byte, little-endian, IEEE floating point</td>
+  </tr>
+  <tr bordercolor="#FFFFFF"> 
+    <td bgcolor="#ccddcc" width="20%"><code>H5T_C_S1</code></td>
+    <td width="80%">One-byte, null-terminated string of eight-bit characters</td>
+  </tr>
+</table>
+
+<!--
+</td><td valign=top>
+-->
+<br />
+    <B>Fig. 5.2b</B> &nbsp;  <I>Examples of HDF5 predefined native datatypes</I>
+<table width="62%" border="1" cellpadding="4">
+  <tr bgcolor="#ccdff" bordercolor="#FFFFFF"> 
+    <td width="50%"><b>Native Datatype</b></td>
+    <td width="50%"><b>Corresponding C or FORTRAN Type</b></td>
+  </tr>
+  <tr bordercolor="#FFFFFF"> 
+    <td bgcolor="#ccddcc" width="50%"><B>C:</B></td>
+    <td width="50%">&nbsp; </td>
+  </tr>
+  <tr bordercolor="#FFFFFF"> 
+    <td bgcolor="#ccddcc" width="50%"><code>H5T_NATIVE_INT</code></td>
+    <td width="50%">int</td>
+  </tr>
+  <tr bordercolor="#FFFFFF"> 
+    <td bgcolor="#ccddcc" width="50%"><code>H5T_NATIVE_FLOAT</code></td>
+    <td width="50%">float</td>
+  </tr>
+  <tr bordercolor="#FFFFFF"> 
+    <td bgcolor="#ccddcc" width="50%"><code>H5T_NATIVE_CHAR</code></td>
+    <td width="50%">char</td>
+  </tr>
+  <tr bordercolor="#FFFFFF"> 
+    <td bgcolor="#ccddcc" width="50%"><code>H5T_NATIVE_DOUBLE</code></td>
+    <td width="50%">double</td>
+  </tr>
+  <tr bordercolor="#FFFFFF"> 
+    <td bgcolor="#ccddcc" width="50%"><code>H5T_NATIVE_LDOUBLE</code></td>
+    <td width="50%">long double</td>
+  </tr>
+  <tr bordercolor="#FFFFFF"> 
+    <td bgcolor="#ccddcc" width="50%"><B>FORTRAN:</B></td>
+    <td width="50%">&nbsp; </td>
+  </tr>
+  <tr bordercolor="#FFFFFF"> 
+    <td bgcolor="#ccddcc" width="50%"><code>H5T_NATIVE_INTEGER</code></td>
+    <td width="50%">integer</td>
+  </tr>
+  <tr bordercolor="#FFFFFF"> 
+    <td bgcolor="#ccddcc" width="50%"><code>H5T_NATIVE_REAL</code></td>
+    <td width="50%">real</td>
+  </tr>
+  <tr bordercolor="#FFFFFF"> 
+    <td bgcolor="#ccddcc" width="50%"><code>H5T_NATIVE_DOUBLE</code></td>
+    <td width="50%">double precision</td>
+  </tr>
+  <tr bordercolor="#FFFFFF"> 
+    <td bgcolor="#ccddcc" width="50%"><code>H5T_NATIVE_CHARACTER</code></td>
+    <td width="50%">character</td>
+  </tr>
+</table>
+
+<!--
+</table>
+-->
+
+<br />
+<a name="dataspaces">
+  <H3>Datasets and Dataspaces</H3></a>
+
+    A dataspace describes the dimensionality of the data array. A dataspace
+    is either a regular N-dimensional array of data points, called a simple
+    dataspace, or a more general collection of data points organized in
+    another manner, called a complex dataspace. Figure 5.3 shows HDF5 dataspaces.
+    In this tutorial, we only consider simple dataspaces.
+<P>
+    <B>Fig 5.3</B> &nbsp;  <I>HDF5 dataspaces</I>
+<PRE>
+
+                         +-- simple
+       HDF5 dataspaces --|
+                         +-- complex
+
+</PRE>
+    The dimensions of a dataset can be fixed (unchanging), or they may be
+    unlimited, which means that they are extensible. A dataspace can also
+    describe a portion of a dataset, making it possible to do partial I/O
+    operations on selections.
+
+<a name="pl">
+ <h3>Property Lists</H3></a>
+<p>Property lists are a mechanism for modifying the default behavior 
+   when creating or accessing objects. For more information on property 
+   lists see the <a href="propertyintro.html">Property List</a> tutorial topic.  
+</p>
+<p> The following property lists can be specified when creating a 
+    dataset:
+  
+    <ul class="ul">
+    <li class="li3">Dataset Creation Property List
+    <p> 
+    When creating a dataset, HDF5 allows the user to specify how raw data is
+    organized and/or compressed on disk. This information is 
+    stored in a dataset creation property list and passed to the dataset
+    interface. The raw data on disk can be stored contiguously (in the same 
+    linear way that it is organized in memory), partitioned into chunks, 
+    stored externally, etc. In this tutorial, we use the 
+    default dataset creation property list (contiguous storage layout
+    and no compression). For more information about 
+    dataset creation property lists, 
+    see The Dataset Interface (H5D)
+    in the <cite>HDF5 User's Guide</cite>.
+    </p>
+    </li>
+    <li class="li3">Link Creation Property List
+    <p>
+    The link creation property list governs creation of the link(s)
+    by which a new dataset is accessed and the creation of any
+    intermediate groups that may be missing.
+    </p>
+    </li>
+
+    <li class="li3">Dataset Access Property List
+    <p>
+    Dataset access property lists are properties that can be
+    specified when accessing a dataset.  
+    </p>
+    </li>
+    </ul>
+<br />
+
+
+<a name="steps">
+<h3>Steps to Create a Dataset</h3></a>
+<p>
+To create an empty dataset (no data written) the following steps need to be
+taken:</p>
+<ul class="ul">
+
+<li>1. Obtain the location identifier where the dataset is to be created.
+</li>
+
+<li>2. Define or specify the dataset characteristics:</li>
+ <ul class="ul">
+   <LI>a. Define a datatype or specify a pre-defined datatype.</li>
+   <LI>b. Define a dataspace.</li>
+   <LI>c. Specify the property list(s) or use the default.</li>
+</ul>
+
+<li>3. Create the dataset.</li>
+<li>4. Close the datatype, the dataspace, and the property list(s) if necessary.
+</li>
+<li>5. Close the dataset.</li>
+</ul>
+<P>
+In HDF5, datatypes and dataspaces are independent objects which are created
+separately from any dataset that they might be attached to. Because of this,
+the creation of a dataset requires the definition of the datatype and dataspace.
+In this tutorial, we use the HDF5 predefined datatypes (integer) and consider
+only simple dataspaces. Hence, only the creation of dataspace objects is
+needed.
+</p>
+<P>
+
+<a name="steps"> </a>
+
+
+<P>
+<A NAME="hl">
+<H2>High Level APIs</H2></A>
+<p>The High Level <A HREF="./h5lite.html">HDF5 Lite APIs (H5LT)</A> include 
+functions that simplify and condense the steps for creating datasets 
+in HDF5. The examples in the following section use the standard APIs. 
+For a quick start you may prefer to look at the HDF5 Lite APIs at this time.
+</p>
+
+
+If you plan to work with images, please look at
+the High Level <A HREF="./h5image.html">HDF5 Image APIs (H5IM)</A>,
+as well.
+</p>
+
+<A NAME="desc">
+<H2> Programming Example</H2></A>
+
+<H3><U>Description</U></H3>      
+The following example shows how to create an empty dataset.
+It creates a file called <code>dset.h5</code> in the C version 
+(<code>dsetf.h5</code> in Fortran), defines the dataset dataspace, creates a
+dataset which is a 4x6 integer array, and then closes the dataspace,
+the dataset, and the file. <BR>
+<p>
+<ul class="ul">
+[ <A HREF="/ftp/HDF5/current/src/unpacked/examples/h5_crtdat.c">C Example</A> ] 
+    -- <code>h5_crtdat.c</code><br />
+[ <A HREF="/ftp/HDF5/current/src/unpacked/fortran/examples/h5_crtdat.f90">Fortran Example</A> ] 
+    -- <code>h5_crtdat.f90</code><br />
+[ <A HREF="/ftp/HDF5/current/src/unpacked/c++/examples/h5tutr_crtdat.cpp">C++ Example</A> ] 
+    -- <code>h5tutr_crtdat.cpp</code><br />
+[ <A HREF="/ftp/HDF5/examples/Py/h5_crtdat.py">Python Example</A> ] 
+    -- <code>h5_crtdat.py</code><br />
+</ul> 
+</p>
+<p>
+See <a href="/HDF5/examples/intro.html">HDF5 Introductory Examples</a>
+for the examples used in the Learning the Basics tutorial. There are examples for several other languages, 
+including Java.
+
+</p>
+
+<p>
+For details on compiling an HDF5 application:                                   
+[ 
+<a href="./compile.html">Compile Information</A>            
+]
+
+</p>
+<p>
+
+
+
+<A NAME="rem"></a>
+<H3><U>Remarks</U></H3>
+<ul class="ul">
+<p>
+<a href="/HDF5/doc/RM/RM_H5S.html#Dataspace-CreateSimple">H5Screate_simple / h5screate_simple_f</a> creates a new simple dataspace and returns a dataspace identifier.<br />
+<a href="/HDF5/doc/RM/RM_H5S.html#Dataspace-Close">H5Sclose / h5sclose_f</a> releases and terminates access to a dataspace.
+</p>
+
+<p>
+<ul class="ul">Example code: 
+ <PRE>
+ <I>C</I>:
+    dataspace_id = H5Screate_simple (rank, dims, maxdims);
+    status = H5Sclose (dataspace_id );
+
+ <I>FORTRAN</I>:
+    CALL h5screate_simple_f (rank, dims, dataspace_id, hdferr, maxdims=max_dims)
+         <i>or</i>
+    CALL h5screate_simple_f (rank, dims, dataspace_id, hdferr)
+
+    CALL h5sclose_f (dataspace_id, hdferr)
+
+ </PRE>
+</ul>
+</p>
+
+<p>
+<a href="/HDF5/doc/RM/RM_H5D.html#Dataset-Create">H5Dcreate / h5dcreate_f</a> creates an empty dataset 
+at the specified location and returns a dataset identifier.<br />
+<a href="/HDF5/doc/RM/RM_H5D.html#Dataset-Close">H5Dclose / h5dclose_f</a> closes the dataset and releases the resource used by the dataset. This call is mandatory.
+</p>
+
+<ul class="ul">
+<p>Example code:</p>
+
+<PRE>
+<I>C</I>:
+   dataset_id = H5Dcreate(file_id, "/dset", H5T_STD_I32BE, dataspace_id,
+                          H5P_DEFAULT, H5P_DEFAULT, H5P_DEFAULT);
+   status = H5Dclose (dataset_id);
+
+<I>FORTRAN</I>:
+   CALL h5dcreate_f (loc_id, name, type_id, dataspace_id, dset_id, hdferr)
+   CALL h5dclose_f (dset_id, hdferr)
+
+</ul>
+<p>
+Note that if using the pre-defined datatypes in FORTRAN, then a call must
+be made to initialize and terminate access to the pre-defined datatypes:
+</p>
+<PRE>
+  CALL h5open_f (hdferr)
+  CALL h5close_f (hdferr)
+</PRE>
+<p>
+<a href="/HDF5/doc/RM/RM_H5.html#Library-Open">h5open_f</a> 
+must be called before any HDF5 library subroutine calls are made;<br />
+<a href="/HDF5/doc/RM/RM_H5.html#Library-Close">h5close_f</a> 
+must be called after the final HDF5 library
+subroutine call.
+</p>
+
+<p>
+See the programming example for an illustration of the use of
+these calls.
+</p>
+
+<A NAME="fc"> </a>
+<H3><U>File Contents</U></H3>
+The contents of the file <code>dset.h5</code> (<code>dsetf.h5</code> 
+for FORTRAN) are shown in <B>Figure 5.4</B> and <B>Figures 5.5a </B> 
+and <B>5.5b</B>.
+<P>
+<table border="0">
+<tr align=left><td>
+<B>Figure 5.4</B> &nbsp; <I>Contents of <code>dset.h5</code> ( <code>dsetf.h5</code>)</i>
+</td></tr><tr align=center><td>
+<IMG src="image/img002.gif"> </PRE>
+</td></tr></table>
+
+<table width="100%" border="1" cellspacing="4" bordercolor="#FFFFFF">
+  <tr bordercolor="#FFFFFF"> 
+    <td width="50%"><b>Figure 5.5a</b> &nbsp; <i><code>dset.h5</code> in DDL</i> </td>
+    <td width="50%"><b>Figure 5.5b</b> &nbsp; <i><code>dsetf.h5</code> in DDL</i> </td>
+  </tr>
+  <tr bordercolor="#000000"> 
+    <td width="35%">
+    <PRE>
+HDF5 "dset.h5" {
+GROUP "/" {
+   DATASET "dset" {
+      DATATYPE { H5T_STD_I32BE }
+      DATASPACE { SIMPLE ( 4, 6 ) / ( 4, 6 ) }
+      DATA {
+         0, 0, 0, 0, 0, 0,
+         0, 0, 0, 0, 0, 0,
+         0, 0, 0, 0, 0, 0,
+         0, 0, 0, 0, 0, 0
+      }
+   }
+}
+}
+</PRE>
+    </td>
+    <td width="35%"> 
+      <pre>      
+HDF5 "dsetf.h5" {
+GROUP "/" {
+   DATASET "dset" {
+      DATATYPE { H5T_STD_I32BE }
+      DATASPACE { SIMPLE ( 6, 4 ) / ( 6, 4 ) }
+      DATA {
+         0, 0, 0, 0,
+         0, 0, 0, 0,
+         0, 0, 0, 0,
+         0, 0, 0, 0,
+         0, 0, 0, 0,
+         0, 0, 0, 0
+      }
+   }
+}
+}
+</pre>
+    </td>
+  </tr>
+</table>
+
+<p>
+Note in Figures 5.5a and 5.5b that
+<code>H5T_STD_I32BE</code>, a 32-bit Big Endian integer, 
+is an HDF atomic datatype.
+</p>
+
+<A NAME="ddl"> </a>
+<h3><U>Dataset Definition in DDL</U></H3>
+The following is the simplified DDL dataset definition:
+<P>
+     <B>Fig. 5.6</B> &nbsp;  <I>HDF5 Dataset Definition</I>
+<PRE>
+      &lt;dataset&gt; ::= DATASET "&lt;dataset_name&gt;" { &lt;datatype&gt;
+                                               &lt;dataspace&gt;
+                                               &lt;data&gt;
+                                               &lt;dataset_attribute&gt;* }
+
+      &lt;datatype&gt; ::= DATATYPE { &lt;atomic_type&gt; }
+
+      &lt;dataspace&gt; ::= DATASPACE { SIMPLE &lt;current_dims&gt; / &lt;max_dims&gt; }
+
+      &lt;dataset_attribute&gt; ::= &lt;attribute&gt;
+</PRE>
+</p>
+
+<hr />
+<i>
+- - Last modified: 21 December 2016</i>
+	   </div>
+	   <!--END: CONTENT -->
+<!--END: WRAPPER -->
+<script src="/scriptaculous/gatag.js" type="text/javascript"></script>
+
+<!-- <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script> -->
+				
+<!--
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-3782034-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+-->
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-3782034-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+</body>
+</html>

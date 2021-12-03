@@ -1,0 +1,628 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+<!-- If no var is set for $page_title on the top of each page than default title will be HDF Group -->
+
+<title>
+HDF5 Python Examples by API</title>
+	<meta name="keywords" content="hdf, hdfeos, blog, hdf blog, hdf5 blog, hdf5, hdf4, hdf tools, hdf libraries, hdf viewer, hdf format, hdf file, hdf java, nafxcw.lib, phdf5, open source, hierarchical data format, ncsa, database, python hdf, mike folk, hdfview, hdf5 parallel" />
+	<meta name="description" content="The HDF Group is a not-for-profit corporation with the mission of sustaining the HDF technologies and supporting HDF user communities worldwide with production-quality software and services." />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="expires" content="Wed, 26 Feb 2010 08:21:57 GMT" />
+	<meta name="verify-v1" content="/m03HNmaDgGAcDe0PFtEVnXGtCkoeOocjr/Jwey2gdI=" />
+	<link href="/css/layout.css" rel="stylesheet" type="text/css" media="screen, projection" />
+	<link href="/css/print.css" rel="stylesheet" type="text/css" media="print" />
+	<link rel="stylesheet" type="text/css" href="/css/js_style.css" />
+	<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/prototype/1.7.2.0/prototype.js"></script>
+	<!--<script type="text/javascript" src="/scriptaculous/lib/prototype.js"></script>-->
+	<script type="text/javascript" src="/scriptaculous/src/effects.js"></script>
+	<script type="text/javascript" src="/scriptaculous/validation.js"></script>
+	<script type="text/javascript" src="/scriptaculous/animatedcollapse.js"></script>
+	<script type="text/javascript" src="/scriptaculous/rollover.js"></script>	
+	<script type="text/javascript" src="/scriptaculous/functions.js"></script>
+	<script type="text/javascript" src="/scriptaculous/sorttable.js"></script>
+	<!--<script type="text/javascript" src="/jquery-1.2.2.pack.js"></script>-->
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript" src="/scriptaculous/jssor.slider.min.js"></script>
+
+ 	<link rel="stylesheet" type="text/css" href="/featuredcontentglider.css" />
+    <script type="text/javascript" src="/featuredcontentglider.js"></script>
+
+	</head>
+	<body>
+	<div id="mast_head">
+		<a href="https://www.hdfgroup.org/"><img src="/images/hdf_logo.jpg" height="70" style="display:block; padding-left:10px;" align="left" alt="hdf images" /></a>
+		<img src="/images/logo_5.jpg" height="70" style="display:block;" align="right" alt="hdf images" />
+	</div> 
+				
+	<div id="nav_wrapper">
+		<div>
+		<div id="section-">
+			<ul id="nav">
+				<li id="t-index"><a href="https://www.hdfgroup.org/">Home</a> </li>
+				<li id="t-products"><a href="/products/">Products</a></li>
+				<li id="t-services"><a href="/services/">Services</a></li>
+				<li id="t-about"><a href="/about/">About Us</a></li>
+				<li id="t-news"><a href="/news/">News</a> </li>
+				<li id="t-blog"><a href="https://www.hdfgroup.org/blog">Blog</a></li>
+				<li id="t-contact"><a href="/about/contact.html">Contact Us</a></li> 
+			</ul>
+			<script type="text/javascript">
+			
+  (function() {
+    var cx = '007250492606109219119:sb2eg2bgoyy';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:search></gcse:search>	
+					<script type="text/javascript">
+					    jQuery(document).ready(function ($) {
+					        // var options = {
+					        //     $ArrowNavigatorOptions: {
+					        //         $Class: $JssorArrowNavigator$,
+					        //         $ChanceToShow: 2
+					        //     }
+					        // };					    	
+
+
+							var options = { 
+											$AutoPlay: true, $SlideshowOptions: { $Class: $JssorSlideshowRunner$, $Transitions: [{ $Duration:5000, $Fade: true, $Opacity:2 }] } , 
+											$ArrowNavigatorOptions: { 
+												$Class: $JssorArrowNavigator$, 
+												$ChanceToShow: 2
+											}
+										  };
+
+
+					        var jssor_slider1 = new $JssorSlider$('slider1_container', options);
+					    });
+					</script>
+									                  
+			
+		</div>
+		</div>             
+	</div>
+				
+<!--START: MAIN -->
+<div id="wrapper" style="margin-top:-15px;"> 
+
+<!--START: SIDE_BAR -->
+<div id="side_bar">
+
+<form method="get" action="" class="form" >
+	<select onchange="window.open(this.options[this.selectedIndex].value,'_top')" name="" style="border:2px solid #c1c1c1;">
+		<option value="" class="ql1">- - Quick Links - -</option>
+		<option value="/HDF5/" class="ql">HDF5</option>
+		<option value="/products/hdf4/" class="ql">HDF4</option>
+		<option value="/tools/" class="ql">Tools</option>
+		<option value="/projects/" class="ql">Projects</option>
+		<option value="/downloads/" class="ql">Downloads</option>
+		<option value="/documentation/" class="ql">Documentation</option>
+	        <option value="/pubs/" class="ql">Publications</option>
+		<option value="/about/" class="ql">Contact Us</option>
+	</select>
+</form>
+<ul style="border:1px solid #c1c1c1; margin-top:25px;"> 
+
+	<li style="background:url(/images/menubg.png); padding:0px; padding-left:7px; color:#27343C; font-weight:500; text-align:left;">
+	LINKS</li><li><a href="https://www.hdfgroup.org/">Main Website</a></li><li><a  href="/HDF5/whatishdf5.html">What is HDF5?</a></li><li><a  href="/about/HDF5Brochure_2012.pdf">Online Brochure</a></li><li><a  href="/downloads/index.html">Downloads</a></li><li><a  href="/HDF5/doc/index.html">Documentation</a></li><li><a  href="/products/hdf5_tools/">Software using HDF5</a></li><li><a  href="/HDF5/users5.html">HDF5 Users</a></li><li><a  href="/HDF5/hdf5-files.html">Sample HDF5 Files</a></li><li><a  href="/HDF5/acknowledge5.html">Acknowledgments</a></li><li><a  href="/products/licenses.html">Licenses</a></li></ul> 
+
+</div>
+
+<!--END: SIDE_BAR -->
+
+<!--START: CONTENT -->
+<div id="content">
+<p><font color="red"><center><strong>This web site is no longer maintained (but will remain online).<br /> Please see The HDF Group's new <a href="https://portal.hdfgroup.org">Support Portal</a> for the latest information.</strong></center></font></p>
+	<div class=bc><p style="color:orange; ";><a href="/" title="HOME">HOME</a> &gt; <a href="/HDF5/" title="HDF5">HDF5</a> &gt; <a href="/HDF5/examples/" title="EXAMPLES">EXAMPLES</a></p></div><fieldset><h1>HDF5 Python Examples by API</h1></fieldset>
+
+
+<table border=2 >
+   <tr bgcolor=#e1e1e1>
+      <td width=100 height=25>
+      &nbsp; &nbsp;<a href="#dset"><strong>Datasets</strong></a> 
+      </td>
+      <td width=100 height=25>
+      &nbsp; &nbsp;<a href="#grps"><strong>Groups</strong></a>
+      </td>
+      <td width=100 height=25>
+      &nbsp; &nbsp;<a href="#dtyp"><strong>Datatypes</strong></a>
+      </td>
+   </tr>
+  </table>
+
+<p>The following examples were generously provided by John Evans.</p>
+<p>Also see <a href="py.html">Additional Python Examples</a> for more advanced examples not currently
+found on this page. 
+</p>
+
+<hr />
+<!--
+<table border=0; style="margin:14px ; font-size:14px">
+<tr>
+<td> </td>
+<td> <a href="./hdf5-examples.tar.gz">DOWNLOAD</a> compressed file of  C &amp; FORTRAN Examples by API (for 1.8 and 1.6)
+</td>
+</tr>
+</table>
+
+<table border=1 >
+   <tr bgcolor=#ccdddd>
+      <td width=140 height=35>
+      &nbsp; &nbsp;<a href="#prop">Property Lists</a> 
+      </td>
+      <td width=140 height=35>
+      &nbsp; &nbsp; &nbsp; <a href="#attr">Attributes</a>
+      </td>
+   </tr>
+  </table>
+<table border=0; style="margin:14px ; font-size:14px">
+-->
+
+
+<a name="dset"></a>
+<h3>Datasets:</h3>
+<p>
+
+<table border=0>
+<tr bgcolor="#ccddcc">
+ <td><strong>Description</strong></td>
+ <td><strong>High Level</strong></td>
+ <td><strong>Low Level</strong></td>
+</tr>
+
+<tr>
+ <td>Set Space Allocation Time for Dataset: </td>
+ <td> &nbsp;</td>
+ <td><a href="/ftp/HDF5/examples/python/hdf5examples-py/low_level/h5ex_d_alloc.py">h5ex_d_alloc.py</a></td>
+</tr>
+
+<tr>
+ <td>Read / Write Dataset using Fletcher32 Checksum Filter: </td>
+ <td><a href="/ftp/HDF5/examples/python/hdf5examples-py/high_level/h5ex_d_checksum.py">h5ex_d_checksum.py</a>
+ <td><a href="/ftp/HDF5/examples/python/hdf5examples-py/high_level/h5ex_d_checksum.py">h5ex_d_checksum.py</a> </td>
+</tr>
+
+<tr>
+ <td>Read / Write Chunked Dataset:</td>
+ <td> &nbsp;</td>
+ <td><a href="/ftp/HDF5/examples/python/hdf5examples-py/low_level/h5ex_d_chunk.py">h5ex_d_chunk.py</a></td>
+</tr>
+
+<tr>
+ <td>Read / Write Compact Dataset:</td>
+ <td> &nbsp;</td>
+ <td><a href="/ftp/HDF5/examples/python/hdf5examples-py/low_level/h5ex_d_compact.py">h5ex_d_compact.py</a></td>
+</tr>
+
+<!--
+<tr>
+ <td>Read / Write to External Dataset:</td>
+ <td> <a href="/ftp/HDF5/examples/python/hdf5examples-py/h5ex_d_extern.py">h5ex_d_extern.py</a></td>
+</tr>
+-->
+
+<tr>
+ <td>Read / Write Dataset w/ Fill Value:</td>
+ <td><a href="/ftp/HDF5/examples/python/hdf5examples-py/high_level/h5ex_d_fillvalue.py">h5ex_d_fillvalue.py</a></td>  
+ <td><a href="/ftp/HDF5/examples/python/hdf5examples-py/low_level/h5ex_d_fillvalue.py">h5ex_d_fillvalue.py</a></td>  
+</tr>
+
+<tr>
+ <td>Read / Write GZIP Compressed Dataset:</td>
+ <td><a href="/ftp/HDF5/examples/python/hdf5examples-py/high_level/h5ex_d_gzip.py">h5ex_d_gzip.py</a></td>
+ <td><a href="/ftp/HDF5/examples/python/hdf5examples-py/low_level/h5ex_d_gzip.py">h5ex_d_gzip.py</a></td>
+</tr>
+
+<tr>
+ <td>Read / Write Data by Hyperslabs:</td>
+ <td> &nbsp;</td>
+ <td><a href="/ftp/HDF5/examples/python/hdf5examples-py/low_level/h5ex_d_hyper.py">h5ex_d_hyper.py</a></td>
+</tr>
+
+<tr>
+ <td>Read / Write Dataset using LZF compression:</td>
+ <td><a href="/ftp/HDF5/examples/python/hdf5examples-py/high_level/h5ex_d_lzf.py">h5ex_d_lzf.py</a></td>
+ <td><a href="/ftp/HDF5/examples/python/hdf5examples-py/low_level/h5ex_d_lzf.py">h5ex_d_lzf.py</a></td>
+</tr>
+
+<!--
+<tr>
+ <td>Read / Write Dataset with n-bit Filter:</td>
+ <td> <a href="/ftp/HDF5/examples/python/hdf5examples-py/h5ex_d_nbit.py">h5ex_d_nbit.py</a></td> 
+</tr>
+-->
+
+<tr>
+ <td>Read / Write Integer Dataset:</td>
+ <td><a href="/ftp/HDF5/examples/python/hdf5examples-py/high_level/h5ex_d_rdwr.py">h5ex_d_rdwr.py</a></td> 
+ <td><a href="/ftp/HDF5/examples/python/hdf5examples-py/low_level/h5ex_d_rdwr.py">h5ex_d_rdwr.py</a></td> 
+</tr>
+
+<tr>
+ <td>Read / Write Dataset w/ Shuffle Filter and GZIP Compression:</td>
+ <td><a href="/ftp/HDF5/examples/python/hdf5examples-py/high_level/h5ex_d_shuffle.py">h5ex_d_shuffle.py</a></td>
+ <td><a href="/ftp/HDF5/examples/python/hdf5examples-py/low_level/h5ex_d_shuffle.py">h5ex_d_shuffle.py</a></td>
+</tr>
+
+<!--
+<tr>
+ <td>Read / Write Dataset using Scale-Offset Filter (float):</td>
+ <td><a href="/ftp/HDF5/examples/python/hdf5examples-py/h5ex_d_sofloat.py">h5ex_d_sofloat.py</a> </td> 
+</tr>
+
+<tr>
+ <td>Read / Write Dataset using Scale-Offset Filter (integer):</td>
+ <td><a href="/ftp/HDF5/examples/python/hdf5examples-py/h5ex_d_soint.py">h5ex_d_soint.py</a>  </td> 
+</tr>
+-->
+<tr>
+ <td>Read / Write Dataset using SZIP Compression:</td>
+ <td> &nbsp;</td>
+ <td><a href="/ftp/HDF5/examples/python/hdf5examples-py/low_level/h5ex_d_szip.py">h5ex_d_szip.py</a></td> 
+</tr>
+
+<!--
+<tr>
+ <td>Read / Write Dataset using Data Transform Expression:</td>
+ <td> <a href="/ftp/HDF5/examples/python/hdf5examples-py/h5ex_d_transform.py">h5ex_d_transform.py</a></td> 
+</tr>
+-->
+
+<tr>
+ <td>Read / Write Unlimited Dimension Dataset:</td>
+ <td><a href="/ftp/HDF5/examples/python/hdf5examples-py/high_level/h5ex_d_unlimadd.py">h5ex_d_unlimadd.py</a></td> 
+ <td><a href="/ftp/HDF5/examples/python/hdf5examples-py/low_level/h5ex_d_unlimadd.py">h5ex_d_unlimadd.py</a></td> 
+</tr>
+
+
+<tr>
+ <td>Read / Write GZIP Compressed Unlimited Dimension Dataset: &nbsp;</td>
+ <td> &nbsp;</td>
+ <td><a href="/ftp/HDF5/examples/python/hdf5examples-py/low_level/h5ex_d_unlimgzip.py">h5ex_d_unlimgzip.py</a></td> 
+</tr>
+
+<tr>
+ <td>Read / Write / Edit Unlimited Dimension Dataset:</td>
+ <td><a href="/ftp/HDF5/examples/python/hdf5examples-py/high_level/h5ex_d_unlimmod.py">h5ex_d_unlimmod.py</a></td>
+ <td><a href="/ftp/HDF5/examples/python/hdf5examples-py/low_level/h5ex_d_unlimmod.py">h5ex_d_unlimmod.py</a></td>
+</tr>
+
+<tr>
+ <td>Use Dynamic Array to Read Data:</td>
+ <td><a href="/ftp/HDF5/examples/python/hdf5examples-py/high_level/h5ex_d_unlimadd.py">h5ex_d_unlimadd.py</a></td> 
+ <td><a href="/ftp/HDF5/examples/python/hdf5examples-py/low_level/h5ex_d_unlimadd.py">h5ex_d_unlimadd.py</a></td> 
+</tr>
+
+</table>
+<br/>
+</p>
+
+
+<a name="grps"></a>
+<h3>Groups:</h3>
+
+
+<p>
+<table border=0>
+<tr bgcolor="#ccddcc">
+ <td><strong>Description</strong></td>
+ <td><strong>High Level</strong></td>
+ <td><strong>Low Level</strong></td>
+</tr>
+
+<!--
+<tr>
+ <td>Create "compact-or-indexed" Format Groups:</td>
+ <td> <a href="/ftp/HDF5/examples/python/hdf5examples-py/h5ex_g_compact.py">h5ex_g_compact.py</a> </td>
+
+</tr>
+
+<tr>
+ <td>Track links in a Group by Creation Order:</td>
+ <td><a href="/ftp/HDF5/examples/python/hdf5examples-py/h5ex_g_corder.py">h5ex_g_corder.py</a></td>
+</tr>
+-->
+
+<tr>
+ <td>Create / Open / Close a Group:</td>
+ <td><a href="/ftp/HDF5/examples/python/hdf5examples-py/high_level/h5ex_g_create.py">h5ex_g_create.py</a></td>
+ <td><a href="/ftp/HDF5/examples/python/hdf5examples-py/low_level/h5ex_g_create.py">h5ex_g_create.py</a></td>
+</tr>
+
+<tr>
+ <td>Create Intermediate Groups:</td>
+ <td><a href="/ftp/HDF5/examples/python/hdf5examples-py/high_level/h5ex_g_intermediate.py">h5ex_g_intermediate.py</a> 
+ <td><a href="/ftp/HDF5/examples/python/hdf5examples-py/low_level/h5ex_g_intermediate.py">h5ex_g_intermediate.py</a> 
+ </td>
+</tr>
+
+<!--
+<tr>
+ <td>Iterate over Groups w/ H5Literate:</td>
+ <td><a href="/ftp/HDF5/examples/python/hdf5examples-py/h5ex_g_iterate.py">h5ex_g_iterate.py</a></td>
+
+</tr>
+
+<tr>
+ <td>Set Conditions to Convert between Compact and Dense Groups: &nbsp;</td>
+ <td><a href="/ftp/HDF5/examples/python/hdf5examples-py/h5ex_g_phase.py">h5ex_g_phase.py</a></td>
+
+</tr>
+
+<tr>
+ <td>Recursively Traverse a File w/ H5Literate:</td>
+ <td><a href="/ftp/HDF5/examples/python/hdf5examples-py/h5ex_g_traverse.py">h5ex_g_traverse.py</a></td>
+</tr>
+-->
+
+<tr>
+ <td>Recursively Traverse a File w/ H5Ovisit and H5Lvisit:</td>
+ <td> &nbsp;</td>
+ <td><a href="/ftp/HDF5/examples/python/hdf5examples-py/low_level/h5ex_g_visit.py">h5ex_g_visit.py</a></td>
+</tr>
+
+</table>
+<br />
+</p>
+
+
+<a name="dtyp"></a>
+<h3>Datatypes:</h3>
+
+<p>
+<table border=0>
+<tr bgcolor="#ccddcc">
+ <td><strong>Description</strong></td>
+ <td><strong>High Level</strong></td>
+ <td><strong>Low Level</strong></td>
+</tr>
+
+<!--
+<tr>
+ <td>Read / Write Array Datatypes (Attribute):</td>
+ <td><a href="/ftp/HDF5/examples/python/hdf5examples-py/h5ex_t_arrayatt.py">h5ex_t_arrayatt.py</a></td>
+
+</tr>
+
+<tr>
+ /python/hdf5examples-py/td>Read / Write Array Datatypes (Dataset):</td>
+ <td><a href="/ftp/HDF5/examples/python/hdf5examples-py/h5ex_t_array.py">h5ex_t_array.py</a></td>
+
+</tr>
+
+<tr>
+ <td>Read / Write Bitfield Datatypes (Attribute):</td>
+ <td><a href="/ftp/HDF5/examples/python/hdf5examples-py/h5ex_t_bitatt.py">h5ex_t_bitatt.py</a></td>
+
+</tr>
+
+<tr>
+ <td>Read / Write Bitfield Datatypes (Dataset):</td>
+ <td><a href="/ftp/HDF5/examples/python/hdf5examples-py/h5ex_t_bit.py">h5ex_t_bit.py</a></td>
+
+</tr>
+-->
+<tr>
+ <td>Read / Write Compound Datatypes (Attribute):</td> 
+ <td><a href="/ftp/HDF5/examples/python/hdf5examples-py/high_level/h5ex_t_cmpdatt.py">h5ex_t_cmpdatt.py</a></td>
+ <td> &nbsp;</td>
+
+</tr>
+
+<tr>
+ <td>Read / Write Compound Datatypes (Dataset):</td>
+ <td><a href="/ftp/HDF5/examples/python/hdf5examples-py/high_level/h5ex_t_cmpd.py">h5ex_t_cmpd.py</a></td>
+ <td> &nbsp;</td>
+
+</tr>
+<!--
+
+<tr>
+ <td>Commit Named Datatype and Read Back:</td>
+ <td> <a href="/ftp/HDF5/examples/python/hdf5examples-py/h5ex_t_commit.py">h5ex_t_commit.py</a></td>
+
+</tr>
+
+<tr>
+ <td>Convert Between Datatypes in Memory:</td>
+ <td> <a href="/ftp/HDF5/examples/python/hdf5examples-py/h5ex_t_convert.py">h5ex_t_convert.py</a></td>
+
+</tr>
+
+<tr>
+ <td>Read / Write Complex Compound Datatype (Attribute):</td>
+ <td> <a href="/ftp/HDF5/examples/python/hdf5examples-py/h5ex_t_cpxcmpdatt.py">h5ex_t_cpxcmpdatt.py</a>&nbsp;</td>
+
+</tr>
+
+<tr>
+ <td>Read / Write Complex Compound Datatype (Dataset):</td>
+ <td> <a href="/ftp/HDF5/examples/python/hdf5examples-py/h5ex_t_cpxcmpd.py">h5ex_t_cpxcmpd.py</a></td>
+
+</tr>
+-->
+
+<tr>
+ <td>Read / Write Enumerated Datatypes (Attribute):</td>
+ <td> <a href="/ftp/HDF5/examples/python/hdf5examples-py/high_level/h5ex_t_enumatt.py">h5ex_t_enumatt.py</a></td>
+ <td> &nbsp;</td>
+
+</tr>
+
+<tr>
+ <td>Read / Write Enumerated Datatypes (Dataset):</td>
+ <td> <a href="/ftp/HDF5/examples/python/hdf5examples-py/high_level/h5ex_t_enum.py">h5ex_t_enum.py</a></td>
+ <td> &nbsp;</td>
+</tr>
+
+<tr>
+ <td>Read / Write Floating Point Datatype (Attribute):</td>
+ <td><a href="/ftp/HDF5/examples/python/hdf5examples-py/high_level/h5ex_t_floatatt.py">h5ex_t_floatatt.py</a></td>
+ <td><a href="/ftp/HDF5/examples/python/hdf5examples-py/low_level/h5ex_t_floatatt.py">h5ex_t_floatatt.py</a></td>
+</tr>
+
+<tr>
+ <td>Read / Write Floating Point Datatype (Dataset):</td>
+ <td><a href="/ftp/HDF5/examples/python/hdf5examples-py/high_level/h5ex_t_float.py">h5ex_t_float.py</a></td>
+ <td><a href="/ftp/HDF5/examples/python/hdf5examples-py/low_level/h5ex_t_float.py">h5ex_t_float.py</a></td>
+</tr>
+
+<tr>
+ <td>Read / Write Integer Datatype (Attribute):</td>
+ <td><a href="/ftp/HDF5/examples/python/hdf5examples-py/high_level/h5ex_t_intatt.py">h5ex_t_intatt.py</a></td>
+ <td><a href="/ftp/HDF5/examples/python/hdf5examples-py/low_level/h5ex_t_intatt.py">h5ex_t_intatt.py</a></td>
+</tr>
+
+<tr>
+ <td>Read / Write Integer Datatype (Dataset):</td>
+ <td><a href="/ftp/HDF5/examples/python/hdf5examples-py/high_level/h5ex_t_int.py">h5ex_t_int.py</a></td>
+ <td><a href="/ftp/HDF5/examples/python/hdf5examples-py/low_level/h5ex_t_int.py">h5ex_t_int.py</a></td>
+</tr>
+
+<tr>
+ <td>Read / Write Object References (Attribute):</td>
+ <td> <a href="/ftp/HDF5/examples/python/hdf5examples-py/high_level/h5ex_t_objrefatt.py">h5ex_t_objrefatt.py</a></td>
+<td> &nbsp; </td>
+</tr>
+
+<tr>
+ <td>Read / Write Object References (Dataset):</td>
+ <td> <a href="/ftp/HDF5/examples/python/hdf5examples-py/high_level/h5ex_t_objref.py">h5ex_t_objref.py</a></td>
+<td> &nbsp; </td>
+</tr>
+
+<tr>
+ <td>Read / Write Opaque Datatypes (Attribute):</td>
+ <td><a href="/ftp/HDF5/examples/python/hdf5examples-py/high_level/h5ex_t_opaqueatt.py">h5ex_t_opaqueatt.py</a></td>
+<td> &nbsp; </td>
+</tr>
+
+<tr>
+ <td>Read / Write Opaque Datatypes (Dataset):</td>
+ <td> <a href="/ftp/HDF5/examples/python/hdf5examples-py/high_level/h5ex_t_opaque.py">h5ex_t_opaque.py</a></td>
+<td> &nbsp; </td>
+</tr>
+
+<!--
+<tr>
+ <td>Read / Write Region References (Attribute):</td>
+ <td><a href="/ftp/HDF5/examples/python/hdf5examples-py/h5ex_t_regrefatt.py">h5ex_t_regrefatt.py</a></td>
+</tr>
+
+<tr>
+ <td>Read / Write Region References (Dataset):</td>
+ <td><a href="/ftp/HDF5/examples/python/hdf5examples-py/h5ex_t_regref.py">h5ex_t_regref.py</a></td>
+</tr>
+-->
+
+<tr>
+ <td>Read / Write String Datatype (Attribute):</td>
+ <td><a href="/ftp/HDF5/examples/python/hdf5examples-py/high_level/h5ex_t_stringatt.py">h5ex_t_stringatt.py</a></td>
+ <td><a href="/ftp/HDF5/examples/python/hdf5examples-py/low_level/h5ex_t_stringatt.py">h5ex_t_stringatt.py</a></td>
+</tr>
+
+<tr>
+ <td>Read / Write String Datatype (Dataset):</td>
+ <td><a href="/ftp/HDF5/examples/python/hdf5examples-py/high_level/h5ex_t_string.py">h5ex_t_string.py</a></td>
+ <td><a href="/ftp/HDF5/examples/python/hdf5examples-py/low_level/h5ex_t_string.py">h5ex_t_string.py</a></td>
+</tr>
+
+<tr>
+ <td>Read / Write Variable Length Datatype (Attribute):</td>
+ <td><a href="/ftp/HDF5/examples/python/hdf5examples-py/high_level/h5ex_t_vlenatt.py">h5ex_t_vlenatt.py</a></td>
+ <td> &nbsp; </td>
+
+</tr>
+
+<tr>
+ <td>Read / Write Variable Length Datatype (Dataset):</td>
+ <td><a href="/ftp/HDF5/examples/python/hdf5examples-py/high_level/h5ex_t_vlen.py">h5ex_t_vlen.py</a></td>
+ <td> &nbsp; </td>
+</tr>
+
+<tr>
+ <td>Read / Write Variable Length String Datatype (Attribute): &nbsp;</td>
+ <td><a href="/ftp/HDF5/examples/python/hdf5examples-py/high_level/h5ex_t_vlstringatt.py">h5ex_t_vlstringatt.py</a></td>
+ <td><a href="/ftp/HDF5/examples/python/hdf5examples-py/low_level/h5ex_t_vlstringatt.py">h5ex_t_vlstringatt.py</a></td>
+</tr>
+
+<tr>
+ <td>Read / Write Variable Length String Datatype (Dataset):</td>
+ <td><a href="/ftp/HDF5/examples/python/hdf5examples-py/high_level/h5ex_t_vlstring.py">h5ex_t_vlstring.py</a></td>
+ <td><a href="/ftp/HDF5/examples/python/hdf5examples-py/low_level/h5ex_t_vlstring.py">h5ex_t_vlstring.py</a></td>
+</tr>
+
+</table>
+
+<hr />
+<!--
+<a name="prop"></a>
+<h3>Property Lists:</h3>
+<p>
+
+<table border=0>
+<tr>
+ <td>Create a dense attribute > 64KB: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </td>
+ <td><a href="/ftp/HDF5/examples/examples-by-api/other-apis/h5ex_p_attdense.c">h5ex_p_attdense.c</a></td>
+</tr>
+</table>
+
+<hr />
+<a name="attr"></a>
+<h3>Attributes:</h3>
+
+<table border=0>
+<tr>
+ <td>Create a dense attribute > 64KB:  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </td>
+ <td><a href="/ftp/HDF5/examples/examples-by-api/other-apis/h5ex_p_attdense.c">h5ex_p_attdense.c</a></td>
+</tr>
+</table>
+
+-->
+
+<i>
+- - Last modified: 04 November 2016</i>
+	   </div>
+	   <!--END: CONTENT -->
+<!--END: WRAPPER -->
+<script src="/scriptaculous/gatag.js" type="text/javascript"></script>
+
+<!-- <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script> -->
+				
+<!--
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-3782034-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+-->
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-3782034-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+</body>
+</html>
+

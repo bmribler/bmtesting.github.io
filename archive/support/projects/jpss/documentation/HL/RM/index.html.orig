@@ -1,0 +1,2698 @@
+<html>
+<head><title>
+HDF5 High-level Region and Hyperslab Functions
+</title>
+<link href="ed_styles/RMelect.css" rel="stylesheet" type="text/css">
+</head> 
+<!-- NEW PAGE -->
+<!-- HEADER RIGHT " " -->
+
+<body bgcolor="#FFFFFF">
+
+<!-- #BeginLibraryItem "/ed_libs/styles_RM.lbi" -->
+<!--
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+  * Copyright by The HDF Group.                                               *
+  * All rights reserved.                                                      *
+  *                                                                           *
+  * This file is part of the REGION High-Level HDF5 APIs.  The full           *
+  * copyright notice, including terms governing use, modification, and        *
+  * redistribution, is contained in the file COPYING, which can be found at   *
+  * the root of the source code distribution tree and in the documentation    *
+  * directory (doc/html/).  If you do not have access to this file, you may   *
+  * request a copy of "the hl_region High-Level HDF5 APIs copyright and       *
+  * license statement" from help@hdfgroup.org.                                *
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ -->
+<!-- #EndLibraryItem -->
+
+<center>
+<a name="hl_region_top">
+<hr>
+</a>
+<h1>HDF5 High-level Functions for Region References, Hyperslabs, and Bit-fields</h1>
+<hr>
+</center>
+
+<!--
+The following reference manual entries describe 
+high-level HDF5 C and Fortran APIs 
+for handling data pointed to by region references and 
+for working with bit-fields and hypeslab selections.
+See&nbsp;  <a href="/HDF5/doc">
+<code>https://support.hdfgroup.org/HDF5/doc</code></a>&nbsp;
+for documentation of the base HDF5 Library.
+-->
+
+The following reference manual entries describe 
+high-level HDF5 C and Fortran APIs 
+for working with region references, hyperslab selections, and bit-fields.
+These functions were created as part of a project supporting 
+NPP/NPOESS Data Production and Exploitation
+(<a href="../../">project</a>, 
+<a href="https://gamma.hdfgroup.org/ftp/pub/outgoing/NPOESS/source">software</a>).
+While they were written to facilitate access to NPP, NPOESS, and JPSS data 
+in the HDF5 format, these functions may be useful to anyone working 
+with region references, hyperslab selections, or bit-fields.
+
+<p>
+
+Note that these functions are not part of the standard HDF5 distribution; the
+<a href="https://gamma.hdfgroup.org/ftp/pub/outgoing/NPOESS/source">software</a>
+must be separately downloaded and installed.
+For documentation of the underlying HDF5 Library, see&nbsp;  
+<a href="/HDF5/doc">
+<code>https://support.hdfgroup.org/HDF5/doc</code></a>.
+
+<p>
+
+A comprehensive guide to this library, 
+<a href="../UG/NPOESS_HL-UG.pdf"><cite>User Guide to the HDF5 High-level 
+Library for Handling Region References and Hyperslab Selections</cite></a>
+is available at <a 
+href="/projects/jpss/documentation/HL/UG/NPOESS_HL-UG.pdf">
+<code>https://support.hdfgroup.org/projects/jpss/documentation/HL/UG/NPOESS_HL-UG.pdf</code></a>.
+
+<hr>
+<h1>Reference Manual</h1>
+<hr>
+
+
+<table border=0 width="100%">
+<tr><td valign=top width="40%">
+<strong>Region Reference APIs</strong>
+<ul>
+    <li><a href="#H5LRget_region_info">H5LRget_region_info</a>
+    <li><a href="#H5LRread_region">H5LRread_region</a>
+    <li><a href="#H5LRcreate_region_references">H5LRcreate_region_references</a>
+    <li><a href="#H5LRmake_dataset">H5LRmake_dataset</a>
+    <li><a href="#H5LRcopy_region">H5LRcopy_region</a>
+    <li><a href="#H5LRcopy_reference">H5LRcopy_reference</a>
+    <li><a href="#H5LRcreate_ref_to_all">H5LRcreate_ref_to_all</a>
+</ul>
+</td><td>&nbsp;&nbsp;</td><td valign=top>
+<td valign=top width="55%">
+<strong>Hyperslab APIs</strong>
+<ul>
+    <li><a href="#H5LTread_region">H5LTread_region</a>
+    <li><a href="#H5LTcopy_region">H5LTcopy_region</a>
+</ul>
+
+<p>
+<strong>Bit-field API</strong>
+<ul>
+    <li><a href="#H5LTread_bitfield_value">H5LTread_bitfield_value</a>
+</ul>
+</td></tr>
+</table>
+
+<p>
+<strong>C Code Examples</strong>
+<dir>
+<table border=0 width="100%">
+    <tr valign="top" align=center><td>
+        <b>Example</b>
+        </td><td><code>&nbsp;&nbsp;</code></td><td>
+        <b>Description</b>
+        </td><td><code>&nbsp;&nbsp;</code></td><td>
+        <b>Illustrated function(s)</b></td></tr>
+    <tr valign="top"><td>
+        <a href="../examples/ex_lite_read_region.c">
+        <code>ex_lite_read_region.c</code></a>
+        </td><td><code>&nbsp;&nbsp;</code></td><td>
+        Read a dataset region, given a set of corner coordinates
+        </td><td><code>&nbsp;&nbsp;</code></td><td>
+        <code>H5LTread_region</code></td></tr>
+    <tr valign="top"><td>
+        <a href="../examples/ex_regref_read.c">
+        <code>ex_regref_read.c</code></a>
+        </td><td><code>&nbsp;&nbsp;</code></td><td>
+        Create, store and read data associated with region references
+        </td><td><code>&nbsp;&nbsp;</code></td><td>
+        <code>H5LRget_region_info</code>
+        <br>
+        <code>H5LRread_region</code></td></tr>
+    <tr valign="top"><td>
+        <a href="../examples/ex_lite_copy_region.c">
+        <code>ex_lite_copy_region.c</code></a>
+        </td><td><code>&nbsp;&nbsp;</code></td><td>
+        Copy a dataset region
+        </td><td><code>&nbsp;&nbsp;</code></td><td>
+        <code>H5LTcopy_region</code></td></tr>
+    <tr valign="top"><td>
+        <a href="../examples/ex_regref_copy_references.c">
+        <code>ex_regref_copy_references.c</code></a>
+        </td><td><code>&nbsp;&nbsp;</code></td><td>
+        Copy a referenced region and create a new region reference to the copy
+        </td><td><code>&nbsp;&nbsp;</code></td><td>
+        <code>H5LRcopy_references</code></td></tr>
+    <tr valign="top"><td>
+        <a href="../examples/ex_regref_create.c">
+        <code>ex_regref_create.c</code></a>
+        </td><td><code>&nbsp;&nbsp;</code></td><td>
+        Create region references and create a new dataset composed of 
+        data from the referenced regions
+        </td><td><code>&nbsp;&nbsp;</code></td><td>
+        <code>H5LRcreate_region_references</code></td></tr>
+    <tr valign="top"><td>
+        <a href="../examples/ex_ref_to_all.c">
+        <code>ex_ref_to_all.c</code></a>
+        </td><td><code>&nbsp;&nbsp;</code></td><td>
+        Create and write a dataset of region references
+        </td><td><code>&nbsp;&nbsp;</code></td><td>
+        <code>H5LRcreate_ref_to_all</code></td></tr>
+    <tr valign="top"><td>
+        <a href="../examples/ex_bitfield.c">
+        <code>ex_bitfield.c</code></a>
+        </td><td><code>&nbsp;&nbsp;</code></td><td>
+        Read and write quality flag bit-fields 
+        </td><td><code>&nbsp;&nbsp;</code></td><td>
+        <code>H5LTread_bitfield_value</code></td></tr>
+</table>
+</dir>
+
+<p>
+<strong>FORTRAN Code Examples</strong>
+<dir>
+<table border=0 width="100%">
+    <tr valign="top" align=center><td>
+        <b>Example</b>
+        </td><td><code>&nbsp;&nbsp;</code></td><td>
+        <b>Description</b>
+        </td><td><code>&nbsp;&nbsp;</code></td><td>
+        <b>Illustrated function(s)</b></td></tr>
+    <tr valign="top"><td>
+        <a href="../fortran_examples/ex_lite_read_region.f90">
+        <code>ex_lite_read_region.f90</code></a>
+        </td><td><code>&nbsp;&nbsp;</code></td><td>
+        Read a dataset region, given a set of corner coordinates
+        </td><td><code>&nbsp;&nbsp;</code></td><td>
+        <code>H5LTread_region_f</code></td></tr>
+    <tr valign="top"><td>
+        <a href="../fortran_examples/ex_regref_read.f90">
+        <code>ex_regref_read.f90</code></a>
+        </td><td><code>&nbsp;&nbsp;</code></td><td>
+        Create, store and read data associated with region references
+        </td><td><code>&nbsp;&nbsp;</code></td><td>
+        <code>H5LRget_region_info_f</code>
+        <br>
+        <code>H5LRread_region_f</code></td></tr>
+    <tr valign="top"><td>
+        <a href="../fortran_examples/ex_lite_copy_region.f90">
+        <code>ex_lite_copy_region.f90</code></a>
+        </td><td><code>&nbsp;&nbsp;</code></td><td>
+        Copy a dataset region
+        </td><td><code>&nbsp;&nbsp;</code></td><td>
+        <code>H5LTcopy_region_f</code></td></tr>
+    <tr valign="top"><td>
+        <a href="../fortran_examples/ex_regref_copy_reference.f90">
+        <code>ex_regref_copy_reference.f90</code></a>
+        </td><td><code>&nbsp;&nbsp;</code></td><td>
+        Copy a referenced region and create a new region reference to the copy
+        </td><td><code>&nbsp;&nbsp;</code></td><td>
+        <code>H5LRcopy_references_f</code></td></tr>
+    <tr valign="top"><td>
+        <a href="../fortran_examples/ex_regref_create.f90">
+        <code>ex_regref_create.f90</code></a>
+        </td><td><code>&nbsp;&nbsp;</code></td><td>
+        Create region references and create a new dataset composed of 
+        data from the referenced regions
+        </td><td><code>&nbsp;&nbsp;</code></td><td>
+        <code>H5LRcreate_region_references_f</code></td></tr>
+    <tr valign="top"><td>
+        <a href="../fortran_examples/ex_ref_to_all.f90">
+        <code>ex_ref_to_all.f90</code></a>
+        </td><td><code>&nbsp;&nbsp;</code></td><td>
+        Create and write a dataset of region references
+        </td><td><code>&nbsp;&nbsp;</code></td><td>
+        <code>H5LRcreate_ref_to_all_f</code></td></tr>
+    <tr valign="top"><td>
+        <a href="../fortran_examples/ex_bitfield.f90">
+        <code>ex_bitfield.f90</code></a>
+        </td><td><code>&nbsp;&nbsp;</code></td><td>
+        Read and write quality flag bit-fields 
+        </td><td><code>&nbsp;&nbsp;</code></td><td>
+        <code>H5LTread_bitfield_value_f</code></td></tr>
+</table>
+</dir>
+
+<p>
+<strong>RFCs</strong>
+<ul>
+    <li>Region references RFC: 
+        &ldquo;<a href="../RFC/HL-REGREF-RFCv5.pdf">High-Level 
+        Functions for Handling Region References and Hyperslab 
+        Selections</a>&rdquo;
+    <li>Quality flags RFC: 
+        &ldquo;<a href="../RFC/HL-PACKDBITS-RFCv3.pdf">Reading 
+        Bit-field Values </a>&rdquo;
+</ul>
+<br>
+
+<!--
+<i>Alphabetical Listing</i>
+
+<table border="0">
+  <tr>
+
+    <td valign="top">
+	<ul>
+	</ul>
+    </td>
+    
+    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    
+    <td valign="top">
+	<ul>
+	</ul>
+    </td>
+    
+    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    
+    <td valign="top">
+	<ul>
+	</ul>
+    </td>
+  </tr>
+</table>
+-->
+
+<!--
+<br>
+<strong>The FORTRAN90 Interfaces:</strong>
+<br>
+In general, each FORTRAN90 subroutine performs exactly the same task 
+as the corresponding C function.  
+<br>
+
+<table border=0>
+<tr><td valign=top>
+<ul>
+</ul>
+</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign=top>
+<ul>
+</ul>
+</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign=top>
+<ul>
+</ul>
+</td></tr>
+</table>
+-->
+
+
+<!--  ---  ---  ---  ---  ---  ---  ---  ---  ---  ---  ---  -->
+<!--       Include special topic files                       -->
+<!--  ---  ---  ---  ---  ---  ---  ---  ---  ---  ---  ---  -->
+
+
+<!--  ---  ---  ---  ---  ---  ---  ---  ---  ---  ---  ---  -->
+<!--       Include function files                            -->
+<!--  ---  ---  ---  ---  ---  ---  ---  ---  ---  ---  ---  -->
+
+<hr>
+<hr>
+<h2>Region Reference APIs</h2>
+<hr>
+<!-- NEW PAGE -->
+<!-- HEADER RIGHT "H5LRget_region_info" -->
+<hr>
+<dl>
+  <dt><div align=right><font color=999999 size=-1><i>
+      Last modified: 7 July 2010 
+      </i></font></div>
+
+  <dt><strong>Name:</strong> <a name="H5LRget_region_info">H5LRget_region_info</a>
+
+  <dt><strong>Signature:</strong>
+    <dd><em>herr_t </em><code>H5LRget_region_info</code>(
+            <em>hid_t </em><code>obj_id</code>,
+            <em>const hdset_reg_ref_t </em><code>*ref</code>,
+            <em>size_t </em><code>*len</code>,
+            <em>char </em><code>*path</code>,
+            <em>int</em><code>*rank</code>,
+            <em>hid_t </em><code>*dtype</code>,
+            <em>H5S_sel_type </em><code>*sel_type</code>,
+            <em>size_t </em><code>*numelem</code>,
+            <em>hsize_t </em><code>*buf</code>
+        )
+
+  <p>
+  <dt><strong>Purpose:</strong>
+    <dd>Retrieves information about the data a region reference points to.
+
+  <p>
+  <dt><strong>Description:</strong>
+    <dd><code>H5LRget_region_info</code>
+      queries information about the data pointed by a region reference <code>ref</code>. It returns one of the absolute paths to a dataset, length of the path, dataset&rsquo;s rank and datatype, description of the referenced region and type of the referenced region. Any output argument can be NULL if that argument does not need to be returned.
+      <p>
+The parameter <code>obj_id</code> is an identifier for any object in the HDF5 file containing the referenced object. For example, it can be an identifier of a dataset the region reference belongs to or an identifier of an HDF5 file the dataset with region references is stored in.
+      <p>
+The parameter <code>ref</code> is a region reference to query.
+      <p>
+The parameter <code>path</code> is a pointer to application allocated buffer of size <code>len+1</code> to return an absolute path to a dataset the region reference points to.
+      <p>
+The parameter <code>len</code> is a length of absolute path string plus the \0 string terminator. If <code>path</code> parameter is NULL, actual length of the path (+1 for \0 string terminator) is returned to application and can be used to allocate buffer path of an appropriate length <code>len</code>.
+      <p>
+The parameter <code>sel_type</code> describes the type of the selected region. Possible values can be <code>H5S_SEL_POINTS</code> for point selection and <code>H5S_SEL_HYPERSLABS</code> for hyperslab selection.
+      <p>
+The parameter <code>numelem</code> describes how many elements will be placed in the buffer <code>buf</code>. The number should be interpreted using the value of <code>sel_type</code>.
+      <p>
+If value of <code>sel_type</code> is <code>H5S_SEL_HYPERSLABS</code>, the parameter <code>buf</code> contains <code>numelem</code> blocks of the coordinates for each simple hyperslab of the referenced region. Each block has length <code>2*rank</code> and is organized as follows: <"start" coordinate>, immediately followed by <"opposite" corner coordinate>. The total size of the buffer to hold the description of the region will be <code>2*rank*numelem</code>. If region reference points to a contiguous sub-array, then the value of <code>numelem</code> is 1 and the block contains coordinates of the upper left and lower right corners of the sub-array (or simple hyperslab).
+      <p>
+If value of <code>sel_type</code> is <code>H5S_SEL_POINTS</code>, the parameter <code>buf</code> contains <code>numelem</code> blocks of the coordinates for each selected point of the referenced region. Each block has length <code>rank</code> and contains coordinates of the element. The total size of the buffer to hold the description of the region will be <code>rank*numelem</code>.
+
+  <p>
+  <dt><strong>Parameters:</strong>
+    <dd>
+    <table>
+      <tr valign="top">
+        <td><em>hid_t </em><code>obj_id</code>
+            </td><td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        <td>IN: Identifier of any object in an HDF5 file the region reference belongs to.
+            </td></tr>
+      <tr valign="top">
+        <td><em>const hdset_reg_ref_t </em><code>*ref</code>
+            </td><td>&nbsp;</td>
+        <td>IN: Region reference to query.
+            </td></tr>
+      <tr valign="top">
+        <td><em>size_t </em><code>*len</code>
+            </td><td>&nbsp;</td>
+        <td>IN/OUT: Size of the buffer to store path in. NOTE: if <code>*path</code> is not NULL then <code>*len</code> must be the appropriate length
+      <tr valign="top">
+        <td><em>char </em><code>*path</code>
+            </td><td>&nbsp;</td>
+        <td>OUT: Full path that a region reference points to.
+      <tr valign="top">
+        <td><em>int </em><code>*rank</code>
+            </td><td>&nbsp;</td>
+        <td>OUT: The number of dimensions of the dataset dimensions of the dataset pointed by region reference.
+      <tr valign="top">
+        <td><em>hid_t </em><code>*dtype</code>
+            </td><td>&nbsp;</td>
+        <td>OUT: Datatype of the dataset pointed by the region reference.
+      <tr valign="top">
+        <td><em>H5S_sel_type </em><code>*sel_type</code>
+            </td><td>&nbsp;</td>
+        <td>OUT: Type of the selection (point or hyperslab).
+      <tr valign="top">
+        <td><em>size_t </em><code>*numelem</code>
+            </td><td>&nbsp;</td>
+        <td>IN/OUT: Number of coordinate blocks or selected elements.
+      <tr valign="top">
+        <td><em>hsize_t </em><code>*buf</code>
+            </td><td>&nbsp;</td>
+        <td>OUT: Buffer containing description of the region pointed by region reference.
+    </table>
+
+  <p>
+  <dt><strong>Returns:</strong>
+    <dd>Returns a non-negative value if successful;
+        otherwise returns a negative value.
+  <p>
+<dt><strong>Fortran90 Interface:</strong>  H5LRget_region_info_f: USE H5HL_REGION
+    <dd>
+    <pre>
+SUBROUTINE H5LRget_region_info_f(obj_id, ref, error, &               
+     length, path, rank, dtype, sel_type, numelem, buf)
+   IMPLICIT NONE
+
+  INTEGER(hid_t), INTENT(IN) :: obj_id                              ! Identifier of any object in an HDF5 file the region 
+                                                                    !  reference belongs to.
+  TYPE(hdset_reg_ref_t_f), INTENT(IN) :: ref                        ! Region reference to query
+  INTEGER, INTENT(OUT) :: error                                     ! Error code:
+                                                                    !  0 on success and -1 on failure
+  INTEGER(size_t), INTENT(INOUT), OPTIONAL :: length                ! Size of the buffer to store path in
+                                                                    ! NOTE: If <code>path</code> is present then <code>length</code>
+                                                                    !       is required and must be large enough to hold <code>path</code>.
+                                                                    !       Returns the trimmed length of <code>path</code>
+  CHARACTER(LEN=*), INTENT(INOUT), DIMENSION(1:1), OPTIONAL :: path ! Full path that a region reference points to
+  INTEGER, INTENT(OUT), OPTIONAL :: rank                            ! The number of dimensions of the dataset dimensions 
+                                                                    !  of the dataset pointed by region reference
+  INTEGER(hid_t), INTENT(OUT), OPTIONAL :: dtype                    ! Datatype of the dataset pointed by the region reference
+  INTEGER, INTENT(OUT), OPTIONAL :: sel_type                        ! Type of the selection (point or hyperslab)
+  INTEGER(size_t), INTENT(INOUT), OPTIONAL :: numelem               ! Number of coordinate blocks or selected elements
+  INTEGER(hsize_t), DIMENSION(*), OPTIONAL :: buf                   ! Buffer containing description of the region pointed 
+                                                                    !  by region reference
+END SUBROUTINE H5LRget_region_info_f
+    </pre>
+  <p>
+
+
+  <p>
+  <dt><strong>History:</strong>
+    <dd><table width="90%">
+        <tr>
+          <td valign="top" align="left" width="10%">
+            <strong>Release</strong>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <td valign="top" align="left">
+            <strong>Change</strong></td>
+        </tr>
+        <tr>
+          <td valign="top">1.0</td>
+          <td valign="top">
+            C function introduced in this release.</td>
+        </tr>
+        <tr>
+          <td valign="top">1.1</td>
+          <td valign="top">
+            Fortran wrapper introduced in this release.</td>
+        </tr>
+        </table>
+
+</dl>
+
+
+    <div align=right><font color=999999 size=-1><i>
+    (<a href="#hl_region_top">Top</a>)
+    </i></font></div>
+<!-- NEW PAGE -->
+<!-- HEADER RIGHT "H5LRread_region" -->
+<hr>
+<dl>
+  <dt><div align=right><font color=999999 size=-1><i>
+      Last modified: 7 July 2010 
+      </i></font></div>
+
+  <dt><strong>Name:</strong> <a name="H5LRread_region">H5LRread_region</a>
+  <dt><strong>Signature:</strong>
+    <dd><em>herr_t </em><code>H5LRread_region</code>(
+            <em>hid_t</em> <code>loc_id</code>,
+            <em>const hdset_reg_ref_t *</em><code>ref</code>,
+            <em>hid_t</em> <code>mem_type</code>,
+            <em>size_t *</em><code>num_elem</code>,
+            <em>void *</em><code>buf</code>
+        )
+
+  <p>
+  <dt><strong>Purpose:</strong>
+    <dd>Retrieves raw data pointed to by a region reference 
+        to an application buffer.
+
+<!--
+  <p>
+  <dt><strong>Motivation:</strong>
+    <dd><code>H5LRread_region</code> 
+      is used in these circumstances to achieve these things and/or 
+      to address these problems.  
+-->
+
+  <p>
+  <dt><strong>Description:</strong>
+    <dd><code>H5LRread_region</code> 
+        reads data pointed to by the region reference <code>ref</code>
+        into the buffer <code>buf</code>.
+        <p>
+        <code>num_elem</code> specifies the number of elements 
+        to be read into <code>buf</code>. 
+        When the size of the reference region is unknown, 
+        <code>H5LRread_region</code> can be called with 
+        <code>buf</code> set to <code>NULL</code>; 
+        the number of elements in the referenced region 
+        will be returned in <code>num_elem</code>.
+        <p>
+        The buffer <code>buf</code> must be big enough to hold 
+        <code>num_elem</code> elements of type <code>mem_type</code>. 
+        For example, if data is read from the referenced region into 
+        an integer buffer, <code>mem_type</code> should be 
+        <code>H5T_NATIVE_INT</code> and the buffer must be at least 
+        <code>&nbsp;sizeof(int) * num_elem&nbsp;</code> bytes in size. 
+        This buffer must be allocated by the application. 
+
+  <p>
+  <dt><strong>Parameters:</strong>
+    <dd>
+    <table>
+      <tr valign="top">
+        <td><em>hid_t</em> <code>loc_id</code>
+            </td><td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        <td>IN: File identifier for the HDF5 file containing the 
+            dataset with the referenced region or 
+            an object identifier for any object in that file
+            </td></tr>
+      <tr valign="top">
+        <td><em>const&nbsp;hdset_reg_ref_t&nbsp;*</em><code>ref</code>
+            </td><td>&nbsp;</td>
+        <td>IN: Region reference specifying data to be read in
+            </td></tr>
+      <tr valign="top">
+        <td><em>hid_t</em> <code>mem_type</code>
+            </td><td>&nbsp;</td>
+        <td>IN: Memory datatype of data read from referenced region 
+                into the application buffer
+            </td></tr>
+      <tr valign="top">
+        <td><em>size_t *</em><code>num_elem</code>
+            </td><td>&nbsp;</td>
+        <td>IN/OUT: Number of elements to be read into buffer <code>buf</code>
+            </td></tr>
+      <tr valign="top">
+        <td><em>void *</em><code>buf</code>
+            </td><td>&nbsp;</td>
+        <td>OUT: Buffer in which data is returned to the application
+            </td></tr>
+    </table>
+
+
+  <p>
+  <dt><strong>Returns:</strong>
+    <dd>Returns a non-negative value if successful;
+        otherwise returns a negative value.
+                 
+<!--
+  <p>
+  <dt><strong>Failure Modes:</strong>
+    <dd>List possible failure modes, with causes and ramifications.
+        In some cases, the possibilities are obvious and/or trivial;
+        such cases can be kept simple.
+        <p>
+        Don't be afraid to take a couple of paragraphs, or more, 
+        for complex cases.
+
+  <p>
+  <dt><strong>Example Usage:</strong>
+
+    <dd>Discuss the elements in the first usage example here.
+<dir><pre>
+Complete usage example line(s) for the first example here
+</pre></dir>
+    <p>
+
+    <dd>Discuss the elements in the second usage example here.
+<dir><pre>
+Complete usage example line(s) for the second example here
+</pre></dir>
+  <p>
+-->
+  <p>
+<dt><strong>Fortran90 Interface:</strong>  H5LRread_region_f: USE H5HL_REGION
+    <dd>
+    <pre>
+SUBROUTINE H5LRread_region_f(loc_id, ref, dtype, numelem, buf, error)
+
+  IMPLICIT NONE
+    
+  INTEGER(hid_t), INTENT(IN) :: loc_id       ! File identifier for the HDF5 file containing the dataset with 
+                                             !  the referenced region or an object identifier for any object 
+                                             !  in that file 
+  TYPE(hdset_reg_ref_t_f), INTENT(IN) :: ref ! Region reference specifying data to be read in 
+  INTEGER(hid_t), INTENT(IN) :: dtype        ! Memory datatype of data read from referenced region into the 
+                                             !  application buffer
+  INTEGER(size_t), INTENT(INOUT) :: numelem  ! Number of elements to be read into buffer buf
+  TYPE(C_PTR), INTENT(OUT) :: buf            ! Buffer in which data is returned to the application 
+  INTEGER, INTENT(OUT) :: error              ! Error code:
+                                             !  0 on success and -1 on failure
+END SUBROUTINE H5LRread_region_f
+    </pre>
+
+  <p>
+
+
+<!--
+  <p>
+  <dt><strong>See Also:</strong>
+    <dd><a href="../html/RM/RM_H5D.html#Dataset-Create">
+        <code>H5Dcreate</code></a>,
+        &nbsp;
+        <a href="../html/RM/RM_H5T.html#Datatype-Commit">
+        <code>H5Tcommit</code></a>
+        <p>
+
+        <a href="../html/RM/H5?/H5L_elink_traverse_t">
+        <code>H5L_elink_traverse_t</code></a>
+        <p>
+
+        <a href="../html/RM/Tools.html#h5dump"><code>h5dump</code></a>
+        <p>
+
+        &ldquo;Discovering Objects in a Group&rdquo; in the
+        &ldquo;<a href="../../html/UG/UG_frame09Groups.html">Groups</a>&rdquo; 
+        chapter of the
+        <a href="../../html/UG/index.html"><cite>HDF5 User&rsquo;s Guide</cite></a>
+-->
+
+
+  <p>
+  <dt><strong>History:</strong>
+    <dd><table width="90%">
+        <tr>
+          <td valign="top" align="left" width="10%">
+            <strong>Release</strong>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <td valign="top" align="left">
+            <strong>Change</strong></td>
+        </tr>
+        <tr>
+          <td valign="top">1.0</td>
+          <td valign="top">
+            C function introduced in this release.</td>
+        </tr>
+        <tr>
+          <td valign="top">1.1</td>
+          <td valign="top">
+            Fortran wrapper introduced in this release.</td>
+        </tr>
+        </table>
+</dl>
+
+
+    <div align=right><font color=999999 size=-1><i>
+    (<a href="#hl_region_top">Top</a>)
+    </i></font></div>
+<!-- NEW PAGE -->
+<!-- HEADER RIGHT "H5LRcreate_region_references" -->
+<hr>
+<dl>
+  <dt><div align=right><font color=999999 size=-1><i>
+      Last modified: 7 July 2010
+      </i></font></div>
+
+  <dt><strong>Name:</strong> <a name="H5LRcreate_region_references">H5LRcreate_region_references</a>
+  <dt><strong>Signature:</strong>
+    <dd><em>herr_t </em><code>H5LRcreate_region_references</code>(
+            <em>hid_t</em> <code>loc_id</code>, 
+            <em>size_t</em> <code>num_elem</code>, 
+            <em>const char **</em><code>path</code>, 
+            <em>const hsize_t *</em><code>block_coord</code>, 
+            <em>hdset_reg_ref_t *</em><code>ref_buf</code> 
+        )
+
+  <p>
+  <dt><strong>Purpose:</strong>
+    <dd>Creates an array of region references using an array of paths 
+        to datasets and an array of corresponding hyperslab descriptions.
+
+  <p>
+  <dt><strong>Motivation:</strong>
+    <dd><code>H5LRcreate_region_references</code> 
+        is useful when creating large numbers of similar region references.
+
+  <p>
+  <dt><strong>Description:</strong>
+    <dd><code>H5LRcreate_region_references</code> 
+        creates a list of region references given an array of paths to 
+        datasets and another array listing the corner coordinates of the 
+        corresponding hyperslabs. 
+        <p>
+        <code>path</code> parameter is an array of pointers to strings. 
+        <p>
+        <code>num_elem</code> specifies the number of region references 
+        to be created, thus specifying the size of the <code>path</code> 
+        and <code>ref_buf</code> arrays. 
+        <p>
+        Buffer <code>block_coord</code> has size 2*rank 
+        and is the coordinates of the starting point following by the 
+        coordinates of the ending point of the hyperslab,
+        repeated <code>num_elem</code> times for each hyperslab. For example,
+        creating two region references to two hyperslabs, one with 
+        a rectangular hyperslab region starting at element (2,2) to
+	element (5,4) and the second rectangular region starting at element (7,7) to
+	element (9,10), results in <code>block_coord</code> being {2,2,5,4, 7,7,9,10}.
+        <p>
+        The rank of the hyperslab will be the same as the rank of the 
+        target dataset. <code>H5LRcreate_region_references</code> will
+        retrieve the rank for each dataset and will use those values to 
+        interpret the values in the <code<block_coord</code> buffer. 
+        Please note that rank may vary from one dataset to another. 
+        <p>
+
+
+
+<!--__ *** NOTES AND WARNINGS ************************************  
+        <p>
+        <b>Note/Warning:</b> If there is a risk of data corruption,
+        silent failure, or unintended consequences that might go
+        unnoticed, consider adding a <b>Note:</b> or <b>Warning:</b>
+        lead-in to a paragraph.  In general, such notes should come at
+        the end of the &ldquo;Description:&rdquo; section.
+-->
+
+  <p>
+  <dt><strong>Parameters:</strong>
+    <dd>
+    <table>
+      <tr valign="top">
+          <td><em>hid_t</em> <code>loc_id</code>
+              </td><td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <td>IN: File identifier for the HDF5 file containing the 
+            referenced regions or 
+            an object identifier for any object in that file
+              </td></tr>
+      <tr valign="top">
+          <td><em>size_t</em> <code>num_elem</code>
+              </td><td>&nbsp;</td>
+          <td>IN: Number of elements in the <code>path</code> and 
+              <code>ref_buf</code> arrays
+              </td></tr>
+      <tr valign="top">
+          <td><em>const char **</em><code>path</code>
+              </td><td>&nbsp;</td>
+          <td>IN: Array of pointers to strings, which contain the 
+              paths to the target datasets for the region references
+              </td></tr>
+      <tr valign="top">
+          <td><em>const&nbsp;hsize_t&nbsp;*</em><code>block_coord</code> 
+              </td><td>&nbsp;</td>
+          <td>IN: Array of hyperslab coordinates
+              </td></tr>
+      <tr valign="top">
+          <td><em>hdset_reg_ref_t *</em><code>ref_buf</code>
+              </td><td>&nbsp;</td>
+          <td>OUT: Buffer for returning an array of region references
+              </td></tr>
+    </table>
+
+
+  <p>
+  <dt><strong>Returns:</strong>
+    <dd>Returns a non-negative value if successful;
+        otherwise returns a negative value.
+                 
+<!--
+  <p>
+  <dt><strong>Failure Modes:</strong>
+    <dd>List possible failure modes, with causes and ramifications,
+        paying particular attention to non-intuitive failures, 
+        unusual failure modes, and failures caused by the interaction 
+        of two or more functions.
+        <p>
+        In some cases, the possibe failures are obvious and/or trivial;
+        such cases can be kept simple.  On the other hand, don't be 
+        afraid to take several paragraphs for complex cases.
+
+  <p>
+  <dt><strong>Example Usage:</strong>
+    <dd>Discuss the elements in the first usage example here.
+<dir><pre>
+Complete usage example line(s) for the first example here
+</pre></dir>
+    <p>
+
+    <dd>Discuss the elements in the second usage example here.
+<dir><pre>
+Complete usage example line(s) for the second example here
+</pre></dir>
+
+  <p>
+  <dt><strong>See Also:</strong>
+    <dd><a href="RM_H5D.html#Dataset-Create">
+        <code>H5Dcreate</code></a>,
+        &nbsp;
+        <a href="RM_H5T.html#Datatype-Commit">
+        <code>H5Tcommit</code></a>
+        <p>
+
+        <a href="H5L/H5L_elink_traverse_t">
+        <code>H5L_elink_traverse_t</code></a>
+        <p>
+
+        <a href="Tools.html#h5dump"><code>h5dump</code></a>
+        <p>
+
+        &ldquo;Discovering Objects in a Group&rdquo; in the
+        &ldquo;<a href="../UG/UG_frame09Groups.html">Groups</a>&rdquo; 
+        chapter of the
+        <a href="../UG/index.html"><cite>HDF5 User&rsquo;s Guide</cite></a>
+-->
+  <p>
+<dt><strong>Fortran90 Interface:</strong>  H5LRcreate_region_references_f: USE H5HL_REGION
+    <dd>
+    <pre>
+SUBROUTINE H5LRcreate_region_references_f(loc_id, num_elem, path, block_coord, buf, error)
+    
+  IMPLICIT NONE
+    
+  INTEGER(hid_t), INTENT(IN)  :: loc_id                                       ! File identifier for the HDF5 file containing the 
+                                                                              !  referenced regions or 
+                                                                              !  an object identifier for any object in that file
+  INTEGER(size_t), INTENT(IN) :: num_elem                                     ! Number of elements in the path and ref_buf arrays
+  CHARACTER(LEN=*), DIMENSION(1:num_elem), INTENT(IN) :: path                 ! Array of strings, which contain the paths to the 
+                                                                              !  target datasets for the region references
+  INTEGER(hsize_t), DIMENSION(:), INTENT(IN) :: block_coord                   ! Array of hyperslab coordinates  
+  TYPE(hdset_reg_ref_t_f), DIMENSION(1:num_elem), INTENT(OUT) :: buff         ! Buffer for returning an array of region references 
+  INTEGER, INTENT(OUT) :: error                                               ! Error code:
+                                                                              !  0 on success and -1 on failure
+END SUBROUTINE H5LRcreate_region_references_f
+    </pre>
+  <p>
+
+  <p>
+  <dt><strong>History:</strong>
+    <dd><table width="90%">
+        <tr>
+          <td valign="top" align="left" width="10%">
+            <strong>Release</strong>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <td valign="top" align="left">
+            <strong>Change</strong></td>
+        </tr>
+        <tr>
+          <td valign="top">1.0</td>
+          <td valign="top">
+            C function introduced in this release.</td>
+        </tr>
+        <tr>
+          <td valign="top">1.1</td>
+          <td valign="top">
+            Fortran wrapper introduced in this release.</td>
+        </tr>
+        </table>
+</dl>
+
+
+    <div align=right><font color=999999 size=-1><i>
+    (<a href="#hl_region_top">Top</a>)
+    </i></font></div>
+<!-- NEW PAGE -->
+<!-- HEADER RIGHT "H5LRmake_dataset" -->
+<hr>
+<dl>
+  <dt><div align=right><font color=999999 size=-1><i>
+      Last modified: 7 July 2010 
+      </i></font></div>
+
+  <dt><strong>Name:</strong> <a name="H5LRmake_dataset">H5LRmake_dataset</a>
+  <dt><strong>Signature:</strong>
+    <dd><em>herr_t </em><code>H5LRmake_dataset</code>(
+            <em>hid_t</em> <code>loc_id</code>,
+            <em>const char *</em><code>path</code>,
+            <em>hid_t</em> <code>type_id</code>,
+            <em>const size_t</em> <code>num_elem</code>,
+            <em>const hid_t *</em><code>obj_id</code>,
+            <em>const hdset_reg_ref_t *</em><code>buf</code>
+        )
+
+  <p>
+  <dt><strong>Purpose:</strong>
+    <dd>Creates and writes a dataset containing a list of region references.
+
+<!--
+  <p>
+  <dt><strong>Motivation:</strong>
+    <dd><code>H5LRmake_dataset</code> 
+        is used in these circumstances to achieve these things and/or 
+        to address these problems.  
+-->
+
+  <p>
+  <dt><strong>Description:</strong>
+    <dd>
+<!--
+    <dd><code>H5LRmake_dataset</code> 
+        creates a dataset and writes the sp
+-->
+
+
+Given an array of size <code>num_elem</code> of region references 
+<code>buf</code>, the function will create a dataset with path 
+<code>path</code>, at location specified by <code>loc_id</code> 
+and of a datatype specified by <code>type_id</code>, and 
+will write data associated with each region reference in the order 
+corresponding to the order of the region references in the buffer. 
+It is assumed that all referenced hyperslabs have the same 
+dimensionality, and only the size of the slowest changing dimension 
+may differ. 
+Each reference in the <code>buf</code> array belongs to the file 
+identified by the corresponding object identifiers in the 
+array <code>obj_id</code>.
+	<p>
+       <dd>If <code>path</code> does not exist in <code>loc_id</code>
+	then the function will create the path specified by <code>path</code> automatically.
+        <p>
+        <p>
+        <p>
+
+  <p>
+  <dt><strong>Parameters:</strong>
+    <dd>
+    <table>
+      <tr valign="top">
+          <td><em>hid_t</em> <code>loc_id</code>
+              </td><td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <td>IN: Location identifier of the dataset to be created
+              </td></tr>
+      <tr valign="top">
+          <td><em>const char *</em><code>path</code>
+              </td><td>&nbsp;</td>
+          <td>IN: Path to the dataset being created
+              </td></tr>
+      <tr valign="top">
+          <td><em>hid_t</em> <code>type_id</code>
+              </td><td>&nbsp;</td>
+          <td>IN: Datatype of the dataset 
+              </td></tr>
+      <tr valign="top">
+          <td><em>const size_t</em> <code>num_elem</code>
+              </td><td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <td>IN: Size of the <code>obj_id</code> and 
+              <code>buf</code> arrays
+              </td></tr>
+      <tr valign="top">
+          <td><em>const hid_t *</em><code>obj_id</code>
+              </td><td>&nbsp;</td>
+          <td>IN: Array of object identifiers; 
+              each identifier describes to which HDF5 file the 
+              corresponding region reference belongs to
+              </td></tr>
+      <tr valign="top">
+          <td><em>const&nbsp;hdset_reg_ref_t&nbsp;*</em><code>buf</code>
+              </td><td>&nbsp;</td>
+          <td>IN: Array of region references
+              </td></tr>
+    </table>
+
+
+<!--__ *** RETURNS ***********************************************  -->
+<!--__ Describe the datatype and meaning of the function's return   -->
+<!--__ value.                                                       -->
+<!--__                                                              -->
+<!--__ Some examples are provided, each starting with a <dd> tag.   -->
+<!--__ Select one of those and edit appropriately;                  -->
+<!--__ delete the other examples.                                   -->
+<!--__ If none are appropriate, write a similar entry.              -->
+<!--__                                                              -->
+<!--__ Guidelines for editing examples:                             -->
+<!--__     Replace the string 'specify_the_item' with the           -->
+<!--__     appropriate word(s), such as file, group, dataset,       -->
+<!--__     named datatype, string, array, name, etc.                -->
+<!--__                                                              -->
+<!--__     In the case of hsize_t, specify the units;               -->
+<!--__     typically, it will be bytes.                             -->
+<!--__ ***********************************************************  -->
+  <p>
+  <dt><strong>Returns:</strong>
+    <dd>Returns a non-negative value if successful;
+        otherwise returns a negative value.
+                 
+<!--
+  <p>
+  <dt><strong>Example Usage:</strong>
+    <dd>Discuss the elements in the first usage example here.
+<dir><pre>
+Complete usage example line(s) for the first example here
+</pre></dir>
+    <p>
+
+    <dd>Discuss the elements in the second usage example here.
+<dir><pre>
+Complete usage example line(s) for the second example here
+</pre></dir>
+  <p>
+-->
+  <p>
+<dt><strong>Fortran90 Interface:</strong>  H5LRmake_dataset_f: USE H5HL_REGION
+    <dd>
+    <pre>
+SUBROUTINE H5LRmake_dataset_f(loc_id, path, type_id, &
+     buf_size,loc_id_ref, ref, error)
+
+  IMPLICIT NONE
+
+  INTEGER(hid_t), INTENT(IN) :: loc_id                              ! Location identifier of the dataset to be created 
+  CHARACTER(LEN=*), INTENT(IN) :: path                              ! Path to the dataset being created 
+  INTEGER(hid_t), INTENT(IN) :: type_id                             ! Datatype of the dataset 
+  INTEGER(size_t) :: buf_size                                       ! Size of the obj_id and buf arrays 
+  INTEGER(hid_t), DIMENSION(1:buf_size), INTENT(IN) :: loc_id_ref   ! Array of object identifiers; each identifier describes 
+                                                                    !  to which HDF5 file the corresponding region 
+                                                                    !  reference belongs to 
+  TYPE(hdset_reg_ref_t_f), DIMENSION(1:buf_size), INTENT(IN) :: ref ! Array of region references  
+  INTEGER, INTENT(OUT) :: error                                     ! Error code:
+                                                                    !  0 on success and -1 on failure
+
+END SUBROUTINE H5LRmake_dataset_f
+    </pre>
+  <p>
+<!--
+  <p>
+  <dt><strong>See Also:</strong>
+    <dd><a href="RM_H5D.html#Dataset-Create">
+        <code>H5Dcreate</code></a>,
+        &nbsp;
+        <a href="RM_H5T.html#Datatype-Commit">
+        <code>H5Tcommit</code></a>
+        <p>
+
+        <a href="H5L/H5L_elink_traverse_t">
+        <code>H5L_elink_traverse_t</code></a>
+        <p>
+
+        <a href="Tools.html#h5dump"><code>h5dump</code></a>
+        <p>
+
+        &ldquo;Discovering Objects in a Group&rdquo; in the
+        &ldquo;<a href="../UG/UG_frame09Groups.html">Groups</a>&rdquo; 
+        chapter of the
+        <a href="../UG/index.html"><cite>HDF5 User&rsquo;s Guide</cite></a>
+-->
+
+
+  <p>
+  <dt><strong>History:</strong>
+    <dd><table width="90%">
+        <tr>
+          <td valign="top" align="left" width="10%">
+            <strong>Release</strong>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <td valign="top" align="left">
+            <strong>Change</strong></td>
+        </tr>
+        <tr>
+          <td valign="top">1.0</td>
+          <td valign="top">
+            C function introduced in this release.</td>
+        </tr>
+        <tr>
+          <td valign="top">1.1</td>
+          <td valign="top">
+            Fortran wrapper introduced in this release.</td>
+        </tr>
+        </table>
+</dl>
+
+
+    <div align=right><font color=999999 size=-1><i>
+    (<a href="#hl_region_top">Top</a>)
+    </i></font></div>
+
+<!-- NEW PAGE -->
+<!-- HEADER RIGHT "H5LRcopy_region" -->
+<hr>
+<dl>
+  <dt><div align=right><font color=999999 size=-1><i>
+      Last modified: 7 July 2010 
+      </i></font></div>
+
+  <dt><strong>Name:</strong> <a name="H5LRcopy_region">H5LRcopy_region</a>
+  <dt><strong>Signature:</strong>
+    <dd><em>herr_t </em><code>H5LRcopy_region</code>(
+            <em>hid_t</em> <code>obj_id</code>, 
+            <em>hdset_reg_ref_t *</em><code>ref</code>, 
+            <em>const char *</em><code>file_dest</code>, 
+            <em>const char *</em><code>path_dest</code>, 
+            <em>const hsize_t *</em><code>block_coord_dest</code>
+        )
+
+  <p>
+  <dt><strong>Purpose:</strong>
+    <dd>Copies data from a referenced region to a region in a 
+        destination dataset.
+
+
+<!--__ *** MOTIVATION ********************************************  -->
+<!--__ This an OPTIONAL section for functions that may need more    -->
+<!--__ than the simple statement in "Purpose:" to enable a user     -->
+<!--__ to understand the situations that might call for this        -->
+<!--__ function's use and/or the types of problems it addresses.    -->
+<!--__                                                              -->
+<!--__ Update H5function_name and the motivation text.              -->
+<!--__ ***********************************************************  -->
+<!--
+  <p>
+  <dt><strong>Motivation:</strong>
+    <dd><code>H5function_name</code> 
+        is used in these circumstances to achieve these things and/or 
+        to address these problems.  
+-->
+
+  <p>
+  <dt><strong>Description:</strong>
+<!--
+    <dd><code>H5LRcopy_region</code> 
+-->
+    <dd>
+Given a dataset region reference <code>ref</code> 
+in a source file specified by an identifier of 
+any object in that file <code>obj_id</code>, 
+the function will write data to the existing dataset 
+<code>path_dest</code> in file <code>file_dest</code> 
+to the simple hyperslab specified by 
+<code>block_coord_dest</code>.   
+        <p>
+        Buffer <code>block_coord_dest</code> has size 2*rank 
+        and is the coordinates of the starting point following by the 
+        coordinates of the ending point of the hyperslab. For example, to specify
+        a rectangular hyperslab destination region starting at element (2,2) to
+	element (5,4) then <code>block_coord_dest</code> would be {2, 2, 5, 4}.
+        <p>
+        <dd>If <code>path</code> does not exist in the destination file 
+	(as may be the case when writing to a new file) then the dataset will be copied 
+	directly to the <code>path</code>
+	and <code>block_coord</code> will be disregarded.
+        <p>
+        <p>
+
+  <p>
+  <dt><strong>Parameters:</strong>
+    <dd>
+    <table>
+      <tr valign="top">
+          <td><em>hid_t</em> <code>obj_id</code> 
+              </td><td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <td>IN: Identifier of any object in a file dataset region 
+              reference belongs to
+              </td></tr>
+      <tr valign="top">
+          <td><em>hdset_reg_ref_t *</em><code>ref</code> 
+              </td><td>&nbsp;</td>
+          <td>IN: Dataset region reference
+              </td></tr>
+      <tr valign="top">
+          <td><em>const char *</em><code>file_dest</code> 
+              </td><td>&nbsp;</td>
+          <td>IN: Name of the destination file
+              </td></tr>
+      <tr valign="top">
+          <td><em>const char *</em><code>path_dest</code> 
+              </td><td>&nbsp;</td>
+          <td>IN: Full path to the destination dataset
+              </td></tr>
+      <tr valign="top">
+          <td><em>const&nbsp;hsize_t&nbsp;*</em><code>block_coord_dest</code>
+              </td><td>&nbsp;</td>
+          <td>IN: Hyperslab coordinates in the destination dataset
+              </td></tr>
+    </table>
+
+
+  <p>
+  <dt><strong>Returns:</strong>
+    <dd>Returns a non-negative value if successful;
+        otherwise returns a negative value.
+
+
+<!--__ *** FAILURE MODES *****************************************  -->
+<!--__ Replace the text following the <dd> with a description       -->
+<!--__ of how the function may fail.                                -->
+<!--__ ***********************************************************  -->
+<!--
+  <p>
+  <dt><strong>Failure Modes:</strong>
+    <dd>List possible failure modes, with causes and ramifications,
+        paying particular attention to non-intuitive failures, 
+        unusual failure modes, and failures caused by the interaction 
+        of two or more functions.
+        <p>
+        In some cases, the possibe failures are obvious and/or trivial;
+        such cases can be kept simple.  On the other hand, don't be 
+        afraid to take several paragraphs for complex cases.
+-->
+
+
+<!--__ *** USAGE EXAMPLES ****************************************  -->
+<!--__ Multiple examples may be given.  Two are shown below and     -->
+<!--__ more can be added if needed (or one removed).                -->
+<!--__                                                              -->
+<!--__ Each usage example should have text describing the meanings  -->
+<!--__ of the parameters following the <dd> tag.                    -->
+<!--__ The sample usage line(s) should be entered between the       -->
+<!--__ <dir><pre> and </pre></dir> tags.                            -->
+<!--__ Multiple entries are separated by <p> tags.                  -->
+<!--__ ***********************************************************  -->
+<!--
+  <p>
+  <dt><strong>Example Usage:</strong>
+    <dd>Discuss the elements in the first usage example here.
+<dir><pre>
+Complete usage example line(s) for the first example here
+</pre></dir>
+    <p>
+
+    <dd>Discuss the elements in the second usage example here.
+<dir><pre>
+Complete usage example line(s) for the second example here
+</pre></dir>
+-->
+  <p>
+<dt><strong>Fortran90 Interface:</strong>  H5LRcopy_region_f: USE H5HL_REGION
+    <dd>
+    <pre>
+SUBROUTINE H5LRcopy_region_f(obj_id, ref, file_dest, path_dest, block_coord_dest, error)
+
+  IMPLICIT NONE
+
+  INTEGER(hid_t), INTENT(IN) :: obj_id                           ! Identifier of any object in a file 
+                                                                 ! dataset region reference belongs to 
+  TYPE(hdset_reg_ref_t_f), INTENT(IN) :: ref                     ! Dataset region reference 
+  CHARACTER(LEN=*), INTENT(IN) :: file_dest                      ! Name of the destination file 
+  CHARACTER(LEN=*), INTENT(IN) :: path_dest                      ! Full path to the destination dataset
+  INTEGER(hsize_t), DIMENSION(:), INTENT(IN) :: block_coord_dest ! Hyperslab coordinates in the destination dataset
+  INTEGER, INTENT(OUT) :: error                                  ! Error code:
+                                                                 !  0 on success and -1 on failure
+END SUBROUTINE H5LRcopy_region_f
+    </pre>
+  <p>
+<!--__ *** SEE ALSO **********************************************  -->
+<!--__ Provide links to related documentation in the following      --> 
+<!--__ order:                                                       -->
+<!--__     related function descriptions                            -->
+<!--__     struct or ENUM descriptions                              -->
+<!--__     callback or operator function descriptions               -->
+<!--__     tool descriptions                                        -->
+<!--__     user guide sections                                      -->
+<!--__     other related documents or sections                      -->
+<!--__                                                              -->
+<!--__ Ask a member of the documentation team if you need help      -->
+<!--__ identifying or locating references.                          -->
+<!--__                                                              -->
+<!--__ Edit the sample links provided, and delete unneeded text.    -->
+<!--__ Use a <p> between types of documents.                        -->
+<!--__ ***********************************************************  -->
+<!--
+  <p>
+  <dt><strong>See Also:</strong>
+    <dd><a href="RM_H5D.html#Dataset-Create">
+        <code>H5Dcreate</code></a>,
+        &nbsp;
+        <a href="RM_H5T.html#Datatype-Commit">
+        <code>H5Tcommit</code></a>
+        <p>
+
+        <a href="H5L/H5L_elink_traverse_t">
+        <code>H5L_elink_traverse_t</code></a>
+        <p>
+
+        <a href="Tools.html#h5dump"><code>h5dump</code></a>
+        <p>
+
+        &ldquo;Discovering Objects in a Group&rdquo; in the
+        &ldquo;<a href="../UG/UG_frame09Groups.html">Groups</a>&rdquo; 
+        chapter of the
+        <a href="../UG/index.html"><cite>HDF5 User&rsquo;s Guide</cite></a>
+-->
+
+
+  <p>
+  <dt><strong>History:</strong>
+    <dd><table width="90%">
+        <tr>
+          <td valign="top" align="left" width="10%">
+            <strong>Release</strong>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <td valign="top" align="left">
+            <strong>Change</strong></td>
+        </tr>
+        <tr>
+          <td valign="top">1.0</td>
+          <td valign="top">
+            C function introduced in this release.</td>
+        </tr>
+        <tr>
+          <td valign="top">1.1</td>
+          <td valign="top">
+            Fortran wrapper introduced in this release.</td>
+        </tr>
+        </table>
+</dl>
+
+
+    <div align=right><font color=999999 size=-1><i>
+    (<a href="#hl_region_top">Top</a>)
+    </i></font></div>
+<!-- NEW PAGE -->
+<!-- HEADER RIGHT "H5LRcopy_reference" -->
+<hr>
+<dl>
+  <dt><div align=right><font color=999999 size=-1><i>
+      Last modified: 7 July 2010
+      </i></font></div>
+
+  <dt><strong>Name:</strong> <a name="H5LRcopy_reference">H5LRcopy_reference</a>
+  <dt><strong>Signature:</strong>
+    <dd><em>herr_t </em><code>H5LRcopy_reference</code>(
+            <em>hid_t</em> <code>obj_id</code>, 
+            <em>hdset_reg_ref_t *</em><code>ref</code>, 
+            <em>const char *</em><code>file</code>, 
+            <em>const char *</em><code>path</code>, 
+            <em>const hsize_t *</em><code>block_coord</code>,
+            <em>hdset_reg_ref_t *</em><code>ref_new</code> 
+        )
+
+  <p>
+  <dt><strong>Purpose:</strong>
+    <dd>Copies data from the specified dataset to a new location 
+        and creates a reference to it.
+
+
+<!--__ *** MOTIVATION ********************************************  -->
+<!--__ This an OPTIONAL section for functions that may need more    -->
+<!--__ than the simple statement in "Purpose:" to enable a user     -->
+<!--__ to understand the situations that might call for this        -->
+<!--__ function's use and/or the types of problems it addresses.    -->
+<!--__                                                              -->
+<!--__ Update H5LRcopy_reference and the motivation text.           -->
+<!--__ ***********************************************************  -->
+<!--
+  <p>
+  <dt><strong>Motivation:</strong>
+    <dd><code>H5LRcopy_reference</code> 
+        is used in these circumstances to achieve these things and/or 
+        to address these problems.  
+-->
+
+  <p>
+  <dt><strong>Description:</strong>
+<!--
+    <dd><code>H5LRcopy_reference</code> 
+        <p>
+-->
+    <dd>
+Given a data set pointed to by a region reference, 
+the function <code>H5LRcopy_reference</code> will copy the 
+hyperslab data referenced by a datasets region reference 
+into existing dataset specified by its path <code>path</code> 
+in the file with the name <code>file</code>, 
+and to location specified by the hyperslab coordinates 
+<code>block_coord</code>. 
+It will create the region reference <code>ref_new</code> 
+to point to the new location. 
+The number of elements in the old and newly specified regions 
+has to be the same. 
+        <p>
+        Buffer <code>block_coord</code> has size 2*rank 
+        and is the coordinates of the starting point following by the 
+        coordinates of the ending point of the hyperslab. For example, to extract
+        a rectangular hyperslab region starting at element (2,2) to
+	element (5,4) then <code>block_coord</code> would be {2, 2, 5, 4}.
+        <p>
+
+  <p>
+  <dt><strong>Parameters:</strong>
+    <dd>
+    <table>
+      <tr valign="top">
+          <td><em>hid_t</em> <code>obj_id</code>
+              </td><td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <td>IN: Identifier of any object in a file an HDF5 reference 
+              belongs to
+              </td></tr>
+      <tr valign="top">
+          <td><em>hdset_reg_ref_t</em> <code>ref</code>
+              </td><td>&nbsp;</td>
+          <td>IN: Reference to the datasets region
+              </td></tr>
+      <tr valign="top">
+          <td><em>const char *</em><code>file</code>
+              </td><td>&nbsp;</td>
+          <td>IN: Name of the destination file
+              </td></tr>
+      <tr valign="top">
+          <td><em>const char *</em><code>path</code>
+              </td><td>&nbsp;</td>
+          <td>IN: Full path to the destination dataset
+              </td></tr>
+      <tr valign="top">
+          <td><em>const&nbsp;hsize_t&nbsp;*</em><code>block_coord</code>
+              </td><td>&nbsp;</td>
+          <td>IN: Hyperslab coordinates in the destination dataset
+              </td></tr>
+      <tr valign="top">
+          <td><em>hdset_reg_ref_t *</em><code>ref_new</code>
+              </td><td>&nbsp;</td>
+          <td>OUT: Region reference to the new location of data
+              </td></tr>
+    </table>
+
+
+  <p>
+  <dt><strong>Returns:</strong>
+    <dd>Returns a non-negative value if successful;
+        otherwise returns a negative value.
+
+
+<!--__ *** FAILURE MODES *****************************************  -->
+<!--__ Replace the text following the <dd> with a description       -->
+<!--__ of how the function may fail.                                -->
+<!--__ ***********************************************************  -->
+<!--
+  <p>
+  <dt><strong>Failure Modes:</strong>
+    <dd>List possible failure modes, with causes and ramifications,
+        paying particular attention to non-intuitive failures, 
+        unusual failure modes, and failures caused by the interaction 
+        of two or more functions.
+        <p>
+        In some cases, the possibe failures are obvious and/or trivial;
+        such cases can be kept simple.  On the other hand, don't be 
+        afraid to take several paragraphs for complex cases.
+-->
+
+
+<!--__ *** USAGE EXAMPLES ****************************************  -->
+<!--__ Multiple examples may be given.  Two are shown below and     -->
+<!--__ more can be added if needed (or one removed).                -->
+<!--__                                                              -->
+<!--__ Each usage example should have text describing the meanings  -->
+<!--__ of the parameters following the <dd> tag.                    -->
+<!--__ The sample usage line(s) should be entered between the       -->
+<!--__ <dir><pre> and </pre></dir> tags.                            -->
+<!--__ Multiple entries are separated by <p> tags.                  -->
+<!--__ ***********************************************************  -->
+<!--
+  <p>
+  <dt><strong>Example Usage:</strong>
+    <dd>Discuss the elements in the first usage example here.
+<dir><pre>
+Complete usage example line(s) for the first example here
+</pre></dir>
+    <p>
+
+    <dd>Discuss the elements in the second usage example here.
+<dir><pre>
+Complete usage example line(s) for the second example here
+</pre></dir>
+  <p>
+-->
+  <p>
+<dt><strong>Fortran90 Interface:</strong>  H5LRcopy_reference_f: USE H5HL_REGION
+    <dd>
+    <pre>
+SUBROUTINE H5LRcopy_reference_f( obj_id, ref, file, path, block_coord, ref_new, error )
+
+  IMPLICIT NONE
+
+  INTEGER(hid_t), INTENT(in) :: obj_id                       ! Identifier of any object in a file an 
+                                                             !  HDF5 reference belongs to 
+  TYPE(hdset_reg_ref_t_f), INTENT(IN) :: ref                 ! Reference to the datasets region 
+  CHARACTER(LEN=*), INTENT(IN) :: file                       ! Name of the destination file
+  CHARACTER(LEN=*), INTENT(IN) :: path                       ! Full path to the destination dataset 
+  INTEGER(hsize_t), DIMENSION(:), INTENT(IN) :: block_coord  ! Hyperslab coordinates in the destination dataset 
+  TYPE(hdset_reg_ref_t_f), INTENT(OUT) :: ref_new            ! Region reference to the new location of data 
+  INTEGER, INTENT(OUT) :: error                              ! Error code:
+                                                             !  0 on success and -1 on failure
+END SUBROUTINE H5LRcopy_reference_f
+    </pre>
+  <p>
+
+
+<!--__ *** SEE ALSO **********************************************  -->
+<!--__ Provide links to related documentation in the following      --> 
+<!--__ order:                                                       -->
+<!--__     related function descriptions                            -->
+<!--__     struct or ENUM descriptions                              -->
+<!--__     callback or operator function descriptions               -->
+<!--__     tool descriptions                                        -->
+<!--__     user guide sections                                      -->
+<!--__     other related documents or sections                      -->
+<!--__                                                              -->
+<!--__ Ask a member of the documentation team if you need help      -->
+<!--__ identifying or locating references.                          -->
+<!--__                                                              -->
+<!--__ Edit the sample links provided, and delete unneeded text.    -->
+<!--__ Use a <p> between types of documents.                        -->
+<!--__ ***********************************************************  -->
+<!--
+  <p>
+  <dt><strong>See Also:</strong>
+    <dd><a href="RM_H5D.html#Dataset-Create">
+        <code>H5Dcreate</code></a>,
+        &nbsp;
+        <a href="RM_H5T.html#Datatype-Commit">
+        <code>H5Tcommit</code></a>
+        <p>
+
+        <a href="H5L/H5L_elink_traverse_t">
+        <code>H5L_elink_traverse_t</code></a>
+        <p>
+
+        <a href="Tools.html#h5dump"><code>h5dump</code></a>
+        <p>
+
+        &ldquo;Discovering Objects in a Group&rdquo; in the
+        &ldquo;<a href="../UG/UG_frame09Groups.html">Groups</a>&rdquo; 
+        chapter of the
+        <a href="../UG/index.html"><cite>HDF5 User&rsquo;s Guide</cite></a>
+-->
+
+  <p>
+  <dt><strong>History:</strong>
+    <dd><table width="90%">
+        <tr>
+          <td valign="top" align="left" width="10%">
+            <strong>Release</strong>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <td valign="top" align="left">
+            <strong>Change</strong></td>
+        </tr>
+        <tr>
+          <td valign="top">1.0</td>
+          <td valign="top">
+            C function introduced in this release.</td>
+        </tr>
+        <tr>
+          <td valign="top">1.1</td>
+          <td valign="top">
+            Fortran wrapper introduced in this release.</td>
+        </tr>
+        </table>
+</dl>
+
+
+    <div align=right><font color=999999 size=-1><i>
+    (<a href="#hl_region_top">Top</a>)
+    </i></font></div>
+<!-- NEW PAGE -->
+<!-- HEADER RIGHT "H5LRcreate_ref_to_all" -->
+<hr>
+<dl>
+  <dt><div align=right><font color=999999 size=-1><i>
+      Last modified: 7 July 2010 
+      </i></font></div></dt>
+      <br />
+
+  <dt><strong>Name:</strong> <a name="H5LRcreate_ref_to_all">H5LRcreate_ref_to_all</a>
+    </dt>
+    <br />
+    <dt><strong>Signature:</strong></dt>
+        <dd><code><em>return_type</em> H5LRcreate_ref_to_all
+            (<em>hid_t</em> loc_id, 
+            <em>const char</em> *group_path, 
+            <em>const char</em> *ds_path, 
+            <em>H5_index_t</em> index_type, 
+            <em>H5_iter_order_t</em> order, 
+            <em>H5R_type_t</em> ref_type)</code></dd>
+  <br />
+  
+  <dt><strong>Purpose:</strong>
+    <dd>Creates a dataset with the region references to the data 
+        in all datasets located under a specified group in a file or 
+        creates a dataset with object references to all objects 
+        (groups or datasets) located under a specified group in a file. 
+
+
+<!--__ *** MOTIVATION ********************************************  -->
+<!--__ This an OPTIONAL section for functions that may need more    -->
+<!--__ than the simple statement in "Purpose:" to enable a user     -->
+<!--__ to understand the situations that might call for this        -->
+<!--__ function's use and/or the types of problems it addresses.    -->
+<!--__                                                              -->
+<!--__ Update H5function_name and the motivation text.              -->
+<!--__ ***********************************************************  -->
+<!--
+  <p>
+  <dt><strong>Motivation:</strong>
+    <dd><code>H5LRcreate_ref_to_all</code> 
+        is used in these circumstances to achieve these things and/or 
+        to address these problems.  
+-->
+
+  <p>
+  <dt><strong>Description:</strong>
+    <dd><code>H5LRcreate_ref_to_all</code> 
+        creates a dataset with the region references to the data 
+        in all datasets located under a specified group in a file or 
+        creates a dataset with object references to all objects 
+        (groups or datasets) located under a specified group in a file. 
+        <p>
+        Given a dataset path <code>ds_path</code> in a file specified by 
+        the <code>loc_id</code> identifier, the function 
+        <code>H5LRcreate_ref_to_all</code> will create a contiguous 
+        one-dimensional dataset with the region references or 
+        object references depending on the value of the 
+        <code>ref_type</code> parameter. 
+        When <code>ref_type</code> is <code>H5R_DATASET_REGION</code>, 
+        each region reference points to all data in a dataset 
+        encountered by an internally called <code>H5Lvisit</code> 
+        routine, which starts at the group specified by the
+        <code>loc_id</code> and <code>group_path</code> parameters.  
+        In a like manner, when <code>ref_type</code> is 
+        <code>H5R_OBJECT</code>, each object reference points to an 
+        object (a group or a dataset) encountered by 
+        <code>H5Lvisit</code>.
+        
+	<p>
+       <dd>If <code>ds_path</code> does not exist in <code>loc_id</code>
+	then the function will create the path specified by <code>ds_path</code> automatically.
+
+        <p>
+        <code>index_type</code> specifies the index to be used. 
+        Valid values include the following: 
+        <dir>
+            <code>H5_INDEX_NAME&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code>
+                &nbsp;&nbsp;
+                Alpha-numeric index on name 
+                <br>
+            <code>H5_INDEX_CRT_ORDER</code>
+                &nbsp;&nbsp;
+                Index on creation order 
+        </dir>
+        
+        <p>
+        <code>order</code> specifies the order in which objects 
+        are to be inspected along the index specified in 
+        <code>index_type</code>. Valid values include the following: 
+        <dir>
+            <code>H5_ITER_INC&nbsp;&nbsp;&nbsp;</code> 
+                &nbsp;&nbsp;
+                Increasing order 
+                <br>
+            <code>H5_ITER_DEC&nbsp;&nbsp;&nbsp;</code>
+                &nbsp;&nbsp;
+                Decreasing order 
+                <br>
+            <code>H5_ITER_NATIVE</code> 
+                &nbsp;&nbsp;
+                Fastest available order  
+        </dir>
+        
+        <p>
+        For more detailed information on these two parameters, see 
+        <a href="/HDF5/doc/RM/RM_H5L.html#Link-Visit">
+        <code>H5Lvisit</code></a>.
+        
+        <p>
+        <code>ref_type</code> specifies the type of the reference 
+        to be used. Valid values include the following: 
+        <dir>
+            <code>H5R_DATASEY_REGION</code>
+                &nbsp;&nbsp;
+                Dataset region reference
+                <br>
+            <code>H5R_OBJECT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code>
+                &nbsp;&nbsp;
+                Object reference 
+        </dir>
+
+  <p>
+  <dt><strong>Parameters:</strong>
+    <dd>
+    <table>
+      <tr valign="top">
+          <td><em>hid_t</em> <code>loc_id</code> 
+              </td><td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <td>IN: File or group identifier 
+              </td></tr>
+      <tr valign="top">
+          <td><em>const char&nbsp;*</em><code>group_path</code>  
+              </td><td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <td>IN: Absolute or relative path to the group at which 
+              traversal starts
+              </td></tr>
+      <tr valign="top">
+          <td><em>const char *</em><code>ds_path</code> 
+              </td><td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <td>IN: Absolute or relative path to the dataset with region 
+              references to be created
+              </td></tr>
+      <tr valign="top">
+          <td><em>H5_index_t</em> <code>index_type</code> 
+              </td><td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <td>IN: Index type; valid values include: 
+              <code>
+              <br>
+              &nbsp;&nbsp;&nbsp;&nbsp;
+                       H5_INDEX_NAME 
+              <br>
+              &nbsp;&nbsp;&nbsp;&nbsp;
+                       H5_INDEX_CRT_ORDER  
+              </code>
+              </td></tr>
+      <tr valign="top">
+          <td><em>H5_iter_order_t</em> <code>order</code>
+              </td><td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <td>IN: Order in which index is traversed; valid values 
+              include: 
+              <code>
+              <br>
+              &nbsp;&nbsp;&nbsp;&nbsp;
+                       H5_ITER_DEC 
+              <br>
+              &nbsp;&nbsp;&nbsp;&nbsp;
+                       H5_ITER_INC 
+              <br>
+              &nbsp;&nbsp;&nbsp;&nbsp;
+                       H5_ITER_NATIVE
+              </code>
+              </td></tr>
+      <tr valign="top">
+          <td><em>H5R_type_t</em> <code>ref_type</code>
+              </td><td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <td>IN: Reference type; valid values include: 
+              <code>
+              <br>
+              &nbsp;&nbsp;&nbsp;&nbsp;
+                       H5R_DATASET_REGION 
+              <br>
+              &nbsp;&nbsp;&nbsp;&nbsp;
+                       H5R_OBJECT
+              </code>
+<!--__ ***********************************************************  -->
+<!--__ In some cases, it will be appropriate to list valid values   -->
+<!--__ ***********************************************************  -->
+<!--
+              <p>
+              For use when it is appropriate to list a parameter&rsquo;s values.
+              Valid values include:
+              <table>
+                  <tr valign=top align=left>
+                      <td width=20>&nbsp;</td>
+                      <td>
+                          <code>VALUE_1</code>
+                          </td>
+                      <td width=10>&nbsp;</td>
+                      <td>
+                          Short description
+ ***********************************************************  
+ Use the following 3 lines where and if appropriate.          
+ ***********************************************************  
+                          <br>
+                          <i>(Default)</i>  
+                          </td></tr>
+                  <tr valign=top align=left>
+                      <td>&nbsp;</td>
+                      <td>
+                          <code>VALUE_2</code>
+                          </td>
+                      <td>&nbsp;</td>
+                      <td>
+                          Short description
+ ***********************************************************  
+ Use the following 3 lines where and if appropriate.          
+ ***********************************************************  
+                          <br>
+                          Requires <code>VALUE_x</code>.
+                          </td></tr>
+              </table>
+-->
+              </td></tr>
+    </table>
+
+  <p>
+  <dt><strong>Returns:</strong>
+    <dd>Returns a non-negative value if successful;
+        otherwise returns a negative value.
+                 
+
+<!--__ *** FAILURE MODES *****************************************  -->
+<!--__ Replace the text following the <dd> with a description       -->
+<!--__ of how the function may fail.                                -->
+<!--__ ***********************************************************  -->
+<!--
+  <p>
+  <dt><strong>Failure Modes:</strong>
+    <dd>List possible failure modes, with causes and ramifications,
+        paying particular attention to non-intuitive failures, 
+        unusual failure modes, and failures caused by the interaction 
+        of two or more functions.
+        <p>
+        In some cases, the possibe failures are obvious and/or trivial;
+        such cases can be kept simple.  On the other hand, don't be 
+        afraid to take several paragraphs for complex cases.
+-->
+
+
+<!--__ *** USAGE EXAMPLES ****************************************  -->
+<!--__ Multiple examples may be given.  Two are shown below and     -->
+<!--__ more can be added if needed (or one removed).                -->
+<!--__                                                              -->
+<!--__ Each usage example should have text describing the meanings  -->
+<!--__ of the parameters following the <dd> tag.                    -->
+<!--__ The sample usage line(s) should be entered between the       -->
+<!--__ <dir><pre> and </pre></dir> tags.                            -->
+<!--__ Multiple entries are separated by <p> tags.                  -->
+<!--__ ***********************************************************  -->
+<!--
+  <p>
+  <dt><strong>Example Usage:</strong>
+    <dd>Discuss the elements in the first usage example here.
+<dir><pre>
+Complete usage example line(s) for the first example here
+</pre></dir>
+    <p>
+
+    <dd>Discuss the elements in the second usage example here.
+<dir><pre>
+Complete usage example line(s) for the second example here
+</pre></dir>
+  <p>
+-->
+  <p>
+<dt><strong>Fortran90 Interface:</strong>  H5LRcreate_ref_to_all_f: USE H5HL_REGION
+    <dd>
+    <pre>
+SUBROUTINE H5LRcreate_ref_to_all_f(loc_id, group_path, ds_path, index_type, order, ref_type, error)
+    
+  IMPLICIT NONE
+
+  INTEGER(hid_t), INTENT(IN) :: loc_id       ! File or group identifier 
+  CHARACTER(LEN=*), INTENT(IN) :: group_path ! Absolute or relative path to the group at 
+                                             !  which traversal starts 
+  CHARACTER(LEN=*), INTENT(IN) :: ds_path    ! Absolute or relative path to the dataset 
+                                             !  with region references to be created  
+  INTEGER, INTENT(IN) :: index_type          ! Index type; valid values include:
+                                             !     H5_INDEX_NAME_F
+                                             !     H5_INDEX_CRT_ORDER_F
+  INTEGER, INTENT(IN) :: order               ! Order in which index is traversed; valid values include:
+                                             !     H5_ITER_DEC_F
+                                             !     H5_ITER_INC_F
+                                             !     H5_ITER_NATIVE_F
+  INTEGER, INTENT(IN) :: ref_type            ! Reference type; valid values include:  
+                                             !     H5R_DATASET_REGION_F
+                                             !     H5R_OBJECT_F 
+  INTEGER, INTENT(OUT) :: error              ! Error code:
+                                             !  0 on success and -1 on failure
+END SUBROUTINE H5LRcreate_ref_to_all_f
+    </pre>
+  <p>
+
+<!--__ *** SEE ALSO **********************************************  -->
+<!--__ Provide links to related documentation in the following      --> 
+<!--__ order:                                                       -->
+<!--__     related function descriptions                            -->
+<!--__     struct or ENUM descriptions                              -->
+<!--__     callback or operator function descriptions               -->
+<!--__     tool descriptions                                        -->
+<!--__     user guide sections                                      -->
+<!--__     other related documents or sections                      -->
+<!--__                                                              -->
+<!--__ Ask a member of the documentation team if you need help      -->
+<!--__ identifying or locating references.                          -->
+<!--__                                                              -->
+<!--__ Edit the sample links provided, and delete unneeded text.    -->
+<!--__ Use a <p> between types of documents.                        -->
+<!--
+  <p>
+  <dt><strong>See Also:</strong>
+    <dd><a href="RM_H5D.html#Dataset-Create">
+        <code>H5Dcreate</code></a>,
+        &nbsp;
+        <a href="RM_H5T.html#Datatype-Commit">
+        <code>H5Tcommit</code></a>
+        <p>
+
+        <a href="H5L/H5L_elink_traverse_t">
+        <code>H5L_elink_traverse_t</code></a>
+        <p>
+
+        <a href="Tools.html#h5dump"><code>h5dump</code></a>
+        <p>
+
+        &ldquo;Discovering Objects in a Group&rdquo; in the
+        &ldquo;<a href="../UG/UG_frame09Groups.html">Groups</a>&rdquo; 
+        chapter of the
+        <a href="../UG/index.html"><cite>HDF5 User&rsquo;s Guide</cite></a>
+-->
+
+
+  <p>
+  <dt><strong>History:</strong>
+    <dd><table width="90%">
+        <tr>
+          <td valign="top" align="left" width="10%">
+            <strong>Release</strong>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <td valign="top" align="left">
+            <strong>Change</strong></td>
+        </tr>
+        <tr>
+          <td valign="top">1.0</td>
+          <td valign="top">
+            C function introduced in this release.</td>
+        </tr>
+        <tr>
+          <td valign="top">1.1</td>
+          <td valign="top">
+            Fortran wrapper introduced in this release.</td>
+        </tr>
+        </table>
+</dl>
+
+
+
+    <div align=right><font color=999999 size=-1><i>
+    (<a href="#hl_region_top">Top</a>)
+    </i></font></div>
+<hr>
+<hr>
+<h2>Hyperslab APIs</h2>
+<hr>
+<!-- NEW PAGE -->
+<!-- HEADER RIGHT "H5LTread_region" -->
+<hr>
+<dl>
+  <dt><div align=right><font color=999999 size=-1><i>
+      Last modified: 7 July 2010 
+      </i></font></div>
+
+  <dt><strong>Name:</strong> <a name="H5LTread_region">H5LTread_region</a>
+  <dt><strong>Signature:</strong>
+    <dd><em>herr_t</em> <code>H5LTread_region</code>(
+            <em>const char *</em><code>file</code>, 
+            <em>const char *</em><code>path</code>, 
+            <em>const hsize_t *</em><code>block_coord</code>, 
+            <em>hid_t</em> <code>mem_type</code>, 
+            <em>void *</em><code>buf</code>
+        )
+
+  <p>
+  <dt><strong>Purpose:</strong>
+    <dd>Reads selected data to an application buffer.
+
+
+<!--__ *** MOTIVATION ********************************************  -->
+<!--__ This an OPTIONAL section for functions that may need more    -->
+<!--__ than the simple statement in "Purpose:" to enable a user     -->
+<!--__ to understand the situations that might call for this        -->
+<!--__ function's use and/or the types of problems it addresses.    -->
+<!--__                                                              -->
+<!--__ Update H5function_name and the motivation text.              -->
+<!--__ ***********************************************************  -->
+<!--
+  <p>
+  <dt><strong>Motivation:</strong>
+    <dd><code>H5LTread_region</code> 
+        is used in these circumstances to achieve these things and/or 
+        to address these problems.  
+-->
+
+
+  <p>
+  <dt><strong>Description:</strong>
+    <dd><code>H5LTread_region</code> 
+        reads data from a region described by the hyperslab coordinates 
+        in <code>block_coord</code>, located in the dataset specified 
+        by its absolute path <code>path</code> in a file specified by 
+        its name <code>file</code>. 
+        Data is read into a buffer <code>buf</code> of the datatype 
+        that corresponds to the HDF5 datatype specified by 
+        <code>mem_type</code>.  
+        <p>
+        Buffer <code>block_coord</code> has size 2*rank 
+        and is the coordinates of the starting point following by the 
+        coordinates of the ending point of the hyperslab. For example, to extract
+        a rectangular hyperslab region starting at element (2,2) to
+	element (5,4) then <code>block_coord</code> would be {2, 2, 5, 4}.
+        <p>
+        Buffer <code>buf</code> should be big enough to hold 
+        selected elements of the type that corresponds to the 
+        <code>mem_type</code> datatype. 
+        
+  <p>
+  <dt><strong>Parameters:</strong>
+    <dd>
+    <table>
+      <tr valign="top">
+          <td><em>const char *</em><code>file</code> 
+              </td><td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <td>IN: Name of file
+              </td></tr>
+      <tr valign="top">
+          <td><em>const char *</em><code>path</code> 
+              </td><td>&nbsp;</td>
+          <td>IN: Full path to a dataset
+              </td></tr>
+      <tr valign="top">
+          <td><em>const&nbsp;hsize_t&nbsp;*</em><code>block_coord</code> 
+              </td><td>&nbsp;</td>
+          <td>IN: Hyperslab coordinates
+              </td></tr>
+      <tr valign="top">
+          <td><em>hid_t</em> <code>mem_type</code> 
+              </td><td>&nbsp;</td>
+          <td>IN: Memory datatype, describing the buffer the 
+                  referenced data will be read into
+              </td></tr>
+      <tr valign="top">
+          <td><em>void *</em><code>buf</code>
+              </td><td>&nbsp;</td>
+          <td>OUT: Buffer containing data from the referenced region
+              </td></tr>
+    </table>
+
+
+  <p>
+  <dt><strong>Returns:</strong>
+    <dd>Returns a non-negative value if successful;
+        otherwise returns a negative value.
+                 
+  <p>
+
+
+<!--__ *** FAILURE MODES *****************************************  -->
+<!--__ Replace the text following the <dd> with a description       -->
+<!--__ of how the function may fail.                                -->
+<!--__ ***********************************************************  -->
+<!--
+  <p>
+  <dt><strong>Failure Modes:</strong>
+    <dd>List possible failure modes, with causes and ramifications,
+        paying particular attention to non-intuitive failures, 
+        unusual failure modes, and failures caused by the interaction 
+        of two or more functions.
+        <p>
+        In some cases, the possibe failures are obvious and/or trivial;
+        such cases can be kept simple.  On the other hand, don't be 
+        afraid to take several paragraphs for complex cases.
+-->
+
+
+<!--__ *** USAGE EXAMPLES ****************************************  -->
+<!--__ Multiple examples may be given.  Two are shown below and     -->
+<!--__ more can be added if needed (or one removed).                -->
+<!--__                                                              -->
+<!--__ Each usage example should have text describing the meanings  -->
+<!--__ of the parameters following the <dd> tag.                    -->
+<!--__ The sample usage line(s) should be entered between the       -->
+<!--__ <dir><pre> and </pre></dir> tags.                            -->
+<!--__ Multiple entries are separated by <p> tags.                  -->
+<!--__ ***********************************************************  -->
+<!--
+  <p>
+  <dt><strong>Example Usage:</strong>
+    <dd>Discuss the elements in the first usage example here.
+<dir><pre>
+Complete usage example line(s) for the first example here
+</pre></dir>
+    <p>
+
+    <dd>Discuss the elements in the second usage example here.
+<dir><pre>
+Complete usage example line(s) for the second example here
+</pre></dir>
+  <p>
+-->
+
+<dt><strong>Fortran90 Interface:</strong> H5LTread_region_f: USE H5HL_REGION
+    <dd>
+    <pre>
+SUBROUTINE H5LTread_region_f(file, path, block_coord, mem_type, buf, error)
+    
+  IMPLICIT NONE
+  CHARACTER(LEN=*), INTENT(IN) :: file                      ! Name of file
+  CHARACTER(LEN=*), INTENT(IN) :: path                      ! Full path to a dataset 
+  INTEGER(hsize_t), DIMENSION(:), INTENT(IN) :: block_coord ! Hyperslab coordinates 
+  INTEGER(hid_t), INTENT(IN) :: mem_type                    ! Memory datatype, describing the buffer
+                                                            ! the referenced data will be read into 
+  TYPE(C_PTR), INTENT(OUT) :: buf                           ! Buffer containing data from 
+                                                            ! the referenced region
+  INTEGER, INTENT(OUT) :: error                             ! Error code:
+                                                            ! 0 on success and -1 on failure
+END SUBROUTINE H5LTread_region_f
+    </pre>
+  <p>
+
+
+<!--__ *** SEE ALSO **********************************************  -->
+<!--__ Provide links to related documentation in the following      --> 
+<!--__ order:                                                       -->
+<!--__     related function descriptions                            -->
+<!--__     struct or ENUM descriptions                              -->
+<!--__     callback or operator function descriptions               -->
+<!--__     tool descriptions                                        -->
+<!--__     user guide sections                                      -->
+<!--__     other related documents or sections                      -->
+<!--__                                                              -->
+<!--__ Ask a member of the documentation team if you need help      -->
+<!--__ identifying or locating references.                          -->
+<!--__                                                              -->
+<!--__ Edit the sample links provided, and delete unneeded text.    -->
+<!--__ Use a <p> between types of documents.                        -->
+<!--__ ***********************************************************  -->
+<!--
+  <p>
+  <dt><strong>See Also:</strong>
+    <dd><a href="RM_H5D.html#Dataset-Create">
+        <code>H5Dcreate</code></a>,
+        &nbsp;
+        <a href="RM_H5T.html#Datatype-Commit">
+        <code>H5Tcommit</code></a>
+        <p>
+
+        <a href="H5L/H5L_elink_traverse_t">
+        <code>H5L_elink_traverse_t</code></a>
+        <p>
+
+        <a href="Tools.html#h5dump"><code>h5dump</code></a>
+        <p>
+
+        &ldquo;Discovering Objects in a Group&rdquo; in the
+        &ldquo;<a href="../UG/UG_frame09Groups.html">Groups</a>&rdquo; 
+        chapter of the
+        <a href="../UG/index.html"><cite>HDF5 User&rsquo;s Guide</cite></a>
+-->
+
+
+  <p>
+  <dt><strong>History:</strong>
+    <dd><table width="90%">
+        <tr>
+          <td valign="top" align="left" width="10%">
+            <strong>Release</strong>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <td valign="top" align="left">
+            <strong>Change</strong></td>
+        </tr>
+        <tr>
+          <td valign="top">1.0</td>
+          <td valign="top">
+            C function introduced in this release.</td>
+        </tr>
+        <tr>
+          <td valign="top">1.1</td>
+          <td valign="top">
+            Fortran wrapper introduced in this release.</td>
+        </tr>
+        </table>
+</dl>
+
+    <div align=right><font color=999999 size=-1><i>
+    (<a href="#hl_region_top">Top</a>)
+    </i></font></div>
+<!-- NEW PAGE -->
+<!-- HEADER RIGHT "H5LTcopy_region" -->
+<hr>
+<dl>
+  <dt><div align=right><font color=999999 size=-1><i>
+      Last modified: 7 July 2010 
+      </i></font></div>
+
+  <dt><strong>Name:</strong> <a name="H5LTcopy_region">H5LTcopy_region</a>
+  <dt><strong>Signature:</strong>
+    <dd><em>herr_t</em> <code>H5LTcopy_region</code>(
+            <em>const char *</em><code>file_src</code>, 
+            <em>const char *</em><code>path_src</code>,  
+            <em>const hsize_t *</em><code>block_coord_src</code>, 
+            <em>const char *</em><code>file_dest</code>, 
+            <em>const char *</em><code>path_dest</code>,  
+            <em>const hsize_t *</em><code>block_coord_dest</code>
+        )
+
+
+  <p>
+  <dt><strong>Purpose:</strong>
+    <dd>Copies data from a specified region in a source dataset 
+        to a specified region in a destination dataset.
+
+
+<!--__ *** MOTIVATION ********************************************  -->
+<!--__ This an OPTIONAL section for functions that may need more    -->
+<!--__ than the simple statement in "Purpose:" to enable a user     -->
+<!--__ to understand the situations that might call for this        -->
+<!--__ function's use and/or the types of problems it addresses.    -->
+<!--__                                                              -->
+<!--__ Update H5function_name and the motivation text.              -->
+<!--__ ***********************************************************  -->
+<!--
+  <p>
+  <dt><strong>Motivation:</strong>
+    <dd><code>H5LTcopy_region</code> 
+        is used in these circumstances to achieve these things and/or 
+        to address these problems.  
+-->
+
+
+  <p>
+  <dt><strong>Description:</strong>
+<!--
+    <dd><code>H5LTcopy_region</code> 
+-->
+    <dd>Given a path to a dataset <code>path_src</code> in a file 
+        with the name <code>file_src</code>, and description of a 
+        simple hyperslab of the source <code>block_coord_src</code>, 
+        the function will write data to the dataset path_dest in file 
+        <code>file_dest</code> to the simple hyperslab specified by 
+        <code>block_coord_dest</code>. 
+        The arrays <code>block_coord_src</code> and <code>block_coord_dest</code>  
+        have a length of 2*rank and are the coordinates 
+        of the starting point following by the coordinates of the ending point 
+        of the hyperslab. For example, to specify a rectangular hyperslab destination
+        region starting at element (2,2) to element (5,4) then <code>block_coord_dest</code> 
+        would be {2, 2, 5, 4}.
+
+	<p>
+        <dd>If <code>path_dest</code> does not exist in the destination file 
+	(as may be the case when writing to a new file) then the dataset will be copied 
+	directly to the <code>path_dest</code>
+	and <code>block_coord_dest</code> will be disregarded.
+
+
+  <p>
+  <dt><strong>Parameters:</strong>
+    <dd>
+    <table>
+      <tr valign="top">
+          <td><em>const char *</em><code>file_src</code>, 
+              </td><td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <td>IN: Name of the source file
+              </td></tr>
+      <tr valign="top">
+          <td><em>const char *</em><code>path_src</code>,  
+              </td><td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <td>IN: Full path to the source dataset
+              </td></tr>
+      <tr valign="top">
+          <td><em>const hsize_t *</em><code>block_coord_src</code>, 
+              </td><td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <td>IN: Hyperslab coordinates in the source dataset
+              </td></tr>
+      <tr valign="top">
+          <td><em>const char *</em><code>file_dest</code>, 
+              </td><td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <td>IN: Name of the destination file
+              </td></tr>
+      <tr valign="top">
+          <td><em>const char *</em><code>path_dest</code>,  
+              </td><td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <td>IN: Full path to the destination dataset
+              </td></tr>
+      <tr valign="top">
+          <td><em>const hsize_t *</em><code>block_coord_dest</code>
+              </td><td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <td>IN: Hyperslab coordinates in the destination dataset
+              </td></tr>
+    </table>
+
+  <p>
+
+  <p>
+	
+
+  <dt><strong>Returns:</strong>
+    <dd>Returns a non-negative value if successful;
+        otherwise returns a negative value.
+
+
+<!--__ *** FAILURE MODES *****************************************  -->
+<!--__ Replace the text following the <dd> with a description       -->
+<!--__ of how the function may fail.                                -->
+<!--__ ***********************************************************  -->
+
+
+
+<!--__ *** USAGE EXAMPLES ****************************************  -->
+<!--__ Multiple examples may be given.  Two are shown below and     -->
+<!--__ more can be added if needed (or one removed).                -->
+<!--__                                                              -->
+<!--__ Each usage example should have text describing the meanings  -->
+<!--__ of the parameters following the <dd> tag.                    -->
+<!--__ The sample usage line(s) should be entered between the       -->
+<!--__ <dir><pre> and </pre></dir> tags.                            -->
+<!--__ Multiple entries are separated by <p> tags.                  -->
+<!--__ ***********************************************************  -->
+<!--
+  <p>
+  <dt><strong>Example Usage:</strong>
+    <dd>Discuss the elements in the first usage example here.
+<dir><pre>
+Complete usage example line(s) for the first example here
+</pre></dir>
+    <p>
+
+    <dd>Discuss the elements in the second usage example here.
+<dir><pre>
+Complete usage example line(s) for the second example here
+</pre></dir>
+  <p>
+-->
+  <p>
+<dt><strong>Fortran90 Interface:</strong> H5LTcopy_region_f: USE H5HL_REGION
+    <dd>
+    <pre>
+SUBROUTINE H5LTcopy_region_f(file_src, path_src, block_coord_src, &
+     file_dest, path_dest, block_coord_dest, error)
+    
+  IMPLICIT NONE
+  CHARACTER(LEN=*),INTENT(IN) :: file_src                       ! Name of the source file
+  CHARACTER(LEN=*),INTENT(IN) :: path_src                       ! Full path to the source dataset 
+  INTEGER(hsize_t), DIMENSION(:),INTENT(IN) :: block_coord_src  ! Hyperslab coordinates in the source dataset
+  CHARACTER(LEN=*),INTENT(IN) :: file_dest                      ! Name of the destination file 
+  CHARACTER(LEN=*),INTENT(IN) :: path_dest                      ! Full path to the destination dataset 
+  INTEGER(hsize_t), DIMENSION(:),INTENT(IN) :: block_coord_dest ! Hyperslab coordinates in the destination dataset 
+  INTEGER,INTENT(OUT) :: error                                  ! Error code:
+                                                                ! 0 on success and -1 on failure
+END SUBROUTINE H5LTcopy_region_f
+    </pre>
+
+
+<!--__ *** FORTRAN90 INTERFACE  **********************************  -->
+<!--__ When the Fortran90 interface is complete, replace this       -->
+<!--__ section with the Fortran90 subroutine description.           -->
+<!--__                                                              -->
+<!--__ See the file h5fortran_f_insert.htm for a template and       -->
+<!--__ instructions.                                                -->
+<!--__ ***********************************************************  -->
+  <p>
+
+
+<!--__ *** SEE ALSO **********************************************  -->
+<!--__ Provide links to related documentation in the following      --> 
+<!--__ order:                                                       -->
+<!--__     related function descriptions                            -->
+<!--__     struct or ENUM descriptions                              -->
+<!--__     callback or operator function descriptions               -->
+<!--__     tool descriptions                                        -->
+<!--__     user guide sections                                      -->
+<!--__     other related documents or sections                      -->
+<!--__                                                              -->
+<!--__ Ask a member of the documentation team if you need help      -->
+<!--__ identifying or locating references.                          -->
+<!--__                                                              -->
+<!--__ Edit the sample links provided, and delete unneeded text.    -->
+<!--__ Use a <p> between types of documents.                        -->
+<!--__ ***********************************************************  -->
+<!--
+  <p>
+  <dt><strong>See Also:</strong>
+    <dd><a href="RM_H5D.html#Dataset-Create">
+        <code>H5Dcreate</code></a>,
+        &nbsp;
+        <a href="RM_H5T.html#Datatype-Commit">
+        <code>H5Tcommit</code></a>
+        <p>
+
+        <a href="H5L/H5L_elink_traverse_t">
+        <code>H5L_elink_traverse_t</code></a>
+        <p>
+
+        <a href="Tools.html#h5dump"><code>h5dump</code></a>
+        <p>
+
+        &ldquo;Discovering Objects in a Group&rdquo; in the
+        &ldquo;<a href="../UG/UG_frame09Groups.html">Groups</a>&rdquo; 
+        chapter of the
+        <a href="../UG/index.html"><cite>HDF5 User&rsquo;s Guide</cite></a>
+-->
+
+
+  <p>
+  <dt><strong>History:</strong>
+    <dd><table width="90%">
+        <tr>
+          <td valign="top" align="left" width="10%">
+            <strong>Release</strong>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <td valign="top" align="left">
+            <strong>Change</strong></td>
+        </tr>
+        <tr>
+          <td valign="top">1.0</td>
+          <td valign="top">
+            C function introduced in this release.</td>
+        </tr>
+        <tr>
+          <td valign="top">1.1</td>
+          <td valign="top">
+            Fortran wrapper introduced in this release.</td>
+        </tr>
+        </table>
+</dl>
+
+
+
+    <div align=right><font color=999999 size=-1><i>
+    (<a href="#hl_region_top">Top</a>)
+    </i></font></div>
+<hr>
+<hr>
+<h2>Bit-field API</h2>
+<hr>
+<!-- NEW PAGE -->
+<!-- HEADER RIGHT "H5LTread_bitfield_value" -->
+<hr>
+<dl>
+  <dt><div align=right><font color=999999 size=-1><i>
+      Last modified: 7 July 2010 
+      </i></font></div>
+
+  <dt><strong>Name:</strong> <a name="H5LTread_bitfield_value">H5LTread_bitfield_value</a>
+  <dt><strong>Signature:</strong>
+    <dd><em>herr_t</em> <code>H5LTread_bitfield_value</code>(
+            <em>hid_t</em> <code>dset_id</code>, 
+            <em>int</em> <code>num_values</code>,  
+            <em>const unsigned *</em><code>offsets</code>,  
+            <em>const unsigned *</em><code>lengths</code>,  
+            <em>hid_t</em> <code>space</code>, 
+            <em>int *</em><code>buf</code>
+        )
+
+
+  <p>
+  <dt><strong>Purpose:</strong>
+    <dd>Retrieves the values of quality flags for each element 
+        to the application provided buffer. 
+
+
+<!--__ *** MOTIVATION ********************************************  -->
+<!--__ This an OPTIONAL section for functions that may need more    -->
+<!--__ than the simple statement in "Purpose:" to enable a user     -->
+<!--__ to understand the situations that might call for this        -->
+<!--__ function's use and/or the types of problems it addresses.    -->
+<!--__                                                              -->
+<!--__ Update H5function_name and the motivation text.              -->
+<!--__ ***********************************************************  -->
+<!--
+  <p>
+  <dt><strong>Motivation:</strong>
+    <dd><code>H5LTread_bitfield_value</code> 
+        is used in these circumstances to achieve these things and/or 
+        to address these problems.  
+-->
+
+
+  <p>
+  <dt><strong>Description:</strong>
+    <dd><code>H5LTread_bitfield_value</code> 
+        reads selected elements from a dataset specified by its 
+        identifier <code>dset_id</code>, and unpacks the bit-field 
+        values to a buffer <code>buf</code>.  
+        <p>
+        The parameter <code>space</code> is a space identifier that 
+        indicates which elements of the dataset should be read. 
+        <p>
+        The parameter <code>offsets</code> is an array of length 
+        <code>num_values</code>; 
+        the <i>i</i><sup><small>th</small></sup> element of the 
+        array holds the value of the starting bit of the 
+        <i>i</i><sup><small>th</small></sup>  bit-field value. 
+        The parameter lengths is an array of length 
+        <code>num_flags</code>; 
+        the <i>i</i><sup><small>th</small></sup> element of the array 
+        holds the number of bits to be extracted for the 
+        <i>i</i><sup><small>th</small></sup> bit-field value. 
+        Extracted bits will be interpreted as a base-2 integer value. 
+        Each value will be converted to the base-10 integer value and 
+        stored in the application buffer. Buffer <code>buf</code> 
+        is allocated by the application and should be big enough 
+        to hold <code>num_sel_elem * num_values</code> elements  
+        of the specified type, where <code>num_sel_elem</code> 
+        is a number of the elements to be read from the dataset. 
+        Data in the buffer is organized as <code>num_values</code> 
+        values for the first element, followed by the 
+        <code>num_values</code> values for the second element, 
+        ... , followed by the <code>num_values</code> values for the 
+        <code>num_selected_elem</code><sup><small>th</small></sup> 
+        element. 
+
+  <p>
+  <dt><strong>Parameters:</strong>
+    <dd>
+    <table>
+      <tr valign="top">
+          <td><em>hid_t</em> <code>dset_id</code>
+              </td><td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <td>IN: Identifier of the dataset with bit-field values
+              </td></tr>
+      <tr valign="top">
+          <td><em>int</em> <code>num_values</code>
+              </td><td>&nbsp;</td>
+          <td>IN: Number of the values to be extracted
+              </td></tr>
+      <tr valign="top">
+          <td><em>const unsigned *</em><code>offsets</code>
+              </td><td>&nbsp;</td>
+          <td>IN: Array of staring bits to be extracted from the 
+              element 
+              <br>
+              Valid values: 
+              <code>0</code> (zero) through <code>7</code>
+              </td></tr>
+      <tr valign="top">
+          <td><em>const&nbsp;unsigned&nbsp;*</em><code>lengths</code>
+              </td><td>&nbsp;</td>
+          <td>IN: Array of the number of bits to be extracted for 
+              each value
+              </td></tr>
+      <tr valign="top">
+          <td><em>hid_t</em> <code>space</code>
+              </td><td>&nbsp;</td>
+          <td>IN: Dataspace identifier, describing the elements 
+              to be read from the dataset with bit-field values
+              </td></tr>
+      <tr valign="top">
+          <td><em>int *</em><code>buf<code>
+              </td><td>&nbsp;</td>
+          <td>OUT: Buffer to read the values in
+              </td></tr>
+    </table>
+
+
+  <p>
+  <dt><strong>Returns:</strong>
+    <dd>Returns a non-negative value if successful;
+        otherwise returns a negative value.
+
+
+<!--__ *** FAILURE MODES *****************************************  -->
+<!--__ Replace the text following the <dd> with a description       -->
+<!--__ of how the function may fail.                                -->
+<!--__ ***********************************************************  -->
+<!--
+  <p>
+  <dt><strong>Failure Modes:</strong>
+    <dd>List possible failure modes, with causes and ramifications,
+        paying particular attention to non-intuitive failures, 
+        unusual failure modes, and failures caused by the interaction 
+        of two or more functions.
+        <p>
+        In some cases, the possibe failures are obvious and/or trivial;
+        such cases can be kept simple.  On the other hand, don't be 
+        afraid to take several paragraphs for complex cases.
+-->
+
+
+<!--__ *** USAGE EXAMPLES ****************************************  -->
+<!--__ Multiple examples may be given.  Two are shown below and     -->
+<!--__ more can be added if needed (or one removed).                -->
+<!--__                                                              -->
+<!--__ Each usage example should have text describing the meanings  -->
+<!--__ of the parameters following the <dd> tag.                    -->
+<!--__ The sample usage line(s) should be entered between the       -->
+<!--__ <dir><pre> and </pre></dir> tags.                            -->
+<!--__ Multiple entries are separated by <p> tags.                  -->
+<!--__ ***********************************************************  -->
+<!--
+  <p>
+  <dt><strong>Example Usage:</strong>
+    <dd>Discuss the elements in the first usage example here.
+<dir><pre>
+Complete usage example line(s) for the first example here
+</pre></dir>
+    <p>
+
+    <dd>Discuss the elements in the second usage example here.
+<dir><pre>
+Complete usage example line(s) for the second example here
+</pre></dir>
+  <p>
+-->
+  <p>
+<dt><strong>Fortran90 Interface:</strong> H5LTread_bitfield_value_f: USE H5HL_REGION
+    <dd>
+    <pre>
+SUBROUTINE H5LTread_bitfield_value_f(dset_id, num_values, offset, &
+     lengths, space, buf, dims, error)
+
+  IMPLICIT NONE
+  INTEGER(hid_t), INTENT(IN) :: dset_id        ! Identifier of the dataset with bit-field values 
+  INTEGER, INTENT(IN) :: num_values            ! Number of the values to be extracted 
+  INTEGER, DIMENSION(*), INTENT(IN) :: offset  ! Array of staring bits to be extracted from the element
+                                               !  valid values: 1 through 8
+  INTEGER, DIMENSION(*), INTENT(IN) :: lengths ! Array of the number of bits to be extracted for each value 
+  INTEGER, DIMENSION(:), INTENT(IN) :: dims    ! Dimension of the reading buffer, <code>buf</code>
+  INTEGER(hid_t), INTENT(IN) :: space          ! Dataspace identifier, describing the elements to be read from the dataset 
+                                               !  with bit-field values 
+  INTEGER, DIMENSION(*), INTENT(OUT) :: buf    ! Buffer to read the values in, <code>buf</code> has dimensions <code>dims</code>
+  INTEGER, INTENT(OUT) :: error                ! Error code:
+                                               !  0 on success and -1 on failure
+END SUBROUTINE H5LTread_bitfield_value_f
+    </pre>
+  <p>
+
+
+<!--__ *** SEE ALSO **********************************************  -->
+<!--__ Provide links to related documentation in the following      --> 
+<!--__ order:                                                       -->
+<!--__     related function descriptions                            -->
+<!--__     struct or ENUM descriptions                              -->
+<!--__     callback or operator function descriptions               -->
+<!--__     tool descriptions                                        -->
+<!--__     user guide sections                                      -->
+<!--__     other related documents or sections                      -->
+<!--__                                                              -->
+<!--__ Ask a member of the documentation team if you need help      -->
+<!--__ identifying or locating references.                          -->
+<!--__                                                              -->
+<!--__ Edit the sample links provided, and delete unneeded text.    -->
+<!--__ Use a <p> between types of documents.                        -->
+<!--__ ***********************************************************  -->
+<!--
+  <p>
+  <dt><strong>See Also:</strong>
+    <dd><a href="RM_H5D.html#Dataset-Create">
+        <code>H5Dcreate</code></a>,
+        &nbsp;
+        <a href="RM_H5T.html#Datatype-Commit">
+        <code>H5Tcommit</code></a>
+        <p>
+
+        <a href="H5L/H5L_elink_traverse_t">
+        <code>H5L_elink_traverse_t</code></a>
+        <p>
+
+        <a href="Tools.html#h5dump"><code>h5dump</code></a>
+        <p>
+
+        &ldquo;Discovering Objects in a Group&rdquo; in the
+        &ldquo;<a href="../UG/UG_frame09Groups.html">Groups</a>&rdquo; 
+        chapter of the
+        <a href="../UG/index.html"><cite>HDF5 User&rsquo;s Guide</cite></a>
+-->
+
+
+  <p>
+  <dt><strong>History:</strong>
+    <dd><table width="90%">
+        <tr>
+          <td valign="top" align="left" width="10%">
+            <strong>Release</strong>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <td valign="top" align="left">
+            <strong>Change</strong></td>
+        </tr>
+        <tr>
+          <td valign="top">1.0</td>
+          <td valign="top">
+            C function introduced in this release.</td>
+        </tr>
+        <tr>
+          <td valign="top">1.1</td>
+          <td valign="top">
+            Fortran wrapper introduced in this release.</td>
+        </tr>
+        </table>
+</dl>
+
+
+
+    <div align=right><font color=999999 size=-1><i>
+    (<a href="#hl_region_top">Top</a>)
+    </i></font></div>
+
+<!--
+<hr>
+<hr>
+<h2>Code Examples</h2>
+<hr>
+<br />
+<b>Warning</b>:  include(HL_REGION_HL_example_code1.htm): failed to open stream: No such file or directory in <b>/home/hdfgroup/public_html/projects/jpss/documentation/HL/RM/index.html</b> on line <b>373</b><br />
+<br />
+<b>Warning</b>:  include(): Failed opening 'HL_REGION_HL_example_code1.htm' for inclusion (include_path='.:/usr/lib/php:/usr/local/lib/php') in <b>/home/hdfgroup/public_html/projects/jpss/documentation/HL/RM/index.html</b> on line <b>373</b><br />
+    <div align=right><font color=999999 size=-1><i>
+    (<a href="#hl_region_top">Top</a>)
+    </i></font></div>
+<br />
+<b>Warning</b>:  include(HL_REGION_HL_example_code2.htm): failed to open stream: No such file or directory in <b>/home/hdfgroup/public_html/projects/jpss/documentation/HL/RM/index.html</b> on line <b>377</b><br />
+<br />
+<b>Warning</b>:  include(): Failed opening 'HL_REGION_HL_example_code2.htm' for inclusion (include_path='.:/usr/lib/php:/usr/local/lib/php') in <b>/home/hdfgroup/public_html/projects/jpss/documentation/HL/RM/index.html</b> on line <b>377</b><br />
+
+    <div align=right><font color=999999 size=-1><i>
+    (<a href="#hl_region_top">Top</a>)
+    </i></font></div>
+-->
+
+<hr>
+<table width=100%><tr><td align="left" valign="top">
+    <address>
+    The HDF Group Help Desk: <img src="Graphics/help.png" align=top height=16>
+    <br>
+    Describes HDF5 High-Level Region and Hyperslab Functions Release 1.1, September 2010.
+    </address>
+    Last modified: 6 September 2013
+</td><td align="right" valign="top">
+    <a href="COPYING.html">Copyright</a> 
+    by <a href="https://www.hdfgroup.org/">The HDF Group</a>
+</td></tr></table>
+
+</body>
+</html>
+

@@ -1,0 +1,4302 @@
+<html>
+<head><title>
+HDF5/H5D API Specification
+</title>
+<link href="../ed_styles/RMelect.css" rel="stylesheet" type="text/css">
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<!-- #BeginLibraryItem "/ed_libs/styles_RM.lbi" -->
+<!--
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+  * Copyright by The HDF Group.                                               *
+  * Copyright by the Board of Trustees of the University of Illinois.         *
+  * All rights reserved.                                                      *
+  *                                                                           *
+  * This file is part of HDF5.  The full HDF5 copyright notice, including     *
+  * terms governing use, modification, and redistribution, is contained in    *
+  * the files COPYING and Copyright.html.  COPYING can be found at the root   *
+  * of the source code distribution tree; Copyright.html can be found at the  *
+  * root level of an installed copy of the electronic HDF5 document set and   *
+  * is linked from the top-level documents page.  It can also be found at     *
+  * http://www.hdfgroup.org/HDF5/doc/Copyright.html.  If you do not have      *
+  * access to either file, you may request a copy from help@hdfgroup.org.     *
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ -->
+<!-- #EndLibraryItem --><!-- HEADER RIGHT " " -->
+
+<!-- #BeginLibraryItem "/ed_libs/NavBar_RM.lbi" -->
+<hr>
+<center>
+<table border=0 width=98%>
+<tr><td valign=top align=left>
+<a href="../index.html">HDF5 documents and links</a>&nbsp;<br>
+<a href="../H5.intro.html">Introduction to HDF5</a>&nbsp;<br>
+<a href="../UG/HDF5_Users_Guide-Responsive HTML5/index.html">HDF5 User&rsquo;s Guide</a>&nbsp;<br>
+<!--
+<a href="Glossary.html">Glossary</a><br>
+-->
+</td>
+<td valign=top align=right>
+In the 
+<a href="RM_H5Front.html">HDF5 Reference Manual</a>&nbsp;
+<font size="-1"><br>
+<a href="../HL/RM_H5DS.html">H5DS</a>&nbsp;&nbsp;
+<a href="../HL/RM_H5IM.html">H5IM</a>&nbsp;&nbsp;
+<a href="../HL/RM_H5LT.html">H5LT</a>&nbsp;&nbsp;
+<a href="../HL/RM_H5PT.html">H5PT</a>&nbsp;&nbsp;
+<a href="../HL/RM_H5TB.html">H5TB</a>&nbsp;
+<a href="../HL/RM_HDF5Optimized.html">Optimized</a>&nbsp;
+<br>
+<a href="RM_H5.html">H5</a>&nbsp;&nbsp;
+<a href="RM_H5A.html">H5A</a>&nbsp;&nbsp;
+<a href="RM_H5D.html">H5D</a>&nbsp;&nbsp;
+<a href="RM_H5E.html">H5E</a>&nbsp;&nbsp;
+<a href="RM_H5F.html">H5F</a>&nbsp;&nbsp;
+<a href="RM_H5G.html">H5G</a>&nbsp;&nbsp;
+<a href="RM_H5I.html">H5I</a>&nbsp;&nbsp;
+<a href="RM_H5L.html">H5L</a>&nbsp;
+<br>
+<a href="RM_H5O.html">H5O</a>&nbsp;&nbsp;
+<a href="RM_H5P.html">H5P</a>&nbsp;&nbsp;
+<a href="RM_H5PL.html">H5PL</a>&nbsp;&nbsp;
+<a href="RM_H5R.html">H5R</a>&nbsp;&nbsp;
+<a href="RM_H5S.html">H5S</a>&nbsp;&nbsp;
+<a href="RM_H5T.html">H5T</a>&nbsp;&nbsp;
+<a href="RM_H5Z.html">H5Z</a>&nbsp;
+<br>
+<a href="Tools.html">Tools</a>&nbsp;&nbsp;
+<a href="PredefDTypes.html">Datatypes</a>&nbsp;&nbsp;
+<a href="../fortran/index.html">Fortran</a>&nbsp;&nbsp;
+<a href="APICompatMacros.html">Compatibility Macros</a>&nbsp;
+<br>
+<a href="CollectiveCalls.html">Collective Calls in Parallel</a>&nbsp;
+</font>
+<!--
+<br>
+<i><font size=-1>(Printable <a href="http://hdfgroup.org/HDF5/doc/PSandPDF/HDF5_RefManual.PDF">PDF</a> of this Reference Manual)</font></i>&nbsp;
+-->
+
+</td></tr>
+</table>
+</center>
+<hr>
+<!-- #EndLibraryItem --><center>
+<h1>H5D: Datasets Interface</h1>
+</center>
+
+<h2>Dataset Object API Functions</h2>
+
+These functions create and manipulate dataset objects, 
+and set and retrieve their constant or persistent properties.
+
+<p>
+<strong>The C Interfaces:</strong>
+
+<table border=0>
+<tr><td valign=top>
+<ul>
+    <li><a href="#Dataset-Create">H5Dcreate</a>
+    <li><a href="#Dataset-Create1">H5Dcreate1</a>&nbsp;*
+    <li><a href="#Dataset-Create2">H5Dcreate2</a>
+    <li><a href="#Dataset-CreateAnon">H5Dcreate_anon</a>
+    <li><a href="#Dataset-Open">H5Dopen</a>
+    <li><a href="#Dataset-Open1">H5Dopen1</a>&nbsp;*
+    <li><a href="#Dataset-Open2">H5Dopen2</a>
+    <li><a href="#Dataset-Close">H5Dclose</a>
+    
+</ul>
+</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign=top>
+<ul>
+    <li><a href="#Dataset-GetSpace">H5Dget_space</a>
+    <li><a href="#Dataset-GetSpaceStatus">H5Dget_space_status</a>
+    <li><a href="#Dataset-GetType">H5Dget_type</a>
+    <li><a href="#Dataset-GetCreatePlist">H5Dget_create_plist</a>
+    <li><a href="#Dataset-GetAccessPlist">H5Dget_access_plist</a>
+    <li><a href="#Dataset-GetOffset">H5Dget_offset</a>
+    <li><a href="#Dataset-GetStorageSize">H5Dget_storage_size</a>
+    <li><a href="#Dataset-GetChunkStorageSize">H5Dget_chunk_storage_size</a>
+    <li><a href="#Dataset-VLGetBuf">H5Dvlen_get_buf_size</a>
+</ul>
+</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign=top>
+<ul>
+<!--
+    <li><a href="#Dataset-Debug">H5Ddebug</a>
+       This function is in the distributed source code and is technically 
+       a public function, but it is NOT intended for public  use.  
+       It is used only by certain tools.
+       DO NOT list it in the Reference Manual.
+    -->
+    <li><a href="#Dataset-VLReclaim">H5Dvlen_reclaim</a>
+    <li><a href="#Dataset-Read">H5Dread</a>
+    <li><a href="#Dataset-Write">H5Dwrite</a>
+    <li><a href="#Dataset-Gather">H5Dgather</a>
+    <li><a href="#Dataset-Scatter">H5Dscatter</a>
+    <li><a href="#Dataset-Iterate">H5Diterate</a>
+    <li><a href="#Dataset-Extend">H5Dextend</a>&nbsp;*
+    <li><a href="#Dataset-SetExtent">H5Dset_extent</a>
+    <li><a href="#Dataset-Fill">H5Dfill</a>
+</ul>
+</td></tr>
+<tr><td align=right colspan=5>
+    *&nbsp;<i>Use of these functions is deprecated in Release 1.8.0.</i>
+</td></tr>
+</table>
+<br>
+
+<i>Alphabetical Listing</i>
+
+<table border="0">
+  <tr>
+    <td valign="top">
+	<ul>
+      <li><a href="#Dataset-Close">H5Dclose</a>
+      <li><a href="#Dataset-Create">H5Dcreate</a>
+      <li><a href="#Dataset-Create1">H5Dcreate1</a>&nbsp;*
+      <li><a href="#Dataset-Create2">H5Dcreate2</a>
+      <li><a href="#Dataset-CreateAnon">H5Dcreate_anon</a>
+      <li><a href="#Dataset-Extend">H5Dextend</a>&nbsp;*
+      <li><a href="#Dataset-Fill">H5Dfill</a>
+      <li><a href="#Dataset-Gather">H5Dgather</a>
+	</ul>     
+    </td>
+    
+    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    
+    <td valign="top">
+	<ul>
+      <li><a href="#Dataset-GetAccessPlist">H5Dget_access_plist</a>
+      <li><a href="#Dataset-GetChunkStorageSize">H5Dget_chunk_storage_size</a>
+      <li><a href="#Dataset-GetCreatePlist">H5Dget_create_plist</a>
+      <li><a href="#Dataset-GetOffset">H5Dget_offset</a>
+      <li><a href="#Dataset-GetSpace">H5Dget_space</a>
+      <li><a href="#Dataset-GetSpaceStatus">H5Dget_space_status</a>
+      <li><a href="#Dataset-GetStorageSize">H5Dget_storage_size</a>
+      <li><a href="#Dataset-GetType">H5Dget_type</a>
+      <li><a href="#Dataset-Iterate">H5Diterate</a>
+	</ul>
+    </td>
+    
+    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    
+    <td valign="top">
+	<ul>
+      <li><a href="#Dataset-Open">H5Dopen</a>
+      <li><a href="#Dataset-Open1">H5Dopen1</a>&nbsp;*
+      <li><a href="#Dataset-Open2">H5Dopen2</a>
+      <li><a href="#Dataset-Read">H5Dread</a>
+      <li><a href="#Dataset-Scatter">H5Dscatter</a>
+      <li><a href="#Dataset-SetExtent">H5Dset_extent</a>
+      <li><a href="#Dataset-VLGetBuf">H5Dvlen_get_buf_size</a>
+      <li><a href="#Dataset-VLReclaim">H5Dvlen_reclaim</a>
+      <li><a href="#Dataset-Write">H5Dwrite</a>
+	</ul>
+    </td>
+  </tr>
+</table>
+
+<br>
+<strong>The Fortran Interface:</strong>
+<br>
+In general, each Fortran subroutine performs exactly the same task 
+as the corresponding C function.  
+<br>
+
+<table border=0>
+<tr><td valign=top>
+<ul>
+    <li><a href="#Dataset-Close">h5dclose_f</a>
+    <li><a href="#Dataset-Create">h5dcreate_f</a>
+    <li><a href="#Dataset-CreateAnon">h5dcreate_anon_f</a>
+    <li><a href="#Dataset-Open">h5dopen_f</a>
+    <li><a href="#Dataset-GetSpace">h5dget_space_f</a>
+    <li><a href="#Dataset-GetSpaceStatus">h5dget_space_status_f</a>
+</ul>
+</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign=top>
+<ul>
+    <li><a href="#Dataset-GetType">h5dget_type_f</a>
+    <li><a href="#Dataset-GetCreatePlist">h5dget_create_plist_f</a>
+    <li><a href="#Dataset-GetOffset">h5dget_offset_f</a>
+    <li><a href="#Dataset-GetStorageSize">h5dget_storage_size_f</a>
+    <li><a href="#Dataset-VLGetBuf">h5dvlen_get_max_len_f</a>
+    <li><a href="#Dataset-VLReclaim">h5dvlen_reclaim_f</a>
+</ul>
+</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign=top>
+<ul>
+    <li><a href="#Dataset-Read">h5dread_f</a>
+    <li><a href="#Dataset-Read">h5dread_vl_f</a>
+    <li><a href="#Dataset-Write">h5dwrite_f</a>
+    <li><a href="#Dataset-Write">h5dwrite_vl_f</a>
+<!--<li><a href="#Dataset-Iterate">h5diterate_f</a>                     -->
+<!--<li><a href="#Dataset-Debug">h5ddebug_f</a>                         -->
+    <li><a href="#Dataset-Extend">h5dextend_f</a>
+    <li><a href="#Dataset-Fill">h5dfill_f</a>
+</ul>
+</td></tr>
+</table>
+
+<!-- NEW PAGE -->
+<!-- HEADER RIGHT " " -->
+
+
+<!--  ---  ---  ---  ---  ---  ---  ---  ---  ---  ---  ---  -->
+<!--       Include special topic files                       -->
+<!--  ---  ---  ---  ---  ---  ---  ---  ---  ---  ---  ---  -->
+
+
+<!--  ---  ---  ---  ---  ---  ---  ---  ---  ---  ---  ---  -->
+<!--       Include function files                            -->
+<!--  ---  ---  ---  ---  ---  ---  ---  ---  ---  ---  ---  -->
+
+
+
+<!--
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+  * Copyright by The HDF Group.                                               *
+  * Copyright by the Board of Trustees of the University of Illinois.         *
+  * All rights reserved.                                                      *
+  *                                                                           *
+  * This file is part of HDF5.  The full HDF5 copyright notice, including     *
+  * terms governing use, modification, and redistribution, is contained in    *
+  * the files COPYING and Copyright.html.  COPYING can be found at the root   *
+  * of the source code distribution tree; Copyright.html can be found at the  *
+  * root level of an installed copy of the electronic HDF5 document set and   *
+  * is linked from the top-level documents page.  It can also be found at     *
+  * http://hdfgroup.org/HDF5/doc/Copyright.html.  If you do not have          *
+  * access to either file, you may request a copy from help@hdfgroup.org.     *
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ -->
+
+
+<!-- NEW PAGE -->
+<!-- HEADER RIGHT "H5Dclose" -->
+<hr>
+<dl>
+<dt><strong>Name:</strong> <a name="Dataset-Close">H5Dclose</a>
+<dt><strong>Signature:</strong>
+    <dd><em>herr_t </em><code>H5Dclose</code>(<em>hid_t </em><code>dataset_id</code>
+    )
+<dt><strong>Purpose:</strong>
+    <dd>Closes the specified dataset.
+<dt><strong>Description:</strong>
+    <dd><code>H5Dclose</code> ends access to a dataset specified by 
+        <code>dataset_id</code> and releases resources used by it.
+        Further use of the dataset identifier is illegal in calls to 
+        the dataset API.
+<dt><strong>Parameters:</strong>
+    <ul><table>
+        <tr>
+		    <td valign="top"><em>hid_t</em>&nbsp;<code>dataset_id&nbsp;&nbsp;&nbsp;&nbsp;</code></td>
+            <td valign="top">IN: Identifier of the dataset to close access to.</td></tr>
+    </table></ul>
+<dt><strong>Returns:</strong>
+    <dd>Returns a non-negative value if successful;
+        otherwise returns a negative value.
+<dt><strong>Fortran90 Interface:</strong> h5dclose_f
+    <dd>
+	<pre>
+SUBROUTINE h5dclose_f(dset_id, hdferr)
+  IMPLICIT NONE
+  INTEGER(HID_T), INTENT(IN) :: dset_id ! Dataset identifier  
+  INTEGER, INTENT(OUT) :: hdferr        ! Error code  
+                                        ! 0 on success and -1 on failure
+END SUBROUTINE h5dclose_f
+	</pre>		
+		
+		<!--<dt><strong>Non-C API(s):</strong>
+    	<dd>
+        
+        <img src="Graphics/Java.gif"> 
+        <img src="Graphics/C++.gif">
+        -->
+</dl>
+
+
+
+
+<!--
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+  * Copyright by The HDF Group.                                               *
+  * Copyright by the Board of Trustees of the University of Illinois.         *
+  * All rights reserved.                                                      *
+  *                                                                           *
+  * This file is part of HDF5.  The full HDF5 copyright notice, including     *
+  * terms governing use, modification, and redistribution, is contained in    *
+  * the files COPYING and Copyright.html.  COPYING can be found at the root   *
+  * of the source code distribution tree; Copyright.html can be found at the  *
+  * root level of an installed copy of the electronic HDF5 document set and   *
+  * is linked from the top-level documents page.  It can also be found at     *
+  * http://hdfgroup.org/HDF5/doc/Copyright.html.  If you do not have          *
+  * access to either file, you may request a copy from help@hdfgroup.org.     *
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ -->
+
+
+<!-- NEW PAGE -->
+<!-- HEADER RIGHT "H5Dcreate" -->
+<hr>
+<dl>
+
+  <dt><div align=right><font color=999999 size=-1><i>
+  Last modified: 9 October 2014</i></font></div></dt>
+
+  <dt><strong>Name:</strong> <a name="Dataset-Create">H5Dcreate</a>
+  <p>
+  <dt><strong>Signature:</strong>
+    <dd><em>hid_t </em><code>H5Dcreate</code>(
+            <em>hid_t </em><code>loc_id</code>,
+            <em>const char *</em><code>name</code>,
+            <em>hid_t</em> <code>type_id</code>,
+            <em>hid_t</em> <code>space_id</code>,
+            <em>hid_t</em> <code>dcpl_id</code>
+    )
+    <p>
+    <dd><em>hid_t</em> <code>H5Dcreate</code>(
+            <em>hid_t</em> <code>loc_id</code>, 
+            <em>const char *</em><code>name</code>, 
+            <em>hid_t</em> <code>dtype_id</code>, 
+            <em>hid_t</em> <code>space_id</code>,
+            <em>hid_t</em> <code>lcpl_id</code>, 
+            <em>hid_t</em> <code>dcpl_id</code>, 
+            <em>hid_t</em> <code>dapl_id</code>
+    )
+  <p>
+  <dt><strong>Purpose:</strong>
+    <dd>Creates a new dataset and links it to a location in the file.
+  <p>
+  <dt><strong>Description:</strong>
+    <dd><code>H5Dcreate</code> is a macro that is mapped to either
+      <a href="#Dataset-Create1"><code>H5Dcreate1</code></a> or
+      <a href="#Dataset-Create2"><code>H5Dcreate2</code></a>,
+      depending on the needs of the application.
+      <p>
+      Such macros are provided to facilitate application compatibility.
+      Their use and mappings are fully described in 
+      &ldquo;<a href="APICompatMacros.html">API Compatibility Macros 
+      in HDF5</a>&rdquo;; 
+      we urge you to read that document closely.
+      <p>
+      When both the HDF5 Library and the application are built and 
+      installed with no specific compatibility flags, 
+      <code>H5Dcreate</code> is mapped to the most recent version of
+      the function, currently 
+      <a href="#Dataset-Create2"><code>H5Dcreate2</code></a>.
+      If the library and/or application is compiled for Release 1.6
+      emulation, <code>H5Dcreate</code> will be mapped to 
+      <a href="#Dataset-Create1"><code>H5Dcreate1</code></a>.
+      Function-specific flags are available to override these settings 
+      on a function-by-function basis when the application is compiled. 
+      <p>
+      Specific compile-time compatibility flags and the resulting 
+      mappings are as follows:
+
+      <dir>
+      <table border=0 cellpadding=4>
+        <tr valign=top align=left> 
+          <th>Compatibility setting</th>
+          <th><code>H5Dcreate</code> mapping</th>
+        </tr><tr valign=top align=left>
+          <td colspan=2><hr><u><a href="APICompatMacros.html#GlobalSettings">Global settings</a></u></td>
+        </tr><tr valign=top align=left>
+          <td>No compatibility flag</td>
+          <td><code>H5Dcreate2</code>&nbsp;</td>
+        </tr><tr valign=top align=left>
+          <td>Enable deprecated symbols</td>
+          <td><code>H5Dcreate2</code>&nbsp;</td>
+        </tr><tr valign=top align=left>
+          <td>Disable deprecated symbols</td>
+          <td><code>H5Dcreate2</code>&nbsp;</td>
+        </tr><tr valign=top align=left>
+          <td>Emulate Release 1.6 interface<code>&nbsp;&nbsp;&nbsp;&nbsp;</code></td>
+          <td><code>H5Dcreate1</code>&nbsp;</td>
+        </tr><tr valign=top align=left>
+          <td colspan=2><hr><u><a href="APICompatMacros.html#FunctionLevelSettings">Function-level macros</a></u></td>
+        </tr><tr valign=top align=left>
+          <td><code>H5Dcreate_vers = 2</code></td>
+          <td><code>H5Dcreate2</code></td>
+        </tr><tr valign=top align=left>
+          <td><code>H5Dcreate_vers = 1</code></td>
+          <td><code>H5Dcreate1</code></td>
+        </tr>
+      </table>
+      </dir>
+    <p>A dataset created with this macro should be closed with 
+    <code>H5Dclose</code> when the dataset is no longer needed so that 
+    resource leaks will not develop.</p>
+      
+  <p>
+  <dt><strong>Fortran90 Interface:</strong>  h5dcreate_f
+    <dd>
+<pre>
+SUBROUTINE h5dcreate_f(loc_id, name, type_id, space_id, dset_id, & 
+     hdferr, dcpl_id, lcpl_id, dapl_id)
+
+  IMPLICIT NONE
+  INTEGER(HID_T), INTENT(IN) :: loc_id   ! File or group identifier 
+  CHARACTER(LEN=*), INTENT(IN) :: name   ! Name of the dataset 
+  INTEGER(HID_T), INTENT(IN) :: type_id  ! Datatype identifier 
+  INTEGER(HID_T), INTENT(IN) :: space_id ! Dataspace identifier 
+  INTEGER(HID_T), INTENT(OUT) :: dset_id ! Dataset identifier 
+  INTEGER, INTENT(OUT) :: hdferr         ! Error code  
+                                         ! 0 on success and -1 on failure
+  INTEGER(HID_T), OPTIONAL, INTENT(IN) :: dcpl_id 
+                                         ! Dataset creation property list
+  INTEGER(HID_T), OPTIONAL, INTENT(IN) :: lcpl_id 
+                                         ! Link creation property list
+  INTEGER(HID_T), OPTIONAL, INTENT(IN) :: dapl_id 
+                                         ! Dataset access property list
+END SUBROUTINE h5dcreate_f
+</pre>
+
+  <dt><strong>See Also:</a></strong></dt>
+    <dd>
+    <a href="http://www.hdfgroup.org/HDF5/doc/Advanced/UsingIdentifiers/index.html">
+    &ldquo;Using Identifiers&rdquo;</a>
+    </dd>
+
+
+
+  <p>
+  <dt><strong>History:</strong>
+    <dd><table width="90%">
+        <tr>
+          <td valign="top" align="left" width="10%">
+            <strong>Release</strong>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <td valign="top" align="left">
+            <strong>C</strong></td></tr>
+        <tr>
+          <td valign="top">1.8.0</td>
+          <td valign="top">The function 
+            <code>H5Dcreate</code> renamed to <code>H5Dcreate1</code> 
+            and deprecated in this release.
+            <br>
+            The macro <code>H5Dcreate</code> 
+            and the function <code>H5Dcreate2</code>
+            introduced in this release.</td></tr>
+    </table>
+</dl>
+
+
+
+
+<!--
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+  * Copyright by The HDF Group.                                               *
+  * Copyright by the Board of Trustees of the University of Illinois.         *
+  * All rights reserved.                                                      *
+  *                                                                           *
+  * This file is part of HDF5.  The full HDF5 copyright notice, including     *
+  * terms governing use, modification, and redistribution, is contained in    *
+  * the files COPYING and Copyright.html.  COPYING can be found at the root   *
+  * of the source code distribution tree; Copyright.html can be found at the  *
+  * root level of an installed copy of the electronic HDF5 document set and   *
+  * is linked from the top-level documents page.  It can also be found at     *
+  * http://hdfgroup.org/HDF5/doc/Copyright.html.  If you do not have          *
+  * access to either file, you may request a copy from help@hdfgroup.org.     *
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ -->
+
+
+<!-- NEW PAGE -->
+<!-- HEADER RIGHT "H5Dcreate1" -->
+<hr>
+<dl>
+  <dt><div align=right><font color=999999 size=-1><i>
+      Last modified: 29 July 2009
+      </i></font></div>
+
+<dt><strong>Name:</strong> <a name="Dataset-Create1">H5Dcreate1</a>
+<dt><strong>Signature:</strong>
+    <dd><em>hid_t </em><code>H5Dcreate1</code>(
+        <em>hid_t </em><code>loc_id</code>,
+        <em>const char *</em><code>name</code>,
+        <em>hid_t</em> <code>type_id</code>,
+        <em>hid_t</em> <code>space_id</code>,
+        <em>hid_t</em> <code>dcpl_id</code>
+    )
+<dt><strong>Purpose:</strong>
+    <dd>Creates a dataset at the specified location.
+<dt><strong>Notice:</strong>
+    <dd><i>This function is deprecated in favor of the function 
+        <a href="#Dataset-Create2"><code>H5Dcreate2</code></a>
+        or the macro
+        <a href="#Dataset-Create"><code>H5Dcreate</code></a>.</i>
+<dt><strong>Description:</strong>
+    <dd><code>H5Dcreate1</code> creates a data set with a name, 
+        <code>name</code>, in the file or in the group specified by 
+        the identifier <code>loc_id</code>.
+	<p>
+	<code>name</code> can be a relative path based at <code>loc_id</code>
+        or an absolute path from the root of the file.
+        Use of this function requires that any intermediate groups 
+        specified in the path already exist.
+        <p>
+        The dataset&rsquo;s datatype and dataspace are specified by
+        <code>type_id</code> and <code>space_id</code>, respectively.
+        These are the datatype and dataspace of the dataset as it will 
+        exist in the file, which may differ from the datatype and dataspace
+        in application memory.
+        <p>
+        Names within a group are unique:
+        <code>H5Dcreate1</code> will return an error if a link with
+        the name specified in <code>name</code> already exists at the
+        location specified in <code>loc_id</code>.
+        <p>
+        As is the case for any object in a group, 
+        the length of a dataset name is not limited.  
+        <p>
+        <code>dcpl_id</code> is an <code>H5P_DATASET_CREATE</code>
+        property list created with <code>H5Pcreate1</code> and
+        initialized with various property list functions described in 
+        &ldquo;<a href="RM_H5P.html">H5P: Property List Interface</a>.&rdquo;
+	<p>
+	<code>H5Dcreate</code> and <code>H5Dcreate_anon</code> 
+        return an error if the dataset&rsquo;s datatype 
+	includes a variable-length (VL) datatype and the fill value 
+	is undefined, i.e., set to <code>NULL</code> in the 
+	dataset creation property list. 
+	Such a VL datatype may be directly included,  
+	indirectly included as part of a compound or array datatype, or 
+	indirectly included as part of a nested compound or array datatype.
+	<p>
+        <code>H5Dcreate</code> and <code>H5Dcreate_anon</code> return 
+        a dataset identifier for success or a negative value for failure. 
+	The dataset identifier should eventually be closed by 
+        calling <code>H5Dclose</code> to release resources it uses.
+	<p>
+        See <a href="#Dataset-CreateAnon"><code>H5Dcreate_anon</code></a>
+        for discussion of the differences between <code>H5Dcreate</code> 
+        and <code>H5Dcreate_anon</code>.
+	<p>
+	<strong>Fill values and space allocation:</strong><br>
+	The HDF5 library provides flexible means 
+	of specifying a fill value, 
+	of specifying when space will be allocated for a dataset, and
+	of specifying when fill values will be written to a dataset.
+	For further information on these topics, see the document 
+	<a href="http://www.hdfgroup.org/HDF5/doc_resource/H5Fill_Values.html">
+	<cite>Fill Value and Dataset Storage Allocation Issues in HDF5</cite></a> 
+	and the descriptions of the following HDF5 functions in this 
+	<cite>HDF5 Reference Manual</cite>:
+	<table width=80% border="0">
+	<tr valign="top" align="left"><td width=10%>&nbsp;
+	  </td><td width=45%>
+            <a href="RM_H5D.html#Dataset-Fill"><code>H5Dfill</code></a><br>
+            <a href="RM_H5P.html#Property-SetFillValue"><code>H5Pset_fill_value</code></a><br>
+            <a href="RM_H5P.html#Property-GetFillValue"><code>H5Pget_fill_value</code></a><br>
+            <a href="RM_H5P.html#Property-FillValueDefined"><code>H5Pfill_value_defined</code></a>
+	  </td><td width=45%>
+            <a href="RM_H5P.html#Property-SetFillTime"><code>H5Pset_fill_time</code></a><br>
+            <a href="RM_H5P.html#Property-GetFillTime"><code>H5Pget_fill_time</code></a><br>
+            <a href="RM_H5P.html#Property-SetAllocTime"><code>H5Pset_alloc_time</code></a><br>
+            <a href="RM_H5P.html#Property-GetAllocTime"><code>H5Pget_alloc_time</code></a>
+	  </td></tr>
+	</table>
+	This information is also included in the 
+	&ldquo;HDF5 Datasets&rdquo; chapter of 
+	the new <cite>HDF5 User's Guide</cite>, 
+	which is being prepared for release.
+<dt><strong>Note:</strong>
+    <dd><code>H5Dcreate</code> and <code>H5Dcreate_anon</code> 
+        can fail if there has been an error
+        in setting up an element of the dataset creation property list.
+        In such cases, each item in the property list must be examined
+        to ensure that the setup satisfies all required conditions.
+        This problem is most likely to occur with the use of filters.
+        <p>
+        For example, either function will fail without a meaningful
+        explanation if the following conditions exist simultaneously:
+        <ul>
+          <li>SZIP compression is being used on the dataset.
+          <li>The SZIP parameter <code>pixels_per_block</code> 
+              is set to an inappropriate value.
+        </ul>
+        <p>
+        In such a case, one would refer to the description of 
+        <a href="RM_H5P.html#Property-SetSzip"><code>H5Pset_szip</code></a>,
+        looking for any conditions or requirements that might affect the
+        local computing environment.
+        <!--
+        <p>
+        Other known similar problems can occur with . . .
+        --> 
+<dt><strong>Parameters:</strong>
+    <ul><table>
+        <tr>
+            <td valign="top"><em>hid_t</em> <code>loc_id</code></td>
+            <td valign="top">IN: Identifier of the file or group 
+                within which to create the dataset.</td></tr>
+        <tr>
+            <td valign="top"><em>const char *</em> <code>name</code></td>
+            <td valign="top">IN: The name of the dataset to create.</td></tr>
+        <tr>
+            <td valign="top"><em>hid_t</em> <code>type_id</code></td>
+            <td valign="top">IN: Identifier of the datatype to use 
+                when creating the dataset.</td></tr>
+        <tr>
+            <td valign="top"><em>hid_t</em> <code>space_id</code></td>
+            <td valign="top">IN: Identifier of the dataspace to use 
+                when creating the dataset.</td></tr>
+        <tr>
+            <td valign="top"><em>hid_t</em>&nbsp;<code>dcpl_id&nbsp;&nbsp;&nbsp;&nbsp;</code></td>
+            <td valign="top">IN: Dataset creation property list 
+                identifier.</td></tr>
+    </table></ul>
+<dt><strong>Returns:</strong>
+    <dd>Returns a dataset identifier if successful;
+        otherwise returns a negative value.
+<dt><strong>Fortran90 Interface:</strong> See listing under <a href="RM_H5D.html#Dataset-Create"><code>H5Dcreate</code></a>.
+    <dd>	
+		
+		<!--<dt><strong>Non-C API(s):</strong>
+    	<dd>
+        
+        <img src="Graphics/Java.gif"> 
+        <img src="Graphics/C++.gif">
+        -->
+  <p>
+  <dt><strong>History:</strong>
+    <dd><table width="90%">
+        <tr>
+          <td valign="top" align="left" width="10%">
+            <strong>Release</strong>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <td valign="top" align="left">
+            <strong>C</strong></td></tr>
+        <tr>
+          <td valign="top">1.8.0</td>
+          <td valign="top">
+            Function <code>H5Dcreate</code> renamed to 
+            <code>H5Dcreate1</code> and deprecated
+            in this release.</td></tr>
+    </table>
+</dl>
+
+
+
+
+<!--
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+  * Copyright by The HDF Group.                                               *
+  * Copyright by the Board of Trustees of the University of Illinois.         *
+  * All rights reserved.                                                      *
+  *                                                                           *
+  * This file is part of HDF5.  The full HDF5 copyright notice, including     *
+  * terms governing use, modification, and redistribution, is contained in    *
+  * the files COPYING and Copyright.html.  COPYING can be found at the root   *
+  * of the source code distribution tree; Copyright.html can be found at the  *
+  * root level of an installed copy of the electronic HDF5 document set and   *
+  * is linked from the top-level documents page.  It can also be found at     *
+  * http://hdfgroup.org/HDF5/doc/Copyright.html.  If you do not have          *
+  * access to either file, you may request a copy from help@hdfgroup.org.     *
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ -->
+
+
+<!-- NEW PAGE -->
+<!-- HEADER RIGHT "H5Dcreate2" -->
+<hr>
+<dl>
+
+  <dt><div align=right><font color=999999 size=-1><i>
+  Last modified: 9 October 2014</i></font></div></dt>
+
+  <dt><strong>Name:</strong> <a name="Dataset-Create2">H5Dcreate2</a></dt>
+  <br />
+  <dt><strong>Signature:</strong></dt>
+    <dd><em>hid_t</em> <code>H5Dcreate2</code>(
+            <em>hid_t</em> <code>loc_id</code>, 
+            <em>const char *</em><code>name</code>, 
+            <em>hid_t</em> <code>dtype_id</code>, 
+            <em>hid_t</em> <code>space_id</code>,
+            <em>hid_t</em> <code>lcpl_id</code>, 
+            <em>hid_t</em> <code>dcpl_id</code>, 
+            <em>hid_t</em> <code>dapl_id</code>
+    )</dd>
+
+  <p>
+  <dt><strong>Purpose:</strong>
+    <dd>Creates a new dataset and links it into the file.</dd>
+
+  <p>
+  <dt><strong>Description:</strong></dt>
+    <dd><code>H5Dcreate2</code> creates a new dataset named 
+        <code>name</code> at the location specified by 
+	<code>loc_id</code>, and associates constant and initial 
+        persistent properties with that dataset, including 
+        <code>dtype_id</code>, the datatype of each data element 
+        as stored in the file; 
+        <code>space_id</code>, the dataspace of the dataset; 
+        and other initial properties as defined in the dataset
+        creation property and access property lists, 
+        <code>dcpl_id</code> and  <code>dapl_id</code>, respectively.
+        Once created, the dataset is opened for access.
+        <p>
+        <code>loc_id</code> may be a file identifier, 
+        or a group identifier within that file.
+        <code>name</code> may be either an absolute path in the file
+	or a relative path from <code>loc_id</code> naming the dataset.
+        <p>
+        If <code>dtype_id</code> is either a fixed-length or
+        variable-length string, it is important to set the string length
+        when defining the datatype.
+        String datatypes are derived from <code>H5T_C_S1</code>
+        (or <code>H5T_FORTRAN_S1</code> for Fortran codes), 
+        which defaults to 1 character in size.
+        See <a href="RM_H5T.html#Datatype-SetSize"><code>H5Tset_size</code></a> 
+        and &ldquo;<a href="RM_H5T.html#CreateVLString">Creating 
+        variable-length string datatypes</a>.&rdquo; 
+        <p>
+        The link creation property list, <code>lcpl_id</code>,
+        governs creation of the link(s) by which the new dataset
+        is accessed and the creation of any intermediate groups that 
+        may be missing. 
+        <p>
+        The datatype and dataspace properties 
+	and the dataset creation and access property lists 
+	are attached to the dataset, so the caller 
+        may derive new datatypes, dataspaces, and
+        creation and access properties from the old ones and
+        reuse them in calls to create additional datasets.
+        <p>
+        Once created, the dataset is ready to receive raw data.  
+        Immediately attempting to read raw data from
+        the dataset will probably return the fill value.  
+        <p>
+        To conserve and release resources, the dataset should be 
+        closed when access is no longer required.
+
+  <p>
+  <dt><strong>Parameters:</strong>
+    <dd><table>
+      <tr>
+        <td valign="top"><em>hid_t</em> <code>loc_id</code>
+        </td>
+        <td valign="top">IN: Location identifier
+        </td></tr>
+      <tr>
+        <td valign="top"><em>const&nbsp;char&nbsp;*</em><code>name</code>&nbsp;&nbsp;&nbsp;&nbsp;
+        </td>
+        <td valign="top">IN: Dataset name
+        </td></tr>
+      <tr>
+        <td valign="top"><em>hid_t</em> <code>dtype_id</code>
+        </td>
+        <td valign="top">IN: Datatype identifier
+        </td></tr>
+      <tr>
+        <td valign="top"><em>hid_t</em> <code>space_id</code>
+        </td>
+        <td valign="top">IN: Dataspace identifier
+        </td></tr>
+      <tr>
+        <td valign="top"><em>hid_t</em> <code>lcpl_id</code>
+        </td>
+        <td valign="top">IN: Link creation property list
+        </td></tr>
+      <tr>
+        <td valign="top"><em>hid_t</em> <code>dcpl_id</code>
+        </td>
+        <td valign="top">IN: Dataset creation property list
+        </td></tr>
+      <tr>
+        <td valign="top"><em>hid_t</em> <code>dapl_id</code>
+        </td>
+        <td valign="top">IN: Dataset access property list
+        </td></tr>
+    </table>
+
+  <p>
+  <dt><strong>Returns:</strong>
+    <dd>Returns a dataset identifier if successful;
+        otherwise returns a negative value.
+
+  <p>
+  <dt><strong>Fortran90 Interface:</strong> See listing under <a href="RM_H5D.html#Dataset-Create"><code>H5Dcreate</code></a>.
+    <dd>
+
+  <p>
+  <dt><strong>See Also:</strong>
+    <dd><a href="RM_H5T.html#Datatype-SetSize"><code>H5Tset_size</code></a></dd>
+    <dd>&ldquo;<a href="RM_H5T.html#CreateVLString">Creating 
+        variable-length string datatypes</a>&rdquo;</dd>
+    <dd>
+    <a href="http://www.hdfgroup.org/HDF5/doc/Advanced/UsingIdentifiers/index.html">
+    &ldquo;Using Identifiers&rdquo;</a></dd>
+
+
+  <p>
+  <dt><strong>History:</strong>
+    <dd><table width="90%">
+        <tr>
+          <td valign="top" align="left" width="10%">
+            <strong>Release</strong>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <td valign="top" align="left">
+            <strong>Change</strong></td></tr>
+        <tr>
+          <td valign="top">1.8.0</td>
+          <td valign="top">
+            C function introduced in this release.</td></tr>
+    </table>
+</dl>
+
+
+
+
+<!--
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+  * Copyright by The HDF Group.                                               *
+  * Copyright by the Board of Trustees of the University of Illinois.         *
+  * All rights reserved.                                                      *
+  *                                                                           *
+  * This file is part of HDF5.  The full HDF5 copyright notice, including     *
+  * terms governing use, modification, and redistribution, is contained in    *
+  * the files COPYING and Copyright.html.  COPYING can be found at the root   *
+  * of the source code distribution tree; Copyright.html can be found at the  *
+  * root level of an installed copy of the electronic HDF5 document set and   *
+  * is linked from the top-level documents page.  It can also be found at     *
+  * http://hdfgroup.org/HDF5/doc/Copyright.html.  If you do not have          *
+  * access to either file, you may request a copy from help@hdfgroup.org.     *
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ -->
+
+
+<!-- NEW PAGE -->
+<!-- HEADER RIGHT "H5Dcreate_anon" -->
+<hr>
+<dl>
+    <dt><div align=right><font color=999999 size=-1><i>
+  Last modified: 9 October 2014</i></font></div></dt>
+
+<dt><strong>Name:</strong> <a name="Dataset-CreateAnon">H5Dcreate_anon</a></dt>
+<br />
+<dt><strong>Signature:</strong>
+    <dd><em>hid_t </em><code>H5Dcreate_anon</code>(
+        <em>hid_t </em><code>loc_id</code>,
+        <em>hid_t</em> <code>type_id</code>,
+        <em>hid_t</em> <code>space_id</code>,
+        <em>hid_t</em> <code>dcpl_id</code>,
+        <em>hid_t</em> <code>dapl_id</code>
+    )
+
+<p>
+<dt><strong>Purpose:</strong>
+    <dd>Creates a dataset in a file without linking it into the file structure.
+
+<p>
+<dt><strong>Description:</strong>
+    <dd><code>H5Dcreate_anon</code> creates a dataset in the file 
+        specified by <code>loc_id</code>.
+        <p>
+        <code>loc_id</code> may be a file identifier or a group identifier 
+        within that file.
+        <p>
+        The dataset&rsquo;s datatype and dataspace are specified by
+        <code>type_id</code> and <code>space_id</code>, respectively.
+        These are the datatype and dataspace of the dataset as it will 
+        exist in the file, which may differ from the datatype and dataspace
+        in application memory.
+        <p>
+        Dataset creation properties are specified in the
+        dataset creation property list <code>dcpl_id</code>.
+        Dataset access properties are specified in the 
+        dataset access property list <code>dapl_id</code>.
+	<p>
+        <code>H5Dcreate_anon</code> returns a new dataset identifier.
+        Using this identifier, the new dataset <i>must</i> be linked 
+        into the HDF5 file structure with
+        <a href="RM_H5O.html#Object-Link"><code>H5Olink</code></a>
+        or it will be deleted from the file when the file is closed.
+	<p>
+        See <a href="#Dataset-Create"><code>H5Dcreate</code></a>
+        for further details and considerations on the use of
+        <code>H5Dcreate</code> and <code>H5Dcreate_anon</code>.
+        <p>
+        The differences between this function and 
+        <a href="#Dataset-Create"><code>H5Dcreate</code></a> are as follows:
+        <ul>
+          <li><code>H5Dcreate_anon</code> explicitly includes a dataset
+            access property list.
+            <code>H5Dcreate</code> always uses default dataset access 
+            properties.
+          <li><code>H5Dcreate_anon</code> neither provides the new 
+            dataset&rsquo;s name nor links it into the HDF5 file structure; 
+            those actions must be performed separately through a call to
+            <a href="RM_H5O.html#Object-Link"><code>H5Olink</code></a>,
+            which offers greater control over linking.
+        </ul>
+    <p>A dataset created with this function should be closed with 
+    <code>H5Dclose</code> when the dataset is no longer needed so that 
+    resource leaks will not develop.</p>
+
+<p>
+<dt><strong>Parameters:</strong>
+    <ul><table>
+        <tr>
+            <td valign="top"><em>hid_t</em> <code>loc_id</code></td>
+            <td valign="top">IN: Identifier of the file or group 
+                within which to create the dataset.</td></tr>
+        <tr>
+            <td valign="top"><em>hid_t</em> <code>type_id</code></td>
+            <td valign="top">IN: Identifier of the datatype to use 
+                when creating the dataset.</td></tr>
+        <tr>
+            <td valign="top"><em>hid_t</em>&nbsp;<code>space_id&nbsp;&nbsp;&nbsp;&nbsp;</code></td>
+            <td valign="top">IN: Identifier of the dataspace to use 
+                when creating the dataset.</td></tr>
+        <tr>
+            <td valign="top"><em>hid_t</em> <code>dcpl_id</code></td>
+            <td valign="top">IN: Dataset creation property list identifier.</td></tr>
+        <tr>
+            <td valign="top"><em>hid_t</em> <code>dapl_id</code></td>
+            <td valign="top">IN: Dataset access property list identifier.</td></tr>
+    </table></ul>
+
+<p>
+<dt><strong>Returns:</strong>
+    <dd>Returns a dataset identifier if successful;
+        otherwise returns a negative value.
+<p>
+<dt><strong>Fortran90 Interface:</strong> h5dcreate_anon_f
+    <dd>
+
+	    <pre>
+SUBROUTINE h5dcreate_anon_f(loc_id, type_id, space_id, dset_id, hdferr, &
+                            dcpl_id, dapl_id)
+  IMPLICIT NONE
+  INTEGER(HID_T), INTENT(IN)  :: loc_id   ! File or group identifier. 
+  INTEGER(HID_T), INTENT(IN)  :: type_id  ! Datatype identifier. 
+  INTEGER(HID_T), INTENT(IN)  :: space_id ! Dataspace identifier.
+  INTEGER(HID_T), INTENT(OUT) :: dset_id  ! Dataset identifier. 
+  INTEGER, INTENT(OUT) :: hdferr          ! Error code.  
+                                          ! 0 on success and -1 on failure
+  INTEGER(HID_T), OPTIONAL, INTENT(IN) :: dcpl_id  
+                                          ! Dataset creation property list 
+                                          ! identifier.
+  INTEGER(HID_T), OPTIONAL, INTENT(IN) :: dapl_id  
+                                          ! Dataset access property list 
+                                          ! identifier.
+END SUBROUTINE h5dcreate_anon_f
+	  </pre>
+		
+<p>
+<dt><strong>See Also:</strong>
+    <dd><a href="RM_H5O.html#Object-Link"><code>H5Olink</code></a></dd>
+    <dd><a href="RM_H5D.html#Dataset-Create"><code>H5Dcreate</code></a></dd>
+    <dd>
+    <a href="http://www.hdfgroup.org/HDF5/doc/Advanced/UsingIdentifiers/index.html">
+    &ldquo;Using Identifiers&rdquo;</a></dd>
+
+<p>
+<dt><strong>History:</strong>
+    <dd><table width="90%">
+        <tr>
+          <td valign="top" align="left" width="10%">
+            <strong>Release</strong>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <td valign="top" align="left">
+            <strong>C</strong></td></tr>
+        <tr>
+          <td valign="top">1.8.0</td>
+          <td valign="top">
+            Function introduced in this release.</td></tr>
+        </table></dd>
+
+</dl>
+
+
+
+
+<!--
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+  * Copyright by The HDF Group.                                               *
+  * Copyright by the Board of Trustees of the University of Illinois.         *
+  * All rights reserved.                                                      *
+  *                                                                           *
+  * This file is part of HDF5.  The full HDF5 copyright notice, including     *
+  * terms governing use, modification, and redistribution, is contained in    *
+  * the files COPYING and Copyright.html.  COPYING can be found at the root   *
+  * of the source code distribution tree; Copyright.html can be found at the  *
+  * root level of an installed copy of the electronic HDF5 document set and   *
+  * is linked from the top-level documents page.  It can also be found at     *
+  * http://hdfgroup.org/HDF5/doc/Copyright.html.  If you do not have          *
+  * access to either file, you may request a copy from help@hdfgroup.org.     *
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ -->
+
+
+<!-- NEW PAGE -->
+<!-- HEADER RIGHT "H5Dextend" -->
+<hr>
+<dl>
+<dt><div align=right><font color=999999 size=-1><i>
+    Last modified: 11 February 2010
+    </i></font></div>
+
+<dt><strong>Name:</strong> <a name="Dataset-Extend">H5Dextend</a>
+<dt><strong>Signature:</strong>
+    <dd><em>herr_t </em><code>H5Dextend</code>(
+        <em>hid_t </em><code>dataset_id</code>,
+        <em>const hsize_t </em><code>size[]</code>
+    )
+
+<p />
+<dt><strong>Purpose:</strong>
+    <dd>Extends a dataset. 
+
+<p />
+<dt><strong>Notice:</strong>
+    <dd><i>This function is deprecated in favor of the function 
+        <a href="#Dataset-SetExtent"><code>H5Dset_extent</code></a>.</i>
+
+<p />
+<dt><strong>Description:</strong>
+    <dd><code>H5Dextend</code> verifies that the dataset is at least of size
+        <code>size</code>, extending it if necessary.  
+        The dimensionality of <code>size</code> is the same as that of
+        the dataspace of the dataset being changed.
+        <p>     
+        This function can be applied to the following datasets:
+        <ul>    
+          <li>Any dataset with unlimited dimensions
+          <li>A dataset with fixed dimensions if the current dimension sizes
+          are less than the maximum sizes set with <code>maxdims</code> (see 
+          <a href="RM_H5S.html#Dataspace-CreateSimple">
+          <code>H5Screate_simple</code></a>)
+        </ul>     
+        <p>     
+        Space on disk is immediately allocated for the new dataset extent
+        if the dataset&rsquo;s space allocation time is set to 
+        <code>H5D_ALLOC_TIME_EARLY</code>.
+        Fill values will be written to the dataset if the dataset&rsquo;s
+        fill time is set to <code>H5D_FILL_TIME_IFSET</code>&nbsp; or&nbsp; 
+        <code>H5D_FILL_TIME_ALLOC</code>.
+        (See <a href="RM_H5P.html#Property-SetFillTime">
+        <code>H5Pset_fill_time</code></a>
+        and <a href="RM_H5P.html#Property-SetAllocTime">
+        <code>H5Pset_alloc_time</code></a>.)
+        <p>
+	This function ensures that the dataset dimensions are of 
+	at least the sizes specified in <code>size</code>.
+	The function 
+	<a href="#Dataset-SetExtent"><code>H5Dset_extent</code></a>
+	must be used if the dataset dimension sizes are are to be 
+	reduced.
+        <p>     
+
+<p />
+<dt><strong>Parameters:</strong>
+    <dd><table>
+        <tr>
+            <td valign="top"><em>hid_t</em> <code>dataset_id</code></td>
+            <td valign="top">IN: Identifier of the dataset.</td></tr>
+        <tr>
+            <td valign="top"><em>const&nbsp;hsize_t</em>&nbsp;<code>size[]&nbsp;&nbsp;&nbsp;&nbsp;</code></td>
+            <td valign="top">IN: Array containing the new magnitude of each dimension.</td></tr>
+    </table></dd>
+
+<p />
+<dt><strong>Returns:</strong>
+    <dd>Returns a non-negative value if successful;
+        otherwise returns a negative value.
+
+<p />
+<dt><strong>Fortran90 Interface:</strong> h5dextend_f
+    <dd>
+	<pre>
+SUBROUTINE h5dextend_f(dataset_id, size, hdferr) 
+  IMPLICIT NONE 
+  INTEGER(HID_T), INTENT(IN) :: dataset_id   ! Dataset identifier
+  INTEGER(HSIZE_T), DIMENSION(*), INTENT(IN)  :: size
+                                             ! Array containing 
+                                             ! dimensions' sizes 
+  INTEGER, INTENT(OUT) :: hdferr             ! Error code 
+                                             ! 0 on success and -1 on failure
+END SUBROUTINE h5dextend_f 
+	</pre>		
+		
+<p />
+  <dt><strong>History:</strong>
+    <dd><table width="90%">
+        <tr>
+          <td valign="top" align="left" width="10%">
+            <strong>Release</strong>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <td valign="top" align="left">
+            <strong>C</strong></td></tr>
+        <tr>
+          <td valign="top">1.8.0</td>
+          <td valign="top">
+            Function deprecated in this release.
+          </td></tr>
+        <tr>
+          <td valign="top">1.8.0</td>
+          <td valign="top">
+            Parameter <code>size</code> syntax changed 
+            to   '<em>const&nbsp;hsize_t</em>&nbsp;<code>size[]</code>'
+            in this release.
+          </td></tr>
+    </table>
+</dl>
+
+
+
+<!--
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+  * Copyright by The HDF Group.                                               *
+  * Copyright by the Board of Trustees of the University of Illinois.         *
+  * All rights reserved.                                                      *
+  *                                                                           *
+  * This file is part of HDF5.  The full HDF5 copyright notice, including     *
+  * terms governing use, modification, and redistribution, is contained in    *
+  * the files COPYING and Copyright.html.  COPYING can be found at the root   *
+  * of the source code distribution tree; Copyright.html can be found at the  *
+  * root level of an installed copy of the electronic HDF5 document set and   *
+  * is linked from the top-level documents page.  It can also be found at     *
+  * http://hdfgroup.org/HDF5/doc/Copyright.html.  If you do not have          *
+  * access to either file, you may request a copy from help@hdfgroup.org.     *
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ -->
+
+
+<!-- NEW PAGE -->
+<!-- HEADER RIGHT "H5Dfill" -->
+<hr>
+<dl>
+<dt><strong>Name:</strong> <a name="Dataset-Fill">H5Dfill</a>
+<dt><strong>Signature:</strong>
+    <dd><em>herr_t </em><code>H5Dfill</code>(
+        <em>const void *</em><code>fill</code>,
+        <em>hid_t </em><code>fill_type_id</code>,
+        <em>void *</em><code>buf</code>,
+        <em>hid_t </em><code>buf_type_id</code>,
+        <em>hid_t </em><code>space_id</code>
+    )
+<dt><strong>Purpose:</strong>
+    <dd>Fills dataspace elements with a fill value in a memory buffer.
+<dt><strong>Description:</strong>
+    <dd><code>H5Dfill</code> explicitly fills 
+        the dataspace selection in memory, <code>space_id</code>, 
+        with the fill value specified in <code>fill</code>.
+        If <code>fill</code> is <code>NULL</code>, 
+        a fill value of <code>0</code> (zero) is used.
+        <p>
+	<code>fill_type_id</code> specifies the datatype 
+	of the fill value.<br>
+	<code>buf</code> specifies the buffer in which 
+	the dataspace elements will be written.<br>
+	<code>buf_type_id</code> specifies the datatype of 
+	those data elements.
+	<p>
+        Note that if the fill value datatype differs 
+        from the memory buffer datatype, the fill value 
+        will be converted to the memory buffer datatype 
+        before filling the selection.
+<dt><strong>Note:</strong>
+    <dd>Applications sometimes write data only to portions of 
+	an allocated dataset.  It is often useful in such cases 
+	to fill the unused space with a known 
+	<span class="termEmphasis">fill value</span>.  
+	See <a href="RM_H5P.html#Property-SetFillValue">H5Pset_fill_value</a>
+	for further discussion.  
+	Other related functions include
+	<a href="RM_H5P.html#Property-GetFillValue">H5Pget_fill_value</a>,
+	<a href="RM_H5P.html#Property-FillValueDefined">H5Pfill_value_defined</a>,
+	<a href="RM_H5P.html#Property-SetFillTime">H5Pset_fill_time</a>,
+	<a href="RM_H5P.html#Property-GetFillTime">H5Pget_fill_time</a>,
+	<a href="#Dataset-Create">H5Dcreate</a>,
+	and
+	<a href="#Dataset-CreateAnon">H5Dcreate_anon</a>.
+<dt><strong>Parameters:</strong>
+    <ul><table>
+        <tr>
+		    <td valign="top"><em>const void *</em><code>fill</code></td>
+            <td valign="top">IN: Pointer to the fill value to be used.</td></tr>
+        <tr>
+		    <td valign="top"><em>hid_t&nbsp;</em><code>fill_type_id&nbsp;&nbsp;&nbsp;&nbsp;</code></td>
+            <td valign="top">IN:  Fill value datatype identifier.</td></tr>
+        <tr>
+		    <td valign="top"><em>void *</em><code>buf</code></td>
+            <td valign="top">IN/OUT: Pointer to the memory buffer containing the 
+                selection to be filled.</td></tr>
+        <tr>
+		    <td valign="top"><em>hid_t </em><code>buf_type_id</code></td>
+            <td valign="top">IN: Datatype of dataspace elements to be filled.</td></tr>
+        <tr>
+		    <td valign="top"><em>hid_t </em><code>space_id</code></td>
+            <td valign="top">IN: Dataspace describing memory buffer and 
+                    containing the selection to be filled.</td></tr>
+    </table></ul>
+<dt><strong>Returns:</strong>
+    <dd>Returns a non-negative value if successful;
+        otherwise returns a negative value.
+<dt><strong>Fortran90 Interface:</strong> h5dfill_f
+    <dd>
+	<pre>
+SUBROUTINE h5dfill_f(fill_value, space_id, buf, hdferr)
+  IMPLICIT NONE
+  TYPE, INTENET(IN) :: fill_value        ! Fill value; may be have one of the
+                                         ! following types:
+                                         ! INTEGER, REAL, DOUBLE PRECISION, 
+                                         ! CHARACTER
+  INTEGER(HID_T), INTENT(IN) :: space_id ! Memory dataspace selection identifier 
+  TYPE, DIMENSION(*) :: buf              ! Memory buffer to fill in; must have
+                                         ! the same datatype as fill value
+  INTEGER, INTENT(OUT) :: hdferr         ! Error code  
+                                         ! 0 on success and -1 on failure
+END SUBROUTINE h5dfill_f
+	</pre>		
+		
+		<!--<dt><strong>Non-C API(s):</strong>
+    	<dd>
+        
+        <img src="Graphics/Java.gif"> 
+        <img src="Graphics/C++.gif">
+        -->
+</dl>
+
+
+
+<!--
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+  * Copyright by The HDF Group.                                               *
+  * Copyright by the Board of Trustees of the University of Illinois.         *
+  * All rights reserved.                                                      *
+  *                                                                           *
+  * This file is part of HDF5.  The full HDF5 copyright notice, including     *
+  * terms governing use, modification, and redistribution, is contained in    *
+  * the files COPYING and Copyright.html.  COPYING can be found at the root   *
+  * of the source code distribution tree; Copyright.html can be found at the  *
+  * root level of an installed copy of the electronic HDF5 document set and   *
+  * is linked from the top-level documents page.  It can also be found at     *
+  * http://hdfgroup.org/HDF5/doc/Copyright.html.  If you do not have          *
+  * access to either file, you may request a copy from help@hdfgroup.org.     *
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ -->
+
+
+<!-- NEW PAGE -->
+<!-- HEADER RIGHT "H5Dscatter" -->
+<hr>
+<dl>
+
+  <dt><div align=right><font color=999999 size=-1><i>
+      Last modified: 11 July 2013
+      </i></font></div>
+
+  <dt><strong>Name:</strong> <a name="Dataset-Gather">H5Dgather</a>
+  <dt><strong>Signature:</strong>
+    <dd><em>herr_t</em> <code>H5Dgather</code>(
+            <em>hid_t</em> <code>src_space_id</code>,
+            <em>const void *</em> <code>src_buf</code>,
+            <em>hid_t</em> <code>type_id</code>,
+            <em>size_t</em> <code>dst_buf_size</code>,
+            <em>void *</em><code>dst_buf</code>
+            <em>H5D_gather_func_t</em> <code>op</code>,
+            <em>void *</em> <code>op_data</code>,
+        )
+
+  <p>
+  <dt><strong>Purpose:</strong>
+    <dd>Gathers data from a selection within a memory buffer.
+
+  <p>
+  <dt><strong>Description:</strong>
+    <dd><code>H5Dgather</code> retrieves data from a selection within the
+      supplied buffer <code>src_buf</code> and passes it to the supplied
+      callback function <code>op</code> in a contiguous form.
+      <p>
+      <code>src_space_id</code> is a dataspace which defines the extent 
+      of <code>src_buf</code> and the selection within it to gather the 
+      data from.
+      <p>
+      <code>type_id</code> is the datatype of the data to be gathered in 
+      both the source and destination buffers.
+      <p>
+      <code>src_buf</code> must be at least as large as the number of 
+      elements in the extent of <code>src_space_id</code> times the size 
+      in bytes of <code>type_id</code>.
+      <p>
+      The data is gathered into <code>dst_buf</code>, which needs to be 
+      large enough to hold all the data if the callback function 
+      <code>op</code> is not provided.
+      <p>
+      If no callback function is provided, <code>H5Dgather</code> 
+      simply gathers the data into <code>dst_buf</code> and returns.
+      If a callback function is provided, <code>H5Dgather</code> repeatedly
+      gathers up to <code>dst_buf_size</code> bytes <code>op</code> to 
+      process the serialized data.
+      The prototype of the callback function <code>op</code> is as follows 
+      (as defined in the source code file <code>H5Dpublic.h</code>):
+      <dir>
+          <em>herr_t</em> <code>(*H5D_gather_func_t)(</code>
+              <em>const void *</em> <code>dst_buf,</code> 
+              <em>size_t</em> <code>dst_buf_bytes_used,</code> 
+              <em>void *</em><code>op_data)</code>
+      </dir>
+
+      <p>
+      The parameters of this callback function have the following
+      values or meanings: 
+      <table>
+          <tr valign=top><td><code>&nbsp;&nbsp;&nbsp;&nbsp;</code></td><td>
+              <code>dst_buf</code>
+              </td><td>
+              Pointer to the destination buffer which has been filled with the
+              next set of elements gathered.
+              This will always be identical to the <code>dst_buf</code> passed
+              to <code>H5Dgather</code>.
+              </td></tr>
+          <tr valign=top><td><code>&nbsp;&nbsp;&nbsp;&nbsp;</code></td><td>
+              <code>dst_buf_bytes_used&nbsp;&nbsp;&nbsp;</code>
+              </td><td>
+              Pointer to the number of valid bytes in <code>dst_buf</code>.
+              This number must be a multiple of the datatype size.
+              </td></tr>
+          <tr valign=top><td><code>&nbsp;&nbsp;&nbsp;&nbsp;</code></td><td>
+              <code>op_data</code>
+              </td><td>
+              User-defined pointer to data required by the callback function;
+              a pass-through of the <code>op_data</code> pointer provided
+              with the <code>H5Dgather</code> function call.
+              </td></tr>
+      </table>
+
+      <p>
+      The callback function should process, store, or otherwise make use of 
+      the data returned in <code>dst_buf</code> before it returns, because the
+      buffer will be overwritten unless it is the last call to the callback.
+      This function will be repeatedly called until all gathered elements have
+      been passed to the callback in <code>dst_buf</code>.
+      The callback function should return zero (<code>0</code>) to indicate 
+      success, and a negative value to indicate failure.
+
+  <p>
+  <dt><strong>Programming Note for C++ Developers Using C Functions:</strong>
+    <dd>
+      <p>If a C routine that takes a function pointer as an argument is 
+      called from within C++ code, the C routine should be returned from 
+      normally. </p>
+
+      <p>Examples of this kind of routine include callbacks such as 
+      <code>H5Pset_elink_cb</code> and <code>H5Pset_type_conv_cb</code> 
+      and functions such as <code>H5Tconvert</code> and 
+      <code>H5Ewalk2</code>.</p>
+
+      <p>Exiting the routine in its normal fashion allows the HDF5 C 
+      Library to clean up its work properly. In other words, if the C++ 
+      application jumps out of the routine back to the C++ 
+      &ldquo;catch&rdquo; statement, the The HDF5 C Library is not given 
+      the opportunity to close any temporary data structures that were set 
+      up when the routine was called. The C++ application should save 
+      some state as the routine is started so that any problem that 
+      occurs might be diagnosed.</p>
+
+  <p>
+  <dt><strong>Parameters:</strong>
+    <dd><table>
+      <tr>
+        <td valign="top">
+            <em>hid_t</em> <code>src_space_id</code>
+        </td>
+        <td valign="top">IN: Identifier for the dataspace describing 
+            both the dimensions of the source buffer and
+            the selection within the source buffer to gather data from.
+        </td></tr>
+      <tr>
+        <td valign="top">
+            <em>const void *</em><code>src_buf</code>
+        </td>
+        <td valign="top">IN: Source buffer which the data will be gathered 
+            from.
+        </td></tr>
+      <tr>
+        <td valign="top">
+            <em>hid_t</em> <code>type_id</code> 
+        </td>
+        <td valign="top">IN: Identifier for the datatype describing the 
+            data in both the source and definition buffers.
+            This is only used to calculate the element size.
+        </td></tr>
+      <tr>
+        <td valign="top">
+            <em>size_t</em> <code>dst_buf_size</code> 
+        </td>
+        <td valign="top">IN: Size in bytes of <code>dst_buf</code>.
+        </td></tr>
+      <tr>
+        <td valign="top">
+            <em>void *</em><code>dst_buf</code>
+        </td>
+        <td valign="top">OUT: Destination buffer where the gathered data 
+            will be placed.
+        </td></tr>
+      <tr>
+        <td valign="top">
+            <em>H5D_gather_func_t</em>&nbsp;<code>op&nbsp;&nbsp;&nbsp;</code>
+        </td>
+        <td valign="top">IN: Callback function which handles the gathered 
+            data.
+            <br>
+            Optional if <code>dst_buf</code> is large enough to hold all of 
+            the gathered data; required otherwise.
+        </td></tr>
+      <tr>
+        <td valign="top">
+            <em>void *</em> <code>op_data</code> 
+        </td>
+        <td valign="top">IN: User-defined pointer to data required by
+            <code>op</code>.
+        </td></tr>
+    </table>
+
+  <p>
+  <dt><strong>Returns:</strong>
+    <dd>Returns a non-negative value if successful;
+        otherwise returns a negative value.
+
+
+<!--__ *** FORTRAN90 INTERFACE  **********************************  -->
+<!--__ When the Fortran90 interface is complete, replace this       -->
+<!--__ section with the Fortran90 subroutine description.           -->
+<!--__                                                              -->
+<!--__ See the file h5fortran_f_insert.htm for a template and       -->
+<!--__ instructions.                                                -->
+<!--__ ***********************************************************  -->
+
+
+  <p>
+  <dt><strong>See Also:</strong>
+    <dd><a href="RM_H5D.html#Dataset-Scatter">
+        <code>H5Dscatter</code></a>
+
+  <p>
+  <dt><strong>History:</strong>
+    <dd><table width="90%">
+        <tr>
+          <td valign="top" align="left" width="10%">
+            <strong>Release</strong>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <td valign="top" align="left">
+            <strong>Change</strong></td></tr>
+        <tr>
+          <td valign="top">1.8.11</td>
+          <td valign="top">
+            C function introduced.</td></tr>
+    </table>
+</dl>
+
+
+
+
+
+<!--
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+  * Copyright by The HDF Group.                                               *
+  * Copyright by the Board of Trustees of the University of Illinois.         *
+  * All rights reserved.                                                      *
+  *                                                                           *
+  * This file is part of HDF5.  The full HDF5 copyright notice, including     *
+  * terms governing use, modification, and redistribution, is contained in    *
+  * the files COPYING and Copyright.html.  COPYING can be found at the root   *
+  * of the source code distribution tree; Copyright.html can be found at the  *
+  * root level of an installed copy of the electronic HDF5 document set and   *
+  * is linked from the top-level documents page.  It can also be found at     *
+  * http://hdfgroup.org/HDF5/doc/Copyright.html.  If you do not have          *
+  * access to either file, you may request a copy from help@hdfgroup.org.     *
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ -->
+
+
+<!-- NEW PAGE -->
+<!-- HEADER RIGHT "H5Dget_access_plist" -->
+<hr>
+<dl>
+
+  <dt><div align=right><font color=999999 size=-1><i>
+  Last modified: 9 October 2014</i></font></div></dt>
+
+  <dt><strong>Name:</strong> <a name="Dataset-GetAccessPlist">H5Dget_access_plist</a>
+  <p>
+  <dt><strong>Signature:</strong>
+    <dd><em>hid_t </em><code>H5Dget_access_plist</code>(
+            <em>hid_t </em><code>dataset_id</code>
+        )
+
+  <p>
+  <dt><strong>Purpose:</strong>
+    <dd>Returns the dataset access property list associated with a dataset.
+
+  <p>
+  <dt><strong>Description:</strong>
+    <dd><code>H5Dget_access_plist</code>
+      returns a copy of the dataset access property list used to open the
+      specified dataset.  Modifications to the returned property list will have
+      no effect on the dataset it was retrieved from.
+      <p>
+      The chunk cache parameters in the returned property lists will be those
+      used by the dataset.  If the properties in the file access property list
+      were used to determine the dataset&#39;s chunk cache configuration, then
+      those properties will be present in the returned dataset access property
+      list.  If the dataset does not use a chunked layout, then the chunk cache
+      properties will be set to the default.  The chunk cache properties in the
+      returned list are considered to be &ldquo;set&rdquo;, and any use of this
+      list will override the corresponding properties in the file&rsquo;s 
+      file access property list.
+      <p>
+      All link access properties in the returned list will be set to the default
+      values.
+      <p>The access property list identifier should be released with 
+      <code>H5Pclose</code> when the identifier is no longer needed 
+      so that resource leaks will not develop.</p>
+  <p>
+  <dt><strong>Parameters:</strong>
+    <dd>
+    <table>
+      <tr valign="top">
+        <td><em>hid_t </em><code>dataset_id</code>
+            </td><td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        <td>IN: Identifier of the dataset to get access property list of.
+            </td></tr>
+    </table>
+
+  <p>
+  <dt><strong>Returns:</strong>
+    <dd>Returns a dataset access property list identifier if successful;
+        otherwise returns a negative value.
+
+  <p>
+  <dt><strong>Example Usage:</strong>
+
+    <dd>The following code retrieves the dataset access property list used to
+        open the dataset <code>dataset_id</code> into <code>dapl_id</code>:
+<dir><pre>
+dapl_id = H5Dget_access_plist(dataset_id);
+</pre></dir>
+    <p>
+
+<!--__ *** FORTRAN90 INTERFACE  **********************************  -->
+<!--__ When the Fortran90 interface is complete, replace this       -->
+<!--__ section with the Fortran90 subroutine description.           -->
+<!--__                                                              -->
+<!--__ See the file h5fortran_f_insert.htm for a template and       -->
+<!--__ instructions.                                                -->
+<!--__ ***********************************************************  -->
+  <p>
+
+  <p>
+  <dt><strong>See Also:</strong>
+    <dd>&ldquo;Dataset Access Properties&rdquo; in the
+        &ldquo;<a href="RM_H5P.html">H5P: Property List Interface</a>&rdquo;
+        chapter of the
+        <a href="RM_H5Front.html"><cite>HDF5 Reference Manual</cite></a></dd>
+    <dd>
+    <a href="http://www.hdfgroup.org/HDF5/doc/Advanced/UsingIdentifiers/index.html">
+    &ldquo;Using Identifiers&rdquo;</a></dd>
+
+
+  <p>
+  <dt><strong>History:</strong>
+    <dd><table width="90%">
+        <tr>
+          <td valign="top" align="left" width="10%">
+            <strong>Release</strong>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <td valign="top" align="left">
+            <strong>Change</strong></td>
+        </tr>
+
+        <tr>
+          <td valign="top">1.8.3</td>
+          <td valign="top">
+            C function introduced in this release.</td>
+        </tr>
+
+        </tr>
+        </table>
+</dl>
+
+
+
+
+<!--
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+  * Copyright by The HDF Group.                                               *
+  * Copyright by the Board of Trustees of the University of Illinois.         *
+  * All rights reserved.                                                      *
+  *                                                                           *
+  * This file is part of HDF5.  The full HDF5 copyright notice, including     *
+  * terms governing use, modification, and redistribution, is contained in    *
+  * the files COPYING and Copyright.html.  COPYING can be found at the root   *
+  * of the source code distribution tree; Copyright.html can be found at the  *
+  * root level of an installed copy of the electronic HDF5 document set and   *
+  * is linked from the top-level documents page.  It can also be found at     *
+  * http://hdfgroup.org/HDF5/doc/Copyright.html.  If you do not have          *
+  * access to either file, you may request a copy from help@hdfgroup.org.     *
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ -->
+
+
+<!-- NEW PAGE -->
+<!-- HEADER RIGHT "H5Dget_chunk_storage_size" -->
+<hr>
+<dl>
+
+<dt><div align=right><font color=999999 size=-1><i>
+    Last modified: June 7, 2017 
+    </i></font></div>
+
+<dt><strong>Name:</strong> <a name="Dataset-GetChunkStorageSize">H5Dget_chunk_storage_size</a>
+<dt><strong>Signature:</strong>
+    <dd><em>herr_t</em><code>H5Dget_chunk_storage_size</code>(
+        <em>hid_t </em><code>dataset_id</code>,
+        <em>const hsize_t *</em><code>offset</code>,
+        <em>hsize_t *</em><code>chunk_nbytes</code>
+    )
+
+<p />
+<dt><strong>Purpose:</strong>
+    <dd>Returns the amount of storage allocated within the file for a raw data chunk in a dataset.
+
+<p />
+<dt><strong>Description:</strong>
+    <dd><code>H5Dget_chunk_storage_size</code> returns the size in bytes
+        allocated in the file for a raw data chunk as specified by 
+        its logical <code>offset</code> in the dataset <code>dataset_id</code>.  
+        The size is returned in <code>chunk_nbytes</code>.
+        It is the size of the compressed data if the chunk is filtered
+        and the size may be zero if no storage is allocated yet for the dataset.
+
+<p />
+<dt><strong>Parameters:</strong>
+    <dd><table>
+        <tr>
+            <td valign="top"><em>hid_t</em>&nbsp;<code>dataset_id&nbsp;&nbsp;&nbsp;&nbsp;</code></td>
+            <td valign="top">IN: Identifier of the dataset to query.</td></tr>
+        <tr>
+            <td valign="top"><em>const hsize_t *</em>&nbsp;<code>offset&nbsp;&nbsp;&nbsp;&nbsp;</code></td>
+            <td valign="top">IN: Logical offset in the dataset for the chunk to query.</td></tr>
+        <tr>
+            <td valign="top"><em>hsize_t *</em>&nbsp;<code>chunk_nbytes&nbsp;&nbsp;&nbsp;&nbsp;</code></td>
+            <td valign="top">OUT: The size in bytes for the chunk.</td></tr>
+    </table></dd>
+
+<p />
+<dt><strong>Returns:</strong>
+    <dd>Returns a non-negative value if successful;
+        otherwise returns a negative value.
+
+<p />
+<dt><strong>Fortran90 Interface:</strong></dt> 
+    <dd>None</dd>
+
+<p />
+<dt><strong>See Also:</strong></dt>
+    <ul>
+      <li><a href="../HL/RM_HDF5Optimized.html#H5DOread_chunk">H5DOread_chunk</a></li>
+      <li><a href="../HL/RM_HDF5Optimized.html#H5DOwrite_chunk">H5DOwrite_chunk</a></li>
+    </ul>
+
+<p />
+<dt><strong>History:</strong>
+    <dd><table width="90%">
+        <tr>
+          <td valign="top" align="left" width="10%">
+            <strong>Release</strong>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <td valign="top" align="left">
+            <strong>Change</strong></td></tr>
+        <tr>
+          <td valign="top">1.8.19</td>
+          <td valign="top">
+            C function introduced in this release.</td></tr>
+    </table></dd>
+</dl>
+
+
+
+<!--
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+  * Copyright by The HDF Group.                                               *
+  * Copyright by the Board of Trustees of the University of Illinois.         *
+  * All rights reserved.                                                      *
+  *                                                                           *
+  * This file is part of HDF5.  The full HDF5 copyright notice, including     *
+  * terms governing use, modification, and redistribution, is contained in    *
+  * the files COPYING and Copyright.html.  COPYING can be found at the root   *
+  * of the source code distribution tree; Copyright.html can be found at the  *
+  * root level of an installed copy of the electronic HDF5 document set and   *
+  * is linked from the top-level documents page.  It can also be found at     *
+  * http://hdfgroup.org/HDF5/doc/Copyright.html.  If you do not have          *
+  * access to either file, you may request a copy from help@hdfgroup.org.     *
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ -->
+
+
+<!-- NEW PAGE -->
+<!-- HEADER RIGHT "H5Dget_create_plist" -->
+<hr>
+<dl>
+  <dt><div align=right><font color=999999 size=-1><i>
+  Last modified: 9 October 2014</i></font></div></dt>
+
+<dt><strong>Name:</strong> <a name="Dataset-GetCreatePlist">H5Dget_create_plist</a></dt>
+<br />
+<dt><strong>Signature:</strong></dt>
+    <dd><em>hid_t </em><code>H5Dget_create_plist</code>(<em>hid_t </em><code>dataset_id</code>
+    )</dd>
+<br />
+<dt><strong>Purpose:</strong></dt>
+    <dd>Returns an identifier for a copy of the 
+        dataset creation property list for a dataset.</dd>
+<br />
+<dt><strong>Description:</strong></dt>
+    <dd><code>H5Dget_create_plist</code> returns an identifier for a 
+        copy of the dataset creation property list associated
+        with the dataset specified by <code>dataset_id</code>.
+        <p>
+        The creation property list identifier should be released with 
+        <a href="RM_H5P.html#Property-Close"><code>H5Pclose</code></a>.</dd>
+
+<dt><strong>Parameters:</strong></dt>
+    <ul><table>
+        <tr>
+            <td valign="top"><em>hid_t</em>&nbsp;<code>dataset_id&nbsp;&nbsp;&nbsp;&nbsp;</code></td>
+            <td valign="top">IN: Identifier of the dataset to query.</td></tr>
+    </table></ul>
+<br />
+<dt><strong>Returns:</strong></dt>
+    <dd>Returns a dataset creation property list identifier if successful;
+        otherwise returns a negative value.</dd>
+<br />
+<dt><strong>Fortran90 Interface:</strong> h5dget_create_plist_f
+    <dd>
+	<pre>
+SUBROUTINE h5dget_create_plist_f(dataset_id, creation_id, hdferr) 
+  IMPLICIT NONE 
+  INTEGER(HID_T), INTENT(IN) :: dataset_id    ! Dataset identifier
+  INTEGER(HID_T), INTENT(OUT) :: creation_id  ! Dataset creation
+                                              ! property list identifier
+  INTEGER, INTENT(OUT) :: hdferr              ! Error code 
+                                              ! 0 on success and -1 on failure
+END SUBROUTINE h5dget_create_plist_f  
+	</pre>		
+
+  <dt><strong>See Also:</a></strong></dt>
+    <dd>
+    <a href="http://www.hdfgroup.org/HDF5/doc/Advanced/UsingIdentifiers/index.html">
+    &ldquo;Using Identifiers&rdquo;</a></dd>
+
+
+		<!--<dt><strong>Non-C API(s):</strong>
+    	<dd>
+        
+        <img src="Graphics/Java.gif"> 
+        <img src="Graphics/C++.gif">
+        -->
+</dl>
+
+
+
+<!--
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+  * Copyright by The HDF Group.                                               *
+  * Copyright by the Board of Trustees of the University of Illinois.         *
+  * All rights reserved.                                                      *
+  *                                                                           *
+  * This file is part of HDF5.  The full HDF5 copyright notice, including     *
+  * terms governing use, modification, and redistribution, is contained in    *
+  * the files COPYING and Copyright.html.  COPYING can be found at the root   *
+  * of the source code distribution tree; Copyright.html can be found at the  *
+  * root level of an installed copy of the electronic HDF5 document set and   *
+  * is linked from the top-level documents page.  It can also be found at     *
+  * http://hdfgroup.org/HDF5/doc/Copyright.html.  If you do not have          *
+  * access to either file, you may request a copy from help@hdfgroup.org.     *
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ -->
+
+
+<!-- NEW PAGE -->
+<!-- HEADER RIGHT "H5Dget_offset" -->
+<hr>
+<dl>
+
+<dt><div align=right><font color=999999 size=-1><i>
+    Last modified: 17 August 2010
+    </i></font></div>
+
+<dt><strong>Name:</strong> <a name="Dataset-GetOffset">H5Dget_offset</a>
+<dt><strong>Signature:</strong>
+    <dd><em>haddr_t </em><code>H5Dget_offset</code>(
+        <em>hid_t </em><code>dset_id</code>
+        )
+
+<p>
+<dt><strong>Purpose:</strong>
+    <dd>Returns dataset address in file.
+
+<p>
+<dt><strong>Description:</strong>
+    <dd><code>H5Dget_offset</code> returns the address in the file 
+        of the dataset <code>dset_id</code>.
+        That address is expressed as the offset in bytes from 
+        the beginning of the file.
+
+<p>
+<dt><strong>Parameters:</strong>
+    <dd><table>
+        <tr>
+            <td valign="top"><em>hid_t&nbsp;</em><code>dset_id&nbsp;&nbsp;&nbsp;&nbsp;</code></td>
+            <td valign="top">IN: Dataset identifier.</td></tr>
+    </table></dd>
+
+<p>
+<dt><strong>Returns:</strong>
+    <dd>Returns the offset in bytes; 
+        otherwise returns <code>HADDR_UNDEF</code>, a negative value.
+
+<p>
+<dt><strong>Fortran90 Interface:</strong>
+    <dd>None.
+<!--
+    <pre>
+    </pre>
+-->
+
+
+<p>
+<dt><strong>History:</strong>
+    <dd><table width="90%">
+        <tr>
+          <td valign="top" align="left" width="10%">
+            <strong>Release</strong>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <td valign="top" align="left">
+            <strong>C</strong></td></tr>
+        <tr>
+          <td valign="top">1.6.0</td>
+          <td valign="top">
+            Function introduced in this release.</td></tr>
+    </table></dd>
+</dl>
+
+
+
+<!--
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+  * Copyright by The HDF Group.                                               *
+  * Copyright by the Board of Trustees of the University of Illinois.         *
+  * All rights reserved.                                                      *
+  *                                                                           *
+  * This file is part of HDF5.  The full HDF5 copyright notice, including     *
+  * terms governing use, modification, and redistribution, is contained in    *
+  * the files COPYING and Copyright.html.  COPYING can be found at the root   *
+  * of the source code distribution tree; Copyright.html can be found at the  *
+  * root level of an installed copy of the electronic HDF5 document set and   *
+  * is linked from the top-level documents page.  It can also be found at     *
+  * http://hdfgroup.org/HDF5/doc/Copyright.html.  If you do not have          *
+  * access to either file, you may request a copy from help@hdfgroup.org.     *
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ -->
+
+
+<!-- NEW PAGE -->
+<!-- HEADER RIGHT "H5Dget_space" -->
+<hr>
+<dl>
+
+<dt><div align=right><font color=999999 size=-1><i>
+  Last modified: 9 October 2014</i></font></div></dt>
+
+<dt><strong>Name:</strong> <a name="Dataset-GetSpace">H5Dget_space</a>
+<p>
+<dt><strong>Signature:</strong>
+    <dd><em>hid_t </em><code>H5Dget_space</code>(
+        <em>hid_t </em><code>dataset_id</code>
+        )
+
+<p>
+<dt><strong>Purpose:</strong>
+    <dd>Returns an identifier for  a copy of the dataspace for a dataset.
+
+<p>
+<dt><strong>Description:</strong>
+    <dd><code>H5Dget_space</code> makes a copy of the dataspace of the
+        dataset specified by <code>dataset_id</code>.
+        The function returns an identifier for the new copy of the dataspace.
+        
+        <p>A dataspace identifier returned from this function 
+        should be released with <code>H5Sclose</code> when the identifier
+        is no longer needed so that resource leaks will not occur.</p>
+
+<p>
+<dt><strong>Parameters:</strong>
+    <dd><table>
+        <tr>
+            <td valign="top"><em>hid_t</em>&nbsp;<code>dataset_id&nbsp;&nbsp;&nbsp;&nbsp;</code></td>
+            <td valign="top">IN: Identifier of the dataset to query.</td></tr>
+    </table></dd>
+
+<p>
+<dt><strong>Returns:</strong>
+    <dd>Returns a dataspace identifier if successful;
+        otherwise returns a negative value.
+
+<p>
+<dt><strong>Fortran90 Interface:</strong> h5dget_space_f
+    <dd>
+	<pre>
+SUBROUTINE h5dget_space_f(dataset_id, dataspace_id, hdferr) 
+  IMPLICIT NONE 
+  INTEGER(HID_T), INTENT(IN) :: dataset_id      ! Dataset identifier
+  INTEGER(HID_T), INTENT(OUT) :: dataspace_id   ! Dataspace identifier
+  INTEGER, INTENT(OUT) :: hdferr                ! Error code 
+                                                ! 0 on success and -1 on failure
+END SUBROUTINE h5dget_space_f
+    </pre>		
+
+  <dt><strong>See Also:</a></strong></dt>
+    <dd>
+    <a href="http://www.hdfgroup.org/HDF5/doc/Advanced/UsingIdentifiers/index.html">
+    &ldquo;Using Identifiers&rdquo;</a></dd>
+
+
+</dl>
+
+
+
+<!--
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+  * Copyright by The HDF Group.                                               *
+  * Copyright by the Board of Trustees of the University of Illinois.         *
+  * All rights reserved.                                                      *
+  *                                                                           *
+  * This file is part of HDF5.  The full HDF5 copyright notice, including     *
+  * terms governing use, modification, and redistribution, is contained in    *
+  * the files COPYING and Copyright.html.  COPYING can be found at the root   *
+  * of the source code distribution tree; Copyright.html can be found at the  *
+  * root level of an installed copy of the electronic HDF5 document set and   *
+  * is linked from the top-level documents page.  It can also be found at     *
+  * http://hdfgroup.org/HDF5/doc/Copyright.html.  If you do not have          *
+  * access to either file, you may request a copy from help@hdfgroup.org.     *
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ -->
+
+
+<!-- NEW PAGE -->
+<!-- HEADER RIGHT "H5Dget_space_status" -->
+<hr>
+<dl>
+<dt><strong>Name:</strong> <a name="Dataset-GetSpaceStatus">H5Dget_space_status</a>
+<dt><strong>Signature:</strong>
+    <dd><em>herr_t</em> <code>H5Dget_space_status</code>(<em>hid_t </em><code>dset_id</code>,
+                        <em>H5D_space_status_t *</em><code>status</code>)
+<dt><strong>Purpose:</strong>
+    <dd>Determines whether space has been allocated for a dataset.
+<dt><strong>Description:</strong>
+    <dd><code>H5Dget_space_status</code> determines whether space has been 
+        allocated for the dataset <code>dset_id</code>.
+	<p>
+        Space allocation status is returned in <code>status</code>,
+        which will have one of the following values:
+        <center>
+	<table border="0">
+          <tr valign="top"><td rowspan="3">&nbsp;&nbsp;&nbsp;&nbsp;</td><td>
+            <code>H5D_SPACE_STATUS_NOT_ALLOCATED</code>
+	    </td><td>
+            Space has not been allocated for this dataset.
+          </td></tr><tr valign="top"><td>
+            <code>H5D_SPACE_STATUS_ALLOCATED</code>
+	    </td><td>
+            Space has been allocated for this dataset.
+          </td></tr><tr valign="top"><td>
+            <code>H5D_SPACE_STATUS_PART_ALLOCATED</code>&nbsp;&nbsp;
+	    </td><td>
+            Space has been partially allocated for this dataset.  
+	    (Used only for datasets with chunked storage.)
+          </td></tr>
+        </table>
+	</center>
+<dt><strong>Parameters:</strong>
+    <ul><table>
+        <tr>
+		    <td valign="top"><em>hid_t</em> <code>dset_id</code></td>
+            <td valign="top">IN: Identifier of the dataset to query.</td></tr>
+        <tr>
+		    <td valign="top"><em>H5D_space_status_t&nbsp;*</em><code>status&nbsp;&nbsp;&nbsp;&nbsp;</code></td>
+            <td valign="top">OUT: Space allocation status.</td></tr>
+    </table></ul>
+<dt><strong>Returns:</strong>
+    <dd>Returns a non-negative value if successful;
+        otherwise returns a negative value.
+<dt><strong>Fortran90 Interface:</strong> h5dget_space_status_f
+    <dd>
+	<pre>
+SUBROUTINE h5dget_space_status_f(dset_id, flag, hdferr)
+  IMPLICIT NONE
+  INTEGER(HID_T), INTENT(IN) :: dset_id  ! Dataset identifier 
+  INTEGER, INTENET(OUT)      :: flag     ! Status flag ; possible values:
+                                         ! H5D_SPACE_STS_ERROR_F
+                                         ! H5D_SPACE_STS_NOT_ALLOCATED_F
+                                         ! H5D_SPACE_STS_PART_ALLOCATED_F
+                                         ! H5D_SPACE_STS_ALLOCATED_F
+  INTEGER, INTENT(OUT) :: hdferr         ! Error code  
+                                         ! 0 on success and -1 on failure
+END SUBROUTINE h5dget_space_status_f
+	</pre>		
+		
+		<!--<dt><strong>Non-C API(s):</strong>
+    	<dd>
+        
+        <img src="Graphics/Java.gif"> 
+        <img src="Graphics/C++.gif">
+        -->
+<dt><strong>History:</strong>
+    <ul><table width="90%">
+        <tr>
+		  <td valign="top" align="left" width="10%">
+		    <strong>Release</strong>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <td valign="top" align="left">
+		    <strong>C</strong></td></tr>
+        <tr>
+		  <td valign="top">1.6.0</td>
+          <td valign="top">
+		    Function introduced in this release.</td></tr>
+    </table></ul>
+</dl>
+
+
+
+<!--
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+  * Copyright by The HDF Group.                                               *
+  * Copyright by the Board of Trustees of the University of Illinois.         *
+  * All rights reserved.                                                      *
+  *                                                                           *
+  * This file is part of HDF5.  The full HDF5 copyright notice, including     *
+  * terms governing use, modification, and redistribution, is contained in    *
+  * the files COPYING and Copyright.html.  COPYING can be found at the root   *
+  * of the source code distribution tree; Copyright.html can be found at the  *
+  * root level of an installed copy of the electronic HDF5 document set and   *
+  * is linked from the top-level documents page.  It can also be found at     *
+  * http://hdfgroup.org/HDF5/doc/Copyright.html.  If you do not have          *
+  * access to either file, you may request a copy from help@hdfgroup.org.     *
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ -->
+
+
+<!-- NEW PAGE -->
+<!-- HEADER RIGHT "H5Dget_storage_size" -->
+<hr>
+<dl>
+
+<dt><div align=right><font color=999999 size=-1><i>
+    Last modified: 25 October 2011
+    </i></font></div>
+
+<dt><strong>Name:</strong> <a name="Dataset-GetStorageSize">H5Dget_storage_size</a>
+<dt><strong>Signature:</strong>
+    <dd><em>hsize_t </em><code>H5Dget_storage_size</code>(
+        <em>hid_t </em><code>dataset_id</code>
+    )
+
+<p />
+<dt><strong>Purpose:</strong>
+    <dd>Returns the amount of storage allocated for a dataset.
+
+<p />
+<dt><strong>Description:</strong>
+    <dd><code>H5Dget_storage_size</code> returns the amount of storage,
+        in bytes, that is allocated in the file for the raw data of the 
+        dataset specified by <code>dataset_id</code>.  
+        <p>
+        Note that the <i>amount of storage</i> in this case is
+        the storage allocated in the written file,
+        which will typically differ from the space required to hold 
+        a dataset in working memory.  
+        <ul>
+        <li>
+        For contiguous datasets, the returned size equals
+        the current allocated size of the raw data.
+        <li>
+        For unfiltered chunked datasets, the returned size is
+        the number of allocated chunks times the chunk size.
+        <li>
+        For filtered chunked datasets, the returned size is
+        the space required to store the filtered data.  
+        For example, if a compression filter is in use, 
+        <code>H5Dget_storage_size</code> returns the total space required 
+        to store the compressed chunks.
+        </ul>
+        <p>
+        <code>H5Dget_storage_size</code> reports only the space required 
+        to store the data; the report does not include any metadata.
+        <p>
+        The return value may be zero if no data has been stored.
+
+<p />
+<dt><strong>Caution:</strong>
+    <dd>Note that <code>H5Dget_storage_size</code> is not generally 
+        an appropriate function to use when
+        determining the amount of memory required to work with a dataset.
+        In such circumstances, you must determine the number of data points
+        in a dataset and the size of an individual data element.  
+        <a href="RM_H5S.html#Dataspace-ExtentNpoints">
+        <code>H5Sget_simple_extent_npoints</code></a> and
+        <a href="RM_H5T.html#Datatype-GetSize">
+        <code>H5Tget_size</code></a>
+        can be used to get that information.
+
+<p />
+<dt><strong>Parameters:</strong>
+    <dd><table>
+        <tr>
+            <td valign="top"><em>hid_t</em>&nbsp;<code>dataset_id&nbsp;&nbsp;&nbsp;&nbsp;</code></td>
+            <td valign="top">IN: Identifier of the dataset to query.</td></tr>
+    </table></dd>
+
+<p />
+<dt><strong>Returns:</strong>
+    <dd>Returns the amount of storage space, in bytes, allocated for the dataset, 
+        not counting metadata; 
+        otherwise returns 0 (zero).
+    <p>Note that <code>H5Dget_storage_size</code> does not differentiate between 
+        <code>0</code> (zero), the value returned for the storage size of a 
+        dataset with no stored values, and
+        <code>0</code> (zero), the value returned to indicate an error.
+
+<p />
+<dt><strong>Fortran90 Interface:</strong> h5dget_storage_size_f
+    <dd>
+    <pre>
+SUBROUTINE h5dget_storage_size_f(dset_id, size, hdferr)
+  IMPLICIT NONE
+  INTEGER(HID_T), INTENT(IN) :: dset_id  ! Dataset identifier  
+  INTEGER(HSIZE_T), INTENT(OUT)  :: size ! Amount of storage required 
+                                         ! for dataset
+  INTEGER, INTENT(OUT) :: hdferr         ! Error code  
+                                         ! 0 on success and -1 on failure
+END SUBROUTINE h5dget_storage_size_f
+    </pre>
+
+<p />
+<dt><strong>History:</strong>
+    <dd><table width="90%">
+        <tr>
+          <td valign="top" align="left" width="10%">
+            <strong>Release</strong>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <td valign="top" align="left">
+            <strong>Fortran90</strong></td></tr>
+        <tr>
+          <td valign="top">1.4.5</td>
+          <td valign="top">
+            Function introduced in this release.</td></tr>
+    </table></dd>
+</dl>
+
+
+
+<!--
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+  * Copyright by The HDF Group.                                               *
+  * Copyright by the Board of Trustees of the University of Illinois.         *
+  * All rights reserved.                                                      *
+  *                                                                           *
+  * This file is part of HDF5.  The full HDF5 copyright notice, including     *
+  * terms governing use, modification, and redistribution, is contained in    *
+  * the files COPYING and Copyright.html.  COPYING can be found at the root   *
+  * of the source code distribution tree; Copyright.html can be found at the  *
+  * root level of an installed copy of the electronic HDF5 document set and   *
+  * is linked from the top-level documents page.  It can also be found at     *
+  * http://hdfgroup.org/HDF5/doc/Copyright.html.  If you do not have          *
+  * access to either file, you may request a copy from help@hdfgroup.org.     *
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ -->
+
+
+<!-- NEW PAGE -->
+<!-- HEADER RIGHT "H5Dget_type" -->
+<hr>
+<dl>
+<dt><div align=right><font color=999999 size=-1><i>
+Last modified: 9 October 2014</i></font></div></dt>
+
+<dt><strong>Name:</strong> <a name="Dataset-GetType">H5Dget_type</a>
+<p>
+<dt><strong>Signature:</strong>
+    <dd><em>hid_t </em><code>H5Dget_type</code>(<em>hid_t </em><code>dataset_id</code>
+    )
+<p>
+<dt><strong>Purpose:</strong>
+    <dd>Returns an identifier for a copy of the datatype for a dataset.
+<p>
+<dt><strong>Description:</strong>
+    <dd><code>H5Dget_type</code> returns an identifier for a copy of the 
+        datatype for a dataset.  
+        The datatype should be released with the <code>H5Tclose</code> function.
+        <p>
+        If a dataset has a named datatype, then an identifier to the 
+        opened datatype is returned.  
+        Otherwise, the returned datatype is read-only.  
+        If atomization of the datatype fails, then the datatype is closed.
+
+        <p>The datatype identifier returned from this function 
+        should be released with <code>H5Tclose</code> when the identifier
+        is no longer needed so that resource leaks will not occur.</p>
+
+<p>
+<dt><strong>Parameters:</strong>
+    <ul><table>
+        <tr>
+		    <td valign="top"><em>hid_t</em>&nbsp;<code>dataset_id&nbsp;&nbsp;&nbsp;&nbsp;</code></td>
+            <td valign="top">IN: Identifier of the dataset to query.</td></tr>
+    </table></ul>
+<p>
+<dt><strong>Returns:</strong>
+    <dd>Returns a datatype identifier if successful;
+        otherwise returns a negative value.
+<p>
+<dt><strong>Fortran90 Interface:</strong> h5dget_type_f
+    <dd>
+	<pre>
+SUBROUTINE h5dget_type_f(dataset_id, datatype_id, hdferr) 
+  IMPLICIT NONE 
+  INTEGER(HID_T), INTENT(IN) :: dataset_id    ! Dataset identifier
+  INTEGER(HID_T), INTENT(OUT) :: datatype_id  ! Datatype identifier
+  INTEGER, INTENT(OUT) :: hdferr              ! Error code 
+                                              ! 0 on success and -1 on failure
+END SUBROUTINE h5dget_type_f 
+    </pre>		
+
+  <dt><strong>See Also:</a></strong></dt>
+    <dd>
+    <a href="http://www.hdfgroup.org/HDF5/doc/Advanced/UsingIdentifiers/index.html">
+    &ldquo;Using Identifiers&rdquo;</a></dd>
+
+
+
+		<!--<dt><strong>Non-C API(s):</strong>
+    	<dd>
+        
+        <img src="Graphics/Java.gif"> 
+        <img src="Graphics/C++.gif">
+        -->
+</dl>
+
+
+
+<!--
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+  * Copyright by The HDF Group.                                               *
+  * Copyright by the Board of Trustees of the University of Illinois.         *
+  * All rights reserved.                                                      *
+  *                                                                           *
+  * This file is part of HDF5.  The full HDF5 copyright notice, including     *
+  * terms governing use, modification, and redistribution, is contained in    *
+  * the files COPYING and Copyright.html.  COPYING can be found at the root   *
+  * of the source code distribution tree; Copyright.html can be found at the  *
+  * root level of an installed copy of the electronic HDF5 document set and   *
+  * is linked from the top-level documents page.  It can also be found at     *
+  * http://hdfgroup.org/HDF5/doc/Copyright.html.  If you do not have          *
+  * access to either file, you may request a copy from help@hdfgroup.org.     *
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ -->
+
+
+<!-- NEW PAGE -->
+<!-- HEADER RIGHT "H5Diterate" -->
+<hr>
+<dl>
+<dt><strong>Name:</strong> <a name="Dataset-Iterate">H5Diterate</a>
+<dt><strong>Signature:</strong>
+    <dd><em>herr_t </em><code>H5Diterate</code>(
+        <em>void *</em><code>buf</code>,
+        <em>hid_t </em><code>type_id</code>,
+        <em>hid_t </em><code>space_id</code>,
+        <em>H5D_operator_t </em><code>operator</code>,
+        <em>void *</em><code>operator_data</code>
+    )
+<p>
+<dt><strong>Purpose:</strong>
+    <dd>Iterates over all selected elements in a dataspace.
+<p>
+<dt><strong>Description:</strong>
+    <dd><code>H5Diterate</code> iterates over all the data elements in the 
+        memory buffer <code>buf</code>, executing the callback function
+        <code>operator</code> once for each such data element.
+        <p>
+
+        <!-- ABILITY TO MODIFY THE DATASPACE, AS REQUIRED BY 
+             THE FOLLOWING PARAGRAPH, HAS NOT BEEN IMPLEMENTED.
+        The selection in the dataspace is modified so that any elements 
+        already iterated over are removed from the selection if the 
+        iteration is interrupted (by the <code>H5D_operator_t</code> 
+        function returning non-zero) before the iteration is complete;
+        the iteration may then be re-started by the user where it left off.  
+        <p>
+        -->
+
+        The protoype of the callback function <code>operator</code> 
+        is as follows 
+        (as defined in the source code file <code>H5Lpublic.h</code>):
+        <dir>
+          <code>
+          <em>herr_t</em> (*H5D_operator_t)(<em>void</em> elem, 
+              <em>hid_t</em> type_id, 
+              <em>unsigned</em> ndim, 
+              <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  &nbsp;&nbsp;&nbsp;&nbsp;
+              <em>const hsize_t *</em>point, 
+              <em>void *</em>operator_data)
+              </code>
+        </dir>
+        <p>
+        The parameters of this callback function have the following
+        values or meanings: 
+        <table>
+            <tr valign=top><td><code>&nbsp;&nbsp;&nbsp;&nbsp;</code></td>
+                <td><code><em>void *</em>elem</code></td>
+                <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                <td>IN/OUT: Pointer to the memory buffer containing
+                    the current data element</td>
+                </tr>
+            <tr valign=top><td>&nbsp;</td>
+                <td><code><em>hid_t</em> type_id</code></td>
+                <td>&nbsp;</td>
+                <td>IN: Datatype identifier for the elements stored in 
+                    <code>elem</code></td>
+                </tr>
+            <tr valign=top><td>&nbsp;</td>
+                <td><code><em>unsigned</em> ndim</code></td>
+                <td>&nbsp;</td>
+                <td>IN: Number of dimensions for the <code>point</code> 
+                    array</td>
+                </tr>
+            <tr valign=top><td>&nbsp;</td>
+                <td><code><em>const hsize_t *</em>point</code></td>
+                <td>&nbsp;</td>
+                <td>IN: Array containing the location of the element 
+                    within the original dataspace</td>
+                </tr>
+            <tr valign=top><td>&nbsp;</td>
+                <td><code><em>void *</em>operator_data</code></td>
+                <td>&nbsp;</td>
+                <td>IN/OUT: Pointer to any user-defined data associated with 
+                    the operation</td>
+                </tr>
+        </table>
+
+        <p>
+        The possible return values from the callback function,
+        and the effect of each, are as follows:
+        <ul>
+            <li>Zero causes the iterator to continue, 
+                returning zero when all data elements have been processed.
+            <li>A positive value causes the iterator to immediately 
+                return that positive value, indicating short-circuit success.  
+                <!--
+                The iterator can be restarted at the next data element.
+                -->
+            <li>A negative value causes the iterator to immediately 
+                return that value, indicating failure.  
+                <!--
+                The iterator can be restarted at the next data element.
+                -->
+        </ul>
+
+        <p>
+        The <code>H5Diterate</code> <code>operator_data</code> parameter 
+        is a user-defined pointer to the data required to process 
+        dataset elements in the course of the iteration.
+        If <code>operator</code> needs to pass data back to the application,
+        such data can be returned in this same buffer.
+        This pointer is passed back to each step of the iteration in the 
+        <code>operator</code> callback function&rsquo;s 
+        <code>operator_data</code> parameter.
+
+        <p>
+        Unlike other HDF5 iterators, this iteration operation cannot
+        be restarted at the point of exit;  
+        a second <code>H5Diterate</code> call will always restart 
+        at the beginning.
+  
+<p>
+<!-- NEW PAGE -->
+<dt><strong>Parameters:</strong>
+    <ul><table>
+        <tr>
+            <td valign="top"><em>void *</em><code>buf</code></td>
+            <td valign="top">IN/OUT: Pointer to the buffer in memory containing
+                the elements to iterate over</td></tr>
+        <tr>
+            <td valign="top"><em>hid_t </em><code>type_id</code></td>
+            <td valign="top">IN:  Datatype identifier for the elements stored
+                in <code>buf</code></td></tr>
+        <tr>
+            <td valign="top"><em>hid_t </em><code>space_id</code></td>
+            <td valign="top">IN: Dataspace identifier for <code>buf</code>  
+                </td></tr>
+        <tr>
+            <td valign="top"><em>H5D_operator_t&nbsp;</em><code>operator&nbsp;&nbsp;&nbsp;&nbsp;</code></td>
+            <td valign="top">IN: Function pointer to the routine to be called 
+                for each element in <code>buf</code> iterated over</td></tr>
+        <tr>
+            <td valign="top"><em>void *</em><code>operator_data</code></td>
+            <td valign="top">IN/OUT: Pointer to any user-defined data associated
+                with the operation</td></tr>
+    </table></ul>
+<p>
+<dt><strong>Returns:</strong>
+    <dd>Returns the return value of the last operator if it was non-zero,
+        or zero if all elements have been processed.
+        Otherwise returns a negative value.
+<p>
+<dt><strong>Fortran90 Interface:</strong>
+    <dd>None.
+<!--__ *** FORTRAN90 INTERFACE  **********************************  -->
+<!--__ When the Fortran90 interface is complete, replace this       -->
+<!--__ section with the Fortran90 subroutine description.           -->
+<!--__                                                              -->
+<!--__ See the file h5fortran_f_template.html for a template and    -->
+<!--__ instructions.                                                -->
+<!--__ ***********************************************************  -->
+<p>
+<dt><strong>History:</strong>
+    <ul><table width="90%">
+        <tr>
+          <td valign="top" align="left" width="10%">
+            <strong>Release</strong>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <td valign="top" align="left">
+            <strong>C</strong></td></tr>
+        <tr>
+          <td valign="top">1.6.4</td>
+          <td valign="top">
+            The following changes occured in the 
+            <code>H5D_operator_t</code> function in this release:<br>
+            &nbsp;&nbsp;
+            <code>ndim</code> parameter type was changed to 
+            <em>unsigned</em><br>
+            &nbsp;&nbsp;
+            <code>point</code> parameter type was changed to
+            <em>const hsize_t</em></td></tr>
+    </table></ul>
+</dl>
+
+
+
+
+<!--
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+  * Copyright by The HDF Group.                                               *
+  * Copyright by the Board of Trustees of the University of Illinois.         *
+  * All rights reserved.                                                      *
+  *                                                                           *
+  * This file is part of HDF5.  The full HDF5 copyright notice, including     *
+  * terms governing use, modification, and redistribution, is contained in    *
+  * the files COPYING and Copyright.html.  COPYING can be found at the root   *
+  * of the source code distribution tree; Copyright.html can be found at the  *
+  * root level of an installed copy of the electronic HDF5 document set and   *
+  * is linked from the top-level documents page.  It can also be found at     *
+  * http://hdfgroup.org/HDF5/doc/Copyright.html.  If you do not have          *
+  * access to either file, you may request a copy from help@hdfgroup.org.     *
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ -->
+
+
+<!-- NEW PAGE -->
+<!-- HEADER RIGHT "H5Dopen" -->
+<hr>
+<dl>
+  <dt><div align=right><font color=999999 size=-1><i>
+  Last modified: 9 October 2014</i></font></div></dt>
+
+
+  <dt><strong>Name:</strong> <a name="Dataset-Open">H5Dopen</a>
+  <p>
+  <dt><strong>Signature:</strong>
+    <dd><em>hid_t </em><code>H5Dopen</code>(
+            <em>hid_t </em><code>loc_id</code>,
+            <em>const char *</em><code>name</code>
+    )
+    <p>
+    <dd><em>hid_t</em> <code>H5Dopen</code>(
+            <em>hid_t</em> <code>loc_id</code>, 
+            <em>const char *</em><code>name</code>, 
+            <em>hid_t</em> <code>dapl_id</code>
+    )
+  <p>
+  <dt><strong>Purpose:</strong>
+    <dd>Opens an existing dataset.
+  <p>
+  <dt><strong>Description:</strong>
+    <dd><code>H5Dopen</code> is a macro that is mapped to either
+      <a href="#Dataset-Open1"><code>H5Dopen1</code></a> or
+      <a href="#Dataset-Open2"><code>H5Dopen2</code></a>,
+      depending on the needs of the application.
+      <p>
+      Such macros are provided to facilitate application compatibility.
+      Their use and mappings are fully described in 
+      &ldquo;<a href="APICompatMacros.html">API Compatibility Macros 
+      in HDF5</a>&rdquo;; 
+      we urge you to read that document closely.
+      <p>
+      When both the HDF5 Library and the application are built and 
+      installed with no specific compatibility flags, 
+      <code>H5Dopen</code> is mapped to the most recent version of
+      the function, currently 
+      <a href="#Dataset-Open2"><code>H5Dopen2</code></a>.
+      If the library and/or application is compiled for Release 1.6
+      emulation, <code>H5Dopen</code> will be mapped to 
+      <a href="#Dataset-Open1"><code>H5Dopen1</code></a>.
+      Function-specific flags are available to override these settings 
+      on a function-by-function basis when the application is compiled. 
+      <p>
+      Specific compile-time compatibility flags and the resulting 
+      mappings are as follows:
+
+      <dir>
+      <table border=0 cellpadding=4>
+        <tr valign=top align=left> 
+          <th>Compatibility setting</th>
+          <th><code>H5Dopen</code> mapping</th>
+        </tr><tr valign=top align=left>
+          <td colspan=2><hr><u><a href="APICompatMacros.html#GlobalSettings">Global settings</a></u></td>
+        </tr><tr valign=top align=left>
+          <td>No compatibility flag</td>
+          <td><code>H5Dopen2</code>&nbsp;</td>
+        </tr><tr valign=top align=left>
+          <td>Enable deprecated symbols</td>
+          <td><code>H5Dopen2</code>&nbsp;</td>
+        </tr><tr valign=top align=left>
+          <td>Disable deprecated symbols</td>
+          <td><code>H5Dopen2</code>&nbsp;</td>
+        </tr><tr valign=top align=left>
+          <td>Emulate Release 1.6 interface<code>&nbsp;&nbsp;&nbsp;&nbsp;</code></td>
+          <td><code>H5Dopen1</code>&nbsp;</td>
+        </tr><tr valign=top align=left>
+          <td colspan=2><hr><u><a href="APICompatMacros.html#FunctionLevelSettings">Function-level macros</a></u></td>
+        </tr><tr valign=top align=left>
+          <td><code>H5Dopen_vers = 2</code></td>
+          <td><code>H5Dopen2</code></td>
+        </tr><tr valign=top align=left>
+          <td><code>H5Dopen_vers = 1</code></td>
+          <td><code>H5Dopen1</code></td>
+        </tr>
+      </table>
+      </dir>
+      
+  <p>A dataset opened with this macro should be closed with 
+  <code>H5Dclose</code> when the dataset is no longer needed
+  so that resource leaks will not develop.</p>
+  <p>
+  <dt><strong>Fortran90 Interface:</strong>  h5dopen_f
+    <dd>
+    <pre>
+SUBROUTINE h5dopen_f(loc_id, name, dset_id, hdferr, dapl_id)
+  IMPLICIT NONE
+  INTEGER(HID_T), INTENT(IN) :: loc_id   ! File or group identifier 
+  CHARACTER(LEN=*), INTENT(IN) :: name   ! Name of the dataset 
+  INTEGER(HID_T), INTENT(OUT) :: dset_id ! Dataset identifier
+  INTEGER, INTENT(OUT) :: hdferr         ! Error code: 
+                                         ! 0 on success and -1 on failure
+  INTEGER(HID_T), OPTIONAL, INTENT(IN) :: dapl_id 
+                                         ! Dataset access property list
+END SUBROUTINE h5dopen_f
+    </pre>
+<!-- NEW PAGE -->
+
+  <dt><strong>See Also:</a></strong></dt>
+    <dd>
+    <a href="http://www.hdfgroup.org/HDF5/doc/Advanced/UsingIdentifiers/index.html">
+    &ldquo;Using Identifiers&rdquo;</a></dd>
+
+
+  <p>
+  <dt><strong>History:</strong>
+    <dd><table width="90%">
+        <tr>
+          <td valign="top" align="left" width="10%">
+            <strong>Release</strong>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <td valign="top" align="left">
+            <strong>C</strong></td></tr>
+        <tr>
+          <td valign="top">1.8.0</td>
+          <td valign="top">The function 
+            <code>H5Dopen</code> renamed to <code>H5Dopen1</code> 
+            and deprecated in this release.
+            <br>
+            The macro <code>H5Dopen</code> 
+            and the function <code>H5Dopen2</code>
+            introduced in this release.</td></tr>
+    </table>
+</dl>
+
+
+
+
+<!--
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+  * Copyright by The HDF Group.                                               *
+  * Copyright by the Board of Trustees of the University of Illinois.         *
+  * All rights reserved.                                                      *
+  *                                                                           *
+  * This file is part of HDF5.  The full HDF5 copyright notice, including     *
+  * terms governing use, modification, and redistribution, is contained in    *
+  * the files COPYING and Copyright.html.  COPYING can be found at the root   *
+  * of the source code distribution tree; Copyright.html can be found at the  *
+  * root level of an installed copy of the electronic HDF5 document set and   *
+  * is linked from the top-level documents page.  It can also be found at     *
+  * http://hdfgroup.org/HDF5/doc/Copyright.html.  If you do not have          *
+  * access to either file, you may request a copy from help@hdfgroup.org.     *
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ -->
+
+
+<!-- NEW PAGE -->
+<!-- HEADER RIGHT "H5Dopen1" -->
+<hr>
+<dl>
+<dt><div align=right><font color=999999 size=-1><i>
+Last modified: 28 August 2012</i></font></div>
+
+
+<dt><strong>Name:</strong> <a name="Dataset-Open1">H5Dopen1</a>
+<p>
+<dt><strong>Signature:</strong>
+    <dd><em>hid_t </em><code>H5Dopen1</code>(
+        <em>hid_t </em><code>loc_id</code>,
+        <em>const char *</em><code>name</code>
+    )
+<p>
+<dt><strong>Purpose:</strong>
+    <dd>Opens an existing dataset.
+<p>
+<dt><strong>Notice:</strong>
+    <dd><i>This function is deprecated in favor of the function 
+        <a href="#Dataset-Open2"><code>H5Dopen2</code></a>
+        or the macro
+        <a href="#Dataset-Open"><code>H5Dopen</code></a>.</i>
+<p>
+<dt><strong>Description:</strong>
+    <dd><code>H5Dopen1</code> opens an existing dataset for access in the file
+        or group specified in <code>loc_id</code>.  <code>name</code> is
+        a dataset name and is used to identify the dataset in the file.
+
+    <p>A dataset opened with this function should be closed with 
+    <code>H5Dclose</code> when the dataset is no longer needed
+    so that resource leaks will not develop.</p>
+<p>
+<dt><strong>Parameters:</strong>
+    <ul><table>
+        <tr>
+		    <td valign="top"><em>hid_t</em> <code>loc_id</code></td>
+            <td valign="top">IN: Identifier of the file or group 
+                within which the dataset to be accessed will be found.</td></tr>
+        <tr>
+		    <td valign="top"><em>const&nbsp;char&nbsp;*</em>&nbsp;<code>name&nbsp;&nbsp;&nbsp;&nbsp;</code></td>
+            <td valign="top">IN: The name of the dataset to access.</td></tr>
+    </table></ul>
+<p>
+<dt><strong>Returns:</strong>
+    <dd>Returns a dataset identifier if successful;
+        otherwise returns a negative value.
+<p>
+<dt><strong>Fortran90 Interface:</strong> See listing under <a href="RM_H5D.html#Dataset-Open"><code>H5Dopen</code></a>.
+    <dd>	
+		
+		<!--<dt><strong>Non-C API(s):</strong>
+    	<dd>
+        
+        <img src="Graphics/Java.gif"> 
+        <img src="Graphics/C++.gif">
+        -->
+<p>
+<dt><strong>History:</strong>
+    <dd><table width="90%">
+        <tr>
+          <td valign="top" align="left" width="10%">
+            <strong>Release</strong>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <td valign="top" align="left">
+            <strong>C</strong></td></tr>
+        <tr>
+          <td valign="top">1.8.0</td>
+          <td valign="top">
+            Function <code>H5Dopen</code> renamed to 
+            <code>H5Dopen1</code> and deprecated
+            in this release.</td></tr>
+    </table>
+</dl>
+
+
+
+
+<!--
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+  * Copyright by The HDF Group.                                               *
+  * Copyright by the Board of Trustees of the University of Illinois.         *
+  * All rights reserved.                                                      *
+  *                                                                           *
+  * This file is part of HDF5.  The full HDF5 copyright notice, including     *
+  * terms governing use, modification, and redistribution, is contained in    *
+  * the files COPYING and Copyright.html.  COPYING can be found at the root   *
+  * of the source code distribution tree; Copyright.html can be found at the  *
+  * root level of an installed copy of the electronic HDF5 document set and   *
+  * is linked from the top-level documents page.  It can also be found at     *
+  * http://hdfgroup.org/HDF5/doc/Copyright.html.  If you do not have          *
+  * access to either file, you may request a copy from help@hdfgroup.org.     *
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ -->
+
+
+<!-- NEW PAGE -->
+<!-- HEADER RIGHT "H5Dopen2" -->
+<hr>
+<dl>
+
+  <dt><div align=right><font color=999999 size=-1><i>
+  Last modified: 9 October 2014</i></font></div></dt>
+
+  <dt><strong>Name:</strong> <a name="Dataset-Open2">H5Dopen2</a></dt>
+  <br />
+  <dt><strong>Signature:</strong></dt>
+    <dd><em>hid_t</em> <code>H5Dopen2</code>(
+            <em>hid_t</em> <code>loc_id</code>, 
+            <em>const char *</em><code>name</code>, 
+            <em>hid_t</em> <code>dapl_id</code>
+    )</dd>
+  <p>
+  <dt><strong>Purpose:</strong></dt>
+    <dd>Opens an existing dataset.</dd>
+  <p>
+  <dt><strong>Description:</strong></dt>
+    <dd><code>H5Dopen2</code> opens the existing dataset specified by 
+        a location identifier and name, <code>loc_id</code>
+        and <code>name</code>, respectively.
+        <p>
+        The dataset access property list, <code>dapl_id</code>,
+        provides information regarding access to the dataset.
+        <p>
+        To conserve and release resources, the dataset should be 
+        closed when access is no longer required.</dd>
+  <p>
+  <dt><strong>Parameters:</strong></dt>
+    <dd><table>
+      <tr>
+        <td valign="top"><em>hid_t</em> <code>loc_id</code>
+        </td>
+        <td valign="top">IN: Location identifier
+        </td></tr>
+      <tr>
+        <td valign="top"><em>const&nbsp;char&nbsp;*</em><code>name</code>&nbsp;&nbsp;&nbsp;&nbsp;
+        </td>
+        <td valign="top">IN: Dataset name
+        </td></tr>
+      <tr>
+        <td valign="top"><em>hid_t</em> <code>dapl_id</code>
+        </td>
+        <td valign="top">IN: Dataset access property list
+        </td></tr>
+    </table></dd>
+  <p>
+  <dt><strong>Returns:</strong></dt>
+    <dd>Returns a dataset identifier if successful;
+        otherwise returns a negative value.</dd>
+  <p>
+  <dt><strong>Fortran90 Interface:</strong></dt>
+    <dd>See listing under <a href="RM_H5D.html#Dataset-Open"><code>H5Dopen</code></a>.</dd>
+    <br />
+
+  <dt><strong>See Also:</a></strong></dt>
+    <dd>
+    <a href="http://www.hdfgroup.org/HDF5/doc/Advanced/UsingIdentifiers/index.html">
+    &ldquo;Using Identifiers&rdquo;</a></dd>
+
+
+  <p>
+  <dt><strong>History:</strong></dt>
+    <dd><table width="90%">
+        <tr>
+          <td valign="top" align="left" width="10%">
+            <strong>Release</strong>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <td valign="top" align="left">
+            <strong>C</strong></td></tr>
+        <tr>
+          <td valign="top">1.8.0</td>
+          <td valign="top">
+            Function introduced in this release.</td></tr>
+    </table></dd>
+</dl>
+
+
+
+
+<!--
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+  * Copyright by The HDF Group.                                               *
+  * Copyright by the Board of Trustees of the University of Illinois.         *
+  * All rights reserved.                                                      *
+  *                                                                           *
+  * This file is part of HDF5.  The full HDF5 copyright notice, including     *
+  * terms governing use, modification, and redistribution, is contained in    *
+  * the files COPYING and Copyright.html.  COPYING can be found at the root   *
+  * of the source code distribution tree; Copyright.html can be found at the  *
+  * root level of an installed copy of the electronic HDF5 document set and   *
+  * is linked from the top-level documents page.  It can also be found at     *
+  * http://hdfgroup.org/HDF5/doc/Copyright.html.  If you do not have          *
+  * access to either file, you may request a copy from help@hdfgroup.org.     *
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ -->
+
+
+<!-- NEW PAGE -->
+<!-- HEADER RIGHT "H5Dread" -->
+<hr>
+
+<dl>
+<dt><div align=right><font color=999999 size=-1><i>
+    Last modified: 16 September 2014
+    </i></font></div>
+
+<dt><strong>Name:</strong> <a name="Dataset-Read">H5Dread</a>
+<dt><strong>Signature:</strong>
+    <dd><em>herr_t </em><code>H5Dread</code>(
+        <em>hid_t </em><code>dataset_id</code>,
+        <em>hid_t</em> <code>mem_type_id</code>,
+        <em>hid_t</em> <code>mem_space_id</code>,
+        <em>hid_t</em> <code>file_space_id</code>,
+        <em>hid_t</em> <code>xfer_plist_id</code>,
+        <em>void *</em> <code>buf</code>
+    )
+    <p>
+<dt><strong>Purpose:</strong>
+    <dd>Reads raw data from a dataset into a buffer.
+    <p>
+<dt><strong>Description:</strong>
+    <dd><code>H5Dread</code> reads a (partial) dataset, specified by its
+        identifier <code>dataset_id</code>, from the 
+        file into an application memory buffer <code>buf</code>.
+        Data transfer properties are defined by the argument 
+        <code>xfer_plist_id</code>.
+        The memory datatype of the (partial) dataset is identified by 
+        the identifier <code>mem_type_id</code>.
+        The part of the dataset to read is defined by 
+        <code>mem_space_id</code> and <code>file_space_id</code>.
+        <p>
+        <code>file_space_id</code> is used to specify only the selection within
+        the file dataset's dataspace.  
+        Any dataspace specified in <code>file_space_id</code>
+        is ignored by the library and the dataset's dataspace is always used.
+        <code>file_space_id</code> can be the constant <code>H5S_ALL</code>. 
+        which indicates that the entire file dataspace, as defined by the
+        current dimensions of the dataset, is to be selected.
+        <p>
+        <code>mem_space_id</code> is used to specify both the memory dataspace
+        and the selection within that dataspace.
+        <code>mem_space_id</code> can be the constant <code>H5S_ALL</code>,
+        in which case the file dataspace is used for the memory dataspace and
+        the selection defined with <code>file_space_id</code> is used for the
+        selection within that dataspace.
+        <p>
+	If raw data storage space has not been allocated for the dataset 
+	and a fill value has been defined, the returned buffer <code>buf</code> 
+	is filled with the fill value. 
+        <p>
+        The behavior of the library for the various combinations of valid
+        dataspace identifiers and H5S_ALL for the <code>mem_space_id</code> 
+        and the <code>file_space_id</code> parameters is described below:
+
+        <br><br>
+        <table border=0>
+        <tr>
+        <th>
+        <code>mem_space_id&nbsp;&nbsp;</code>
+        </th>
+        <th>
+        <code>file_space_id&nbsp;&nbsp;</code>
+        </th>
+        <th>
+        Behavior
+        </th>
+        </tr>
+	
+        <tr valign="top">
+        <td>
+        valid dataspace identifier
+        </td>
+        <td>
+        valid dataspace identifier
+        </td>
+        <td>
+        <code>mem_space_id</code> specifies the memory dataspace and the
+        selection within it.
+        <code>file_space_id</code> specifies the selection within the file
+        dataset's dataspace.
+        </td>
+        </tr>
+
+        <tr valign="top">
+        <td>
+        <code>H5S_ALL</code>
+        </td>
+        <td>
+        valid dataspace identifier
+        </td>
+        <td>
+        The file dataset's dataspace is used for the memory dataspace and the
+        selection specified with <code>file_space_id</code> specifies the
+        selection within it.
+        The combination of the file dataset's dataspace and the selection from 
+	<code>file_space_id</code> is used for memory also.
+        </td>
+        </tr>
+
+        <tr valign="top">
+        <td>
+        valid dataspace identifier
+        </td>
+        <td>
+        <code>H5S_ALL</code>
+        </td>
+        <td>
+        <code>mem_space_id</code> specifies the memory dataspace and the
+        selection within it.
+        The selection within the file dataset's dataspace is set to the "all"
+        selection.
+        </td>
+        </tr>
+
+        <tr valign="top">
+        <td>
+        <code>H5S_ALL</code>
+        </td>
+        <td>
+        <code>H5S_ALL</code>
+        </td>
+        <td>
+        The file dataset's dataspace is used for the memory dataspace and the
+        selection within the memory dataspace is set to the "all" selection.
+        The selection within the file dataset's dataspace is set to the "all"
+        selection.
+        </td>
+        </tr>
+
+        </table>
+
+        <p>
+        Setting an <code>H5S_ALL</code> selection indicates that the entire dataspace, as
+        defined by the current dimensions of a dataspace, will be selected.
+        The number of elements selected in the memory dataspace must match the
+        number of elements selected in the file dataspace.
+        <p>
+        <code>xfer_plist_id</code> can be the constant <code>H5P_DEFAULT</code>.
+        in which case the default data transfer properties are used.           
+        <p>
+        Datatype conversion takes place at the time of a read or write
+        and is automatic.  See the
+        <a href="../UG/HDF5_Users_Guide-Responsive%20HTML5/index.html#t=HDF5_Users_Guide%2FDatatypes%2FHDF5_Datatypes.htm%23TOC_6_10_Data_Transferbc-26&rhtocid=6.5_2">
+        &ldquo;Data Transfer: Datatype Conversion and Selection&rdquo;</a> 
+        section in the &ldquo;HDF5 Datatypes&rdquo; chapter of the 
+        <cite>HDF5 User&rsquo;s Guide</cite> for a discussion of data conversion.
+    <p>
+<dt><strong>Parameters:</strong>
+    <dd><table>
+        <tr>
+            <td valign="top"><em>hid_t</em> <code>dataset_id</code></td>
+            <td valign="top">IN: Identifier of the dataset read from.</td></tr>
+        <tr>
+            <td valign="top"><em>hid_t</em> <code>mem_type_id</code></td>
+            <td valign="top">IN: Identifier of the memory datatype.</td></tr>
+        <tr>
+            <td valign="top"><em>hid_t</em> <code>mem_space_id</code></td>
+            <td valign="top">IN: Identifier of the memory dataspace.</td></tr>
+        <tr>
+            <td valign="top"><em>hid_t</em>&nbsp;<code>file_space_id</code></td>
+            <td valign="top">IN: Identifier of the dataset's dataspace in 
+                the file.</td></tr>
+        <tr>
+            <td valign="top"><em>hid_t</em>&nbsp;<code>xfer_plist_id&nbsp;&nbsp;&nbsp;&nbsp;</code></td>
+            <td valign="top">IN: Identifier of a transfer property list 
+                for this I/O operation.</td></tr>
+        <tr>
+            <td valign="top"><em>void *</em> <code>buf</code></td>
+            <td valign="top">OUT: Buffer to receive data read from file.</td></tr>
+    </table></dd>
+    <p>
+<dt><strong>Returns:</strong>
+    <dd>Returns a non-negative value if successful;
+        otherwise returns a negative value.
+    <p>
+<dt><strong>Fortran90 Interface:</strong> h5dread_f, h5dread_vl_f
+    <dd>There is no direct Fortran90 couterpart for the C function 
+        <code>H5Dread</code>.  
+        Instead, that functionality is provided by two Fortran90 subroutines:
+        
+    <center>
+    <table width=80%>
+      <tr valign=top align=left>
+            <td>
+              <code>h5dread_f</code>
+            </td>
+            <td>&nbsp;&nbsp;</td><td>
+              <strong>Purpose:</strong>
+              Reads data other than variable-length data. 
+            </td>
+        </tr>
+        <tr valign=top align=left>
+            <td>
+              <code>h5dread_vl_f</code>
+            </td><td>&nbsp;&nbsp;</td><td>
+              <strong>Purpose:</strong>
+              Reads variable-length data. 
+            </td>
+        </tr>
+    </table>
+    </center>
+				
+	<pre>
+
+SUBROUTINE h5dread_f(dset_id, mem_type_id, buf, dims, hdferr, &amp; 
+                     mem_space_id, file_space_id, xfer_prp)
+  IMPLICIT NONE
+  INTEGER(HID_T), INTENT(IN) :: dset_id     ! Dataset identifier
+  INTEGER(HID_T), INTENT(IN) :: mem_type_id ! Memory datatype identifier
+  TYPE, INTENT(INOUT) :: buf                ! Data buffer; may be a scalar 
+                                            ! or an array
+  DIMENSION(*), INTEGER(HSIZE_T), INTENT(IN)  :: dims 
+                                            ! Array to hold corresponding 
+                                            ! dimension sizes of data 
+                                            ! buffer buf 
+                                            ! dim(k) has value of the k-th 
+                                            ! dimension of buffer buf
+                                            ! Values are ignored if buf is 
+                                            ! a scalar
+  INTEGER, INTENT(OUT) :: hdferr            ! Error code 
+                                            ! 0 on success and -1 on failure
+  INTEGER(HID_T), OPTIONAL, INTENT(IN) :: mem_space_id 
+                                            ! Memory dataspace identfier 
+                                            ! Default value is H5S_ALL_F 
+  INTEGER(HID_T), OPTIONAL, INTENT(IN) :: file_space_id 
+                                            ! File dataspace identfier 
+                                            ! Default value is H5S_ALL_F
+  INTEGER(HID_T), OPTIONAL, INTENT(IN) :: xfer_prp 
+                                            ! Transfer property list identifier
+                                            ! Default value is H5P_DEFAULT_F 
+END SUBROUTINE h5dread_f
+	</pre>
+
+	<pre>
+
+SUBROUTINE h5dread_vl_f(dset_id, mem_type_id, buf, dims, len, hdferr, &amp; 
+                     mem_space_id, file_space_id, xfer_prp)
+  IMPLICIT NONE
+  INTEGER(HID_T), INTENT(IN) :: dset_id     ! Dataset identifier
+  INTEGER(HID_T), INTENT(IN) :: mem_type_id ! Memory datatype identifier
+  TYPE, INTENT(INOUT), & DIMENSION(dims(1),dims(2)) :: buf
+                                            ! Data buffer; may be a scalar 
+                                            ! or an array
+                                            ! TYPE must be one of the following
+                                            !     INTEGER
+                                            !     REAL
+                                            !     CHARACTER
+<!-- NEW PAGE -->
+  INTEGER(HSIZE_T), INTENT(IN), DIMENSION(2)  :: dims 
+                                            ! Array to hold corresponding 
+                                            ! dimension sizes of data 
+                                            ! buffer buf 
+                                            ! dim(k) has value of the k-th 
+                                            ! dimension of buffer buf
+                                            ! Values are ignored if buf is 
+                                            ! a scalar
+  INTEGER(SIZE_T), INTENT(INOUT), DIMENSION(*)  :: len 
+                                            ! Array to store length of
+                                            ! each element
+  INTEGER, INTENT(OUT) :: hdferr            ! Error code 
+                                            ! 0 on success and -1 on failure
+  INTEGER(HID_T), OPTIONAL, INTENT(IN) :: mem_space_id 
+                                            ! Memory dataspace identfier 
+                                            ! Default value is H5S_ALL_F 
+  INTEGER(HID_T), OPTIONAL, INTENT(IN) :: file_space_id 
+                                            ! File dataspace identfier 
+                                            ! Default value is H5S_ALL_F
+  INTEGER(HID_T), OPTIONAL, INTENT(IN) :: xfer_prp 
+                                            ! Transfer property list identifier
+                                            ! Default value is H5P_DEFAULT_F
+END SUBROUTINE h5dread_vl_f
+        </pre>
+
+<!-- NEW PAGE -->
+<p>
+<dt><strong>Fortran2003 Interface:</strong> h5dread_f
+    <dd>
+
+        <a name="H5D2028F03292fh5dread5ff5fF03"></a>
+<a name="robo18"></a>
+
+<strong>Signature:</strong></p>
+<pre class="source">  SUBROUTINE h5dread_f(dset_id, mem_type_id, buf, hdferr, &amp;
+                       mem_space_id, file_space_id, xfer_prp)
+    INTEGER(HID_T), INTENT(IN)              :: dset_id
+    INTEGER(HID_T), INTENT(IN)              :: mem_type_id
+    TYPE(C_PTR)   , INTENT(INOUT)           :: buf
+    INTEGER       , INTENT(OUT)             :: hdferr
+    INTEGER(HID_T), INTENT(IN)   , OPTIONAL :: mem_space_id
+    INTEGER(HID_T), INTENT(IN)   , OPTIONAL :: file_space_id
+    INTEGER(HID_T), INTENT(IN)   , OPTIONAL :: xfer_prp
+</pre>
+<p class="item_name"><strong>Inputs:</strong></p>
+<pre>  dset_id       - Identifier of the dataset read from.
+  mem_type_id   - Identifier of the memory datatype.
+</pre>
+<p class="item_name"><strong>Outputs:</strong></p>
+<pre>  buf           - Buffer to receive data read from file.
+  hdferr        - Returns 0 if successful and -1 if fails
+</pre>
+<p class="item_name"><strong>Optional parameters:</strong></p>
+<pre>  mem_space_id  - Identifier of the memory dataspace.
+  file_space_id - Identifier of the dataset's dataspace in the file.
+  xfer_prp      - Identifier of a transfer property list for this I/O operation.
+</pre>
+
+
+<p>
+<dt><strong>History:</strong>
+    <dd><table width="90%">
+        <tr>
+          <td valign="top" align="left" width="10%">
+            <strong>Release</strong>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <td valign="top" align="left">
+            <strong>Change</strong></td></tr>
+        <tr>
+          <td valign="top">1.8.8</td>
+          <td valign="top">
+            Fortran updated to Fortran2003.</td></tr>
+        <tr>
+          <td valign="top">1.4.2</td>
+          <td valign="top">
+            <code>dims</code> parameter added in Fortran interface.</td></tr>
+    </table></dd>
+</dl>
+
+
+
+
+<!--
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+  * Copyright by The HDF Group.                                               *
+  * Copyright by the Board of Trustees of the University of Illinois.         *
+  * All rights reserved.                                                      *
+  *                                                                           *
+  * This file is part of HDF5.  The full HDF5 copyright notice, including     *
+  * terms governing use, modification, and redistribution, is contained in    *
+  * the files COPYING and Copyright.html.  COPYING can be found at the root   *
+  * of the source code distribution tree; Copyright.html can be found at the  *
+  * root level of an installed copy of the electronic HDF5 document set and   *
+  * is linked from the top-level documents page.  It can also be found at     *
+  * http://hdfgroup.org/HDF5/doc/Copyright.html.  If you do not have          *
+  * access to either file, you may request a copy from help@hdfgroup.org.     *
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ -->
+
+
+<!-- NEW PAGE -->
+<!-- HEADER RIGHT "H5Dscatter" -->
+<hr>
+<dl>
+
+  <dt><div align=right><font color=999999 size=-1><i>
+      Last modified: 11 July 2013
+      </i></font></div>
+
+  <dt><strong>Name:</strong> <a name="Dataset-Scatter">H5Dscatter</a>
+  <dt><strong>Signature:</strong>
+    <dd><em>herr_t</em> <code>H5Dscatter</code>(
+            <em>H5D_scatter_func_t</em> <code>op</code>,
+            <em>void *</em> <code>op_data</code>,
+            <em>hid_t</em> <code>type_id</code>,
+            <em>hid_t</em> <code>dst_space_id</code>,
+            <em>void *</em><code>dst_buf</code>
+        )
+  <p>
+  <dt><strong>Purpose:</strong>
+    <dd>Scatters data into a selection within a memory buffer.
+
+  <p>
+  <dt><strong>Description:</strong>
+    <dd><code>H5Dscatter</code> retrieves data from the supplied callback
+      <code>op</code> and scatters it to the supplied buffer
+      <code>dst_buf</code> in a manner similar to data being written to a
+      dataset.
+      <p>
+      <code>dst_space_id</code> is a dataspace which defines the extent of
+      <code>dst_buf</code> and the selection within it to scatter the data 
+      to.
+      <p>
+      <code>type_id</code> is the datatype of the data to be scattered in 
+      both the source and destination buffers.
+      <p>
+      <code>dst_buf</code> must be at least as large as the number of 
+      elements in the extent of <code>dst_space_id</code> times the size 
+      in bytes of <code>type_id</code>.
+      <p>
+      To retrieve the data to be scattered, <code>H5Dscatter</code> 
+      repeatedly calls <code>op</code>, which should return a valid source 
+      buffer, until enough data to fill the selection has been retrieved.
+      The prototype of the callback function <code>op</code> is as follows
+      (as defined in the source code file <code>H5Dpublic.h</code>):
+      <dir>
+          <em>herr_t</em> <code>(*H5D_scatter_func_t)(</code>
+              <em>const void **</em> <code>src_buf/*out*/,</code> 
+              <em>size_t *</em><code>src_buf_bytes_used/*out*/,</code> 
+              <em>void *</em><code>op_data)</code>
+      </dir>
+
+      <p>
+      The parameters of this callback function have the following
+      values or meanings: 
+      <table>
+          <tr valign=top><td><code>&nbsp;&nbsp;&nbsp;&nbsp;</code></td><td>
+              <code>src_buf</code>
+              </td><td>
+              Pointer to the buffer holding the next set of elements 
+              to scatter.
+              <br>
+              On entry, the value of <code>*src_buf</code> is undefined.
+              The callback function should set <code>*src_buf</code> 
+              to point to the next set of elements.
+              </td></tr>
+          <tr valign=top><td><code>&nbsp;&nbsp;&nbsp;&nbsp;</code></td><td>
+              <code>src_buf_bytes_used&nbsp;&nbsp;&nbsp;</code>
+              </td><td>
+              Pointer to the number of valid bytes in <code>src_buf</code>.
+              <br>
+              On entry, the value of <code>*src_buf_bytes_used</code> is
+              undefined.
+              The callback function should set <code>*src_buf_bytes_used</code>
+              to the number of valid bytes in <code>src_buf</code>.
+              This number must be a multiple of the datatype size.
+              </td></tr>
+          <tr valign=top><td><code>&nbsp;&nbsp;&nbsp;&nbsp;</code></td><td>
+              <code>op_data</code>
+              </td><td>
+              User-defined pointer to data required by the callback function;
+              a pass-through of the <code>op_data</code> pointer provided
+              with the <code>H5Dscatter</code> function call.
+              </td></tr>
+      </table>
+
+      <p>
+      The callback function should always return at least one element in
+      <code>src_buf</code>, and must not return more elements than are 
+      remaining to be scattered.
+      This function will be repeatedly called until all elements to be 
+      scattered have been returned.
+      The callback function should return zero (<code>0</code>) to indicate 
+      success, and a negative value to indicate failure.
+
+  <p>
+  <dt><strong>Programming Note for C++ Developers Using C Functions:</strong>
+    <dd>
+      <p>If a C routine that takes a function pointer as an argument is 
+      called from within C++ code, the C routine should be returned from 
+      normally. </p>
+
+      <p>Examples of this kind of routine include callbacks such as 
+      <code>H5Pset_elink_cb</code> and <code>H5Pset_type_conv_cb</code> 
+      and functions such as <code>H5Tconvert</code> and 
+      <code>H5Ewalk2</code>.</p>
+
+      <p>Exiting the routine in its normal fashion allows the HDF5 C 
+      Library to clean up its work properly. In other words, if the C++ 
+      application jumps out of the routine back to the C++ 
+      &ldquo;catch&rdquo; statement, the HDF5 C Library is not given the 
+      opportunity to close any temporary data structures that were set 
+      up when the routine was called. The C++ application should save 
+      some state as the routine is started so that any problem that 
+      occurs might be diagnosed.</p>
+
+  <p>
+  <dt><strong>Parameters:</strong>
+    <dd><table>
+      <tr>
+        <td valign="top">
+            <em>H5D_scatter_func_t</em>&nbsp;<code>op&nbsp;&nbsp;&nbsp;</code>
+        </td>
+        <td valign="top">IN: Callback function which provides data to be
+            scattered.
+        </td></tr>
+      <tr>
+        <td valign="top">
+            <em>void *</em><code>op_data</code> 
+        </td>
+        <td valign="top">IN: User-defined pointer to data required by
+            <code>op</code>.
+        </td></tr>
+      <tr>
+        <td valign="top">
+            <em>hid_t</em> <code>type_id</code> 
+        </td>
+        <td valign="top">IN: Identifier for the datatype describing the 
+            data in both the source and definition buffers.
+            This is only used to calculate the element size.
+        </td></tr>
+      <tr>
+        <td valign="top">
+            <em>hid_t</em> <code>dst_space_id</code>
+        </td>
+        <td valign="top">IN: Identifier for the dataspace describing 
+            both the dimensions of the destination buffer and the selection 
+            within the destination buffer that data will be scattered to.
+        </td></tr>
+      <tr>
+        <td valign="top">
+            <em>void *</em><code>dst_buf</code>
+        </td>
+        <td valign="top">OUT: Destination buffer which the data will be
+            scattered to.
+        </td></tr>
+    </table>
+
+  <p>
+  <dt><strong>Returns:</strong>
+    <dd>Returns a non-negative value if successful;
+        otherwise returns a negative value.
+
+
+<!--__ *** FORTRAN90 INTERFACE  **********************************  -->
+<!--__ When the Fortran90 interface is complete, replace this       -->
+<!--__ section with the Fortran90 subroutine description.           -->
+<!--__                                                              -->
+<!--__ See the file h5fortran_f_insert.htm for a template and       -->
+<!--__ instructions.                                                -->
+<!--__ ***********************************************************  -->
+
+
+  <p>
+  <dt><strong>See Also:</strong>
+    <dd><a href="RM_H5D.html#Dataset-Gather">
+        <code>H5Dgather</code></a>
+
+  <p>
+  <dt><strong>History:</strong>
+    <dd><table width="90%">
+        <tr>
+          <td valign="top" align="left" width="10%">
+            <strong>Release</strong>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <td valign="top" align="left">
+            <strong>Change</strong></td></tr>
+        <tr>
+          <td valign="top">1.8.11</td>
+          <td valign="top">
+            C function introduced.</td></tr>
+    </table>
+</dl>
+
+
+
+
+
+<!--
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+  * Copyright by The HDF Group.                                               *
+  * Copyright by the Board of Trustees of the University of Illinois.         *
+  * All rights reserved.                                                      *
+  *                                                                           *
+  * This file is part of HDF5.  The full HDF5 copyright notice, including     *
+  * terms governing use, modification, and redistribution, is contained in    *
+  * the files COPYING and Copyright.html.  COPYING can be found at the root   *
+  * of the source code distribution tree; Copyright.html can be found at the  *
+  * root level of an installed copy of the electronic HDF5 document set and   *
+  * is linked from the top-level documents page.  It can also be found at     *
+  * http://hdfgroup.org/HDF5/doc/Copyright.html.  If you do not have          *
+  * access to either file, you may request a copy from help@hdfgroup.org.     *
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ -->
+
+
+<!-- NEW PAGE -->
+<!-- HEADER RIGHT "H5Dset_extent" -->
+<hr>
+<dl>
+  <dt><div align=right><font color=999999 size=-1><i>
+      Last modified: 13 August 2013
+      </i></font></div>
+
+  <dt><strong>Name:</strong> <a name="Dataset-SetExtent">H5Dset_extent</a>
+  <dt><strong>Signature:</strong>
+    <dd><em>herr_t</em> <code>H5Dset_extent</code>(
+        <em>hid_t</em> <code>dset_id</code>, 
+	<em>const hsize_t </em><code>size[]</code>
+    )
+  
+  <p />
+  <dt><strong>Purpose:</strong>
+    <dd>Changes the sizes of a dataset&rsquo;s dimensions.
+  
+  <p />
+  <dt><strong>Description:</strong>
+    <dd><code>H5Dset_extent</code> sets the current dimensions of the 
+        chunked dataset <code>dset_id</code> to the sizes specified in
+        <code>size</code>.
+        <p>
+        <code>size</code> is a 1-dimensional array with <em>n</em> elements, 
+        where <em>n</em> is the rank of the dataset&rsquo;s current dataspace.
+        <p>     
+        This function can be applied to the following datasets:
+        <ul>    
+          <li>A chunked dataset with unlimited dimensions
+          <li>A chunked dataset with fixed dimensions if the new dimension sizes
+              are less than the maximum sizes set with <code>maxdims</code> 
+              (see <a href="RM_H5S.html#Dataspace-CreateSimple">
+              <code>H5Screate_simple</code></a>)
+          <li>An external dataset with unlimited dimensions 
+          <li>An external dataset with fixed dimensions 
+              if the new dimension sizes are less than 
+              the maximum sizes set with <code>maxdims</code>
+          <p>
+          Note that external datasets are always contiguous and 
+          can be extended only along the first dimension.
+        </ul>     
+        <p>     
+        Space on disk is immediately allocated for the new dataset extent
+        if the dataset&rsquo;s space allocation time is set to 
+        <code>H5D_ALLOC_TIME_EARLY</code>.
+        <p>     
+        Fill values will be written to the dataset in either of the 
+        following situations, but not otherwise:
+        <ul>
+            <li>If the dataset&rsquo;s fill time is set to 
+                <code>H5D_FILL_TIME_IFSET</code> and a fill value is defined
+                (see <a href="RM_H5P.html#Property-SetFillTime">
+                <code>H5Pset_fill_time</code></a> and
+                <a href="RM_H5P.html#Property-SetFillValue">
+                <code>H5Pset_fill_value</code></a>)
+            <li>If the dataset&rsquo;s fill time is set to 
+                <code>H5D_FILL_TIME_ALLOC</code>
+                (see <a href="RM_H5P.html#Property-SetAllocTime">
+                <code>H5Pset_alloc_time</code></a>)
+        </ul>
+  
+  <p />
+  <dt><strong>Notes:</strong>
+    <dd>
+      <li>If the sizes specified in <code>size</code> are smaller than 
+        the dataset&rsquo;s current dimension sizes, 
+        <code>H5Dset_extent</code> will reduce the dataset&rsquo;s 
+        dimension sizes to the specified values.
+        <i>It is the user application&rsquo;s responsibility to ensure 
+        that valuable data is not lost as
+        <code>H5Dset_extent</code> does not check.</i>
+      <p>
+      <li>Except for external datasets, <code>H5Dset_extent</code> is for use 
+        with chunked datasets only, not contiguous datasets.
+      <p>
+      <li>If a dataset is open for either writing or reading data when 
+        <code>H5Dset_extent</code> is called, the dataset&rsquo;s dataspace 
+        must be refreshed before more data is written to the dataset and 
+        should be refreshed before any further data is read.
+        This can be accomplished with a call to 
+        <a href="#Dataset-GetSpace"><code>H5Dget_space</code></a>.</li>
+    </dd>
+  
+  <p />
+  <dt><strong>Parameters:</strong>
+    <dd><table>
+      <tr>
+        <td valign="top"><em>hid_t</em> <code>dset_id</code>
+        </td>
+        <td valign="top">IN: Dataset identifier
+        </td></tr>
+      <tr>
+        <td valign="top"><em>const&nbsp;hsize_t&nbsp;</em><code>size[]</code>&nbsp;&nbsp;&nbsp;&nbsp;
+        </td>
+        <td valign="top">IN: Array containing the new magnitude of 
+            each dimension of the dataset.
+        </td></tr>
+    </table>
+  
+  <p />
+  <dt><strong>Returns:</strong>
+    <dd>Returns a non-negative value if successful;
+        otherwise returns a negative value.
+  
+  <p />
+<!-- NEW PAGE -->
+  <dt><strong>Fortran90 Interface:</strong> H5Dset_extent
+    <dd>
+	<pre>
+SUBROUTINE h5dset_extent_f(dataset_id, size, hdferr)
+  IMPLICIT NONE 
+  INTEGER(HID_T), INTENT(IN) :: dataset_id   ! Dataset identifier
+  INTEGER(HSIZE_T), DIMENSION(*), INTENT(IN) :: size 
+                                             ! Array containing 
+                                             ! dimensions&rsquo; sizes   
+  INTEGER, INTENT(OUT) :: hdferr             ! Error code:
+                                             ! 0 on success and -1 on failure
+END SUBROUTINE h5dset_extent_f
+    </pre>
+  
+  <p />
+  <dt><strong>See Also:</strong>
+     <dd><table border="0">
+         <tr align="left" valign="top"><td>
+             <a href="RM_H5P.html#Property-SetAllocTime">
+                <code>H5Pset_alloc_time</code></a>
+             <br>
+             <a href="RM_H5P.html#Property-SetFillTime">
+                <code>H5Pset_fill_time</code></a>
+             <br>
+             <a href="RM_H5P.html#Property-SetFillValue">
+                <code>H5Pset_fill_value</code></a>
+               </td><td><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code></td><td>
+             <a href="RM_H5S.html#Dataspace-CreateSimple">
+                <code>H5Screate_simple</code></a>
+             <br>
+             <a href="#Dataset-GetSpace"><code>H5Dget_space</code></a>
+           </td></tr>
+         </table>
+
+  <p />
+  <dt><strong>History:</strong>
+    <dd><table width="90%">
+        <tr>
+          <td valign="top" align="left" width="10%">
+            <strong>Release</strong>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <td valign="top" align="left">
+            <strong>Change</strong></td></tr>
+        <tr>
+          <td valign="top">1.6.0</td>
+          <td valign="top">
+            Function implemented but not supported in this release.</td></tr>
+        <tr>
+          <td valign="top">1.8.0</td>
+          <td valign="top">
+            Function supported in this release.</td></tr>
+    </table>
+</dl>
+
+
+
+
+<!--
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+  * Copyright by The HDF Group.                                               *
+  * Copyright by the Board of Trustees of the University of Illinois.         *
+  * All rights reserved.                                                      *
+  *                                                                           *
+  * This file is part of HDF5.  The full HDF5 copyright notice, including     *
+  * terms governing use, modification, and redistribution, is contained in    *
+  * the files COPYING and Copyright.html.  COPYING can be found at the root   *
+  * of the source code distribution tree; Copyright.html can be found at the  *
+  * root level of an installed copy of the electronic HDF5 document set and   *
+  * is linked from the top-level documents page.  It can also be found at     *
+  * http://hdfgroup.org/HDF5/doc/Copyright.html.  If you do not have          *
+  * access to either file, you may request a copy from help@hdfgroup.org.     *
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ -->
+
+
+<!-- NEW PAGE -->
+<!-- HEADER RIGHT "H5Dvlen_get_buf_size" -->
+<hr>
+<dl>
+
+<dt><div align=right><font color=999999 size=-1><i>
+    Last modified: 21 August 2012
+    </i></font></div>
+
+<dt><strong>Name:</strong> <a name="Dataset-VLGetBuf">H5Dvlen_get_buf_size</a>
+<dt><strong>Signature:</strong>   
+    <dd><em>herr_t </em><code>H5Dvlen_get_buf_size</code>(<em>hid_t </em><code>dataset_id</code>,
+    <em>hid_t</em> <code>type_id</code>,
+    <em>hid_t</em> <code>space_id</code>,
+    <em>hsize_t</em> *<code>size</code>
+    )
+
+<p>
+<dt><strong>Purpose:</strong>
+    <dd>Determines the number of bytes required to store variable-length (VL) data.
+
+<p>
+<dt><strong>Description:</strong>
+    <dd><code>H5Dvlen_get_buf_size</code> determines the number of bytes 
+        required to store the VL data from the dataset, using the 
+        <code>space_id</code> for the selection in the dataset on 
+        disk and the <code>type_id</code> for the memory representation 
+        of the VL data in memory.  
+        <p>
+        <code>*size</code> is returned with the number of bytes 
+        required to store the VL data in memory.          
+
+<p>
+<dt><strong>Parameters:</strong>
+    <ul><table>
+        <tr>
+            <td valign="top"><em>hid_t</em>&nbsp;<code>dataset_id&nbsp;&nbsp;&nbsp;&nbsp;</code></td>
+            <td valign="top">IN: Identifier of the dataset to query.</td></tr>
+        <tr>
+            <td valign="top"><em>hid_t</em> <code>type_id</code></td>
+            <td valign="top">IN: Datatype identifier.</td></tr>
+        <tr>
+            <td valign="top"><em>hid_t</em> <code>space_id</code></td>
+            <td valign="top">IN: Dataspace identifier.</td></tr>
+        <tr>
+            <td valign="top"><em>hsize_t</em> *<code>size</code></td>
+            <td valign="top">OUT: The size in bytes of the memory 
+                             buffer required to store the VL data.</td></tr>
+    </table></dd>
+
+<p>
+<dt><strong>Returns:</strong>
+    <dd>Returns non-negative value if successful;
+        otherwise returns a negative value.
+
+<p>
+<dt><strong>Fortran90 Interface:</strong> h5dvlen_get_max_len_f
+    <dd>There is no direct FORTRAN couterpart for the C function 
+        <code>H5Dvlen_get_buf_size</code>;  
+        corresponding functionality is provided by the FORTRAN function
+        <code>h5dvlen_get_max_len_f</code>.
+        <br>
+    <pre>
+SUBROUTINE h5dvlen_get_max_len_f(dset_id, size, hdferr)
+  IMPLICIT NONE
+  INTEGER(HID_T), INTENT(IN) :: dset_id     ! Dataset identifier  
+  INTEGER(HID_T), INTENT(IN) :: type_id     ! Datatype identifier  
+  INTEGER(HID_T), INTENT(IN) :: space_id    ! Dataspace identifier  
+            
+  INTEGER(SIZE_T), INTENT(OUT)  :: elem_len ! Maximum length of the element
+  INTEGER, INTENT(OUT) :: hdferr            ! Error code  
+                                            ! 0 on success and -1 on failure
+END SUBROUTINE h5dvlen_get_max_len_f
+	</pre>
+	
+<p>
+<dt><strong>History:</strong>
+    <dd><table width="90%">
+        <tr>
+          <td valign="top" align="left" width="10%">
+            <strong>Release</strong>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <td valign="top" align="left">
+            <strong>C</strong></td>
+          <td valign="top" align="left">
+            &nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <td valign="top" align="left">
+            <strong>Fortran90</strong></td></tr>
+        <tr>
+          <td valign="top">1.4.5</td>
+          <td valign="top">&nbsp;</td>
+          <td valign="top">&nbsp;</td>
+          <td valign="top">Function introduced 
+            in this release.</td></tr>
+        <tr>
+          <td valign="top">1.4.0</td>
+          <td valign="top">
+            Function introduced in this release.</td>
+          <td valign="top">&nbsp;</td>
+          <td valign="top">&nbsp;</td></tr>
+    </table></dd>
+</dl>
+
+
+
+<!--
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+  * Copyright by The HDF Group.                                               *
+  * Copyright by the Board of Trustees of the University of Illinois.         *
+  * All rights reserved.                                                      *
+  *                                                                           *
+  * This file is part of HDF5.  The full HDF5 copyright notice, including     *
+  * terms governing use, modification, and redistribution, is contained in    *
+  * the files COPYING and Copyright.html.  COPYING can be found at the root   *
+  * of the source code distribution tree; Copyright.html can be found at the  *
+  * root level of an installed copy of the electronic HDF5 document set and   *
+  * is linked from the top-level documents page.  It can also be found at     *
+  * http://hdfgroup.org/HDF5/doc/Copyright.html.  If you do not have          *
+  * access to either file, you may request a copy from help@hdfgroup.org.     *
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ -->
+
+
+<!-- NEW PAGE -->
+<!-- HEADER RIGHT "H5Dvlen_reclaim" -->
+<hr>
+<dl>
+
+<dt><div align=right><font color=999999 size=-1><i>
+    Last modified: 28 September 2011
+    </i></font></div>
+
+<dt><strong>Name:</strong> <a name="Dataset-VLReclaim">H5Dvlen_reclaim</a>
+<dt><strong>Signature:</strong>
+    <dd><em>herr_t </em><code>H5Dvlen_reclaim</code>(
+        <em>hid_t </em><code>type_id</code>,
+        <em>hid_t</em> <code>space_id</code>,
+        <em>hid_t</em> <code>plist_id</code>,
+        <em>void</em> *<code>buf</code>
+    )
+
+<p>
+<dt><strong>Purpose:</strong>
+    <dd>Reclaims variable-length (VL) datatype memory buffers.
+
+<p>
+<dt><strong>Description:</strong>
+    <dd><code>H5Dvlen_reclaim</code> reclaims memory buffers created to 
+        store VL datatypes.
+        <p>
+        The <code>type_id</code> must be the datatype stored in the buffer.
+        The <code>space_id</code> describes the selection for the memory buffer 
+        to free the VL datatypes within.  
+        The <code>plist_id</code> is the dataset transfer property list which 
+        was used for the I/O transfer to create the buffer.
+        And <code>buf</code> is the pointer to the buffer to be reclaimed.
+        <p>
+        The VL structures (<code>hvl_t</code>) in the user's buffer are 
+        modified to zero out the VL information after the memory has been 
+        reclaimed.
+        <p>
+        If nested VL datatypes were used to create the buffer, 
+        this routine frees them <em>from the bottom up</em>, releasing all 
+        the memory without creating memory leaks.
+
+<p>
+<dt><strong>Parameters:</strong>
+    <dd><table>
+        <tr>
+            <td valign="top"><em>hid_t</em> <code>type_id</code></td>
+            <td valign="top">IN: Identifier of the datatype.</td></tr>
+        <tr>
+            <td valign="top"><em>hid_t</em>&nbsp;<code>space_id&nbsp;&nbsp;&nbsp;&nbsp;</code></td>
+            <td valign="top">IN: Identifier of the dataspace.</td></tr>
+        <tr>
+            <td valign="top"><em>hid_t</em> <code>plist_id</code></td>
+            <td valign="top">IN: Identifier of the property list used 
+                to create the buffer.</td></tr>
+        <tr>
+            <td valign="top"><em>void</em> *<code>buf</code></td>
+            <td valign="top">IN: Pointer to the buffer to be reclaimed.</td></tr>
+    </table></dd>
+
+<p>
+<dt><strong>Returns:</strong>
+    <dd>Returns non-negative value if successful;
+        otherwise returns a negative value.
+
+<p>
+<dt><strong>Fortran2003 Interface:</strong> h5dvlen_reclaim_f
+    <dd>
+
+        <a name="H5D2028F03292fh5dvlen5freclaim5ff"></a>
+<a name="robo19"></a>
+
+<strong>Signature:</strong></p>
+<pre class="source">  SUBROUTINE <strong>h5dvlen_reclaim_f</strong>(type_id, space_id, plist_id, buf, hdferr)
+    INTEGER(HID_T), INTENT(IN)    :: type_id
+    INTEGER(HID_T), INTENT(IN)    :: space_id
+    INTEGER(HID_T), INTENT(IN)    :: plist_id
+    TYPE(C_PTR)   , INTENT(INOUT) :: buf
+    INTEGER       , INTENT(OUT)   :: hdferr
+</pre>
+<p class="item_name"><strong>Inputs:</strong></p>
+<pre>  type_id  - Identifier of the datatype. 
+  space_id - Identifier of the dataspace. 
+  plist_id - Identifier of the property list used to create the buffer. 
+  buf      - Pointer to the buffer to be reclaimed. 
+</pre>
+<p class="item_name"><strong>Outputs:</strong></p>
+<pre>  hdferr   - Returns 0 if successful and -1 if fails
+</pre>
+
+
+<p>
+<dt><strong>History:</strong>
+    <dd><table width="90%">
+        <tr>
+          <td valign="top" align="left" width="10%">
+            <strong>Release</strong>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <td valign="top" align="left">
+            <strong>Change</strong></td></tr>
+        <tr>
+          <td valign="top">1.8.8</td>
+          <td valign="top">
+            Fortran interface added.</td></tr>
+    </table></dd>
+
+</dl>
+
+
+
+<!--
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+  * Copyright by The HDF Group.                                               *
+  * Copyright by the Board of Trustees of the University of Illinois.         *
+  * All rights reserved.                                                      *
+  *                                                                           *
+  * This file is part of HDF5.  The full HDF5 copyright notice, including     *
+  * terms governing use, modification, and redistribution, is contained in    *
+  * the files COPYING and Copyright.html.  COPYING can be found at the root   *
+  * of the source code distribution tree; Copyright.html can be found at the  *
+  * root level of an installed copy of the electronic HDF5 document set and   *
+  * is linked from the top-level documents page.  It can also be found at     *
+  * http://hdfgroup.org/HDF5/doc/Copyright.html.  If you do not have          *
+  * access to either file, you may request a copy from help@hdfgroup.org.     *
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ -->
+
+
+<!-- NEW PAGE -->
+<!-- HEADER RIGHT "H5Dwrite" -->
+<hr>
+<dl>
+
+<dt><div align=right><font color=999999 size=-1><i>
+    Last modified: 16 September 2014
+    </i></font></div>
+
+<dt><strong>Name:</strong> <a name="Dataset-Write">H5Dwrite</a>
+<dt><strong>Signature:</strong>
+    <dd><em>herr_t </em><code>H5Dwrite</code>(
+        <em>hid_t </em><code>dataset_id</code>,
+        <em>hid_t</em> <code>mem_type_id</code>,
+        <em>hid_t</em> <code>mem_space_id</code>,
+        <em>hid_t</em> <code>file_space_id</code>,
+        <em>hid_t</em> <code>xfer_plist_id</code>,
+        <em>const void *</em> <code>buf</code>
+    )
+    <p>
+<dt><strong>Purpose:</strong>
+    <dd>Writes raw data from a buffer to a dataset.
+    <p>
+<dt><strong>Description:</strong>
+    <dd><code>H5Dwrite</code> writes a (partial) dataset, specified by its
+        identifier <code>dataset_id</code>, from the 
+        application memory buffer <code>buf</code> into the file.
+        Data transfer properties are defined by the argument 
+        <code>xfer_plist_id</code>.
+        The memory datatype of the (partial) dataset is identified by 
+        the identifier <code>mem_type_id</code>.
+        The part of the dataset to write is defined by 
+        <code>mem_space_id</code> and <code>file_space_id</code>.
+        <p>
+        If <code>mem_type_id</code> is either a fixed-length or
+        variable-length string, it is important to set the string length
+        when defining the datatype.
+        String datatypes are derived from <code>H5T_C_S1</code>
+        (or <code>H5T_FORTRAN_S1</code> for Fortran codes), 
+        which defaults to 1 character in size.
+        See <a href="RM_H5T.html#Datatype-SetSize"><code>H5Tset_size</code></a> 
+        and &ldquo;<a href="RM_H5T.html#CreateVLString">Creating 
+        variable-length string datatypes</a>.&rdquo; 
+        <p>
+        <code>file_space_id</code> is used to specify only the selection within
+        the file dataset's dataspace.  
+        Any dataspace specified in <code>file_space_id</code>
+        is ignored by the library and the dataset's dataspace is always used.
+        <code>file_space_id</code> can be the constant <code>H5S_ALL</code>. 
+        which indicates that the entire file dataspace, as defined by the
+        current dimensions of the dataset, is to be selected.
+        <p>
+        <code>mem_space_id</code> is used to specify both the memory dataspace
+        and the selection within that dataspace.
+        <code>mem_space_id</code> can be the constant <code>H5S_ALL</code>,
+        in which case the file dataspace is used for the memory dataspace and
+        the selection defined with <code>file_space_id</code> is used for the
+        selection within that dataspace.
+        <p>
+        The behavior of the library for the various combinations of valid
+        dataspace IDs and H5S_ALL for the <code>mem_space_id</code> and the
+        <code>file_space_id</code> parameters is described below:
+
+        <br><br>
+        <table border=0>
+        <tr>
+        <th>
+        <code>mem_space_id&nbsp;&nbsp;</code>
+        </th>
+        <th>
+        <code>file_space_id&nbsp;&nbsp;</code>
+        </th>
+        <th>
+        Behavior
+        </th>
+        </tr>
+	
+        <tr valign="top">
+        <td>
+        valid dataspace identifier
+        </td>
+        <td>
+        valid dataspace identifier
+        </td>
+        <td>
+        <code>mem_space_id</code> specifies the memory dataspace and the
+        selection within it.
+        <code>file_space_id</code> specifies the selection within the file
+        dataset's dataspace.
+        </td>
+        </tr>
+
+        <tr valign="top">
+        <td>
+        H5S_ALL
+        </td>
+        <td>
+        valid dataspace identifier
+        </td>
+        <td>
+        The file dataset's dataspace is used for the memory dataspace and the
+        selection specified with <code>file_space_id</code> specifies the
+        selection within it.
+        The combination of the file dataset's dataspace and the selection from 
+	<code>file_space_id</code> is used for memory also.
+        </td>
+        </tr>
+
+        <tr valign="top">
+        <td>
+        valid dataspace identifier
+        </td>
+        <td>
+        H5S_ALL
+        </td>
+        <td>
+        <code>mem_space_id</code> specifies the memory dataspace and the
+        selection within it.
+        The selection within the file dataset's dataspace is set to the "all"
+        selection.
+        </td>
+        </tr>
+
+        <tr valign="top">
+        <td>
+        H5S_ALL
+        </td>
+        <td>
+        H5S_ALL
+        </td>
+        <td>
+        The file dataset's dataspace is used for the memory dataspace and the
+        selection within the memory dataspace is set to the "all" selection.
+        The selection within the file dataset's dataspace is set to the "all"
+        selection.
+        </td>
+        </tr>
+        </table>
+
+        <p>
+        Setting an "all" selection indicates that the entire dataspace, as
+        defined by the current dimensions of a dataspace, will be selected.
+        The number of elements selected in the memory dataspace must match the
+        number of elements selected in the file dataspace.
+        <p>
+        <code>xfer_plist_id</code> can be the constant <code>H5P_DEFAULT</code>.
+        in which case the default data transfer properties are used.           
+        <p>
+        Writing to an dataset will fail if the HDF5 file was 
+        not opened with write access permissions.
+        <p>
+        Datatype conversion takes place at the time of a read or write
+        and is automatic.  See the
+        <a href="../UG/HDF5_Users_Guide-Responsive%20HTML5/index.html#t=HDF5_Users_Guide%2FDatatypes%2FHDF5_Datatypes.htm%23TOC_6_10_Data_Transferbc-26&rhtocid=6.5_2">
+        &ldquo;Data Transfer: Datatype Conversion and Selection&rdquo;</a> 
+        section in the &ldquo;HDF5 Datatypes&rdquo; chapter of the 
+        <cite>HDF5 User&rsquo;s Guide</cite> for a discussion of data conversion.
+        <p>
+	If the dataset's space allocation time is set to 
+	<code>H5D_ALLOC_TIME_LATE</code> or <code>H5D_ALLOC_TIME_INCR</code>
+	and the space for the dataset has not yet been allocated, 
+	that space is allocated when the first raw data is written to the 
+	dataset.
+	Unused space in the dataset will be written with fill values at the 
+	same time if the dataset's fill time is set to 
+	<code>H5D_FILL_TIME_IFSET</code> or <code>H5D_FILL_TIME_ALLOC</code>.
+	(Also see 
+	<a href="RM_H5P.html#Property-SetFillTime">H5Pset_fill_time</a>
+	and 
+	<a href="RM_H5P.html#Property-SetAllocTime">H5Pset_alloc_time</a>.)
+        <p>
+        If a dataset's storage layout is 'compact', care must be taken when
+        writing data to the dataset in parallel.  A compact dataset's raw data
+        is cached in memory and may be flushed to the file from any of the
+        parallel processes, so parallel applications should always attempt to
+        write identical data to the dataset from all processes.
+	
+    <p>
+<dt><strong>Parameters:</strong>
+    <dd><table>
+        <tr>
+            <td valign="top"><em>hid_t</em> <code>dataset_id</code></td>
+            <td valign="top">IN: Identifier of the dataset to write to.</td></tr>
+        <tr>
+            <td valign="top"><em>hid_t</em> <code>mem_type_id</code></td>
+            <td valign="top">IN: Identifier of the memory datatype.</td></tr>
+        <tr>
+            <td valign="top"><em>hid_t</em> <code>mem_space_id</code></td>
+            <td valign="top">IN: Identifier of the memory dataspace.</td></tr>
+        <tr>
+            <td valign="top"><em>hid_t</em>&nbsp;<code>file_space_id&nbsp;&nbsp;&nbsp;&nbsp;</code></td>
+            <td valign="top">IN: Identifier of the dataset's dataspace in the file.</td></tr>
+        <tr>
+            <td valign="top"><em>hid_t</em> <code>xfer_plist_id</code></td>
+            <td valign="top">IN: Identifier of a transfer property list 
+                for this I/O operation.</td></tr>
+        <tr>
+            <td valign="top"><em>const void *</em> <code>buf</code></td>
+            <td valign="top">IN: Buffer with data to be written to the 
+                file.</td></tr>
+    </table></dd>
+    <p>
+<dt><strong>Returns:</strong>
+    <dd>Returns a non-negative value if successful;
+        otherwise returns a negative value.
+    <p>
+<dt><strong>Fortran90 Interface:</strong> h5dwrite_f, h5dwrite_vl_f
+    <dd>There is no direct Fortran90 couterpart for the C function 
+        <code>H5Dwrite</code>.  
+        Instead, that functionality is provided by two Fortran90 subroutines:
+        
+    <center>
+    <table width=80%>
+      <tr valign=top align=left>
+            <td>
+              <code>h5dwrite_f</code>
+            </td>
+            <td>&nbsp;&nbsp;</td><td>
+              <strong>Purpose:</strong>
+              Writes data other than variable-length data. 
+            </td>
+        </tr>
+        <tr valign=top align=left>
+            <td>
+              <code>h5dwrite_vl_f</code>
+            </td><td>&nbsp;&nbsp;</td><td>
+              <strong>Purpose:</strong>
+              Writes variable-length data. 
+            </td>
+        </tr>
+    </table>
+    </center>
+				
+	<pre>
+
+SUBROUTINE h5dwrite_f(dset_id, mem_type_id, buf, dims, hdferr, &amp; 
+                      mem_space_id, file_space_id, xfer_prp)
+  IMPLICIT NONE
+  INTEGER(HID_T), INTENT(IN) :: dset_id      ! Dataset identifier
+  INTEGER(HID_T), INTENT(IN) :: mem_type_id  ! Memory datatype identifier
+  TYPE, INTENT(IN) :: buf                    ! Data buffer; may be a scalar 
+                                             ! or an array
+  DIMENSION(*), INTEGER(HSIZE_T), INTENT(IN)  :: dims 
+                                             ! Array to hold corresponding 
+                                             ! dimension sizes of data 
+                                             ! buffer buf; dim(k) has value 
+                                             ! of the k-th dimension of 
+                                             ! buffer buf; values are 
+                                             ! ignored if buf is a scalar
+  INTEGER, INTENT(OUT) :: hdferr             ! Error code 
+                                             ! 0 on success and -1 on failure
+<!-- NEW PAGE -->
+  INTEGER(HID_T), OPTIONAL, INTENT(IN) :: mem_space_id 
+                                             ! Memory dataspace identfier 
+                                             ! Default value is H5S_ALL_F
+  INTEGER(HID_T), OPTIONAL, INTENT(IN) :: file_space_id 
+                                             ! File dataspace identfier 
+                                             ! Default value is H5S_ALL_F</pre>
+<pre>
+  INTEGER(HID_T), OPTIONAL, INTENT(IN) :: xfer_prp 
+                                             ! Transfer property list 
+                                             ! identifier; default value 
+                                             ! is H5P_DEFAULT_F 
+END SUBROUTINE h5dwrite_f
+	</pre>
+
+	<pre>
+
+SUBROUTINE h5dwrite_vl_f(dset_id, mem_type_id, buf, dims, len, hdferr, &amp; 
+                     mem_space_id, file_space_id, xfer_prp)
+  IMPLICIT NONE
+  INTEGER(HID_T), INTENT(IN) :: dset_id     ! Dataset identifier
+  INTEGER(HID_T), INTENT(IN) :: mem_type_id ! Memory datatype identifier
+  TYPE, INTENT(IN), & DIMENSION(dims(1),dims(2)) :: buf
+                                            ! Data buffer; may be a scalar 
+                                            ! or an array
+                                            ! TYPE must be one of the following
+                                            !     INTEGER
+                                            !     REAL
+                                            !     CHARACTER
+  INTEGER(HSIZE_T), INTENT(IN), DIMENSION(2)  :: dims 
+                                            ! Array to hold corresponding 
+                                            ! dimension sizes of data 
+                                            ! buffer buf 
+                                            ! dim(k) has value of the k-th 
+                                            ! dimension of buffer buf
+                                            ! Values are ignored if buf is 
+                                            ! a scalar
+  INTEGER(SIZE_T), INTENT(IN), DIMENSION(*)  :: len 
+                                            ! Array to store length of
+                                            ! each element
+  INTEGER, INTENT(OUT) :: hdferr            ! Error code 
+                                            ! 0 on success and -1 on failure
+  INTEGER(HID_T), OPTIONAL, INTENT(IN) :: mem_space_id 
+                                            ! Memory dataspace identfier 
+                                            ! Default value is H5S_ALL_F 
+  INTEGER(HID_T), OPTIONAL, INTENT(IN) :: file_space_id 
+                                            ! File dataspace identfier 
+                                            ! Default value is H5S_ALL_F
+  INTEGER(HID_T), OPTIONAL, INTENT(IN) :: xfer_prp 
+                                            ! Transfer property list identifier
+                                            ! Default value is H5P_DEFAULT_F
+END SUBROUTINE h5dwrite_vl_f
+        </pre>
+
+<!-- NEW PAGE -->
+
+<dt><strong>Fortran2003 Interface:</strong> h5dwrite_f
+    <dd>
+
+        <a name="H5D2028F03292fh5dwrite5ff5fF03"></a>
+<a name="robo20"></a>
+
+<strong>Signature:</strong></p>
+<pre class="source">  SUBROUTINE h5dwrite_f(dset_id, mem_type_id, buf, hdferr, &amp;
+                        mem_space_id, file_space_id, xfer_prp)
+    INTEGER(HID_T), INTENT(IN)              :: dset_id
+    INTEGER(HID_T), INTENT(IN)              :: mem_type_id
+    TYPE(C_PTR)   , INTENT(IN)              :: buf
+    INTEGER       , INTENT(OUT)             :: hdferr
+    INTEGER(HID_T), INTENT(IN)   , OPTIONAL :: mem_space_id
+    INTEGER(HID_T), INTENT(IN)   , OPTIONAL :: file_space_id
+    INTEGER(HID_T), INTENT(IN)   , OPTIONAL :: xfer_prp
+</pre>
+<p class="item_name"><strong>Inputs:</strong></p>
+<pre>  dset_id       - Identifier of the dataset to write to.
+  mem_type_id   - Identifier of the memory datatype.
+  buf           - Buffer with data to be written to the file.
+</pre>
+<p class="item_name"><strong>Outputs:</strong></p>
+<pre>  hdferr        - Returns 0 if successful and -1 if fails
+</pre>
+<p class="item_name"><strong>Optional parameters:</strong></p>
+<pre>  mem_space_id  - Identifier of the memory dataspace.
+  file_space_id - Identifier of the dataset's dataspace in the file.
+  xfer_prp      - Identifier of a transfer property list for this I/O operation.
+</pre>
+
+
+<p>
+<dt><strong>See Also:</strong>
+    <dd>&ldquo;<a href="RM_H5T.html#CreateVLString">Creating 
+        variable-length string datatypes</a>&rdquo; 
+    <dd><a href="RM_H5T.html#Datatype-SetSize"><code>H5Tset_size</code></a> 
+<p>
+<p>
+<dt><strong>History:</strong>
+    <dd><table width="90%">
+        <tr>
+          <td valign="top" align="left" width="10%">
+            <strong>Release</strong>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <td valign="top" align="left">
+            <strong>Change</strong></td></tr>
+        <tr>
+          <td valign="top">1.8.8</td>
+          <td valign="top">
+            Fortran updated to Fortran2003.</td></tr>
+        <tr>
+          <td valign="top">1.4.2</td>
+          <td valign="top">
+            <code>dims</code> parameter added in Fortran interface.</td></tr>
+    </table></dd>
+</dl>
+
+
+
+<!-- HEADER RIGHT " " -->
+<!-- #BeginLibraryItem "/ed_libs/NavBar_RM.lbi" -->
+<hr>
+<center>
+<table border=0 width=98%>
+<tr><td valign=top align=left>
+<a href="../index.html">HDF5 documents and links</a>&nbsp;<br>
+<a href="../H5.intro.html">Introduction to HDF5</a>&nbsp;<br>
+<a href="../UG/HDF5_Users_Guide-Responsive HTML5/index.html">HDF5 User&rsquo;s Guide</a>&nbsp;<br>
+<!--
+<a href="Glossary.html">Glossary</a><br>
+-->
+</td>
+<td valign=top align=right>
+In the 
+<a href="RM_H5Front.html">HDF5 Reference Manual</a>&nbsp;
+<font size="-1"><br>
+<a href="../HL/RM_H5DS.html">H5DS</a>&nbsp;&nbsp;
+<a href="../HL/RM_H5IM.html">H5IM</a>&nbsp;&nbsp;
+<a href="../HL/RM_H5LT.html">H5LT</a>&nbsp;&nbsp;
+<a href="../HL/RM_H5PT.html">H5PT</a>&nbsp;&nbsp;
+<a href="../HL/RM_H5TB.html">H5TB</a>&nbsp;
+<a href="../HL/RM_HDF5Optimized.html">Optimized</a>&nbsp;
+<br>
+<a href="RM_H5.html">H5</a>&nbsp;&nbsp;
+<a href="RM_H5A.html">H5A</a>&nbsp;&nbsp;
+<a href="RM_H5D.html">H5D</a>&nbsp;&nbsp;
+<a href="RM_H5E.html">H5E</a>&nbsp;&nbsp;
+<a href="RM_H5F.html">H5F</a>&nbsp;&nbsp;
+<a href="RM_H5G.html">H5G</a>&nbsp;&nbsp;
+<a href="RM_H5I.html">H5I</a>&nbsp;&nbsp;
+<a href="RM_H5L.html">H5L</a>&nbsp;
+<br>
+<a href="RM_H5O.html">H5O</a>&nbsp;&nbsp;
+<a href="RM_H5P.html">H5P</a>&nbsp;&nbsp;
+<a href="RM_H5PL.html">H5PL</a>&nbsp;&nbsp;
+<a href="RM_H5R.html">H5R</a>&nbsp;&nbsp;
+<a href="RM_H5S.html">H5S</a>&nbsp;&nbsp;
+<a href="RM_H5T.html">H5T</a>&nbsp;&nbsp;
+<a href="RM_H5Z.html">H5Z</a>&nbsp;
+<br>
+<a href="Tools.html">Tools</a>&nbsp;&nbsp;
+<a href="PredefDTypes.html">Datatypes</a>&nbsp;&nbsp;
+<a href="../fortran/index.html">Fortran</a>&nbsp;&nbsp;
+<a href="APICompatMacros.html">Compatibility Macros</a>&nbsp;
+<br>
+<a href="CollectiveCalls.html">Collective Calls in Parallel</a>&nbsp;
+</font>
+<!--
+<br>
+<i><font size=-1>(Printable <a href="http://hdfgroup.org/HDF5/doc/PSandPDF/HDF5_RefManual.PDF">PDF</a> of this Reference Manual)</font></i>&nbsp;
+-->
+
+</td></tr>
+</table>
+</center>
+<hr>
+<!-- #EndLibraryItem -->
+
+
+<!-- INCLUDE VIA PHP FROM <doc_root>/ed_libs/Footer2.htm -->
+
+<address>
+<table width="100%" border="0">
+  <tr valign="top">
+      <td align="left">
+          <address>
+          The HDF Group Help Desk: <img src="../Graphics/help.png" align=top height=16>
+          <br>
+          Describes HDF5 Release 1.8.20, November 2017.
+          </address>
+      </td><td width="5%">&nbsp;</td>
+      <td align="right">
+          <a href="https://support.hdfgroup.org/ftp/HDF5/releases/COPYING">Copyright</a> by
+          <a href="https://www.hdfgroup.org/">The HDF Group</a>
+          <br>
+          and the Board of Trustees of the University of Illinois
+      </td>   
+  </tr>   
+</table>
+</address>
+
+<!-- END PHP INCLUDE FROM <doc_root>/ed_libs/Footer2.htm -->
+
+
+<SCRIPT LANGUAGE="JAVASCRIPT">
+<!--
+document.writeln("Last modified: 9 October 2014");
+-->
+</SCRIPT>
+
+
+</body>
+</html>
+

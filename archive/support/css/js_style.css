@@ -1,0 +1,30 @@
+input.disabled {
+	border: 1px solid #F2F2F2;
+	background-color: #F2F2F2;
+}
+
+input.required, textarea.required, select.required {
+	 
+}
+
+input.validation-failed, textarea.validation-failed {
+	border:1px solid red; 
+
+}
+
+input.validation-passed, textarea.validation-passed {
+	border: 1px solid #00CC00;
+	color : #000;
+}
+
+.validation-advice {
+	background-color:#6FA1CF;
+	margin-top:5px; 
+	padding:4px; 
+	color:white; 
+	font-weight:bold; 
+	width:250px;
+	border:3px solid white; 
+}
+
+

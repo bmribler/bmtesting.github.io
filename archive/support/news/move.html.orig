@@ -1,0 +1,251 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+<!-- If no var is set for $page_title on the top of each page than default title will be HDF Group -->
+
+<title>
+HDF Events</title>
+	<meta name="keywords" content="hdf, hdfeos, blog, hdf blog, hdf5 blog, hdf5, hdf4, hdf tools, hdf libraries, hdf viewer, hdf format, hdf file, hdf java, nafxcw.lib, phdf5, open source, hierarchical data format, ncsa, database, python hdf, mike folk, hdfview, hdf5 parallel" />
+	<meta name="description" content="The HDF Group is a not-for-profit corporation with the mission of sustaining the HDF technologies and supporting HDF user communities worldwide with production-quality software and services." />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="expires" content="Wed, 26 Feb 2010 08:21:57 GMT" />
+	<meta name="verify-v1" content="/m03HNmaDgGAcDe0PFtEVnXGtCkoeOocjr/Jwey2gdI=" />
+	<link href="/css/layout.css" rel="stylesheet" type="text/css" media="screen, projection" />
+	<link href="/css/print.css" rel="stylesheet" type="text/css" media="print" />
+	<link rel="stylesheet" type="text/css" href="/css/js_style.css" />
+	<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/prototype/1.7.2.0/prototype.js"></script>
+	<!--<script type="text/javascript" src="/scriptaculous/lib/prototype.js"></script>-->
+	<script type="text/javascript" src="/scriptaculous/src/effects.js"></script>
+	<script type="text/javascript" src="/scriptaculous/validation.js"></script>
+	<script type="text/javascript" src="/scriptaculous/animatedcollapse.js"></script>
+	<script type="text/javascript" src="/scriptaculous/rollover.js"></script>	
+	<script type="text/javascript" src="/scriptaculous/functions.js"></script>
+	<script type="text/javascript" src="/scriptaculous/sorttable.js"></script>
+	<!--<script type="text/javascript" src="/jquery-1.2.2.pack.js"></script>-->
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript" src="/scriptaculous/jssor.slider.min.js"></script>
+
+ 	<link rel="stylesheet" type="text/css" href="/featuredcontentglider.css" />
+    <script type="text/javascript" src="/featuredcontentglider.js"></script>
+
+	</head>
+	<body>
+	<div id="mast_head">
+		<a href="https://www.hdfgroup.org/"><img src="/images/hdf_logo.jpg" height="70" style="display:block; padding-left:10px;" align="left" alt="hdf images" /></a>
+		<img src="/images/logo_3.jpg" height="70" style="display:block;" align="right" alt="hdf images" />
+	</div> 
+				
+	<div id="nav_wrapper">
+		<div>
+		<div id="section-events">
+			<ul id="nav">
+				<li id="t-index"><a href="https://www.hdfgroup.org/">Home</a> </li>
+				<li id="t-products"><a href="/products/">Products</a></li>
+				<li id="t-services"><a href="/services/">Services</a></li>
+				<li id="t-about"><a href="/about/">About Us</a></li>
+				<li id="t-news"><a href="/news/">News</a> </li>
+				<li id="t-blog"><a href="https://www.hdfgroup.org/blog">Blog</a></li>
+				<li id="t-contact"><a href="/about/contact.html">Contact Us</a></li> 
+			</ul>
+			<script type="text/javascript">
+			
+  (function() {
+    var cx = '007250492606109219119:sb2eg2bgoyy';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:search></gcse:search>	
+					<script type="text/javascript">
+					    jQuery(document).ready(function ($) {
+					        // var options = {
+					        //     $ArrowNavigatorOptions: {
+					        //         $Class: $JssorArrowNavigator$,
+					        //         $ChanceToShow: 2
+					        //     }
+					        // };					    	
+
+
+							var options = { 
+											$AutoPlay: true, $SlideshowOptions: { $Class: $JssorSlideshowRunner$, $Transitions: [{ $Duration:5000, $Fade: true, $Opacity:2 }] } , 
+											$ArrowNavigatorOptions: { 
+												$Class: $JssorArrowNavigator$, 
+												$ChanceToShow: 2
+											}
+										  };
+
+
+					        var jssor_slider1 = new $JssorSlider$('slider1_container', options);
+					    });
+					</script>
+									                  
+			
+		</div>
+		</div>             
+	</div>
+				
+<!--START: MAIN -->
+<div id="wrapper" style="margin-top:-15px;"> 
+
+<!--START: SIDE_BAR -->
+<div id="side_bar">
+
+<form method="get" action="" class="form" >
+	<select onchange="window.open(this.options[this.selectedIndex].value,'_top')" name="" style="border:2px solid #c1c1c1;">
+		<option value="" class="ql1">- - Quick Links - -</option>
+		<option value="/HDF5/" class="ql">HDF5</option>
+		<option value="/products/hdf4/" class="ql">HDF4</option>
+		<option value="/tools/" class="ql">Tools</option>
+		<option value="/projects/" class="ql">Projects</option>
+		<option value="/downloads/" class="ql">Downloads</option>
+		<option value="/documentation/" class="ql">Documentation</option>
+	        <option value="/pubs/" class="ql">Publications</option>
+		<option value="/about/" class="ql">Contact Us</option>
+	</select>
+</form>
+<ul style="border:1px solid #c1c1c1; margin-top:25px;"> 
+
+	<li style="background:url(/images/menubg.png); padding:0px; padding-left:7px; color:#27343C; font-weight:500; text-align:left;">
+	LINKS</li><li><a href="https://www.hdfgroup.org/">Main Website</a></li><li><a href="/HDF5/">HDF5</a></li><li><a href="/products/hdf4/">HDF4</a></li><li><a href="/tools/">Tools</a></li><li><a href="/projects/">Projects</a></li><li><a href="/downloads/">Downloads</a></li><li><a href="/documentation/">Documentation</a></li><li><a  href="/pubs/">Publications</a></li></ul> 
+
+</div>
+
+<!--END: SIDE_BAR -->
+
+<!--START: CONTENT -->
+<div id="content">
+<p><font color="red"><center><strong>This web site is no longer maintained (but will remain online).<br /> Please see The HDF Group's new <a href="https://portal.hdfgroup.org">Support Portal</a> for the latest information.</strong></center></font></p>
+	<div class=bc><p style="color:orange; ";><a href="/" title="HOME">HOME</a> &gt; <a href="/news/" title="NEWS">NEWS</a></p></div><img src="../news/hdf1.jpg"  width="66%" />
+<p><strong>The HDF Group's Steve Scopel, left, manager of human resources and business affairs,<br /> and Mike Folk, CEO, wait to move into their office in the Gateway Building at the University of Illinois <br />Research Park last week.</strong></p>
+
+
+<p><strong>Date of publication in the Champaign, Ill., News-Gazette: December 5, 2010</strong></p>
+<p>(Part II of the write up can be found here -<a href="move2.html"> HDF Group's technology gives companies a world of possibilities</a> )</p>
+<hr />
+
+<h1 style="text-align:left;">Devoted to Data</h1>
+<p><a href="move2.html"></a></p>
+<p><b>By DON DODSON
+Copyright 2010 The News-Gazette</b></p>
+
+<p><strong>CHAMPAIGN</strong> - When companies and researchers have to juggle huge amounts of data, they sometimes turn to a technology developed in Champaign-Urbana to store and retrieve that information.</p>
+
+<p>The technology, known as HDF (Hierarchical Data Format), was developed in the late 1980s at the National Center for Supercomputing Applications.</p>
+
+<p>Today the technology continues to be developed and deployed by The HDF Group, a not-for-profit organization based in the University of Illinois Research Park.</p>
+
+<p>Over the years, HDF technology has spread to new applications:
+<ul class="ul">
+<li class="li3"> NASA uses it to handle climate-change data collected by satellites.</li>
+<li class="li3"> Genetics researchers use it to compare data gained from DNA sequencing.</li>
+<li class="li3"> A major aerospace company uses it to handle flight-test data.</li>
+<li class="li3"> Computer chip manufacturers use it to evaluate chips on silicon wafers.</li>
+</ul>
+</p>
+
+<p>As uses have grown, The HDF Group has grown too. It now employs 34, and on Monday it will move to new quarters in the Gateway Building, the former home of Motorola.</p>
+
+<p> "The amount of space is about the same, but the configuration is much better," said Mike Folk, the group's chief executive officer. "There's room for growth in the Gateway Building, but there was no room in the old building."</p>
+
+<p>The organization will take about 7,000 square feet on the second floor at 1800 S. Oak St., C. It was formerly on the second floor of the SAIC/Caterpillar building at 1901 S. First St., C.</p>
+
+<p>When Steve Scopel, the group's manager of human resources and business affairs, set out to look for new space for the organization last year, he was told he should plan for 20 percent growth over three to five years.</p>
+
+<p>In the year since, the company has grown 10 percent, he said.</p>
+
+<p>"The single reason for why we're growing right now is, we're experiencing resurgent use of HDF in supercomputing, now called the high-performance computing area," Folk said.</p>
+
+<p>HDF technology uses a file format designed to store and handle high-volume, complex data.</p>
+
+<p>"Probably our biggest user is NASA's Earth Observing System," Folk said. That satellite system gathers data to help scientists understand climate change.</p>
+
+<p>"That system consists of three satellites. .. Each satellite generates a terabyte of data per day," he said</p>
+
+<p>NASA looked at 15 different file formats and selected HDF for archiving the data, partly because it's flexible and scalable.</p>
+
+<p>"As the amount of data grows, HDF can handle that growth," Folk said.</p>
+
+<hr />
+<p>HDF started out as a technology for handling simulation and visualization data on supercomputers.</p>
+
+<p>As computing got faster, HDF kept up with the load. Around the year 2000, the big challenge was terascale computing - the ability to perform a trillion operations per second.</p>
+
+<p>Now researchers are doing petascale computing - a thousand times faster, at a quadrillion operations per second.</p>
+
+<p>The next generation of computing - exascale computing - is expected to be available in six to eight years, and The HDF Group is already involved in projects focusing on that.</p>
+
+<p>The HDF Group was formed at NCSA in 1987, and was spun out as a separate not-for-profit corporation in 2006.</p>
+
+<p>Folk said that the group "struggled" with whether it should be not-for-profit or a for-profit company. He chose the former because he wanted the group to focus on its missions of long-term data preservation and user support - and not get distracted by chasing whatever generates dollars.</p>
+
+<p>Looking to the future, Folk said, one of the group's goals is "to broaden our customer base. We now have 13 customers, and when we spun off, we had six."</p>
+
+<p>But 60 percent of the income today comes from only two sources, and Folk said that's risky for the long-term stability of the organization.</p>
+
+<p>"We want to broaden our customer base, so we have less risk. We have to find a model that's sustainable," he said.</p>
+
+<p>On the technical side, the biggest challenges are to develop staff capabilities to meet the needs of current and potential clients, and to develop the technology and the group's methods for working with customers, he said.</p>
+<hr />
+<p><strong>The HDF Group</strong></p>
+
+<p>What it is: Not-for-profit corporation that promotes the use of the HDF file format, useful for organizing, storing, analyzing and preserving massive amounts of complex data.</p>
+
+<p>Address: 1800 S. Oak St., C, in the University of Illinois Research Park, as of Monday.</p>
+
+<p>History: Formed at the National Center for Supercomputing in 1987, it was spun off as an independent group in 2006.</p>
+
+<p>President/chief executive officer: Mike Folk, who joined the group in 1988.</p>
+
+<p>Employees: 34</p>
+
+<p>Website: www.hdfgroup.org</p>
+<hr />
+<p>(Part II of the write up can be found here -<a href="move2.html"> HDF Group's technology gives companies a world of possibilities</a> )</p>
+<img src="../news/hdf2.jpg" width="50%" />
+<p>A vector map of wind speed in the Pacific Ocean was created with HDF technology.</p>
+
+
+
+<i>
+- - Last modified: 13 February 2014</i>
+	   </div>
+	   <!--END: CONTENT -->
+<!--END: WRAPPER -->
+<script src="/scriptaculous/gatag.js" type="text/javascript"></script>
+
+<!-- <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script> -->
+				
+<!--
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-3782034-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+-->
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-3782034-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+</body>
+</html>

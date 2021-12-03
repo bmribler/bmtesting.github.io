@@ -1,0 +1,423 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+<!-- If no var is set for $page_title on the top of each page than default title will be HDF Group -->
+
+<title>
+Contributions</title>
+	<meta name="keywords" content="hdf, hdfeos, blog, hdf blog, hdf5 blog, hdf5, hdf4, hdf tools, hdf libraries, hdf viewer, hdf format, hdf file, hdf java, nafxcw.lib, phdf5, open source, hierarchical data format, ncsa, database, python hdf, mike folk, hdfview, hdf5 parallel" />
+	<meta name="description" content="The HDF Group is a not-for-profit corporation with the mission of sustaining the HDF technologies and supporting HDF user communities worldwide with production-quality software and services." />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="expires" content="Wed, 26 Feb 2010 08:21:57 GMT" />
+	<meta name="verify-v1" content="/m03HNmaDgGAcDe0PFtEVnXGtCkoeOocjr/Jwey2gdI=" />
+	<link href="/css/layout.css" rel="stylesheet" type="text/css" media="screen, projection" />
+	<link href="/css/print.css" rel="stylesheet" type="text/css" media="print" />
+	<link rel="stylesheet" type="text/css" href="/css/js_style.css" />
+	<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/prototype/1.7.2.0/prototype.js"></script>
+	<!--<script type="text/javascript" src="/scriptaculous/lib/prototype.js"></script>-->
+	<script type="text/javascript" src="/scriptaculous/src/effects.js"></script>
+	<script type="text/javascript" src="/scriptaculous/validation.js"></script>
+	<script type="text/javascript" src="/scriptaculous/animatedcollapse.js"></script>
+	<script type="text/javascript" src="/scriptaculous/rollover.js"></script>	
+	<script type="text/javascript" src="/scriptaculous/functions.js"></script>
+	<script type="text/javascript" src="/scriptaculous/sorttable.js"></script>
+	<!--<script type="text/javascript" src="/jquery-1.2.2.pack.js"></script>-->
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript" src="/scriptaculous/jssor.slider.min.js"></script>
+
+ 	<link rel="stylesheet" type="text/css" href="/featuredcontentglider.css" />
+    <script type="text/javascript" src="/featuredcontentglider.js"></script>
+
+	</head>
+	<body>
+	<div id="mast_head">
+		<a href="https://www.hdfgroup.org/"><img src="/images/hdf_logo.jpg" height="70" style="display:block; padding-left:10px;" align="left" alt="hdf images" /></a>
+		<img src="/images/logo_5.jpg" height="70" style="display:block;" align="right" alt="hdf images" />
+	</div> 
+				
+	<div id="nav_wrapper">
+		<div>
+		<div id="section-services">
+			<ul id="nav">
+				<li id="t-index"><a href="https://www.hdfgroup.org/">Home</a> </li>
+				<li id="t-products"><a href="/products/">Products</a></li>
+				<li id="t-services"><a href="/services/">Services</a></li>
+				<li id="t-about"><a href="/about/">About Us</a></li>
+				<li id="t-news"><a href="/news/">News</a> </li>
+				<li id="t-blog"><a href="https://www.hdfgroup.org/blog">Blog</a></li>
+				<li id="t-contact"><a href="/about/contact.html">Contact Us</a></li> 
+			</ul>
+			<script type="text/javascript">
+			
+  (function() {
+    var cx = '007250492606109219119:sb2eg2bgoyy';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:search></gcse:search>	
+					<script type="text/javascript">
+					    jQuery(document).ready(function ($) {
+					        // var options = {
+					        //     $ArrowNavigatorOptions: {
+					        //         $Class: $JssorArrowNavigator$,
+					        //         $ChanceToShow: 2
+					        //     }
+					        // };					    	
+
+
+							var options = { 
+											$AutoPlay: true, $SlideshowOptions: { $Class: $JssorSlideshowRunner$, $Transitions: [{ $Duration:5000, $Fade: true, $Opacity:2 }] } , 
+											$ArrowNavigatorOptions: { 
+												$Class: $JssorArrowNavigator$, 
+												$ChanceToShow: 2
+											}
+										  };
+
+
+					        var jssor_slider1 = new $JssorSlider$('slider1_container', options);
+					    });
+					</script>
+									                  
+			
+		</div>
+		</div>             
+	</div>
+				
+<!--START: MAIN -->
+<div id="wrapper" style="margin-top:-15px;"> 
+
+<!--START: SIDE_BAR -->
+<div id="side_bar">
+
+<form method="get" action="" class="form" >
+	<select onchange="window.open(this.options[this.selectedIndex].value,'_top')" name="" style="border:2px solid #c1c1c1;">
+		<option value="" class="ql1">- - Quick Links - -</option>
+		<option value="/HDF5/" class="ql">HDF5</option>
+		<option value="/products/hdf4/" class="ql">HDF4</option>
+		<option value="/tools/" class="ql">Tools</option>
+		<option value="/projects/" class="ql">Projects</option>
+		<option value="/downloads/" class="ql">Downloads</option>
+		<option value="/documentation/" class="ql">Documentation</option>
+	        <option value="/pubs/" class="ql">Publications</option>
+		<option value="/about/" class="ql">Contact Us</option>
+	</select>
+</form>
+<ul style="border:1px solid #c1c1c1; margin-top:25px;"> 
+
+	<li style="background:url(/images/menubg.png); padding:0px; padding-left:7px; color:#27343C; font-weight:500; text-align:left;">
+	LINKS</li><li><a href="https://www.hdfgroup.org/">Main Website</a></li><li><a href="/HDF5/">HDF5</a></li><li><a href="/products/hdf4/">HDF4</a></li><li><a href="/tools/">Tools</a></li><li><a href="/projects/">Projects</a></li><li><a href="/downloads/">Downloads</a></li><li><a href="/documentation/">Documentation</a></li><li><a  href="/pubs/">Publications</a></li></ul> 
+
+</div>
+
+<!--END: SIDE_BAR -->
+
+<!--START: CONTENT -->
+<div id="content">
+<p><font color="red"><center><strong>This web site is no longer maintained (but will remain online).<br /> Please see The HDF Group's new <a href="https://portal.hdfgroup.org">Support Portal</a> for the latest information.</strong></center></font></p>
+	<div class=bc><p style="color:orange; ";><a href="/" title="HOME">HOME</a> &gt; <a href="/services/" title="SERVICES">SERVICES</a></p></div><fieldset><h1>Contributions</h1></fieldset>
+
+<h2>CONTENTS</h2>
+<ul class="ul">
+  <li class="li3"><a href="#filters">Registered Third-Party Filters (Compression)</a></li>
+  <li class="li3"><a href="#lregister">Registered User-defined Link Classes</a></li>
+<!--
+  <li class="li3"><a href="#tregister">Registered Hard or Soft Conversion Functions</a></li>
+-->
+</ul>
+
+<hr />
+
+<a name="filters"></a>
+<h3>Registered Third-Party Filters (Compression)</h3>
+
+<p>
+Members of the HDF5 users community can register Third-Party (compression or other) filters
+for use with HDF5. (See the FAQ on
+<a href="http://www.hdfgroup.org/HDF5/faq/compression.html">Using Compression in HDF5</a> for
+how to add a Third-Party Filter to HDF5.)
+</p>
+
+<p>
+To register a filter please contact <a href="/services/support.html">The HDF Helpdesk</a> 
+with the following 
+information:
+</p>
+
+<p>
+<ul class="ul"> 
+<li class="li3">
+  Contact information for the developer requesting a new identifier
+</li>
+
+<li class="li3">
+  Short description of the new filter
+</li>
+<li class="li3">
+  Links to any relevant information including licensing information
+</li>
+</ul>
+</p>
+
+<p>
+Here is the current policy regarding filter identifier assignment:
+
+<ul class="ul">
+
+<p>
+The filter identifier is designed to be a unique identifier for the filter. Values from zero through
+32,767 are reserved for filters supported by The HDF Group in the HDF5 library and for filters
+requested and supported by the 3rd party. 
+</p>
+
+<p>
+Values from 32768 to 65535 are reserved for non-distributed uses (e.g., internal company usage) or
+for application usage when testing a feature. The HDF Group does not track or document the usage of
+filters with identifiers from this range.
+</p>
+</ul>
+
+<!--
+<p>
+For more information on the procedure please refer to the document on 
+<a href="/pubs/rfcs/RFC_Filters-registration-policy-final.pdf">Registering Data Filters to
+be used with the HDF5 library</a>.
+</p>
+-->
+
+<p>
+Please contact the maintainer of a filter for help with the filter/compression support in HDF5.
+</p>
+
+
+
+<p>
+<strong>List of Filters Registered with The HDF Group:</strong><br />
+<table border=1>
+<tr>
+<td> Filter Identifier<br />
+(click on the link for more information about the filter)
+</td>
+<td>Name</td>
+<td>Short Description</td>
+</tr>
+
+<tr>
+<td><a href="filters.html#lzo">305</a></td>
+<td>LZO</td>
+<td>LZO lossless compression used by PyTables</td>
+</tr>
+
+<tr>
+<td><a href="filters.html#bzip2">307</a></td>
+<td>BZIP2</td>
+<td>BZIP2 lossless compression used by PyTables</td>
+</tr>
+
+<tr>
+<td><a href="filters.html#lzf">32000</a></td>
+<td>LZF</td>
+<td>LZF lossless compression used by H5Py project</td>
+</tr>
+
+<tr>
+<td><a href="filters.html#blosc">32001</a></td>
+<td>BLOSC</td>
+<td>Blosc lossless compression used by PyTables</td>
+</tr>
+
+<tr>
+<td><a href="filters.html#mafisc">32002</a></td>
+<td>MAFISC</td>
+<td>Modified LZMA compression filter, MAFISC  (Multidimensional Adaptive
+ Filtering Improved Scientific data Compression) </td>
+</tr>
+
+<tr>
+<td><a href="filters.html#snappy">32003</a></td>
+<td>Snappy</td>
+<td>Snappy lossless compression.</td>
+</tr>
+
+<tr>
+<td><a href="filters.html#lz4">32004</a></td>
+<td>LZ4</td>
+<td>LZ4 fast lossless compression algorithm</td>
+</tr>
+
+<tr>
+<td><a href="filters.html#apax">32005</a></td>
+<td>APAX</td>
+<td>Samplify's APAX Numerical Encoding Technology</td>
+</tr>
+
+<tr>
+<td><a href="filters.html#cbf">32006</a></td>
+<td>CBF</td>
+<td> All imgCIF/CBF compressions and decompressions, including Canonical, 
+     Packed, Packed Vesrsion 2, Byte Offset and Nibble Offset.
+</td>
+</tr>
+
+<tr>
+<td><a href="filters.html#jpegxr">32007</a></td>
+<td>JPEG-XR</td>
+<td>Enables images to be compressed/decompressed with JPEG-XR compression
+</td>
+</tr>
+
+<tr>
+<td><a href="filters.html#bitshuffle">32008</a></td>
+<td>bitshuffle</td>
+<td>Extreme version of shuffle filter that shuffles data at bit level instead of
+    byte level.
+</td>
+</tr>
+
+<tr>
+<td><a href="filters.html#spdp">32009</a></td>
+<td>SPDP</td>
+<td>SPDP fast lossless compression algorithm for single- and
+double-precision floating-point data.
+</td>
+</tr>
+
+<tr>
+<td><a href="filters.html#lpcrice">32010</a></td>
+<td>LPC-Rice</td>
+<td>LPC-Rice multi-threaded lossless compression</a>
+</td>
+</tr>
+
+<tr>
+<td><a href="filters.html#ccsds123">32011</a></td>
+<td>CCSDS-123</td>
+<td> ESA CCSDS-123 multi-threaded compression filter</a>
+</td>
+</tr>
+
+<tr>
+<td><a href="filters.html#jpegls">32012</a></td>
+<td>JPEG-LS</td>
+<td>CharLS JPEG-LS multi-threaded compression filter
+</td>
+</tr>
+
+<tr>
+<td><a href="filters.html#zfp">32013</a></td>
+<td>zfp</td>
+<td>Rate, accuracy or precision bounded compression for floating-point arrays
+</td>
+</tr>
+
+<tr>
+<td><a href="filters.html#fpzip">32014</a></td>
+<td>fpzip</td>
+<td>Fast and Efficient Lossy or Lossless Compressor for Floating-Point Data
+</td>
+</tr>
+
+
+<tr>
+<td><a href="filters.html#zstandard">32015</a></td>
+<td>Zstandard</td>
+<td>Real-time compression algorithm with wide range of compression / speed trade-off and fast decoder
+</td>
+</tr>
+
+<tr>
+<td><a href="filters.html#b3d">32016</a></td>
+<td>B³D</td>
+<td>GPU based image compression method developed for light-microscopy applications
+</td>
+</tr>
+
+<tr>
+<td><a href="filters.html#SZ">32017</a></td>
+<td>SZ</td>
+<td>An error-bounded lossy compressor for scientific floating-point data
+</td>
+</tr>
+
+<tr>
+<td><a href="filters.html#fcidecomp">32018</a></td>
+<td>FCIDECOMP</td>
+<td>EUMETSAT CharLS compression filter for use with netCDF
+</td>
+</tr>
+</table>
+
+</p>
+
+<hr />
+
+<a name="lregister"></a>
+<h3>Registered User-defined Link Classes</h3>
+
+<p>
+No user-defined link classes have been registered with The HDF Group at this time.
+For more information on how to register user-defined link classes, see the
+<a href="http://www.hdfgroup.org/HDF5/doc/RM/RM_H5L.html#Link-Register">H5Lregister</a>
+function in the HDF5 Reference Manual.
+</p>
+
+<!--
+<a name="tregister"></a>
+<h3>Registered Hard or Soft Conversion Functions</h3>
+
+<p>
+No conversion functions have been registered with The HDF Group at this time.
+For more information on how to register user-defined link classes, see the
+<a href="http://www.hdfgroup.org/HDF5/doc/RM/RM_H5T.html#Datatype-Register">H5Lregister</a>
+function in the HDF5 Reference Manual.
+</p>
+-->
+
+
+<hr noshade size="1">
+
+
+<i>
+- - Last modified: 05 September 2017</i>
+	   </div>
+	   <!--END: CONTENT -->
+<!--END: WRAPPER -->
+<script src="/scriptaculous/gatag.js" type="text/javascript"></script>
+
+<!-- <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script> -->
+				
+<!--
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-3782034-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+-->
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-3782034-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+</body>
+</html>
+ 

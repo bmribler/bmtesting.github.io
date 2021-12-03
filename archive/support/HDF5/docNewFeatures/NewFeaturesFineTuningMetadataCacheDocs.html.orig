@@ -1,0 +1,739 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN"
+        "http://www.w3.org/TR/html4/frameset.dtd">
+<html>
+  <head>
+
+<!--
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+  * Copyright by The HDF Group.                                               *
+  * Copyright by the Board of Trustees of the University of Illinois.         *
+  * All rights reserved.                                                      *
+  *                                                                           *
+  * This file is part of HDF5.  The full HDF5 copyright notice, including     *
+  * terms governing use, modification, and redistribution, is contained in    *
+  * the files COPYING and Copyright.html.  COPYING can be found at the root   *
+  * of the source code distribution tree; Copyright.html can be found at the  *
+  * root level of an installed copy of the electronic HDF5 document set and   *
+  * is linked from the top-level documents page.  It can also be found at     *
+  * http://hdfgroup.org/HDF5/doc/Copyright.html.  If you do not have          *
+  * access to either file, you may request a copy from help@hdfgroup.org.     *
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ -->
+
+<link href="ed_styles/RMelect.css" rel="stylesheet" type="text/css">
+    <title>
+      HDF5 Fine-tuning the Metadata Cache Documentation
+    </title>
+  </head>
+
+<body bgcolor="#ffffff">
+
+<font face="Tahoma, Arial, Verdana, Helvetica, sans-serif" size="3">
+
+<!-- BEGIN MAIN BODY -->
+
+
+
+<table width="100%" cellpadding="0" border="0"> 
+  <tr valign="top" align="left">
+    <td>
+        <a href="http://www.hdfgroup.org">
+        <img src="Graphics/THGnoTextSm.jpg" alt="The HDF Group logo" 
+        border="0" width="75"></a>
+        <font size="+2">The HDF Group</font>
+        </td>
+    <td align="right">
+        <img src="Graphics/binder.jpg" alt="Documentation" 
+        border="0" height="60">
+        </td></tr>
+
+<!--    #888888 is a dark gray (dark gray horizontal line under logo 
+        at top of web page. 
+        #004488 is a dark blue (dark horizontal line at top of web pages). 
+        #d2e6ef is a pale bluish gray or grayish aqua (nav bar background).
+        #fbfbfb is almost white (background for nav bar links) 
+        and is very close to #FFFFFF. 
+        #FF0000 is a bright red (use when troubleshooting).
+-->
+
+<tr><td colspan="2" bgcolor="#888888" height="3"></td></tr>
+
+<tr><td colspan="2" bgcolor="#004488" height="7" valign="bottom">&nbsp;
+<!--
+<font face="Tahoma, Arial, Verdana, Helvetica, sans-serif" size="3">&nbsp;</font>
+-->
+</td></tr>
+
+</table>
+
+<table border="0" width="100%" cellpadding="5">
+<!-- change border value from 1 to 0 when finished editing 2.18.2014 -->
+<tr><td rowspan="3" width="13%" bgcolor="#d2e6ef" valign="top" align="left">
+&nbsp;<br />
+<center>
+<table border="0" cellpadding="10">
+<tr><td bgcolor="#fbfbfb">
+    <center><font size="+1">Other HDF Links</font></center>
+    <hr />
+<font size="-1">
+    <dl>
+    <dt><a href="https://support.hdfgroup.org/HDF5/doc/"
+        target="ExtWin">HDF5 1.10 Documentation</a></dt><br />
+    <dt align="center"><hr size=4 color="gray">
+        <a href="index.html">New Features in HDF5 1.10</a>
+        <hr size=1>
+        </dt>
+    <dt><a href="NewFeaturesAdditionalNewFuncsEtc.html">
+        Additional New APIs</a>
+        </dt><br />
+    <dt><a href="NewFeaturesCollectiveMetadataIoDocs.html">
+        Collective Metadata I/O</a>
+        </dt><br />
+    <dt><a href="NewFeaturesFineTuningMetadataCacheDocs.html">
+        Fine-tuning the Metadata Cache</a>
+        </dt><br />
+    <dt><a href="NewFeaturesFileSpaceMgmtDocs.html">
+        File Space Management</a>
+        </dt><br />
+   <dt><a href="NewFeaturesPageBuffering.html">
+        Page Buffering</a>
+        </dt></br />
+    <dt><a href="NewFeaturesPartialEdgeChunkDocs.html">
+        Partial Edge Chunks</a>
+        </dt><br />
+    <dt><a href="NewFeaturesReferenceDocs.html">
+        Reference</a>
+        </dt><br />
+    <dt><a href="NewFeaturesSwmrDocs.html">
+        SWMR</a>
+        </dt><br />
+    <dt><a href="NewFeaturesVirtualDatasetDocs.html">
+        Virtual Datasets (VDS)</a>
+        </dt><br />
+    </dl>
+    </font>
+    </td></tr></table></center>
+    </td></tr>
+
+
+
+<!-- 
+The table data element below sets up the middle column 
+between the navigation frame on the left and the content of the 
+web page.
+-->
+<td rowspan="3" bgcolor="#FFFFFF" width="2%">&nbsp;</td>
+
+
+
+<!-- 
+The table data element below is used to hold the content of the 
+web page. 
+-->
+<td bgcolor="#FFFFFF" valign="top" align="center" width="85%">
+
+<table border="0" width="100%">
+<tr>
+<td bgcolor="#fbf3ef" align="center" valign="top" colspan="2">
+    <hr size="1" />
+    <font size="5" color="#000000">Fine-tuning the Metadata Cache 
+    Documentation
+    </font>
+    <hr size="1" />
+    </td>
+</tr>
+
+
+
+<tr>
+<td bgcolor="#FFFFFF" align="left" valign="top" colspan="2">
+<!--
+    <font size="5" color="#004488">Page Abstract</font>
+    <br />
+-->
+    The purpose of this page is to list and briefly describe the 
+    documentation available to those who want to fine-tune how the metadata 
+    cache behaves. The following are the sections on this page:
+    
+    <ul>
+    <li><a href="#Hdf5LibraryApis">HDF5 Library APIs</a></li>
+    <li><a href="#FineTuningMetadataCacheDesignDocuments">
+    Fine-tuning the Metadata Cache Design Documents and Information</a></li>
+    <li><a href="#Tool">Tools</a></li>
+    </ul>
+    </td>
+</tr>
+
+
+
+<tr><td bgcolor="#FFFFFF" valign="top" colspan="2">&nbsp;</td></tr>
+
+
+
+<tr>
+<td bgcolor="#FFFFFF" valign="top" colspan="2">
+    <br />
+    <font size="5" color="#004488"><a name="Hdf5LibraryApis">
+    HDF5 Library APIs</a></font></td></tr>
+
+
+
+<tr>
+    <td align="left" valign="top" colspan="2">
+    </td>
+</tr>
+
+<tr><td bgcolor="#FFFFFF" valign="top" colspan="2">&nbsp;</td></tr>
+<!-- </table> -->
+
+<tr><td>
+<table width="100%">
+
+<tr>
+    <td>
+    <a href="/HDF5/doc/RM/RM_H5P.html#Property-GetEvictOnClose">
+    H5Pget_evict_on_close</a>
+    </td>
+    <td>
+    Retrieves the property list setting that determines whether an HDF5 object will be
+    evicted from the library's metadata cache when it is closed.
+    </td>
+</tr>
+
+<tr><td bgcolor="#FFFFFF" valign="top" colspan="2">&nbsp;</td></tr>
+
+<tr>
+    <td>
+    <a href="/HDF5/doc/RM/RM_H5P.html#Property-SetEvictOnClose">H5Pset_evict_on_close</a>
+    </td>
+    <td>
+    Controls the library's behavior of evicting metadata associated with a closed object.
+    </td>
+</tr>
+
+
+<tr><td bgcolor="#FFFFFF" valign="top" colspan="2">&nbsp;</td></tr>
+<tr>
+    <td>
+    <a href="/HDF5/doc/RM/RM_H5P.html#Property-GetMDCImageConfig">
+    H5Pget_mdc_image_config</a>
+    </td>
+    <td>
+    Retrieves the metadata cache image option setting
+    from a file access property list.
+    </td>
+</tr>
+
+<tr><td bgcolor="#FFFFFF" valign="top" colspan="2">&nbsp;</td></tr>
+
+<tr>
+    <td>
+    <a href="/HDF5/doc/RM/RM_H5P.html#Property-SetMDCImageConfig">H5Pset_mdc_image_config</a>
+    </td>
+    <td>
+    Sets the metadata cache image option for a file access property list.
+    </td>
+</tr>
+<tr><td bgcolor="#FFFFFF" valign="top" colspan="2">&nbsp;</td></tr>
+
+<tr>
+    <td>
+    <a href="/HDF5/doc/RM/RM_H5F.html#File-GetMdcImageInfo">H5Fget_mdc_image_info</a>
+    </td>
+    <td>
+    Gets information about a metadata cache image for a file if it exists.
+    </td>
+</tr>
+
+
+<tr><td bgcolor="#FFFFFF" valign="top" colspan="2">&nbsp;</td></tr>
+
+
+<tr>
+    <td align="left" valign="top" width="20%">
+    <a href="/HDF5/doc/RM/RM_H5F.html#File-GetMetadataReadRetryInfo">
+    H5Fget_metadata_read_retry_info</a>&nbsp;&nbsp; 
+    </td>
+    <td align="left" valign="top" width="80%">
+    Retrieves the collection of read retries for metadata items with checksum.
+    </td>
+</tr>
+
+
+<tr><td bgcolor="#FFFFFF" valign="top" colspan="2">&nbsp;</td></tr>
+
+<tr>
+    <td>
+    <a href="/HDF5/doc/RM/RM_H5P.html#Property-GetMetadataReadAttempts">
+    H5Pget_metadata_read_attempts</a> 
+    </td>
+    <td>
+    Retrieves the number of read attempts from a file access property list. 
+    </td>
+</tr>
+
+
+<tr><td bgcolor="#FFFFFF" valign="top" colspan="2">&nbsp;</td></tr>
+
+<tr>
+    <td>
+    <a href="/HDF5/doc/RM/RM_H5P.html#Property-SetMetadataReadAttempts">
+    H5Pset_metadata_read_attempts</a> 
+    </td>
+    <td>
+    Sets the number of read attempts in a file access property list.
+    </td>
+</tr>
+
+<tr><td bgcolor="#FFFFFF" valign="top" colspan="2">&nbsp;</td></tr>
+
+
+
+<tr>
+    <td>
+    <a href="/HDF5/doc/RM/RM_H5D.html#Dataset-Flush">
+    H5Dflush</a> 
+    </td>
+    <td>
+    Causes all buffers associated with a dataset to be immediately 
+    written to disk without removing the data from the cache. 
+    </td>
+</tr>
+
+<tr><td bgcolor="#FFFFFF" valign="top" colspan="2">&nbsp;</td></tr>
+
+
+
+<tr>
+    <td>
+    <a href="/HDF5/doc/RM/RM_H5D.html#Dataset-Refresh">
+    H5Drefresh</a> 
+    </td>
+    <td>
+    Causes all buffers associated with a dataset to be 
+    cleared and immediately re-loaded with updated contents from disk storage. 
+    </td>
+</tr>
+
+<tr><td bgcolor="#FFFFFF" valign="top" colspan="2">&nbsp;</td></tr>
+
+
+
+<tr>
+    <td>
+    <a href="/HDF5/doc/RM/RM_H5G.html#Group-Flush">
+    H5Gflush</a> 
+    </td>
+    <td>
+    Causes all buffers associated with a group to be immediately flushed 
+    to disk without removing the data from the cache. 
+    </td>
+</tr>
+
+<tr><td bgcolor="#FFFFFF" valign="top" colspan="2">&nbsp;</td></tr>
+
+
+
+<tr>
+    <td>
+    <a href="/HDF5/doc/RM/RM_H5G.html#Group-Refresh">
+    H5Grefresh</a> 
+    </td>
+    <td>
+    Causes all buffers associated with a group to be cleared and 
+    immediately re-loaded with updated contents from disk storage. 
+    </td>
+</tr>
+
+<tr><td bgcolor="#FFFFFF" valign="top" colspan="2">&nbsp;</td></tr>
+
+
+
+<tr>
+    <td>
+    <a href="/HDF5/doc/RM/RM_H5O.html#Object-Flush">
+    H5Oflush</a> 
+    </td>
+    <td>
+    Causes all buffers associated with an object to be immediately 
+    flushed to disk without removing the data from the cache. 
+    </td>
+</tr>
+
+<tr><td bgcolor="#FFFFFF" valign="top" colspan="2">&nbsp;</td></tr>
+
+
+
+<tr>
+    <td>
+    <a href="/HDF5/doc/RM/RM_H5O.html#Object-Refresh">
+    H5Orefresh</a> 
+    </td>
+    <td>
+    Causes all buffers associated with an object to be cleared and 
+    immediately re-loaded with updated contents from disk storage. 
+    </td>
+</tr>
+
+<tr><td bgcolor="#FFFFFF" valign="top" colspan="2">&nbsp;</td></tr>
+
+
+
+<tr>
+    <td>
+    <a href="/HDF5/doc/RM/RM_H5T.html#Datatype-Flush">
+    H5Tflush</a> 
+    </td>
+    <td>
+    Causes all buffers associated with a committed datatype to be 
+    immediately flushed to disk without removing the data from the cache. 
+    </td>
+</tr>
+
+<tr><td bgcolor="#FFFFFF" valign="top" colspan="2">&nbsp;</td></tr>
+
+
+
+<tr>
+    <td>
+    <a href="/HDF5/doc/RM/RM_H5T.html#Datatype-Refresh">
+    H5Trefresh</a> 
+    </td>
+    <td>
+    Causes all buffers associated with a committed datatype to be 
+    cleared and immediately re-loaded with updated contents from disk storage. 
+    </td>
+</tr>
+
+<tr><td bgcolor="#FFFFFF" valign="top" colspan="2">&nbsp;</td></tr>
+
+
+
+<tr>
+    <td>
+    <a href="/HDF5/doc/RM/RM_H5F.html#File-GetIntent">
+    H5Fget_intent</a> 
+    </td>
+    <td>
+    Determines the read/write or read-only status of a file.
+    </td>
+</tr>
+
+<tr><td bgcolor="#FFFFFF" colspan="2">&nbsp;</td></tr>
+<!-- the tags below may need to be moved. -->
+</table></td></tr>
+<!-- -->
+
+
+
+
+
+<tr><td bgcolor="#FFFFFF" colspan="2">&nbsp;</td></tr>
+
+<tr><td colspan="2">
+<!-- <table> -->
+<tr><td bgcolor="#FFFFFF" valign="top" colspan="2">
+    <font size="5" color="#004488"><a name="LoggingApis">
+    Logging APIs</a></font></td></tr>
+
+
+
+<tr>
+    <td align="left" valign="top" colspan="2">
+    </td>
+</tr>
+
+
+<!-- 3.13.2014. The following table row inserts a blank line in the table. 
+It is appearing as a table row in the table that formats the entire page. 
+I want it to appear as a table row in the table that formats the third column 
+of the table that formats the entire page.
+-->
+<tr><td bgcolor="#FFFFFF" valign="top" colspan="2">&nbsp;</td></tr>
+<!--
+</table></td></tr>
+-->
+
+
+
+<!-- logging APIs start -->
+<tr><td colspan="2">
+<table width="100%"><!-- this table formats the list of logging APIs -->
+
+
+<tr>
+    <td align="left" valign="top" width="20%">
+    <a href="/HDF5/doc/RM/RM_H5P.html#Property-SetMdcLogOptions">
+     H5Pset_mdc_log_options</a> 
+    </td>
+    <td align="left" valign="top" width="80%">
+    Sets metadata cache logging options.
+    </td>
+</tr>
+
+<tr><td bgcolor="#FFFFFF" valign="top" colspan="2">&nbsp;</td></tr>
+
+
+
+<tr>
+    <td valign="top">
+    <a href="/HDF5/doc/RM/RM_H5P.html#Property-GetMdcLogOptions">
+    H5Pget_mdc_log_options</a> 
+    </td>
+    <td align="left" valign="top" >
+    Gets metadata cache logging options.
+    </td>
+</tr>
+
+<tr><td bgcolor="#FFFFFF" valign="top" colspan="2">&nbsp;</td></tr>
+
+
+
+<tr>
+    <td valign="top">
+    <a href="/HDF5/doc/RM/RM_H5F.html#File-StartMdcLogging">
+     H5Fstart_mdc_logging</a> 
+    </td>
+    <td align="left" valign="top" >
+    Starts logging metadata cache events if logging was previously enabled.
+    </td>
+</tr>
+
+<tr><td bgcolor="#FFFFFF" valign="top" colspan="2">&nbsp;</td></tr>
+
+
+
+<tr>
+    <td valign="top">
+    <a href="/HDF5/doc/RM/RM_H5F.html#File-StopMdcLogging">
+    H5Fstop_mdc_logging</a> 
+    </td>
+    <td align="left" valign="top" >
+    Stops logging metadata cache events if logging was previously 
+    enabled and is currently ongoing.
+    </td>
+</tr>
+
+<tr><td bgcolor="#FFFFFF" valign="top" colspan="2">&nbsp;</td></tr>
+
+
+
+<tr>
+    <td valign="top">
+    <a href="/HDF5/doc/RM/RM_H5F.html#File-GetMdcLoggingStatus">
+    H5Fget_mdc_logging_status</a>&nbsp;&nbsp; 
+    </td>
+    <td align="left" valign="top" >
+    Gets the current metadata cache logging status.
+    </td>
+</tr>
+
+<tr><td bgcolor="#FFFFFF" valign="top" colspan="2">&nbsp;</td></tr>
+
+
+
+
+
+
+<!-- logging APIs end -->
+</table><!-- this table formats the list of logging APIs; end -->
+</td></tr>
+
+<tr><td colspan="2">
+<table border="0" width="100%" cellpadding="5">
+
+<tr>
+<td bgcolor="#FFFFFF" valign="top" colspan="2">
+    <br />
+    <font size="5" color="#004488">
+    <a name="FineTuningMetadataCacheDesignDocuments">
+    Fine-tuning the Metadata Cache Design Documents and Information</a></font>
+    </td></tr>
+
+
+
+<tr><td align="left" valign="top" colspan="2">
+    The design documents listed below provide background information for 
+    the functions that have been developed to provide better control of 
+    the metadata cache and why better control might be useful.
+    </td></tr>
+
+
+
+<tr><td bgcolor="#FFFFFF" valign="top" colspan="2">&nbsp;</td></tr>
+
+
+
+<tr>
+    <td width="30%" valign="top" align="left">
+    <a href="FineTuneMDC/RFC H5Ocork v5 new fxn names.pdf">
+    Fine-grained Control of Metadata Cache Flushes</a> 
+    </td>
+    <td width="70%" valign="top" align="left">
+    This document describes some new functions which allow 
+    dynamic, fine-grained flush control of the entire metadata cache and 
+    the caches related to individual HDF5 objects. 
+    </td>
+</tr>
+
+<tr><td bgcolor="#FFFFFF" valign="top" colspan="2">&nbsp;</td></tr>
+
+<tr>
+    <td width="30%" valign="top" align="left">
+    <a href="FineTuneMDC/RFC-Read-Attempts-for-Metadata-with-Checksum-v3.pdf">
+    Read Attempts for Metadata with Checksum</a> 
+    </td>
+    <td width="70%" valign="top" align="left">
+    The HDF5 Library encounters intermittent checksum failures from 
+    reading metadata of an HDF5 file opened with 
+    single-writer/multiple-reader (SWMR) access. The failure is 
+    from a checksum check that does not reflect the data read. This 
+    document describes the modifications to the library that address 
+    this problem. 
+    </td>
+</tr>
+
+<tr><td bgcolor="#FFFFFF" colspan="2">&nbsp;</td></tr>
+<tr>
+    <td width="30%" valign="top" align="left">
+    <a href="FineTuneMDC/cache_image_RFC_170407.pdf">Metadata Cache Image</a>
+    </td>
+    <td width="70%" valign="top" align="left">
+    This document describes the metadata cache image feature and how it improves performance by 
+    writing the metadata cache in a single block on file close, and then populating the cache with 
+    the contents of this block on file open. This avoids the many small I/O operations that would 
+    otherwise be required on file open and close.
+    </p>
+</tr>
+
+<tr><td bgcolor="#FFFFFF" colspan="2">&nbsp;</td></tr>
+
+<tr>
+  <td width="30%" valign="top" align="left">Metadata Cache Evict on Close</td>
+   <td width="70%" valign="top" align="left"> 
+    This feature will cause all metadata for an object to be evicted from the cache as long as 
+    metadata is not referenced from any other open object. This can relieve memory pressure on an
+    application or system caused by a large amount of metadata in the metadata cache. See
+    the <a href="/HDF5/doc/RM/RM_H5P.html#Property-GetEvictOnClose">H5Pget_evict_on_close</a> and
+   <a href="/HDF5/doc/RM/RM_H5P.html#Property-SetEvictOnClose">H5Pset_evict_on_close</a> APIs for more details.
+    </p>
+   </td>
+</tr>
+
+
+
+<tr><td bgcolor="#FFFFFF" colspan="2">&nbsp;</td></tr>
+
+<tr>
+    <td width="30%" valign="top" align="left">
+    <a href="FineTuneMDC/Design-MetadataCache-Logging-THG20140224-v4.pdf">
+    Metadata Cache Logging</a> 
+    </td>
+    <td width="70%" valign="top" align="left">
+    This document describes the improvements made to the library&rsquo;s
+    metadata cache logging facility. The changes include APIs that can 
+    be used to control logging operations and the format of log messages.
+    </td>
+</tr>
+
+<tr><td bgcolor="#FFFFFF" colspan="2">&nbsp;</td></tr>
+
+
+
+<tr>
+    <td width="30%" valign="top" align="left">
+    <a href="FineTuneMDC/Design-HDF5-FlushDependencyTesting-20130630-v1.1.pdf">
+    Flush Dependency Testing</a> 
+    </td>
+    <td width="70%" valign="top" align="left">
+    This document considers how to design tests for flush dependencies 
+    of metadata cache items for single-writer/multiple-reader (SWMR) 
+    access.</td>
+</tr>
+
+
+
+<tr><td bgcolor="#FFFFFF" colspan="2">&nbsp;</td></tr>
+
+<tr><td colspan="2">
+<table border="0" width="100%" cellpadding="5">
+
+<tr>
+<td bgcolor="#FFFFFF" valign="top" colspan="2">
+    <br />
+    <font size="5" color="#004488">
+    <a name="Tool">
+    Tools</a></font>
+    </td></tr>
+
+</td></tr>
+<tr><td bgcolor="#FFFFFF" colspan="2">
+The following tool was modified to support the Metadata Cache Image feature.
+</td></tr>
+
+
+
+
+<td align="left" valign="top">
+    <a href="/HDF5/doc/RM/Tools.html#Tools-Clear">
+    h5clear</a>
+    </td>
+    <td align="left" valign="top">
+    The "-m" and "--image" flags were added to h5clear to close a cache image if it exists. 
+    </td>
+    </tr>
+</table>
+
+
+
+</table></td></tr> <!-- this table ends the table that is used to format 
+the Fine-tuning the Metadata Cache Design Documents -->
+</table> 
+<!-- this table ends the table that is used to format 
+the content of the page -->
+
+</table>
+
+<br />
+
+
+
+<!-- BEGIN FOOTER INFO -->
+
+<br />
+<hr />
+<table border="0" width="100%">
+    <tr><td width="45%" align="left" valign="bottom">
+        <font face="arial,helvetica" size="-1">
+        The HDF Group Help Desk: <img src="Graphics/help.png" align="middle" 
+        height="14" alt="The HDF Group Help Desk"></font>
+
+
+
+
+        <br />
+        <!-- hhmts start -->
+        <font face="arial,helvetica" size="-1">
+        Last modified: April 2017 
+        <!-- hhmts end -->
+
+        <p>
+        </font>
+    </td><td width="10%" rowspan="2">&nbsp;
+    </td><td width="45%" align="right" valign="top" rowspan="2">
+        <font face="arial,helvetica" size="-1">
+        <a href="https://support.hdfgroup.org/ftp/HDF5/releases/COPYING">Copyright</a> by The HDF Group and the Board 
+        <br />
+        of Trustees of the University of Illinois.  
+        <br />
+        All rights reserved.
+        </font>
+    </td></tr>
+</table>
+
+
+
+
+
+</body>
+</html>

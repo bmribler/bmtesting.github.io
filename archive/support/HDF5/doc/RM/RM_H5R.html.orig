@@ -1,0 +1,2031 @@
+<html>
+<head><title>
+HDF5/H5R API Specification
+</title>
+<link href="../ed_styles/RMelect.css" rel="stylesheet" type="text/css">
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<!-- #BeginLibraryItem "/ed_libs/styles_RM.lbi" -->
+<!--
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+  * Copyright by The HDF Group.                                               *
+  * Copyright by the Board of Trustees of the University of Illinois.         *
+  * All rights reserved.                                                      *
+  *                                                                           *
+  * This file is part of HDF5.  The full HDF5 copyright notice, including     *
+  * terms governing use, modification, and redistribution, is contained in    *
+  * the files COPYING and Copyright.html.  COPYING can be found at the root   *
+  * of the source code distribution tree; Copyright.html can be found at the  *
+  * root level of an installed copy of the electronic HDF5 document set and   *
+  * is linked from the top-level documents page.  It can also be found at     *
+  * http://www.hdfgroup.org/HDF5/doc/Copyright.html.  If you do not have      *
+  * access to either file, you may request a copy from help@hdfgroup.org.     *
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ -->
+<!-- #EndLibraryItem --><!-- HEADER RIGHT " " -->
+
+<!-- #BeginLibraryItem "/ed_libs/NavBar_RM.lbi" -->
+<hr>
+<center>
+<table border=0 width=98%>
+<tr><td valign=top align=left>
+<a href="../index.html">HDF5 documents and links</a>&nbsp;<br>
+<a href="../H5.intro.html">Introduction to HDF5</a>&nbsp;<br>
+<a href="../UG/HDF5_Users_Guide-Responsive HTML5/index.html">HDF5 User&rsquo;s Guide</a>&nbsp;<br>
+<!--
+<a href="Glossary.html">Glossary</a><br>
+-->
+</td>
+<td valign=top align=right>
+In the 
+<a href="RM_H5Front.html">HDF5 Reference Manual</a>&nbsp;
+<font size=-1>
+<br>
+<a href="../HL/RM_H5DS.html">H5DS</a>&nbsp;&nbsp;
+<a href="../HL/RM_H5IM.html">H5IM</a>&nbsp;&nbsp;
+<a href="../HL/RM_H5LT.html">H5LT</a>&nbsp;&nbsp;
+<a href="../HL/RM_H5PT.html">H5PT</a>&nbsp;&nbsp;
+<a href="../HL/RM_H5TB.html">H5TB</a>&nbsp;
+<a href="../HL/RM_HDF5Optimized.html">Optimized</a>&nbsp;
+<br>
+<a href="RM_H5.html">H5</a>&nbsp;&nbsp;
+<a href="RM_H5A.html">H5A</a>&nbsp;&nbsp;
+<a href="RM_H5D.html">H5D</a>&nbsp;&nbsp;
+<a href="RM_H5E.html">H5E</a>&nbsp;&nbsp;
+<a href="RM_H5F.html">H5F</a>&nbsp;&nbsp;
+<a href="RM_H5G.html">H5G</a>&nbsp;&nbsp;
+<a href="RM_H5I.html">H5I</a>&nbsp;&nbsp;
+<a href="RM_H5L.html">H5L</a>&nbsp;
+<br>
+<a href="RM_H5O.html">H5O</a>&nbsp;&nbsp;
+<a href="RM_H5P.html">H5P</a>&nbsp;&nbsp;
+<a href="RM_H5PL.html">H5PL</a>&nbsp;&nbsp;
+<a href="RM_H5R.html">H5R</a>&nbsp;&nbsp;
+<a href="RM_H5S.html">H5S</a>&nbsp;&nbsp;
+<a href="RM_H5T.html">H5T</a>&nbsp;&nbsp;
+<a href="RM_H5Z.html">H5Z</a>&nbsp;
+<br>
+<a href="Tools.html">Tools</a>&nbsp;&nbsp;
+<a href="PredefDTypes.html">Datatypes</a>&nbsp;&nbsp;
+<a href="../fortran/index.html">Fortran</a>&nbsp;&nbsp;
+<a href="APICompatMacros.html">Compatibility Macros</a>&nbsp;
+<br>
+<a href="CollectiveCalls.html">Collective Calls in Parallel</a>&nbsp;
+<!--
+<br>
+<i><font size=-1>(Printable <a href="http://hdfgroup.org/HDF5/doc/PSandPDF/HDF5_RefManual.PDF">PDF</a> of this Reference Manual)</font></i>&nbsp;
+-->
+</font>
+</td></tr>
+</table>
+</center>
+<hr>
+<!-- #EndLibraryItem --><center>
+<h1>H5R: Reference Interface</h1>
+</center>
+
+<h2>Reference API Functions</h2>
+
+The Reference interface allows the user to create references 
+to specific objects and data regions in an HDF5 file.
+<br>
+In the following lists, italic type indicates a configurable macro.
+
+<p>
+<strong>The C Interfaces:</strong>
+
+<table border=0 width=80%>
+<tr><td valign=top width=40%>
+<ul>
+    <li><a href="#Reference-Create">H5Rcreate</a>
+    <li><a href="#Reference-Dereference"><i>H5Rdereference</i></a>
+    <li><a href="#Reference-Dereference1">H5Rdereference1</a>&nbsp;*
+    <li><a href="#Reference-Dereference2">H5Rdereference2</a>
+</ul>
+</td><td valign=top width=40%>
+<ul>
+    <li><i><a href="#Reference-GetObjType">H5Rget_obj_type</a></i>
+    <li><a href="#Reference-GetObjType1">H5Rget_obj_type1</a>&nbsp;*
+    <li><a href="#Reference-GetObjType2">H5Rget_obj_type2</a>
+</ul>
+</td><td valign=top width=20%>
+<ul>
+    <li><a href="#Reference-GetRegion">H5Rget_region</a>
+    <li><a href="#Reference-GetName">H5Rget_name</a>
+</ul>
+</td></tr>
+<tr><td align=right colspan=5>
+    *&nbsp;<i>Use of these functions is deprecated in Release 1.8.0.</i>
+</td></tr>
+</table>
+
+<p>
+
+<i>Alphabetical Listing</i>
+
+<table border="0" width=80%>
+  <tr>
+    <td valign="top">
+	<ul>
+      <li><a href="#Reference-Create">H5Rcreate</a>
+      <li><a href="#Reference-Dereference"><i>H5Rdereference</i></a>
+      <li><a href="#Reference-Dereference1">H5Rdereference1</a>&nbsp;*
+      <li><a href="#Reference-Dereference2">H5Rdereference2</a>
+	</ul>      
+    </td>
+    
+    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    
+    <td valign="top">
+	<ul>
+      <li><a href="#Reference-GetName">H5Rget_name</a>
+      <li><i><a href="#Reference-GetObjType">H5Rget_obj_type</a></i>
+      <li><a href="#Reference-GetObjType1">H5Rget_obj_type1</a>&nbsp;*
+      <li><a href="#Reference-GetObjType2">H5Rget_obj_type2</a>
+	</ul>
+    </td>
+    
+    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    
+    <td valign="top">
+	<ul>
+      <li><a href="#Reference-GetRegion">H5Rget_region</a>
+	</ul>
+    </td>
+  </tr>
+</table>
+
+<br>
+<strong>The Fortran Interface:</strong>
+<br>
+In general, each Fortran subroutine performs exactly the same task 
+as the corresponding C function.  
+<br>
+
+<table border=0 width=80%>
+<tr><td valign=top width=40%>
+<ul>
+    <li><a href="#Reference-Create">h5rcreate_f</a>
+    <li><a href="#Reference-Dereference">h5rdereference_f</a>
+</ul>
+</td><td valign=top width=40%>
+<ul>
+    <li><a href="#Reference-GetRegion">h5rget_region_f</a>
+    <li><a href="#Reference-GetObjType">h5rget_object_type_f</a>
+</ul>
+</td><td valign=top width=20%>
+<ul>
+
+    <li><a href="#Reference-GetName">h5rget_name_f</a>
+
+</ul>
+</td></tr>
+</table>
+
+
+<p>
+
+<!-- NEW PAGE -->
+<!-- HEADER RIGHT " " -->
+
+<!--  ---  ---  ---  ---  ---  ---  ---  ---  ---  ---  ---  -->
+<!--       Include special topic files                       -->
+<!--  ---  ---  ---  ---  ---  ---  ---  ---  ---  ---  ---  -->
+
+
+<!--  ---  ---  ---  ---  ---  ---  ---  ---  ---  ---  ---  -->
+<!--       Include function files                            -->
+<!--  ---  ---  ---  ---  ---  ---  ---  ---  ---  ---  ---  -->
+
+
+
+<!--
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+  * Copyright by The HDF Group.                                               *
+  * Copyright by the Board of Trustees of the University of Illinois.         *
+  * All rights reserved.                                                      *
+  *                                                                           *
+  * This file is part of HDF5.  The full HDF5 copyright notice, including     *
+  * terms governing use, modification, and redistribution, is contained in    *
+  * the files COPYING and Copyright.html.  COPYING can be found at the root   *
+  * of the source code distribution tree; Copyright.html can be found at the  *
+  * root level of an installed copy of the electronic HDF5 document set and   *
+  * is linked from the top-level documents page.  It can also be found at     *
+  * http://hdfgroup.org/HDF5/doc/Copyright.html.  If you do not have          *
+  * access to either file, you may request a copy from help@hdfgroup.org.     *
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ -->
+
+
+<!-- NEW PAGE -->
+<!-- HEADER RIGHT "H5Rcreate" -->
+<hr>
+<dl>
+
+<dt><div align=right><font color=999999 size=-1><i>
+    Last modified: 19 July 2013
+    </i></font></div>
+
+<dt><strong>Name:</strong> <a name="Reference-Create">H5Rcreate</a>
+<dt><strong>Signature:</strong>
+    <dd><em>herr_t</em> <code>H5Rcreate</code>(
+        <em>void *</em><code>ref</code>,
+        <em>hid_t</em> <code>loc_id</code>,
+        <em>const char *</em><code>name</code>,
+        <em>H5R_type_t</em> <code>ref_type</code>,
+        <em>hid_t</em> <code>space_id</code>
+    )
+
+<p>
+<dt><strong>Purpose:</strong>
+    <dd>Creates a reference.
+
+<p>
+<dt><strong>Description:</strong>
+    <dd><code>H5Rcreate</code> creates the reference, <code>ref</code>,
+        of the type specified in <code>ref_type</code>, pointing to 
+        the object <code>name</code> located at <code>loc_id</code>.
+        <p>
+        The HDF5 library maps the <em>void</em> type specified above 
+        for <code>ref</code> to the type specified in <code>ref_type</code>,
+        which will be one of those appearing in the first column of
+        the following table.  
+        The second column of the table lists the HDF5 constant associated 
+        with each reference type.
+        <dir>
+        <table border=0>
+        <tr><td><em>hdset_reg_ref_t</em>&nbsp;&nbsp;</td>
+            <td><code>H5R_DATASET_REGION</code>&nbsp;&nbsp;</td>
+            <td>Dataset region reference</td></tr>
+        <tr><td><em>hobj_ref_t</em></td>
+            <td><code>H5R_OBJECT</code></td>
+            <td>Object reference</td></tr>
+        </table>
+        </dir>
+        <p>
+        The parameters <code>loc_id</code> and <code>name</code> are 
+        used to locate the object.
+        <p>
+        The parameter <code>space_id</code> identifies the dataset region 
+        that a dataset region reference points to.
+        This parameter is used only with dataset region references
+        and should be set to <code>-1</code> if the reference is an
+        object reference, <code>H5R_OBJECT</code>.
+
+<p>
+<dt><strong>Warning:</strong>
+    <dd>Neither an object reference nor a dataset region reference may
+        refer to an object that must be accessed through an external link.
+        <p>
+        More specifically, references can refer to objects only within
+        the current logical HDF5 file while external links typically 
+        point to an object in a different logical HDF5 file.
+        Therefore, neither an HDF5 object reference nor 
+        an HDF5 dataset region reference 
+        may refer to an object or to a region in any dataset, 
+        respectively, that is accessed by means of an external link.
+
+<p>
+<dt><strong>Parameters:</strong>
+    <dd><table>
+        <tr>
+            <td valign="top"><em>void *</em><code>ref</code></td>
+            <td valign="top">OUT: Reference created by the function 
+                call.</td></tr>
+        <tr>
+            <td valign="top"><em>hid_t</em> <code>loc_id</code></td>
+            <td valign="top">IN: Location identifier used to locate the 
+                 object being pointed to.</td></tr>
+        <tr>
+            <td valign="top"><em>const char *</em><code>name</code></td>
+            <td valign="top">IN: Name of object at location 
+                <code>loc_id</code>.</td></tr>
+        <tr>
+            <td valign="top"><em>H5R_type_t</em>&nbsp;<code>ref_type&nbsp;&nbsp;&nbsp;&nbsp;</code></td>
+            <td valign="top">IN: Type of reference.</td></tr>
+        <tr>
+            <td valign="top"><em>hid_t</em> <code>space_id</code></td>
+            <td valign="top">IN: Dataspace identifier with selection. 
+                Used only for dataset region references; 
+                pass as <code>-1</code> if reference is an object reference,
+                i.e., of type <code>H5R_OBJECT</code>.</td></tr>
+    </table></dd>
+
+<p>
+<dt><strong>Returns:</strong>
+    <dd>Returns a non-negative value if successful;
+        otherwise returns a negative value.
+
+<!-- NEW PAGE -->
+<p>
+<dt><strong>Fortran90 Interface:</strong> h5rcreate_f
+
+    <dd>
+    <p><strong>To create an object reference:</strong> 
+    <br>
+
+        <a name="H5R2028F03292fh5rcreate5fobject5ff5fF90"></a>
+<a name="robo42"></a>
+
+<strong>Signature:</strong></p>
+<pre class="source">  SUBROUTINE h5rcreate_f(loc_id, name, ref, hdferr)
+    INTEGER(HID_T)    , INTENT(IN)    :: loc_id
+    CHARACTER(LEN=*)  , INTENT(IN)    :: name
+    TYPE(hobj_ref_t_f), INTENT(INOUT) :: ref
+    INTEGER           , INTENT(OUT)   :: hdferr
+</pre>
+<p class="item_name"><strong>Inputs:</strong></p>
+<pre>  loc_id - Location identifier
+  name   - Name of the object at location specified by loc_id identifier
+</pre>
+<p class="item_name"><strong>Outputs:</strong></p>
+<pre>  ref    - Object reference
+  hdferr - Error code:
+            0 on success and -1 on failure
+</pre>
+
+
+        </dt>
+
+    <p>&nbsp;
+    <p>
+    <strong>To create a region reference:</strong>  
+    <br>
+
+        <a name="H5R2028F03292fh5rcreate5fregion5ff5fF90"></a>
+<a name="robo43"></a>
+
+<strong>Signature:</strong></p>
+<pre class="source">  SUBROUTINE h5rcreate_f(loc_id, name, space_id, ref, hdferr) 
+    INTEGER(HID_T)         , INTENT(IN)  :: loc_id
+    CHARACTER(LEN=*)       , INTENT(IN)  :: name
+    INTEGER(HID_T)         , INTENT(IN)  :: space_id
+    TYPE(hdset_reg_ref_t_f), INTENT(OUT) :: ref
+    INTEGER                , INTENT(OUT) :: hdferr
+</pre>
+<p class="item_name"><strong>Inputs:</strong></p>
+<pre>  loc_id   - Location identifier
+  name     - Name of the dataset at location specified by loc_id identifier 
+  space_id - Dataset's dataspace identifier
+</pre>
+<p class="item_name"><strong>Outputs:</strong></p>
+<pre>  ref      - Dataset region reference
+  hdferr   - Error code
+              0 on success and -1 on failure
+</pre>
+
+
+
+<!-- NEW PAGE -->
+<p>
+<dt><strong>Fortran2003 Interface:</strong> h5rcreate_f
+    <dd>
+
+        <a name="H5R2028F03292fh5rcreate5ff5fF03"></a>
+<a name="robo41"></a>
+
+<strong>Signature:</strong></p>
+<pre class="source">  SUBROUTINE h5rcreate_f(loc_id, name, ref_type, ref, hdferr, space_id)
+    INTEGER(HID_T)  , INTENT(IN)              :: loc_id
+    CHARACTER(LEN=*), INTENT(IN)              :: name
+    INTEGER         , INTENT(IN)              :: ref_type
+    TYPE(C_PTR)     , INTENT(INOUT)           :: ref
+    INTEGER         , INTENT(OUT)             :: hdferr
+    INTEGER(HID_T)  , INTENT(IN)   , OPTIONAL :: space_id
+</pre>
+<p class="item_name"><strong>Inputs:</strong></p>
+<pre>  loc_id   - Location identifier used to locate the object being pointed to.
+  name     - Name of object at location loc_id.
+  ref_type - Type of reference:
+              H5R_OBJECT
+              H5T_STD_REF_DSETREG
+</pre>
+<p class="item_name"><strong>Outputs:</strong></p>
+<pre>  ref      - Reference created by the function call.
+  hdferr   - Error code
+              0 on success and -1 on failure
+</pre>
+<p class="item_name"><strong>Optional Parameter:</strong></p>
+<pre>  space_id - Dataspace identifier that describes selected region.
+</pre>
+
+
+<p>
+<dt><strong>History:</strong>
+    <dd><table width="90%">
+        <tr>
+          <td valign="top" align="left" width="10%">
+            <strong>Release</strong>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <td valign="top" align="left">
+            <strong>Change</strong></td></tr>
+        <tr>
+          <td valign="top">1.8.8</td>
+          <td valign="top">
+            Fortran updated to Fortran2003.</td></tr>
+        <tr>
+          <td valign="top">1.8.0</td>
+          <td valign="top">
+            C function introduced in this release.</td></tr>
+    </table>
+
+</dl>
+
+
+
+<!--
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+  * Copyright by The HDF Group.                                               *
+  * Copyright by the Board of Trustees of the University of Illinois.         *
+  * All rights reserved.                                                      *
+  *                                                                           *
+  * This file is part of HDF5.  The full HDF5 copyright notice, including     *
+  * terms governing use, modification, and redistribution, is contained in    *
+  * the files COPYING and Copyright.html.  COPYING can be found at the root   *
+  * of the source code distribution tree; Copyright.html can be found at the  *
+  * root level of an installed copy of the electronic HDF5 document set and   *
+  * is linked from the top-level documents page.  It can also be found at     *
+  * http://hdfgroup.org/HDF5/doc/Copyright.html.  If you do not have          *
+  * access to either file, you may request a copy from help@hdfgroup.org.     *
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ -->
+
+
+<!-- NEW PAGE -->
+<!-- HEADER RIGHT "H5Rdereference" -->
+<hr>
+<dl>
+
+<dt><div align=right><font color=999999 size=-1><i>
+    Last modified: 3 March 2016
+    </i></font></div>
+
+<dt><strong>Name:</strong> <a name="Reference-Dereference">H5Rdereference</a>
+<dt><strong>Signature:</strong>
+    <dd><em>hid_t</em> <code>H5Rdereference</code>(
+    <em>hid_t</em> <code>loc_id</code>,
+    <em>H5R_type_t</em> <code>ref_type</code>,
+    <em>void *</em><code>ref</code>
+    )
+    <p>
+    <dd><em>hid_t</em> <code>H5Rdereference</code>(
+    <em>hid_t</em> <code>loc_id</code>,
+    <em>hid_t</em> <code>oapl_id</code>,
+    <em>H5R_type_t</em> <code>ref_type</code>,
+    <em>void *</em><code>ref</code>
+    )
+<p>
+<dt><strong>Purpose:</strong>
+    <dd>Opens the HDF5 object referenced.
+<p>
+<dt><strong>Description:</strong>
+    <dd><code>H5Rdereference</code> is a macro that is mapped to either
+      <a href="#Reference-Dereference1"><code>H5Rdereference1</code></a> or
+      <a href="#Reference-Dereference2"><code>H5Rdereference2</code></a>,
+      depending on the needs of the application.
+      <p>
+      Such macros are provided to facilitate application compatibility.
+      Their use and mappings are fully described in 
+      &ldquo;<a href="APICompatMacros.html">API Compatibility Macros 
+      in HDF5</a>&rdquo;; 
+      we urge you to read that document closely.
+      <p>
+      When both the HDF5 Library and the application are built and 
+      installed with no specific compatibility flags, 
+      <code>H5Rdereference</code> is mapped to the most recent version of
+      the function, currently 
+      <a href="#Reference-Dereference2"><code>H5Rdereference2</code></a>.
+      If the library and/or application is compiled for Release 1.6 or 1.8
+      emulation, <code>H5Rdereference</code> will be mapped to 
+      <a href="#Reference-Dereference1"><code>H5Rdereference1</code></a>.
+      Function-specific flags are available to override these settings 
+      on a function-by-function basis when the application is compiled. 
+      <p>
+      Specific compile-time compatibility flags and the resulting 
+      mappings are as follows:
+
+      <dir>
+      <table border=0 cellpadding=4>
+        <tr valign=top align=left> 
+          <th>Compatibility setting</th>
+          <th><code>H5Rdereference</code> mapping</th>
+        </tr><tr valign=top align=left>
+          <td colspan=2><hr><u><a href="APICompatMacros.html#GlobalSettings">Global settings</a></u></td>
+        </tr><tr valign=top align=left>
+          <td>No compatibility flag</td>
+          <td><code>H5Rdereference2</code>&nbsp;</td>
+        </tr><tr valign=top align=left>
+          <td>Enable deprecated symbols</td>
+          <td><code>H5Rdereference2</code>&nbsp;</td>
+        </tr><tr valign=top align=left>
+          <td>Disable deprecated symbols</td>
+          <td><code>H5Rdereference2</code>&nbsp;</td>
+        </tr><tr valign=top align=left>
+          <td>Emulate Release 1.6 interface<code>&nbsp;&nbsp;&nbsp;&nbsp;</code></td>
+          <td><code>H5Rdereference1</code>&nbsp;</td>
+        </tr><tr valign=top align=left>
+          <td>Emulate Release 1.8 interface<code>&nbsp;</code></td>
+          <td><code>H5Rdereference1</code>&nbsp;</td>
+        </tr><tr valign=top align=left>
+          <td colspan=2><hr><u><a href="APICompatMacros.html#FunctionLevelSettings">Function-level macros</a></u></td>
+        </tr><tr valign=top align=left>
+          <td><code>H5Rdereference_vers = 2</code></td>
+          <td><code>H5Rdereference2</code></td>
+        </tr><tr valign=top align=left>
+          <td><code>H5Rdereference_vers = 1</code></td>
+          <td><code>H5Rdereference1</code></td>
+        </tr>
+      </table>
+      </dir>
+      
+<!-- NEW PAGE -->
+  <p>
+<dt><strong>Fortran90 Interface:</strong> h5rdereference_f
+    <dd>
+
+    <dd>
+    <p><strong>To dereference an object:</strong> 
+    <br>
+
+        <a name="H5R2028F03292fh5rdereference5fobject5ff5fF90"></a>
+<a name="robo45"></a>
+
+<strong>Signature:</strong></p>
+<pre class="source">  SUBROUTINE h5rdereference_f(obj_id, ref, ref_obj_id, hdferr) 
+    INTEGER(HID_T)    , INTENT(IN)  :: obj_id
+    TYPE(hobj_ref_t_f), INTENT(IN)  :: ref
+    INTEGER(HID_T)    , INTENT(OUT) :: ref_obj_id
+    INTEGER           , INTENT(OUT) :: hdferr
+</pre>
+<p class="item_name"><strong>Inputs:</strong></p>
+<pre>  obj_id      - Valid identifier in file
+  ref         - Object reference
+</pre>
+<p class="item_name"><strong>Outputs:</strong></p>
+<pre>  ref_obj_id  - Identifier of referenced object 
+  hdferr      - Error code 
+                 0 on success and -1 on failure 
+</pre>
+
+
+<!-- NEW PAGE -->
+    <p><strong>To dereference a region:</strong>	
+    <br>
+
+        <a name="H5R2028F03292fh5rdereference5fregion5ff5fF90"></a>
+<a name="robo46"></a>
+
+<strong>Signature:</strong></p>
+<pre class="source">  SUBROUTINE h5rdereference_f(obj_id, ref, ref_obj_id, hdferr)
+    INTEGER(HID_T)         , INTENT(IN)  :: obj_id
+    TYPE(hdset_reg_ref_t_f), INTENT(IN)  :: ref
+    INTEGER(HID_T)         , INTENT(OUT) :: ref_obj_id
+    INTEGER                , INTENT(OUT) :: hdferr 
+</pre>
+<p class="item_name"><strong>Inputs:</strong></p>
+<pre>  dset_id       - Valid identifier in file
+  ref           - Object reference
+</pre>
+<p class="item_name"><strong>Outputs:</strong></p>
+<pre>  ref_obj_id    - Identifier of referenced object
+  hdferr        - Error code 
+                   0 on success and -1 on failure
+</pre>
+
+
+  <p>
+<dt><strong>Fortran2003 Interface:</strong> h5rdereference_f
+    <dd>
+
+        <a name="H5R2028F03292fh5rdereference5ff5fF03"></a>
+<a name="robo44"></a>
+
+<strong>Signature:</strong></p>
+<pre class="source">  SUBROUTINE h5rdereference_f(obj_id, ref_type, ref, ref_obj_id, hdferr)
+    INTEGER(HID_T), INTENT(IN)  :: obj_id
+    INTEGER       , INTENT(IN)  :: ref_type
+    TYPE(C_PTR)   , INTENT(IN)  :: ref
+    INTEGER(HID_T), INTENT(OUT) :: ref_obj_id
+    INTEGER       , INTENT(OUT) :: hdferr
+</pre>
+<p class="item_name"><strong>Inputs:</strong></p>
+<pre>  obj_id     - Valid identifier for the file containing the
+               referenced object or any object in that file.
+  ref_type   - The reference type of ref.
+  ref        - Object reference
+</pre>
+<p class="item_name"><strong>Outputs:</strong></p>
+<pre>  ref_obj_id - Identifier of referenced object
+  hdferr     - Error code 
+                0 on success and -1 on failure
+</pre>
+
+
+<!-- NEW PAGE -->
+  <p>
+<dt><strong>History:</strong>
+    <dd><table width="90%">
+        <tr>
+          <td valign="top" align="left" width="10%">
+            <strong>Release</strong>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <td valign="top" align="left">
+            <strong>Change</strong></td></tr>
+        <tr>
+          <td valign="top">1.10.0</td>
+          <td valign="top">The C function 
+            <code>H5Rdereference</code> renamed to <code>H5Rdereference1</code> 
+            and deprecated in this release.
+            <br>
+            The C macro <code>H5Rdereference</code> 
+            and the C function <code>H5Rdereference2</code>
+            introduced in this release.</td></tr>
+    </table>
+</dl>
+
+
+
+
+<!--
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+  * Copyright by The HDF Group.                                               *
+  * Copyright by the Board of Trustees of the University of Illinois.         *
+  * All rights reserved.                                                      *
+  *                                                                           *
+  * This file is part of HDF5.  The full HDF5 copyright notice, including     *
+  * terms governing use, modification, and redistribution, is contained in    *
+  * the files COPYING and Copyright.html.  COPYING can be found at the root   *
+  * of the source code distribution tree; Copyright.html can be found at the  *
+  * root level of an installed copy of the electronic HDF5 document set and   *
+  * is linked from the top-level documents page.  It can also be found at     *
+  * http://hdfgroup.org/HDF5/doc/Copyright.html.  If you do not have          *
+  * access to either file, you may request a copy from help@hdfgroup.org.     *
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ -->
+
+
+<!-- NEW PAGE -->
+<!-- HEADER RIGHT "H5Rdereference1" -->
+<hr>
+<dl>
+
+  <dt><div align=right><font color=999999 size=-1><i>
+  Last modified: 4 March 2016</i></font></div></dt>
+
+<dt><strong>Name:</strong> <a name="Reference-Dereference1">H5Rdereference1</a>
+</dt>
+<br />
+<dt><strong>Signature:</strong>
+    <dd><em>hid_t</em> <code>H5Rdereference1</code>(
+        <em>hid_t</em> <code>obj_id</code>,
+        <em>H5R_type_t</em> <code>ref_type</code>,
+        <em>void *</em><code>ref</code>
+    )
+
+<p>
+<dt><strong>Purpose:</strong>
+    <dd>Opens the HDF5 object referenced.
+
+<p>
+<dt><strong>Notice:</Strong>
+  <dd><i>This function has been renamed from <code>H5Rdereference</code>
+      and is deprecated in favor of the macro
+      <a href="RM_H5R.html#Reference-Dereference"><code>H5Rdereference</code></a>
+      or the function 
+      <a href="RM_H5R.html#Reference-Dereference2"><code>H5Rdereference2</code></a>.</i>
+
+<p>
+<dt><strong>Description:</strong>
+    <dd>Given a reference, <code>ref</code>, to an object or a region 
+        in an object, <code>H5Rdereference1</code> opens that object and 
+        returns an identifier.
+        <p>
+        The parameter <code>obj_id</code> must be a valid identifier for 
+        an object in the HDF5 file containing the referenced object,
+        including the file identifier.
+        <p>
+        The parameter <code>ref_type</code> specifies the reference type
+        of the reference <code>ref</code>. 
+        <code>ref_type</code> may contain either of the following values:
+        <ul>
+        <li><code>H5R_OBJECT</code>  (<code>0</code>)
+        <li><code>H5R_DATASET_REGION</code>  (<code>1</code>)
+        </ul>
+
+        <p>The object opened with this function should be closed when 
+        it is no longer needed so that resource leaks will not develop. 
+        Use the appropriate close function such as <code>H5Oclose</code> 
+        or <code>H5Dclose</code> for datasets.</p>
+
+<p>
+<dt><strong>Parameters:</strong>
+    <dd><table>
+        <tr>
+            <td valign="top"><em>hid_t</em> <code>obj_id</code></td>
+            <td valign="top">IN: Valid identifier for the file containing 
+            the referenced object or any object in that file.</td></tr>
+        <tr>
+            <td valign="top"><em>H5R_type_t</em>&nbsp;<code>ref_type&nbsp;&nbsp;&nbsp;&nbsp;</code></td>
+            <td valign="top">IN: The reference type of <code>ref</code>.</td></tr>
+        <tr>
+            <td valign="top"><em>void *</em><code>ref</code></td>
+            <td valign="top">IN: Reference to open.</td></tr>
+    </table></dd>
+
+<p>
+<dt><strong>Returns:</strong>
+    <dd>Returns identifier of referenced object if successful;
+        otherwise returns a negative value.
+
+<p>
+<dt><strong>Fortran90 Interface:</strong> h5rdereference_f
+
+    <dd>
+    <p><strong>To dereference an object:</strong> 
+    <br>
+
+        <a name="H5R2028F03292fh5rdereference5fobject5ff5fF90"></a>
+<a name="robo45"></a>
+
+<strong>Signature:</strong></p>
+<pre class="source">  SUBROUTINE h5rdereference_f(obj_id, ref, ref_obj_id, hdferr) 
+    INTEGER(HID_T)    , INTENT(IN)  :: obj_id
+    TYPE(hobj_ref_t_f), INTENT(IN)  :: ref
+    INTEGER(HID_T)    , INTENT(OUT) :: ref_obj_id
+    INTEGER           , INTENT(OUT) :: hdferr
+</pre>
+<p class="item_name"><strong>Inputs:</strong></p>
+<pre>  obj_id      - Valid identifier in file
+  ref         - Object reference
+</pre>
+<p class="item_name"><strong>Outputs:</strong></p>
+<pre>  ref_obj_id  - Identifier of referenced object 
+  hdferr      - Error code 
+                 0 on success and -1 on failure 
+</pre>
+
+
+<!-- NEW PAGE -->
+    <p><strong>To dereference a region:</strong>	
+    <br>
+
+        <a name="H5R2028F03292fh5rdereference5fregion5ff5fF90"></a>
+<a name="robo46"></a>
+
+<strong>Signature:</strong></p>
+<pre class="source">  SUBROUTINE h5rdereference_f(obj_id, ref, ref_obj_id, hdferr)
+    INTEGER(HID_T)         , INTENT(IN)  :: obj_id
+    TYPE(hdset_reg_ref_t_f), INTENT(IN)  :: ref
+    INTEGER(HID_T)         , INTENT(OUT) :: ref_obj_id
+    INTEGER                , INTENT(OUT) :: hdferr 
+</pre>
+<p class="item_name"><strong>Inputs:</strong></p>
+<pre>  dset_id       - Valid identifier in file
+  ref           - Object reference
+</pre>
+<p class="item_name"><strong>Outputs:</strong></p>
+<pre>  ref_obj_id    - Identifier of referenced object
+  hdferr        - Error code 
+                   0 on success and -1 on failure
+</pre>
+
+
+<p>
+<dt><strong>Fortran2003 Interface:</strong> h5rdereference_f
+    <dd>
+
+        <a name="H5R2028F03292fh5rdereference5ff5fF03"></a>
+<a name="robo44"></a>
+
+<strong>Signature:</strong></p>
+<pre class="source">  SUBROUTINE h5rdereference_f(obj_id, ref_type, ref, ref_obj_id, hdferr)
+    INTEGER(HID_T), INTENT(IN)  :: obj_id
+    INTEGER       , INTENT(IN)  :: ref_type
+    TYPE(C_PTR)   , INTENT(IN)  :: ref
+    INTEGER(HID_T), INTENT(OUT) :: ref_obj_id
+    INTEGER       , INTENT(OUT) :: hdferr
+</pre>
+<p class="item_name"><strong>Inputs:</strong></p>
+<pre>  obj_id     - Valid identifier for the file containing the
+               referenced object or any object in that file.
+  ref_type   - The reference type of ref.
+  ref        - Object reference
+</pre>
+<p class="item_name"><strong>Outputs:</strong></p>
+<pre>  ref_obj_id - Identifier of referenced object
+  hdferr     - Error code 
+                0 on success and -1 on failure
+</pre>
+
+
+
+<br />
+<dt><strong>See Also:</a></strong></dt>
+    <dd>
+    &ldquo;<a href=
+    "http://www.hdfgroup.org/HDF5/doc/Advanced/UsingIdentifiers/index.html">Using 
+    Identifiers</a>&rdquo;</dd>
+
+
+<br />
+<dt><strong>History:</strong>
+    <dd><table width="90%">
+        <tr>
+          <td valign="top" align="left" width="10%">
+            <strong>Release</strong>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <td valign="top" align="left">
+            <strong>Change</strong></td></tr>
+        <tr>
+          <td valign="top">1.10.0</td>
+          <td valign="top">
+            C function <code>H5Rdereference</code> renamed to
+            <code>H5Rdereference1</code> 
+            and deprecated in this release.</td></tr>
+        <tr>
+          <td valign="top">1.8.8</td>
+          <td valign="top">
+            Fortran updated to Fortran2003.</td></tr>
+        <tr>
+          <td valign="top">1.8.0</td>
+          <td valign="top">
+            C function introduced in this release.</td></tr>
+    </table>
+</dl>
+
+
+
+
+<!--
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+  * Copyright by The HDF Group.                                               *
+  * Copyright by the Board of Trustees of the University of Illinois.         *
+  * All rights reserved.                                                      *
+  *                                                                           *
+  * This file is part of HDF5.  The full HDF5 copyright notice, including     *
+  * terms governing use, modification, and redistribution, is contained in    *
+  * the files COPYING and Copyright.html.  COPYING can be found at the root   *
+  * of the source code distribution tree; Copyright.html can be found at the  *
+  * root level of an installed copy of the electronic HDF5 document set and   *
+  * is linked from the top-level documents page.  It can also be found at     *
+  * http://hdfgroup.org/HDF5/doc/Copyright.html.  If you do not have          *
+  * access to either file, you may request a copy from help@hdfgroup.org.     *
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ -->
+
+
+<!-- NEW PAGE -->
+<!-- HEADER RIGHT "H5Rdereference2" -->
+<hr>
+<dl>
+
+  <dt><div align=right><font color=999999 size=-1><i>
+  Last modified: 25 February 2016</i></font></div></dt>
+
+<dt><strong>Name:</strong> <a name="Reference-Dereference2">H5Rdereference2</a>
+</dt>
+<br />
+<dt><strong>Signature:</strong>
+    <dd><em>hid_t</em> <code>H5Rdereference2</code>(
+        <em>hid_t</em> <code>obj_id</code>,
+        <em>hid_t</em> <code>oapl_id</code>,
+        <em>H5R_type_t</em> <code>ref_type</code>,
+        <em>void *</em><code>ref</code>
+    )
+
+<p>
+<dt><strong>Purpose:</strong>
+    <dd>Opens the HDF5 object referenced.
+
+<p>
+<dt><strong>Description:</strong>
+    <dd>Given a reference, <code>ref</code>, to an object or a region 
+        in an object, <code>H5Rdereference2</code> opens that object and 
+        returns an identifier.
+        <p>
+        The parameter <code>obj_id</code> must be a valid identifier 
+        for the HDF5 file containing the referenced object or 
+        for any object in that HDF5 file.
+        <p>
+        The parameter <code>oapl_id</code> is an
+        object access property list identifier 
+        for the referenced object. 
+        The access property list must be of the same type as the 
+        object being referenced, 
+        that is a group, dataset, or datatype property list.
+        <p>
+        The parameter <code>ref_type</code> specifies the reference type
+        of the reference <code>ref</code>. 
+        <code>ref_type</code> may contain either of the following values:
+        <ul>
+        <li><code>H5R_OBJECT</code>  (<code>0</code>)
+        <li><code>H5R_DATASET_REGION</code>  (<code>1</code>)
+        </ul>
+
+        <p>The object opened with this function should be closed when 
+        it is no longer needed so that resource leaks will not develop. 
+        Use the appropriate close function such as <code>H5Oclose</code> 
+        or <code>H5Dclose</code> for datasets.</p>
+
+<p>
+<dt><strong>Parameters:</strong>
+    <dd><table>
+        <tr>
+            <td valign="top"><em>hid_t</em> <code>obj_id</code></td>
+            <td valign="top">IN: Valid identifier for the file containing 
+            the referenced object or any object in that file.</td></tr>
+        <tr>
+            <td valign="top"><em>hid_t</em> <code>oapl_id</code></td>
+            <td valign="top">IN: Valid object access property list identifier 
+            for a property list to be used with the referenced object.
+            </td></tr>
+        <tr>
+            <td valign="top"><em>H5R_type_t</em>&nbsp;<code>ref_type&nbsp;&nbsp;&nbsp;&nbsp;</code></td>
+            <td valign="top">IN: The reference type of <code>ref</code>.</td></tr>
+        <tr>
+            <td valign="top"><em>void *</em><code>ref</code></td>
+            <td valign="top">IN: Reference to open.</td></tr>
+    </table></dd>
+
+<p>
+<dt><strong>Returns:</strong>
+    <dd>Returns identifier of referenced object if successful;
+        otherwise returns a negative value.
+
+<p>
+<dt><strong>Fortran90 Interface:</strong> h5rdereference_f
+
+    <dd>
+    <p><strong>To dereference an object:</strong> 
+    <br>
+
+        <a name="H5R2028F03292fh5rdereference5fobject5ff5fF90"></a>
+<a name="robo45"></a>
+
+<strong>Signature:</strong></p>
+<pre class="source">  SUBROUTINE h5rdereference_f(obj_id, ref, ref_obj_id, hdferr) 
+    INTEGER(HID_T)    , INTENT(IN)  :: obj_id
+    TYPE(hobj_ref_t_f), INTENT(IN)  :: ref
+    INTEGER(HID_T)    , INTENT(OUT) :: ref_obj_id
+    INTEGER           , INTENT(OUT) :: hdferr
+</pre>
+<p class="item_name"><strong>Inputs:</strong></p>
+<pre>  obj_id      - Valid identifier in file
+  ref         - Object reference
+</pre>
+<p class="item_name"><strong>Outputs:</strong></p>
+<pre>  ref_obj_id  - Identifier of referenced object 
+  hdferr      - Error code 
+                 0 on success and -1 on failure 
+</pre>
+
+
+<!-- NEW PAGE -->
+    <p><strong>To dereference a region:</strong>	
+    <br>
+
+        <a name="H5R2028F03292fh5rdereference5fregion5ff5fF90"></a>
+<a name="robo46"></a>
+
+<strong>Signature:</strong></p>
+<pre class="source">  SUBROUTINE h5rdereference_f(obj_id, ref, ref_obj_id, hdferr)
+    INTEGER(HID_T)         , INTENT(IN)  :: obj_id
+    TYPE(hdset_reg_ref_t_f), INTENT(IN)  :: ref
+    INTEGER(HID_T)         , INTENT(OUT) :: ref_obj_id
+    INTEGER                , INTENT(OUT) :: hdferr 
+</pre>
+<p class="item_name"><strong>Inputs:</strong></p>
+<pre>  dset_id       - Valid identifier in file
+  ref           - Object reference
+</pre>
+<p class="item_name"><strong>Outputs:</strong></p>
+<pre>  ref_obj_id    - Identifier of referenced object
+  hdferr        - Error code 
+                   0 on success and -1 on failure
+</pre>
+
+
+<p>
+<dt><strong>Fortran2003 Interface:</strong> h5rdereference_f
+    <dd>
+
+        <a name="H5R2028F03292fh5rdereference5ff5fF03"></a>
+<a name="robo44"></a>
+
+<strong>Signature:</strong></p>
+<pre class="source">  SUBROUTINE h5rdereference_f(obj_id, ref_type, ref, ref_obj_id, hdferr)
+    INTEGER(HID_T), INTENT(IN)  :: obj_id
+    INTEGER       , INTENT(IN)  :: ref_type
+    TYPE(C_PTR)   , INTENT(IN)  :: ref
+    INTEGER(HID_T), INTENT(OUT) :: ref_obj_id
+    INTEGER       , INTENT(OUT) :: hdferr
+</pre>
+<p class="item_name"><strong>Inputs:</strong></p>
+<pre>  obj_id     - Valid identifier for the file containing the
+               referenced object or any object in that file.
+  ref_type   - The reference type of ref.
+  ref        - Object reference
+</pre>
+<p class="item_name"><strong>Outputs:</strong></p>
+<pre>  ref_obj_id - Identifier of referenced object
+  hdferr     - Error code 
+                0 on success and -1 on failure
+</pre>
+
+
+
+<br />
+<dt><strong>See Also:</a></strong></dt>
+    <dd>
+    &ldquo;<a href=
+    "http://www.hdfgroup.org/HDF5/doc/Advanced/UsingIdentifiers/index.html">Using 
+    Identifiers</a>&rdquo;</dd>
+
+
+<br />
+<dt><strong>History:</strong>
+    <dd><table width="90%">
+        <tr>
+          <td valign="top" align="left" width="10%">
+            <strong>Release</strong>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <td valign="top" align="left">
+            <strong>Change</strong></td></tr>
+        <tr>
+          <td valign="top">1.10.0</td>
+          <td valign="top">
+            C function <code>H5Rdereference2</code> 
+            introduced in this release.</td></tr>
+    </table>
+</dl>
+
+
+
+
+<!--
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+  * Copyright by The HDF Group.                                               *
+  * Copyright by the Board of Trustees of the University of Illinois.         *
+  * All rights reserved.                                                      *
+  *                                                                           *
+  * This file is part of HDF5.  The full HDF5 copyright notice, including     *
+  * terms governing use, modification, and redistribution, is contained in    *
+  * the files COPYING and Copyright.html.  COPYING can be found at the root   *
+  * of the source code distribution tree; Copyright.html can be found at the  *
+  * root level of an installed copy of the electronic HDF5 document set and   *
+  * is linked from the top-level documents page.  It can also be found at     *
+  * http://hdfgroup.org/HDF5/doc/Copyright.html.  If you do not have          *
+  * access to either file, you may request a copy from help@hdfgroup.org.     *
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ -->
+
+
+<!-- NEW PAGE -->
+<!-- HEADER RIGHT "H5Rget_name" -->
+<hr>
+<dl>
+
+<dt><div align=right><font color=999999 size=-1><i>
+    Last modified: 5 February 2013
+    </i></font></div>
+<br />
+<dt><strong>Name:</strong> <a name="Reference-GetName">H5Rget_name</a></dt>
+<br />
+<dt><strong>Signature:</strong>
+    <dd><code><em>ssize_t</em> H5Rget_name(<em>hid_t</em> loc_id,
+                     <em>H5R_type_t</em> ref_type,
+                     <em>void</em> *ref,
+                     <em>char</em> *name,
+                     <em>size_t</em> size)</code>
+
+<p>
+<dt><strong>Purpose:</strong> </dt>
+    <dd>Retrieves a name for a referenced object.
+
+<p>
+<dt><strong>Description:</strong>
+    <dd><code>H5Rget_name</code> retrieves a name for the object identified 
+        by <code>ref</code>.
+        <p>
+        <code>loc_id</code> is used to identify the file containing the 
+        reference.  It can be the file identifier for the file containing 
+        the reference or an identifier for any object in that file.
+        <p>
+        <code>H5R_type_t</code> is the reference type of <code>ref</code>.
+        Valid values include the following:
+        <table border="0">
+          <tr align=left valign=top><td>&nbsp;&nbsp;&nbsp;&nbsp;</td><td>
+            <code>H5R_OBJECT</code></td><td>
+            Object reference
+          </td></tr>
+          <tr align=left valign=top><td>&nbsp;</td><td>
+            <code>H5R_DATASET_REGION&nbsp;&nbsp;</code></td><td>
+            Dataset region reference
+          </td></tr>
+        </table>
+        <p>
+        <code>ref</code> is the reference for which the target object&rsquo;s 
+        name is sought.
+        <p>
+        If <code>ref</code> is an object reference, <code>name</code> 
+        will be returned with a name for the referenced object.
+        If <code>ref</code> is a dataset region reference, 
+        <code>name</code> will contain a name for the object containing 
+        the referenced region.
+        <p>
+        Up to <code>size</code> characters of the name are returned in 
+        <code>name</code>; additional characters, if any, are not returned
+        to the user application.
+        <p>
+        If the length of the name, which determines the required 
+        value of <code>size</code>, is unknown, a preliminary  
+        <code>H5Rget_name</code> call can be made.  
+        The return value of this call will be the size of the 
+        object name.  
+        That value can then be assigned to <code>size</code> 
+        for a second <code>H5Rget_name</code> call, 
+        which will retrieve the actual name.
+        <p>
+        If there is no name associated with the object identifier
+        or if the name is <code>NULL</code>, <code>H5Rget_name</code>
+        returns the size of the name buffer (the size does not include 
+        the NULL terminator).
+        <p>
+        Note that an object in an HDF5 file may have multiple paths if there
+        are multiple links pointing to it.  This function may return any one 
+        of these paths.
+
+<p>
+<dt><strong>Parameters:</strong> 
+    <dd><table width="100%">
+      <tr>
+        <td valign="top" width="30%"><code><em>hid_t</em> loc_id</code></td>
+        <td valign="top" width="70%">IN: Identifier for the file containing the reference
+            or for any object in that file.
+            </td></tr>
+      <tr>
+        <td valign="top"><code><em>H5R_type_t</em> ref_type</code></td>
+        <td valign="top">IN: Type of reference.
+      <tr>
+        <td valign="top"><code><em>void</em> *ref</code></td> 
+        <td valign="top">IN: An object or dataset region reference.</td></tr>
+      <tr>
+        <td valign="top"><code><em>char</em> *name</code></td> 
+        <td valign="top">OUT: A buffer to place the name of the referenced object or 
+            dataset region. If NULL, then this call will return the size 
+            in bytes of the name.</td></tr>
+      <tr>
+        <td valign="top"><code><em>size_t</em> size</code></td> 
+        <td valign="top">IN: The size of the <code>name</code> buffer. When the 
+        size is passed in, the NULL terminator needs to be included.</td></tr>
+    </table></dd>
+
+<p>
+<dt><strong>Returns:</strong> 
+    <dd>Returns the length of the name if successful, returning <code>0</code> 
+        (zero) if no name is associated with the identifier.
+        Otherwise returns a negative value.
+<!-- NEW PAGE -->
+
+<p>
+<dt><strong>Fortran90 Interface:</strong> h5rget_name_object_f or h5rget_name_region_f
+
+    <dd>
+    <p><strong>To get name of an object reference:</strong> h5rget_name_object_f
+    <br>
+
+        <a name="H5R2028F03292fh5rget5fname5fobject5ff5fF90"></a>
+<a name="robo48"></a>
+
+<strong>Signature:</strong></p>
+<pre class="source">  SUBROUTINE h5rget_name_object_f(loc_id,  ref, name, hdferr, size)
+    INTEGER(HID_T)    , INTENT(IN)            :: loc_id 
+    TYPE(hobj_ref_t_f), INTENT(IN)            :: ref
+    CHARACTER(LEN=*)  , INTENT(OUT)           :: name
+    INTEGER           , INTENT(OUT)           :: hdferr
+    INTEGER(SIZE_T)   , INTENT(OUT), OPTIONAL :: size
+</pre>
+<p class="item_name"><strong>Inputs:</strong></p>
+<pre>  loc_id  - Identifier for the file containing the reference or
+            for any object in that file.
+  ref     - Object reference
+</pre>
+<p class="item_name"><strong>Outputs:</strong></p>
+<pre>  name    - A name associated with the referenced object or dataset region.
+  hdferr  - Error code
+             0 on success and -1 on failure
+</pre>
+<p class="item_name"><strong>Optional parameters:</strong></p>
+<pre>  size    - The size of the name buffer,
+            returning 0 (zero) if no name is associated with the identifier
+</pre>
+
+
+    <p>&nbsp;
+    <p><strong>To get name of a region reference:</strong> h5rget_name_region_f
+    <br>
+
+        <a name="H5R2028F03292fh5rget5fname5fregion5ff5fF90"></a>
+<a name="robo49"></a>
+
+<strong>Signature:</strong></p>
+<pre class="source">  SUBROUTINE h5rget_name_region_f(loc_id, ref, name, hdferr, size)
+    INTEGER(HID_T)         , INTENT(IN)            :: loc_id
+    TYPE(hdset_reg_ref_t_f), INTENT(IN)            :: ref
+    CHARACTER(LEN=*)       , INTENT(OUT)           :: name
+    INTEGER(SIZE_T)        , INTENT(OUT), OPTIONAL :: size
+    INTEGER                , INTENT(OUT)           :: hdferr
+</pre>
+<p class="item_name"><strong>Inputs:</strong></p>
+<pre>  loc_id  - Identifier for the file containing the reference or
+            for any object in that file.
+  ref     - Object reference
+</pre>
+<p class="item_name"><strong>Outputs:</strong></p>
+<pre>  name    - A name associated with the referenced object or dataset region.
+  hdferr  - Error code
+             0 on success and -1 on failure
+</pre>
+<p class="item_name"><strong>Optional parameters:</strong></p>
+<pre>  size    - The size of the name buffer,
+            returning 0 (zero) if no name is associated with the identifier
+</pre>
+
+
+<p>
+<dt><strong>Fortran2003 Interface:</strong> h5rget_name_f
+    <dd>
+
+        <a name="H5R2028F03292fh5rget5fname5ff5fF03"></a>
+<a name="robo47"></a>
+
+<strong>Signature:</strong></p>
+<pre class="source"> SUBROUTINE h5rget_name_f(loc_id, ref_type, ref, name, hdferr, size)
+   INTEGER(HID_T)  , INTENT(IN)            :: loc_id 
+   INTEGER         , INTENT(IN)            :: ref_type
+   TYPE(C_PTR)     , INTENT(IN)            :: ref
+   CHARACTER(LEN=*), INTENT(OUT)           :: name
+   INTEGER         , INTENT(OUT)           :: hdferr
+   INTEGER(SIZE_T) , INTENT(OUT), OPTIONAL :: size
+</pre>
+<p class="item_name"><strong>Inputs:</strong></p>
+<pre>  loc_id   - Identifier for the file containing the reference or
+             for any object in that file.
+  ref_type - Type of reference.
+  ref      - An object or dataset region reference.
+</pre>
+<p class="item_name"><strong>Outputs:</strong></p>
+<pre>  name     - A name associated with the referenced object or dataset ptr.
+  hdferr   - Error code
+              0 on success and -1 on failure
+</pre>
+<p class="item_name"><strong>Optional parameters:</strong></p>
+<pre>   size    - The size of the name buffer.
+</pre>
+
+
+
+<p>
+<dt><strong>History:</strong>
+    <ul><table width="90%">
+        <tr>
+          <td valign="top" align="left" width="10%">
+            <strong>Release</strong>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <td valign="top" align="left">
+            <strong>Change</strong></td></tr>
+        <tr>
+          <td valign="top">1.8.8</td>
+          <td valign="top">
+            Fortran updated to Fortran2003.</td></tr>
+        <tr>
+          <td valign="top">1.8.0</td>
+          <td valign="top">
+            C function introduced in this release.</td></tr>
+    </table></ul>
+</dl>
+
+
+
+
+<!--
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+  * Copyright by The HDF Group.                                               *
+  * Copyright by the Board of Trustees of the University of Illinois.         *
+  * All rights reserved.                                                      *
+  *                                                                           *
+  * This file is part of HDF5.  The full HDF5 copyright notice, including     *
+  * terms governing use, modification, and redistribution, is contained in    *
+  * the files COPYING and Copyright.html.  COPYING can be found at the root   *
+  * of the source code distribution tree; Copyright.html can be found at the  *
+  * root level of an installed copy of the electronic HDF5 document set and   *
+  * is linked from the top-level documents page.  It can also be found at     *
+  * http://hdfgroup.org/HDF5/doc/Copyright.html.  If you do not have          *
+  * access to either file, you may request a copy from help@hdfgroup.org.     *
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ -->
+
+
+<!-- NEW PAGE -->
+<!-- HEADER RIGHT "H5Rget_obj_type" -->
+<hr>
+<dl>
+
+<dt><div align=right><font color=999999 size=-1><i>
+    Last modified: 28 September 2011
+    </i></font></div>
+
+<dt><strong>Name:</strong> <a name="Reference-GetObjType">H5Rget_obj_type</a>
+<dt><strong>Signature:</strong>
+    <dd><em>H5G_obj_t</em> <code>H5Rget_obj_type</code>(
+    <em>hid_t</em> <code>loc_id</code>,
+    <em>H5R_type_t</em> <code>ref_type</code>,
+    <em>void *</em><code>ref</code>
+    )
+    <p>
+    <dd><em>herr_t</em> <code>H5Rget_obj_type</code>(
+    <em>hid_t</em> <code>loc_id</code>,
+    <em>H5R_type_t</em> <code>ref_type</code>,
+    <em>void *</em><code>ref</code>,
+    <em>H5O_type_t *</em><code>obj_type</code>
+    )
+<p>
+<dt><strong>Purpose:</strong>
+    <dd>Retrieves the type of object that an object reference points to.
+<p>
+<dt><strong>Description:</strong>
+    <dd><code>H5Rget_obj_type</code> is a macro that is mapped to either
+      <a href="#Reference-GetObjType1"><code>H5Rget_obj_type1</code></a> or
+      <a href="#Reference-GetObjType2"><code>H5Rget_obj_type2</code></a>,
+      depending on the needs of the application.
+      <p>
+      Such macros are provided to facilitate application compatibility.
+      Their use and mappings are fully described in 
+      &ldquo;<a href="APICompatMacros.html">API Compatibility Macros 
+      in HDF5</a>&rdquo;; 
+      we urge you to read that document closely.
+      <p>
+      When both the HDF5 Library and the application are built and 
+      installed with no specific compatibility flags, 
+      <code>H5Rget_obj_type</code> is mapped to the most recent version of
+      the function, currently 
+      <a href="#Reference-GetObjType2"><code>H5Rget_obj_type2</code></a>.
+      If the library and/or application is compiled for Release 1.6
+      emulation, <code>H5Rget_obj_type</code> will be mapped to 
+      <a href="#Reference-GetObjType1"><code>H5Rget_obj_type1</code></a>.
+      Function-specific flags are available to override these settings 
+      on a function-by-function basis when the application is compiled. 
+      <p>
+      Specific compile-time compatibility flags and the resulting 
+      mappings are as follows:
+
+      <dir>
+      <table border=0 cellpadding=4>
+        <tr valign=top align=left> 
+          <th>Compatibility setting</th>
+          <th><code>H5Rget_obj_type</code> mapping</th>
+        </tr><tr valign=top align=left>
+          <td colspan=2><hr><u><a href="APICompatMacros.html#GlobalSettings">Global settings</a></u></td>
+        </tr><tr valign=top align=left>
+          <td>No compatibility flag</td>
+          <td><code>H5Rget_obj_type2</code>&nbsp;</td>
+        </tr><tr valign=top align=left>
+          <td>Enable deprecated symbols</td>
+          <td><code>H5Rget_obj_type2</code>&nbsp;</td>
+        </tr><tr valign=top align=left>
+          <td>Disable deprecated symbols</td>
+          <td><code>H5Rget_obj_type2</code>&nbsp;</td>
+        </tr><tr valign=top align=left>
+          <td>Emulate Release 1.6 interface<code>&nbsp;&nbsp;&nbsp;&nbsp;</code></td>
+          <td><code>H5Rget_obj_type1</code>&nbsp;</td>
+        </tr><tr valign=top align=left>
+          <td colspan=2><hr><u><a href="APICompatMacros.html#FunctionLevelSettings">Function-level macros</a></u></td>
+        </tr><tr valign=top align=left>
+          <td><code>H5Rget_obj_type_vers = 2</code></td>
+          <td><code>H5Rget_obj_type2</code></td>
+        </tr><tr valign=top align=left>
+          <td><code>H5Rget_obj_type_vers = 1</code></td>
+          <td><code>H5Rget_obj_type1</code></td>
+        </tr>
+      </table>
+      </dir>
+      
+<!-- NEW PAGE -->
+  <p>
+<dt><strong>Fortran90 Interface:</strong> h5rget_object_type_f
+    <dd>
+
+        <a name="H5R2028F03292fh5rget5fobject5ftype5fobj5ff5fF90"></a>
+<a name="robo51"></a>
+
+<strong>Signature:</strong></p>
+<pre class="source">  SUBROUTINE h5rget_object_type_f(loc_id, ref, obj_type, hdferr)
+    INTEGER(HID_T)    , INTENT(IN)  :: loc_id
+    TYPE(hobj_ref_t_f), INTENT(IN)  :: ref
+    INTEGER           , INTENT(OUT) :: obj_type
+    INTEGER           , INTENT(OUT) :: hdferr
+</pre>
+<p class="item_name"><strong>Inputs:</strong></p>
+<pre>  loc_id   - Identifier for the dataset containing the reference or
+             for the group that dataset is in.
+  ref_type - Type of reference to query.
+  ref      - Reference to query.
+</pre>
+<p class="item_name"><strong>Outputs:</strong></p>
+<pre>  obj_type - Type of referenced object. 
+               H5G_UNKNOWN_F 
+               H5G_LINK_F      
+               H5G_GROUP_F     
+               H5G_DATASET_F   
+               H5G_TYPE_F      
+
+  hdferr   - Returns 0 if successful and -1 if fails
+</pre>
+
+
+  <p>
+<dt><strong>Fortran2003 Interface:</strong> h5rget_object_type_f
+    <dd>
+
+        <a name="H5R2028F03292fh5rget5fobject5ftype5ff5fF03"></a>
+<a name="robo50"></a>
+
+<strong>Signature:</strong></p>
+<pre class="source">  SUBROUTINE h5rget_object_type_f(loc_id, ref_type, ref, obj_type, hdferr)
+    INTEGER(HID_T), INTENT(IN)  :: loc_id
+    INTEGER       , INTENT(IN)  :: ref_type
+    TYPE(C_PTR)   , INTENT(IN)  :: ref
+    INTEGER       , INTENT(OUT) :: obj_type
+    INTEGER       , INTENT(OUT) :: hdferr
+</pre>
+<p class="item_name"><strong>Inputs:</strong></p>
+<pre>  loc_id   - Identifier for the dataset containing the reference or
+             for the group that dataset is in.
+  ref_type - Type of reference to query.
+  ref      - Reference to query.
+</pre>
+<p class="item_name"><strong>Outputs:</strong></p>
+<pre>  obj_type - Type of referenced object. 
+               H5G_UNKNOWN_F 
+               H5G_LINK_F      
+               H5G_GROUP_F     
+               H5G_DATASET_F   
+               H5G_TYPE_F      
+
+  hdferr   - Returns 0 if successful and -1 if fails
+</pre>
+
+
+<!-- NEW PAGE -->
+  <p>
+<dt><strong>History:</strong>
+    <dd><table width="90%">
+        <tr>
+          <td valign="top" align="left" width="10%">
+            <strong>Release</strong>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <td valign="top" align="left">
+            <strong>Change</strong></td></tr>
+        <tr>
+          <td valign="top">1.8.8</td>
+          <td valign="top">
+            Fortran updated to Fortran2003.</td></tr>
+        <tr>
+          <td valign="top">1.8.0</td>
+          <td valign="top">The C function 
+            <code>H5Rget_obj_type</code> renamed to <code>H5Rget_obj_type1</code> 
+            and deprecated in this release.
+            <br>
+            The C macro <code>H5Rget_obj_type</code> 
+            and the C function <code>H5Rget_obj_type2</code>
+            introduced in this release.</td></tr>
+    </table>
+</dl>
+
+
+
+
+<!--
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+  * Copyright by The HDF Group.                                               *
+  * Copyright by the Board of Trustees of the University of Illinois.         *
+  * All rights reserved.                                                      *
+  *                                                                           *
+  * This file is part of HDF5.  The full HDF5 copyright notice, including     *
+  * terms governing use, modification, and redistribution, is contained in    *
+  * the files COPYING and Copyright.html.  COPYING can be found at the root   *
+  * of the source code distribution tree; Copyright.html can be found at the  *
+  * root level of an installed copy of the electronic HDF5 document set and   *
+  * is linked from the top-level documents page.  It can also be found at     *
+  * http://hdfgroup.org/HDF5/doc/Copyright.html.  If you do not have          *
+  * access to either file, you may request a copy from help@hdfgroup.org.     *
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ -->
+
+
+<!-- NEW PAGE -->
+<!-- HEADER RIGHT "H5Rget_obj_type1" -->
+<hr>
+<dl>
+<dt><strong>Name:</strong> <a name="Reference-GetObjType1">H5Rget_obj_type1</a>
+<dt><strong>Signature:</strong>
+    <dd><em>H5G_obj_t</em> <code>H5Rget_obj_type1</code>(
+    <em>hid_t</em> <code>loc_id</code>,
+    <em>H5R_type_t</em> <code>ref_type</code>,
+    <em>void *</em><code>ref</code>
+    )
+
+<p>
+<dt><strong>Purpose:</strong>
+    <dd>Retrieves the type of object that an object reference points to.
+
+<p>
+<dt><strong>Notice:</Strong>
+  <dd><i>This function has been renamed from <code>H5Rget_obj_type</code>
+      and is deprecated in favor of the macro
+      <a href="RM_H5R.html#Reference-GetObjType"><code>H5Rget_obj_type</code></a>
+      or the function 
+      <a href="RM_H5R.html#Reference-GetObjType2"><code>H5Rget_obj_type2</code></a>.</i>
+
+<p>
+<dt><strong>Description:</strong>
+    <dd>Given an object reference, <code>ref</code>, 
+        <code>H5Rget_obj_type1</code> 
+        returns the type of the referenced object.
+        <p>
+        A <i>reference type</i> is the type of reference, either 
+        an object reference or a dataset region reference.
+        An <i>object reference</i> points to an HDF5 object while
+        a <i>dataset region reference</i> points to a defined region within
+        a dataset.
+        <p>
+        The <i>referenced object</i> is the object the reference points to.
+        The <i>referenced object type</i>, 
+        or the type of the referenced object,
+        is the type of the object that the reference points to.
+        <p>
+        The location identifier, <code>loc_id</code>, is the identifier 
+        for either the dataset containing the object reference or 
+        the group containing that dataset.  
+        <p>
+        Valid reference types, to pass in as <code>ref_type</code>, 
+        include the following:
+        <table border="0">
+            <tr align=left valign=top><td>&nbsp;&nbsp;&nbsp;&nbsp;</td><td>
+                <code>H5R_OBJECT</code></td><td>
+                Object reference
+            </td></tr>
+            <tr align=left valign=top><td>&nbsp;</td><td>
+                <code>H5R_DATASET_REGION&nbsp;&nbsp;</code></td><td>
+                Dataset region reference
+            </td></tr>
+        </table>
+        <p>
+        If the application does not already know the object reference type,
+        that can be determined with three preliminary calls:
+        <ul>
+            <li>Call <code>H5Dget_type</code> on the dataset 
+                containing the reference to get a datatype identifier 
+                for the dataset&rsquo;s datatype.
+            <li>Using that datatype identifier, 
+                <code>H5Tget_class</code> returns a datatype class.
+            <li>If the datatype class is <code>H5T_REFERENCE</code>,  
+                <code>H5Tequal</code> can then be used to determine whether 
+                the reference&rsquo;s datatype is 
+                <code>H5T_STD_REF_OBJ</code> or 
+                <code>H5T_STD_REF_DSETREG</code>:
+            <ul>
+                <li>If the datatype is <code>H5T_STD_REF_OBJ</code>, 
+                    the reference object type is <code>H5R_OBJECT</code>. 
+                <li>If the datatype is <code>H5T_STD_REF_DSETREG</code>,
+                  the reference object type is 
+                    <code>H5R_DATASET_REGION</code>.
+            </ul>
+        </ul>
+        <p>
+        When the function completes successfully, it returns one of 
+        the following valid object type values
+        (defined in <code>H5Gpublic.h</code>):
+        <table border="0">
+            <tr align=left valign=top><td>&nbsp;&nbsp;&nbsp;&nbsp;</td><td>
+                <code>H5G_LINK</code></td><td>
+                Object is a symbolic link.
+            </td></tr>
+            <tr align=left valign=top><td>&nbsp;</td><td>
+                <code>H5G_GROUP</code></td><td>
+                Object is a group.
+            </td></tr>
+            <tr align=left valign=top><td>&nbsp;</td><td>
+                <code>H5G_DATASET&nbsp;&nbsp;</code></td><td>
+                Object is a dataset.
+            </td></tr>
+            <tr align=left valign=top><td>&nbsp;</td><td>
+                <code>H5G_TYPE</code></td><td>
+                Object is a named datatype.
+            </td></tr>
+        </table>
+
+<!-- NEW PAGE -->
+
+<p>
+<dt><strong>Parameters:</strong>
+    <ul><table>
+        <tr>
+            <td valign="top"><em>hid_t</em> <code>loc_id</code></td>
+            <td valign="top">IN: The dataset containing the reference object 
+                or the group containing that dataset.</td></tr>
+        <tr>
+            <td valign="top"><em>H5R_type_t</em>&nbsp;<code>ref_type&nbsp;&nbsp;&nbsp;&nbsp;</code></td>
+            <td valign="top">IN: Type of reference to query.</td></tr>
+        <tr>
+            <td valign="top"><em>void *</em><code>ref</code></td>
+            <td valign="top">IN: Reference to query.</td></tr>
+    </table></ul>
+
+<p>
+<dt><strong>Returns:</strong>
+    <dd>Returns a valid object type if successful;
+        otherwise returns <code>H5G_UNKNOWN</code>.
+
+<p>
+<dt><strong>Fortran90 Interface:</strong> h5rget_object_type_f
+    <dd>See the
+        <a href="RM_H5R.html#Reference-GetObjType">
+        <code>H5Rget_obj_type</code></a> macro description.
+
+<p>
+<dt><strong>History:</strong>
+    <dd><table width="90%">
+        <tr>
+            <td valign="top" align="left" width="10%">
+                <strong>Release</strong>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td valign="top" align="left">
+                <strong>C</strong></td></tr>
+        <tr>
+            <td valign="top">1.6.0</td>
+            <td valign="top">
+                Function introduced in this release.</td></tr>
+        <tr>
+            <td valign="top">1.8.0</td>
+            <td valign="top">Function <code>H5Rget_obj_type</code> renamed to 
+                <code>H5Rget_obj_type1</code> and deprecated in this release.
+                </td></tr>
+    </table>
+</dl>
+ 
+
+
+
+<!--
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+  * Copyright by The HDF Group.                                               *
+  * Copyright by the Board of Trustees of the University of Illinois.         *
+  * All rights reserved.                                                      *
+  *                                                                           *
+  * This file is part of HDF5.  The full HDF5 copyright notice, including     *
+  * terms governing use, modification, and redistribution, is contained in    *
+  * the files COPYING and Copyright.html.  COPYING can be found at the root   *
+  * of the source code distribution tree; Copyright.html can be found at the  *
+  * root level of an installed copy of the electronic HDF5 document set and   *
+  * is linked from the top-level documents page.  It can also be found at     *
+  * http://hdfgroup.org/HDF5/doc/Copyright.html.  If you do not have          *
+  * access to either file, you may request a copy from help@hdfgroup.org.     *
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ -->
+
+
+<!-- NEW PAGE -->
+<!-- HEADER RIGHT "H5Rget_obj_type2" -->
+<hr>
+<dl>
+<dt><strong>Name:</strong> <a name="Reference-GetObjType2">H5Rget_obj_type2</a>
+<dt><strong>Signature:</strong>
+    <dd><em>herr_t</em> <code>H5Rget_obj_type2</code>(
+    <em>hid_t</em> <code>loc_id</code>,
+    <em>H5R_type_t</em> <code>ref_type</code>,
+    <em>void *</em><code>ref</code>,
+    <em>H5O_type_t *</em><code>obj_type</code>
+    )
+<p>
+<dt><strong>Purpose:</strong>
+    <dd>Retrieves the type of object that an object reference points to.
+<p>
+<dt><strong>Description:</strong>
+    <dd>Given an object reference, <code>ref</code>, 
+        <code>H5Rget_obj_type2</code> 
+        retrieves the type of the referenced object in <code>obj_type</code>.
+        <p>
+        A <i>reference type</i> is the type of reference, either 
+        an object reference or a dataset region reference.
+        An <i>object reference</i> points to an HDF5 object while
+        a <i>dataset region reference</i> points to a defined region within
+        a dataset.
+        <p>
+        The <i>referenced object</i> is the object the reference points to.
+        The <i>referenced object type</i>, 
+        or the type of the referenced object,
+        is the type of the object that the reference points to.
+        <p>
+        The location identifier, <code>loc_id</code>, is the identifier 
+        for either the dataset containing the object reference or 
+        the group containing that dataset.  
+        <p>
+        Valid reference types, to pass in as <code>ref_type</code>, 
+        include the following:
+        <table border="0">
+            <tr align=left valign=top><td>&nbsp;&nbsp;&nbsp;&nbsp;</td><td>
+                <code>H5R_OBJECT</code></td><td>
+                Object reference
+            </td></tr>
+            <tr align=left valign=top><td>&nbsp;</td><td>
+                <code>H5R_DATASET_REGION&nbsp;&nbsp;</code></td><td>
+                Dataset region reference
+            </td></tr>
+        </table>
+        <p>
+        If the application does not already know the object reference type,
+        that can be determined with three preliminary calls:
+        <ul>
+            <li>Call <code>H5Dget_type</code> on the dataset 
+                containing the reference to get a datatype identifier 
+                for the dataset&rsquo;s datatype.
+            <li>Using that datatype identifier, 
+                <code>H5Tget_class</code> returns a datatype class.
+            <li>If the datatype class is <code>H5T_REFERENCE</code>,  
+                <code>H5Tequal</code> can then be used to determine whether 
+                the reference&rsquo;s datatype is 
+                <code>H5T_STD_REF_OBJ</code> or 
+                <code>H5T_STD_REF_DSETREG</code>:
+            <ul>
+                <li>If the datatype is <code>H5T_STD_REF_OBJ</code>, 
+                    the reference object type is <code>H5R_OBJECT</code>. 
+                <li>If the datatype is <code>H5T_STD_REF_DSETREG</code>,
+                  the reference object type is 
+                    <code>H5R_DATASET_REGION</code>.
+            </ul>
+        </ul>
+        <p>
+        When the function completes successfully, it returns one of 
+        the following valid object type values
+        (defined in <code>H5Opublic.h</code>):
+        <table border="0">
+            <tr align=left valign=top><td>&nbsp;</td><td>
+                <code>H5O_TYPE_GROUP</code></td><td>
+                Object is a group.
+            </td></tr>
+            <tr align=left valign=top><td>&nbsp;</td><td>
+                <code>H5O_TYPE_DATASET&nbsp;&nbsp;</code></td><td>
+                Object is a dataset.
+            </td></tr>
+            <tr align=left valign=top><td>&nbsp;</td><td>
+                <code>H5O_TYPE_NAMED_DATATYPE</code></td><td>
+                Object is a named datatype.
+            </td></tr>
+        </table>
+<p>
+<dt><strong>Parameters:</strong>
+    <dd><table>
+        <tr>
+            <td valign="top"><em>hid_t</em> <code>loc_id</code></td>
+            <td valign="top">IN: The dataset containing the reference object 
+                or the group containing that dataset.</td></tr>
+        <tr>
+            <td valign="top"><em>H5R_type_t</em>&nbsp;<code>ref_type&nbsp;&nbsp;&nbsp;&nbsp;</code></td>
+            <td valign="top">IN: Type of reference to query.</td></tr>
+        <tr>
+            <td valign="top"><em>void *</em><code>ref</code></td>
+            <td valign="top">IN: Reference to query.</td></tr>
+        <tr>
+            <td valign="top"><em>H5O_type_t *</em><code>obj_type</code></td>
+            <td valign="top">OUT: Type of referenced object.</td></tr>
+    </table>
+
+<!-- NEW PAGE -->
+
+<p>
+<dt><strong>Returns:</strong>
+    <dd>Returns a non-negative value if successful;
+        otherwise returns a negative value.
+<p>
+<dt><strong>Fortran90 Interface:</strong> h5rget_object_type_f
+    <dd>See the
+        <a href="RM_H5R.html#Reference-GetObjType">
+        <code>H5Rget_obj_type</code></a> macro description.
+<p>
+<dt><strong>History:</strong>
+    <ul><table width="90%">
+        <tr>
+            <td valign="top" align="left" width="10%">
+                <strong>Release</strong>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td valign="top" align="left">
+                <strong>C</strong></td></tr>
+        <tr>
+            <td valign="top">1.8.0</td>
+            <td valign="top">
+                Function introduced in this release.</td></tr>
+    </table></ul>
+</dl>
+ 
+
+
+
+<!--
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+  * Copyright by The HDF Group.                                               *
+  * Copyright by the Board of Trustees of the University of Illinois.         *
+  * All rights reserved.                                                      *
+  *                                                                           *
+  * This file is part of HDF5.  The full HDF5 copyright notice, including     *
+  * terms governing use, modification, and redistribution, is contained in    *
+  * the files COPYING and Copyright.html.  COPYING can be found at the root   *
+  * of the source code distribution tree; Copyright.html can be found at the  *
+  * root level of an installed copy of the electronic HDF5 document set and   *
+  * is linked from the top-level documents page.  It can also be found at     *
+  * http://hdfgroup.org/HDF5/doc/Copyright.html.  If you do not have          *
+  * access to either file, you may request a copy from help@hdfgroup.org.     *
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ -->
+
+
+<!-- NEW PAGE -->
+<!-- HEADER RIGHT "H5Rget_region" -->
+<hr>
+<dl>
+
+  <dt><div align=right><font color=999999 size=-1><i>
+  Last modified: 14 October 2014</i></font></div></dt>
+
+ 
+<dt><strong>Name:</strong> <a name="Reference-GetRegion">H5Rget_region</a> 
+</dt>
+<br />
+<dt><strong>Signature:</strong> 
+    <dd><em>hid_t</em> <code>H5Rget_region</code>(
+        <em>hid_t</em> <code>loc_id</code>, 
+        <em>H5R_type_t</em> <code>ref_type</code>, 
+        <em>void *</em><code>ref</code> 
+        ) 
+<p>
+<dt><strong>Purpose:</strong> 
+    <dd>Sets up a dataspace and selection as specified by a region reference. 
+<p>
+<dt><strong>Description:</strong> 
+    <dd><code>H5Rget_region</code> creates a copy of the dataspace 
+        of the dataset pointed to by a region reference, <code>ref</code>, 
+        and defines a selection matching the selection pointed to by 
+        <code>ref</code> within the dataspace copy.
+        <p>
+        <code>loc_id</code> is used to identify the file containing the
+        referenced region; it can be a file identifier or 
+        an identifier for any object in the file. 
+        <p>
+        The parameter <code>ref_type</code> specifies the reference type of 
+        <code>ref</code> and must contain the following value:
+        <ul>
+            <li><code>H5R_DATASET_REGION</code> (<code>1</code>) 
+        </ul>
+
+        <p>Use <code>H5Sclose</code> to release the dataspace identifier 
+        returned by this function when the identifier is no longer 
+        needed.</p>
+
+<p>
+<dt><strong>Parameters:</strong> 
+    <dd>
+    <table>
+        <tr> 
+            <td valign="top"><em>hid_t</em> <code>loc_id</code></td>
+            <td valign="top">IN: File identifier 
+                or identifier for any object in the 
+                file containing the referenced region</td>
+        </tr>
+        <tr> 
+            <td valign="top"><em>H5R_type_t</em>&nbsp;<code>ref_type&nbsp;&nbsp;&nbsp;&nbsp;</code></td>
+            <td valign="top">IN: Reference type of <code>ref</code>, 
+                which must be <code>H5R_DATASET_REGION</code></td>
+        </tr>
+        <tr> 
+            <td valign="top"><em>void *</em><code>ref</code></td>
+            <td valign="top">IN: Region reference to open</td>
+        </tr>
+    </table>
+<p>
+<dt><strong>Returns:</strong> 
+    <dd>Returns a valid dataspace identifier if successful; 
+        otherwise returns a negative value. 
+<p>
+<dt><strong>Fortran90 Interface:</strong> h5rget_region_f 
+    <dd> 
+    <pre>
+SUBROUTINE h5rget_region_f(obj_id, ref, space_id, hdferr) 
+  IMPLICIT NONE
+  INTEGER(HID_T), INTENT(IN) :: obj_id        ! Object identifier 
+  TYPE(hdset_reg_ref_t_f), INTENT(IN) :: ref  ! Dataset region reference 
+  INTEGER(HID_T), INTENT(OUT) :: space_id     ! Space identifier 
+  INTEGER, INTENT(OUT) :: hdferr              ! Error code 
+                                              ! 0 on success and -1 on failure
+ 
+END SUBROUTINE h5rget_region_f
+    </pre>
+
+  <dt><strong>See Also:</a></strong></dt>
+    <dd>
+    <a href="http://www.hdfgroup.org/HDF5/doc/Advanced/UsingIdentifiers/index.html">
+    &ldquo;Using Identifiers&rdquo;</a></dd>
+
+
+
+</dl>
+
+
+
+<!-- HEADER RIGHT " " -->
+<!-- #BeginLibraryItem "/ed_libs/NavBar_RM.lbi" -->
+<hr>
+<center>
+<table border=0 width=98%>
+<tr><td valign=top align=left>
+<a href="../index.html">HDF5 documents and links</a>&nbsp;<br>
+<a href="../H5.intro.html">Introduction to HDF5</a>&nbsp;<br>
+<a href="../UG/HDF5_Users_Guide-Responsive HTML5/index.html">HDF5 User&rsquo;s Guide</a>&nbsp;<br>
+<!--
+<a href="Glossary.html">Glossary</a><br>
+-->
+</td>
+<td valign=top align=right>
+In the 
+<a href="RM_H5Front.html">HDF5 Reference Manual</a>&nbsp;
+<font size=-1>
+<br>
+<a href="../HL/RM_H5DS.html">H5DS</a>&nbsp;&nbsp;
+<a href="../HL/RM_H5IM.html">H5IM</a>&nbsp;&nbsp;
+<a href="../HL/RM_H5LT.html">H5LT</a>&nbsp;&nbsp;
+<a href="../HL/RM_H5PT.html">H5PT</a>&nbsp;&nbsp;
+<a href="../HL/RM_H5TB.html">H5TB</a>&nbsp;
+<a href="../HL/RM_HDF5Optimized.html">Optimized</a>&nbsp;
+<br>
+<a href="RM_H5.html">H5</a>&nbsp;&nbsp;
+<a href="RM_H5A.html">H5A</a>&nbsp;&nbsp;
+<a href="RM_H5D.html">H5D</a>&nbsp;&nbsp;
+<a href="RM_H5E.html">H5E</a>&nbsp;&nbsp;
+<a href="RM_H5F.html">H5F</a>&nbsp;&nbsp;
+<a href="RM_H5G.html">H5G</a>&nbsp;&nbsp;
+<a href="RM_H5I.html">H5I</a>&nbsp;&nbsp;
+<a href="RM_H5L.html">H5L</a>&nbsp;
+<br>
+<a href="RM_H5O.html">H5O</a>&nbsp;&nbsp;
+<a href="RM_H5P.html">H5P</a>&nbsp;&nbsp;
+<a href="RM_H5PL.html">H5PL</a>&nbsp;&nbsp;
+<a href="RM_H5R.html">H5R</a>&nbsp;&nbsp;
+<a href="RM_H5S.html">H5S</a>&nbsp;&nbsp;
+<a href="RM_H5T.html">H5T</a>&nbsp;&nbsp;
+<a href="RM_H5Z.html">H5Z</a>&nbsp;
+<br>
+<a href="Tools.html">Tools</a>&nbsp;&nbsp;
+<a href="PredefDTypes.html">Datatypes</a>&nbsp;&nbsp;
+<a href="../fortran/index.html">Fortran</a>&nbsp;&nbsp;
+<a href="APICompatMacros.html">Compatibility Macros</a>&nbsp;
+<br>
+<a href="CollectiveCalls.html">Collective Calls in Parallel</a>&nbsp;
+<!--
+<br>
+<i><font size=-1>(Printable <a href="http://hdfgroup.org/HDF5/doc/PSandPDF/HDF5_RefManual.PDF">PDF</a> of this Reference Manual)</font></i>&nbsp;
+-->
+</font>
+</td></tr>
+</table>
+</center>
+<hr>
+<!-- #EndLibraryItem -->
+
+
+<!-- INCLUDE VIA PHP FROM <doc_root>/ed_libs/Footer2.htm -->
+
+<address>
+<table width="100%" border="0">
+  <tr valign="top">
+      <td align="left">
+          <address>
+          The HDF Group Help Desk: <img src="../Graphics/help.png" align=top height=16>
+          <br>
+          Describes HDF5 Release 1.10.
+          </address>
+      </td><td width="5%">&nbsp;</td>
+      <td align="right">
+          <a href="https://support.hdfgroup.org/ftp/HDF5/releases/COPYING">Copyright</a> by
+          <a href="https://www.hdfgroup.org">The HDF Group</a>
+          <br>
+          and the Board of Trustees of the University of Illinois
+      </td>   
+  </tr>   
+</table>
+</address>
+
+<!-- END PHP INCLUDE FROM <doc_root>/ed_libs/Footer2.htm -->
+
+
+<SCRIPT LANGUAGE="JAVASCRIPT">
+<!--
+document.writeln("Last modified: February 2017");
+-->
+</SCRIPT> 
+
+</body>
+</html>
+

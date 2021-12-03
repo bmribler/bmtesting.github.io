@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- HDF4map_inline_representations -->
+<xs:schema xmlns:h4="/HDF4/XML/schema/HDF4map/1.0.1" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="/HDF4/XML/schema/HDF4map/1.0.1" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0.1">
+    <!-- 
+        Global definitions related to how lists of numeric data values can appear inline in 
+        HDF4 File Content Maps.
+    -->
+    <!-- 
+        byte8ListT, ubyte8ListT, int8ListT, uint8ListT, int16ListT, uint16ListT, int32ListT, uint32ListT,
+        float32ListT, float64ListT: Simple list types for all the numeric atomic types supported by HDF4. 
+
+        Used to build the numericValueListT.
+
+        All of the HDF4 atomic types, except for h4:char8, are considered to be numeric types.
+        A list of h4:char8 should be interpreted as a String and is not considered a numeric list.
+    -->
+    <xs:simpleType name="byte8ListT">
+        <xs:list itemType="xs:byte"/>
+    </xs:simpleType>
+    <xs:simpleType name="ubyte8ListT">
+        <xs:list itemType="xs:unsignedByte"/>
+    </xs:simpleType>
+    <xs:simpleType name="int8ListT">
+        <xs:list itemType="xs:byte"/>
+    </xs:simpleType>
+    <xs:simpleType name="uint8ListT">
+        <xs:list itemType="xs:unsignedByte"/>
+    </xs:simpleType>
+    <xs:simpleType name="int16ListT">
+        <xs:list itemType="xs:short"/>
+    </xs:simpleType>
+    <xs:simpleType name="uint16ListT">
+        <xs:list itemType="xs:unsignedShort"/>
+    </xs:simpleType>
+    <xs:simpleType name="int32ListT">
+        <xs:list itemType="xs:int"/>
+    </xs:simpleType>
+    <xs:simpleType name="uint32ListT">
+        <xs:list itemType="xs:unsignedInt"/>
+    </xs:simpleType>
+    <xs:simpleType name="float32ListT">
+        <xs:list itemType="xs:float"/>
+    </xs:simpleType>
+    <xs:simpleType name="float64ListT">
+        <xs:list itemType="xs:double"/>
+    </xs:simpleType>
+    <!-- 
+        numericValueListT: Numeric Value List element type
+
+        Used to verify that inline lists contain valid numeric values.
+    -->
+    <xs:simpleType name="numericValueListT">
+        <xs:union memberTypes="h4:byte8ListT h4:ubyte8ListT h4:int8ListT h4:uint8ListT h4:int16ListT h4:uint16ListT 
+                               h4:int32ListT h4:uint32ListT h4:float32ListT h4:float64ListT"/>
+    </xs:simpleType>
+</xs:schema>

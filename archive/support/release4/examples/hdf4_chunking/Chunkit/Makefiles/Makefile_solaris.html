@@ -1,0 +1,29 @@
+
+# set the location of your C compiler
+CC = /opt/SUNWspro/bin/cc
+
+# compiler options 
+CCOPTS = -Xc -xO2 -O -s
+# CCOPTS = -Xc -g 
+
+#set the appropriate directory locations
+HDF_INCLUDE_DIR = /afs/ncsa.uiuc.edu/packages/hdf/SunOS_5.5/include
+HDF_LIB_DIR = /afs/ncsa.uiuc.edu/packages/hdf/SunOS_5.5/lib
+
+
+##########################################################################
+#Do not change anything below this line unless you are absolutely sure!  #
+
+HDF_LIBS = -lmfhdf -ldf -ljpeg -lz -lm -lnsl
+
+chunkit: chunkit.o
+	$(CC) $(CCOPTS) chunkit.o -o ../bin/chunkit \
+	-I$(HDF_INCLUDE_DIR) -L$(HDF_LIB_DIR) $(HDF_LIBS) 
+
+chunkit.o: chunkit.c
+	$(CC) $(CCOPTS) -c chunkit.c -I$(HDF_INCLUDE_DIR) -L$(HDF_LIB_DIR) \
+	$(HDF_LIBS) 
+
+clean:
+	rm ../bin/chunkit chunkit.o
+

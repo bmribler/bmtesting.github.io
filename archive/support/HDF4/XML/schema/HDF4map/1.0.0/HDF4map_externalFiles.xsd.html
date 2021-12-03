@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- HDF4map_externalFiles -->
+<xs:schema xmlns:h4="/HDF4/XML/schema/HDF4map/1.0.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="/HDF4/XML/schema/HDF4map/1.0.0" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0.0">
+    <!--    Include other h4 schema documents -->
+    <xs:include schemaLocation="HDF4map_fileInformation_representations.xsd"/>
+    <!-- 
+        Global definitions related to ExternalFile element
+
+        The ExternalFile element contains information about a file that is referenced by the companion HDF4 file.
+        The external file, which need not be in HDF4 format, holds some data associated with the companion HDF4 file.
+        Data in Tables, Arrays, and Rasters may be stored in external files.
+
+        HDF4 leaves it to the user to ensure that external files are migrated with the HDF4 file so that the data they
+        contain is not lost.  The externalFileInformation element allows additional informaion to be provided - beyond
+        that in the HDF4 file - to help with the management and preservation of external files.
+    -->
+    <!-- Schema Limitation: The schema currently does not support Raster data stored in external files. -->
+    <!-- NOTE: h4mapwriter currently does not support external files -->
+    <!-- 
+        externalFileT: External File element type
+
+        The filename in the HDF4 External Element Descriptor Record is mapped to the originalFileName attribute. 
+        If an absolute path was specified when the data was written to the external file, then that path will be 
+        part of the originalFileName. 
+
+        The optional externalFileInformation element provides information about the external file that may 
+        be helpful for long-term data preservation.  The contents of this element do not correspond to any HDF4 
+        file content, but are filled in using information or knowledge outside of that contained in the HDF4
+        file. The fileName and fileLocation subelements may be especially useful if an external file has been
+        renamed or moved since the original HDF4 file was created.
+    -->
+    <xs:complexType name="externalFileT">
+        <xs:sequence>
+            <xs:element name="externalFileInformation" type="h4:externalFileInformationT" minOccurs="0"/>
+        </xs:sequence>
+        <xs:attribute name="originalFileName" type="xs:string" use="required"/>
+        <xs:attribute name="id" type="h4:externalFileID" use="required"/>
+    </xs:complexType>
+    <!--
+        externalFileID: External File ID attribute type.
+
+        Uniquely identifies an ExternalFile element in an XML document.
+        Does not correspond to any HDF4 file content.
+        Of the form "ID_EF" followed by an integer.
+    -->
+    <xs:simpleType name="externalFileID">
+        <xs:restriction base="xs:ID">
+            <xs:pattern value="ID_EF\d+"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <!--
+        externalFileIDREF: ExternalFile IDREF attribute type.
+
+        Used to reference an ExternalFile element by its unique External File ID.
+        May appear in tableData, arrayData, or rasterData elements.
+        Schema Limitation: Appearance of dataInExternalFile in rasterData element currently not supported.
+    -->
+    <xs:simpleType name="externalFileIDREF">
+        <xs:restriction base="xs:IDREF">
+            <xs:pattern value="ID_EF\d+"/>
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>

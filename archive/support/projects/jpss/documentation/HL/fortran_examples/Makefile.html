@@ -1,0 +1,53 @@
+##############################################################################
+# 
+# Copyright by The HDF Group.
+# All rights reserved.
+#
+# This file is part of the hl_region High-Level HDF5 APIs.  The full copyright 
+# notice, including terms governing use, modification, and redistribution, 
+# is contained in the file COPYING, which can be found at the root of the
+# source code distribution tree and in the documentation directory (doc/html/). 
+# If you do not have access to this file, you may request a copy of 
+# "the hl_region High-Level HDF5 APIs copyright and license statement" from 
+# help@hdfgroup.org.
+# 
+##############################################################################
+
+#
+LIBS = -L../src -L../../src -lhdf5_hl_region_fortran -lhdf5_hl_region 
+INCLUDES = -I../src -I../../src 
+
+# compiler
+FC = $(HDF5_INSTALL_DIR)/bin/h5fc 
+
+EXEC = ex_bitfield ex_lite_read_region ex_lite_copy_region ex_regref_create ex_regref_read ex_regref_copy_reference ex_ref_to_all
+
+all: $(EXEC)
+
+ex_lite_read_region: ex_lite_read_region.f90
+	$(FC) ex_lite_read_region.f90 -o ex_lite_read_region $(LIBS) $(INCLUDES)
+
+ex_lite_copy_region: ex_lite_copy_region.f90
+	$(FC) ex_lite_copy_region.f90 -o ex_lite_copy_region $(LIBS) $(INCLUDES)
+
+ex_bitfield: ex_bitfield.f90
+	$(FC) ex_bitfield.f90 -o ex_bitfield $(LIBS) $(INCLUDES)
+
+ex_regref_create: ex_regref_create.f90
+	$(FC) ex_regref_create.f90 -o ex_regref_create $(LIBS) $(INCLUDES)
+
+ex_regref_read: ex_regref_read.f90
+	$(FC) ex_regref_read.f90 -o ex_regref_read $(LIBS) $(INCLUDES)
+
+ex_regref_copy_reference: ex_regref_copy_reference.f90
+	$(FC) ex_regref_copy_reference.f90 -o ex_regref_copy_reference $(LIBS) $(INCLUDES)
+
+ex_ref_to_all: ex_ref_to_all.f90
+	$(FC) ex_ref_to_all.f90 -o ex_ref_to_all $(LIBS) $(INCLUDES)
+
+
+tests:
+	./test.sh
+
+clean:
+	\rm -f $(EXEC) *.o *.h5 *.mod 

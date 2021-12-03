@@ -1,0 +1,687 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN"
+        "http://www.w3.org/TR/html4/frameset.dtd">
+<html>
+  <head>
+
+<!--
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+  * Copyright by The HDF Group.                                               *
+  * Copyright by the Board of Trustees of the University of Illinois.         *
+  * All rights reserved.                                                      *
+  *                                                                           *
+  * This file is part of HDF5.  The full HDF5 copyright notice, including     *
+  * terms governing use, modification, and redistribution, is contained in    *
+  * the files COPYING and Copyright.html.  COPYING can be found at the root   *
+  * of the source code distribution tree; Copyright.html can be found at the  *
+  * root level of an installed copy of the electronic HDF5 document set and   *
+  * is linked from the top-level documents page.  It can also be found at     *
+  * http://hdfgroup.org/HDF5/doc/Copyright.html.  If you do not have          *
+  * access to either file, you may request a copy from help@hdfgroup.org.     *
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ -->
+
+<link href="https://support.hdfgroup.org/HDF5/docNewFeatures/ed_styles/RMelect.css" rel="stylesheet" type="text/css">
+    <title>
+      HDF5 SWMR Documentation
+    </title>
+  </head>
+
+<body bgcolor="#ffffff">
+
+<font face="Tahoma, Arial, Verdana, Helvetica, sans-serif" size="3">
+
+<!-- BEGIN MAIN BODY -->
+
+
+
+<table width="100%" cellpadding="0" border="0"> 
+  <tr valign="top" align="left">
+    <td>
+      <a href="http://www.hdfgroup.org">
+      <img src="Graphics/THGnoTextSm.jpg" alt="The HDF Group logo" 
+        border="0" width="75"></a>
+        <font size="+2">The HDF Group</font>
+        </td>
+    <td align="right">
+      <img src="Graphics/binder.jpg" alt="Documentation" 
+        border="0" height="60">
+        </td></tr>
+
+<!--    #888888 is a dark gray (dark gray horizontal line under logo 
+        at top of web page. 
+        #004488 is a dark blue (dark horizontal line at top of web pages). 
+        #d2e6ef is a pale bluish gray or grayish aqua (nav bar background).
+        #fbfbfb is almost white (background for nav bar links) 
+        and is very close to #FFFFFF. 
+        #FF0000 is a bright red (use when troubleshooting).
+-->
+
+<tr><td colspan="2" bgcolor="#888888" height="3"></td></tr>
+
+<tr><td colspan="2" bgcolor="#004488" height="7" valign="bottom">&nbsp;
+<!--
+<font face="Tahoma, Arial, Verdana, Helvetica, sans-serif" size="3">&nbsp;</font>
+-->
+</td></tr>
+
+</table>
+
+<table border="0" width="100%" cellpadding="5">
+<!-- change border value from 1 to 0 when finished editing 2.18.2014 -->
+<tr><td rowspan="3" width="13%" bgcolor="#d2e6ef" valign="top" align="left">
+&nbsp;<br />
+<center>
+<table border="0" cellpadding="10">
+<tr><td bgcolor="#fbfbfb">
+    <center><font size="+1">Other HDF Links</font></center>
+    <hr />
+    <font size="-1">
+    <dl>
+    <dt><a href="../doc.html"
+        target="ExtWin">HDF5 1.10 Documentation</a></dt><br />
+    <dt align="center"><hr size=4 color="gray">
+        <a href="index.html">New Features in HDF5 1.10</a>
+        <hr size=1>
+        </dt>
+    <dt><a href="NewFeaturesAdditionalNewFuncsEtc.html">
+        Additional New APIs</a>
+        </dt><br />
+    <dt><a href="NewFeaturesCollectiveMetadataIoDocs.html">
+        Collective Metadata I/O</a>
+        </dt><br />
+    <dt><a href="NewFeaturesFineTuningMetadataCacheDocs.html">
+        Fine-tuning the Metadata Cache</a>
+        </dt><br />
+    <dt><a href="NewFeaturesFileSpaceMgmtDocs.html">
+        File Space Management</a>
+        </dt><br />
+    <dt><a href="NewFeaturesPageBuffering.html">
+        Page Buffering</a>
+        </dt><br />
+    <dt><a href="NewFeaturesPartialEdgeChunkDocs.html">
+        Partial Edge Chunks</a>
+        </dt><br />
+    <dt><a href="NewFeaturesReferenceDocs.html">
+        Reference</a>
+        </dt><br />
+    <dt><a href="NewFeaturesSwmrDocs.html">
+        SWMR</a>
+        </dt><br />
+    <dt><a href="NewFeaturesVirtualDatasetDocs.html">
+        Virtual Datasets (VDS)</a>
+
+
+    </dl>
+    </font>
+    </td></tr></table></center>
+    </td></tr>
+
+
+
+<!-- 
+The table data element below sets up the middle column 
+between the navigation frame on the left and the content of the 
+web page.
+-->
+<td rowspan="3" bgcolor="#FFFFFF" width="2%">&nbsp;</td>
+
+
+
+<!-- 
+The table data element below is used to hold the content of the 
+web page. 
+-->
+<td bgcolor="#FFFFFF" valign="top" align="center" width="85%">
+
+<table border="0" width="100%">
+<tr>
+<td bgcolor="#fbf3ef" align="center" valign="top" colspan="2">
+    <hr size="1"/>
+    <font size="5" color="#000000">Single-Writer/Multiple-Reader (SWMR) 
+    Documentation
+    </font>
+    <hr size="1"/>
+    </td>
+</tr>
+
+
+
+
+<tr>
+<td bgcolor="#FFFFFF" align="left" valign="top" colspan="2">
+<!--
+    <font size=5 color=#004488>Page Abstract</font>
+    <br />
+-->
+    The purpose of this page is to list and briefly describe the 
+    documentation available to those who will use the 
+    Single-Writer/Multiple-Reader (SWMR) feature found in the 
+    HDF5 Library. The following are the sections 
+    on this page:
+    
+    <ul>
+    <li><a href="NewFeaturesSwmrDocs.html#SwmrUsersGuide">SWMR User&rsquo;s Guide</a></li>
+    <li><a href="NewFeaturesSwmrDocs.html#Hdf5LibraryApis">HDF5 Library APIs</a></li>
+    <li><a href="NewFeaturesSwmrDocs.html#Tools">Tools</a></li>
+    <li><a href="NewFeaturesSwmrDocs.html#SwmrDesignDocuments">SWMR Design Documents</a></li>
+    </ul>
+    
+    
+    
+    
+    
+<!--    
+    The user&rsquo;s guide is listed first. 
+    New APIs and tools are being developed for 
+    the 1.10 release. These are listed in the &ldquo;HDF5 
+    Library APIs&rdquo; and &ldquo;Tools&rdquo; sections below.
+    For background information, see the design documents listed 
+    in the &ldquo;SWMR Design&rdquo; section
+-->
+    </td>
+</tr>
+
+
+
+<tr>
+<td bgcolor="#FFFFFF" valign="top" align="center" colspan="2">
+    &nbsp;</td></tr>
+
+
+
+<tr>
+<td bgcolor="#FFFFFF" align="left" valign="top" colspan="2">
+    <font size="5" color="#004488"><a name="SwmrUsersGuide">
+    SWMR User&rsquo;s Guide</a></font>
+    </td></tr>
+
+
+
+<tr>
+    <td align="left" valign="top" colspan="2">
+    The <a href="SWMR/HDF5_SWMR_Users_Guide.pdf">
+    <em>HDF5 Single-Writer/Multiple-Reader User&rsquo;s Guide</em></a>
+    describes HDF5&rsquo;s SWMR feature and describes 
+    how to use the feature. The feature allows concurrent access of HDF5 
+    files by writer and reader processes. 
+    </td>
+</tr>
+
+
+
+<tr>
+<td bgcolor="#FFFFFF" valign="top" colspan="2">
+    &nbsp;</td></tr>
+
+
+
+<tr>
+<td bgcolor="#FFFFFF" valign="top" colspan="2">
+    <br />
+    <font size="5" color="#004488"><a name="Hdf5LibraryApis">
+    HDF5 Library APIs</a></font>
+    </td></tr>
+
+
+
+<tr>
+    <td align="left" valign="top" colspan="2">
+    The APIs listed below will be incorporated into the 
+    <i>HDF5 Reference Manual</i> when the SWMR feature 
+    is fully released.
+    </td>
+</tr>
+
+
+
+
+
+
+
+
+
+
+
+<!-- start nested table -->
+<tr><td><table>
+<tr><td bgcolor="#FFFFFF" colspan="2">&nbsp;</td></tr>
+
+
+
+<tr>
+    <td valign="top" width="25%">
+    <a href="../doc/RM/RM_H5F.html#File-StartSwmrWrite">
+    H5Fstart_swmr_write</a></td>
+    <td valign="top" width="75%">
+    Enables SWMR writing mode for a file.</td>
+</tr>
+
+<tr><td bgcolor="#FFFFFF" colspan="2">&nbsp;</td></tr>
+
+
+
+<tr>
+    <td valign="top">
+    <a href="../doc/HL/RM_HDF5Optimized.html#H5DOappend">
+    H5DOappend</a></td>
+    <td valign="top">
+    Appends data to a dataset along a specified dimension.</td>
+</tr>
+
+<tr><td bgcolor="#FFFFFF" colspan="2">&nbsp;</td></tr>
+
+
+
+<tr>
+    <td>
+    <a href="../doc/RM/RM_H5P.html#Property-GetAppendFlush">
+    H5Pget_append_flush</a> 
+    </td>
+    <td>
+    Retrieves the values of the append property that is set up in the 
+    dataset access property list. 
+    </td>
+</tr>
+
+<tr><td bgcolor="#FFFFFF" colspan="2">&nbsp;</td></tr>
+
+
+
+<tr>
+    <td>
+    <a href="../doc/RM/RM_H5P.html#Property-SetAppendFlush">
+    H5Pset_append_flush</a> 
+    </td>
+    <td>
+    Sets two actions to perform when the size of a dataset&rsquo;s 
+    dimension being appended reaches a specified boundary. 
+    </td>
+</tr>
+
+<tr><td bgcolor="#FFFFFF" colspan="2">&nbsp;</td></tr>
+
+
+
+<tr>
+    <td>
+    <a href="../doc/RM/RM_H5P.html#Property-GetObjectFlushCb">
+    H5Pget_object_flush_cb</a> 
+    </td>
+    <td>
+    Retrieves the object flush property values from the file access 
+    property list.
+    </td>
+</tr>
+
+<tr><td bgcolor="#FFFFFF" colspan="2">&nbsp;</td></tr>
+
+
+
+<tr>
+    <td>
+    <a href="../doc/RM/RM_H5P.html#Property-SetObjectFlushCb">
+    H5Pset_object_flush_cb</a> 
+    </td>
+    <td>
+    Sets a callback function to invoke when an object flush occurs in 
+    the file.
+    </td>
+</tr>
+
+<tr><td bgcolor="#FFFFFF" colspan="2">&nbsp;</td></tr>
+
+
+
+<tr>
+    <td>
+    <a href="../doc/RM/RM_H5O.html#Object-DisableMdcFlushes">
+    H5Odisable_mdc_flushes</a> 
+    </td>
+    <td>
+    Prevents metadata entries for an HDF5 object from being flushed from 
+    the metadata cache to storage.
+    </td>
+</tr>
+
+<tr><td bgcolor="#FFFFFF" colspan="2">&nbsp;</td></tr>
+
+
+
+<tr>
+    <td>
+    <a href="../doc/RM/RM_H5O.html#Object-EnableMdcFlushes">
+    H5Oenable_mdc_flushes</a> 
+    </td>
+    <td>
+    Returns the cache entries associated with an HDF5 object to the 
+    default metadata flush and eviction algorithm.
+    </td>
+</tr>
+
+<tr><td bgcolor="#FFFFFF" colspan="2">&nbsp;</td></tr>
+
+
+
+<tr>
+    <td>
+    <a href="../doc/RM/RM_H5O.html#Object-AreMdcFlushesDisabled">
+    H5Oare_mdc_flushes_disabled</a> 
+    </td>
+    <td>
+    Determines if an HDF5 object (dataset, group, committed 
+    datatype) has had flushes of metadata entries disabled. 
+    </td>
+</tr>
+
+<!-- UNIMPLEMENTED FUNCTIONS ---- ---- ---- ---- ---- ---- ---- ----
+
+<tr><td bgcolor="#FFFFFF" colspan="2">&nbsp;</td></tr>
+
+
+
+<tr>
+    <td>
+    <a href="SWMR/H5Fdisable_mdc_flushes.htm">
+    H5Fdisable_mdc_flushes</a> 
+    </td>
+    <td>
+    Globally prevents dirty metadata entries from being flushed from 
+    the metadata cache to storage. 
+    </td>
+</tr>
+
+<tr><td bgcolor="#FFFFFF" colspan="2">&nbsp;</td></tr>
+
+
+
+<tr>
+    <td>
+    <a href="SWMR/H5Fenable_mdc_flushes.htm">
+    H5Fenable_mdc_flushes</a> 
+    </td>
+    <td>
+    Returns a file&rsquo;s metadata cache to the standard eviction and 
+    flushing algorithm. 
+    </td>
+</tr>
+
+<tr><td bgcolor="#FFFFFF" colspan="2">&nbsp;</td></tr>
+
+
+
+<tr>
+    <td>
+    <a href="SWMR/H5Fare_mdc_flushes_disabled.htm">
+    H5Fare_mdc_flushes_disabled</a> 
+    </td>
+    <td>
+    Determines if flushes have been globally disabled for a 
+    file&rsquo;s metadata cache. 
+    </td>
+</tr>
+
+<tr><td bgcolor="#FFFFFF" colspan="2">&nbsp;</td></tr>
+
+
+
+<tr>
+    <td>
+    <a href="SWMR/H5Fget_mdc_flush_disabled_obj_ids.htm">
+    H5Fget_mdc_flush_disabled_obj_ids</a> 
+    </td>
+    <td>
+    Returns a list of all object identifiers for which flushes have 
+    been disabled in a file&rsquo;s metadata cache. 
+    </td>
+</tr>
+
+---- ---- ---- ---- ---- ---- ---- ---- UNIMPLEMENTED FUNCTIONS -->
+
+
+<tr><td bgcolor="#FFFFFF" colspan="2">&nbsp;</td></tr>
+</table></td></tr>
+<!-- end nested table -->
+
+
+
+
+
+
+
+
+<tr><td bgcolor="#FFFFFF" colspan="2">&nbsp;</td></tr>
+
+
+
+<tr>
+<td bgcolor="#FFFFFF" align="left" valign="top" colspan="2">
+    <font size="5" color="#004488"><a name="Tools">Tools</a></font>
+    </td></tr>
+
+
+
+<tr>
+    <td align="left" valign="top" colspan="2">
+    The tools listed below will be incorporated into the 
+    <i>HDF5 Reference Manual</i> when they are fully released.
+    </td></tr>
+
+
+
+<tr><td bgcolor="#FFFFFF" colspan="2">&nbsp;</td></tr>
+
+
+
+<tr>
+    <td colspan="2">
+    <table border="0" width="100%" cellpadding="5">
+    <tr> 
+    <td align="left" valign="top" width="15%">
+    <a href="../doc/RM/Tools.html#Tools-Watch">
+    h5watch</a> 
+    </td>
+    <td align="left" valign="top" width="85%">
+    Allows users to output new records appended to a dataset as it 
+    grows. In other words, this tool can be used to watch data that 
+    is added to a dataset. The functionality is similar to the 
+    Unix user command <code>tail</code> with the follow option, which 
+    outputs appended data as the file grows.  
+    </td>
+    </tr>
+
+    <tr> 
+    <td align="left" valign="top">
+    <a href="../doc/RM/Tools.html#Tools-FormatConvert">
+    h5format_convert</a> 
+    </td>
+    <td align="left" valign="top">
+    Allows users to convert the indexing type of a chunked dataset 
+    made with a 1.10.x version of the HDF5 Library to the 1.8.x 
+    version 1 B-tree indexing type.
+    </td>
+    </tr>
+
+    <tr> 
+    <td align="left" valign="top">
+    <a href="../doc/RM/Tools.html#Tools-Clear">
+    h5clear</a> 
+    </td>
+    <td align="left" valign="top">
+    Allows users to clear the file consistency flags field in the 
+    superblock of a file.
+    </td>
+    </tr>
+
+    </table>
+    </td>
+</tr>
+
+
+
+<tr><td bgcolor="#FFFFFF" colspan="2">&nbsp;</td></tr>
+
+
+
+<tr>
+    <td bgcolor="#FFFFFF" valign="top" colspan="2">
+    <br />
+    <font size="5" color="#004488"><a name="SwmrDesignDocuments">
+    SWMR Design Documents</a></font>
+    </td></tr>
+
+
+
+<tr>
+    <td align="left" valign="top" colspan="2">
+    The SWMR design documents, listed below, describe how the feature 
+    works and why design choices were made.
+    </td></tr>
+
+
+
+<tr><td bgcolor="#FFFFFF" colspan="2">&nbsp;</td></tr>
+
+
+
+
+<tr>
+<table border="0" width="100%" cellpadding="5">
+
+<tr>
+    <td width="40%" valign="top" align="left">
+    <a href="SWMR/Design-Metadata-Cache-Issues-Retries-SWMR-v3.pdf">
+    Metadata Cache Issues under SWMR and their Solutions</a>
+    </td>
+    <td width="60%" valign="top" align="left">
+    The HDF5 Library contains a cache that provides more efficient 
+    access to HDF5 file metadata. Although helpful in most instances, 
+    this cache can cause problems when the 
+    single-writer/multiple-reader (SWMR) data access pattern is 
+    used to access an HDF5 file. Additionally, there are even 
+    deeper I/O issues that can affect HDF5 file metadata operations. 
+    This document describes the cache-oriented problems that the 
+    HDF5 Library must overcome in order to implement the SWMR 
+    feature as well as our solutions.
+    </td>
+</tr>
+
+<tr><td bgcolor="#FFFFFF" valign="top" colspan="2">&nbsp;</td></tr>
+
+<tr>
+    <td valign="top" align="left">
+    <a href="SWMR/Design-HDF5-SWMR-functions.pdf">
+    Improvements for SWMR File Access and Dataset Append</a> 
+    </td>
+    <td valign="top" align="left">
+    This document describes changes to the HDF5 Library that improve the 
+    SWMR (Single-Writer/Multiple-Reader) file access model and provide 
+    better support for dataset append operations.
+    </td>
+</tr>
+
+
+
+<tr><td bgcolor="#FFFFFF" colspan="2">&nbsp;</td></tr>
+
+
+
+<tr>
+    <td valign="top" align="left">
+    <a href="SWMR/Design-HDF5-SWMR-20130629.v5.2.pdf">
+    HDF5 Single-Writer/Multiple-Reader Feature Design and Semantics</a> 
+    </td>
+    <td valign="top" align="left">
+    This document describes the design and semantics of HDF5&rsquo;s 
+    single-writer/multiple-reader (SWMR) feature. This feature allows 
+    multiple reader processes to inspect a file that is concurrently 
+    being written to by a single writer process without requiring any 
+    inter-process communication.    </td>
+</tr>
+
+
+
+<tr><td bgcolor="#FFFFFF" colspan="2">&nbsp;</td></tr>
+
+
+
+<tr>
+    <td valign="top" align="left">
+    <a href="SWMR/Design-HDF5-FileLocking.pdf">
+    File Locking under SWMR – Semantics, Programming Model, and 
+    Implementation</a> 
+    </td>
+    <td valign="top" align="left">
+    This document describes the design and semantics of how file locking 
+    is used to help prevent inappropriate concurrent file access. This 
+    locking is only intended to help the user conform to SWMR semantics 
+    and is not a fundamental part of SWMR synchronization.
+    </td>
+</tr>
+
+<tr><td bgcolor="#FFFFFF" colspan="2">&nbsp;</td></tr>
+
+
+
+</table></td></tr>
+
+
+
+</table>
+<br />
+
+
+
+<!-- BEGIN FOOTER INFO -->
+
+<br />
+<hr />
+<table border="0" width="100%">
+    <tr><td width="45%" align="left" valign="bottom">
+        <font face="arial,helvetica" size="-1">
+        The HDF Group Help Desk: <img src="Graphics/help.png" align="middle" 
+        height="14" alt="The HDF Group Help Desk"></font>
+<!--
+        <br />
+        Describes HDF5 Release 1.9.x (development snapshots)
+-->
+        <br />
+        <!-- hhmts start -->
+        <font face="arial,helvetica" size="-1">
+        Last modified: February 2017 
+        <!-- hhmts end -->
+
+        <p>
+        </font>
+    </td><td width="10%" rowspan="2">&nbsp;
+    </td><td width="45%" align="right" valign="top" rowspan="2">
+        <font face="arial,helvetica" size="-1">
+        <a href="https://support.hdfgroup.org/ftp/HDF5/releases/COPYING">Copyright</a> by The HDF Group and the Board 
+        <br />
+        of Trustees of the University of Illinois.  
+        <br />
+        All rights reserved.
+        </font>
+<!--
+        <a href="http://www.hdfgroup.org/">
+        <img border=0 src="Graphics/THGwTextSm.jpg" width=130 height="7"8 
+            alt="The HDF Group [Logo]"></a>
+        <a href="http://www.hdfgroup.org/">
+        <img border=0 src="Graphics/THGwTextSm.jpg" width=110 height=65 
+            alt="The HDF Group [Logo]"></a>
+        <a href="http://www.hdfgroup.org/">
+        <img border=0 src="Graphics/THGwTextSm.jpg" width=78 height=48 
+            alt="The HDF Group [Logo]"></a>
+        <a href="http://www.hdfgroup.org/">
+        <img border=0 src="Graphics/THGnoTextSm.jpg" width=78 height=41 
+            alt="The HDF Group [Logo]"></a>
+-->
+    </td></tr>
+</table>
+
+
+
+
+
+
+</body>
+</html>

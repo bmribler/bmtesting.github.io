@@ -1,0 +1,569 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN"
+        "http://www.w3.org/TR/html4/frameset.dtd">
+<html>
+  <head>
+
+<!--
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+  * Copyright by The HDF Group.                                               *
+  * Copyright by the Board of Trustees of the University of Illinois.         *
+  * All rights reserved.                                                      *
+  *                                                                           *
+  * This file is part of HDF5.  The full HDF5 copyright notice, including     *
+  * terms governing use, modification, and redistribution, is contained in    *
+  * the files COPYING and Copyright.html.  COPYING can be found at the root   *
+  * of the source code distribution tree; Copyright.html can be found at the  *
+  * root level of an installed copy of the electronic HDF5 document set and   *
+  * is linked from the top-level documents page.  It can also be found at     *
+  * https://support.hdfgroup.org/ftp/HDF5/releases/COPYING. If you do not have*
+  * access to either file, you may request a copy from help@hdfgroup.org.     *
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ -->
+
+<link href="https://support.hdfgroup.org/HDF5/docNewFeatures/ed_styles/RMelect.css" rel="stylesheet" type="text/css">
+    <title>
+      New Features in HDF5 Release 1.10
+    </title>
+  </head>
+
+<body bgcolor="#ffffff">
+
+<font face="Tahoma, Arial, Verdana, Helvetica, sans-serif" size="3">
+<!-- BEGIN MAIN BODY -->
+
+
+
+<table width="100%" cellpadding="0" border="0"> 
+  <tr valign="bottom" align="left">
+    <td>
+      <a href="http://www.hdfgroup.org">
+      <img src="Graphics/THGnoTextSm.jpg" alt="The HDF Group logo" 
+        border="0" width="75" ></a>
+        <font size="+2">The HDF Group</font>
+      
+    </td><td valign="bottom" align="right">
+      <img src="Graphics/binder.jpg" alt="The HDF Group logo" 
+        border="0" height="60">
+
+        </td></tr>
+
+  <tr><td colspan="2" bgcolor="#888888" height="1"></td></tr>
+
+<tr><td colspan="2" bgcolor="#004488" height="7" valign="bottom">
+<font face="Tahoma, Arial, Verdana, Helvetica, sans-serif" size="3">&nbsp;</font>
+</td></tr>
+
+</table>
+
+
+<table border="0" width="100%" cellpadding="5">
+<tr><td rowspan="3" width="13%" bgcolor="#d2e6ef" valign="top" align="left">
+&nbsp;<br>
+
+<center>
+<table border="0" cellpadding="10">
+
+<tr><td bgcolor="#fbfbfb">
+   <center><font size="+1">Other HDF Links</font></center>
+    <hr>
+<font size="-1">
+    <dl>
+    <dt><a href="../doc.html" 
+        target="ExtWin">HDF5 1.10 Documentation</a></dt><br />
+    <dt align="center"><hr size=4 color="gray">New Features in HDF5 1.10
+        <hr size=1>
+        </dt>
+    <dt><a href="NewFeaturesAdditionalNewFuncsEtc.html">
+        Additional New APIs</a>
+        </dt><br />
+    <dt><a href="NewFeaturesCollectiveMetadataIoDocs.html">
+        Collective Metadata I/O</a>
+        </dt><br />
+    <dt><a href="NewFeaturesFineTuningMetadataCacheDocs.html">
+        Fine-tuning the Metadata Cache</a>
+        </dt><br />
+    <dt><a href="NewFeaturesFileSpaceMgmtDocs.html">
+        File Space Management</a>
+        </dt><br />
+    <dt><a href="NewFeaturesPageBuffering.html">
+        Page Buffering</a>
+        </dt><br />
+    <dt><a href="NewFeaturesPartialEdgeChunkDocs.html">
+        Partial Edge Chunks</a>
+        </dt><br />
+    <dt><a href="NewFeaturesReferenceDocs.html">
+        Reference</a>
+        </dt><br />
+    <dt><a href="NewFeaturesSwmrDocs.html">
+        SWMR</a>
+        </dt><br />
+    <dt><a href="NewFeaturesVirtualDatasetDocs.html">
+        Virtual Datasets (VDS)</a>
+        </dt><br />
+    </dl>
+</font>
+</td></tr>
+
+
+
+</table>
+</center>
+
+</td>
+
+<td rowspan="3" bgcolor="#FFFFFF" width="2%">
+</td>
+
+<td bgcolor="#FFFFFF" valign="top" align="center" width="87%">
+
+<table border="0" width="100%">
+<tr>
+<td bgcolor="#fbf3ef" align="center" valign="top" colspan="2">
+    <hr size="1" />
+    <font size="5" color="#000000">New Features in HDF5 Release 1.10
+    </font>
+    <hr size="1" />
+    </td>
+</tr>
+
+
+
+<tr>
+<td bgcolor="#FFFFFF" valign="top" align="center" colspan="2">
+<br /> &nbsp;
+</tr>
+
+
+
+<tr>
+<td bgcolor="#FFFFFF" align="left" valign="top" colspan="2">
+    <font size="5" color="#004488">New HDF5 1.10 Features</font>
+    
+    <p>HDF5 1.10 introduces several new features 
+    in the HDF5 Library. For a brief description of each new feature see: 
+   <ul class="ul">
+    <li class="li"><a href="index.html#1101">New Features Introduced in HDF5 1.10.1</a></li>
+    <li class="li"><a href="index.html#1100">New Features Introduced in HDF5 1.10.0</a></li>
+   </ul>
+</p>
+<p>
+See <a href="index.html#UserReferenceAndDesignDocumentation">User, Reference, and Design Documentation</a> for
+detailed information regarding the new features.
+<p>
+   <font size="4" color="#004488">File Format Changes</font> 
+</p>
+    <p>This release includes changes in the HDF5 storage format.
+       These changes come into play 
+       when one or more of the new features  is used or 
+       when an application calls for use of the latest storage format
+       (<a href="../doc/RM/RM_H5P.html#Property-SetLibverBounds"><code>H5Pset_libver_bounds</code></a>).
+
+    <p> 
+    Due to the requirements of some of the new features, 
+    the format of a 1.10.x HDF5 file is likely to be different from
+    that of a 1.8.x HDF5 file. This means that tools and applications
+    built to read 1.10.x files will be able to read a 1.8.x file, 
+    but tools built to read 1.8.x files may not be able to read 
+    a 1.10.x file.
+    </p>
+    <p> If an application built on HDF5 Release 1.10 avoids use of the
+       new features and does not request use of the latest format,
+       applications built on HDF5 Release 1.8.x will be able to read
+       files the first application created.
+       In addition, applications originally written for use with
+       HDF5 Release 1.8.x can be linked against a suitably configured
+       HDF5 Release 1.10.x library, thus taking advantage of performance
+       improvements in 1.10.
+    <br />&nbsp;
+    </p>
+
+<p>
+<a name="1101"></a>
+   <font size="4" color="#004488">New Features Introduced in HDF5 1.10.1</font> 
+</p>
+
+ <p>
+ <hr size="1" />
+ <a name="mci"></a>
+ Metadata Cache Image 
+ <hr size="1" />
+ </p>
+
+    <p>
+    HDF5 metadata is typically small, and scattered throughout the HDF5 file. This can affect
+    performance, particularly on large HPC systems. The Metadata Cache Image feature can improve
+    performance by writing the metadata cache in a single block on file close, and then populating
+    the cache with the contents of this block on file open, thus avoiding the many small I/O 
+    operations that would otherwise be required on file open and close. See the 
+    <a href="FineTuneMDC/cache_image_RFC_170407.pdf">RFC</a> for 
+    complete details regarding this feature.  Also, see the
+     <a href="NewFeaturesFineTuningMetadataCacheDocs.html">Fine Tuning the Metadata Cache</a> documentation.
+    </p>
+ 
+ <p>
+ <hr size="1" />
+ <a name="mcec"></a>
+ Metadata Cache Evict on Close 
+ <hr size="1" />
+ </p>
+
+  <p>
+  The HDF5 library's metadata cache is fairly conservative about holding on to HDF5 object metadata 
+  (object headers, chunk index structures, etc.), which can cause the cache size to grow, resulting
+  in memory pressure on an application or system. The "evict on close" property will cause all metadata 
+  for an object to be evicted from the cache as long as metadata is not referenced from any other open object.
+  See the <a href="NewFeaturesFineTuningMetadataCacheDocs.html">Fine Tuning the Metadata Cache</a> 
+  documentation for information on the APIs.
+  </p>
+
+ <hr size="1" />
+ <a name="pagg"></a>
+ Paged Aggregation 
+ <hr size="1" />
+ </p>
+   
+   <p> 
+   The current HDF5 file space allocation  accumulates small pieces of metadata and raw data
+   in aggregator blocks which are not page aligned and vary widely in sizes. The paged
+   aggregation feature was implemented to provide efficient paged access of these small pieces
+   of metadata and raw data. See the <a href="FileSpace/RFC-Paged_Aggregation.pdf">RFC</a> for
+   details.  Also, see the <a href="NewFeaturesFileSpaceMgmtDocs.html">File Space Management</a>
+   documentation.
+   </p>
+
+ <p>
+ <hr size="1" />
+ <a name="pbuf"></a>
+ Page Buffering
+ <hr size="1" />
+ </p>
+   
+    <p>
+   Small and random I/O accesses on parallel file systems result in poor performance for applications.
+   Page buffering in conjunction with paged aggregation can improve performance by giving an
+   application control of minimizing HDF5 I/O requests to a specific granularity and alignment.
+   See the <a href="PageBuffering/RFC-Page_Buffering.pdf">RFC</a> for details.
+   Also, see the <a href="NewFeaturesPageBuffering.html">Page Buffering</a> documentation.
+   </p>
+
+<p>
+<br /> 
+<a name="1100"></a>
+   <font size="4" color="#004488">New Features Introduced in HDF5 1.10.0</font> 
+<!--    
+    See the <a href="NewFeaturesReferenceDocs.html">
+    Documentation for HDF5 New Features: Reference</a> page for more information.</p> 
+-->    
+    <font size="1">
+    <br />&nbsp;
+    </p>
+    </font>
+
+
+
+    <hr size="1" />
+    SWMR
+    <hr size="1" />
+    Data acquisition and computer modeling systems often need to 
+    analyze and visualize data while it is being written. It is not 
+    unusual, for example, for an application to produce results in the 
+    middle of a run that suggest some basic parameters be changed, 
+    sensors be adjusted, or the run be scrapped entirely. 
+    </p>
+    
+    <p>To enable users to check on such systems, 
+    we have been developing a concurrent read/write file access pattern 
+    we call SWMR (pronounced swimmer). SWMR is short for 
+    single-writer/multiple-reader. SWMR functionality allows a writer 
+    process to add data to a file while multiple reader processes read 
+    from the file. 
+    </p>
+    
+    <p>
+    <hr size="1" />
+    Fine-tuning the Metadata Cache
+    <hr size="1" />
+    The orderly operation of the metadata cache is crucial to SWMR 
+    functioning. A number of APIs have been developed to handle 
+    the requests from writer and reader processes and to give applications 
+    the control of the metadata cache they might need. However, the 
+    metadata cache APIs can be used when SWMR is not being used; so, 
+    these functions are described separately.
+    </p>
+
+    <p>
+    <hr size="1" />
+    Collective Metadata I/O
+    <hr size="1" />
+    Calls for HDF5 metadata can result in many small reads and writes.
+    On metadata reads, collective metadata I/O can improve performance 
+    by allowing the library to perform optimizations when reading the 
+    metadata, by having one rank read the data and broadcasting it 
+    to all other ranks.
+    </p>
+    <p>Collective metadata I/O improves metadata write performance 
+    through the construction of an MPI derived datatype
+    that is then written collectively in a single call.
+    
+    <p>
+    <hr size="1" />
+    File Space Management
+    <hr size="1" />
+    Usage patterns when working with an HDF5 file sometimes result in 
+    wasted space within the file.  This can also impair access times when 
+    working with the resulting files.
+    The new file space management feature provides strategies  for
+    managing space in a file to improve performance in both of these arenas. 
+    </p>
+    
+    <p>
+    <hr size="1" />
+    Virtual Datasets (VDS)
+    <hr size="1" />
+    With a growing amount of data in HDF5, the need has emerged to access
+    data stored across multiple HDF5 files using standard HDF5 objects, 
+    such as groups and datasets, without rewriting or rearranging the data.
+    The new virtual dataset (VDS) feature enables an application 
+    to draw on multiple datasets and files to create virtual datasets 
+    without moving or rewriting any data.
+    </p>
+    
+    <p>
+    <hr size="1" />
+    Partial Edge Chunk Options
+    <hr size="1" />
+    New options for the storage and filtering of partial edge chunks
+    in a dataset provide a tool for tuning I/O speed and file size 
+    in cases where the dataset size may not be a multiple of the chunk size.
+    </p>
+    
+    <p>
+    <hr size="1" />
+    Additional New APIs
+    <hr size="1" />
+    In addition to the features described above, 
+    several additional new functions, a new struct, and new macros
+    have been introduced or newly versioned in this release.
+    </p>
+</td>
+</tr>
+
+
+<tr><td align="left" valign="top" colspan="2">&nbsp;</td></tr>
+<tr><td align="left" valign="top" colspan="2">&nbsp;</td></tr>
+
+
+
+<tr>
+<td bgcolor="#FFFFFF" align="left" valign="top" colspan="2">
+<font size="5" color="#004488"><a name="UserReferenceAndDesignDocumentation">
+User, Reference, and Design Documentation</a></font>
+
+<p>Documentation for the new features of the HDF5 
+Library is available on the pages listed below.</p>
+    <table width="100%">
+
+    <tr>
+        <td align="left" valign="top" width="25%">
+        <a href="NewFeaturesAdditionalNewFuncsEtc.html">
+        Additional New APIs</a></td>
+        <td align="left" valign="top" width="75%">
+        This page lists various new functions, a new struct, and new macros
+        that are either unrelated to other new features described elsewhere
+        or have aspects that are unrelated to the feature where they are
+        otherwise described.
+        </td>
+        </tr>
+        
+        <tr><td align="left" valign="top" colspan="2">&nbsp;</td></tr>
+        
+    <tr>
+        <td align="left" valign="top" width="25%">
+        <a href="NewFeaturesCollectiveMetadataIoDocs.html">
+        Collective Metadata I/O</a></td>
+        <td align="left" valign="top" width="75%">
+        The purpose of this page is to list and briefly describe the 
+        documentation available to those who will use the 
+        Collective Metadata I/O feature of the 
+        HDF5 Library.
+        
+        </td>
+        </tr>
+        
+        <tr><td align="left" valign="top" colspan="2">&nbsp;</td></tr>
+        
+    <tr>
+        <td align="left" valign="top" width="25%">
+        <a href="NewFeaturesFineTuningMetadataCacheDocs.html">
+        Fine-tuning the Metadata Cache</a></td>
+        <td align="left" valign="top" width="75%">
+        The purpose of this page is to list and briefly describe the 
+        documentation available to those who want to fine-tune how 
+        the metadata cache behaves. 
+        
+        </td>
+        </tr>
+        
+        <tr><td align="left" valign="top" colspan="2">&nbsp;</td></tr>
+        
+    <tr>
+        <td align="left" valign="top" width="25%">
+        <a href="NewFeaturesFileSpaceMgmtDocs.html">
+        File Space Management</a></td>
+        <td align="left" valign="top" width="75%">
+        The purpose of this page is to list and briefly describe 
+        documentation for HDF5&rsquo;s file space management capabilities.
+        </td>
+        </tr>
+        
+        <tr><td align="left" valign="top" colspan="2">&nbsp;</td></tr>
+
+    <tr>
+        <td align="left" valign="top" width="25%">
+        <a href="NewFeaturesPageBuffering.html">
+        Page Buffering</a></td>
+        <td align="left" valign="top" width="75%">
+        The purpose of this page is to briefly describe the 
+        new page buffering option and to provide access
+        to full descriptions for the relevant functions.
+        </td>
+        </tr>
+        
+        <tr><td align="left" valign="top" colspan="2">&nbsp;</td></tr>
+        
+
+    <tr>
+        <td align="left" valign="top" width="25%">
+        <a href="NewFeaturesPartialEdgeChunkDocs.html">
+        Partial Edge Chunks</a></td>
+        <td align="left" valign="top" width="75%">
+        The purpose of this page is to briefly describe the 
+        new partial edge chunk options and to provide access
+        to full descriptions for the relevant functions.
+        
+        </td>
+        </tr>
+        
+        <tr><td align="left" valign="top" colspan="2">&nbsp;</td></tr>
+        
+    <tr>
+        <td align="left" valign="top" width="25%">
+        <a href="NewFeaturesSwmrDocs.html">
+        Single-Writer/Multiple-Reader (SWMR)</a></td>
+        <td align="left" valign="top" width="75%">
+        The purpose of this page is to list and briefly describe the 
+        documentation available to those who will use the 
+        Single-Writer/Multiple-Reader (SWMR) feature of the 
+        HDF5 Library.
+        
+        </td>
+        </tr>
+        
+        <tr><td align="left" valign="top" colspan="2">&nbsp;</td></tr>
+
+    <tr>
+        <td align="left" valign="top" width="25%">
+        <a href="NewFeaturesVirtualDatasetDocs.html">
+        Virtual Datasets (VDS)</a></td>
+        <td align="left" valign="top" width="75%">
+        The purpose of this page is to list and briefly describe the 
+        documentation available to those who want to use
+        the Virtual Datasets (VDS) feature of the HDF5 Library.        
+        
+        </td>
+        </tr>
+        
+        <tr><td align="left" valign="top" colspan="2">&nbsp;</td></tr>
+</td></tr></table>
+<p>
+A description of the file format changes can be seen here:
+</p>
+    <table width="100%">
+</td></tr></table>
+        
+    <tr>
+        <td align="left" valign="top" width="25%">
+        <a href="NewFeaturesReferenceDocs.html">
+        Reference</a></td>
+        <td align="left" valign="top" width="75%">
+        The purpose of this page is to describe the changes made to HDF5 
+        reference documents to support new features. 
+        </td>
+        </tr>
+        
+        <tr><td align="left" valign="top" colspan="2">&nbsp;</td></tr>
+        
+<tr><td align="left" valign="top" colspan="2">&nbsp;</td></tr>
+
+    </table>
+    </td></tr>
+
+
+
+<tr><td bgcolor="#FFFFFF" colspan="2">&nbsp;</td></tr>
+
+
+
+</td></tr></table>
+<!-- Amaya says these tags are invalid end tags, but these work on the 
+page to end the table with the three columns (nav bar, blank, page content).
+-->
+</td></tr></table>
+
+<br />
+
+
+
+<!-- BEGIN FOOTER INFO -->
+
+<P><hr>
+<table border="0" width="100%">
+    <tr><td width="45%" align="left" valign="bottom">
+        <font face="arial,helvetica" size="-1">
+        The HDF Group Help Desk: <img src="Graphics/help.png" align="middle" 
+        height="14" alt="The HDF Group Help Desk">
+<!--
+        <br>
+        Describes HDF5 Release 1.9.x (development snapshots)
+-->
+        <br />
+        <!-- hhmts start -->
+        <font face="arial,helvetica" size="-1">
+        Last modified: April 2017 
+        <!-- hhmts end -->
+
+        <p>
+        </font>
+    </td><td width="10%" rowspan="2">&nbsp;
+    </td><td width="45%" align="right" valign="top" rowspan="2">
+        <font face="arial,helvetica" size="-1">
+        <a href="https://support.hdfgroup.org/ftp/HDF5/releases/COPYING">Copyright</a> by The HDF Group and the Board 
+        <br>
+        of Trustees of the University of Illinois.  
+        <br>
+        All rights reserved.
+        </font>
+<!--
+        <a href="http://www.hdfgroup.org/">
+        <img border=0 src="Graphics/THGwTextSm.jpg" width=130 height="78" 
+            alt="The HDF Group [Logo]"></a>
+        <a href="http://www.hdfgroup.org/">
+        <img border=0 src="Graphics/THGwTextSm.jpg" width=110 height=65 
+            alt="The HDF Group [Logo]"></a>
+        <a href="http://www.hdfgroup.org/">
+        <img border=0 src="Graphics/THGwTextSm.jpg" width=78 height=48 
+            alt="The HDF Group [Logo]"></a>
+        <a href="http://www.hdfgroup.org/">
+        <img border=0 src="Graphics/THGnoTextSm.jpg" width=78 height=41 
+            alt="The HDF Group [Logo]"></a>
+-->
+    </td></tr>
+</table>
+
+
+
+
+
+
+</body>
+</html>

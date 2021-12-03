@@ -1,0 +1,930 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+<!-- If no var is set for $page_title on the top of each page than default title will be HDF Group -->
+
+<title>
+Who uses HDF?</title>
+	<meta name="keywords" content="hdf, hdfeos, blog, hdf blog, hdf5 blog, hdf5, hdf4, hdf tools, hdf libraries, hdf viewer, hdf format, hdf file, hdf java, nafxcw.lib, phdf5, open source, hierarchical data format, ncsa, database, python hdf, mike folk, hdfview, hdf5 parallel" />
+	<meta name="description" content="The HDF Group is a not-for-profit corporation with the mission of sustaining the HDF technologies and supporting HDF user communities worldwide with production-quality software and services." />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="expires" content="Wed, 26 Feb 2010 08:21:57 GMT" />
+	<meta name="verify-v1" content="/m03HNmaDgGAcDe0PFtEVnXGtCkoeOocjr/Jwey2gdI=" />
+	<link href="/css/layout.css" rel="stylesheet" type="text/css" media="screen, projection" />
+	<link href="/css/print.css" rel="stylesheet" type="text/css" media="print" />
+	<link rel="stylesheet" type="text/css" href="/css/js_style.css" />
+	<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/prototype/1.7.2.0/prototype.js"></script>
+	<!--<script type="text/javascript" src="/scriptaculous/lib/prototype.js"></script>-->
+	<script type="text/javascript" src="/scriptaculous/src/effects.js"></script>
+	<script type="text/javascript" src="/scriptaculous/validation.js"></script>
+	<script type="text/javascript" src="/scriptaculous/animatedcollapse.js"></script>
+	<script type="text/javascript" src="/scriptaculous/rollover.js"></script>	
+	<script type="text/javascript" src="/scriptaculous/functions.js"></script>
+	<script type="text/javascript" src="/scriptaculous/sorttable.js"></script>
+	<!--<script type="text/javascript" src="/jquery-1.2.2.pack.js"></script>-->
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript" src="/scriptaculous/jssor.slider.min.js"></script>
+
+ 	<link rel="stylesheet" type="text/css" href="/featuredcontentglider.css" />
+    <script type="text/javascript" src="/featuredcontentglider.js"></script>
+
+	</head>
+	<body>
+	<div id="mast_head">
+		<a href="https://www.hdfgroup.org/"><img src="/images/hdf_logo.jpg" height="70" style="display:block; padding-left:10px;" align="left" alt="hdf images" /></a>
+		<img src="/images/logo_5.jpg" height="70" style="display:block;" align="right" alt="hdf images" />
+	</div> 
+				
+	<div id="nav_wrapper">
+		<div>
+		<div id="section-">
+			<ul id="nav">
+				<li id="t-index"><a href="https://www.hdfgroup.org/">Home</a> </li>
+				<li id="t-products"><a href="/products/">Products</a></li>
+				<li id="t-services"><a href="/services/">Services</a></li>
+				<li id="t-about"><a href="/about/">About Us</a></li>
+				<li id="t-news"><a href="/news/">News</a> </li>
+				<li id="t-blog"><a href="https://www.hdfgroup.org/blog">Blog</a></li>
+				<li id="t-contact"><a href="/about/contact.html">Contact Us</a></li> 
+			</ul>
+			<script type="text/javascript">
+			
+  (function() {
+    var cx = '007250492606109219119:sb2eg2bgoyy';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:search></gcse:search>	
+					<script type="text/javascript">
+					    jQuery(document).ready(function ($) {
+					        // var options = {
+					        //     $ArrowNavigatorOptions: {
+					        //         $Class: $JssorArrowNavigator$,
+					        //         $ChanceToShow: 2
+					        //     }
+					        // };					    	
+
+
+							var options = { 
+											$AutoPlay: true, $SlideshowOptions: { $Class: $JssorSlideshowRunner$, $Transitions: [{ $Duration:5000, $Fade: true, $Opacity:2 }] } , 
+											$ArrowNavigatorOptions: { 
+												$Class: $JssorArrowNavigator$, 
+												$ChanceToShow: 2
+											}
+										  };
+
+
+					        var jssor_slider1 = new $JssorSlider$('slider1_container', options);
+					    });
+					</script>
+									                  
+			
+		</div>
+		</div>             
+	</div>
+				
+<!--START: MAIN -->
+<div id="wrapper" style="margin-top:-15px;"> 
+
+<!--START: SIDE_BAR -->
+<div id="side_bar">
+
+<form method="get" action="" class="form" >
+	<select onchange="window.open(this.options[this.selectedIndex].value,'_top')" name="" style="border:2px solid #c1c1c1;">
+		<option value="" class="ql1">- - Quick Links - -</option>
+		<option value="/HDF5/" class="ql">HDF5</option>
+		<option value="/products/hdf4/" class="ql">HDF4</option>
+		<option value="/tools/" class="ql">Tools</option>
+		<option value="/projects/" class="ql">Projects</option>
+		<option value="/downloads/" class="ql">Downloads</option>
+		<option value="/documentation/" class="ql">Documentation</option>
+	        <option value="/pubs/" class="ql">Publications</option>
+		<option value="/about/" class="ql">Contact Us</option>
+	</select>
+</form>
+<ul style="border:1px solid #c1c1c1; margin-top:25px;"> 
+
+	<li style="background:url(/images/menubg.png); padding:0px; padding-left:7px; color:#27343C; font-weight:500; text-align:left;">
+	LINKS</li><li><a href="https://www.hdfgroup.org/">Main Website</a></li><li><a  href="/products/hdf4/whatishdf.html">What is HDF?</a></li><li><a  href="/downloads/index.html">Downloads</a></li><li><a  href="/release4/doc/index.html">Documentation</a></li><li><a  href="/products/hdf4_tools/tools.html">Software using HDF4</a></li><li><a  href="/products/hdf4/users.html">HDF4 Users</a></li><li><a  href="/products/licenses.html">Licenses</a></li></ul> 
+
+</div>
+
+<!--END: SIDE_BAR -->
+
+<!--START: CONTENT -->
+<div id="content">
+<p><font color="red"><center><strong>This web site is no longer maintained (but will remain online).<br /> Please see The HDF Group's new <a href="https://portal.hdfgroup.org">Support Portal</a> for the latest information.</strong></center></font></p>
+	<div class=bc><p style="color:orange; ";><a href="/" title="HOME">HOME</a> &gt; <a href="/products/" title="PRODUCTS">PRODUCTS</a> &gt; <a href="/products/hdf4/" title="HDF4">HDF4</a></p></div>
+<fieldset><h1>Who uses HDF?</h1></fieldset>
+
+
+<P>
+
+Some of this information may be out of date.
+<BR>Please help us keep you up to date by sending your HDF related research and 
+software links to help@hdfgroup.org.
+<hr noshade size=1>
+<H2>Some organizations who use HDF</H2>
+<DL>
+
+<DT> <A HREF="http://www.srl.caltech.edu/ACE">Advanced Composition Explorer (ACE)</A>
+<DD>The ACE spacecraft was launched on August 25, 1997, with a primary
+mission of observing energetic particles within the solar system. 
+The <A HREF="http://www.srl.caltech.edu/ACE/ASC/level2/level2_sis_hdf.htm">data
+from the ACE spacecraft</A> is available to the scientific community and is
+stored in HDF format.
+<BR> In addition, the ACE Science Center (ASC) has written a perl program 
+(<A HREF="http://www.srl.caltech.edu/ACE/ASC/exhdfgen/index.htm">hdfgen.pl</A>)
+which takes a data structure definition (an include file) as input and 
+generates all the HDF calls needed to read and write the data record.
+<P>
+
+<DT>Advanced Very High Resolution Radiometers (AVHRR) Land Pathfinder
+<P>
+
+<DT><A HREF="http://www.aerodyne.com/">Aerodyne Research, Inc.</A>
+<DD>Aerodyne's <A HREF="http://www.aerodyne.com/cosr/cosr.html">Center for Optical
+Signature Recognition</A> is primarily using HDF as a means to pass 
+information from one application to another.  HDF provides a simple way to
+interface Aerodyne's software with external packages such as GTV
+(Georgia Tech Vision Model), GTSIMS and SPIRITS (Spectral and Inband 
+Radiometric Imaging of Targets and Scenes).
+<P>
+<DT><A HREF="http://www.iae.cta.br/">Aeronautic Technological Center</A>, Brazil
+<DD>Using HDF in Meteorological research. (7/06)
+<P>
+<DT><A HREF="http://www.aip.de/~cfendt">AIP (Astrophysikalisches Institut 
+Potsdam)</A>
+<DD>Using HDF4 in field of Astrophysics Jet Formation.  (3/02)
+<P>
+<DT>American Museum of Natural History, New York
+<DD>Using HDF4 in gas dynamical and MHD simulations of star formation 
+and the str ISM; also teaching a class on this at Columbia U. 
+using HDF files. (Alliance/NPACI User, 1/03)
+<P>
+<DT><A HREF="http://www.achd.net">Allegheny County Health Department</A>, Pennsylvania
+<DD>Using HDF4 in field of health care.  (12/03)
+<P>
+<DT><A HREF="http://www.aps.anl.gov">ANL-Advanced Photon Source</A> (ASC 
+User, 5/02)
+<P>
+<DT>Atlantis Scientific Inc., Canada
+<DD>Using HDF4 in Hyperspectral processing. (EOS User, 6/03)
+<P>
+<DT><A HREF="http://www.arm.gov/">ARM</A> - Atmospheric Radiation Measurement (ARM) Program<P>
+<!--
+<DT> <A HREF="http://www.llnl.gov/asci/">ASCI -  Accelerated Strategic Computing Initiative</A>
+<DD>ASCI is a Department of Energy
+program involving the Lawrence Livermore, Los Alamos and Sandia National
+Laboratories. ASCI's goal is "to shift promptly from nuclear test-based
+methods to computational-based methods of ensuring the safety, reliability,
+and performance of our nuclear weapons stockpile." These methods must
+achieve high-resolution, three-dimensional calculations of full-systems
+using high-fidelity physical models. The ASCI Data Models and Formats group
+(ASCI DMF) is working closely with NCSA on the development of HDF5 to
+address I/O and data sharability issues, to replace existing mesh data
+management software with a unified mesh API, and to replace storage formats
+with HDF5. This involves not only supporting ASCI data requirements in the
+new HDF5 format, but also implementing the HDF5 IO library on the three
+multi-teraflop ASCI machines.<P>
+-->
+<DT><A HREF="http://redrock.ncsa.uiuc.edu/AOS/home.html">The Atmospheric and Oceanic Group</A>
+<DD>The Atmospheric and Oceanic Group at NCSA is involved in a variety of projects that tie the latest in technological advances 
+to research and educational endeavors.  The 
+PATHFINDER Project's primary goal is to provide powerful, yet easy to 
+use visualization tools for atmospheric and oceanic data by augmenting 
+existing commercial and public domain software packages.<P>  
+
+<DT><A HREF="http://www.oma.be/BIRA-IASB/">Belgium Institute for Space Aeronomy</A>
+<DD>Uses HDF4 in assimilation of atmospheric chemistry (EOS User). (2/02)
+<P>
+
+<DT>Ben Gurion University, Israel
+<DD>Using HDF to manipulate data and images obtained from an 
+Scanning Tunneling Microscope.   (6/05)
+<P>
+
+<DT>Breecon Projects, South Africa
+<DD>Field: Diamond mining.  They are looking for ancient 
+river flows which could bear minerals around southern Africa.  (2/04)
+<P>
+
+<DT>CAREERI, CAS, China
+<DD>Using HDF and HDF5 in field of desertification.  (2/05)
+<P>
+<DT>CD Adapco Group
+<DD>Using HDF for data exchange between CFD and aero acoustic codes. (10/03)
+<P>
+<DT><A HREF="http://cosmos.ucsd.edu/">Center for Astrophysics and Space Science</A>
+<DD>Using HDF and HDF5 in field of astronomy. (9/16/02)
+<P>
+<DT><A HREF="http://www.bu.edu/cism">Center for Integrated Space Weather Modeling (CISM)</A>
+<DD>Using HDF4 in space weather prediction based upon massively parallel 
+computations using physics-based models.  (7/03) 
+<P>
+<DT><A HREF="http://www.csar.uiuc.edu">Center for Simulation of Advanced 
+Rockets (CSAR)</A>
+<DD>CSAR is one of five university-based research centers funded by the U.S.
+Department of Energy as part of the Accelerated Strategic Computing
+Initiative (ASCI).  The main goal of CSAR is detailed, integrated, 
+whole-system simulation of solid propellant rockets under both normal
+and abnormal operating conditions. (ASC User)
+<P>
+<DT>Center for Space Science and Applied Research, China  (6/02)
+<P>
+<DT><A HREF="http://www.cioh.org.co">Centro de Investigaciones Oceanograficas, DIMAR</A>
+<DD>The "Centro de Investigaciones Oceanograficas" in Cartagena, Colombia,
+uses HDF4 in numerical modeling in oceanography. (1/02)
+<P>
+<DT>China Academy of Science, Beijing (ASC User, 3/02)
+<P>
+<DT>China Meteorological Administration, Beijing, China
+<DD>Using HDF to study Climate Change. (11/04)
+<P>
+<DT> Cloud Absorption Radiometer (CAR) Data<P>
+<P>
+<DT><A HREF="http://cimss.ssec.wisc.edu/clavr/index.html">Clouds 
+    from AVHRR (CLAVR)</A> (1/04)
+<P>
+<DT><A HREF="http://www.caf.dlr.de/">Cluster of Applied Remote Sensing</A>, Germany  (7/05)
+<P>
+
+
+<DT><A HREF="http://www.cmmacs.ernet.in/">C-MMACS</A>, Karnatak, India
+<DD>Ocean Analysis.  (3/02)
+<P>
+<DT><A HREF="http://www.cpht.polytechnique.fr/cpht/amari/index.html">CNRS Ecole Polytechnique</A>, France
+<DD> Using HDF4 in field of Astrophysical Magnetohydrodynamics.  (4/05)
+<P>
+<DT>CNRS and Aria Technologies SA, France
+<DD>Uses HDF4 for atmospheric chemistry transport modeling. (EOS User) (12/01)
+<P>
+
+<DT>Coastal Zone Color Scanner (CZCS) Data<P>
+
+
+<DT><A HREF="http://www.crs4.it/">CRS4</A>
+<DD>CRS4 is an interdisciplinary research centre developing advanced 
+simulation techniques and applying them, by means of high performance 
+computers, to the solution of large scale computational problems in various 
+fields. <br>
+<p>
+
+<DT>Delaware State University
+<DD>Project/Field:  &nbsp; Data Mining in Geoscience.   (4/03)
+<P>
+
+<DT>Design and Survey institute, Turkmenistan
+<DD>Project/Field:  &nbsp; Environmental projects  (6/03)
+<P>
+
+<DT>Dipartimento di Chimica, Universita' di Modena e Reggio Emilia, Italy
+<DD>Using HDF 4 in field of chemistry. (10/02)
+<P>
+
+<DT><A HREF="http://www.divestco.com">Divestco Inc.</A>
+<DD>Using HDF4 in field of geomatics.   (Alliance/NPACI User, 1/2/07)
+<P>
+
+<DT><A HREF="http://www.lbl.gov/">The Ernest Orlando Lawrence Berkeley
+National Laboratory</a>  
+
+<DD>The Berkeley Lab is a multiprogram lab where research
+in advanced materials, biosciences, energy efficiency, detectors and 
+accelerators focuses on national needs in technology and the environment. 
+<!--
+Refer to <A HREF="http://www.lbl.gov/Publications/Computing-Newsletter/1994/03/march94.hdf.netcdf.html">GRAPHICS GROUP PRESENTS HDF/NETCDF</A>
+by the Graphics group in the Information and Computing Sciences 
+Division (ICSD) for information on the use of HDF. -->
+<p> 
+
+<DT><A HREF="http://www.nerc-essc.ac.uk/godiva">ESSC</A> - Environmental Systems Science Centre, University of Reading, UK (7/03)
+<P>
+
+<DT>Facultad Ciencias Marinas - UABC
+<DD>The "Facultad Ciencias Marinas" in Baja California, Mexico, is using
+HDF4 in the field of fisheries oceanography. (1/02)
+<P>
+<DT>Federal Airports Authority of Nigeria, Calabar Airport, Nigeria
+<DD>Uses HDF4 in GeoTechnical/GeoEnvironmental Engineering. (1/02)
+<P>
+<DT>Federal Institute of Materials Research and Testing (BAM), Berlin, Germany
+<P>
+
+<DT><A HREF="http://www.fft.be">Free Field Technologies</A>
+<DD>Free Field Technologies develops and supports ACTRAN, an acoustic code 
+based on the use of Finite and Infinite Element Methods.  For aeroacoustic 
+applications, the sources are predicted separately, e.g. by CFD software. 
+The use of HDF files allows for a much more efficient exchange of this 
+huge amount of data across different platforms.  (3/04)
+<P>
+<DT><A HREF="http://www.ge.com/geae/">GE Aircraft Engines</A> and 
+Corporate Research & Development Center
+<DD> GE CR&D is codeveloping code with NASA Lewis Research Center for 
+the analysis of multistage compressors and turbines.  This is a highly
+parallel application of CFD.  Using HDF has allowed them to be more
+efficient in terms of IO for their parallel application.  Its portability 
+is also a plus.<P>
+
+<DT><A HREF="http://web.gat.com/">General Atomics Fusion Group</A>
+<DD> HDF will be installed for use with the TRANSP plasma transport code from
+Princeton's Plasma Physics Laboratory. HDF is not currently installed. (2/02)
+<P>
+<DT> Global Aerospace Corporation
+<DD>Global Aerospace Corporation is developing a Trajectory Simulation
+and Prediction System (TSPS) for NASA's Ultra Long Duration Balloon 
+(ULDB)
+project. The ULDB project conducts scientific experiments above 99% of the
+Earth's atmosphere at 130,000 foot altitudes. Use of NCSA HDF products allows
+Global Aerospace Corporation to forecast balloon trajectories from
+stratospheric weather forecasts.
+<P>
+
+<DT><A HREF="http://geochange.er.usgs.gov/">Global Change Research Program</A>
+<DD>A primary goal of the U.S. Global Change Research Program (USGCRP) is to provide reliable predictions of future climate changes 
+and their effects.<p>
+
+<DT>Greenergy, C.A.
+<DD>Greenergy, C.A., in Venezuela, uses HDF4 with regards to 
+Renewable Energy - Coastal Wind Potential.  (1/02)
+<P>
+<!--
+<DT><A HREF="http://hdfeos.gsfc.nasa.gov/">HDF-EOS</A>
+-->
+
+<DT><A HREF="http://horde.upb.edu.co/gia/">Grupo de Investigaciones Ambientales</A>, Universidad Pontificia Bolivariana, Colombia
+<DD>Using HDF in field of atmospheric studies.  (3/06)
+<P>
+<DT><a href="http://hdfeos.org">HDF-EOS</a>
+<DD>HDF-EOS is the data format standard currently being used for EOSDIS science and
+science-related data (for Earth Science data from the 
+<A HREF="http://www.earth.nasa.gov/">Earth Science Enterprise</A>).
+ <UL>
+ <LI> Moderate-Resolution Imaging Spectroradiometer (MODIS) Prototype
+ <LI> Multi-Angle Imaging Spectroradiometer (MISR) Prototype
+ </UL>
+<BR>
+<P>
+<DT> HDF UCD - Finite Element Data<P>
+
+<DT>Howard University, Washington D.C.
+<DD>Using HDF in field of atmospheric science. (2/04)
+<P>
+<DT><A HREF="http://www.csre.iitb.ac.in">IIT</A>, Bombay
+<DD>Project:  SSM/I Data Processing.  (EOS User, 6/02)
+<P>
+
+<DT>Imagery Analysis Support Site
+&nbsp;  (EOS User, 12/02)
+<P>
+<DT><A HREF="http://www.imm.dtu.dk/">IMM, Technical University of Denmark</A>
+<DD>Using HDF4 in Numerical Analysis on two separate projects: 
+1) Teaching of Numerical Analysis at the Technical University of Denmark,
+and 2) A joint RD project with mixed academic and non-academic partners.
+(2/02)
+<P>
+
+<DT><A HREF="http://www.pp.ph.ic.ac.uk/">Imperial College</A>
+<DD>Using HDF4 in particle in cell (parallel) simulation output and storage
+(plasma physics).   (4/04)
+<P>
+<DT>Indian Institute of Science, Karnataka, India
+<DD>Field:  Oceanography  (5/03)
+<P> 
+<DT>Indian Institute of Technology and Management (Gwalior MP)
+<DD>Using HDF4 in field of weather. (9/04)
+<P>
+<DT><A HREF="http://www.itsc.uah.edu/">Information Technology and Systems 
+Center (ITSC)</A> 
+<DD>The Information Technology and Systems Center at UAH provides information 
+technology services and support to NASA's Global Hydrology and Climate 
+Center located at Huntsville, AL.  They additionally have ongoing research 
+efforts into data mining and aspects of spatial data integration.  All of 
+these efforts contain aspects that hinge around utilizing data, mostly 
+NASA satellite imagery, stored in either HDF or HDF-EOS formats.  Center 
+staff members have also been routinely involved with the evolution of the 
+HDF-EOS extensions. Software using HDF that is provided by the ITSC includes  
+SPOT and 
+HEW.  
+<P>
+
+<DT>The InfraRed & Aeronomy Group
+<DD>Uses HDF for <A HREF="http://osirus.usask.ca">OSIRIS</a>
+, an optical spectrograph that will fly on the Swedish Satellite ODIN, 
+collecting height profiles of Ozone.  
+<!--Many of the P.I's are also associated 
+with WINDII, an experiment that flies on the 
+<A HREF="http://umpgal.gsfc.nasa.gov/uars-science.html">UARS</A> satellite.
+-->
+<P>
+
+<DT>Institute for Advanced Technology in the Humanities
+<DD>The Institute for Advanced Technology in the Humanities (IATH) at the University of Virginia offers an image-annotation program called
+Inote.
+<p>
+
+<DT>Institute of Applied Physics, Russia 
+<DD>Field: Remote Sensing.  (EOS User, 6/02)
+<P>
+<DT><A HREF="http://www.ihw.ethz.ch">Institute of Hydromechanics and Water Resources Management</A>, Switzerland
+<DD>Using HDF4 in Experimental fluid mechanics.  (12/03)
+<P>
+<DT><A HREF="http://www.iac.es">Instituto de Astrofisica de Canarias</A>, Spain
+<DD>Using HDF in field of Astrophysics.   (4/05)
+<P>
+<DT>Instituto Geofisico del Peru, Estacion de Huayao
+<DD>Using HDF in study of climate change. (7/04)
+<P>
+<DT><A HREF="http://www.vub.ac.be/MEKO/Vietnam/Institutes/Iog.html">Institute of Geography</A>, Vietnam
+<DD>Field: Remote Sensing. (5/03)
+<P>
+<DT>Institute of Marine Research, Norway  (EOS User, 5/02)
+<P>
+<DT><A HREF="http://www.ipr.res.in/">Institute for Plasma Research</A>, India
+<P>
+<DT><A HREF="http://www.ecologia.edu.mx">Instituto de Ecologia, A. C.</A>
+<DD>Using HDF for environmental modelling.  (12/03)
+<P>
+<DT> International Research Institute (IRI) LDEO Climate Data Library<P>
+<P>
+<DT><A HREF="http://www.invap.com.ar">INVAP SE</A>, Argentina
+<DD>Development of image processing software for the SAC-C (Satelite 
+Aplicaciones Cientificas de Argentina).  &nbsp; (1/03)
+<P>
+
+<DT><A HREF="http://www.meteostar.com/">IPS Meteostar, Inc.</A> 
+<DD>Working on an import utility for HDF.  (9/02)
+<P>
+<DT>IREAP, Institute for Research in Electronics and Applied 
+Physics, University of Maryland, College Park
+<DD>Using HDF4 in field of Laser-plasma interactions.  (3/04)
+<P>
+<DT><A HREF="http://www.jhs.com.sg/">JHS</A>, Singapore  (1/03)
+<P>
+<DT>   Japan's NASDA Earth Observation Center<P>
+<P>
+<DT><A HREF="http://www.eorc.nasda.go.jp/TRMM/index_e.htm">JAXA</A>
+<DD>Using HDF on TRMM (Tropical Rainfall Measuring Mission) project. (EOS user, 7/05)
+<P>
+
+
+<DT><A HREF="http://hurlbut.jhuapl.edu/NEAR/SDC/SDC_HDF/">The Johns Hopkins University Applied Physics Laboratory</A>
+<DD>The Johns Hopkins University Applied Physics Laboratory's Near-Earth Asteroid Rendezvous (NEAR) mission in Laurel, Maryland is the first 
+launch in the Discovery Program, a NASA initiative for small planetary missions with a maximum 3-year development cycle and a cost capped at
+$150 million for construction, launch, and 30 days of operation.<p>
+
+<DT><A HREF="http://www.supercomputing.re.kr">KISTI Supercomputing Center</A>, Korea
+<DD>Using HDF4 in field of astrophysics.   (10/03)
+<P>
+<DT><A HREF="http://www.spacetec.no">Kongsberg Spacetec AS</A>
+<DD>Using HDF4 and HDF5 in remote sensing applications.  (2/03)
+<P>
+<DT><A HREF="http://www.kier.re.kr">Korea Institute of Energy Reserch</A>
+<DD>Using HDF in field of Wind Energy.  (EOS User, 12/02)
+<P>
+
+<DT><A HREF="http://www.ldeo.columbia.edu">
+The Lamont-Doherty Earth Observatory of Columbia University</A>
+<DD>The <A HREF="http://rainbow.ldgo.columbia.edu:80/datacatalog.html">LDEO
+Climate Data Library</a> contains a wide variety of earth science data, 
+primarily oceanographic and atmospheric datasets.  
+Here are some of their <A HREF="http://rainbow.ldgo.columbia.edu/documentation/libraries/">library files</A>.  They also offer a utility
+called <A HREF="http://ingrid.ldgo.columbia.edu/">Ingrid</A> which is a 
+data processing program designed to manipulate datasets.<p>
+
+<DT>   Lawrence Livermore National Laboratory<P>
+
+<P>
+<DT><A HREF="http://mvc.man.ac.uk">Manchester Visualization Centre</a>
+<DD>The Manchester Visualization Centre (formerly the Computer Graphics
+Unit (CGU)) is a group within Manchester Computing, one of the national
+supercomputing centers which provide facilities and services to the 
+University of Manchester, UMIST and to the UK academic community.  It 
+provides high-performance interactive computer graphics, multimedia, image 
+processing and visualization facilities and services, and it undertakes R&D.
+<!--
+For information on HDF use, see: 
+<A HREF="http://info.mcc.ac.uk/CGU/AVS/summary/avsmod121.html">
+read_HDF_SDS Module</A>-->
+</p>
+
+<P>
+<DT><A HREF="http://www.martasystems.com">Marta Systems, Inc.</A>
+<DD>Provides the Yosemite meteorological software suite to Navy SPAWAR for
+their work supporting the NSF Antarctic Program.  (EOS User, 8/05)
+
+<P>
+
+<DT><A HREF="http://www.mathworks.com/">The MathWorks</A>
+<DD>The MathWorks is a developer and supplier of software for technical
+computing and Model-Based Design. MATLAB, one of the core products
+from The Mathworks, includes support for HDF5.
+
+<P>
+
+<DT><A HREF="http://www.matrixmetals.com.au/">Matrix Metals Limited</A>
+<DD>Matrix Metals Limited is an Australian copper producer that uses both
+HDF4 and HDF5 in earth science applications.
+<P>
+<DT>Max-Planck-Institute for Meteorology, Hamburg, Germany
+<DD>Using HDF on the ARCtic Model Intercomparison Project. 
+<P>
+<DT><A HREF="http://www.mdafederal.com/">MDA Federal</A>
+<DD>Using HDF4 in Environment/GIS applications.  
+<P>
+<DT>Microwave Surface and Precipitation Products System  MSPPS project
+<DD>The Microwave Surface and Precipitation Products System  MSPPS project is 
+dedicated to the retrieval of near-real-time operational surface and 
+precipitation products using antenna temperatures from the AMSU-A and 
+AMSU-B instruments on board of NOAA's KLM series polar orbiting satellites.
+(See <A HREF="#nesdis">NOAA/NESDIS</A> below).  (EOS User)
+<P>
+<DT>Mitsubishi Space Software, Kanagawa, Japan  (EOS User)
+<P>
+<DT> MODIS Airbourne Simulator (MAS)
+<P>
+<DT>Montclair State University, NJ (EOS User)
+<P>
+<dt><a href="http://www.mosdac.gov.in/">MOSDAC</a>
+<dd>The Meteorological and Oceanographic Satellite Data Archival Centre (MOSDAC)
+in India stores data in HDF.
+<p>
+
+<DT><A HREF="http://www.NASAexplores.com">NASA Explores</A> 
+<DD>K-12 Education. 
+<P>
+
+<DT><A HREF="http://www.nasa.gov/">
+NASA&#39;s Goddard Space Flight Center</A>
+<DD>The Goddard Distributed Active Archive Center (DAAC) provides data and 
+related services for global change research and education.
+<p>
+
+
+
+<DT>   NASA Jet Propulsion Laboratory DAAC<P>
+
+<DT><A HREF="http://eosweb.larc.nasa.gov/">NASA Langley Distributed
+Active Archive Center</a>
+<DD>The Langley Distributed Active Archive Center (DAAC) is responsible 
+for archiving and distributing NASA science data in the areas 
+of radiation budget, clouds, aerosols, and tropospheric chemistry:
+<A HREF="http://eosweb.larc.nasa.gov/HBDOCS/hdf.html">Langley DAAC
+User's Handbook - HDF</A><p>
+
+<DT>NASA Scatterometer (NSCAT)<P>
+
+<DT>National Institute of Standards and Technology<P>
+
+<DT>National Centre for Antarctic and Ocean Research, Goa, India
+<DD>Using HDF for sea ice studies (polar remote sensing).  5/05
+<P>
+<DT>   National Center for Supercomputer Applications (NCSA)<P>
+
+<DT><A HREF="http://www.nsmc.cma.gov.cn/">National Satellite Meteorological Center</A>, Beijing, China
+<DD>Uses HDF in satellite remote sensing. (4/02) 
+<P>
+<DT>National Taiwan Teachers College
+<DD>Using HDF in field of fishery oceanography.  (EOS User, 6/05)
+<P>
+<DT><A HREF="http://near.jhuapl.edu">NEAR</A> - Near Earth Asteroid Rendezvous<P>
+<DT><A HREF="http://www.neci.nec.com/">NEC Research Institute, Inc.</A> (2/02)
+<DD>Uses HDF4 in field of Neural Networks.
+<P>
+
+<DT> netCDF - network Common Data Format (plans to use HDF 5.0)<P>
+
+<DT><A HREF="http://www.neutron.anl.gov/NeXus/">NeXus</A>
+<DD>The neutron and X-ray synchrotron scattering communities have
+designed a common data format based on HDF.  Apart from making it
+easier to exchange data between major facilities and their user
+base, NeXus is intended to stimulate greater cooperation in
+developing analysis and visualization software.<P>
+
+<DT><A HREF="http://coastwatch.noaa.gov/">NOAA's CoastWatch Program</A>
+<DD>NOAA's CoastWatch Program makes environmental satellite data products and 
+in-situ data available to Federal, state and local marine scientists, 
+coastal resource managers, and the public. It users several 
+<A HREF="http://coastwatch.noaa.gov/cw_formats.html">formats</A>, including
+HDF.  It is operated within NOAA's
+National Environmental Satellite Data Information Service (See  
+<A HREF="#nesdis">NOAA/NESDIS</A> below).  (EOS User, 10/03)
+<P>
+
+<DT><A HREF="http://www.ngdc.noaa.gov">NOAA's National Geophysical Data Center</A>
+<DD>The NGDC has written the
+<A HREF="http://www.ngdc.noaa.gov/seg/talks/hdf2men.html">hdf2men</A>
+utility.
+<A HREF="http://www.usgs.gov/data/noaa/global_relief_cd_rom/index.html">
+The GLOBAL RELIEF CD-ROM</a> contains topography and bathymetry at various 
+scales, digitized continental coastlines, gridded oceanic 
+gravity anomalies, ocean-floor gazetteers, and digital topographic 
+relief images with data in HDF format.<p>
+
+<DT><A HREF="http://www.nos.noaa.gov">NOAA's National Ocean Service (NOS)</A>
+<DD>One NOS project which uses HDF involves working with data from the Japanese ADEOS
+satellite sensor, OCTS.  This sensor provides imagery data which will enable
+the identification of what is generally called ocean color.  Ocean color is
+a catch-all for suspended sediments, algal biomass and other oceanic 
+parameters.  The ADEOS satellite was launched in August of 1996.<P> 
+
+<A NAME="nesdis">
+<DT><A HREF="http://www.nesdis.noaa.gov">NOAA/NESDIS</A> (EOS User, 3/03)
+<DD>NESDIS provides timely access to global environmental data from
+satellites and other sources to promote, protect, and enhance the
+Nation's economy, security, environment, and quality of life.
+<P>
+<DT>NOAA's Satellite Climate Research Group
+<DD>The Satellite Climate Research Group (Climsat) uses data from various 
+environmental satellites in studies of seasonal to interannual climate 
+variability. <p> 
+
+<DT>Obninsk Institute of Nuclear Power Engineering, Russia
+<DD>Using HDF as part of International Snow and Ice Center.  (EOS User, 10/02)
+<P>
+
+<DT>OCCAM Global Ocean Model
+<DD>The OCCAM Global Ocean Model project in the UK has carried out runs of 
+a global ocean model at resolutions of 1/4 and 1/8 degree.  Data available 
+on line includes ocean temperature, salinity, velocity and sea surface height 
+fields in <A HREF="http://www.soc.soton.ac.uk/JRD/OCCAM/JAVA/data.html">HDF format</A>, plus <A HREF="http://www.soc.soton.ac.uk/JRD/OCCAM/choose_area.html">jpeg loops</A> of selected surface fields.  
+<!-- They have good contacts with the POP model. -->
+<P>
+
+<DT>Ocean Color and Temperature Scanner (OCTS)<P>
+
+<DT><A HREF="http://www.ogi.edu">OGI School of Science and Engineering at OHSU</A>, Oregon (EOS User) (1/02)
+<P>
+<DT><A HREF="http://www.heliosat3.de/">Oldenburg University</A>, Germany
+<DD> Using HDF4 in Energy Meteorology.  (7/04) 
+<P>
+<DT><A HREF="http://www.pfeg.noaa.gov/">Pacific Fisheries Environmental 
+Laboratory (PFEL)</A>
+<DD>PFEL is a research unit of the Southwest Fisheries Science Center, and 
+is home to the Pacific Fisheries Environmental Group (PFEG). PFEG developed
+<A HREF="http://www.pfeg.noaa.gov/products/code_extraction.html">CODE</A> 
+for working with COADS (Comprehensive Ocean - Atmosphere Data Set), which can 
+output data in ASCII, HDF or NetCDF formats.  
+<P>
+
+<DT>Parallel Ocean Program (POP) Simulation Model
+<DD>This Parallel Ocean Program (POP) Simulation Model is based on ocean circulation data sets provided by Los Alamos National 
+Laboratory and the US Naval Postgraduate School.<p>
+
+<DT> Park Scientific Instruments Co. - All instruments<P>
+<P>
+<DT><A HREF="http://www.pathscale.com/">PathScale, Inc.</A>
+<DD>Compilers & Interconnect vendor.  (2/05)
+<P>
+
+<!--
+<DT><A HREF="http://www.photon.com/">Photon Research Associates, Inc. </A>
+<DD>A mission planning software application has been developed using HDF
+files to store all mission planning parameters. HDF was chosen because 
+performance, storage precision, and portability were primary requirements.  
+Mission planning scripts are developed on users' laptop computers 
+(Windows/NT/95).  The mission scripts are then uploaded to the aircraft-based 
+control computer (Sun/Solaris).  The mission planning application was 
+developed to support the USAF Advanced Remote Earth Sensing (ARES) project.
+-->
+<DT>Peking University, Beijing City, China
+<DD>Using HDF4 in complexity science & spatio-temporal system dynamics. 
+(EOS User, 9/03)
+<P> 
+
+<dt><a href="http://trmm.chpc.utah.edu/">Precipitation Measuring Missions (PMM)</a>
+<dd>Precipitation Measuring Missions (PMM) including TRMM and GPM are NASA projects 
+focusing on measuring the precipitation globally. 
+<p>
+
+<DT>Purdue University
+<DD>Using HDF in field of Forestry and Natural Resources.  (5/05)
+<P>
+<DT><A HREF="http://www.randomfactory.com">The Random Factory</A>
+<DD>Provides scientific software for Linux. (1/02)
+<P>
+<DT>Radiation  Protection Institute, Ukraine
+<DD>Using HDF in radiation protection and dosimetry.  (9/16/02)
+<P>
+<DT><A HREF="http://www.rc2.com/">RC-Squared</A>
+<DD>    RC-Squared (Reservoir Characterization Research and Consulting,
+Inc.) provides Unix and PC based software and
+consulting for petroleum reservoir modelling, characterization and
+development.
+The software modules use HDF as their basic data format for its speed
+and cross platform utility.
+<P>
+<DT>R&D Center for Minerals and Coal, West Java, Indonesia
+<DD>Using HDF4 in mine zoning area.  (Alliance/NPACI User, 9/04)
+<P>
+<DT><A HREF="http://www.researchsystems.com">Research Systems, Inc.</A>
+<DD>Research Systems, Inc. is a leading developer of data analysis and 
+visualization software. Its flagship product is IDL (the Interactive 
+Data Language), an advanced fourth-generation language used to build 
+visualization applications for science, medical, financial, and 
+engineering data analysis. RSI also markets ENVI (written in 
+IDL), the industry-leading remote sensing software.
+<P>
+<DT><A HREF="http://www.sdsc.edu">San Diego Supercomputer Center (SDSC)</A>  (Alliance/NPACI User, 4/04)
+<P>
+<DT><A HREF="http://seawifs.gsfc.nasa.gov/SEAWIFS.html">Sea-viewing Wide Field of view Sensor (SeaWiFS)</A><P>
+
+<DT><A HREF="http://www.sensys.de">SENSYS</A> (3/03)
+<P>
+<DT><A HREF="http://ssmg.snu.ac.kr">Seoul National University</A>, South Korea
+<DD>Using HDF4 in Atmospheric Sciences.  (6/03)
+<P>
+<DT>SIS Development (1/03)
+<P>
+<DT>South China Sea Institute of Oceanography
+<DD>Using HDF 4 in Physical Oceanography.  (11/02)
+<P>
+<DT>Southampton Oceanography Centre
+<DD>
+Uses HDF to store, plot and analyse large ocean datasets - most around 0.6
+Gbytes, some up to 8 Gbytes.
+<P>
+<DT><A HREF="http://www.srh.noaa.gov/smg/">Spaceflight Meteorology Group</A>
+<DD>Use HDF 4 as part of the ARPS/ADAS mesoscale model.  (3/03)
+<P>
+<DT>Space Technology Application Centre, Vietnam
+<DD>Using HDF in remote sensing applications.  (EOS User, 10/02)
+<P>
+<DT>State University of Rio de Janeiro
+<DD>Uses HDF as part of the ECOAIR project for providing the means to
+monitor environmental degradation based on remote sensing data. (EOS User) 
+(12/01)
+<P>
+<DT>SUPARCO, Pakistan
+<DD>Using HDF in environmental research.  (9/03)
+<P>
+<DT>TerraSIP, University of Minnesota &nbsp; (EOS User, 1/03)
+<P>
+<DT>TIROS Operational Vertical Sounder (TOVS) Pathfinder Data<P>
+
+<DT><A HREF="http://martok3.oi.u-tokai.ac.jp/frontier/">Tokai University</A>, Japan
+<DD>Using HDF4 with Satellite Oceanography. (6/03)
+<P>
+<DT>Total Ozone Mass Spectrometer (TOMS)<P>
+
+<!--
+<DT><A HREF="http://trappist.kb.bam-berlin.de/standard.html">The Trappist 
+NDT Standard Format</A>
+<DD>Trappist is an acronym for Transfer, Processing and Interpretation of 3D NDT Data in a Standard Environment.  
+They also have a library, the 
+<A HREF="http://trappist.kb.bam-berlin.de/grgrain.html">green GRAIN 
+library</A>.<p>
+-->
+<DT><A HREF="http://trmm.gsfc.nasa.gov/">Tropical Rainfall Measurement Mission (TRMM)</A>
+<UL>
+ <LI> Precipitation Radar (PR)
+ <LI> TRMM Microwave Imager (TMI)
+ <LI> Visible Infrared Scanner (VIRS)
+ <LI> Lighting Image Sensor (LIS)
+ <LI> Clouds and the Earth's Radiant Energy System (CERES)
+ </UL><P>
+
+<DT><A HREF="http://www.ime.unicamp.br/~samuel">UNICAMP</A>, Brazil
+<DD>Using HDF4 and HDF5 in field of relativity.  (12/02)
+<P>
+
+<DT>University of Bremen, Institute of Environmental Physics
+<DD> Using HDF4 in ENVISAT Validation.   (EOS User, 8/02)
+<P>
+<DT>University Politehnica of Bucharest, Romania
+<DD>Using HDF in shallow-water modeling.      (8/05)
+<P>
+<DT><A HREF="http://oceandatacenter.ucsc.edu">University of California, Santa Cruz</A>
+<DD>Using HDF4 in oceanography.  (EOS User, 5/02)
+
+<P>
+<DT>University of Florida
+<DD>Used in Space Science.  (4/03)
+<P>
+<DT><A HREF="http://coastwatch.pfel.noaa.gov">Uiversity of Hawaii / JIMAR</A>
+<DD>Distribution of satellite-derived data products to researchers, resource 
+managers, and the community.  (EOS User, 4/03)
+<P>
+<DT> <A HREF="http://boise.uidaho.edu">University of Idaho</A>
+<DD>Using HDF in field of surface chemistry.  (9/02)
+<P>
+<DT>University of Minnesota
+<DD>Using HDF4 as part of the TerraSIP project.   (EOS User, 8/03)
+<P>
+<DT><A HREF="http://www.cs.unh.edu/">University of New Hampshire</A>, (3/03)
+<DD>Working with scientific databases.
+<P>
+<DT><A HREF="http://physics.uoregon.edu">University of Oregon</A>
+<DD>Using HDF in field of optics.   (Alliance/NPACI User, 09/03)
+<P>
+<DT><A HREF="http://www.atm.ox.ac.uk/hirdls/">University of Oxford</A>
+<DD> Using HDF4 and HDF5 in field of atmospheric physics.  (EOS User, 3/02)
+<P>
+<DT>University of Physics, Hungary
+<DD>Using HDF4 and HDF5 in Fourier Analysis.   (1/05)
+<P>
+<DT>University of Sao Paulo, Institute of Geosciences
+<DD>Using HDF4 in field of geology.  (7/05)
+<P>
+<DT><A HREF="http://imars.usf.edu">University of South Florida, Institute for Marine Remote Sensing</A> &nbsp;  (EOS User, 4/04)
+<P>
+<DT><A HREF="http://www.ph.utexas.edu/">The University of Texas at Austin Department of Physics</a>
+<DD>See <A HREF="http://godel.ph.utexas.edu/Center/Software.html">
+Center for Relativity: Software/Computational</A>.<p>
+
+<DT><A HREF="http://biorobotics.ee.washington.edu/SPP/SPPHomePage.html">University of Washington Radar Remote Sensing</A>
+<DD> Concerned with the development of advanced radar systems and signal processing techniques, Radar Remote Sensing applies this 
+technology to the study of ionospheric plasma physics.  They offer a 
+software program called </A>
+<A HREF="http://biorobotics.ee.washington.edu/SPP/Projects/CUPRI/Cupri-software.html">CUPRI</A>.<p>
+
+<DT>University of Waterloo, Ontario, Canada (5/03)
+<P>
+
+<DT><A HREF="http://ingnuc.cps.unizar.es">University of Zaragoza, Department
+of Nuclear Engineering</A>
+<DD>Is using HDF in Inertial Confinement Fusion Diagnostics.
+<P>
+<DT><A HREF="http://www.tec.army.mil/Hypercube/index.html">USATEC</A>
+<DD>Maintain an on-going in-house software program (HyperCube) that 
+exploits multi and hyperspectral software.  (9/02)
+<P>
+<DT><A HREF="http://rockyweb.cr.usgs.gov">USGS, National Mapping Division, Rocky Mountain Mapping</A>  (EOS User, 3/03)
+<P>
+<DT>Washington University, Missouri
+<DD>Using HDF4 in field of radiology.  (6/03)
+<P>
+
+<dt><a href="http://www.wxtrends.com/">Weather Trends International</a>
+<dd>Weather Trends International makes substantial use of HDF in the client
+deliverable and mapping systems for two of their websites, 
+<a href="http://www.wxtrends.com/">Weather Trends International - Business
+Weather Guidance</a>, and <a href="http://www.myskeye.com/">MYskeye</a>.
+</p>
+
+<p>
+<DT><A HREF="http://remotesensing.whoi.edu">Wood's Hole Oceanographic Institution</A>
+<DD>Wood's Hole Oceanographic Institution uses HDF4 in oceanographic 
+research.  It is associated with the HDF-EOS project. (1/02)
+<P>
+<DT><A HREF="http://wdc.dlr.de">World Data Center of Remote Sensing of the Atmosphere (WDC-RSAT)</A>, Germany
+<DD>The WDC_RSAT provides data, information, and services regarding the 
+earth's atmosphere and surface. It evolved from the German Remote Sensing 
+Data Center, and is hosted by the <A HREF="http://www.caf.dlr.de">Cluster of
+Applied Remote Sensing</A> at DLR. (7/05)
+<P>
+<DT><A HREF="http://www.globalforestwatch.org">World Resources Institute</A>
+<DD>Using HDF4 in field of Forestry.  (11/03)
+<P>
+<DT>Wuhan University ,P.R.China
+<DD>Using HDF4 in remote sensing and image processing. (EOS User, 6/03)
+<P>
+<DT>Yale Medical School, CT, USA
+<DD>Using  HDF4 in Spatial statistics. (EOS User, 3/02)
+
+</DL>
+<i>
+- - Last modified: 24 January 2017</i>
+	   </div>
+	   <!--END: CONTENT -->
+<!--END: WRAPPER -->
+<script src="/scriptaculous/gatag.js" type="text/javascript"></script>
+
+<!-- <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script> -->
+				
+<!--
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-3782034-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+-->
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-3782034-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+</body>
+</html>
+

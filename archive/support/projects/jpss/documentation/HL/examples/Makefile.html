@@ -1,0 +1,54 @@
+# HDF5 HL_REGION version 1.1.0 currently under development
+# 
+# Copyright by The HDF Group.
+# All rights reserved.
+#
+# This file is part of the NPOESS High-Level HDF5 APIs.  The full copyright 
+# notice, including terms governing use, modification, and redistribution, 
+# is contained in the file COPYING, which can be found at the root of the
+# source code distribution tree and in the documentation directory (doc/html/). 
+# If you do not have access to this file, you may request a copy of 
+# "the High-Level region HDF5 APIs copyright and license statement" from 
+# help@hdfgroup.org.
+# 
+##############################################################################
+
+#
+LIBS = -L../src -lhdf5_hl_region
+INCLUDES = -I../src
+
+# compiler
+#CC = $(HDF5_INSTALL_DIR)/bin/h5cc -g
+CC = $(HDF5_INSTALL_DIR)/bin/h5cc 
+
+all: ex_bitfield ex_lite_copy_region ex_lite_read_region ex_regref_copy_references ex_regref_create ex_regref_read ex_ref_to_all ex_GMGTO
+
+ex_bitfield: ex_bitfield.c
+	$(CC) ex_bitfield.c -o ex_bitfield $(LIBS) $(INCLUDES)
+
+ex_lite_copy_region: ex_lite_copy_region.c
+	$(CC) ex_lite_copy_region.c -o ex_lite_copy_region $(LIBS) $(INCLUDES)
+
+ex_lite_read_region: ex_lite_read_region.c
+	$(CC) ex_lite_read_region.c -o ex_lite_read_region $(LIBS) $(INCLUDES)
+
+ex_regref_copy_references: ex_regref_copy_references.c
+	$(CC) ex_regref_copy_references.c -o ex_regref_copy_references $(LIBS) $(INCLUDES)
+
+ex_regref_create: ex_regref_create.c
+	$(CC) ex_regref_create.c -o ex_regref_create $(LIBS) $(INCLUDES)
+
+ex_regref_read: ex_regref_read.c
+	$(CC) ex_regref_read.c -o ex_regref_read $(LIBS) $(INCLUDES)
+
+ex_ref_to_all: ex_ref_to_all.c
+	$(CC) ex_ref_to_all.c -o ex_ref_to_all $(LIBS) $(INCLUDES)
+
+ex_GMGTO: ex_GMGTO.c
+	$(CC) ex_GMGTO.c -o ex_GMGTO $(LIBS) $(INCLUDES)	
+
+tests:
+	./test.sh
+
+clean:
+	\rm -f ex_bitfield ex_lite_copy_region ex_lite_read_region ex_regref_copy_references ex_regref_create ex_regref_read ex_ref_to_all ex_GMGTO *.o 

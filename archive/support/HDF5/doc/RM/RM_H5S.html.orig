@@ -1,0 +1,3373 @@
+<html>
+<head><title>
+HDF5/H5S API Specification
+</title>
+<link href="../ed_styles/RMelect.css" rel="stylesheet" type="text/css">
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<!-- #BeginLibraryItem "/ed_libs/styles_RM.lbi" -->
+<!--
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+  * Copyright by The HDF Group.                                               *
+  * Copyright by the Board of Trustees of the University of Illinois.         *
+  * All rights reserved.                                                      *
+  *                                                                           *
+  * This file is part of HDF5.  The full HDF5 copyright notice, including     *
+  * terms governing use, modification, and redistribution, is contained in    *
+  * the files COPYING and Copyright.html.  COPYING can be found at the root   *
+  * of the source code distribution tree; Copyright.html can be found at the  *
+  * root level of an installed copy of the electronic HDF5 document set and   *
+  * is linked from the top-level documents page.  It can also be found at     *
+  * http://www.hdfgroup.org/HDF5/doc/Copyright.html.  If you do not have      *
+  * access to either file, you may request a copy from help@hdfgroup.org.     *
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ -->
+<!-- #EndLibraryItem --><!-- HEADER RIGHT " " -->
+
+<!-- #BeginLibraryItem "/ed_libs/NavBar_RM.lbi" -->
+<hr>
+<center>
+<table border=0 width=98%>
+<tr><td valign=top align=left>
+<a href="../index.html">HDF5 documents and links</a>&nbsp;<br>
+<a href="../H5.intro.html">Introduction to HDF5</a>&nbsp;<br>
+<a href="../UG/HDF5_Users_Guide-Responsive HTML5/index.html">HDF5 User&rsquo;s Guide</a>&nbsp;<br>
+<!--
+<a href="Glossary.html">Glossary</a><br>
+-->
+</td>
+<td valign=top align=right>
+In the 
+<a href="RM_H5Front.html">HDF5 Reference Manual</a>&nbsp;
+<font size=-1>
+<br>
+<a href="../HL/RM_H5DS.html">H5DS</a>&nbsp;&nbsp;
+<a href="../HL/RM_H5IM.html">H5IM</a>&nbsp;&nbsp;
+<a href="../HL/RM_H5LT.html">H5LT</a>&nbsp;&nbsp;
+<a href="../HL/RM_H5PT.html">H5PT</a>&nbsp;&nbsp;
+<a href="../HL/RM_H5TB.html">H5TB</a>&nbsp;
+<a href="../HL/RM_HDF5Optimized.html">Optimized</a>&nbsp;
+<br>
+<a href="RM_H5.html">H5</a>&nbsp;&nbsp;
+<a href="RM_H5A.html">H5A</a>&nbsp;&nbsp;
+<a href="RM_H5D.html">H5D</a>&nbsp;&nbsp;
+<a href="RM_H5E.html">H5E</a>&nbsp;&nbsp;
+<a href="RM_H5F.html">H5F</a>&nbsp;&nbsp;
+<a href="RM_H5G.html">H5G</a>&nbsp;&nbsp;
+<a href="RM_H5I.html">H5I</a>&nbsp;&nbsp;
+<a href="RM_H5L.html">H5L</a>&nbsp;
+<br>
+<a href="RM_H5O.html">H5O</a>&nbsp;&nbsp;
+<a href="RM_H5P.html">H5P</a>&nbsp;&nbsp;
+<a href="RM_H5PL.html">H5PL</a>&nbsp;&nbsp;
+<a href="RM_H5R.html">H5R</a>&nbsp;&nbsp;
+<a href="RM_H5S.html">H5S</a>&nbsp;&nbsp;
+<a href="RM_H5T.html">H5T</a>&nbsp;&nbsp;
+<a href="RM_H5Z.html">H5Z</a>&nbsp;
+<br>
+<a href="Tools.html">Tools</a>&nbsp;&nbsp;
+<a href="PredefDTypes.html">Datatypes</a>&nbsp;&nbsp;
+<a href="../fortran/index.html">Fortran</a>&nbsp;&nbsp;
+<a href="APICompatMacros.html">Compatibility Macros</a>&nbsp;
+<br>
+<a href="CollectiveCalls.html">Collective Calls in Parallel</a>&nbsp;
+<!--
+<br>
+<i><font size=-1>(Printable <a href="http://hdfgroup.org/HDF5/doc/PSandPDF/HDF5_RefManual.PDF">PDF</a> of this Reference Manual)</font></i>&nbsp;
+-->
+</font>
+</td></tr>
+</table>
+</center>
+<hr>
+<!-- #EndLibraryItem --><center>
+<h1>H5S: Dataspace Interface</h1>
+</center>
+
+<h2>Dataspace Object API Functions</h2>
+
+These functions create and manipulate the dataspace in which to store the
+elements of a dataset.
+
+
+<p>
+<strong>The C Interfaces:</strong>
+
+<table border=0>
+<tr><td valign=top>
+    <li><a href="#Dataspace-Create">H5Screate</a>
+    <li><a href="#Dataspace-Copy">H5Scopy</a>
+    <li><a href="#Dataspace-Close">H5Sclose</a>
+    <li><a href="#Dataspace-Decode">H5Sdecode</a>
+    <li><a href="#Dataspace-Encode">H5Sencode</a>
+    <li><a href="#Dataspace-CreateSimple">H5Screate_simple</a>
+    <li><a href="#Dataspace-IsSimple">H5Sis_simple</a>
+    <li><a href="#Dataspace-IsRegularHyperslab">H5Sis_regular_hyperslab</a>
+    <li><a href="#Dataspace-GetRegularHyperslab">H5Sget_regular_hyperslab</a>
+    <li><a href="#Dataspace-OffsetSimple">H5Soffset_simple</a>
+</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign=top>
+    <li><a href="#Dataspace-ExtentDims">H5Sget_simple_extent_dims</a>
+    <li><a href="#Dataspace-ExtentNdims">H5Sget_simple_extent_ndims</a>
+    <li><a href="#Dataspace-ExtentNpoints">H5Sget_simple_extent_npoints</a>
+    <li><a href="#Dataspace-ExtentType">H5Sget_simple_extent_type</a>
+    <li><a href="#Dataspace-ExtentCopy">H5Sextent_copy</a>
+    <li><a href="#Dataspace-ExtentEqual">H5Sextent_equal</a>
+    <li><a href="#Dataspace-SetExtentSimple">H5Sset_extent_simple</a>
+    <li><a href="#Dataspace-SetExtentNone">H5Sset_extent_none</a>
+    <li><a href="#Dataspace-GetSelectType">H5Sget_select_type</a>
+    <li><a href="#Dataspace-SelectNpoints">H5Sget_select_npoints</a>
+</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign=top>
+    <li><a href="#Dataspace-SelectHyperNBlocks">H5Sget_select_hyper_nblocks</a>
+    <li><a href="#Dataspace-SelectHyperBlockList">H5Sget_select_hyper_blocklist</a>
+    <li><a href="#Dataspace-SelectElemNPoints">H5Sget_select_elem_npoints</a>
+    <li><a href="#Dataspace-SelectElemPointList">H5Sget_select_elem_pointlist</a>
+    <li><a href="#Dataspace-SelectBounds">H5Sget_select_bounds</a>
+    <li><a href="#Dataspace-SelectElements">H5Sselect_elements</a>
+    <li><a href="#Dataspace-SelectAll">H5Sselect_all</a>
+    <li><a href="#Dataspace-SelectNone">H5Sselect_none</a>
+    <li><a href="#Dataspace-SelectValid">H5Sselect_valid</a>
+    <li><a href="#Dataspace-SelectHyperslab">H5Sselect_hyperslab</a>
+<!--<li><a href="#Dataspace-CombineHyperslab">H5Scombine_hyperslab</a>    -->
+<!--<li><a href="#Dataspace-CombineSelect">H5Scombine_select</a>          -->
+<!--<li><a href="#Dataspace-SelectSelect">H5Sselect_select</a>            -->
+</td></tr>
+</table>
+<br>
+
+<i>Alphabetical Listing</i>
+
+<table border="0">
+  <tr>
+    <td valign="top">
+      <li><a href="#Dataspace-Close">H5Sclose</a>
+      <li><a href="#Dataspace-Copy">H5Scopy</a>
+      <li><a href="#Dataspace-Create">H5Screate</a>
+      <li><a href="#Dataspace-CreateSimple">H5Screate_simple</a>
+      <li><a href="#Dataspace-Decode">H5Sdecode</a>
+      <li><a href="#Dataspace-Encode">H5Sencode</a>
+      <li><a href="#Dataspace-ExtentCopy">H5Sextent_copy</a>
+      <li><a href="#Dataspace-ExtentEqual">H5Sextent_equal</a>
+      <li><a href="#Dataspace-GetRegularHyperslab">H5Sget_regular_hyperslab</a>
+      <li><a href="#Dataspace-SelectBounds">H5Sget_select_bounds</a>
+     
+    </td>
+    
+    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    
+    <td valign="top">
+      <li><a href="#Dataspace-SelectElemNPoints">H5Sget_select_elem_npoints</a>
+      <li><a href="#Dataspace-SelectElemPointList">H5Sget_select_elem_pointlist</a>
+      <li><a href="#Dataspace-SelectHyperBlockList">H5Sget_select_hyper_blocklist</a>    
+      <li><a href="#Dataspace-SelectHyperNBlocks">H5Sget_select_hyper_nblocks</a>
+      <li><a href="#Dataspace-SelectNpoints">H5Sget_select_npoints</a>
+      <li><a href="#Dataspace-GetSelectType">H5Sget_select_type</a>
+      <li><a href="#Dataspace-ExtentDims">H5Sget_simple_extent_dims</a>
+      <li><a href="#Dataspace-ExtentNdims">H5Sget_simple_extent_ndims</a>
+      <li><a href="#Dataspace-ExtentNpoints">H5Sget_simple_extent_npoints</a>
+      <li><a href="#Dataspace-ExtentType">H5Sget_simple_extent_type</a>
+    </td>
+    
+    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    
+    <td valign="top">
+      <li><a href="#Dataspace-IsRegularHyperslab">H5Sis_regular_hyperslab</a>
+      <li><a href="#Dataspace-IsSimple">H5Sis_simple</a>
+      <li><a href="#Dataspace-OffsetSimple">H5Soffset_simple</a>      
+      <li><a href="#Dataspace-SelectAll">H5Sselect_all</a>
+      <li><a href="#Dataspace-SelectElements">H5Sselect_elements</a>
+      <li><a href="#Dataspace-SelectHyperslab">H5Sselect_hyperslab</a>
+      <li><a href="#Dataspace-SelectNone">H5Sselect_none</a>
+      <li><a href="#Dataspace-SelectValid">H5Sselect_valid</a>
+      <li><a href="#Dataspace-SetExtentNone">H5Sset_extent_none</a>
+      <li><a href="#Dataspace-SetExtentSimple">H5Sset_extent_simple</a>
+    </td>
+  </tr>
+</table>
+
+<br>
+<strong>The Fortran Interface:</strong>
+<br>
+In general, each Fortran subroutine performs exactly the same task 
+as the corresponding C function.  
+<br>
+
+<table border=0>
+<tr><td valign=top>
+    <li><a href="#Dataspace-Create">h5screate_f</a>
+    <li><a href="#Dataspace-Copy">h5scopy_f</a>
+    <li><a href="#Dataspace-Close">h5sclose_f</a>
+    <li><a href="#Dataspace-CreateSimple">h5screate_simple_f</a>
+    <li><a href="#Dataspace-IsSimple">h5sis_simple_f</a>
+    <li><a href="#Dataspace-OffsetSimple">h5soffset_simple_f</a>
+    <li><a href="#Dataspace-IsRegularHyperslab">h5sis_regular_hyperslab_f</a>
+    <li><a href="#Dataspace-GetRegularHyperslab">h5sget_regular_hyperslab_f</a>
+    <li><a href="#Dataspace-ExtentDims">h5sget_simple_extent_dims_f</a>
+</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign=top>
+    <li><a href="#Dataspace-ExtentNdims">h5sget_simple_extent_ndims_f</a>
+    <li><a href="#Dataspace-ExtentNpoints">h5sget_simple_extent_npoints_f</a>
+    <li><a href="#Dataspace-ExtentType">h5sget_simple_extent_type_f</a>
+    <li><a href="#Dataspace-ExtentCopy">h5sextent_copy_f</a>
+    <li><a href="#Dataspace-SetExtentSimple">h5sset_extent_simple_f</a>
+    <li><a href="#Dataspace-SetExtentNone">h5sset_extent_none_f</a>
+    <li><a href="#Dataspace-GetSelectType">h5sget_select_type_f</a>
+    <li><a href="#Dataspace-SelectNpoints">h5sget_select_npoints_f</a>
+</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign=top>
+    <li><a href="#Dataspace-SelectHyperNBlocks">h5sget_select_hyper_nblocks_f</a>
+    <li><a href="#Dataspace-SelectHyperBlockList">h5sget_select_hyper_blocklist_f</a>
+<!--<li><a href="#Dataspace-SelectBounds">h5sget_select_bounds_f</a>      -->
+    <li><a href="#Dataspace-SelectElemNPoints">h5sget_select_elem_npoints_f</a>
+    <li><a href="#Dataspace-SelectElemPointList">h5sget_select_elem_pointlist_f</a>
+    <li><a href="#Dataspace-SelectElements">h5sselect_elements_f</a>
+    <li><a href="#Dataspace-SelectAll">h5sselect_all_f</a>
+    <li><a href="#Dataspace-SelectNone">h5sselect_none_f</a>
+    <li><a href="#Dataspace-SelectValid">h5sselect_valid_f</a>
+    <li><a href="#Dataspace-SelectHyperslab">h5sselect_hyperslab_f</a>
+<!--<li><a href="#Dataspace-CombineHyperslab">h5scombine_hyperslab_f</a>  -->
+<!--<li><a href="#Dataspace-CombineSelect">h5scombine_select_f</a>        -->
+<!--<li><a href="#Dataspace-SelectSelect">h5sselect_select_f</a>          -->
+</td></tr>
+</table>
+
+
+<!-- Unimplemented functions
+<p>
+The following H5S functions are included in the HDF5 specification, 
+but have not yet been implemented.  They are described in the 
+<a href="Dataspaces.html">The Dataspace Interface (H5S)</a> section
+of the <cite>HDF5 User's Guide.</cite>.
+<table border=0>
+<tr><td valign=top>
+<ul>
+    <li>H5Scommit
+    <li>H5Sis_subspace
+    <li>H5Slock
+</ul>
+</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign=top>
+<ul>
+    <li>H5Sopen
+    <li>H5Sselect_op
+    <li>H5Sselect_order
+</ul>
+</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign=top>
+<ul>
+    <li>H5Ssubspace
+    <li>H5Ssubspace_name
+    <li>H5Ssubspace_location
+</ul>
+</td></tr>
+</table>
+-->
+
+<!-- NEW PAGE -->
+<!-- HEADER RIGHT " " -->
+
+<!--  ---  ---  ---  ---  ---  ---  ---  ---  ---  ---  ---  -->
+<!--       Include special topic files                       -->
+<!--  ---  ---  ---  ---  ---  ---  ---  ---  ---  ---  ---  -->
+
+
+<!--  ---  ---  ---  ---  ---  ---  ---  ---  ---  ---  ---  -->
+<!--       Include function files                            -->
+<!--  ---  ---  ---  ---  ---  ---  ---  ---  ---  ---  ---  -->
+
+
+
+<!--
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+  * Copyright by The HDF Group.                                               *
+  * Copyright by the Board of Trustees of the University of Illinois.         *
+  * All rights reserved.                                                      *
+  *                                                                           *
+  * This file is part of HDF5.  The full HDF5 copyright notice, including     *
+  * terms governing use, modification, and redistribution, is contained in    *
+  * the files COPYING and Copyright.html.  COPYING can be found at the root   *
+  * of the source code distribution tree; Copyright.html can be found at the  *
+  * root level of an installed copy of the electronic HDF5 document set and   *
+  * is linked from the top-level documents page.  It can also be found at     *
+  * http://hdfgroup.org/HDF5/doc/Copyright.html.  If you do not have          *
+  * access to either file, you may request a copy from help@hdfgroup.org.     *
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ -->
+
+
+<!-- NEW PAGE -->
+<!-- HEADER RIGHT "H5Sclose" -->
+<hr>
+<dl>
+
+<dt><div align=right><font color=999999 size=-1><i>
+    Last modified: 17 August 2010
+    </i></font></div>
+
+<dt><strong>Name:</strong> <a name="Dataspace-Close">H5Sclose</a>
+<dt><strong>Signature:</strong>
+    <dd><em>herr_t </em><code>H5Sclose</code>(
+                   <em>hid_t </em><code>space_id</code>
+    )
+
+<p>
+<dt><strong>Purpose:</strong>
+    <dd>Releases and terminates access to a dataspace.
+
+<p>
+<dt><strong>Description:</strong>
+    <dd><code>H5Sclose</code> releases a dataspace.  
+        Further access through the dataspace identifier is illegal.  
+        Failure to release a dataspace with this call will
+        result in resource leaks.
+
+<p>
+<dt><strong>Parameters:</strong>
+    <dd><table>
+        <tr>
+          <td valign="top"><em>hid_t</em>&nbsp;<code>space_id&nbsp;&nbsp;&nbsp;&nbsp;</code></td>
+          <td valign="top">IN: Identifier of dataspace to release.</td></tr>
+    </table></dd>
+
+<p>
+<dt><strong>Returns:</strong>
+    <dd>Returns a non-negative value if successful;
+        otherwise returns a negative value.
+
+<p>
+<dt><strong>Fortran90 Interface:</strong> h5sclose_f
+    <dd>
+    <pre>
+SUBROUTINE h5sclose_f(space_id, hdferr)     
+  IMPLICIT NONE
+  INTEGER(HID_T), INTENT(IN) :: space_id  ! Dataspace identifier
+  INTEGER, INTENT(OUT) :: hdferr          ! Error code
+                                          ! 0 on success and -1 on failure
+END SUBROUTINE h5sclose_f
+    </pre>
+
+</dl>
+
+
+
+<!--
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+  * Copyright by The HDF Group.                                               *
+  * Copyright by the Board of Trustees of the University of Illinois.         *
+  * All rights reserved.                                                      *
+  *                                                                           *
+  * This file is part of HDF5.  The full HDF5 copyright notice, including     *
+  * terms governing use, modification, and redistribution, is contained in    *
+  * the files COPYING and Copyright.html.  COPYING can be found at the root   *
+  * of the source code distribution tree; Copyright.html can be found at the  *
+  * root level of an installed copy of the electronic HDF5 document set and   *
+  * is linked from the top-level documents page.  It can also be found at     *
+  * http://hdfgroup.org/HDF5/doc/Copyright.html.  If you do not have          *
+  * access to either file, you may request a copy from help@hdfgroup.org.     *
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ -->
+
+
+<!-- NEW PAGE -->
+<!-- HEADER RIGHT "H5Scopy" -->
+<hr>
+<dl>
+
+<dt><div align=right><font color=999999 size=-1><i>
+    Last modified: 17 August 2010
+    </i></font></div>
+
+<dt><strong>Name:</strong> <a name="Dataspace-Copy">H5Scopy</a>
+<dt><strong>Signature:</strong>
+    <dd><em>hid_t </em><code>H5Scopy</code>(
+        <em>hid_t </em><code>space_id</code>
+    )
+
+<p>
+<dt><strong>Purpose:</strong>
+    <dd>Creates an exact copy of a dataspace.
+
+<p>
+<dt><strong>Description:</strong>
+    <dd><code>H5Scopy</code> creates a new dataspace which is an exact
+        copy of the dataspace identified by <code>space_id</code>.
+        The dataspace identifier returned from this function should be 
+        released with <code>H5Sclose</code> or resource leaks will occur.
+
+<p>
+<dt><strong>Parameters:</strong>
+    <dd><table>
+        <tr>
+          <td valign="top"><em>hid_t</em>&nbsp;<code>space_id&nbsp;&nbsp;&nbsp;&nbsp;</code></td>
+          <td valign="top">IN: Identifier of dataspace to copy.</td></tr>
+    </table></dd>
+
+<p>
+<dt><strong>Returns:</strong>
+    <dd>Returns a dataspace identifier if successful; 
+        otherwise returns a negative value.
+
+<p>
+<dt><strong>Fortran90 Interface:</strong> h5scopy_f
+    <dd>
+    <pre>
+SUBROUTINE h5scopy_f(space_id, new_space_id, hdferr) 
+  IMPLICIT NONE
+  INTEGER(HID_T), INTENT(IN) :: space_id      ! Dataspace identifier 
+  INTEGER(HID_T), INTENT(OUT) :: new_space_id ! Identifier of dataspace copy 
+  INTEGER, INTENT(OUT) :: hdferr              ! Error code
+                                              ! 0 on success and -1 on failure
+END SUBROUTINE h5scopy_f
+    </pre>
+
+</dl>
+
+
+
+<!--
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+  * Copyright by The HDF Group.                                               *
+  * Copyright by the Board of Trustees of the University of Illinois.         *
+  * All rights reserved.                                                      *
+  *                                                                           *
+  * This file is part of HDF5.  The full HDF5 copyright notice, including     *
+  * terms governing use, modification, and redistribution, is contained in    *
+  * the files COPYING and Copyright.html.  COPYING can be found at the root   *
+  * of the source code distribution tree; Copyright.html can be found at the  *
+  * root level of an installed copy of the electronic HDF5 document set and   *
+  * is linked from the top-level documents page.  It can also be found at     *
+  * http://hdfgroup.org/HDF5/doc/Copyright.html.  If you do not have          *
+  * access to either file, you may request a copy from help@hdfgroup.org.     *
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ -->
+
+
+<!-- NEW PAGE -->
+<!-- HEADER RIGHT "H5Screate" -->
+<hr>
+<dl>
+
+<dt><div align=right><font color=999999 size=-1><i>
+  Last modified: 14 October 2014</i></font></div></dt>
+
+
+<dt><strong>Name:</strong> <a name="Dataspace-Create">H5Screate</a>
+<p>
+<dt><strong>Signature:</strong>
+    <dd><em>hid_t</em> <code>H5Screate</code>(
+        <em>H5S_class_t</em> <code>type</code>
+        )
+
+<p>
+<dt><strong>Purpose:</strong>
+    <dd>Creates a new dataspace of a specified type.
+
+<p>
+<dt><strong>Description:</strong>
+    <dd><code>H5Screate</code> creates a new dataspace of a particular 
+        <code>type</code>.  
+        Currently supported types are as follows:
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <code>H5S_SCALAR</code>
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <code>H5S_SIMPLE</code>
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <code>H5S_NULL</code>
+                <br>
+        Further dataspace types may be added later.  
+        <p>
+        A <i>scalar dataspace</i>, <code>H5S_SCALAR</code>, 
+        has a single element, though that element may be of a complex 
+        datatype, such as a compound or array datatype.
+        By convention, the rank of a scalar dataspace is always 
+        <code>0</code> (zero); think of it geometrically as a single,
+        dimensionless point, though that point can be complex.
+        <p>
+        A <i>simple dataspace</i>, <code>H5S_SIMPLE</code>, consists of 
+        a regular array of elements.
+        <p>
+        A <i>null dataspace</i>, <code>H5S_NULL</code>, has no data elements. 
+
+        <p>The dataspace identifier returned by this function can be 
+        released with <code>H5Sclose</code> so that resource leaks will 
+        not occur.</p>
+
+<p>
+<dt><strong>Parameters:</strong>
+    <dd><table>
+        <tr>
+          <td valign="top"><em>H5S_class_t</em>&nbsp;<code>type&nbsp;&nbsp;&nbsp;&nbsp;</code></td>
+          <td valign="top">IN: Type of dataspace to be created.</td></tr>
+    </table></dd>
+
+<p>
+<dt><strong>Returns:</strong>
+    <dd>Returns a dataspace identifier if successful; 
+        otherwise returns a negative value.
+
+<p>
+<dt><strong>Fortran90 Interface:</strong> h5screate_f
+    <dd>
+    <pre>
+SUBROUTINE h5screate_f(classtype, space_id, hdferr) 
+  IMPLICIT NONE
+  INTEGER, INTENT(IN) :: classtype        ! The type of the dataspace
+                                          ! to be created. Possible values
+                                          ! are: 
+                                          !    H5S_SCALAR_F 
+                                          !    H5S_SIMPLE_F 
+                                          !    H5S_NULL_F
+  INTEGER(HID_T), INTENT(OUT) :: space_id ! Dataspace identifier 
+  INTEGER, INTENT(OUT) :: hdferr          ! Error code
+                                          ! 0 on success and -1 on failure
+END SUBROUTINE h5screate_f
+    </pre>
+
+
+  <dt><strong>See Also:</a></strong></dt>
+    <dd>
+    <a href="http://www.hdfgroup.org/HDF5/doc/Advanced/UsingIdentifiers/index.html">
+    &ldquo;Using Identifiers&rdquo;</a></dd>
+
+
+</dl>
+
+
+
+<!--
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+  * Copyright by The HDF Group.                                               *
+  * Copyright by the Board of Trustees of the University of Illinois.         *
+  * All rights reserved.                                                      *
+  *                                                                           *
+  * This file is part of HDF5.  The full HDF5 copyright notice, including     *
+  * terms governing use, modification, and redistribution, is contained in    *
+  * the files COPYING and Copyright.html.  COPYING can be found at the root   *
+  * of the source code distribution tree; Copyright.html can be found at the  *
+  * root level of an installed copy of the electronic HDF5 document set and   *
+  * is linked from the top-level documents page.  It can also be found at     *
+  * http://hdfgroup.org/HDF5/doc/Copyright.html.  If you do not have          *
+  * access to either file, you may request a copy from help@hdfgroup.org.     *
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ -->
+
+
+<!-- NEW PAGE -->
+<!-- HEADER RIGHT "H5Screate_simple" -->
+<hr>
+<dl>
+
+<dt><div align=right><font color=999999 size=-1><i>
+  Last modified: 14 October 2014</i></font></div></dt>
+
+<dt><strong>Name:</strong> 
+<a name="Dataspace-CreateSimple">H5Screate_simple</a></dt>
+<br />
+<dt><strong>Signature:</strong>
+    <dd><em>hid_t</em> <code>H5Screate_simple</code>(
+        <em>int</em> <code>rank</code>,
+        <em>const hsize_t *</em> <code>current_dims</code>,
+        <em>const hsize_t *</em> <code>maximum_dims</code>
+    )
+
+<p>
+<dt><strong>Purpose:</strong>
+    <dd>Creates a new simple dataspace and opens it for access. 
+
+<p>
+<dt><strong>Description:</strong>
+    <dd><code>H5Screate_simple</code> creates a new simple dataspace 
+        and opens it for access, returning a dataspace identifier. 
+        <p>
+        <code>rank</code> is the number of dimensions used in the dataspace.  
+        <p>
+        <code>current_dims</code> is a one-dimensional array of size 
+        <code>rank</code> specifying the size of each dimension of the dataset. 
+        <code>maximum_dims</code> is an array of the same size 
+        specifying the upper limit on the size of each dimension.  
+        <p>
+        Any element of <code>current_dims</code> can be <code>0</code> (zero).  
+        Note that no data can be written to a dataset 
+        if the size of any dimension of its current dataspace is <code>0</code>. 
+        This is sometimes a useful initial state for a dataset.
+        <p>
+        <code>maximum_dims</code> may be the null pointer, in which case the 
+        upper limit is the same as <code>current_dims</code>.  
+        Otherwise, no element of <code>maximum_dims</code> should be 
+        smaller than the corresponding element of <code>current_dims</code>.  
+        <p>
+        If an element of <code>maximum_dims</code> is <code>H5S_UNLIMITED</code>,
+        the maximum size of the corresponding dimension is unlimited.
+        <p>
+        Any dataset with an unlimited dimension must also be chunked; see 
+        <a href="RM_H5P.html#Property-SetChunk"><code>H5Pset_chunk</code></a>.
+        Similarly, a dataset must be chunked if <code>current_dims</code> 
+        does not equal <code>maximum_dims</code>.
+        <p>
+        The dataspace identifier returned from this function must be 
+        released with <code>H5Sclose</code> or resource leaks will occur.
+
+<p>
+<dt><strong>Parameters:</strong>
+    <dd><table>
+            <tr>
+                <td valign="top"><em>int</em> <code>rank</code></td>
+                <td valign="top">IN: Number of dimensions of dataspace.
+                    </td></tr>
+            <tr>
+                <td valign="top"><em>const hsize_t *</em> 
+                    <code>current_dims</code></td>
+                <td valign="top">IN: Array specifying the size of each 
+                    dimension.</td></tr>
+            <tr>
+                <td valign="top"><em>const&nbsp;hsize_t&nbsp;*</em>&nbsp;<code>maximum_dims&nbsp;&nbsp;&nbsp;&nbsp;</code></td>
+                <td valign="top">IN: Array specifying the maximum size of each
+                    dimension.</td></tr>
+        </table>
+
+<p>
+<dt><strong>Returns:</strong>
+    <dd>Returns a dataspace identifier if successful; 
+        otherwise returns a negative value.
+
+<p>
+<dt><strong>See Also:</strong>
+    <dd><a href="RM_H5P.html#Property-SetChunk"><code>H5Pset_chunk</code></a>
+        <br>
+        <a href="RM_H5D.html#Dataset-SetExtent"><code>H5Dset_extent</code></a>
+
+<!-- NEW PAGE -->
+<p>
+<dt><strong>Fortran90 Interface:</strong> h5screate_simple_f
+    <dd>
+        <pre>
+SUBROUTINE h5screate_simple_f(rank, dims, space_id, hdferr, maxdims) 
+  IMPLICIT NONE
+  INTEGER, INTENT(IN) :: rank             ! Number of dataspace dimensions 
+  INTEGER(HSIZE_T), INTENT(IN) :: dims(*) ! Array with current dimension sizes 
+  INTEGER(HID_T), INTENT(OUT) :: space_id ! Dataspace identifier 
+  INTEGER, INTENT(OUT) :: hdferr          ! Error code
+                                          ! 0 on success and -1 on failure
+  INTEGER(HSIZE_T), OPTIONAL, INTENT(IN) :: maxdims(*) 
+                                          ! Array with the maximum 
+                                          ! dimension sizes 
+END SUBROUTINE h5screate_simple_f
+        </pre>
+
+  <dt><strong>See Also:</a></strong></dt>
+    <dd>
+    <a href="http://www.hdfgroup.org/HDF5/doc/Advanced/UsingIdentifiers/index.html">
+    &ldquo;Using Identifiers&rdquo;</a></dd>
+
+
+
+</dl>
+
+
+
+<!--
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+  * Copyright by The HDF Group.                                               *
+  * Copyright by the Board of Trustees of the University of Illinois.         *
+  * All rights reserved.                                                      *
+  *                                                                           *
+  * This file is part of HDF5.  The full HDF5 copyright notice, including     *
+  * terms governing use, modification, and redistribution, is contained in    *
+  * the files COPYING and Copyright.html.  COPYING can be found at the root   *
+  * of the source code distribution tree; Copyright.html can be found at the  *
+  * root level of an installed copy of the electronic HDF5 document set and   *
+  * is linked from the top-level documents page.  It can also be found at     *
+  * http://hdfgroup.org/HDF5/doc/Copyright.html.  If you do not have          *
+  * access to either file, you may request a copy from help@hdfgroup.org.     *
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ -->
+
+
+<!-- NEW PAGE -->
+<!-- HEADER RIGHT "H5Sdecode" -->
+<hr>
+<dl>
+<dt><strong>Name:</strong> <a name="Dataspace-Decode">H5Sdecode</a>
+<dt><strong>Signature:</strong>
+    <dd><em>hid_t</em> <code>H5Sdecode</code>
+      (<em>unsigned char *</em><code>buf</code>)
+<dt><strong>Purpose:</strong>
+    <dd>Decode a binary object description of data space and 
+      return a new object handle.
+<dt><strong>Description:</strong>
+    <dd>Given an object description of data space in binary in a 
+      buffer, <code>H5Sdecode</code> reconstructs the HDF5 data 
+      type object and returns a new object handle for it.  The binary 
+      description of the object is encoded by <code>H5Sencode</code>.  
+      User is responsible for passing in the right buffer.
+      The types of data space we address in this function are null, 
+      scalar, and simple space.  For simple data space, the information of 
+      selection, for example, hyperslab selection, is also encoded and 
+      decoded.  Complex data space has not been implemented in the 
+      library.
+<dt><strong>Parameters:</strong>
+    <ul>
+      <table>
+        <tr>
+	  <td valign="top"><em>unsigned&nbsp;char&nbsp;*</em><code>buf</code>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <td valign="top">IN: Buffer for the data space object 
+	    to be decoded.</td></tr>
+      </table>
+    </ul>
+<dt><strong>Returns:</strong>
+    <dd>Returns an object ID(non-negative) if successful; 
+      otherwise returns a negative value.
+</dl>
+
+
+
+<!--
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+  * Copyright by The HDF Group.                                               *
+  * Copyright by the Board of Trustees of the University of Illinois.         *
+  * All rights reserved.                                                      *
+  *                                                                           *
+  * This file is part of HDF5.  The full HDF5 copyright notice, including     *
+  * terms governing use, modification, and redistribution, is contained in    *
+  * the files COPYING and Copyright.html.  COPYING can be found at the root   *
+  * of the source code distribution tree; Copyright.html can be found at the  *
+  * root level of an installed copy of the electronic HDF5 document set and   *
+  * is linked from the top-level documents page.  It can also be found at     *
+  * http://hdfgroup.org/HDF5/doc/Copyright.html.  If you do not have          *
+  * access to either file, you may request a copy from help@hdfgroup.org.     *
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ -->
+
+
+<!-- NEW PAGE -->
+<!-- HEADER RIGHT "H5Sencode" -->
+<hr>
+<dl>
+<dt><strong>Name:</strong> <a name="Dataspace-Encode">H5Sencode</a>
+<dt><strong>Signature:</strong>
+    <dd><em>herr_t</em> <code>H5Sencode</code>(<em>hid_t</em> 
+      <code>obj_id</code>, <em>unsigned char *</em><code>buf</code>, 
+      <em>size_t *</em><code>nalloc</code>)
+<dt><strong>Purpose:</strong>
+    <dd>Encode a data space object description into a binary buffer.
+<dt><strong>Description:</strong>
+    <dd>Given the data space ID, <code>H5Sencode</code> converts a 
+      data space description into binary form in a buffer.  Using this 
+      binary form in the buffer, a data space object can be reconstructed 
+      using <code>H5Sdecode</code> to return a new object 
+      handle(<code>hid_t</code>) for this data space.
+      <p>A preliminary <code>H5Sencode</code> call can be made to find out 
+      the size of the buffer needed. This value is returned as 
+      <code>nalloc</code>.  That value can then be assigned to 
+      <code>nalloc</code> for a second <code>H5Sencode</code> call, 
+      which will retrieve the actual encoded object. 
+      <p>If the library finds out <code>nalloc</code> is not big enough 
+      for the object, it simply returns the size of the buffer needed 
+      through <code>nalloc</code> without encoding the provided buffer.
+      <p>The types of data space we address in this function are null, scalar, 
+      and simple space.  For simple data space, the information of selection, 
+      for example, hyperslab selection, is also encoded and decoded.  Complex 
+      data space has not been implemented in the library.
+<dt><strong>Parameters:</strong>
+    <ul>
+      <table>
+        <tr>
+	  <td valign="top"><em>hid_t</em> <code>obj_id</code></td>
+          <td valign="top">IN: Identifier of the object to be 
+	    encoded.</td></tr>
+        <tr>
+	  <td valign="top"><em>unsigned&nbsp;char&nbsp;*</em><code>buf</code>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <td valign="top">IN/OUT: Buffer for the object to be encoded into.  
+	    If the provided buffer is NULL, only the size of buffer needed is 
+	    returned through <code>nalloc</code>.</td></tr>
+        <tr>
+	  <td valign="top"><em>size_t *</em><code>nalloc</code></td>
+          <td valign="top">IN: The size of the allocated buffer.
+	    <br>OUT: The size of the buffer needed.</td></tr>
+      </table>
+    </ul>
+<dt><strong>Returns:</strong>
+    <dd>Returns a non-negative value if successful;
+        otherwise returns a negative value.
+</dl>
+
+
+
+<!--
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+  * Copyright by The HDF Group.                                               *
+  * Copyright by the Board of Trustees of the University of Illinois.         *
+  * All rights reserved.                                                      *
+  *                                                                           *
+  * This file is part of HDF5.  The full HDF5 copyright notice, including     *
+  * terms governing use, modification, and redistribution, is contained in    *
+  * the files COPYING and Copyright.html.  COPYING can be found at the root   *
+  * of the source code distribution tree; Copyright.html can be found at the  *
+  * root level of an installed copy of the electronic HDF5 document set and   *
+  * is linked from the top-level documents page.  It can also be found at     *
+  * http://hdfgroup.org/HDF5/doc/Copyright.html.  If you do not have          *
+  * access to either file, you may request a copy from help@hdfgroup.org.     *
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ -->
+
+
+<!-- NEW PAGE -->
+<!-- HEADER RIGHT "H5Sextent_copy" -->
+<hr>
+<dl>
+<dt><strong>Name:</strong> <a name="Dataspace-ExtentCopy">H5Sextent_copy</a>
+<dt><strong>Signature:</strong>
+    <dd><em>herr_t</em> <code>H5Sextent_copy</code>(<em>hid_t</em> <code>dest_space_id</code>,
+    <em>hid_t</em> <code>source_space_id</code>
+    )
+<dt><strong>Purpose:</strong>
+    <dd>Copies the extent of a dataspace.
+<dt><strong>Description:</strong>
+    <dd><code>H5Sextent_copy</code> copies the extent from 
+    <code>source_space_id</code> to <code>dest_space_id</code>. 
+    This action may change the type of the dataspace.  
+<dt><strong>Parameters:</strong>
+    <ul><table>
+        <tr>
+		  <td valign="top"><em>hid_t</em> <code>dest_space_id</code></td>
+          <td valign="top">IN: The identifier for the dataspace to which 
+              the extent is copied.</td></tr>
+        <tr>
+		  <td valign="top"><em>hid_t</em>&nbsp;<code>source_space_id&nbsp;&nbsp;&nbsp;&nbsp;</code></td>
+          <td valign="top">IN: The identifier for the dataspace from which 
+              the extent is copied.</td></tr>
+    </table></ul>
+<dt><strong>Returns:</strong>
+    <dd>Returns a non-negative value if successful;
+        otherwise returns a negative value.
+<dt><strong>Fortran90 Interface:</strong> h5sextent_copy_f
+    <dd>
+	<pre>
+SUBROUTINE h5sextent_copy_f(dest_space_id, source_space_id, hdferr) 
+  IMPLICIT NONE
+  INTEGER(HID_T), INTENT(IN) :: dest_space_id   ! Identifier of destination
+                                                ! dataspace
+  INTEGER(HID_T), INTENT(IN) :: source_space_id ! Identifier of source 
+                                                ! dataspace
+  INTEGER, INTENT(OUT) :: hdferr                ! Error code
+                                                ! 0 on success and -1 on failure 
+END SUBROUTINE h5sextent_copy_f
+	</pre>		
+		
+		<!--<dt><strong>Non-C API(s):</strong>
+    	<dd>
+        
+        <img src="Graphics/Java.gif"> 
+        <img src="Graphics/C++.gif">
+        -->
+</dl>
+
+
+
+<!--
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+  * Copyright by The HDF Group.                                               *
+  * Copyright by the Board of Trustees of the University of Illinois.         *
+  * All rights reserved.                                                      *
+  *                                                                           *
+  * This file is part of HDF5.  The full HDF5 copyright notice, including     *
+  * terms governing use, modification, and redistribution, is contained in    *
+  * the files COPYING and Copyright.html.  COPYING can be found at the root   *
+  * of the source code distribution tree; Copyright.html can be found at the  *
+  * root level of an installed copy of the electronic HDF5 document set and   *
+  * is linked from the top-level documents page.  It can also be found at     *
+  * http://hdfgroup.org/HDF5/doc/Copyright.html.  If you do not have          *
+  * access to either file, you may request a copy from help@hdfgroup.org.     *
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ -->
+
+
+<!-- NEW PAGE -->
+<!-- HEADER RIGHT "H5Sextent_equal" -->
+<hr>
+<dl>
+
+<dt><div align=right><font color=999999 size=-1><i>
+    Last modified: 10 December 2015
+    </i></font></div>
+
+<dt><strong>Name:</strong> <a name="Dataspace-ExtentEqual">H5Sextent_equal</a>
+<dt><strong>Signature:</strong>
+    <dd><em>htri_t</em> <code>H5Sextent_equal</code>(
+            <em>hid_t</em> <code>space1_id</code>, 
+            <em>hid_t</em> <code>space2_id</code>
+        )
+
+<p>
+<dt><strong>Purpose:</strong>
+    <dd>Determines whether two dataspace extents are equal.
+
+<p>
+<dt><strong>Description:</strong>
+    <dd><code>H5Sextent_equal</code> determines whether the dataspace extents
+      of two dataspaces, <code>space1_id</code> and <code>space2_id</code>,
+      are equal.
+
+<p>
+<dt><strong>Parameters:</strong>
+    <dd>
+      <table>
+        <tr>
+          <td valign="top"><em>hid_t</em> <code>space1_id</code></td>
+          <td valign="top">IN: First dataspace identifier.</td>
+        </tr>
+        <tr>
+          <td valign="top"><em>hid_t</em>&nbsp;<code>space2_id</code>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <td valign="top">IN: Second dataspace identifier.</td>
+        </tr>
+      </table>
+    </dd>
+
+<p>
+<dt><strong>Returns:</strong>
+    <dd>
+        Returns a positive value if the two dataspace extents are equal.
+        <br />
+        Returns 0 if the two dataspace extents are not equal. 
+        <br />
+        Returns a negative value when the function fails. 
+        </dd>
+<br />
+<dt><strong>Fortran90 Interface:</strong> h5sextent_equal_f
+    <dd>
+	<pre>
+SUBROUTINE h5sextent_equal_f(space1_id, space2_id, equal, hdferr)
+  IMPLICIT NONE
+  INTEGER(HID_T), INTENT(IN) :: space1_id ! First dataspace identifier
+  INTEGER(HID_T), INTENT(IN) :: space2_id ! Second dataspace identifier
+  LOGICAL, INTENT(OUT) :: Equal           ! .TRUE. if equal, .FALSE. if unequal
+  INTEGER, INTENT(OUT) :: hdferr          ! Error code
+                                          ! 0 on success and -1 on failure 
+END SUBROUTINE h5sextent_equal_f 
+	</pre>		
+</dl>
+
+
+
+<!--
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+  * Copyright by The HDF Group.                                               *
+  * All rights reserved.                                                      *
+  *                                                                           *
+  * This file is part of HDF5.  The full HDF5 copyright notice, including     *
+  * terms governing use, modification, and redistribution, is contained in    *
+  * the files COPYING and Copyright.html.  COPYING can be found at the root   *
+  * of the source code distribution tree; Copyright.html can be found at the  *
+  * root level of an installed copy of the electronic HDF5 document set and   *
+  * is linked from the top-level documents page.  It can also be found at     *
+  * http://www.hdfgroup.org/HDF5/doc/Copyright.html.  If you do not have      *
+  * access to either file, you may request a copy from help@hdfgroup.org.     *
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ -->
+
+
+<!--__ ***********************************************************  -->
+<!--__ Do not alter the next line; it is used by the PDF generator. -->
+<!--__ ***********************************************************  -->
+<!-- NEW PAGE -->
+<!-- HEADER RIGHT "H5Sget_regular_hyperslab" -->
+
+<hr />
+<dl>
+
+<dt><div align="right"><font color="999999" size="-1"><i>
+    Last modified: 22 April 2016
+    </i></font></div></dt>
+    <br />
+
+<dt><strong>Name:</strong> 
+    <a name="Dataspace-GetRegularHyperslab">H5Sget_regular_hyperslab</a>
+    </dt>
+    <br />
+
+<dt><strong>Signature:</strong>
+    <dd><code><em>herr_t</em> H5Sget_regular_hyperslab(
+        <em>hid_t</em> space_id,
+        <em>hsize_t</em> start[],
+        <em>hsize_t</em> stride[],
+        <em>hsize_t</em> count[],
+        <em>hsize_t</em> block[]
+        )</code>
+    </dd></dt>
+    <br />
+
+<dt><strong>Purpose:</strong>
+    <dd>Retrieves a regular hyperslab selection.
+    </dd></dt>
+    <br />
+
+<dt><strong>Description:</strong>
+    <dd><code>H5Sget_regular_hyperslab</code> takes the 
+        dataspace identifier, <code>space_id</code>, and retrieves the values 
+        of <code>start</code>, <code>stride</code>, <code>count</code>, 
+        and <code>block</code> for the regular hyperslab selection.
+        <p>
+        A regular hyperslab selection is a hyperslab selection described 
+        by setting the <code>offset</code>, <code>stride</code>, 
+        <code>count</code>, and <code>block</code> parameters to the 
+        <code>H5Sselect_hyperslab</code> call. 
+        If several calls to <code>H5Sselect_hyperslab</code> are needed, 
+        the hyperslab selection is irregular. 
+        </p>
+        <p>
+        See <code>H5Sselect_hyperslab</code> for descriptions of
+        <code>offset</code>, <code>stride</code>, <code>count</code>, 
+        and <code>block</code>.
+        </p>
+    </dd></dt>
+
+<dt><strong>Note:</strong>
+    <dd>If a hyperslab selection is originally regular, then becomes 
+        irregular through selection operations, and then becomes 
+        regular again, the final regular selection may be equivalent 
+        but not identical to the original regular selection.
+    </dd></dt>
+    <br />
+    
+<dt><strong>Parameters:</strong>
+    <dd><table width="100%">
+        <tr>
+            <td width="5%" valign="top"><code><em>hid_t</em> space_id</code>
+                </td>
+            <td width="5%"><code>&nbsp;</code></td>
+            <td valign="top">IN: The identifier of the dataspace.</td>
+        </tr><tr>
+            <td width="5%" valign="top"><code><em>hsize_t</em> start[]</code>
+                </td>
+            <td width="5%"><code>&nbsp;</code></td>
+            <td valign="top">OUT: Offset of the start of the regular hyperslab.</td>
+        </tr><tr>
+            <td width="5%" valign="top"><code><em>hsize_t</em>&nbsp;stride[]</code>
+                </td>
+            <td width="5%"><code>&nbsp;</code></td>
+            <td valign="top">OUT: Stride of the regular hyperslab.</td>
+        </tr><tr>
+            <td width="5%" valign="top"><code><em>hsize_t</em> count[]</code>
+                </td>
+            <td width="5%"><code>&nbsp;</code></td>
+            <td valign="top">OUT: Number of blocks in the regular hyperslab.</td>
+        </tr><tr>
+            <td width="5%" valign="top"><code><em>hsize_t</em> block[]</code>
+                </td>
+            <td width="5%"><code>&nbsp;</code></td>
+            <td valign="top">OUT: Size of a block in the regular hyperslab.</td>
+        </tr>
+    </table></dd>
+    </dt>
+    <br />
+    
+<dt><strong>Returns:</strong>
+    <dd>Returns a non-negative value if successful; 
+        otherwise returns a negative value.</dd>
+    </dt>
+    <br />
+
+<dt><strong>Fortran Interface:</strong> h5sget_regular_hyperslab_f
+    <dd>
+
+        <a name="H5S2fh5sget5fregular5fhyperslab5ff"></a>
+<a name="robo357"></a>
+
+<strong>Signature:</strong>
+<pre>  SUBROUTINE h5sget_regular_hyperslab_f(space_id, start, stride, count, 
+                                        block, hdferr)
+    INTEGER(HID_T), INTENT(IN) ::  space_id
+    INTEGER(HSIZE_T), INTENT(OUT), DIMENSION(*), TARGET ::  start
+    INTEGER(HSIZE_T), INTENT(OUT), DIMENSION(*), TARGET ::  stride
+    INTEGER(HSIZE_T), INTENT(OUT), DIMENSION(*), TARGET ::  count
+    INTEGER(HSIZE_T), INTENT(OUT), DIMENSION(*), TARGET ::  block
+    INTEGER, INTENT(OUT) :: hdferr
+</pre>
+
+<strong>Inputs:</strong>
+<pre>  space_id - The identifier of the dataspace.
+</pre>
+
+<strong>Outputs:</strong>
+<pre>  start    - Offset of the start of the regular hyperslab.
+  stride   - Stride of the regular hyperslab.
+  count    - Number of blocks in the regular hyperslab.
+  block    - Size of a block in the regular hyperslab.
+  hdferr   - Returns 0 if successful and -1 if fails.
+</pre>
+
+
+        </dd>
+    </dt>
+    <br />
+
+<dt><strong>See Also:</strong></dt>
+    <dd><a href="#Dataspace-IsRegularHyperslab">H5Sis_regular_hyperslab</a>
+        <br />
+        <a href="#Dataspace-SelectHyperslab">H5Sselect_hyperslab</a></li>
+        <br />&nbsp;
+        <br />
+        Virtual datasets: &nbsp; <a href="RM_H5P.html#Property-SetVirtual">H5Pset_virtual</a>
+<!--
+    <table width="100%" border="0">
+    <tr><td width="50%"align="left" valign="top">
+          <li>&ldquo;<a href="/HDF5/docNewFeatures/NewFeaturesVirtualDatasetDocs.html">Virtual Dataset Overview</a>&rdquo;</li>
+          <li>&ldquo;<a href="/HDF5/docNewFeatures/UsingVirtualDatasets/index.html">Using HDF5 Virtual Datasets</a>&rdquo;
+              <br />&nbsp;</li>
+-->
+<!--
+          <li>&ldquo;<a href="../Advanced/UsingVirtualDatasets/index.html">Using HDF5 Virtual Datasets</a>&rdquo;</li>
+-->
+<!--
+          &nbsp;<br />
+          <b>Supporting functions:</b>
+          <li><a href="RM_H5P.html#Property-SetLayout">H5Pset_layout</a></li>
+          <li><a href="RM_H5P.html#Property-GetLayout">H5Pget_layout</a></li>
+          <li><a href="#Dataspace-IsRegularHyperslab">H5Sis_regular_hyperslab</a></li>
+          <li><a href="#Dataspace-GetRegularHyperslab">H5Sget_regular_hyperslab</a></li>
+          <li><a href="#Dataspace-SelectHyperslab">H5Sselect_hyperslab</a></li>
+    </td><td width="50%"align="left" valign="top">
+          <b>VDS functions:</b>
+          <li><a href="RM_H5P.html#Property-SetVirtual">H5Pset_virtual</a></li>
+          <li><a href="RM_H5P.html#Property-GetVirtualCount">H5Pget_virtual_count</a></li>
+          <li><a href="RM_H5P.html#Property-GetVirtualVspace">H5Pget_virtual_vspace</a></li>
+          <li><a href="RM_H5P.html#Property-GetVirtualSrcspace">H5Pget_virtual_srcspace</a></li>
+          <li><a href="RM_H5P.html#Property-GetVirtualFilename">H5Pget_virtual_filename</a></li>
+          <li><a href="RM_H5P.html#Property-GetVirtualDsetname">H5Pget_virtual_dsetname</a></li>
+          <li><a href="RM_H5P.html#Property-SetVirtualPrintfGap">H5Pset_virtual_printf_gap</a></li>
+          <li><a href="RM_H5P.html#Property-GetVirtualPrintfGap">H5Pget_virtual_printf_gap</a></li>
+          <li><a href="RM_H5P.html#Property-SetVirtualView">H5Pset_virtual_view</a></li>
+          <li><a href="RM_H5P.html#Property-GetVirtualView">H5Pget_virtual_view</a>
+    </td></tr>
+    </table>
+-->
+    </dd>
+    <br />
+
+<dt><strong>History:</strong></dt>
+    <dd>
+    <table width="90%">
+    <tr>
+        <td valign="top" align="left" width="10%">
+        <strong>Release</strong>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        <td valign="top" align="left">
+        <strong>Change</strong></td>
+    </tr><tr>
+        <td valign="top">1.10.0</td>
+        <td valign="top">
+        C function introduced with this release.</td>
+    </tr>
+    </table>
+    </dd>
+
+</dl>
+<br />
+<br />
+<br />
+
+
+
+
+
+<!--
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+  * Copyright by The HDF Group.                                               *
+  * Copyright by the Board of Trustees of the University of Illinois.         *
+  * All rights reserved.                                                      *
+  *                                                                           *
+  * This file is part of HDF5.  The full HDF5 copyright notice, including     *
+  * terms governing use, modification, and redistribution, is contained in    *
+  * the files COPYING and Copyright.html.  COPYING can be found at the root   *
+  * of the source code distribution tree; Copyright.html can be found at the  *
+  * root level of an installed copy of the electronic HDF5 document set and   *
+  * is linked from the top-level documents page.  It can also be found at     *
+  * http://hdfgroup.org/HDF5/doc/Copyright.html.  If you do not have          *
+  * access to either file, you may request a copy from help@hdfgroup.org.     *
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ -->
+
+
+<!-- NEW PAGE -->
+<!-- HEADER RIGHT "H5Sget_select_bounds" -->
+<hr>
+<dl>
+<dt><strong>Name:</strong> <a name="Dataspace-SelectBounds">H5Sget_select_bounds</a>
+<dt><strong>Signature:</strong>
+    <dd><em>herr_t </em><code>H5Sget_select_bounds</code>(<em>hid_t </em><code>space_id</code>,
+        <em>hsize_t *</em><code>start</code>,
+        <em>hsize_t *</em><code>end</code>
+    )
+<dt><strong>Purpose:</strong>
+    <dd>Gets the bounding box containing the current selection.
+<dt><strong>Description:</strong>
+    <dd><code>H5Sget_select_bounds</code> retrieves the coordinates of 
+        the bounding box containing the current selection and places
+        them into user-supplied buffers.  
+        <p>
+        The <code>start</code> and <code>end</code> buffers must be large
+        enough to hold the dataspace rank number of coordinates.  
+        <p>
+        The bounding box exactly contains the selection.  
+        I.e., if a 2-dimensional element selection is currently
+        defined as containing the points (4,5), (6,8), and (10,7), 
+        then the bounding box will be (4, 5), (10, 8).  
+        <p>
+        The bounding box calculation includes the current offset of the
+        selection within the dataspace extent.
+        <p>
+        Calling this function on a <code>none</code> selection will 
+        return <code>FAIL</code>.
+<dt><strong>Parameters:</strong>
+    <ul><table>
+        <tr>
+		  <td valign="top"><em>hid_t</em>&nbsp;<code>space_id&nbsp;&nbsp;&nbsp;&nbsp;</code></td>
+          <td valign="top">IN: Identifier of dataspace to query.</td></tr>
+        <tr>
+		  <td valign="top"><em>hsize_t *</em><code>start</code></td>
+          <td valign="top">OUT: Starting coordinates of the bounding box.</td></tr>
+        <tr>
+		  <td valign="top"><em>hsize_t *</em><code>end</code></td>
+          <td valign="top">OUT: Ending coordinates of the bounding box, 
+                i.e., the coordinates of the diagonally opposite corner.</td></tr>
+    </table></ul>
+<dt><strong>Returns:</strong>
+    <dd>Returns a non-negative value if successful;
+        otherwise returns a negative value.
+<dt><strong>Fortran90 Interface:</strong>
+    <dd>
+	<pre>
+SUBROUTINE  h5sget_select_bounds_f(space_id, start, end, hdferr)
+  IMPLICIT NONE
+  INTEGER(HID_T), INTENT(IN) :: space_id 
+                                   ! Dataspace identifier 
+  INTEGER(HSIZE_T), DIMENSION(*), INTENT(OUT) :: start
+                                   ! Starting coordinates of the bounding box 
+  INTEGER(HSIZE_T), DIMENSION(*), INTENT(OUT) :: end
+                                   ! Ending coordinates of the bounding box,
+                                   ! i.e., the coordinates of the diagonally 
+                                   ! opposite corner 
+  INTEGER, INTENT(OUT) :: hdferr   ! Error code
+END SUBROUTINE h5sget_select_bounds_f
+	</pre>
+
+<!--<dt><strong>Non-C API(s):</strong>
+    <dd>
+        <img src="Graphics/Java.gif"> 
+        <img src="Graphics/C++.gif">
+        -->
+<dt><strong>History:</strong>
+    <ul><table width="90%">
+        <tr>
+		  <td valign="top" align="left" width="10%">
+		    <strong>Release</strong>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <td valign="top" align="left">
+		    <strong>C</strong></td></tr>
+        <tr>
+		  <td valign="top">1.6.0</td>
+          <td valign="top">
+		    The <code>start</code> and <code>end</code> 
+			parameters have changed from type <em>hsize_t *</em> 
+			to <em>hssize_t *</em>.</td></tr>
+    </table></ul>
+</dl>
+
+
+
+<!--
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+  * Copyright by The HDF Group.                                               *
+  * Copyright by the Board of Trustees of the University of Illinois.         *
+  * All rights reserved.                                                      *
+  *                                                                           *
+  * This file is part of HDF5.  The full HDF5 copyright notice, including     *
+  * terms governing use, modification, and redistribution, is contained in    *
+  * the files COPYING and Copyright.html.  COPYING can be found at the root   *
+  * of the source code distribution tree; Copyright.html can be found at the  *
+  * root level of an installed copy of the electronic HDF5 document set and   *
+  * is linked from the top-level documents page.  It can also be found at     *
+  * http://hdfgroup.org/HDF5/doc/Copyright.html.  If you do not have          *
+  * access to either file, you may request a copy from help@hdfgroup.org.     *
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ -->
+
+
+<!-- NEW PAGE -->
+<!-- HEADER RIGHT "H5Sget_select_elem_npoints" -->
+<hr>
+<dl>
+<dt><strong>Name:</strong> <a name="Dataspace-SelectElemNPoints">H5Sget_select_elem_npoints</a>
+<dt><strong>Signature:</strong>
+    <dd><em>hssize_t </em><code>H5Sget_select_elem_npoints</code>(<em>hid_t </em><code>space_id</code>
+    )
+<dt><strong>Purpose:</strong>
+    <dd>Gets the number of element points in the current selection.
+<dt><strong>Description:</strong>
+    <dd><code>H5Sget_select_elem_npoints</code> returns
+    the number of element points in the current dataspace selection.
+<dt><strong>Parameters:</strong>
+    <ul><table>
+        <tr>
+		  <td valign="top"><em>hid_t</em>&nbsp;<code>space_id&nbsp;&nbsp;&nbsp;&nbsp;</code></td>
+          <td valign="top">IN: Identifier of dataspace to query.</td></tr>
+    </table></ul>
+<dt><strong>Returns:</strong>
+    <dd>Returns the number of element points in the current dataspace selection if successful.
+        Otherwise returns a negative value.
+<dt><strong>Fortran90 Interface:</strong> h5sget_select_elem_npoints_f
+    <dd>
+	<pre>
+SUBROUTINE h5sget_select_elem_npoints_f(space_id, num_points, hdferr) 
+  IMPLICIT NONE
+  INTEGER(HID_T), INTENT(IN) :: space_id ! Dataspace identifier
+  INTEGER, INTENT(OUT) :: num_points     ! Number of points in 
+                                         ! the current elements selection
+  INTEGER, INTENT(OUT) :: hdferr         ! Error code
+END SUBROUTINE h5sget_select_elem_npoints_f
+	</pre>		
+		
+		<!--<dt><strong>Non-C API(s):</strong>
+    	<dd>
+        
+        <img src="Graphics/Java.gif"> 
+        <img src="Graphics/C++.gif">
+        -->
+</dl>
+
+
+
+<!--
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+  * Copyright by The HDF Group.                                               *
+  * Copyright by the Board of Trustees of the University of Illinois.         *
+  * All rights reserved.                                                      *
+  *                                                                           *
+  * This file is part of HDF5.  The full HDF5 copyright notice, including     *
+  * terms governing use, modification, and redistribution, is contained in    *
+  * the files COPYING and Copyright.html.  COPYING can be found at the root   *
+  * of the source code distribution tree; Copyright.html can be found at the  *
+  * root level of an installed copy of the electronic HDF5 document set and   *
+  * is linked from the top-level documents page.  It can also be found at     *
+  * http://hdfgroup.org/HDF5/doc/Copyright.html.  If you do not have          *
+  * access to either file, you may request a copy from help@hdfgroup.org.     *
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ -->
+
+
+<!-- NEW PAGE -->
+<!-- HEADER RIGHT "H5Sget_select_elem_pointlist" -->
+<hr>
+<dl>
+<dt><strong>Name:</strong> <a name="Dataspace-SelectElemPointList">H5Sget_select_elem_pointlist</a>
+<dt><strong>Signature:</strong>
+    <dd><em>herr_t </em><code>H5Sget_select_elem_pointlist</code>(<em>hid_t </em><code>space_id</code>,
+        <em>hsize_t </em><code>startpoint</code>,
+        <em>hsize_t </em><code>numpoints</code>,
+        <em>hsize_t *</em><code>buf</code>
+    )
+<dt><strong>Purpose:</strong>
+    <dd>Gets the list of element points currently selected.
+<dt><strong>Description:</strong>
+    <dd><code>H5Sget_select_elem_pointlist</code> returns the list of 
+        element points in the current dataspace selection.  Starting with 
+        the <code>startpoint</code>-th point in the list of points,
+        <code>numpoints</code> points are put into the user's buffer.
+        If the user's buffer fills up before <code>numpoints</code>
+        points are inserted, the buffer will contain only as many 
+        points as fit.
+        <p>
+        The element point coordinates have the same dimensionality (rank) 
+        as the dataspace they are located within.  The list of element points 
+        is formatted as follows: 
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;
+            &lt;coordinate&gt;, followed by 
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;
+            the next coordinate, 
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;
+            etc. 
+            <br>
+        until all of the selected element points have been listed.
+        <p>
+        The points are returned in the order they will be iterated through
+        when the selection is read/written from/to disk.
+<dt><strong>Parameters:</strong>
+    <ul><table>
+        <tr>
+		  <td valign="top"><em>hid_t</em> <code>space_id</code></td>
+          <td valign="top">IN: Dataspace identifier of selection to query.</td></tr>
+        <tr>
+		  <td valign="top"><em>hsize_t&nbsp;</em><code>startpoint&nbsp;&nbsp;&nbsp;&nbsp;</code></td>
+          <td valign="top">IN: Element point to start with.</td></tr>
+        <tr>
+		  <td valign="top"><em>hsize_t </em><code>numpoints</code></td>
+          <td valign="top">IN: Number of element points to get.</td></tr>
+        <tr>
+		  <td valign="top"><em>hsize_t *</em><code>buf</code></td>
+          <td valign="top">OUT: List of element points selected.</td></tr>
+    </table></ul>
+<dt><strong>Returns:</strong>
+    <dd>Returns a non-negative value if successful;
+        otherwise returns a negative value.
+<dt><strong>Fortran90 Interface:</strong> h5sget_select_elem_pointlist_f
+    <dd>
+	<pre>
+SUBROUTINE h5sget_select_elem_pointlist_f(space_id, startpoint, num_points,
+                                          buf, hdferr)
+  IMPLICIT NONE
+  INTEGER(HID_T), INTENT(IN)   :: space_id   ! Dataspace identifier
+  INTEGER(HSIZE_T), INTENT(IN) :: startpoint ! Element point to start with
+  INTEGER, INTENT(OUT) :: num_points         ! Number of points to get in 
+                                             ! the current element selection
+  INTEGER(HSIZE_T), DIMENSION(*), INTENT(OUT) :: buf
+                                             ! List of points selected 
+  INTEGER, INTENT(OUT) :: hdferr             ! Error code
+END SUBROUTINE h5sget_select_elem_pointlist_f
+	</pre>		
+		
+		<!--<dt><strong>Non-C API(s):</strong>
+    	<dd>
+        
+        <img src="Graphics/Java.gif"> 
+        <img src="Graphics/C++.gif">
+        -->
+</dl>
+
+
+
+<!--
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+  * Copyright by The HDF Group.                                               *
+  * Copyright by the Board of Trustees of the University of Illinois.         *
+  * All rights reserved.                                                      *
+  *                                                                           *
+  * This file is part of HDF5.  The full HDF5 copyright notice, including     *
+  * terms governing use, modification, and redistribution, is contained in    *
+  * the files COPYING and Copyright.html.  COPYING can be found at the root   *
+  * of the source code distribution tree; Copyright.html can be found at the  *
+  * root level of an installed copy of the electronic HDF5 document set and   *
+  * is linked from the top-level documents page.  It can also be found at     *
+  * http://hdfgroup.org/HDF5/doc/Copyright.html.  If you do not have          *
+  * access to either file, you may request a copy from help@hdfgroup.org.     *
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ -->
+
+
+<!-- NEW PAGE -->
+<!-- HEADER RIGHT "H5Sget_select_hyper_blocklist" -->
+<hr>
+<dl>
+<dt><strong>Name:</strong> <a name="Dataspace-SelectHyperBlockList">H5Sget_select_hyper_blocklist</a>
+<dt><strong>Signature:</strong>
+    <dd><em>herr_t </em><code>H5Sget_select_hyper_blocklist</code>(<em>hid_t </em><code>space_id</code>,
+        <em>hsize_t </em><code>startblock</code>,
+        <em>hsize_t </em><code>numblocks</code>,
+        <em>hsize_t *</em><code>buf</code>
+    )
+<dt><strong>Purpose:</strong>
+    <dd>Gets the list of hyperslab blocks currently selected.
+<dt><strong>Description:</strong>
+    <dd><code>H5Sget_select_hyper_blocklist</code> returns a list of 
+        the hyperslab blocks currently selected.  Starting with the 
+        <code>startblock</code>-th block in the list of blocks,
+        <code>numblocks</code> blocks are put into the user's buffer.
+        If the user's buffer fills up before <code>numblocks</code>
+        blocks are inserted, the buffer will contain only as many 
+        blocks as fit.
+        <p>
+        The block coordinates have the same dimensionality (rank) 
+        as the dataspace they are located within.  The list of blocks 
+        is formatted as follows: 
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;
+            &lt;"start" coordinate&gt;, immediately followed by 
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;
+            &lt;"opposite" corner coordinate&gt;, followed by 
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;
+            the next "start" and "opposite" coordinates, 
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;
+            etc. 
+            <br>
+        until all of the selected blocks have been listed.
+        <p>
+        No guarantee is implied as the order in which blocks are listed.
+<dt><strong>Parameters:</strong>
+    <ul><table>
+        <tr>
+		  <td valign="top"><em>hid_t</em> <code>space_id</code></td>
+          <td valign="top">IN: Dataspace identifier of selection to query.</td></tr>
+        <tr>
+		  <td valign="top"><em>hsize_t&nbsp;</em><code>startblock&nbsp;&nbsp;&nbsp;&nbsp;</code></td>
+          <td valign="top">IN: Hyperslab block to start with.</td></tr>
+        <tr>
+		  <td valign="top"><em>hsize_t </em><code>numblocks</code></td>
+          <td valign="top">IN: Number of hyperslab blocks to get.</td></tr>
+        <tr>
+		  <td valign="top"><em>hsize_t *</em><code>buf</code></td>
+          <td valign="top">OUT: List of hyperslab blocks selected.</td></tr>
+    </table></ul>
+<dt><strong>Returns:</strong>
+    <dd>Returns a non-negative value if successful;
+        otherwise returns a negative value.
+<dt><strong>Fortran90 Interface:</strong> h5sget_select_hyper_blocklist_f
+    <dd>
+	<pre>
+SUBROUTINE h5sget_select_hyper_blocklist_f(space_id, startblock, num_blocks,
+                                           buf, hdferr)
+  IMPLICIT NONE
+  INTEGER(HID_T), INTENT(IN)   :: space_id   ! Dataspace identifier
+  INTEGER(HSIZE_T), INTENT(IN) :: startblock ! Hyperslab block to start with
+                                             ! NOTE: numbering starts at 0
+  INTEGER, INTENT(OUT) :: num_blocks         ! Number of hyperslab blocks to 
+                                             ! get in the current hyperslab 
+                                             ! selection
+  INTEGER(HSIZE_T), DIMENSION(*), INTENT(OUT) :: buf
+                                             ! List of hyperslab blocks selected
+  INTEGER, INTENT(OUT) :: hdferr             ! Error code
+END SUBROUTINE h5sget_select_hyper_blocklist_f
+	</pre>		
+		
+		<!--<dt><strong>Non-C API(s):</strong>
+    	<dd>
+        
+        <img src="Graphics/Java.gif"> 
+        <img src="Graphics/C++.gif">
+        -->
+</dl>
+
+
+
+<!--
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+  * Copyright by The HDF Group.                                               *
+  * Copyright by the Board of Trustees of the University of Illinois.         *
+  * All rights reserved.                                                      *
+  *                                                                           *
+  * This file is part of HDF5.  The full HDF5 copyright notice, including     *
+  * terms governing use, modification, and redistribution, is contained in    *
+  * the files COPYING and Copyright.html.  COPYING can be found at the root   *
+  * of the source code distribution tree; Copyright.html can be found at the  *
+  * root level of an installed copy of the electronic HDF5 document set and   *
+  * is linked from the top-level documents page.  It can also be found at     *
+  * http://hdfgroup.org/HDF5/doc/Copyright.html.  If you do not have          *
+  * access to either file, you may request a copy from help@hdfgroup.org.     *
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ -->
+
+
+<!-- NEW PAGE -->
+<!-- HEADER RIGHT "H5Sget_select_hyper_nblocks" -->
+<hr>
+<dl>
+
+<dt><div align=right><font color=999999 size=-1><i>
+    Last modified: 7 November 2011
+    </i></font></div>
+
+<dt><strong>Name:</strong> <a name="Dataspace-SelectHyperNBlocks">H5Sget_select_hyper_nblocks</a>
+<dt><strong>Signature:</strong>
+    <dd><em>hssize_t </em><code>H5Sget_select_hyper_nblocks</code>(
+        <em>hid_t </em><code>space_id</code>
+        )
+
+<p>
+<dt><strong>Purpose:</strong>
+    <dd>Get number of hyperslab blocks.
+
+<p>
+<dt><strong>Description:</strong>
+    <dd><code>H5Sget_select_hyper_nblocks</code> returns the 
+        number of hyperslab blocks in the current dataspace selection.
+
+<p>
+<dt><strong>Parameters:</strong>
+    <dd><table>
+        <tr>
+          <td valign="top"><em>hid_t</em>&nbsp;<code>space_id&nbsp;&nbsp;&nbsp;&nbsp;</code></td>
+          <td valign="top">IN: Identifier of dataspace to query.</td></tr>
+    </table></dd>
+
+<p>
+<dt><strong>Returns:</strong>
+    <dd>Returns the number of hyperslab blocks in 
+        the current dataspace selection if successful.
+        Otherwise returns a negative value.
+
+<p>
+<dt><strong>Fortran90 Interface:</strong> h5sget_select_hyper_nblocks_f
+    <dd>
+    <pre>
+SUBROUTINE h5sget_select_hyper_nblocks_f(space_id, num_blocks, hdferr) 
+  IMPLICIT NONE
+  INTEGER(HID_T), INTENT(IN) :: space_id         ! Dataspace identifier
+  INTEGER(HSSIZE_T), INTENT(OUT) :: num_blocks   ! Number of hyperslab blocks in 
+                                                 ! current hyperslab selection
+  INTEGER, INTENT(OUT) :: hdferr                 ! Error code
+END SUBROUTINE h5sget_select_hyper_nblocks_f
+    </pre>
+
+</dl>
+
+
+
+<!--
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+  * Copyright by The HDF Group.                                               *
+  * Copyright by the Board of Trustees of the University of Illinois.         *
+  * All rights reserved.                                                      *
+  *                                                                           *
+  * This file is part of HDF5.  The full HDF5 copyright notice, including     *
+  * terms governing use, modification, and redistribution, is contained in    *
+  * the files COPYING and Copyright.html.  COPYING can be found at the root   *
+  * of the source code distribution tree; Copyright.html can be found at the  *
+  * root level of an installed copy of the electronic HDF5 document set and   *
+  * is linked from the top-level documents page.  It can also be found at     *
+  * http://hdfgroup.org/HDF5/doc/Copyright.html.  If you do not have          *
+  * access to either file, you may request a copy from help@hdfgroup.org.     *
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ -->
+
+
+<!-- NEW PAGE -->
+<!-- HEADER RIGHT "H5Sget_select_npoints" -->
+<hr>
+<dl>
+
+<dt><div align=right><font color=999999 size=-1><i>
+    Last modified: 17 August 2010
+    </i></font></div>
+
+<dt><strong>Name:</strong> <a name="Dataspace-SelectNpoints">H5Sget_select_npoints</a>
+<dt><strong>Signature:</strong>
+    <dd><em>hssize_t</em> <code>H5Sget_select_npoints</code>(
+            <em>hid_t</em> <code>space_id</code>
+        )
+
+<p>
+<dt><strong>Purpose:</strong>
+    <dd>Determines the number of elements in a dataspace selection.
+
+<p>
+<dt><strong>Description:</strong>
+    <dd><code>H5Sget_select_npoints</code> determines the number of elements 
+        in the current selection of a dataspace.
+
+<p>
+<dt><strong>Parameters:</strong>
+    <dd><table>
+        <tr>
+          <td valign="top"><em>hid_t</em>&nbsp;<code>space_id&nbsp;&nbsp;&nbsp;&nbsp;</code></td>
+          <td valign="top">IN: Dataspace identifier.</td></tr>
+    </table></dd>
+
+<p>
+<dt><strong>Returns:</strong>
+    <dd>Returns the number of elements in the selection if successful; 
+        otherwise returns a negative value.
+
+<p>
+<dt><strong>Fortran90 Interface:</strong> h5sget_select_npoints_f
+    <dd>
+    <pre>
+SUBROUTINE h5sget_select_npoints_f(space_id, npoints, hdferr) 
+  IMPLICIT NONE
+  INTEGER(HID_T), INTENT(IN) :: space_id     ! Dataspace identifier 
+  INTEGER(HSSIZE_T), INTENT(OUT) :: npoints  ! Number of elements in the
+                                             ! selection 
+  INTEGER, INTENT(OUT) :: hdferr             ! Error code
+                                             ! 0 on success and -1 on failure 
+END SUBROUTINE h5sget_select_npoints_f
+    </pre>
+
+</dl>
+
+
+
+<!--
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+  * Copyright by The HDF Group.                                               *
+  * Copyright by the Board of Trustees of the University of Illinois.         *
+  * All rights reserved.                                                      *
+  *                                                                           *
+  * This file is part of HDF5.  The full HDF5 copyright notice, including     *
+  * terms governing use, modification, and redistribution, is contained in    *
+  * the files COPYING and Copyright.html.  COPYING can be found at the root   *
+  * of the source code distribution tree; Copyright.html can be found at the  *
+  * root level of an installed copy of the electronic HDF5 document set and   *
+  * is linked from the top-level documents page.  It can also be found at     *
+  * http://hdfgroup.org/HDF5/doc/Copyright.html.  If you do not have          *
+  * access to either file, you may request a copy from help@hdfgroup.org.     *
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ -->
+
+
+<!-- NEW PAGE -->
+<!-- HEADER RIGHT "H5Sget_select_type" -->
+<hr>
+<dl>
+
+<dt><div align=right><font color=999999 size=-1><i>
+    Last modified: 17 August 2010
+    </i></font></div>
+
+<dt><strong>Name:</strong> <a name="Dataspace-GetSelectType">H5Sget_select_type</a>
+<dt><strong>Signature:</strong>
+    <dd><em>H5S_sel_type</em> <code>H5Sget_select_type</code>(<em>hid_t</em> <code>space_id</code>)
+
+<p>
+<dt><strong>Purpose:</strong>
+    <dd>Determines the type of the dataspace selection.
+
+<p>
+<dt><strong>Description:</strong>
+    <dd><code>H5Sget_select_type</code> retrieves the  
+        type of selection currently defined for the dataspace 
+        <code>space_id</code>.
+
+<p>
+<dt><strong>Parameters:</strong>
+    <dd><table>
+        <tr>
+          <td valign="top"><em>hid_t</em>&nbsp;<code>space_id&nbsp;&nbsp;&nbsp;&nbsp;</code></td>
+          <td valign="top">IN: Dataspace identifier.</td></tr>
+    </table></dd>
+
+<p>
+<dt><strong>Returns:</strong>
+    <dd>Returns the dataspace selection type, a value of       
+        the  enumerated datatype <code>H5S_sel_type</code>, 
+        if successful.
+        Valid return values are as follows:
+        <center>
+        <table width=90% border=0>
+          <tr><td valign=top>
+            <code>H5S_SEL_NONE</code>
+            </td><td valign=top>
+            No selection is defined.
+          </td></tr><tr><td valign=top>
+            <code>H5S_SEL_POINTS</code>
+            </td><td valign=top>
+            A sequence of points is selected.
+          </td></tr><tr><td valign=top>
+            <code>H5S_SEL_HYPERSLABS</code>
+            </td><td valign=top>
+            A hyperslab or compound hyperslab is selected.
+          </td></tr><tr><td valign=top>
+            <code>H5S_SEL_ALL</code>
+            </td><td valign=top>
+            The entire dataset is selected.
+          </td></tr>
+        </table>
+        </center>
+        Otherwise returns a negative value.
+
+<p>
+<dt><strong>Fortran90 Interface:</strong> h5sget_select_type_f
+    <dd>
+    <pre>
+SUBROUTINE h5sget_select_type_f(space_id, type, hdferr) 
+  IMPLICIT NONE
+  INTEGER(HID_T), INTENT(IN) :: space_id ! Dataspace identifier
+  INTEGER, INTENT(OUT) :: type           ! Selection type
+                                         ! Valid values are:
+                                         !    H5S_SEL_ERROR_F 
+                                         !    H5S_SEL_NONE_F 
+                                         !    H5S_SEL_POINTS_F 
+                                         !    H5S_SEL_HYPERSLABS_F 
+                                         !    H5S_SEL_ALL_F 
+  INTEGER, INTENT(OUT) :: hdferr         ! Error code
+END SUBROUTINE h5sget_select_type_f
+    </pre>
+
+<p>
+<dt><strong>History:</strong>
+    <dd><table width="90%">
+        <tr>
+          <td valign="top" align="left" width="10%">
+            <strong>Release</strong>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <td valign="top" align="left">
+            <strong>C</strong></td></tr>
+        <tr>
+          <td valign="top">1.6.0</td>
+          <td valign="top">
+            Function introduced in this release.</td></tr>
+    </table></dd>
+</dl>
+
+
+
+<!--
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+  * Copyright by The HDF Group.                                               *
+  * Copyright by the Board of Trustees of the University of Illinois.         *
+  * All rights reserved.                                                      *
+  *                                                                           *
+  * This file is part of HDF5.  The full HDF5 copyright notice, including     *
+  * terms governing use, modification, and redistribution, is contained in    *
+  * the files COPYING and Copyright.html.  COPYING can be found at the root   *
+  * of the source code distribution tree; Copyright.html can be found at the  *
+  * root level of an installed copy of the electronic HDF5 document set and   *
+  * is linked from the top-level documents page.  It can also be found at     *
+  * http://hdfgroup.org/HDF5/doc/Copyright.html.  If you do not have          *
+  * access to either file, you may request a copy from help@hdfgroup.org.     *
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ -->
+
+
+<!-- NEW PAGE -->
+<!-- HEADER RIGHT "H5Sget_simple_extent_dims" -->
+<hr>
+<dl>
+<dt><strong>Name:</strong> <a name="Dataspace-ExtentDims">H5Sget_simple_extent_dims</a>
+<dt><strong>Signature:</strong>
+    <dd><em>int</em> <code>H5Sget_simple_extent_dims</code>(<em>hid_t</em> <code>space_id</code>,
+        <em>hsize_t *</em><code>dims</code>,
+        <em>hsize_t *</em><code>maxdims</code>
+    )
+<dt><strong>Purpose:</strong>
+    <dd>Retrieves dataspace dimension size and maximum size.
+<dt><strong>Description:</strong>
+    <dd><code>H5Sget_simple_extent_dims</code> returns the size and maximum sizes 
+        of each dimension of a dataspace through the <code>dims</code> 
+        and <code>maxdims</code> parameters.
+        <p>
+        Either or both of <code>dims</code> and <code>maxdims</code> 
+        may be NULL.
+        <p>
+        If a value in the returned array <code>maxdims</code> is
+        <code>H5S_UNLIMITED</code> (</code>-1</code>), 
+        the maximum size of that dimension is unlimited.
+<dt><strong>Parameters:</strong>
+    <ul><table>
+        <tr>
+		  <td valign="top"><em>hid_t</em> <code>space_id</code></td>
+          <td valign="top">IN: Identifier of the dataspace object to query</td></tr>
+        <tr>
+		  <td valign="top"><em>hsize_t *</em><code>dims</code></td>
+          <td valign="top">OUT: Pointer to array to store the size of each dimension.</td></tr>
+        <tr>
+		  <td valign="top"><em>hsize_t&nbsp;*</em><code>maxdims&nbsp;&nbsp;&nbsp;&nbsp;</code></td>
+          <td valign="top">OUT: Pointer to array to store the maximum size of each dimension.</td></tr>
+    </table></ul>
+<dt><strong>Returns:</strong>
+    <dd>Returns the number of dimensions in the dataspace if successful;
+        otherwise returns a negative value.
+<dt><strong>Fortran90 Interface:</strong> h5sget_simple_extent_dims_f
+    <dd>
+	<pre>
+SUBROUTINE h5sget_simple_extent_dims_f(space_id, dims, maxdims, hdferr) 
+  IMPLICIT NONE
+  INTEGER(HID_T), INTENT(IN) :: space_id   ! Dataspace identifier 
+  INTEGER(HSIZE_T), DIMENSION(*), INTENT(OUT) :: dims 
+                                           ! Array to store dimension sizes 
+  INTEGER(HSIZE_T), DIMENSION(*), INTENT(OUT) :: maxdims 
+                                           ! Array to store max dimension sizes
+  INTEGER, INTENT(OUT) :: hdferr           ! Error code
+                                           ! Dataspace rank on success 
+                                           ! and -1 on failure
+END SUBROUTINE h5sget_simple_extent_dims_f
+	</pre>		
+		
+		<!--<dt><strong>Non-C API(s):</strong>
+    	<dd>
+        
+        <img src="Graphics/Java.gif"> 
+        <img src="Graphics/C++.gif">
+        -->
+</dl>
+
+
+
+<!--
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+  * Copyright by The HDF Group.                                               *
+  * Copyright by the Board of Trustees of the University of Illinois.         *
+  * All rights reserved.                                                      *
+  *                                                                           *
+  * This file is part of HDF5.  The full HDF5 copyright notice, including     *
+  * terms governing use, modification, and redistribution, is contained in    *
+  * the files COPYING and Copyright.html.  COPYING can be found at the root   *
+  * of the source code distribution tree; Copyright.html can be found at the  *
+  * root level of an installed copy of the electronic HDF5 document set and   *
+  * is linked from the top-level documents page.  It can also be found at     *
+  * http://hdfgroup.org/HDF5/doc/Copyright.html.  If you do not have          *
+  * access to either file, you may request a copy from help@hdfgroup.org.     *
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ -->
+
+
+<!-- NEW PAGE -->
+<!-- HEADER RIGHT "H5Sget_simple_extent_ndims" -->
+<hr>
+<dl>
+
+<dt><div align=right><font color=999999 size=-1><i>
+    Last modified: 17 August 2010
+    </i></font></div>
+
+<dt><strong>Name:</strong> <a name="Dataspace-ExtentNdims">H5Sget_simple_extent_ndims</a>
+<dt><strong>Signature:</strong>
+    <dd><em>int</em> <code>H5Sget_simple_extent_ndims</code>(
+            <em>hid_t</em> <code>space_id</code>
+        )
+
+<p>
+<dt><strong>Purpose:</strong>
+    <dd>Determines the dimensionality of a dataspace.
+
+<p>
+<dt><strong>Description:</strong>
+    <dd><code>H5Sget_simple_extent_ndims</code> determines the dimensionality 
+        (or rank) of a dataspace.
+
+<p>
+<dt><strong>Parameters:</strong>
+    <dd><table>
+        <tr>
+          <td valign="top"><em>hid_t</em>&nbsp;<code>space_id&nbsp;&nbsp;&nbsp;&nbsp;</code></td>
+          <td valign="top">IN: Identifier of the dataspace</td></tr>
+    </table></dd>
+
+<p>
+<dt><strong>Returns:</strong>
+    <dd>Returns the number of dimensions in the dataspace if successful;
+        otherwise returns a negative value.
+
+<p>
+<dt><strong>Fortran90 Interface:</strong> h5sget_simple_extent_ndims_f
+    <dd>
+    <pre>
+SUBROUTINE h5sget_simple_extent_ndims_f(space_id, rank, hdferr) 
+  IMPLICIT NONE
+  INTEGER(HID_T), INTENT(IN) :: space_id   ! Dataspace identifier 
+  INTEGER, INTENT(OUT) :: rank             ! Number of dimensions 
+  INTEGER, INTENT(OUT) :: hdferr           ! Error code
+                                           ! 0 on success and -1 on failure
+END SUBROUTINE h5sget_simple_extent_ndims_f
+    </pre>
+
+</dl>
+
+
+
+<!--
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+  * Copyright by The HDF Group.                                               *
+  * Copyright by the Board of Trustees of the University of Illinois.         *
+  * All rights reserved.                                                      *
+  *                                                                           *
+  * This file is part of HDF5.  The full HDF5 copyright notice, including     *
+  * terms governing use, modification, and redistribution, is contained in    *
+  * the files COPYING and Copyright.html.  COPYING can be found at the root   *
+  * of the source code distribution tree; Copyright.html can be found at the  *
+  * root level of an installed copy of the electronic HDF5 document set and   *
+  * is linked from the top-level documents page.  It can also be found at     *
+  * http://hdfgroup.org/HDF5/doc/Copyright.html.  If you do not have          *
+  * access to either file, you may request a copy from help@hdfgroup.org.     *
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ -->
+
+
+<!-- NEW PAGE -->
+<!-- HEADER RIGHT "H5Sget_simple_extent_npoints" -->
+<hr>
+<dl>
+
+<dt><div align=right><font color=999999 size=-1><i>
+    Last modified: 3 January 2013
+    </i></font></div>
+
+<dt><strong>Name:</strong> <a name="Dataspace-ExtentNpoints">H5Sget_simple_extent_npoints</a>
+<dt><strong>Signature:</strong>
+    <dd><em>hssize_t</em> <code>H5Sget_simple_extent_npoints</code>(
+            <em>hid_t </em><code>space_id</code>
+        )
+
+<p>
+<dt><strong>Purpose:</strong>
+    <dd>Determines the number of elements in a dataspace.
+
+<p>
+<dt><strong>Description:</strong>
+    <dd><code>H5Sget_simple_extent_npoints</code> determines the number of elements 
+        in a dataspace.  For example, a simple 3-dimensional dataspace 
+        with dimensions 2, 3, and 4 would have 24 elements.
+
+<p>
+<dt><strong>Parameters:</strong>
+    <dd><table>
+        <tr>
+          <td valign="top"><em>hid_t</em>&nbsp;<code>space_id&nbsp;&nbsp;&nbsp;&nbsp;</code></td>
+          <td valign="top">IN: Identifier of the dataspace object 
+              to query</td></tr>
+    </table></dd>
+
+<p>
+<dt><strong>Returns:</strong>
+    <dd>Returns the number of elements in the dataspace if successful; 
+        otherwise returns a negative value.
+
+<p>
+<dt><strong>Fortran90 Interface:</strong> h5sget_simple_extent_npoints_f
+    <dd>
+    <pre>
+SUBROUTINE h5sget_simple_extent_npoints_f(space_id, npoints, hdferr) 
+  IMPLICIT NONE
+  INTEGER(HID_T), INTENT(IN) :: space_id    ! Dataspace identifier 
+  INTEGER(HSIZE_T), INTENT(OUT) :: npoints  ! Number of elements in dataspace
+  INTEGER, INTENT(OUT) :: hdferr            ! Error code
+                                            ! 0 on success and -1 on failure
+END SUBROUTINE h5sget_simple_extent_npoints_f
+    </pre>
+
+</dl>
+
+
+
+<!--
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+  * Copyright by The HDF Group.                                               *
+  * Copyright by the Board of Trustees of the University of Illinois.         *
+  * All rights reserved.                                                      *
+  *                                                                           *
+  * This file is part of HDF5.  The full HDF5 copyright notice, including     *
+  * terms governing use, modification, and redistribution, is contained in    *
+  * the files COPYING and Copyright.html.  COPYING can be found at the root   *
+  * of the source code distribution tree; Copyright.html can be found at the  *
+  * root level of an installed copy of the electronic HDF5 document set and   *
+  * is linked from the top-level documents page.  It can also be found at     *
+  * http://hdfgroup.org/HDF5/doc/Copyright.html.  If you do not have          *
+  * access to either file, you may request a copy from help@hdfgroup.org.     *
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ -->
+
+
+<!-- NEW PAGE -->
+<!-- HEADER RIGHT "H5Sget_simple_extent_type" -->
+<hr>
+<dl>
+
+<dt><div align=right><font color=999999 size=-1><i>
+    Last modified: 26 April 2011
+    </i></font></div>
+
+<dt><strong>Name:</strong> <a name="Dataspace-ExtentType">H5Sget_simple_extent_type</a>
+<dt><strong>Signature:</strong>
+    <dd><em>H5S_class_t</em> <code>H5Sget_simple_extent_type</code>(
+            <em>hid_t</em> <code>space_id</code>
+        )
+
+<p>
+<dt><strong>Purpose:</strong>
+    <dd>Determines the current class of a dataspace.
+
+<p>
+<dt><strong>Description:</strong>
+    <dd><code>H5Sget_simple_extent_type</code> queries a dataspace to determine the 
+        current class of a dataspace.  
+        <p>
+        The function returns a class name, one of the following: 
+        <pre>
+        H5S_SCALAR
+        H5S_SIMPLE
+        H5S_NULL
+        </pre>
+
+<p>
+<dt><strong>Parameters:</strong>
+    <dd><table>
+        <tr>
+          <td valign="top"><em>hid_t</em>&nbsp;<code>space_id&nbsp;&nbsp;&nbsp;&nbsp;</code></td>
+          <td valign="top">IN: Dataspace identifier.</td></tr>
+    </table></dd>
+
+<p>
+<dt><strong>Returns:</strong>
+    <dd>Returns a dataspace class name if successful; 
+        otherwise <code>H5S_NO_CLASS</code> (-1).
+
+<p>
+<dt><strong>Fortran90 Interface:</strong> h5sget_simple_extent_type_f
+    <dd>
+    <pre>
+SUBROUTINE h5sget_simple_extent_type_f(space_id, classtype, hdferr) 
+  IMPLICIT NONE
+  INTEGER(HID_T), INTENT(IN) :: space_id ! Dataspace identifier 
+  INTEGER, INTENT(OUT) :: classtype      ! Class type 
+                                         ! Possible values are: 
+                                         !    H5S_NO_CLASS_F 
+                                         !    H5S_SCALAR_F 
+                                         !    H5S_SIMPLE_F 
+                                         !    H5S_NULL_F 
+  INTEGER, INTENT(OUT) :: hdferr         ! Error code
+                                         ! 0 on success and -1 on failure
+END SUBROUTINE h5sget_simple_extent_type_f
+    </pre>
+
+</dl>
+
+
+
+<!--
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+  * Copyright by The HDF Group.                                               *
+  * All rights reserved.                                                      *
+  *                                                                           *
+  * This file is part of HDF5.  The full HDF5 copyright notice, including     *
+  * terms governing use, modification, and redistribution, is contained in    *
+  * the files COPYING and Copyright.html.  COPYING can be found at the root   *
+  * of the source code distribution tree; Copyright.html can be found at the  *
+  * root level of an installed copy of the electronic HDF5 document set and   *
+  * is linked from the top-level documents page.  It can also be found at     *
+  * http://www.hdfgroup.org/HDF5/doc/Copyright.html.  If you do not have      *
+  * access to either file, you may request a copy from help@hdfgroup.org.     *
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ -->
+
+
+<!--__ ***********************************************************  -->
+<!--__ Do not alter the next line; it is used by the PDF generator. -->
+<!--__ ***********************************************************  -->
+<!-- NEW PAGE -->
+<!-- HEADER RIGHT "H5Sis_regular_hyperslab" -->
+
+<hr />
+<dl>
+
+<dt><div align="right"><font color="999999" size="-1"><i>
+    Last modified: 22 April 2016
+    </i></font></div></dt>
+    <br />
+
+<dt><strong>Name:</strong> 
+    <a name="Dataspace-IsRegularHyperslab">H5Sis_regular_hyperslab</a>
+    </dt>
+    <br />
+
+<dt><strong>Signature:</strong>
+    <dd><code><em>htri_t</em> H5Sis_regular_hyperslab(
+        <em>hid_t</em> space_id
+        )</code>
+    </dd></dt>
+    <br />
+
+<dt><strong>Purpose:</strong>
+    <dd>Determines whether a hyperslab selection is regular.
+    </dd></dt>
+    <br />
+
+<dt><strong>Description:</strong>
+    <dd><code>H5Sis_regular_hyperslab</code> takes the 
+        dataspace identifier, <code>space_id</code>, 
+        and queries the type of the hyperslab selection.
+        <p>
+        A regular hyperslab selection is a hyperslab selection described by 
+        setting the offset, stride, count, and block parameters for a single
+        <code>H5Sselect_hyperslab</code> call. 
+        If several calls to <code>H5Sselect_hyperslab</code> are needed, 
+        then the hyperslab selection is irregular. 
+        </p>
+    </dd></dt>
+
+<!--
+<dt><strong>Note:</strong>
+    <dd>
+    </dd></dt>
+    <br />
+-->
+    
+<dt><strong>Parameters:</strong>
+    <dd><table width="100%">
+        <tr>
+            <td width="5%" valign="top"><code><em>hid_t</em>&nbsp;space_id</code>
+                </td>
+            <td width="5%"><code>&nbsp;</code></td>
+            <td valign="top">IN: The identifier of the dataspace.</td>
+        </tr>
+    </table></dd>
+    </dt>
+    <br />
+    
+<dt><strong>Returns:</strong>
+    <dd>Returns <code>TRUE</code> or <code>FALSE</code> for 
+        hyperslab selection if successful.
+        <br />
+        Returns <code>FAIL</code> on error or when querying other 
+        selection types such as point selection.</dd>
+    </dt>
+    <br />
+
+<dt><strong>Fortran Interface:</strong> h5sis_regular_hyperslab_f
+    <dd>
+
+        <a name="H5S2fh5sis5fregular5fhyperslab5ff"></a>
+<a name="robo369"></a>
+
+<strong>Signature:</strong>
+<pre>  SUBROUTINE h5sis_regular_hyperslab_f(space_id, IsRegular, hdferr)
+    INTEGER(HID_T), INTENT(IN) ::  space_id
+    LOGICAL :: IsRegular
+    INTEGER, INTENT(OUT) :: hdferr
+</pre>
+
+<strong>Inputs:</strong>
+<pre>  space_id  - The identifier of the dataspace.
+</pre>
+
+<strong>Outputs:</strong>
+<pre>  IsRegular - TRUE or FALSE for hyperslab selection if successful.
+  hdferr    - Returns 0 if successful and -1 if fails.
+</pre>
+
+
+        </dd>
+    </dt>
+    <br />
+
+<dt><strong>See Also:</strong></dt>
+    <dd><a href="#Dataspace-GetRegularHyperslab">H5Sget_regular_hyperslab</a>
+        <br />
+        <a href="#Dataspace-SelectHyperslab">H5Sselect_hyperslab</a></li>
+        <br />&nbsp;
+        <br />
+        Virtual datasets: &nbsp; <a href="RM_H5P.html#Property-SetVirtual">H5Pset_virtual</a>
+<!--
+    <table width="100%" border="0">
+    <tr><td width="50%"align="left" valign="top">
+          <li>&ldquo;<a href="/HDF5/docNewFeatures/NewFeaturesVirtualDatasetDocs.html">Virtual Dataset Overview</a>&rdquo;</li>
+          <li>&ldquo;<a href="/HDF5/docNewFeatures/UsingVirtualDatasets/index.html">Using HDF5 Virtual Datasets</a>&rdquo;
+              <br />&nbsp;</li>
+-->
+<!--
+          <li>&ldquo;<a href="../Advanced/UsingVirtualDatasets/index.html">Using HDF5 Virtual Datasets</a>&rdquo;</li>
+-->
+<!--
+          &nbsp;<br />
+          <b>Supporting functions:</b>
+          <li><a href="RM_H5P.html#Property-SetLayout">H5Pset_layout</a></li>
+          <li><a href="RM_H5P.html#Property-GetLayout">H5Pget_layout</a></li>
+          <li><a href="#Dataspace-IsRegularHyperslab">H5Sis_regular_hyperslab</a></li>
+          <li><a href="#Dataspace-GetRegularHyperslab">H5Sget_regular_hyperslab</a></li>
+          <li><a href="#Dataspace-SelectHyperslab">H5Sselect_hyperslab</a></li>
+    </td><td width="50%"align="left" valign="top">
+          <b>VDS functions:</b>
+          <li><a href="RM_H5P.html#Property-SetVirtual">H5Pset_virtual</a></li>
+          <li><a href="RM_H5P.html#Property-GetVirtualCount">H5Pget_virtual_count</a></li>
+          <li><a href="RM_H5P.html#Property-GetVirtualVspace">H5Pget_virtual_vspace</a></li>
+          <li><a href="RM_H5P.html#Property-GetVirtualSrcspace">H5Pget_virtual_srcspace</a></li>
+          <li><a href="RM_H5P.html#Property-GetVirtualFilename">H5Pget_virtual_filename</a></li>
+          <li><a href="RM_H5P.html#Property-GetVirtualDsetname">H5Pget_virtual_dsetname</a></li>
+          <li><a href="RM_H5P.html#Property-SetVirtualPrintfGap">H5Pset_virtual_printf_gap</a></li>
+          <li><a href="RM_H5P.html#Property-GetVirtualPrintfGap">H5Pget_virtual_printf_gap</a></li>
+          <li><a href="RM_H5P.html#Property-SetVirtualView">H5Pset_virtual_view</a></li>
+          <li><a href="RM_H5P.html#Property-GetVirtualView">H5Pget_virtual_view</a>
+    </td></tr>
+    </table>
+-->
+    </dd>
+    <br />
+
+<dt><strong>History:</strong></dt>
+    <dd>
+    <table width="90%">
+    <tr>
+        <td valign="top" align="left" width="10%">
+        <strong>Release</strong>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        <td valign="top" align="left">
+        <strong>Change</strong></td>
+    </tr><tr>
+        <td valign="top">1.10.0</td>
+        <td valign="top">
+        C function introduced with this release.</td>
+    </tr>
+    </table>
+    </dd>
+
+</dl>
+<br />
+<br />
+<br />
+
+
+
+
+
+<!--
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+  * Copyright by The HDF Group.                                               *
+  * Copyright by the Board of Trustees of the University of Illinois.         *
+  * All rights reserved.                                                      *
+  *                                                                           *
+  * This file is part of HDF5.  The full HDF5 copyright notice, including     *
+  * terms governing use, modification, and redistribution, is contained in    *
+  * the files COPYING and Copyright.html.  COPYING can be found at the root   *
+  * of the source code distribution tree; Copyright.html can be found at the  *
+  * root level of an installed copy of the electronic HDF5 document set and   *
+  * is linked from the top-level documents page.  It can also be found at     *
+  * http://hdfgroup.org/HDF5/doc/Copyright.html.  If you do not have          *
+  * access to either file, you may request a copy from help@hdfgroup.org.     *
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ -->
+
+
+<!-- NEW PAGE -->
+<!-- HEADER RIGHT "H5Sis_simple" -->
+<hr>
+<dl>
+
+<dt><div align=right><font color=999999 size=-1><i>
+    Last modified: 10 December 2015
+    </i></font></div>
+
+<dt><strong>Name:</strong> <a name="Dataspace-IsSimple">H5Sis_simple</a>
+<dt><strong>Signature:</strong>
+    <dd><em>htri_t </em><code>H5Sis_simple</code>(
+            <em>hid_t </em><code>space_id</code>
+        )
+
+<p>
+<dt><strong>Purpose:</strong>
+    <dd>Determines whether a dataspace is a simple dataspace.
+
+<p>
+<dt><strong>Description:</strong>
+    <dd><code>H5Sis_simple</code> determines whether a dataspace is 
+        a simple dataspace.  [Currently, all dataspace objects are simple
+        dataspaces; complex dataspace support will be added in the future.]
+
+<p>
+<dt><strong>Parameters:</strong>
+    <dd><table>
+        <tr>
+          <td valign="top"><em>hid_t</em>&nbsp;<code>space_id&nbsp;&nbsp;&nbsp;&nbsp;</code></td>
+          <td valign="top">IN: Identifier of the dataspace to query</td></tr>
+    </table></dd>
+
+<p>
+<dt><strong>Returns:</strong>
+    <dd>
+        Returns a positive value if the specified dataspace is a simple 
+        dataspace.
+        <br />
+        Returns 0 if the specified dataspace is not a simple dataspace. 
+        <br />
+        Returns a negative value when the function fails. 
+        </dd>
+<p>
+<dt><strong>Fortran90 Interface:</strong> h5sis_simple_f
+    <dd>
+    <pre>
+SUBROUTINE h5sis_simple_f(space_id, flag, hdferr) 
+  IMPLICIT NONE
+  INTEGER(HID_T), INTENT(IN) :: space_id    ! Dataspace identifier 
+  LOGICAL, INTENT(OUT) :: flag              ! Flag, indicates if dataspace
+                                            ! is simple or not: 
+                                            ! TRUE or FALSE  
+  INTEGER, INTENT(OUT) :: hdferr            ! Error code
+                                            ! 0 on success and -1 on failure 
+END SUBROUTINE h5sis_simple_f
+    </pre>
+
+</dl>
+
+
+
+<!--
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+  * Copyright by The HDF Group.                                               *
+  * Copyright by the Board of Trustees of the University of Illinois.         *
+  * All rights reserved.                                                      *
+  *                                                                           *
+  * This file is part of HDF5.  The full HDF5 copyright notice, including     *
+  * terms governing use, modification, and redistribution, is contained in    *
+  * the files COPYING and Copyright.html.  COPYING can be found at the root   *
+  * of the source code distribution tree; Copyright.html can be found at the  *
+  * root level of an installed copy of the electronic HDF5 document set and   *
+  * is linked from the top-level documents page.  It can also be found at     *
+  * http://hdfgroup.org/HDF5/doc/Copyright.html.  If you do not have          *
+  * access to either file, you may request a copy from help@hdfgroup.org.     *
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ -->
+
+
+<!-- NEW PAGE -->
+<!-- HEADER RIGHT "H5Soffset_simple" -->
+<hr>
+<dl>
+<dt><strong>Name:</strong> <a name="Dataspace-OffsetSimple">H5Soffset_simple</a>
+<dt><strong>Signature:</strong>
+    <dd><em>herr_t</em> <code>H5Soffset_simple</code>(<em>hid_t</em> <code>space_id</code>,
+    <em>const hssize_t *</em><code>offset</code>
+    )
+<dt><strong>Purpose:</strong>
+    <dd>Sets the offset of a simple dataspace.
+<dt><strong>Description:</strong>
+    <dd><code>H5Soffset_simple</code> sets the offset of a 
+    simple dataspace <code>space_id</code>.  The <code>offset</code> 
+    array must be the same number of elements as the number of 
+    dimensions for the dataspace.  If the <code>offset</code> 
+    array is set to <TT>NULL</TT>, the offset for the dataspace 
+    is reset to 0.
+    <p>
+    This function allows the same shaped selection to be moved 
+    to different locations within a dataspace without requiring it 
+    to be redefined.
+<dt><strong>Parameters:</strong>
+    <ul><table>
+        <tr>
+		  <td valign="top"><em>hid_t</em> <code>space_id</code></td>
+          <td valign="top">IN: The identifier for the dataspace object to reset.</td></tr>
+        <tr>
+		  <td valign="top"><em>const&nbsp;hssize_t&nbsp;*</em><code>offset&nbsp;&nbsp;&nbsp;&nbsp;</code></td>
+          <td valign="top">IN: The offset at which to position the selection.</td></tr>
+    </table></ul>
+<dt><strong>Returns:</strong>
+    <dd>Returns a non-negative value if successful;
+        otherwise returns a negative value.
+<dt><strong>Fortran90 Interface:</strong> h5soffset_simple_f
+    <dd>
+	<pre>
+SUBROUTINE h5soffset_simple_f(space_id, offset, hdferr) 
+  IMPLICIT NONE
+  INTEGER(HID_T), INTENT(IN) :: space_id    ! Dataspace identifier 
+  INTEGER(HSSIZE_T), DIMENSION(*), INTENT(IN) ::  offset
+                                            ! The offset at which to position
+                                            ! the selection  
+  INTEGER, INTENT(OUT) :: hdferr            ! Error code
+                                            ! 0 on success and -1 on failure
+END SUBROUTINE h5soffset_simple_f
+	</pre>		
+		
+		<!--<dt><strong>Non-C API(s):</strong>
+    	<dd>
+        
+        <img src="Graphics/Java.gif"> 
+        <img src="Graphics/C++.gif">
+        -->
+</dl>
+
+
+
+<!--
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+  * Copyright by The HDF Group.                                               *
+  * Copyright by the Board of Trustees of the University of Illinois.         *
+  * All rights reserved.                                                      *
+  *                                                                           *
+  * This file is part of HDF5.  The full HDF5 copyright notice, including     *
+  * terms governing use, modification, and redistribution, is contained in    *
+  * the files COPYING and Copyright.html.  COPYING can be found at the root   *
+  * of the source code distribution tree; Copyright.html can be found at the  *
+  * root level of an installed copy of the electronic HDF5 document set and   *
+  * is linked from the top-level documents page.  It can also be found at     *
+  * http://hdfgroup.org/HDF5/doc/Copyright.html.  If you do not have          *
+  * access to either file, you may request a copy from help@hdfgroup.org.     *
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ -->
+
+
+<!-- NEW PAGE -->
+<!-- HEADER RIGHT "H5Sselect_all" -->
+<hr>
+<dl>
+<dt><div align=right><font color=999999 size=-1><i>
+      Last modified: 6 April 2009
+      </i></font></div>
+
+<dt><strong>Name:</strong> <a name="Dataspace-SelectAll">H5Sselect_all</a>
+<dt><strong>Signature:</strong>
+    <dd><em>herr_t</em> <code>H5Sselect_all</code>(
+        <em>hid_t</em> <code>dspace_id</code>
+        )
+
+<p>
+<dt><strong>Purpose:</strong>
+    <dd>Selects an entire dataspace.
+
+<p>
+<dt><strong>Description:</strong>
+    <dd><code>H5Sselect_all</code> selects the entire extent
+    of the dataspace <code>dspace_id</code>.
+    <p>
+    More specifically, <code>H5Sselect_all</code> sets the selection type 
+    to <code>H5S_SEL_ALL</code>, which specifies the
+    entire dataspace anywhere it is applied.
+
+<p>
+<dt><strong>Parameters:</strong>
+    <ul><table>
+        <tr>
+          <td valign="top"><em>hid_t</em>&nbsp;<code>dspace_id&nbsp;&nbsp;&nbsp;&nbsp;</code></td>
+          <td valign="top">IN: The identifier for the dataspace for which the 
+              selection is being made.</td></tr>
+    </table></ul>
+
+<p>
+<dt><strong>Returns:</strong>
+    <dd>Returns a non-negative value if successful;
+        otherwise returns a negative value.
+
+<p>
+<dt><strong>See Also:</strong>
+    <dd><a href="#Dataspace-GetSelectType"><code>H5Sget_select_type</code></a>
+
+<p>
+<dt><strong>Fortran90 Interface:</strong> h5sselect_all_f
+    <dd>
+        <pre>
+SUBROUTINE h5sselect_all_f(dspace_id, hdferr) 
+  IMPLICIT NONE
+  INTEGER(HID_T), INTENT(IN) :: dspace_id ! Dataspace identifier 
+  INTEGER, INTENT(OUT) :: hdferr          ! Error code
+                                          ! 0 on success and -1 on failure
+END SUBROUTINE h5sselect_all_f
+	</pre>		
+		
+</dl>
+
+
+
+<!--
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+  * Copyright by The HDF Group.                                               *
+  * Copyright by the Board of Trustees of the University of Illinois.         *
+  * All rights reserved.                                                      *
+  *                                                                           *
+  * This file is part of HDF5.  The full HDF5 copyright notice, including     *
+  * terms governing use, modification, and redistribution, is contained in    *
+  * the files COPYING and Copyright.html.  COPYING can be found at the root   *
+  * of the source code distribution tree; Copyright.html can be found at the  *
+  * root level of an installed copy of the electronic HDF5 document set and   *
+  * is linked from the top-level documents page.  It can also be found at     *
+  * http://hdfgroup.org/HDF5/doc/Copyright.html.  If you do not have          *
+  * access to either file, you may request a copy from help@hdfgroup.org.     *
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ -->
+
+
+<!-- NEW PAGE -->
+<!-- HEADER RIGHT "H5Sselect_elements" -->
+<hr>
+<dl>
+
+<dt><div align=right><font color=999999 size=-1><i>
+    Last modified: 17 August 2010
+    </i></font></div>
+
+<dt><strong>Name:</strong> <a name="Dataspace-SelectElements">H5Sselect_elements</a>
+<dt><strong>Signature:</strong>
+    <dd><em>herr_t</em> <code>H5Sselect_elements</code>(
+        <em>hid_t </em><code>space_id</code>,
+        <em>H5S_seloper_t</em> <code>op</code>,
+        <em>size_t</em> <code>num_elements</code>,
+        <em>const hsize_t *</em><code>coord</code>
+    )
+
+<p>
+<dt><strong>Purpose:</strong>
+    <dd>Selects array elements to be included in the selection for a dataspace.
+
+<p>
+<dt><strong>Description:</strong>
+    <dd><code>H5Sselect_elements</code> selects array elements to be 
+        included in the selection for the <code>space_id</code> dataspace. 
+        This is referred to as a <i>point selection</i>.
+        <p>
+        The number of elements selected is set in the 
+        <code>num_elements</code> parameter.  
+        <p>
+        The <code>coord</code> parameter is a pointer to a buffer
+        containing a serialized 2-dimensional array of size
+        <code>num_elements</code> by the rank of the dataspace.
+        The array lists dataset elements in the point selection; 
+        that is, it&rsquo;s a list of of zero-based values specifying the 
+        coordinates in the dataset of the selected elements.  
+        The order of the element coordinates in the 
+        <code>coord</code> array specifies the order in which  
+        the array elements are iterated through when I/O is performed.  
+        Duplicate coordinate locations are not checked for.
+        See below for examples of the mapping between 
+        the serialized contents of the buffer and
+        the point selection array that it represents.
+        <p>
+        The selection operator <code>op</code> determines how the 
+        new selection is to be combined with the previously existing
+        selection for the dataspace.  
+        The following operators are supported:
+        <center>
+        <table width=90% border=0>
+          <tr><td valign=top>
+            <code>H5S_SELECT_SET</code>
+            </td><td valign=top>
+            Replaces the existing selection with the parameters from 
+            this call.
+            Overlapping blocks are not supported with this operator.
+<!--      </td></tr><tr><td valign=top>
+            <code>H5S_SELECT_OR</code>
+            </td><td valign=top>
+-->         Adds the new selection to the existing selection.
+          </td></tr><tr><td valign=top>
+            <code>H5S_SELECT_APPEND</code>
+            </td><td valign=top>
+            Adds the new selection following the last element of the 
+            existing selection.
+          </td></tr><tr><td valign=top>
+            <code>H5S_SELECT_PREPEND&nbsp;&nbsp;</code>
+            </td><td valign=top>
+            Adds the new selection preceding the first element of the 
+            existing selection.
+          </td></tr>
+        </table>
+        </center>
+<!--    When operator <code>H5S_SELECT_OR</code> 
+        is used to combine a new selection with an existing selection,
+        the selection ordering is reset to C array ordering.
+-->
+        <p>
+        <strong>Mapping the serialized <code>coord</code> buffer 
+        to a 2-dimensional point selection array:</strong> &nbsp;
+        To illustrate the construction of the contents of the 
+        <code>coord</code> buffer, consider two simple examples:
+        a selection of 5 points in a 1-dimensional array and
+        a selection of 3 points in a 4-dimensional array.
+        <p>
+        In the 1D case, 
+        we will be selecting five points and a 1D dataspace has rank 1,
+        so the selection will be described in a 5-by-1 array.
+        To select the 1st, 14th, 17th, 23rd, 8th elements 
+        of the dataset, the selection array would be as follows
+        (remembering that point coordinates are zero-based):
+        <pre>
+         0
+        13
+        16
+        22
+         7 </pre>
+        This point selection array will be serialized in the 
+        <code>coord</code> buffer as:
+        <pre>
+         0 13 16 22 7 </pre>
+
+        <p>
+        In the 4D case, 
+        we will be selecting three points and a 4D dataspace has rank 4,
+        so the selection will be described in a 3-by-4 array.
+        To select the points 
+        (1,1,1,1), (14,6,12,18), and (8,22,30,22),
+        the point selection array would be as follows:
+        <pre>
+         0  0  0  0
+        13  5 11 17
+         7 21 29 21</pre>
+        This point selection array will be serialized in the 
+        <code>coord</code> buffer as:
+        <pre>
+         0 0 0 0 13 5 11 17 7 21 29 21</pre>
+
+        
+
+<p>
+<dt><strong>Parameters:</strong>
+    <dd><table>
+        <tr>
+          <td valign="top"><em>hid_t</em> <code>space_id</code></td>
+          <td valign="top">IN: Identifier of the dataspace.</td></tr>
+        <tr>
+          <td valign="top"><em>H5S_seloper_t</em> <code>op</code></td>
+          <td valign="top">IN: Operator specifying how the new selection is to be 
+              combined with the existing selection for the dataspace.</td></tr>
+        <tr>
+          <td valign="top"><em>size_t</em>&nbsp;<code>num_elements&nbsp;&nbsp;&nbsp;&nbsp;</code></td>
+          <td valign="top">IN: Number of elements to be selected.</td></tr>
+        <tr>
+          <td valign="top"><em>const hsize_t *</em><code>coord</code></td>
+          <td valign="top">IN: A pointer to a buffer containing a serialized
+              copy of a 2-dimensional array of zero-based values specifying 
+              the coordinates of the elements in the point selection.</td></tr>
+    </table></ddd
+
+<p>
+<dt><strong>Returns:</strong>
+    <dd>Returns a non-negative value if successful; 
+        otherwise returns a negative value.
+
+<p>
+<dt><strong>Fortran90 Interface:</strong> h5sselect_elements_f
+    <dd>
+    <pre>
+SUBROUTINE h5sselect_elements_f(space_id, operator, rank, num_elements,
+                                coord, hdferr) 
+  IMPLICIT NONE
+  INTEGER(HID_T), INTENT(IN) :: space_id  ! Dataspace identifier 
+  INTEGER, INTENT(IN) :: operator         ! Flag, valid values are:
+                                          !    H5S_SELECT_SET_F 
+                                          !    H5S_SELECT_APPEND_F 
+                                          !    H5S_SELECT_PREPEND_F 
+  INTEGER, INTENT(IN) :: rank             ! Number of dataspace 
+                                          ! dimensions
+  INTEGER(SIZE_T), INTENT(IN) :: num_elements  
+                                          ! Number of elements to be 
+                                          ! selected
+  INTEGER(HSIZE_T), DIMENSION(rank,num_elements), INTENT(IN) :: coord  
+                                          ! A 1-based array containing the 
+                                          ! coordinates of the selected 
+                                          ! elements
+                                          ! NOTE: Reversed dimension declaration
+                                          ! compared to the C specification
+                                          ! of coord(num_elements, rank)
+  INTEGER, INTENT(OUT) :: hdferr          ! Error code
+                                          ! 0 on success and -1 on failure
+END SUBROUTINE h5sselect_elements_f
+    </pre>
+
+<p>
+<dt><strong>History</strong>:</strong>
+    <dd><table width="90%">
+        <tr>
+          <td valign="top" align="left" width="10%">
+            <strong>Release</strong>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <td valign="top" align="left">
+            <strong>Change</strong></td>
+            </td></tr>
+        <tr>
+          <td valign="top">1.6.4</td>
+          <td valign="top">
+            C <code>coord</code> parameter type changed to 
+            <em>const hsize_t</em>.
+            <br>
+            Fortran <code>coord</code> parameter type changed to 
+            <code>INTEGER(HSIZE_T)</code>.</td></tr>
+    </table></dd>
+</dl>
+
+
+
+<!--
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+  * Copyright by The HDF Group.                                               *
+  * Copyright by the Board of Trustees of the University of Illinois.         *
+  * All rights reserved.                                                      *
+  *                                                                           *
+  * This file is part of HDF5.  The full HDF5 copyright notice, including     *
+  * terms governing use, modification, and redistribution, is contained in    *
+  * the files COPYING and Copyright.html.  COPYING can be found at the root   *
+  * of the source code distribution tree; Copyright.html can be found at the  *
+  * root level of an installed copy of the electronic HDF5 document set and   *
+  * is linked from the top-level documents page.  It can also be found at     *
+  * http://hdfgroup.org/HDF5/doc/Copyright.html.  If you do not have          *
+  * access to either file, you may request a copy from help@hdfgroup.org.     *
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ -->
+
+
+<!-- NEW PAGE -->
+<!-- HEADER RIGHT "H5Sselect_hyperslab" -->
+<hr>
+<dl>
+<dt><strong>Name:</strong> <a name="Dataspace-SelectHyperslab">H5Sselect_hyperslab</a>
+<dt><strong>Signature:</strong>
+    <dd><em>herr_t</em> <code>H5Sselect_hyperslab</code>(<em>hid_t</em> <code>space_id</code>,
+        <em>H5S_seloper_t</em> <code>op</code>,
+        <em>const hsize_t *</em><code>start</code>,
+        <em>const hsize_t *</em><code>stride</code>,
+        <em>const hsize_t *</em><code>count</code>,
+        <em>const hsize_t *</em><code>block</code>
+    )
+<dt><strong>Purpose:</strong>
+    <dd>Selects a hyperslab region to add to the current selected region.
+<dt><strong>Description:</strong>
+    <dd><code>H5Sselect_hyperslab</code> selects a hyperslab region 
+        to add to the current selected region for the dataspace 
+        specified by <code>space_id</code>.  
+        <p>
+        The <code>start</code>, <code>stride</code>, <code>count</code>,
+        and <code>block</code> arrays must be the same size as the rank 
+        of the dataspace.  For example, if the dataspace is 4-dimensional,
+        each of these parameters must be a 1-dimensional array of size 
+        <code>4</code>.
+        <p>
+        The selection operator <code>op</code> determines how the new 
+        selection is to be combined with the already existing selection 
+        for the dataspace.  
+        The following operators are supported:
+        <center>
+        <table width=90% border=0>
+          <tr><td valign=top>
+            <code>H5S_SELECT_SET</code>
+            </td><td valign=top>
+            Replaces the existing selection with the parameters from this call.  
+            Overlapping blocks are not supported with this operator.
+          </td></tr><tr><td valign=top>
+            <code>H5S_SELECT_OR</code>
+            </td><td valign=top>
+            Adds the new selection to the existing selection.
+	    &nbsp;&nbsp;
+	    (Binary OR)
+          </td></tr><tr><td valign=top>
+            <code>H5S_SELECT_AND</code>
+            </td><td valign=top>
+            Retains only the overlapping portions of the new selection and 
+	    the existing selection.
+	    &nbsp;&nbsp;
+	    (Binary AND)
+          </td></tr><tr><td valign=top>
+            <code>H5S_SELECT_XOR</code>
+            </td><td valign=top>
+            Retains only the elements that are members of the new selection or 
+	    the existing selection, excluding elements that are members of 
+	    both selections.
+	    &nbsp;&nbsp;
+	    (Binary exclusive-OR, XOR)
+          </td></tr><tr><td valign=top>
+            <code>H5S_SELECT_NOTB&nbsp;&nbsp;</code>
+            </td><td valign=top>
+            Retains only elements of the existing selection that are not in 
+	    the new selection.
+          </td></tr><tr><td valign=top>
+            <code>H5S_SELECT_NOTA</code>
+            </td><td valign=top>
+            Retains only elements of the new selection that are not in 
+	    the existing selection.
+          </td></tr>
+        </table>
+        </center>
+   
+        <p>
+        The <code>start</code> array specifies the offset of the 
+        starting element of the specified hyperslab.
+        <p>
+        The <code>stride</code> array chooses array locations 
+        from the dataspace with each value in the <code>stride</code> 
+        array determining how many elements to move in each dimension.  
+        Setting a value in the <code>stride</code> array to <code>1</code> 
+        moves to
+        each element in that dimension of the dataspace; setting a value 
+	of <code>2</code> in allocation in the <code>stride</code> array 
+	moves to every other element in that dimension of the dataspace.  
+	In other words, the <code>stride</code> determines the
+        number of elements to move from the <code>start</code> location 
+        in each dimension.
+        Stride values of <code>0</code> are not allowed.  
+	If the <code>stride</code> parameter is <code>NULL</code>,
+        a contiguous hyperslab is selected (as if each value in the 
+        <code>stride</code> array were set to <code>1</code>).  
+        <p>
+        The <code>count</code> array determines how many blocks to
+        select from the dataspace, in each dimension.
+        <p>  
+        The <code>block</code> array determines
+        the size of the element block selected from the dataspace.  
+        If the <code>block</code> parameter is set to <code>NULL</code>, 
+        the block size defaults to a single element in each dimension 
+        (as if each value in the <code>block</code> array were set to 
+        <code>1</code>).  
+<!-- NEW PAGE -->
+        <p>
+        For example, consider a 2-dimensional dataspace with
+        hyperslab selection settings as follows: 
+        the <code>start</code> offset is specified as [1,1],
+        <code>stride</code> is [4,4], 
+	<code>count</code> is [3,7], and 
+        <code>block</code> is [2,2].
+	In C, these settings will specify a hyperslab consisting of
+        21 2x2 blocks of array elements starting with location (1,1) 
+        with the selected blocks at locations 
+	(1,1), (5,1), (9,1), (1,5), (5,5), etc.;
+	in Fortran, they will specify a hyperslab consisting of
+        21 2x2 blocks of array elements starting with location (2,2) 
+        with the selected blocks at locations 
+	(2,2), (6,2), (10,2), (2,6), (6,6), etc.
+        <p>
+        Regions selected with this function call default to C order 
+        iteration when I/O is performed.
+<dt><strong>Parameters:</strong>
+    <ul><table>
+        <tr>
+		  <td valign="top"><em>hid_t</em> <code>space_id</code></td>
+          <td valign="top">IN: Identifier of dataspace selection to modify</td></tr>
+        <tr>
+		  <td valign="top"><em>H5S_seloper_t</em> <code>op</code></td>
+          <td valign="top">IN: Operation to perform on current selection.</td></tr>
+        <tr>
+		  <td valign="top"><em>const hsize_t *</em><code>start</code></td>
+          <td valign="top">IN: Offset of start of hyperslab</td></tr>
+        <tr>
+		  <td valign="top"><em>const hsize_t *</em><code>count</code></td>
+          <td valign="top">IN: Number of blocks included in hyperslab.</td></tr>
+        <tr>
+		  <td valign="top"><em>const&nbsp;hsize_t&nbsp;*</em><code>stride&nbsp;&nbsp;&nbsp;&nbsp;</code></td>
+          <td valign="top">IN: Hyperslab stride.</td></tr>
+        <tr>
+		  <td valign="top"><em>const hsize_t *</em><code>block</code></td>
+          <td valign="top">IN: Size of block in hyperslab.</td></tr>
+    </table></ul>
+<dt><strong>Returns:</strong>
+    <dd>Returns a non-negative value if successful;
+        otherwise returns a negative value.
+<dt><strong>Fortran90 Interface:</strong> h5sselect_hyperslab_f
+    <dd>
+	<pre>
+SUBROUTINE h5sselect_hyperslab_f(space_id, operator, start, count,
+                                 hdferr, stride, block) 
+  IMPLICIT NONE
+  INTEGER(HID_T), INTENT(IN) :: space_id  ! Dataspace identifier 
+  INTEGER, INTENT(IN) :: op               ! Flag, valid values are:
+                                          !    H5S_SELECT_SET_F
+                                          !    H5S_SELECT_OR_F
+  INTEGER(HSIZE_T), DIMENSION(*), INTENT(IN) :: start
+                                          ! Offset of start of hyperslab
+  INTEGER(HSIZE_T), DIMENSION(*), INTENT(IN) :: count 
+                                          ! Number of blocks to select 
+                                          ! from dataspace 
+  INTEGER, INTENT(OUT) :: hdferr          ! Error code
+                                          ! 0 on success and -1 on failure
+  INTEGER(HSIZE_T), DIMENSION(*), OPTIONAL, INTENT(IN) :: stride
+                                          ! Array of how many elements to 
+                                          ! move in each direction
+  INTEGER(HSIZE_T), DIMENSION(*), OPTIONAL, INTENT(IN) :: block 
+                                          ! Size of the element block 
+END SUBROUTINE h5sselect_hyperslab_f
+	</pre>		
+		
+		<!--<dt><strong>Non-C API(s):</strong>
+    	<dd>
+        
+        <img src="Graphics/Java.gif"> 
+        <img src="Graphics/C++.gif">
+        -->
+<dt><strong>History</strong>:</strong>
+    <ul><table width="90%">
+        <tr>
+		  <td valign="top" align="left" width="10%">
+		    <strong>Release</strong>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <td valign="top" align="left">
+		    <strong>C</strong></td>
+		  <td valign="top">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+		  <td valign="top" align="left">
+		    <strong>Fortran90</strong></td></tr>
+        <tr>
+		  <td valign="top">1.6.4</td>
+          <td valign="top">
+		    <code>start[]</code> parameter type changed to 
+			<em>const hsize_t</em>.</td>
+		  <td valign="top">&nbsp;</td>
+		  <td valign="top">
+		    <code>start</code> parameter type changed to 
+			<code>INTEGER(HSIZE_T)</code>.</td></tr>
+    </table></ul>
+</dl>
+
+
+
+<!--
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+  * Copyright by The HDF Group.                                               *
+  * Copyright by the Board of Trustees of the University of Illinois.         *
+  * All rights reserved.                                                      *
+  *                                                                           *
+  * This file is part of HDF5.  The full HDF5 copyright notice, including     *
+  * terms governing use, modification, and redistribution, is contained in    *
+  * the files COPYING and Copyright.html.  COPYING can be found at the root   *
+  * of the source code distribution tree; Copyright.html can be found at the  *
+  * root level of an installed copy of the electronic HDF5 document set and   *
+  * is linked from the top-level documents page.  It can also be found at     *
+  * http://hdfgroup.org/HDF5/doc/Copyright.html.  If you do not have          *
+  * access to either file, you may request a copy from help@hdfgroup.org.     *
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ -->
+
+
+<!-- NEW PAGE -->
+<!-- HEADER RIGHT "H5Sselect_none" -->
+<hr>
+<dl>
+<dt><strong>Name:</strong> <a name="Dataspace-SelectNone">H5Sselect_none</a>
+<dt><strong>Signature:</strong>
+    <dd><em>herr_t</em> <code>H5Sselect_none</code>(<em>hid_t</em> <code>space_id</code>)
+<dt><strong>Purpose:</strong>
+    <dd>Resets the selection region to include no elements.
+<dt><strong>Description:</strong>
+    <dd><code>H5Sselect_none</code> resets the selection region 
+    for the dataspace <code>space_id</code> to include no elements.     
+<dt><strong>Parameters:</strong>
+    <ul><table>
+        <tr>
+		  <td valign="top"><em>hid_t</em>&nbsp;<code>space_id&nbsp;&nbsp;&nbsp;&nbsp;</code></td>
+          <td valign="top">IN: The identifier for the dataspace in which the 
+                selection is being reset.</td></tr>
+    </table></ul>
+<dt><strong>Returns:</strong>
+    <dd>Returns a non-negative value if successful;
+        otherwise returns a negative value.
+<dt><strong>Fortran90 Interface:</strong> h5sselect_none_f
+    <dd>
+	<pre>
+SUBROUTINE h5sselect_none_f(space_id, hdferr) 
+  IMPLICIT NONE
+  INTEGER(HID_T), INTENT(IN) :: space_id  ! Dataspace identifier 
+  INTEGER, INTENT(OUT) :: hdferr          ! Error code
+                                          ! 0 on success and -1 on failure
+END SUBROUTINE h5sselect_none_f
+	</pre>		
+		
+		<!--<dt><strong>Non-C API(s):</strong>
+    	<dd>
+        
+        <img src="Graphics/Java.gif"> 
+        <img src="Graphics/C++.gif">
+        -->
+</dl>
+
+
+
+<!--
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+  * Copyright by The HDF Group.                                               *
+  * Copyright by the Board of Trustees of the University of Illinois.         *
+  * All rights reserved.                                                      *
+  *                                                                           *
+  * This file is part of HDF5.  The full HDF5 copyright notice, including     *
+  * terms governing use, modification, and redistribution, is contained in    *
+  * the files COPYING and Copyright.html.  COPYING can be found at the root   *
+  * of the source code distribution tree; Copyright.html can be found at the  *
+  * root level of an installed copy of the electronic HDF5 document set and   *
+  * is linked from the top-level documents page.  It can also be found at     *
+  * http://hdfgroup.org/HDF5/doc/Copyright.html.  If you do not have          *
+  * access to either file, you may request a copy from help@hdfgroup.org.     *
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ -->
+
+
+<!-- NEW PAGE -->
+<!-- HEADER RIGHT "H5Sselect_valid" -->
+<hr>
+<dl>
+
+<dt><div align=right><font color=999999 size=-1><i>
+    Last modified: 10 December 2015
+    </i></font></div>
+
+<dt><strong>Name:</strong> <a name="Dataspace-SelectValid">H5Sselect_valid</a>
+<dt><strong>Signature:</strong>
+    <dd><em>htri_t</em> <code>H5Sselect_valid</code>(
+            <em>hid_t</em> <code>space_id</code>
+        )
+
+<p>
+<dt><strong>Purpose:</strong>
+    <dd>Verifies that the selection is within the extent of the dataspace.
+
+<p>
+<dt><strong>Description:</strong>
+    <dd><code>H5Sselect_valid</code> verifies that the selection 
+    for the dataspace <code>space_id</code> is within the extent
+    of the dataspace if the current offset for the dataspace is used.
+
+<p>
+<dt><strong>Parameters:</strong>
+    <ul><table>
+        <tr>
+          <td valign="top"><em>hid_t</em>&nbsp;<code>space_id&nbsp;&nbsp;&nbsp;&nbsp;</code></td>
+          <td valign="top">IN: Identifier for the dataspace being queried.
+              </td></tr>
+    </table></ul>
+
+<p>
+<dt><strong>Returns:</strong>
+    <dd>
+        Returns a positive value if the selection is contained within 
+        the extent.
+        <br />
+        Returns 0 if the selection is not contained within the extent. 
+        <br />
+        Returns a negative value on error conditions 
+        such as the selection or extent not being defined. 
+        </dd>
+<p>
+<dt><strong>Fortran90 Interface:</strong> h5sselect_valid_f
+    <dd>
+    <pre>
+SUBROUTINE h5sselect_valid_f(space_id, flag, hdferr) 
+  IMPLICIT NONE
+  INTEGER(HID_T), INTENT(IN) :: space_id  ! Dataspace identifier 
+  LOGICAL, INTENT(OUT) :: flag            ! TRUE if the selection is
+                                          ! contained within the extent,
+                                          ! FALSE otherwise. 
+  INTEGER, INTENT(OUT) :: hdferr          ! Error code
+                                          ! 0 on success and -1 on failure
+END SUBROUTINE h5sselect_valid_f
+    </pre>
+
+</dl>
+
+
+
+<!--
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+  * Copyright by The HDF Group.                                               *
+  * Copyright by the Board of Trustees of the University of Illinois.         *
+  * All rights reserved.                                                      *
+  *                                                                           *
+  * This file is part of HDF5.  The full HDF5 copyright notice, including     *
+  * terms governing use, modification, and redistribution, is contained in    *
+  * the files COPYING and Copyright.html.  COPYING can be found at the root   *
+  * of the source code distribution tree; Copyright.html can be found at the  *
+  * root level of an installed copy of the electronic HDF5 document set and   *
+  * is linked from the top-level documents page.  It can also be found at     *
+  * http://hdfgroup.org/HDF5/doc/Copyright.html.  If you do not have          *
+  * access to either file, you may request a copy from help@hdfgroup.org.     *
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ -->
+
+
+<!-- NEW PAGE -->
+<!-- HEADER RIGHT "H5Sset_extent_none" -->
+<hr>
+<dl>
+
+<dt><div align=right><font color=999999 size=-1><i>
+    Last modified: 17 August 2010
+    </i></font></div>
+
+<dt><strong>Name:</strong> <a name="Dataspace-SetExtentNone">H5Sset_extent_none</a>
+<dt><strong>Signature:</strong>
+    <dd><em>herr_t</em> <code>H5Sset_extent_none</code>(
+            <em>hid_t</em> <code>space_id</code>
+        )
+
+<p>
+<dt><strong>Purpose:</strong>
+    <dd>Removes the extent from a dataspace.
+
+<p>
+<dt><strong>Description:</strong>
+    <dd><code>H5Sset_extent_none</code> removes the extent from 
+    a dataspace and sets the type to <tt>H5S_NO_CLASS</tt>.
+
+<p>
+<dt><strong>Parameters:</strong>
+    <dd><table>
+        <tr>
+          <td valign="top"><em>hid_t</em>&nbsp;<code>space_id&nbsp;&nbsp;&nbsp;&nbsp;</code></td>
+          <td valign="top">IN: The identifier for the dataspace from which
+              the extent is to be removed.</td></tr>
+    </table></dd>
+
+<p>
+<dt><strong>Returns:</strong>
+    <dd>Returns a non-negative value if successful;
+        otherwise returns a negative value.
+
+<p>
+<dt><strong>Fortran90 Interface:</strong> h5sset_extent_none_f
+    <dd>
+    <pre>
+SUBROUTINE h5sset_extent_none_f(space_id, hdferr) 
+  IMPLICIT NONE
+  INTEGER(HID_T), INTENT(IN) :: space_id  ! Dataspace identifier 
+  INTEGER, INTENT(OUT) :: hdferr          ! Error code
+                                          ! 0 on success and -1 on failure
+END SUBROUTINE h5sset_extent_none_f
+    </pre>
+
+</dl>
+
+
+
+<!--
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+  * Copyright by The HDF Group.                                               *
+  * Copyright by the Board of Trustees of the University of Illinois.         *
+  * All rights reserved.                                                      *
+  *                                                                           *
+  * This file is part of HDF5.  The full HDF5 copyright notice, including     *
+  * terms governing use, modification, and redistribution, is contained in    *
+  * the files COPYING and Copyright.html.  COPYING can be found at the root   *
+  * of the source code distribution tree; Copyright.html can be found at the  *
+  * root level of an installed copy of the electronic HDF5 document set and   *
+  * is linked from the top-level documents page.  It can also be found at     *
+  * http://hdfgroup.org/HDF5/doc/Copyright.html.  If you do not have          *
+  * access to either file, you may request a copy from help@hdfgroup.org.     *
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ -->
+
+
+<!-- NEW PAGE -->
+<!-- HEADER RIGHT "H5Sset_extent_simple" -->
+<hr>
+<dl>
+
+<dt><div align=right><font color=999999 size=-1><i>
+    Last modified: 16 November 2010
+    </i></font></div>
+
+<dt><strong>Name:</strong> <a name="Dataspace-SetExtentSimple">H5Sset_extent_simple</a>
+<dt><strong>Signature:</strong>
+    <dd><em>herr_t</em> <code>H5Sset_extent_simple</code>(
+        <em>hid_t</em> <code>space_id</code>,
+        <em>int</em> <code>rank</code>,
+        <em>const hsize_t *</em><code>current_size</code>,
+        <em>const hsize_t *</em><code>maximum_size</code>
+    )
+
+<p>
+<dt><strong>Purpose:</strong>
+    <dd>Sets or resets the size of an existing dataspace.
+
+<p>
+<dt><strong>Description:</strong>
+    <dd><code>H5Sset_extent_simple</code> sets or resets the size of 
+        an existing dataspace.
+        <p>
+        <code>rank</code> is the dimensionality, or number of 
+        dimensions, of the dataspace.
+        <p>
+        <code>current_size</code> is an array of size <code>rank</code> 
+        which contains the new size of each dimension in the dataspace.  
+        <code>maximum_size</code> is an array of size <code>rank</code> 
+        which contains the maximum size of each dimension in the 
+        dataspace. 
+        <p>
+        Any previous extent is removed from the dataspace, the dataspace 
+        type is set to <code>H5S_SIMPLE</code>, and the extent is set as 
+        specified.
+        <p>
+        Note that a dataset must be chunked if <code>current_size</code> 
+        does not equal <code>maximum_size</code>.
+
+<p>
+<dt><strong>Parameters:</strong>
+    <dd><table>
+        <tr>
+          <td valign="top"><em>hid_t</em> <code>space_id</code></td>
+          <td valign="top">IN: Dataspace identifier.</td>
+        <tr>
+          <td valign="top"><em>int</em> <code>rank</code></td>
+          <td valign="top">IN: Rank, or dimensionality, of the dataspace.</td>
+        <tr>
+          <td valign="top"><em>const&nbsp;hsize_t&nbsp;*</em><code>current_size&nbsp;&nbsp;&nbsp;&nbsp;</code></td>
+          <td valign="top">IN: Array containing current size of dataspace.</td>
+        <tr>
+          <td valign="top"><em>const hsize_t *</em><code>maximum_size</code></td>
+          <td valign="top">IN: Array containing maximum size of dataspace.
+              </td></tr>
+    </table></dd>
+
+<p>
+<dt><strong>Returns:</strong>
+    <dd>Returns a non-negative value if successful;
+        otherwise returns a negative value.
+
+<p>
+<dt><strong>Fortran90 Interface:</strong> h5sset_extent_simple_f
+    <dd>
+    <pre>
+SUBROUTINE h5sset_extent_simple_f(space_id, rank, current_size,
+                                  maximum_size, hdferr) 
+  IMPLICIT NONE
+  INTEGER(HID_T), INTENT(IN) :: space_id     ! Dataspace identifier 
+  INTEGER, INTENT(IN) :: rank                ! Dataspace rank 
+  INTEGER(HSIZE_T), DIMENSION(rank), INTENT(IN) :: current_size 
+                                             ! Array with the new sizes
+                                             ! of dimensions 
+  INTEGER(HSIZE_T), DIMENSION(rank), INTENT(IN) ::  
+                                             ! Array with the new maximum
+                                             ! sizes of dimensions 
+  INTEGER, INTENT(OUT) :: hdferr             ! Error code
+                                             ! 0 on success and -1 on failure
+END SUBROUTINE h5sset_extent_simple_f
+    </pre>
+
+</dl>
+
+
+
+
+<!-- HEADER RIGHT " " -->
+<!-- #BeginLibraryItem "/ed_libs/NavBar_RM.lbi" -->
+<hr>
+<center>
+<table border=0 width=98%>
+<tr><td valign=top align=left>
+<a href="../index.html">HDF5 documents and links</a>&nbsp;<br>
+<a href="../H5.intro.html">Introduction to HDF5</a>&nbsp;<br>
+<a href="../UG/HDF5_Users_Guide-Responsive HTML5/index.html">HDF5 User&rsquo;s Guide</a>&nbsp;<br>
+<!--
+<a href="Glossary.html">Glossary</a><br>
+-->
+</td>
+<td valign=top align=right>
+In the 
+<a href="RM_H5Front.html">HDF5 Reference Manual</a>&nbsp;
+<font size=-1>
+<br>
+<a href="../HL/RM_H5DS.html">H5DS</a>&nbsp;&nbsp;
+<a href="../HL/RM_H5IM.html">H5IM</a>&nbsp;&nbsp;
+<a href="../HL/RM_H5LT.html">H5LT</a>&nbsp;&nbsp;
+<a href="../HL/RM_H5PT.html">H5PT</a>&nbsp;&nbsp;
+<a href="../HL/RM_H5TB.html">H5TB</a>&nbsp;
+<a href="../HL/RM_HDF5Optimized.html">Optimized</a>&nbsp;
+<br>
+<a href="RM_H5.html">H5</a>&nbsp;&nbsp;
+<a href="RM_H5A.html">H5A</a>&nbsp;&nbsp;
+<a href="RM_H5D.html">H5D</a>&nbsp;&nbsp;
+<a href="RM_H5E.html">H5E</a>&nbsp;&nbsp;
+<a href="RM_H5F.html">H5F</a>&nbsp;&nbsp;
+<a href="RM_H5G.html">H5G</a>&nbsp;&nbsp;
+<a href="RM_H5I.html">H5I</a>&nbsp;&nbsp;
+<a href="RM_H5L.html">H5L</a>&nbsp;
+<br>
+<a href="RM_H5O.html">H5O</a>&nbsp;&nbsp;
+<a href="RM_H5P.html">H5P</a>&nbsp;&nbsp;
+<a href="RM_H5PL.html">H5PL</a>&nbsp;&nbsp;
+<a href="RM_H5R.html">H5R</a>&nbsp;&nbsp;
+<a href="RM_H5S.html">H5S</a>&nbsp;&nbsp;
+<a href="RM_H5T.html">H5T</a>&nbsp;&nbsp;
+<a href="RM_H5Z.html">H5Z</a>&nbsp;
+<br>
+<a href="Tools.html">Tools</a>&nbsp;&nbsp;
+<a href="PredefDTypes.html">Datatypes</a>&nbsp;&nbsp;
+<a href="../fortran/index.html">Fortran</a>&nbsp;&nbsp;
+<a href="APICompatMacros.html">Compatibility Macros</a>&nbsp;
+<br>
+<a href="CollectiveCalls.html">Collective Calls in Parallel</a>&nbsp;
+<!--
+<br>
+<i><font size=-1>(Printable <a href="http://hdfgroup.org/HDF5/doc/PSandPDF/HDF5_RefManual.PDF">PDF</a> of this Reference Manual)</font></i>&nbsp;
+-->
+</font>
+</td></tr>
+</table>
+</center>
+<hr>
+<!-- #EndLibraryItem -->
+
+
+<!-- INCLUDE VIA PHP FROM <doc_root>/ed_libs/Footer2.htm -->
+
+<address>
+<table width="100%" border="0">
+  <tr valign="top">
+      <td align="left">
+          <address>
+          The HDF Group Help Desk: <img src="../Graphics/help.png" align=top height=16>
+          <br>
+          Describes HDF5 Release 1.10.
+          </address>
+      </td><td width="5%">&nbsp;</td>
+      <td align="right">
+          <a href="https://support.hdfgroup.org/ftp/HDF5/releases/COPYING">Copyright</a> by
+          <a href="https://www.hdfgroup.org">The HDF Group</a>
+          <br>
+          and the Board of Trustees of the University of Illinois
+      </td>   
+  </tr>   
+</table>
+</address>
+
+<!-- END PHP INCLUDE FROM <doc_root>/ed_libs/Footer2.htm -->
+
+
+<SCRIPT LANGUAGE="JAVASCRIPT">
+<!--
+document.writeln("Last modified: February 2017");
+-->
+</SCRIPT> 
+
+</body>
+</html>
+

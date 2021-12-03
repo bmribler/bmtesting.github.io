@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- HDF4map_tables.xsd: Definitions related to Table element. -->
+<xs:schema xmlns:h4="/HDF4/XML/schema/HDF4map/1.0.1" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="/HDF4/XML/schema/HDF4map/1.0.1" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0.1">
+    <!--    Include other h4 schema documents -->
+    <xs:include schemaLocation="HDF4map_attributes.xsd"/>
+    <xs:include schemaLocation="HDF4map_inline_representations.xsd"/>
+    <xs:include schemaLocation="HDF4map_byteStream_representations.xsd"/>
+    <xs:include schemaLocation="HDF4map_datum_representation.xsd"/>
+    <xs:include schemaLocation="HDF4map_externalFiles.xsd"/>
+    <!-- 
+        Global definitions related to Table element
+
+        HDF4 Vdata objects are mapped to Table elements
+    -->
+    <!-- 
+        tableT: Table element type
+
+        HDF4 Vdata objects are mapped to Tables.
+        HDF4 Vdata records are mapped to rows.
+        HDF4 Vdata fields are mapped to columns.
+    -->
+    <xs:complexType name="tableT">
+        <xs:sequence>
+            <xs:element name="TableAttribute" type="h4:attributeT" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="Column" type="h4:columnT" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="tableData" type="h4:tableDataT" minOccurs="0"/>
+        </xs:sequence>
+        <xs:attribute name="name" type="xs:string" use="required"/>
+        <xs:attribute name="path" type="xs:string" use="required"/>
+        <xs:attribute name="class" type="xs:string" use="optional"/>
+        <xs:attribute name="nRows" type="xs:nonNegativeInteger" use="required"/>
+        <xs:attribute name="nColumns" type="xs:nonNegativeInteger" use="required"/>
+        <xs:attribute name="id" type="h4:tableID" use="required"/>
+    </xs:complexType>
+    <!-- 
+        columnT: Column element type
+
+        Descriptive information about a column in a table.
+        HDF4 Vdata fields are mapped to Columns.
+        HDF4 Vdata field order is mapped to the nEntries attribute.
+    -->
+    <xs:complexType name="columnT">
+        <xs:sequence>
+            <xs:element name="datum" type="h4:datumTypeT"/>
+            <xs:element name="ColumnAttribute" type="h4:attributeT" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:attribute name="name" type="xs:string" use="required"/>
+        <xs:attribute name="nEntries" type="xs:nonNegativeInteger" use="required"/>
+        <xs:attribute name="id" type="h4:columnID" use="required"/>
+    </xs:complexType>
+    <!-- 
+        tableDataT: Table data element type
+
+        Information needed to locate and decode the contents (raw data) of a table,
+        either in the mapped HDF4 file or in an external file referenced by the HDF4 file.
+        HDF4 interlace mode is mapped to storageOrder attribute.
+    -->
+    <xs:complexType name="tableDataT">
+        <xs:choice minOccurs="0">
+            <xs:element name="byteStream" type="h4:byteStreamT"/>
+            <xs:element name="byteStreamSet" type="h4:byteStreamSetT"/>
+            <!-- NOTE: h4mapwriter currently does not support dataInExternalFile -->
+            <xs:element name="dataInExternalFile">
+                <xs:complexType>
+                    <xs:all>
+                        <xs:element name="byteStream" type="h4:byteStreamT"/>
+                    </xs:all>
+                    <xs:attribute name="ref" type="h4:externalFileIDREF" use="required"/>
+                </xs:complexType>
+            </xs:element>
+        </xs:choice>
+        <xs:attribute name="storageOrder" type="h4:tableOrderT" use="optional"/>
+    </xs:complexType>
+    <!-- 
+        tableOrderT: Table storage order attribute type
+
+        HDF4 interlace mode is mapped to storage order type.
+        HDF4 FULL_INTERLACE corresponds to "by row"
+        HDF4 NO_INTERLACE corresponds to "by column"
+    -->
+    <xs:simpleType name="tableOrderT">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="by row"/>
+            <!-- NOTE: h4mapwriter currently does not support "by column" -->
+            <xs:enumeration value="by column"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <!--
+        tableID: Table ID attribute type.
+
+        Uniquely identifies a Table element in an XML document. 
+        Does not correspond to any HDF4 file content.
+        Of the form "ID_T" followed by an integer.
+    -->
+    <xs:simpleType name="tableID">
+        <xs:restriction base="xs:ID">
+            <xs:pattern value="ID_T\d+"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <!--
+        columnID: Column ID attribute type.
+
+        Uniquely identifies a Column element in an XML document. 
+        Does not correspond to any HDF4 file content.
+        Of the form "ID_C" followed by an integer.
+    -->
+    <xs:simpleType name="columnID">
+        <xs:restriction base="xs:ID">
+            <xs:pattern value="ID_C\d+"/>
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>

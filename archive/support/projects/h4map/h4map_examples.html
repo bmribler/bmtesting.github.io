@@ -1,0 +1,1763 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+<!-- If no var is set for $page_title on the top of each page than default title will be HDF Group -->
+
+<title>
+HDF4 Mapping Project - Examples</title>
+	<meta name="keywords" content="hdf, hdfeos, blog, hdf blog, hdf5 blog, hdf5, hdf4, hdf tools, hdf libraries, hdf viewer, hdf format, hdf file, hdf java, nafxcw.lib, phdf5, open source, hierarchical data format, ncsa, database, python hdf, mike folk, hdfview, hdf5 parallel" />
+	<meta name="description" content="The HDF Group is a not-for-profit corporation with the mission of sustaining the HDF technologies and supporting HDF user communities worldwide with production-quality software and services." />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="expires" content="Wed, 26 Feb 2010 08:21:57 GMT" />
+	<meta name="verify-v1" content="/m03HNmaDgGAcDe0PFtEVnXGtCkoeOocjr/Jwey2gdI=" />
+	<link href="../../css/layout.css" rel="stylesheet" type="text/css" media="screen, projection" />
+	<link href="../../css/print.css" rel="stylesheet" type="text/css" media="print" />
+	<link rel="stylesheet" type="text/css" href="../../css/js_style.css" />
+	<link rel="shortcut icon" href="../../images/favicon.ico" type="image/x-icon" />
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/prototype/1.7.2.0/prototype.js"></script>
+	<!--<script type="text/javascript" src="/scriptaculous/lib/prototype.js"></script>-->
+	<script type="text/javascript" src="../../scriptaculous/src/effects.js"></script>
+	<script type="text/javascript" src="../../scriptaculous/validation.js"></script>
+	<script type="text/javascript" src="../../scriptaculous/animatedcollapse.js"></script>
+	<script type="text/javascript" src="../../scriptaculous/rollover.js"></script>	
+	<script type="text/javascript" src="../../scriptaculous/functions.js"></script>
+	<script type="text/javascript" src="../../scriptaculous/sorttable.js"></script>
+	<!--<script type="text/javascript" src="/jquery-1.2.2.pack.js"></script>-->
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript" src="../../scriptaculous/jssor.slider.min.js"></script>
+
+ 	<link rel="stylesheet" type="text/css" href="../../featuredcontentglider.css" />
+    <script type="text/javascript" src="../../featuredcontentglider.js"></script>
+
+	</head>
+	<body>
+	<div id="mast_head">
+		<a href="https://www.hdfgroup.org/"><img src="../../images/hdf_logo.jpg" height="70" style="display:block; padding-left:10px;" align="left" alt="hdf images" /></a>
+		<img src="../../images/logo_5.jpg" height="70" style="display:block;" align="right" alt="hdf images" />
+	</div> 
+				
+	<div id="nav_wrapper">
+		<div>
+		<div id="section-">
+			<ul id="nav">
+				<li id="t-index"><a href="https://www.hdfgroup.org/">Home</a> </li>
+				<li id="t-products"><a href="../../products/index.html">Products</a></li>
+				<li id="t-services"><a href="../../services/index.html">Services</a></li>
+				<li id="t-about"><a href="../../about/index.html">About Us</a></li>
+				<li id="t-news"><a href="../../news/index.html">News</a> </li>
+				<li id="t-blog"><a href="https://www.hdfgroup.org/blog">Blog</a></li>
+				<li id="t-contact"><a href="../../about/contact.html">Contact Us</a></li> 
+			</ul>
+			<script type="text/javascript">
+			
+  (function() {
+    var cx = '007250492606109219119:sb2eg2bgoyy';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:search></gcse:search>	
+					<script type="text/javascript">
+					    jQuery(document).ready(function ($) {
+					        // var options = {
+					        //     $ArrowNavigatorOptions: {
+					        //         $Class: $JssorArrowNavigator$,
+					        //         $ChanceToShow: 2
+					        //     }
+					        // };					    	
+
+
+							var options = { 
+											$AutoPlay: true, $SlideshowOptions: { $Class: $JssorSlideshowRunner$, $Transitions: [{ $Duration:5000, $Fade: true, $Opacity:2 }] } , 
+											$ArrowNavigatorOptions: { 
+												$Class: $JssorArrowNavigator$, 
+												$ChanceToShow: 2
+											}
+										  };
+
+
+					        var jssor_slider1 = new $JssorSlider$('slider1_container', options);
+					    });
+					</script>
+									                  
+			
+		</div>
+		</div>             
+	</div>
+				
+<!--START: MAIN -->
+<div id="wrapper" style="margin-top:-15px;"> 
+
+<!--START: SIDE_BAR -->
+<div id="side_bar">
+
+<form method="get" action="h4map_examples.html" class="form" >
+	<select onchange="window.open(this.options[this.selectedIndex].value,'_top')" name="" style="border:2px solid #c1c1c1;">
+		<option value="" class="ql1">- - Quick Links - -</option>
+		<option value="/HDF5/" class="ql">HDF5</option>
+		<option value="/products/hdf4/" class="ql">HDF4</option>
+		<option value="/tools/" class="ql">Tools</option>
+		<option value="/projects/" class="ql">Projects</option>
+		<option value="/downloads/" class="ql">Downloads</option>
+		<option value="/documentation/" class="ql">Documentation</option>
+	        <option value="/pubs/" class="ql">Publications</option>
+		<option value="/about/" class="ql">Contact Us</option>
+	</select>
+</form>
+<ul style="border:1px solid #c1c1c1; margin-top:25px;"> 
+
+	<li style="background:url(../../images/menubg.png); padding:0px; padding-left:7px; color:#27343C; font-weight:500; text-align:left;">
+	HDF4 Mapping</li><li><a href="index.html">About</a></li><li><a href="h4map_team_members.html">Team Members</a></li><li><a href="h4map_sponsors.html">Sponsor</a></li><li><a style="line-height:1.5; padding:5px;" href="h4map_schema.html">Schema</a></li><li><a style="line-height:1.5; padding:5px;" href="h4map_writer.html">Writer</a></li><li><a style="line-height:1.5; padding:5px;" href="h4map_reader.html">Reader</a></li><li><a style="line-height:1.5; padding:5px;" href="h4map_examples.html">Examples</a></li><li><a style="line-height:1.5; padding:5px;" href="h4map_publications.html">Publications</a></li></ul> 
+
+</div>
+
+<!--END: SIDE_BAR -->
+
+<!--START: CONTENT -->
+<div id="content">
+<p><font color="red"><center><strong>This web site is no longer maintained (but will remain online).<br /> Please see The HDF Group's new <a href="https://portal.hdfgroup.org">Support Portal</a> for the latest information.</strong></center></font></p>
+	<div class=bc><p style="color:orange; ";><a href="../../index.html" title="HOME">HOME</a> &gt; <a href="../index.html" title="PROJECTS">PROJECTS</a> &gt; <a href="index.html" title="H4MAP">H4MAP</a></p></div>
+<fieldset><h1>HDF4 Mapping Project - Examples</h1></fieldset>
+	
+<h2>NASA Data Product Examples</h2>
+
+
+<table border=1>
+<tr>
+<th>HDF4 File</th><th>Map File</th><th>Note</th></tr>
+
+<tr>
+<td>
+<a href="https://gamma.hdfgroup.org/ftp/pub/outgoing/NASAHDF/AIRS.2002.09.01.L3.RetQuant_H030.v5.0.14.0.G07191213218.hdf">
+AIRS L3
+</a>
+</td>
+<td>
+<a href="https://gamma.hdfgroup.org/ftp/pub/outgoing/h4map/data/AIRS.2002.09.01.L3.RetQuant_H030.v5.0.14.0.G07191213218.hdf.map.xml">
+AIRS L3
+</a>
+</td>
+<td>SDS with gzip compression</td>
+</tr>
+
+
+<tr>
+<td>
+<a href="https://gamma.hdfgroup.org/ftp/pub/outgoing/NASAHDF/AMSR_E_L2_Land_V09_200501180027_D.hdf">
+AMSR_E L2
+</a>
+</td>
+<td>
+<a href="https://gamma.hdfgroup.org/ftp/pub/outgoing/h4map/data/AMSR_E_L2_Land_V09_200501180027_D.hdf.map.xml">
+AMSR_E L2
+</a>
+</td>
+<td>Vdata</td>
+</tr>
+
+
+<tr>
+<td>
+<a href="https://gamma.hdfgroup.org/ftp/pub/outgoing/NASAHDF/2006001-2006005.s0454pfrt-bsst.hdf">
+AVHRR #1
+</a>
+</td>
+<td>
+<a href="https://gamma.hdfgroup.org/ftp/pub/outgoing/h4map/data/2006001-2006005.s0454pfrt-bsst.hdf.map.xml">
+AVHRR #1
+</a>
+</td>
+<td>SDS with chunking, compression, and dimensions</td>
+</tr>
+
+<tr>
+<td>
+<a href="https://gamma.hdfgroup.org/ftp/pub/outgoing/NASAHDF/200301h18ea-gdm.hdf">
+AVHRR #2
+</a>
+</td>
+<td>
+<a href="https://gamma.hdfgroup.org/ftp/pub/outgoing/h4map/data/200301h18ea-gdm.hdf.map.xml">
+AVHRR #2
+</a>
+</td>
+<td>Palette and Raster</td>
+</tr>
+
+</table>
+
+<hr>
+
+<h2>Additional NASA File Examples</h2>
+<i>h4mapwriter</i> was run with <i>-f -m -t</i> to produce these maps.
+<br>
+
+<br>
+<table border=1>
+<tr>
+<th>HDF4 File</th><th>Map File</th><th>Notes</th>
+
+<tr>
+<td>
+<a href="https://gamma.hdfgroup.org/ftp/pub/outgoing/h4map/data/CT01_Rank6ArraysTablesAttributesGroups.hdf">
+CT01.hdf
+</a>
+</td>
+<td>
+<a href="https://gamma.hdfgroup.org/ftp/pub/outgoing/h4map/data/CT01_Rank6ArraysTablesAttributesGroups.map.xml">
+CT01.map.xml
+</a>
+</td>
+<td>
+Original filename: AIRS.2010.07.29.091.L2.RetSup.v5.2.2.0.G10211121151.hdf
+<br>
+This file has many objects of different types and sizes:
+(1) File Attributes that can be combined
+(2) File Attributes with many null characters, then a non-null at the end
+(3) SDSes with up to six dimensions
+(4) SDSes with named Dimensions
+(5) Vdatas
+(6) Vgroups
+<br>
+<i>h4mapwriter</i> release 1.0.0 did not handle unsigned integers correctly in this file. The problem was fixed in release 1.0.1.
+</td>
+</tr>
+
+<tr>
+<td>
+<a href="https://gamma.hdfgroup.org/ftp/pub/outgoing/h4map/data/CT02_EmptyArrays.hdf">
+CT02.hdf
+</a>
+</td>
+<td>
+<a href="https://gamma.hdfgroup.org/ftp/pub/outgoing/h4map/data/CT02_EmptyArrays.map.xml">
+CT02.map.xml
+</a>
+</td>
+<td>
+Original filename: MYD14.A2007273.0255.005.2007275112449.hdf
+<br>
+This file has several SDS objects that do not have data values, such as one named <i>FP_line</i>.
+</td>
+</tr>
+
+<tr>
+<td>
+<a href="https://gamma.hdfgroup.org/ftp/pub/outgoing/h4map/data/CT03_ArrayChunksFillValues.hdf">
+CT03.hdf
+</a>
+</td>
+<td>
+<a href="https://gamma.hdfgroup.org/ftp/pub/outgoing/h4map/data/CT03_ArrayChunksFillValues.map.xml">
+CT03.map.xml
+</a>
+</td>
+<td>
+Original filename: MISR_ELLIPSOID_GM_P017_O036105_DF_F03_0024_GOM_b64-72.hdf
+<br>
+This file has SDSes and Vdatas that have Fill Values.  
+</td>
+</tr>
+
+<tr>
+<td>
+<a href="https://gamma.hdfgroup.org/ftp/pub/outgoing/h4map/data/CT04_EmptyTable.hdf">
+CT04.hdf
+</a>
+</td>
+<td>
+<a href="https://gamma.hdfgroup.org/ftp/pub/outgoing/h4map/data/CT04_EmptyTable.map.xml">
+CT04.map.xml
+</a>
+</td>
+<td>
+Original filename: olslit1995.aug_digital_12.hdf
+<br>
+This file has two Vdatas, <i>/Strip/strip</i> and <i>/Strip/Description/coverage</i>, that have no data.
+</td>
+</tr>
+
+<tr>
+<td>
+<a href="https://gamma.hdfgroup.org/ftp/pub/outgoing/h4map/data/CT05_PaletteAnnotationNoImage.hdf">
+CT05.hdf
+</a>
+</td>
+<td>
+<a href="https://gamma.hdfgroup.org/ftp/pub/outgoing/h4map/data/CT05_PaletteAnnotationNoImage.map.xml">
+CT05.map.xml
+</a>
+</td>
+<td>
+Original filename: S1999001.L3m_DAY_CHL_chlor_a_9km.hdf
+<br>
+This file has a Palette with an Annotation but no image.
+</td>
+</tr>
+
+<tr>
+<td>
+<a href="https://gamma.hdfgroup.org/ftp/pub/outgoing/h4map/data/CT06_FVarraysRastersPalettes.hdf">
+CT06.hdf
+</a>
+</td>
+<td>
+<a href="https://gamma.hdfgroup.org/ftp/pub/outgoing/h4map/data/CT06_FVarraysRastersPalettes.map.xml">
+CT06.map.xml
+</a>
+</td>
+<td>
+Original filename: sd2001003.hdf
+<br>
+This file has SDSes that contain only Fill Values.  Also has Rasters & Palettes.
+<br>
+Starting with <i>h4mapwriter</i> release 1.0.2, value(s) for verification are not included for arrayData elements that have only
+fill values.
+</td>
+</tr>
+
+<tr>
+<td>
+<a href="https://gamma.hdfgroup.org/ftp/pub/outgoing/h4map/data/CT07_PalettesRasterRLEMultiEntryTableColumns.hdf">
+CT07.hdf
+</a>
+</td>
+<td>
+<a href="https://gamma.hdfgroup.org/ftp/pub/outgoing/h4map/data/CT07_PalettesRasterRLEMultiEntryTableColumns.map.xml">
+CT07.map.xml
+</a>
+</td>
+<td>
+Original filename: TRMM_LIS_SC.04.1_1998.002.00570.hdf
+<br>
+This file has 2 palettes, only one of which is associated with a Raster.
+The Raster uses RLE compression.
+There are also Tables where there are multiple entries per column (for some columns).
+</td>
+</tr>
+
+<tr>
+<td>
+<a href="https://gamma.hdfgroup.org/ftp/pub/outgoing/h4map/data/CT08_ArraysWithUnsignedTypes.hdf">
+CT08.hdf
+</a>
+</td>
+<td>
+<a href="https://gamma.hdfgroup.org/ftp/pub/outgoing/h4map/data/CT08_ArraysWithUnsignedTypes.map.xml">
+CT08.map.xml
+</a>
+</td>
+<td>
+Original filename: MCD43B2.A2007257.h35v10.005.2007277185619.hdf
+<br>
+This file includes four SDSes with three different datatypes (uint8, uint16, and uint32); all have associated fill values.
+<br>
+<i>h4mapwriter</i> releases prior to 1.0.1 did not format the uint32 values correctly in the Map.
+</td>
+</tr>
+
+<tr>
+<td>
+<a href="https://gamma.hdfgroup.org/ftp/pub/outgoing/h4map/data/CT09_TwoPalettesSameRef.hdf">
+CT09.hdf
+</a>
+</td>
+<td>
+<a href="https://gamma.hdfgroup.org/ftp/pub/outgoing/h4map/data/CT09_TwoPalettesSameRef.map.xml">
+CT09.map.xml
+</a>
+</td>
+<td>
+Original filename: O1996307.L3m_DAY_L565
+<br>
+This OCTS Level 3 file has a palette with tag 201 and a palette with tag 301 that have the same
+ref numbers and different data elements (the data for the two palettes is at different offsets in the HDF4 file.)
+<br>
+<i>h4mapwriter</i> releases prior to 1.0.4 did not map this file correctly because the HDF4 library prior to release 4.2.8 
+essentially hid the second data element from view, expecting that a DD with tag 201 and a DD with tag 301 with the same
+ref would have the same data element.
+</td>
+</tr>
+
+</table>
+
+<hr>
+
+<h2>Simple HDF4 Examples</h2>
+<table border=1>
+<tr>
+<th>HDF4 File</th><th>Map File</th><th>Note</th>
+</tr>
+
+
+<tr>
+<td>
+<a href="https://gamma.hdfgroup.org/ftp/pub/outgoing/h4map/data/FileAttributes.hdf">
+File Attribute
+</a>
+</td>
+<td>
+<a href="https://gamma.hdfgroup.org/ftp/pub/outgoing/h4map/data/FileAttributes.hdf.map.xml">
+File Attribute
+</a>
+</td>
+<td>Various file attributes including annotations</td>
+</tr>
+
+<tr>
+<td>
+<a href="https://gamma.hdfgroup.org/ftp/pub/outgoing/h4map/data/GR8_rle_attribute.hdf">
+Raster
+</a>
+</td>
+<td>
+<a href="https://gamma.hdfgroup.org/ftp/pub/outgoing/h4map/data/GR8_rle_attribute.hdf.map.xml">
+Raster
+</a>
+</td>
+<td>Raster with RLE compreesion and attribute</td>
+</tr>
+
+<tr>
+<td>
+<a href="https://gamma.hdfgroup.org/ftp/pub/outgoing/h4map/data/SDS2.hdf">
+SDS
+</a>
+</td>
+<td>
+<a href="https://gamma.hdfgroup.org/ftp/pub/outgoing/h4map/data/SDS2.hdf.map.xml">
+SDS
+</a>
+</td>
+<td>Single contiguous storage</td>
+</tr>
+
+<tr>
+<td>
+<a href="https://gamma.hdfgroup.org/ftp/pub/outgoing/h4map/data/Packed_Vdata.hdf">
+Vdata
+</a>
+</td>
+<td>
+<a href="https://gamma.hdfgroup.org/ftp/pub/outgoing/h4map/data/Packed_Vdata.hdf.map.xml">
+Vdata
+</a>
+</td>
+<td>Vdata with 20 rows and 4 columns</td>
+</tr>
+
+<tr>
+<td>
+<a href="https://gamma.hdfgroup.org/ftp/pub/outgoing/h4map/data/VGlongname.hdf">
+Vgroup
+</a>
+</td>
+<td>
+<a href="https://gamma.hdfgroup.org/ftp/pub/outgoing/h4map/data/VGlongname.hdf.map.xml">
+Vgroup
+</a>
+</td>
+<td>Vgroup with long name</td>
+</tr>
+
+</table>
+
+<hr>
+
+<h2>Additional HDF4 File Examples</h2>
+These HDF4 files were created as part of the Mapping project to test the capabilities of the HDF4 File Content Map Schema
+and of the HDF4 Map Writer.
+Several of the files cannot be mapped by <i>h4mapwriter</i>.
+Some can be partially mapped when the <i>-c</i> option is used.
+<br>
+<br>
+
+<table border=1>
+
+<tr>
+<th>h4mapwriter Options</th>
+<th>HDF4 File</th>
+<th>External File</th>
+<th>h4mapwriter Map File</th>
+<th>Hand-edited Map File</th>
+<th>Notes</th>
+
+<!-- **** T00 **** -->
+<tr>
+
+<!-- options -->
+<td>-f -m -t</td>
+
+<!-- HDF4 file -->
+<td>
+<a href="https://gamma.hdfgroup.org/ftp/pub/outgoing/h4map/data/T00_ArrayWithDimScalesInGroups.hdf">
+T00.hdf
+</a>
+</td>
+
+<!-- External file -->
+<td>n/a</td>
+
+<!-- Map file -->
+<td>
+<a href="https://gamma.hdfgroup.org/ftp/pub/outgoing/h4map/data/T00_ArrayWithDimScalesInGroups.map.xml">
+T00.map.xml
+</a>
+</td>
+
+<!-- Hand-edited Map file -->
+<td>n/a</td>
+
+<!-- Notes -->
+<td>
+The file has 2 Groups, 1 Array, and 2 Dimension Scales.   
+The Array is a member of both Groups.
+</td>
+</tr>
+
+<!-- **** T01 **** -->
+<tr>
+
+<!-- options -->
+<td>-c -m -t</td>
+
+<!-- HDF4 file -->
+<td>
+<a href="https://gamma.hdfgroup.org/ftp/pub/outgoing/h4map/data/T01_ArrayWithDimScalesInGroups_LE.hdf">
+T01.hdf
+</a>
+</td>
+
+<!-- External file -->
+<td>n/a</td>
+
+<!-- Map file -->
+<td>
+<a href="https://gamma.hdfgroup.org/ftp/pub/outgoing/h4map/data/T01_ArrayWithDimScalesInGroups_LE.map-c.xml">
+T01.map-c.xml
+</a>
+</td>
+
+<!-- Hand-edited Map file -->
+<td>
+<a href="https://gamma.hdfgroup.org/ftp/pub/outgoing/h4map/data/T01_ArrayWithDimScalesInGroups_LE.handeditedmap.xml">
+T01.handmap.xml
+</a>
+</td>
+
+<!-- Notes -->
+<td>
+The file has 2 Groups, 1 Array, and 2 Dimension Scales.   
+The Array is a member of both Groups.
+The data in the Array and in the Dimension Scales is all stored in Little-Endian format.
+h4mapwriter will warn that little-endian data can't be mapped and no map file will be produced.
+When run with the -c option, h4mapwriter will map this file, but will still produce warnings because little-endian data 
+has not been thoroughly tested.
+</td>
+</tr>
+
+<!-- **** T02 **** -->
+<tr>
+
+<!-- options -->
+<td>-f -m -t</td>
+
+<!-- HDF4 file -->
+<td>
+<a href="https://gamma.hdfgroup.org/ftp/pub/outgoing/h4map/data/T02_ArraysWithFillValues.hdf">
+T02.hdf
+</a>
+</td>
+
+<!-- External file -->
+<td>n/a</td>
+
+<!-- Map file -->
+<td>
+<a href="https://gamma.hdfgroup.org/ftp/pub/outgoing/h4map/data/T02_ArraysWithFillValues.map.xml">
+T02.map.xml
+</a>
+</td>
+
+<!-- Hand-edited Map file -->
+<td>n/a</td>
+
+<!-- Notes -->
+<td>
+The file has 2 Arrays.   
+The first Array has no cells populated - all use the fill value.
+The second Array has cells populated except for first row and first column - those use fill value.
+</td>
+</tr>
+
+<!-- **** T03 **** -->
+<tr>
+
+<!-- options -->
+<td>-c -f -m -t</td>
+
+<!-- HDF4 file -->
+<td>
+<a href="https://gamma.hdfgroup.org/ftp/pub/outgoing/h4map/data/T03_ArraysWithFillValues_LE.hdf">
+T03.hdf
+</a>
+</td>
+
+<!-- External file -->
+<td>n/a</td>
+
+<!-- Map file -->
+<td>
+<a href="https://gamma.hdfgroup.org/ftp/pub/outgoing/h4map/data/T03_ArraysWithFillValues_LE.map-c.xml">
+T03.map-c.xml
+</a>
+</td>
+
+<!-- Hand-edited Map file -->
+<td>
+<a href="https://gamma.hdfgroup.org/ftp/pub/outgoing/h4map/data/T03_ArraysWithFillValues_LE.handeditedmap.xml">
+T03.handmap.xml
+</a>
+</td>
+
+<!-- Notes -->
+<td>
+The file has 2 Arrays.
+The first Array has no cells populated - all use the fill value.
+The second Array has cells populated except for first row and first column - those use fill value.
+All data is stored Little-Endian (fill values and arrays)
+h4mapwriter will warn that little-endian data can't be mapped and no map file will be produced.
+When run with the -c option, h4mapwriter will map this file, but will still produce warnings because little-endian data 
+has not been thoroughly tested.
+</td>
+</tr>
+
+<!-- **** T04 **** -->
+<tr>
+
+<!-- options -->
+<td>-f -m -t</td>
+
+<!-- HDF4 file -->
+<td>
+<a href="https://gamma.hdfgroup.org/ftp/pub/outgoing/h4map/data/T04_DFR8InGroups.hdf">
+T04.hdf
+</a>
+</td>
+
+<!-- External file -->
+<td>n/a</td>
+
+<!-- Map file -->
+<td>
+<a href="https://gamma.hdfgroup.org/ftp/pub/outgoing/h4map/data/T04_DFR8InGroups.map.xml">
+T04.map.xml
+</a>
+</td>
+
+<!-- Hand-edited Map file -->
+<td>n/a</td>
+
+<!-- Notes -->
+<td>
+The file has one DFR8-created raster in 2 groups.
+Raster has associated palette; no compression.
+</td>
+</tr>
+
+<!-- **** T05 **** -->
+<tr>
+
+<!-- options -->
+<td>-f -m -t</td>
+
+<!-- HDF4 file -->
+<td>
+<a href="https://gamma.hdfgroup.org/ftp/pub/outgoing/h4map/data/T05_GR8FillValueNoPalette.hdf">
+T05.hdf
+</a>
+</td>
+
+<!-- External file -->
+<td>n/a</td>
+
+<!-- Map file -->
+<td>
+<a href="https://gamma.hdfgroup.org/ftp/pub/outgoing/h4map/data/T05_GR8FillValueNoPalette.map.xml">
+T05.map.xml
+</a>
+</td>
+
+<!-- Hand-edited Map file -->
+<td>n/a</td>
+
+<!-- Notes -->
+<td>
+The file has two Rasters created with the GR interface.
+The first Raster has no cells populated - all use the fill value.
+The second Raster has cells populated except for first row and first column - those use fill value.
+Neither Raster has an associated Palette.
+Parameters for both Rasters: No compression; Pixel interlace; Number color planes (components) = 1; UINT8 datatype
+</td>
+</tr>
+
+<!-- **** T06 **** -->
+<tr>
+
+<!-- options -->
+<td>-f -m -t</td>
+
+<!-- HDF4 file -->
+<td>
+<a href="https://gamma.hdfgroup.org/ftp/pub/outgoing/h4map/data/T06_GR8AttributeRLENoPalette.hdf">
+T06.hdf
+</a>
+</td>
+
+<!-- External file -->
+<td>n/a</td>
+
+<!-- Map file -->
+<td>
+<a href="https://gamma.hdfgroup.org/ftp/pub/outgoing/h4map/data/T06_GR8AttributeRLENoPalette.map.xml">
+T06.map.xml
+</a>
+</td>
+
+<!-- Hand-edited Map file -->
+<td>n/a</td>
+
+<!-- Notes -->
+<td>
+The file has a Raster created with the GR interface.
+Raster has an attribute and uses RLE compression.
+Raster does not have an associated Palette.
+Parameters for Raster: RLE compression; Pixel interlace; Number color planes (components) = 1; UINT8 datatype
+<br>
+Note that while RLE compression is used, the data in each cell of the raster is unique, so no compression will occur 
+and the number of bytes needed to store the data is more that if no compression were used.   
+</td>
+</tr>
+
+<!-- **** T07 **** -->
+<tr>
+
+<!-- options -->
+<td>-c -f -m -t</td>
+
+<!-- HDF4 file -->
+<td>
+<a href="https://gamma.hdfgroup.org/ftp/pub/outgoing/h4map/data/T07_GR8_SZIPNoPalette.hdf">
+T07.hdf
+</a>
+</td>
+
+<!-- External file -->
+<td>n/a</td>
+
+<!-- Map file -->
+<td>
+<a href="https://gamma.hdfgroup.org/ftp/pub/outgoing/h4map/data/T07_GR8_SZIPNoPalette.map-c.xml">
+T07.map-c.xml
+</a>
+</td>
+
+<!-- Hand-edited Map file -->
+<td>
+Szip compression not supported in current version of Schema, so no complete HDF4 File Content Map for this HDF4 file.
+</td>
+
+<!-- Notes -->
+<td>
+The file has a Raster created with the GR interface.
+Raster uses SZIP compression.  
+Raster does not have an associated Palette.
+Parameters for Raster: SZIP compression; Pixel interlace; Number color planes (components) = 1; UINT8 datatype
+
+When run with the -c option, <i>h4mapwriter</i> will produce a map file, but it won't have any Raster elements 
+as the only Raster uses szip compression which is currently not supported by the writer.  
+</td>
+</tr>
+
+<!-- **** T08 **** -->
+<tr>
+
+<!-- options -->
+<td>-f -m -t</td>
+
+<!-- HDF4 file -->
+<td>
+<a href="https://gamma.hdfgroup.org/ftp/pub/outgoing/h4map/data/T08_GR8RLEPalette.hdf">
+T08.hdf
+</a>
+</td>
+
+<!-- External file -->
+<td>n/a</td>
+
+<!-- Map file -->
+<td>
+<a href="https://gamma.hdfgroup.org/ftp/pub/outgoing/h4map/data/T08_GR8RLEPalette.map.xml">
+T08.map.xml
+</a>
+</td>
+
+<!-- Hand-edited Map file -->
+<td>n/a</td>
+
+<!-- Notes -->
+<td>
+The file has a Raster created with the GR interface.
+Raster uses RLE compression.
+Raster has an associated Palette.
+Parameters for Raster: RLE compression; Pixel interlace; Number color planes (components) = 1; UINT8 datatype.
+Parameters for Palette: Pixel interlace; Number color planes (components) = 1; Number entries = 256; UINT8 datatype.
+The cell values on the left half of the image should lend themselves to RLE compression.  
+The palette has been tuned to the values in the image so that variations can be readily noticed.
+</td>
+</tr>
+
+<!-- **** T09 **** -->
+<tr>
+
+<!-- options -->
+<td>-f -m -t</td>
+
+<!-- HDF4 file -->
+<td>
+<a href="https://gamma.hdfgroup.org/ftp/pub/outgoing/h4map/data/T09_TableInGroups.hdf">
+T09.hdf
+</a>
+</td>
+
+<!-- External file -->
+<td>n/a</td>
+
+<!-- Map file -->
+<td>
+<a href="https://gamma.hdfgroup.org/ftp/pub/outgoing/h4map/data/T09_TableInGroups.map.xml">
+T09.map.xml
+</a>
+</td>
+
+<!-- Hand-edited Map file -->
+<td>n/a</td>
+
+<!-- Notes -->
+<td>
+The file has a single vdata (Table) in 2 vgroups (Groups).
+</td>
+</tr>
+
+<!-- **** T10 **** -->
+<tr>
+
+<!-- options -->
+<td>-c -f -m -t</td>
+
+<!-- HDF4 file -->
+<td>
+<a href="https://gamma.hdfgroup.org/ftp/pub/outgoing/h4map/data/T10_FileAttributesAnnotations_LE.hdf">
+T10.hdf
+</a>
+</td>
+
+<!-- External file -->
+<td>n/a</td>
+
+<!-- Map file -->
+<td>
+<a href="https://gamma.hdfgroup.org/ftp/pub/outgoing/h4map/data/T10_FileAttributesAnnotations_LE.map-c.xml">
+T10.map-c.xml
+</a>
+</td>
+
+<!-- Hand-edited Map file -->
+<td>
+<a href="https://gamma.hdfgroup.org/ftp/pub/outgoing/h4map/data/T10_FileAttributesAnnotations_LE.handeditedmap.xml">
+T10.handmap.xml
+</a>
+</td>
+
+<!-- Notes -->
+<td>
+This file has a variety of File (Global) Attributes and Annotations.
+
+SD-created Attributes have both Character and Integer types. 
+One uses little-endian storage for the Integers.   
+The Attributes have similar names.  
+Some have embedded and/or trailing nulls.
+One has "&" character in the middle of the attribute value.
+
+GR-created Attributes all have Characters types.   
+They have similar names.  
+One has trailing nulls.
+One has "&" character in the middle of the attribute value.
+There is one File Label Annotation and one File Description Annotation.
+
+h4mapwriter will warn that little-endian data can't be mapped and no map file will be produced.
+When run with the -c option, h4mapwriter will map this file, but will still produce warnings because little-endian data 
+has not been thoroughly tested.
+
+</td>
+</tr>
+
+<!-- **** T11 **** -->
+<tr>
+
+<!-- options -->
+<td>-f -m -t</td>
+
+<!-- HDF4 file -->
+<td>
+<a href="https://gamma.hdfgroup.org/ftp/pub/outgoing/h4map/data/T11_TablesAttributes.hdf">
+T11.hdf
+</a>
+</td>
+
+<!-- External file -->
+<td>n/a</td>
+
+<!-- Map file -->
+<td>
+<a href="https://gamma.hdfgroup.org/ftp/pub/outgoing/h4map/data/T11_TablesAttributes.map.xml">
+T11.map.xml
+</td>
+
+<!-- Hand-edited Map file -->
+<td>n/a</td>
+
+<!-- Notes -->
+<td>
+The file has 8 vdata (Tables).
+
+All use big-endian data representation and FULL_INTERLACE (row-order) storage.
+One table uses linked storage.
+Tables vary in number of rows, columns, entries per column, and types of data.
+Last table has an Attribute, and one column in the last table has an attribute.
+</td>
+</tr>
+
+<!-- **** T12 **** -->
+<tr>
+
+<!-- options -->
+<td>-c -f -m -t</td>
+
+<!-- HDF4 file -->
+<td>
+<a href="https://gamma.hdfgroup.org/ftp/pub/outgoing/h4map/data/T12_Tables_LE.hdf">
+T12.hdf
+</a>
+</td>
+
+<!-- External file -->
+<td>n/a</td>
+
+<!-- Map file -->
+<td>
+<a href="https://gamma.hdfgroup.org/ftp/pub/outgoing/h4map/data/T12_Tables_LE.map-c.xml">
+T12.map-c.xml
+</a>
+</td>
+
+<!-- Hand-edited Map file -->
+<td>
+<a href="https://gamma.hdfgroup.org/ftp/pub/outgoing/h4map/data/T12_Tables_LE.handeditedmap.xml">
+T12.handmap.xml
+</a>
+</td>
+
+<!-- Notes -->
+<td>
+This file has 2 vdata (Tables).
+
+The first uses big-endian data representation and FULL_INTERLACE (row-order) storage.
+The second uses little-endian data represtnation and FULL_INTERLACE (row-order) storage.
+
+h4mapwriter will warn that little-endian data can't be mapped and no map file will be produced.
+When run with the -c option, h4mapwriter will map this file, but will still produce warnings because little-endian data 
+has not been thoroughly tested.
+
+</td>
+</tr>
+
+<!-- **** T13 **** -->
+<tr>
+
+<!-- options -->
+<td>-c -f -m -t</td>
+
+<!-- HDF4 file -->
+<td>
+<a href="https://gamma.hdfgroup.org/ftp/pub/outgoing/h4map/data/T13_TablesAttributes_ColumnOrder.hdf">
+T13.hdf
+</a>
+</td>
+
+<!-- External file -->
+<td>n/a</td>
+
+<!-- Map file -->
+<td>
+<a href="https://gamma.hdfgroup.org/ftp/pub/outgoing/h4map/data/T13_TablesAttributes_ColumnOrder.map-c.xml">
+T13.map-c.xml
+</a>
+</td>
+
+<!-- Hand-edited Map file -->
+<td>
+<a href="https://gamma.hdfgroup.org/ftp/pub/outgoing/h4map/data/T13_TablesAttributes_ColumnOrder.handeditedmap.xml">
+T13.handmap.xml
+</a>
+</td>
+
+<!-- Notes -->
+<td>
+This file has 8 vdata (Tables).
+
+All use big-endian data representation storage.
+The second table uses NO_INTERLACE (Column) storage order
+One table uses linked storage.
+Tables vary in number of rows, columns, entries per column, and types of data.
+Last table has an Attribute, and one column in the last table has an attribute.
+
+Compare to T11_TablesAttributes, which is identical except for the Column storage order.
+
+h4mapwriter will warn that column storage order can't be mapped and no map file will be produced.
+
+When run with the -c option, h4mapwriter will not map Table 2.  Other tables will be mapped correctly.  
+The map file will have a warning message at the end.
+</td>
+</tr>
+
+<!-- **** T14 **** -->
+<tr>
+
+<!-- options -->
+<td>-c -f -m -t</td>
+
+<!-- HDF4 file -->
+<td>
+<a href="https://gamma.hdfgroup.org/ftp/pub/outgoing/h4map/data/T14_TablesAttributes_Annotations.hdf">
+T14.hdf
+</a>
+</td>
+
+<!-- External file -->
+<td>n/a</td>
+
+<!-- Map file -->
+<td>
+<a href="https://gamma.hdfgroup.org/ftp/pub/outgoing/h4map/data/T14_TablesAttributes_Annotations.map-c.xml">
+T14.map-c.xml
+</a>
+</td>
+
+<!-- Hand-edited Map file -->
+<td>
+<a href="https://gamma.hdfgroup.org/ftp/pub/outgoing/h4map/data/T14_TablesAttributes_Annotations.handeditedmap.xml">
+T14.handmap.xml
+</a>
+</td>
+
+<!-- Notes -->
+<td>
+This file has 8 vdata (Tables).
+
+All use big-endian data representation storage and FULL_INTERLACE (row order) storage.
+One table uses linked storage.
+Tables vary in number of rows, columns, entries per column, and types of data.
+Last table has an Attribute, and one column in the last table has an attribute.
+Last table also has 2 Annotations, a Label and a Description.
+
+Compare to T11_TablesAttributes, which is identical except for the Annotations.
+
+h4mapwriter will warn that Annotations can't be mapped and no map file will be produced.
+
+When run with the -c option, h4mapwriter will not map the Annotations.  
+Other content will be mapped correctly.  
+The map file will have a warning message at the end.
+</td>
+</tr>
+
+<!-- **** T15 **** -->
+<tr>
+
+<!-- options -->
+<td>-c -f -m -t</td>
+
+<!-- HDF4 file -->
+<td>
+<a href="https://gamma.hdfgroup.org/ftp/pub/outgoing/h4map/data/T15_Tables_ExternalFile.hdf">
+T15.hdf
+</a>
+</td>
+
+<!-- External file -->
+<td>
+<a href="https://gamma.hdfgroup.org/ftp/pub/outgoing/h4map/data/T15_External_File">
+T15_External_File
+</a>
+</td>
+
+<!-- Map file -->
+<td>n/a</td>
+
+<!-- Hand-edited Map file -->
+<td>
+<a href="https://gamma.hdfgroup.org/ftp/pub/outgoing/h4map/data/T15_Tables_ExternalFile.handeditedmap.xml">
+T15.handmap.xml
+</a>
+</td>
+
+<!-- Notes -->
+<td>
+This file has 2 vdata (Tables).
+
+Both use big-endian data representation and FULL_INTERLACE (row-order) storage and have the same values.
+The second uses an external file to store the data, with data storage beginning at offset 10.
+
+h4mapwriter will warn that external files aren't supported and no map file will be produced.
+
+When run with the -c option, h4mapwriter will produce warnings and will not create a map file because it is unable to tell
+which object(s) use external storage and therefore could write bogus offset/lengths to the map file if one were created.
+
+</td>
+</tr>
+
+<!-- **** T16 **** -->
+<tr> 
+
+<!-- options -->
+<td>-c -f -m -t</td>
+
+<!-- HDF4 file -->
+<td>
+<a href="https://gamma.hdfgroup.org/ftp/pub/outgoing/h4map/data/T16_Tables_ExternalFileWithDir.hdf">
+T16.hdf
+</a>
+</td>
+
+<!-- External file -->
+<td>
+<a href="https://gamma.hdfgroup.org/ftp/pub/outgoing/h4map/data/T16_External_File">
+T16_External_File
+</a>
+Put this file in /tmp directory.
+</td>
+
+<!-- Map file -->
+<td>n/a</td>
+
+<!-- Hand-edited Map file -->
+<td>
+<a href="https://gamma.hdfgroup.org/ftp/pub/outgoing/h4map/data/T16_Tables_ExternalFileWithDir.handeditedmap.xml">
+T16.handmap.xml
+</a>
+</td>
+
+<!-- Notes -->
+<td>
+This file has 2 vdata (Tables).
+
+Both use big-endian data representation and FULL_INTERLACE (row-order) storage and have the same values.
+The second uses an external file to store the data, with data storage beginning at offset 10.
+The external file is in the /tmp directory.
+
+h4mapwriter will warn that external files aren't supported and no map file will be produced.
+
+When run with the -c option, h4mapwriter will produce warnings and will not create a map file because it is unable to tell
+which object(s) use external storage and therefore could write bogus offset/lengths to the map file if one were created.
+
+</td>
+</tr>
+
+<!-- **** T17 **** -->
+<tr>
+
+<!-- options -->
+<td>-c -f -m -t</td>
+
+<!-- HDF4 file -->
+<td>
+<a href="https://gamma.hdfgroup.org/ftp/pub/outgoing/h4map/data/T17_Tables_ExternalFileWithFullPath.hdf">
+T17.hdf
+</a>
+</td>
+
+<!-- External file -->
+<td>
+<a href="https://gamma.hdfgroup.org/ftp/pub/outgoing/h4map/data/T17_External_File">
+T17_External_File
+</a>
+Put this file in /tmp directory.
+</td>
+
+<!-- Map file -->
+<td>n/a</td>
+
+<!-- Hand-edited Map file -->
+<td>
+<a href="https://gamma.hdfgroup.org/ftp/pub/outgoing/h4map/data/T17_Tables_ExternalFileWithFullPath.handeditedmap.xml">
+T17.handmap.xml
+</a>
+</td>
+
+<!-- Notes -->
+<td>
+This file has 2 vdata (Tables).
+
+Both use big-endian data representation and FULL_INTERLACE (row-order) storage and have the same values.
+The second uses an external file to store the data, with data storage beginning at offset 10.
+The external file is in the /tmp directory and the full path was specified when the file was created.
+
+h4mapwriter will warn that external files aren't supported and no map file will be produced.
+
+When run with the -c option, h4mapwriter will produce warnings and will not create a map file because it is unable to tell
+which object(s) use external storage and therefore could write bogus offset/lengths to the map file if one were created.
+
+</td>
+</tr>
+
+<!-- **** T18 **** -->
+<tr>
+
+<!-- options -->
+<td>-c -f -m -t</td>
+
+<!-- HDF4 file -->
+<td>
+<a href="https://gamma.hdfgroup.org/ftp/pub/outgoing/h4map/data/T18_Tables_LotsOfFeatures.hdf">
+T18.hdf
+</a>
+</td>
+
+<!-- External file -->
+<td>
+<a href="https://gamma.hdfgroup.org/ftp/pub/outgoing/h4map/data/T18_External_File">
+T18_External_File
+</a>
+</td>
+
+<!-- Map file -->
+<td>n/a</td>
+
+<!-- Hand-edited Map file -->
+<td>
+<a href="https://gamma.hdfgroup.org/ftp/pub/outgoing/h4map/data/T18_Tables_LotsOfFeatures.handeditedmap.xml">
+T18.handmap.xml
+</a>
+</td>
+
+<!-- Notes -->
+<td>
+This file has 8 Vdata (Tables).
+
+The Vdata exercise many possible features including big-endian and little-endian datatypes, 
+FULL_INTERLACE (row-order) and NO_INTERLACE (column-order) storage,
+Annotations, and Storage in external file. The HDF4 File Content Map Schema can handle all
+of these, but some are not yet supported by the h4mapwriter program.
+
+Compare to T11_TablesAttributes, which is similar but which does not have any of the features that h4mapwriter doesn't support.
+
+h4mapwriter will warn that little endian, column-order storage, annotations, and external files aren't 
+supported and no map file will be produced.
+
+When run with the -c option, h4mapwriter will produce warnings and will not create a map file because it is unable to tell
+which object(s) use external storage and therefore could write bogus offset/lengths to the map file if one were created.
+
+</td>
+</tr>
+
+<!-- **** T19 **** -->
+<tr>
+
+<!-- options -->
+<td>-f -m -t</td>
+
+<!-- HDF4 file -->
+<td>
+<a href="https://gamma.hdfgroup.org/ftp/pub/outgoing/h4map/data/T19_ArrayChunksGhostCells.hdf">
+T19.hdf
+</a>
+</td>
+
+<!-- External file -->
+<td>n/a</td>
+
+<!-- Map file -->
+<td>
+<a href="https://gamma.hdfgroup.org/ftp/pub/outgoing/h4map/data/T19_ArrayChunksGhostCells.map.xml">
+T19.map.xml
+</td>
+
+<!-- Hand-edited Map file -->
+<td>n/a</td>
+
+<!-- Notes -->
+<td>
+The file has one SDS (Array).
+
+It uses chunked storage layout and has ghost cells.
+
+</td>
+</tr>
+
+<!-- **** T20 **** -->
+<tr>
+
+<!-- options -->
+<td>-f -m -t</td>
+
+<!-- HDF4 file -->
+<td>
+<a href="https://gamma.hdfgroup.org/ftp/pub/outgoing/h4map/data/T20_ArrayChunksGhostCellsDeflate.hdf">
+T20.hdf
+</a>
+</td>
+
+<!-- External file -->
+<td>n/a</td>
+
+<!-- Map file -->
+<td>
+<a href="https://gamma.hdfgroup.org/ftp/pub/outgoing/h4map/data/T20_ArrayChunksGhostCellsDeflate.map.xml">
+T20.map.xml
+</td>
+
+<!-- Hand-edited Map file -->
+<td>n/a</td>
+
+<!-- Notes -->
+<td>
+The file has one SDS (Array).
+
+It uses chunked storage layout, deflate compression, and has ghost cells.
+Compare to T19_ArrayChunksGhostCells, which has the same array data values and ghost cells, but is not compressed.
+
+</td>
+</tr>
+
+<!-- **** T21 **** -->
+<tr>
+
+<!-- options -->
+<td>-f -m -t</td>
+
+<!-- HDF4 file -->
+<td>
+<a href="https://gamma.hdfgroup.org/ftp/pub/outgoing/h4map/data/T21_ArrayChunksGhostCellsDeflateLinkedBlocks.hdf">
+T21.hdf
+</a>
+</td>
+
+<!-- External file -->
+<td>n/a</td>
+
+<!-- Map file -->
+<td>
+<a href="https://gamma.hdfgroup.org/ftp/pub/outgoing/h4map/data/T21_ArrayChunksGhostCellsDeflateLinkedBlocks.map.xml">
+T21.map.xml
+</td>
+
+<!-- Hand-edited Map file -->
+<td>n/a</td>
+
+<!-- Notes -->
+<td>
+The file has one SDS (Array).
+
+It uses chunked storage layout, deflate compression, has ghost cells, and uses linked blocks for storing the first chunk..
+Compare to T20_ArrayChunksGhostCellsDeflate, which has the same data values for all the chunks but the first.
+
+</td>
+</tr>
+
+<!-- **** T22 **** -->
+<tr>
+
+<!-- options -->
+<td>-c -f -m -t</td>
+
+<!-- HDF4 file -->
+<td>
+<a href="https://gamma.hdfgroup.org/ftp/pub/outgoing/h4map/data/T22_GroupsAnnotations_CyclesAttributeLE.hdf">
+T22.hdf
+</a>
+</td>
+
+<!-- External file -->
+<td>n/a</td>
+
+<!-- Map file -->
+<td>
+<a href="https://gamma.hdfgroup.org/ftp/pub/outgoing/h4map/data/T22_GroupsAnnotations_CyclesAttributeLE.map-c.xml">
+T22.map-c.xml
+</a>
+</td>
+
+<!-- Hand-edited Map file -->
+<td>
+<a href="https://gamma.hdfgroup.org/ftp/pub/outgoing/h4map/data/T22_GroupsAnnotations_CyclesAttributeLE.handeditedmap.xml">
+T22.handmap.xml
+</a>
+</td>
+
+<!-- Notes -->
+<td>
+This file has Vgroups (Groups) in a range of different hierarchies, including cycles.
+It also has Group Annotations and a Group Attribute with little-endian storage order. 
+
+Groups and features include: 
+(1) Strict hierarcy:  Group One / Group Two / Group Three;
+(2) Cycle under a single parent group:   Group Four / Group Five / Group Six / Group Five;
+(3) Parent group with member in another part of the hierarchy: Group Seven / Group Five / Group Six / Group Five; 
+(4) Group Eight with two annotations (a label and a description) and one attribute with little-endian storage; 
+(5) An all-to-all cycle (all groups members of all other groups) with three Groups: Square, Circle, Line;
+
+h4mapwriter will warn about cycles and little-endian data.
+
+When run with the -c option, h4mapwriter will map the little-endian data correctly, 
+but will still produce warnings because little-endian data has not been thoroughly tested.
+The Group cycles won't appear in the HDF4 Content Map.
+</td>
+</tr>
+
+<!-- **** T23 **** -->
+<tr>
+
+<!-- options -->
+<td>-c -f -m -t</td>
+
+<!-- HDF4 file -->
+<td>
+<a href="https://gamma.hdfgroup.org/ftp/pub/outgoing/h4map/data/T23_DFR8_LotsOfFeatures.hdf">
+T23.hdf
+</a>
+</td>
+
+<!-- External file -->
+<td>n/a</td>
+
+<!-- Map file -->
+<td>
+<a href="https://gamma.hdfgroup.org/ftp/pub/outgoing/h4map/data/T23_DFR8_LotsOfFeatures.map-c.xml">
+T23.map-c.xml
+</td>
+
+<!-- Hand-edited Map file -->
+<td>
+<br>
+IMCOMP and JPEG compression not supported in current version of Schema, so no complete HDF4 File Content Map file for this HDF4 file.
+</td>
+
+<!-- Notes -->
+<td>
+This file has 12 Rasters all created using the DFR8 APIs.  It also has one Palette.
+All Rasters were created with the same data, but some lose precision due to compression.
+They have a range of compression types and not all have a palette associated.
+ Rasters in file:
+(1) with no compression and no palette;
+(2) with no compression and no palette;
+(3) with no compression and palette;
+(4) with no compression and palette;
+(5) with RLE compression and palette;
+(6) with RLE compression and palette;
+(7) with IMCOMP compression and palette;
+(8) with IMCOMP compression and palette;
+(9) with JPEG compression and palette;
+(10) with JPEG compression and palette;
+(11) with RLE compression and palette;
+(12) with RLE compression and palette.
+
+<br>
+The HDF4 File Content Map schema has the IMCOMP and JPEG compression types commented out.
+<i>h4mapwriter </i> will warn that not all images are 8-bit with RLE compression and no map file will be produced.
+
+<br>
+Prior to release 1.0.4, <i>h4mapwriter</i> would not produce a map file when run with the -c option, because the
+HDF4 library prior to release 4.2.8 returned errors for Rasters with IMCOMP compression. 
+Those errors have been corrected in the HDF4 library and the -c
+option now produces a map file. 
+Issues remain with palette values for rasters with IMCOMP compression, but the issues are in the HDF4 file creation, 
+not in <i>h4mapwriter</i>.  Since IMCOMP is not seen in NASA files, these are low-priority HDF4 issues.
+</td>
+</tr>
+
+<!-- **** T24 **** -->
+<tr>
+
+<!-- options -->
+<td>-f -m -t</td>
+
+<!-- HDF4 file -->
+<td>
+<a href="https://gamma.hdfgroup.org/ftp/pub/outgoing/h4map/data/T24_DimScalesLinkedBlocks.hdf">
+T24.hdf
+</a>
+</td>
+
+<!-- External file -->
+<td>n/a</td>
+
+<!-- Map file -->
+<td>
+<a href="https://gamma.hdfgroup.org/ftp/pub/outgoing/h4map/data/T24_DimScalesLinkedBlocks.map.xml">
+T24.map.xml
+</td>
+
+<!-- Hand-edited Map file -->
+<td>n/a</td>
+
+<!-- Notes -->
+<td>
+The file has one SDS (Array) and it has 2 dimensions.  The first dimension is unlimited, with a current size of 600.  
+Both dimensions have associated dimension scales.    The file uses linked blocks to store both the SDS (Array) and the first
+dimension scale (Dimension).
+<br>
+Starting with <i>h4mapwriter</i> release 1.0.3, adjacent byteStream elements are combined for dimensionData.
+</td>
+</tr>
+
+<!-- **** T25 **** -->
+<tr>
+
+<!-- options -->
+<td>-c -f -m -t</td>
+
+<!-- HDF4 file -->
+<td>
+<a href="https://gamma.hdfgroup.org/ftp/pub/outgoing/h4map/data/T25_ArraysDimensions_LotsOfFeatures.hdf">
+T25.hdf
+</a>
+</td>
+
+<!-- External file -->
+<td>
+<a href="https://gamma.hdfgroup.org/ftp/pub/outgoing/h4map/data/T25_External_File">
+T25_External_File
+</a>
+</td>
+
+<!-- Map file -->
+<td>
+n/a
+</td>
+
+<!-- Hand-edited Map file -->
+<td>
+<a href="https://gamma.hdfgroup.org/ftp/pub/outgoing/h4map/data/T25_ArraysDimensions_LotsOfFeatures.handeditedmap.xml">
+T25.handmap.xml
+</a>
+<br>
+Corrected 6/12 to add arrayData element with fillValues for SDStemplate;  this matches behavior introducted in
+<i>h4mapwriter</i> in release 1.0.2.
+
+</td>
+
+<!-- Notes -->
+<td>
+This file includes many possible features of HDF4 that are related to SDSes (Arrays) and Dimension Scales (Dimensions).
+The HDF4 File Content Map schema can handle all of these, but some are not supported by version 1.0.1 of the h4mapwriter program.
+
+h4mapwriter will warn that little endian data and external files aren't 
+supported and no map file will be produced.
+
+When run with the -c option, h4mapwriter will produce warnings and will not create a map file because it is unable to tell
+which object(s) use external storage and therefore could write bogus offset/lengths to the map file if one were created.
+</td>
+</tr>
+
+<!-- **** T26 **** -->
+<tr>
+
+<!-- options -->
+<td>-f -m -t</td>
+
+<!-- HDF4 file -->
+<td>
+<a href="https://gamma.hdfgroup.org/ftp/pub/outgoing/h4map/data/T26_ArraysDimensions.hdf">
+T26.hdf
+</a>
+</td>
+
+<!-- External file -->
+<td>
+n/a
+</td>
+
+<!-- Map file -->
+<td>
+<a href="https://gamma.hdfgroup.org/ftp/pub/outgoing/h4map/data/T26_ArraysDimensions.map.xml">
+T26.map.xml
+</td>
+
+<!-- Hand-edited Map file -->
+<td>
+n/a
+</td>
+
+<!-- Notes -->
+<td>
+This file includes many possible features of HDF4 that are related to SDSes (Arrays) and Dimension Scales (Dimensions).
+But, not as many as T25_ArraysDimensions_LotsOfFeatures.  In particular, there is no little-endian data or external files.
+
+<br>
+Starting with <i>h4mapwriter</i> release 1.0.2, default fill values that are supplied by the HDF4 library (but not
+stored in the binary HDF4 file), are written to the map file so they will be available without reliance on the library.
+</td>
+</tr>
+
+<!-- **** T27 **** -->
+<tr>
+
+<!-- options -->
+<td>-c -f -m -t</td>
+
+<!-- HDF4 file -->
+<td>
+<a href="https://gamma.hdfgroup.org/ftp/pub/outgoing/h4map/data/T27_DFR8MultipleImagesPalette_JPEG.hdf">
+T27.hdf
+</a>
+</td>
+
+<!-- External file -->
+<td>n/a</td>
+
+<!-- Map file -->
+<td>
+<a href="https://gamma.hdfgroup.org/ftp/pub/outgoing/h4map/data/T27_DFR8MultipleImagesPalette_JPEG.map-c.xml">
+T27.map-c.xml
+</a>
+</td>
+
+<!-- Hand-edited Map file -->
+<td>
+JPEG compression not supported in current version of Schema, so no complete HDF4 File Content Map file for this HDF4 file.
+</td>
+
+<!-- Notes -->
+<td>
+This file has 10 Rasters all created using the DFR8 APIs.  It also has one Palette.
+It is very similar to T23, but doesn't have any images with IMCOMP compression -- the one that caused the HDF4 library to crash prior to Release 4.2.8.
+All Rasters were created with the same data, but some lose precision due to compression.
+They have a range of compression types and not all have a palette associated.
+ Rasters in file:
+(1) with no compression and no palette;
+(2) with no compression and no palette;
+(3) with no compression and palette;
+(4) with no compression and palette;
+(5) with RLE compression and palette;
+(6) with RLE compression and palette;
+(7) with JPEG compression and palette;
+(8) with JPEG compression and palette;
+(9) with RLE compression and palette;
+(10) with RLE compression and palette.
+
+The HDF4 File Content Map schema has the JPEG compression type commented out.
+The hdf4mapwriter does not support JPEG compression type for images.
+
+h4mapwriter will warn that not all images are 8-bit with RLE compression
+and no map file will be produced.
+When run with the -c option, warnings will still be displayed, but h4mapwriter will produce an HDF4 File Content Map
+with 8 imanges -- those with JPEG compression will be left out.
+
+Note that there are no image names for images created with the DFR8 API, hence none appear in the HDF4 Content Map.
+The output of "hdp dumpgr" does show Image Names, but those are created by hdp are are not actually part of the data that
+is stored in the file.
+</td>
+</tr>
+
+<!-- **** T28 **** -->
+<tr>
+
+<!-- options -->
+<td>-f -m -t</td>
+
+<!-- HDF4 file -->
+<td>
+<a href="https://gamma.hdfgroup.org/ftp/pub/outgoing/h4map/data/T28_Rank0andEmptyArrays.hdf">
+T28.hdf
+</a>
+</td>
+
+<!-- External file -->
+<td>
+n/a
+</td>
+
+<!-- Map file -->
+<td>
+<a href="https://gamma.hdfgroup.org/ftp/pub/outgoing/h4map/data/T28_Rank0andEmptyArrays.map.xml">
+T28.map.xml
+</td>
+
+<!-- Hand-edited Map file -->
+<td>
+n/a
+</td>
+
+<!-- Notes -->
+<td>
+This file includes 13 SDSes (Arrays) of rank 0, 1, and 2 and was designed to demonstrate how rank 0, 
+unpopulated, and empty SDSes (those with no cells) are mapped.
+Only one of SDSes (a rank 0) was populated with data.
+Some of the SDSes have user-defined fill values.
+Some of the rank 1 and 2 SDSes have an unlimited dimension (but no data).
+
+<br>
+<i>h4mapwriter</i> releases prior to 1.0.2 did not map this file. 
+<br>
+As of release 1.0.3, <i>h4mapwriter</i> no longer writes an arrayData element for Array 8 because 
+it does not have any raw data (it has a zero-length dimension size).
+</td>
+</tr>
+
+
+</table>
+
+<hr>
+<i>
+- - Last modified: 15 September 2016</i>
+	   </div>
+	   <!--END: CONTENT -->
+<!--END: WRAPPER -->
+<script src="../../scriptaculous/gatag.js" type="text/javascript"></script>
+
+<!-- <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script> -->
+				
+<!--
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-3782034-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+-->
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-3782034-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+</body>
+</html>
+ 

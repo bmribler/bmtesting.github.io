@@ -1,0 +1,900 @@
+<html>
+<body>
+
+<fieldset><h1>Conversion of from HDF4 to HDF5:<br>"Hybrid" HDF-EOS Files</h1></fieldset>
+<b>Robert E. McGrath</b>
+<br><b>Muqun Yang</b>
+<br>National Center for Supercomputing Applications
+<br>University of Illinois, Urbana Champaign
+<p>February 14, 2002</p>
+<br>Revised March 4, 2002
+
+<hr>
+<p><h2>Contents</h2>
+
+<p>
+	<ul>
+		<p><li class="li3">1 <a href="index.html#intro">Introduction</a></li></p>
+		<p><li class="li3">2. <a href="index.html#method">Method</a></li></p>
+			<ul>
+				<p><li style="padding-left:50px;">2.1. <a href="index.html#2.1">Sample Data</a></li></p>
+				<p><li style="padding-left:50px;">2.2.<a href="index.html#2.2"> Procedure</a></li></p>
+			</ul>
+		<p><li class="li3">3. <a href="index.html#results">Results</a></li></p>
+		<p><li class="li3">4. <a href="index.html#conclusion">Conclusions</a></li></p>
+	</ul>
+</p>
+<hr>
+		<p><a href="index.html#ack">Acknowledgments</a></p>
+		<p><a href="index.html#ref">References</a></p>
+		<p><a href="index.html#App1">Appendix1</a></p>
+		<p><a href="index.html#App2">Appendix2</a></p>
+		<p><a href="index.html#App3">Appendix3</a></p>
+	</ul>
+</p>
+<hr>
+
+<h2><a NAME="intro"></a>1. Introduction</h2>
+
+<p>Version 2.6 and earlier of HDF-EOS were built on top of the HDF4 library
+(this is now termed HDFEOS4) [2].&nbsp; Version 5 of HDF-EOS is built on
+top of HDF5 [3]. Files created with HDFEOS4 cannot be read with HDFEOS5
+and vice versa.&nbsp; In some cases, programs will use data in on or both
+formats, with multiple reader or writer modules. In other cases, it may
+be desirable to convert older files from HDFEOS4 to an equivalent HDFEOS5
+file.</p>
+
+<p>Since the HDF-EOS objects are equivalent, files can be translated by
+reading the HDFEOS4 file and writing an equivalent HDFEOS5 file. For example,
+the <i>heconvert</i> program [4] converts an HDFEOS4 file to an equivalent
+HDF-EOS 5 file. All the EOS objects--the <i>Grid</i>, <i>Swath</i>, and
+<i>Point</i>
+objects, and associated metadata--are read from the HDFEOS4 (HDF4) file
+and written to an equivalent HDFEOS5 (HDF5) file.</p>
+
+<p>This is not the end of the story, however. Most HDF-EOS data products
+contain standard HDF objects as well as the HDF-EOS objects. In addition
+to the <i>Grid</i>, <i>Swath</i>, and <i>Points</i> managed by the HDFEOS
+library, these "hybrid" files may also contain:</p>
+
+<ul>
+<li>
+product-specific attributes and annotations,</li>
+
+<li>
+browse images,</li>
+
+<li>
+product specific ancillary datasets or tables.</li>
+</ul>
+These HDF objects are created through calls to the HDF4 library, they are
+not managed by the HDF-EOS library.</p>
+
+<p>The <i>heconvert</i> utility converts only the objects and metadata
+managed by the HDF-EOS library, and consequently cannot convert other HDF
+objects that may be present. The result is that the file created by <i>heconvert</i>
+may omit some of the objects and metadata form the original. To fully convert
+"hybrid" files, it is necessary to read the additional HDF4 objects, and
+write equivalent HDF5 objects.</p>
+
+<p>The NCSA HDF4 to HDF5 Conversion Library (h3toH5 Library)[5], is a library of routines that
+reads individual HDF objects or groups of objects from an HDF4 file and
+writes equivalent HDF5 objects to an HDF5 file, using a default translation
+[6].&nbsp; This library can be used by C applications to create a custom
+conversion for specific data products.</p>
+
+<p>In this experiment, the <i>heconvert</i> utility was augmented using
+h3toH5 Library.
+In
+addition to the standard conversion of HDF-EOS objects, the experimental
+program identifies and converts non-EOS objects in an EOS dataset, creating
+a more complete HDFEOS5 file.</p>
+<hr>
+<h2><a NAME="method"></a>2. Method</h2>
+
+<h3><a NAME="2.1"></a>2.1. Sample Data</h3>
+<p>
+A sample of HDF-EOS files was selected from the EOS-SAMPLER CD [7] (Table
+1). The <i>heosls</i> utility [2] was used to summarize the objects in the file (Table
+1, left column). In each case, the file has one or more HDF-EOS object
+(Grid, Swath, Point) and corresponding <i>StructMetadata.0</i>. Each file
+also contains standard HDF4 objects (VData tables, SDS datasets, annotations).
+These latter objects are not managed by the HDF-EOS library.&nbsp; They
+are product-specific, created by the data processing software and written
+directly using the HDF4 library. Thus, these files are different examples
+of "hybrid" files, containing both HDF-EOS and regular HDF objects.</p>
+<table BORDER=1 WIDTH="100%" >
+<caption><a NAME="Table 1"></a><b>Table 1. Sample Data Used (from [7])</b></caption>
+
+<tr>
+<td>Case&nbsp;
+<br>(link to heosls)</td>
+
+<td><b>Original File From HDF-EOS SAMPLER</b></td>
+
+<td><b>HDF4 size (bytes)</b></td>
+</tr>
+
+<tr>
+<td><a href="ceres.html">ceres</a></td>
+
+<td><font size=-1>CER_ES8_Terra-FM2_Test_SCF_016011.20000830.</font>
+<br><font size=-1>subset_70_20_-140_-40.20001012_204110Z.hdf</font></td>
+
+<td>76,196,301</td>
+</tr>
+
+<tr>
+<td><a href="aster.html">aster</a></td>
+
+<td><font size=-1>ASTL1B_0008301851.hdf</font></td>
+
+<td>124,464,518</td>
+</tr>
+
+<tr>
+<td><a href="mod02hkm.html">mod02hk</a></td>
+
+<td><font size=-1>MODIS/MOD02HKM.A2000242.0140.002.2000247230108.hdf</font></td>
+
+<td>275,064,875</td>
+</tr>
+
+<tr>
+<td><a href="mod04-242.html">mod04-242</a></td>
+
+<td><font size=-1>MODIS/MOD04_L2.A2000242.0140.002.2000264223516.hdf</font></td>
+
+<td>10,455,467</td>
+</tr>
+
+<tr>
+<td><a href="mod04-243.html">mod04-243</a></td>
+
+<td><font size=-1>MODIS/MOD04_L2.A2000243.1850.002.2000252164712.hdf</font></td>
+
+<td>10,455,471</td>
+</tr>
+
+<tr>
+<td><a href="mod05.html">mod05</a></td>
+
+<td><font size=-1>MODIS/MOD05_L2.A2000243.1850.002.2000252164414.hdf</font></td>
+
+<td>20,149,501</td>
+</tr>
+
+<tr>
+<td><a href="mod06.html">mod06</a></td>
+
+<td><font size=-1>MODIS/MOD06_L2.A2000243.1850.002.2000252173103.hdf</font></td>
+
+<td>69,590,548</td>
+</tr>
+
+<tr>
+<td><a href="mod35.html">mod35</a></td>
+
+<td><font size=-1>MODIS/MOD35_L2.A2000243.1850.002.2000244222700.hdf</font></td>
+
+<td>47,404,592</td>
+</tr>
+</table>
+
+<p>For example, the <i>heosls</i> utility [2] shows the contents of <i>ceres.hdf</i>&nbsp;
+(slightly edited for space):
+<blockquote>
+<pre>FILE NAME: ./ceres.hdf&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+NCSA HDF Version 4.1 Release 2, March 1998&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+HDF-EOS Version: HDFEOS_V2.6&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+"CERES_ES8_subset"&nbsp; SWATH&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+"StructMetadata.0"&nbsp; Global Attribute&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+"coremetadata"&nbsp; Global Attribute&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+"archivemetadata"&nbsp; Global Attribute&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+"SubsetMetadata.0"&nbsp; Global Attribute&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+VDATA&nbsp;&nbsp; "CERES_metadata"&nbsp; (CERES)</pre>
+</blockquote>
+This file contains one <i>Swath</i>, and the corresponding <i>StructMetadata.0</i>.&nbsp;
+The HDF file also contains four important HDF4 objects:
+<ul>
+<li>
+A lone Vdata, '<i>CERES_metadata</i>', with 14 fields of product specific
+values.</li>
+
+<li>
+Three SDS annotations: '<i>coremetadata</i>', '<i>archivemeta</i>', '<i>SubsetMetadata.0</i>'</li>
+</ul>
+The Vdata and annotations are not managed by the HDF-EOS library.
+<br>&nbsp;
+
+<p>The other test files had different objects, but all had both EOS and non-EOS 
+objects.</p>
+<h3><a NAME="2.2"></a>2.2 Procedure</h3>
+
+<p>The experiment used the <i>heconvert</i> utility [4] to convert the sample
+data files from HDFEOS4 to HDFEOS5. The <i>heconvert</i> utility was augmented
+with calls using the prerelease of the NCSA h3toH5 Library [5], in order
+to additionally convert some or all of the non-EOS objects.</p>
+
+<p>The software configuration is summarized in Table 2.</p>
+<br>&nbsp;
+<center><table BORDER=1 COLS=2 WIDTH="100%" >
+<caption><a NAME="Table 2"></a><b>Table 2. Summary of Configuration</b></caption>
+
+<tr>
+<td>heconvert</td>
+
+<td>?</td>
+</tr>
+
+<tr>
+<td>HDF-EOS (4)</td>
+
+<td>&nbsp;V. 2.6</td>
+</tr>
+
+<tr>
+<td>HDF4</td>
+
+<td>&nbsp;4.1.R5</td>
+</tr>
+
+<tr>
+<td>HDF-EOS 5</td>
+
+<td>5.1</td>
+</tr>
+
+<tr>
+<td>HDF5</td>
+
+<td>5.1.4.2-patch1</td>
+</tr>
+
+<tr>
+<td>libh3toh5</td>
+
+<td>1.0 beta (pre release)</td>
+</tr>
+
+<tr>
+<td>Sun SPARC 5</td>
+
+<td>Solaris 2.7</td>
+</tr>
+
+<tr>
+<td>NFS partition</td>
+
+<td>10Mbit/s network</td>
+</tr>
+</table></center>
+
+<p>In the control condition, the <i>heconvert</i> utility was run on the
+test input file, with a command similar to:</p>
+
+<blockquote><i>heconvert -i ceres.hdf -o ceres-cont.he5</i></blockquote>
+For the experimental condition, the source code to <i>heconvert </i>was
+modified to add a single subroutine that attempts to convert the regular
+HDF4 objects in the file into the HDFEOS5 file. The subroutine has a series
+of calls to the h3toH5 Library [5]. These calls locate and read the objects
+of interest in the HDF4 file, and write equivalent objects to the HDF5
+file. The experimental code handles:</p>
+
+<ul>
+<li>
+all HDF4 file annotations</li>
+
+<li>
+all SDS global annotations.</li>
+
+<li>
+all HDF images</li>
+
+<li>
+all lone Vdatas</li>
+
+<li>
+all independent SDS</li>
+</ul>
+
+<p>A sketch of this code is given in <a href="index.html#App3">Appendix 3</a>. The experimental code is called when the '<i>-hybrid</i>' option
+is selected, e.g.:
+<blockquote><i>heconvert -hybrid -i ceres.hdf -o ceres-exper.he5</i></blockquote>
+Each conversion was repeated at least five times to estimate a best case
+time. The output files were examined with the standard <i>h5dump</i> utility
+and other tools.</p>
+<hr>
+<h2><a NAME="results"></a>3. Results</h2>
+Table 3 shows the conversion times and the size of the converted HDF5 files.
+As would be expected, the converted files are almost the same size as the
+input file. The files from the experimental condition were slightly larger
+than the control, reflecting the additional objects that were converted.
+<br>&nbsp;
+<table BORDER=1 COLS=6 WIDTH="100%" >
+<caption><a NAME="Table 3"></a><b>Table 3. Results: Size of output file
+(bytes) and run time of conversion (mm:ss).</b>
+<br><b>(Links from col. 3 and 5 to listings of the output files.)</b></caption>
+
+<tr>
+<td><b>Data file</b></td>
+
+<td><b>HDF4 size</b></td>
+
+<td><b>Control: HDF5 size</b></td>
+
+<td><b>Conversion time (mm:sec)</b></td>
+
+<td><b>Exper: HDF5 size</b></td>
+
+<td><b>Conversion time (mm:ss)</b></td>
+</tr>
+
+<tr>
+<td>mod04-242</td>
+
+<td>10,455,467</td>
+
+<td><a href="mod04-242-control.html">11,255,895</a></td>
+
+<td>0:31</td>
+
+<td><a href="mod04-242-exper.html">11,314,359</a></td>
+
+<td>0:32</td>
+</tr>
+
+<tr>
+<td>mod04-243</td>
+
+<td>10,455,471</td>
+
+<td><a href="mod04-243-control.html">11,255,895</a></td>
+
+<td>0:32</td>
+
+<td><a href="mod04-243-exper.html">11,314,367</a></td>
+
+<td>0:32</td>
+</tr>
+
+<tr>
+<td>mod05</td>
+
+<td>20,149,501</td>
+
+<td><a href="mod05-control.html">20,906,324</a></td>
+
+<td>0:50</td>
+
+<td><a href="mod05-exper.html">20,964,036</a></td>
+
+<td>0:50</td>
+</tr>
+
+<tr>
+<td>mod35</td>
+
+<td>47,404,592</td>
+
+<td><a href="mod35-control.html">47,623,160</a></td>
+
+<td>2:00</td>
+
+<td><a href="mod35-exper.html">47,682,720</a></td>
+
+<td>2:03</td>
+</tr>
+
+<tr>
+<td>mod06</td>
+
+<td>69,590,548</td>
+
+<td><a href="mod06-control.html">69,155,580</a></td>
+
+<td>3:00</td>
+
+<td><a href="mod06-exper.html">69,216,068</a></td>
+
+<td>2:59</td>
+</tr>
+
+<tr>
+<td>ceres</td>
+
+<td>76,196,301</td>
+
+<td><a href="ceres-control.html">77,127,264</a></td>
+
+<td>2:51</td>
+
+<td><a href="ceres-exper.html">77,183,172</a></td>
+
+<td>2:13</td>
+</tr>
+
+<tr>
+<td>aster</td>
+
+<td>124,464,518</td>
+
+<td><a href="aster-control.html">123,872,432</a></td>
+
+<td>5:40</td>
+
+<td><a href="aster-exper.html">123,982,208</a></td>
+
+<td>5:39</td>
+</tr>
+
+<tr>
+<td>mod02hk</td>
+
+<td>275,064,875</td>
+
+<td><a href="mod02hkm-control.html">275,876,364</a></td>
+
+<td>11:11</td>
+
+<td><a href="mod02hkm-exper.html">276,082,296</a></td>
+
+<td>11:10</td>
+</tr>
+</table>
+
+<p>The conversion times varied because of system and network load.&nbsp;
+The times reported in Table 3 are the best observed time from at least
+5 trials.&nbsp; As would be expected, these times are highly correlated
+with the size of the data, and show a conversion rate of about 700-800
+KB/s across the different files.&nbsp; The network disk has a maximum theoretical
+speed of about 1100 KB/s, so the conversion appears to be substantially
+I/O bound, as might be expected.</p>
+
+<p>The content of the output files was examined using the <i>h5dump</i>
+utility. As expected, in the control condition, the product specific objects
+were not copied by <i>heconvert</i>, and consequently they are missing
+from the output file.</p>
+
+<p>For example, in the case of the <i>ceres.hdf</i> file, the control conversion
+created an output file with the <i>Swath</i> and the <i>StructMetadata.0</i>.
+The other objects are not present in the output.
+(<a href="index.html#App2">Appendix 1.</a>)</p>
+
+<p>The other datasets were similar: the HDF-EOS objects are converted,
+but the product specific objects are not.</p>
+
+<p>In the control condition, the output files have all the objects converted
+by the control condition, plus some or all of the other objects. The listings
+are linked from the file size in Table 3.</p>
+
+<p>For example, for the <i>ceres.hdf</i> file, the HDF5 file contains the
+same HDF5 objects for the <i>Swath</i> and the HDF-EOS metadata as the
+control. In addition, the product specific annotations are copied to the
+output file (as attributes of "/") and the Vdata is created (as a Compound
+Dataset under "/"). <a href="index.html#App2">Appendix
+2</a> shows a summary of the HDF-5 file. The non-EOS HDF4 objects are highlighted.</p>
+
+<p>In some cases, the demonstration program does not convert all of the
+HDF4 objects. For example, the <i>aster.hdf</i> dataset has several Vgroups
+with product-specific Vdatas and SDSs (e.g., the Vgroup "Ancillary_Data").
+These objects were not converted, so the output HDF5 file is still incomplete.</p>
+
+<p>The h3toH5 Library can convert Vgroups and their members. However,
+in order for a general purpose program to identify which Vgroups are from
+HDF-EOS and which are not, it is necessary to check every Vgroup individually.&nbsp;
+This was not attempted for this experiment. We would expect that user's
+would create product specific conversion utilities, in which case the objects
+that need to be converted from the HDF4 file should be well understood
+for each product.</p>
+
+<hr>
+<h2><a NAME="conclusion"></a>4. Discussion and Conclusions</h2>
+This experiment demonstrates the use of the h3toH5 Library to construct
+a customized conversion utility for "hybrid" HDF-EOS files. The standard
+<i>heconvert</i>
+utility was extended with approximately fifty lines of code to handle several
+classes of standard HDF4 files. The conversion accurately detects many
+of the additional objects and performs a complete conversion into the HDF5
+file.&nbsp; The running time is essentially identical to the original utility.</p>
+
+<p>It should be noted that the h3toH5 Library performs a default conversion
+of the HDF4 objects, which may not be the desired result in all cases.&nbsp;
+It seems likely that when a data product is developed for HDF5, it will
+be designed to use HDF5 most effectively, which need not and should not
+be expected to conform to the default mapping in [6].</p>
+
+<p>For example, the way HDFEOS5 stores the Grid, Swath, and Point objects
+in HDF5 is not the default conversion of the constituent HDF4 objects.
+Note, for example, that in HDFEOS4 the '<i>StructMetadata.0</i>' is stored
+as a global annotation. In HDFEOS5, this is stored as a Dataset (which
+is definitely the best choice), rather than an attribute. This is an example
+of a case where the design for HDF5 should not follow the default mapping.</p>
+
+<p>The non-HDF-EOS objects in datasets may well deserve non-default conversions
+as well. For example, in the <i>ceres.hdf</i> dataset, the HDF4 objects
+are&nbsp; created in a default location (under "/"), and the attributes
+have default names: such as "<i>coremetadata_GLOSDS</i>", etc.&nbsp; For
+a realistic conversion, it is likely that these would be put in more appropriate
+locations in the output file, under the Group "/HDFEOS/ADDITIONAL", or
+some other place in the file.&nbsp; Thus, a product specific converter
+should design the desired HDF5 file, and then create custom conversion
+to implement it.</p>
+
+<p>The h3toH5 Library API has optional parameters which can customize the
+conversion. For example, the group and name of the HDF5 object to be created
+can be specified. In this demonstration, the conversion used the default
+locations and names for the objects it created. For a product-specific
+conversion, parameters could be set to implement the desired layout of
+the HDF5 file. The h3toH5 Library cannot do all possible conversions,
+there will likely be cases where the conversion must be specifically designed
+for a dataset or project.&nbsp; For example, converting the annotation
+'<i>StructMetadata.0</i>' to an HDF5 Dataset cannot be done by the h3toH5 Library.</p>
+
+<p>It is important to point out that the h3toH5 Library can be mixed
+with other calls to HDF4 and HDF5.&nbsp; It would be possible to insert one or more
+objects from an HDF4 file (or from several different HDF4 files) into an
+HDF5 file along with other objects written through HDF5.&nbsp; Also, the
+converted objects can be modified after they are converted. For example,
+we have used the NCSA <i>H5View</i> [9] program to delete and rename attributes
+created by the conversion library that are not needed in HDF5.</p>
+
+<p>In conclusion, this experiment shows that the h3toH5 Library provides
+a toolkit to more easily construct conversion utilities for NASA HDFEOS
+files. Specifically, we showed that the h3toH5 Library could be used to
+extend the <i>heconvert</i> utility to handle at least some hybrid files.</p>
+
+<p>This toolkit might be used to create a standard converter for standardized
+data products that are defined in both HDF4 and HDF5. It might also be
+used for more <i>ad hoc</i> conversions, e.g., for a small science team
+that needs to convert HDF output from a program to be read using HDF5,
+or a future data service that needs to construct a value added data product
+based on data from both HDFEOS4 and HDFEOS5.</p>
+
+<p>Overall, it is clear that it is feasible to convert HDFEOS4 files to
+HDFEOS5 when needed. For some purposes and users, it may be sufficient
+to continue to use current HDFEOS4 data and add future HDFEOS5 data when
+needed. In other cases, it may be necessary to migrate software to HDFEOS5,
+and to convert HDFEOS4 data into HDFEOS5. In this experiment, we have show
+that both of these options are technically viable.</p>
+
+<h3><a NAME="ack"></a>Acknowledgments</h3>
+
+This report is based upon work supported in part by a Cooperative Agreement
+with NASA under NASA grants NAG 5-2040 and NCC5-599. Any opinions, findings,
+and conclusions or recommendations expressed in this material are those
+of the author(s) and do not necessarily reflect the views of the National
+Aeronautics and Space Administration.</p>
+
+<p>Other support provided by NCSA and other sponsors and agencies [10].</p>
+<hr>
+<h3><a NAME="ref"></a>References</h3>
+<p>1. <a href="../../../../index.html">HDF</a>
+<p>2. <a href="http://hdfeos.org"> HDF-EOS 4 (HE4)</a>
+<p>3. <a href="http://hdfeos.org"> HDF-EOS 5 (HE5)</a>
+<p>4. <a href="http://hdfeos.org/software/tool.php#heconvert"> <i>heconvert</i> </a>
+<p>5. <a href="https://support.hdfgroup.org/h4toh5/">HDF (4.x) and HDF5</a>
+<p>6. <a href="http://hdf.ncsa.uiuc.edu/HDF5/doc/ADGuide/H4toH5Mapping.pdf"> <i>Mapping HDF4 Objects to HDF5 Objects </i></a>
+<p>7. <a href="http://ivanova.gsfc.nasa.gov/outreach/Terra_CD-01/start.htm"> "EOSDIS Terra Data Sampler&nbsp; #1", 2000 </a>
+<p>8. <a href="http://hdfeos.org/software/">"HDFEOS ASCII dumper" </a>
+<p>9. <a href="https://support.hdfgroup.org/products/java/hdf-java-html/">Java-HDF5</a>
+<p>10. <a href="../../../../HDF5/acknowledge5.html">Acknowledgements</a>
+<p>
+<hr SIZE=1 WIDTH="100%">
+
+<h3><a NAME="App1"></a>Appendix 1.&nbsp; Summary of HDF-5 file, control condition</h3>
+
+<p><br>Output of <i>h5dump -H</i>, edited for space.&nbsp; See also the
+<a href="ceres-control.html">file</a>.
+<pre>HDF5 "ceres-control.he5" {
+GROUP "/" {
+&nbsp;&nbsp; GROUP "HDFEOS" {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; GROUP "ADDITIONAL" {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; GROUP "FILE_ATTRIBUTES" {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; GROUP "SWATHS" {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; GROUP "CERES_ES8_subset" {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; GROUP "Data Fields" {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DATASET "CERES LW flux at TOA" {}&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DATASET "CERES LW unfiltered radiance" {}&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DATASET "CERES SW filtered radiance" {}&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DATASET "CERES SW flux at TOA" {}&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DATASET "CERES SW unfiltered radiance" {}&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DATASET "CERES TOT filtered radiance" {}&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DATASET "CERES WN filtered radiance" {}&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DATASET "CERES WN unfiltered radiance" {}&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DATASET "CERES relative azimuth at TOA" {}&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DATASET "CERES solar zenith at TOA" {}&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DATASET "CERES viewing zenith at TOA" {}&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DATASET "Colatitude of Sun at observation" {}&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DATASET "Colatitude of satellite nadir at record end" {}&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DATASET "Colatitude of satellite nadir at record start" {}&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DATASET "ERBE scene identification at observation" {}&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DATASET "Earth-Sun distance at record start" {}&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DATASET "Longitude of Sun at observation" {}&nbsp;
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DATASET "Longitude of satellite nadir at record end" {}&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DATASET "Longitude of satellite nadir at record start" {}&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DATASET "Rapid retrace flag words" {}&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DATASET "SW channel flag words" {}&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DATASET "Scanner FOV flag words" {}&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DATASET "TOT channel flag words" {}&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DATASET "WN channel flag words" {}&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DATASET "X component of satellite position at record end" {}&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DATASET "X component of satellite position at record start" {}&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DATASET "X component of satellite velocity at record end" {}&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DATASET "X component of satellite velocity at record start" {}&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DATASET "Y component of satellite position at record end" {}&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DATASET "Y component of satellite position at record start" {}&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DATASET "Y component of satellite velocity at record end" {}&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DATASET "Y component of satellite velocity at record start" {}&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DATASET "Z component of satellite position at record end" {}&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DATASET "Z component of satellite position at record start" {}&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DATASET "Z component of satellite velocity at record end" {}&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DATASET "Z component of satellite velocity at record start" {}&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; GROUP "Geolocation Fields" {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DATASET "Colatitude of CERES FOV at TOA" {}&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DATASET "Longitude of CERES FOV at TOA" {}&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DATASET "Time of observation" {}&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; GROUP "Profile Fields" {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }&nbsp;
+&nbsp;&nbsp; }&nbsp;
+&nbsp;&nbsp; GROUP "HDFEOS INFORMATION" {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ATTRIBUTE "HDFEOSVersion" {&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DATASET "StructMetadata.0" {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }&nbsp;
+&nbsp;&nbsp; }&nbsp;
+}&nbsp;
+}</pre>
+
+<hr SIZE=1 WIDTH="100%">
+<h3><a NAME="App2"></a>Appendix 2.&nbsp; Description of HDF5 file for experimental condition.</h3>
+Output of <i>h5dump -H</i>, edited for space.&nbsp; See also the <a href="ceres-exper.html">file</a>.
+Non-EOS objects highlighted.
+<pre>HDF5 "ceres-exper.he5" {
+GROUP "/" {
+&nbsp;&nbsp; <b><font color="#FF6666">ATTRIBUTE "coremetadata_GLOSDS" {
+&nbsp;&nbsp; }&nbsp;
+&nbsp;&nbsp; ATTRIBUTE "archivemetadata_GLOSDS" {&nbsp;
+&nbsp;&nbsp; }&nbsp;
+&nbsp;&nbsp; ATTRIBUTE "SubsetMetadata.0_GLOSDS" {
+&nbsp;&nbsp; }&nbsp;
+&nbsp;&nbsp; DATASET "CERES_metadata" {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DATATYPE&nbsp; H5T_COMPOUND {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "SHORTNAME";
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "RANGEBEGINNINGDATE";
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "RANGEBEGINNINGTIME";
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "RANGEENDINGDATE";
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "RANGEENDINGTIME";
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "AUTOMATICQUALITYFLAG";
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "AUTOMATICQUALITYFLAGEXPLANATION";
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "ASSOCIATEDPLATFORMSHORTNAME";
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "ASSOCIATEDINSTRUMENTSHORTNAME";
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "LOCALGRANULEID";
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "LOCALVERSIONID";
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "CERPRODUCTIONDATETIME";
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "NUMBEROFRECORDS";
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "PRODUCTGENERATIONLOC";
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ATTRIBUTE "HDF4_OBJECT_TYPE" {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ATTRIBUTE "HDF4_OBJECT_NAME" {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ATTRIBUTE "HDF4_REF_NUM" {}&nbsp;
+&nbsp;&nbsp; }&nbsp;
+</font></b>&nbsp;&nbsp; GROUP "HDFEOS" {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; GROUP "ADDITIONAL" {
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; GROUP "FILE_ATTRIBUTES" {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }&nbsp;
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; GROUP "SWATHS" {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; GROUP "CERES_ES8_subset" {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; GROUP "Data Fields" {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DATASET "CERES LW flux at TOA" {}&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DATASET "CERES LW unfiltered radiance" {}&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DATASET "CERES SW filtered radiance" {}&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DATASET "CERES SW flux at TOA" {}&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DATASET "CERES SW unfiltered radiance" {}&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DATASET "CERES TOT filtered radiance" {}&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DATASET "CERES WN filtered radiance" {}&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DATASET "CERES WN unfiltered radiance" {}&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DATASET "CERES relative azimuth at TOA" {}&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DATASET "CERES solar zenith at TOA" {}&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DATASET "CERES viewing zenith at TOA" {}&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DATASET "Colatitude of Sun at observation" {}&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DATASET "Colatitude of satellite nadir at record end" {}&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DATASET "Colatitude of satellite nadir at record start" {}&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DATASET "ERBE scene identification at observation" {}&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DATASET "Earth-Sun distance at record start" {}&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DATASET "Longitude of Sun at observation" {}&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DATASET "Longitude of satellite nadir at record end" {}&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DATASET "Longitude of satellite nadir at record start" {}&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DATASET "Rapid retrace flag words" {}&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DATASET "SW channel flag words" {}&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DATASET "Scanner FOV flag words" {}&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DATASET "TOT channel flag words" {}&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DATASET "WN channel flag words" {}&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DATASET "X component of satellite position at record end" {}&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DATASET "X component of satellite position at record start" {}&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DATASET "X component of satellite velocity at record end" {}&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DATASET "X component of satellite velocity at record start" {}&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DATASET "Y component of satellite position at record end" {}&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DATASET "Y component of satellite position at record start" {}&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DATASET "Y component of satellite velocity at record end" {}&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DATASET "Y component of satellite velocity at record start" {}&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DATASET "Z component of satellite position at record end" {}&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DATASET "Z component of satellite position at record start" {}&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DATASET "Z component of satellite velocity at record end" {}&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DATASET "Z component of satellite velocity at record start" {}&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; GROUP "Geolocation Fields" {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DATASET "Colatitude of CERES FOV at TOA" {}&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DATASET "Longitude of CERES FOV at TOA" {}&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DATASET "Time of observation" {}&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; GROUP "Profile Fields" {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }&nbsp;
+&nbsp;&nbsp; }&nbsp;
+&nbsp;&nbsp; GROUP "HDFEOS INFORMATION" {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ATTRIBUTE "HDFEOSVersion" {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DATASET "StructMetadata.0" {}&nbsp;
+&nbsp;&nbsp; }&nbsp;
+}&nbsp;
+}</pre>
+
+<hr>
+<h3>
+<a NAME="App3"></a>Appendix 3.&nbsp; Sketch of the demonstration code.</h3>
+
+<pre>void get_the_rest(char * h3file, char *h5file);
+
+int main (int argc, char *argv[])
+{
+&nbsp;/* ... */
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; status = DoSwathConversion(hdf4Info);
+&nbsp;/* ... */
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; status = DoGridConversion(hdf4Info);
+&nbsp;/* ... */
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; status = DoPointConversion(hdf4Info);
+
+/***************************************************************************
+&nbsp; All EOS objects have been recreated in the output file.
+&nbsp; Now pick up at least some of the regular HDF objects, i.e.,
+&nbsp; not managed by HDF-EOS.
+***************************************************************************/
+&nbsp;&nbsp;&nbsp; if (convertHybrid == CONVERT_TRUE) {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; get_the_rest(inNameGlobal, outNameGlobal);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /* check for errors ... */
+&nbsp;&nbsp;&nbsp; }
+
+&nbsp;&nbsp;&nbsp; return 0;
+}
+
+/*
+&nbsp;*&nbsp; Demonstration of the use of libh3toh5
+&nbsp;*
+&nbsp;*&nbsp; This routine finds some of the HDF objects that are not managed
+&nbsp;*&nbsp; by the HDF-EOS library and does a default conversion.
+&nbsp;*
+&nbsp;*&nbsp; This is a generic routine, you would write a customized&nbsp;
+&nbsp;*&nbsp; version for specific data products.
+&nbsp;*/
+void get_the_rest(char * h3file, char *h5file)
+{
+hid_t h5fid;
+hid_t h5gid;
+hid_t h5aid;
+hid_t h35id;
+herr_t res;
+int32 nvd;
+
+&nbsp;&nbsp;&nbsp; h35id = h3toh5open(h3file, h5file, h325_OPEN);
+
+&nbsp;&nbsp;&nbsp; /*
+&nbsp;&nbsp;&nbsp;&nbsp; *&nbsp; HDF-EOS doesn't use file annotations, so any we find
+&nbsp;&nbsp;&nbsp;&nbsp; *&nbsp; should be converted.
+&nbsp;&nbsp;&nbsp;&nbsp; */
+&nbsp;&nbsp;&nbsp; h3toh5annofil_alldescs(h35id);
+&nbsp;&nbsp;&nbsp; h3toh5annofil_alllabels(h35id);
+
+&nbsp;&nbsp;&nbsp; /*
+&nbsp;&nbsp;&nbsp;&nbsp; *&nbsp; HDF-EOS uses SDS Global attributes for 'StructMetadata.0',
+&nbsp;&nbsp;&nbsp;&nbsp; *&nbsp; and HDFEOSVersion.
+&nbsp;&nbsp;&nbsp;&nbsp; *
+&nbsp;&nbsp;&nbsp;&nbsp; *&nbsp; Other SDS global attributes have important product&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp; *&nbsp; metadata but are not managed by HDF-EOS.
+&nbsp;&nbsp;&nbsp;&nbsp; *
+&nbsp;&nbsp;&nbsp;&nbsp; *&nbsp; This section moves them all to default HDF-5 attributes,
+&nbsp;&nbsp;&nbsp;&nbsp; *&nbsp; and then get rid of the ones moved by heconvert.
+&nbsp;&nbsp;&nbsp;&nbsp; */
+&nbsp;&nbsp;&nbsp; h3toh5_glosdsattr(h35id); /* this moves everything */
+
+&nbsp;&nbsp;&nbsp; /* Find duplicate HDFEOSVersion, StructMetadata.0 and delete
+&nbsp;&nbsp;&nbsp;&nbsp; *&nbsp; from output file.
+&nbsp;&nbsp;&nbsp;&nbsp; */
+&nbsp;&nbsp;&nbsp; h5fid = H5Fopen(h5file,H5F_ACC_RDWR, H5P_DEFAULT);
+&nbsp;&nbsp;&nbsp; if (h5fid >=0 ) {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; h5gid = H5Gopen(h5fid,"/");
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; res = H5Adelete(h5gid, "HDFEOSVersion_GLOSDS" ) ;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; res = H5Adelete(h5gid, "StructMetadata.0_GLOSDS" ) ;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; H5Gclose(h5gid);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; H5Fclose(h5fid);
+&nbsp;&nbsp;&nbsp; }
+
+&nbsp;&nbsp; /*
+&nbsp;&nbsp;&nbsp; *&nbsp; The file may have images, e.g. a browse image.
+&nbsp;&nbsp;&nbsp; *
+&nbsp;&nbsp;&nbsp; *&nbsp; Find them and move to HDF5.
+&nbsp;&nbsp;&nbsp; */
+&nbsp;&nbsp;&nbsp; res = h3toh5allloneimage(h35id, "/", NULL, h325_ALLATTRS, h325_PAL);
+
+&nbsp;&nbsp; /*
+&nbsp;&nbsp;&nbsp; *&nbsp; The file may have Vdata tables.
+&nbsp;&nbsp;&nbsp; *
+&nbsp;&nbsp;&nbsp; *&nbsp; Find them and move to HDF5.
+&nbsp;&nbsp;&nbsp; */
+
+&nbsp;&nbsp;&nbsp; nvd = h3toh5alllonevdata(h35id, "/", h325_ALLATTRS);</pre>
+
+<pre>&nbsp;&nbsp; /*
+&nbsp;&nbsp;&nbsp; *&nbsp; The file may have SDS datasets.
+&nbsp;&nbsp;&nbsp; *
+&nbsp;&nbsp;&nbsp; *&nbsp; Find them and move to HDF5.
+&nbsp;&nbsp;&nbsp; */
+
+&nbsp;&nbsp;&nbsp; res = h3toh5alllonesds(h35id, "/", NULL, h325_DIMSCALE, h325_ALLATTRS);</pre>
+
+<pre>&nbsp;&nbsp; /*
+&nbsp;&nbsp;&nbsp; *&nbsp; ... there may be other objects as well, which need to be located
+&nbsp;&nbsp;&nbsp; *&nbsp;&nbsp;&nbsp; and converted.
+&nbsp;&nbsp;&nbsp; */
+
+&nbsp;&nbsp;&nbsp; h3toh5close(h35id);
+}</pre>
+
+<hr SIZE=1 WIDTH="100%">
+<h3>Appendix 4. Configuration and build</h3>
+When compiling, it is necessary to compile/link with HDF4, HDF-EOS2.x,
+HDF5, HDF-EOS5.x, and libh3toh5.&nbsp; The following gives a sketch of
+a Unix makefile.
+<blockquote>
+<pre>#
+#&nbsp; Need paths to everything!
+#
+
+# HDF4 and HDFEOS2.x
+HDF=/usr/local/hdf
+HE2=/usr/local/hdfeos
+
+# HDF5 and HDFEOS5.x
+HE5=/usr/local/hdfeos5
+HDF5=/usr/local/hdf5
+
+# The libh3toh5 installed
+h35=/usr/local/h3toh5
+
+CFLAGS = -I$(HDF5)/include -I$(HE2)/include -I$(HE5)/include -I$(HDF)/include -I$(h35)/include
+
+LIBS=-L$(h35)/lib -L$(HDF5)/lib -L$(HDF)/lib -L$(HE2)/lib/sun5 -L$(HE5)/lib/sun5 -L$(h35LIB)/lib -lh3toh5<br /> -lhdfeos -lhe5_hdfeos -lhdf5 -lmfhdf -ldf -lz -ljpeg -lGctp -lnsl -lm -lsocket -lnsl
+
+heconvert: convert.o
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $(CC) -o heconvert convert.o $(LIBS)
+
+convert.o: convert.c</pre>
+</blockquote>
+For other build environments, such as Windows or Macintosh, equivalent
+include and library paths are needed.
+</body>
+</html>
+

@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema version="1.0.0" targetNamespace="/HDF4/XML/schema/HDF4map/1.0.0" xmlns:h4="/HDF4/XML/schema/HDF4map/1.0.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+<!-- 
+****************************************************************************************
+                  HDF4 File Content Map Schema
+                       Version 1.0.0
+                       June 28, 2011
+
+This schema defines the XML elements and attributes in an HDF4 File Content Map.
+
+An HDF4 File Content Map is an XML file that allows access to data stored in a 
+companion HDF4 binary file without requiring HDF4 software. 
+
+Some data in the HDF4 file is available directly from the HDF4 File Content Map. 
+Data that is not directly available can be located in the HDF4 File and decoded
+using information in the HDF4 File Content Map.
+
+An HDF4 File Content Map contains preservation, structural, technical, and descriptive 
+metadata about a companion HDF4 binary file that "maps" the data in the HDF4 file.
+****************************************************************************************
+-->
+    <!--    Include other HDF4map schema documents -->
+    <xs:include schemaLocation="HDF4map_arrays.xsd"/>
+    <xs:include schemaLocation="HDF4map_attributes.xsd"/>
+    <xs:include schemaLocation="HDF4map_externalFiles.xsd"/>
+    <xs:include schemaLocation="HDF4map_groups.xsd"/>
+    <xs:include schemaLocation="HDF4map_palettes.xsd"/>
+    <xs:include schemaLocation="HDF4map_rasters.xsd"/>
+    <xs:include schemaLocation="HDF4map_tables.xsd"/>
+    <xs:include schemaLocation="HDF4map_byteStream_representations.xsd"/>
+    <xs:include schemaLocation="HDF4map_fileInformation_representations.xsd"/>
+    <xs:include schemaLocation="HDF4map_datum_representation.xsd"/>
+    <xs:include schemaLocation="HDF4map_inline_representations.xsd"/>
+<!-- 
+***************************************************************************************
+************************ Contents of an HDF4 File Content Map *************************
+***************************************************************************************
+-->
+    <xs:element name="HDF4map" type="h4:HDF4mapT"/>
+<!--
+***************************************************************************************
+********************************* Type Definitions ************************************
+***************************************************************************************
+-->
+    <!--
+        HDF4mapT: Top level element type in an HDF4 File Content Map.
+
+        An HDF4 File Content Map contains information about a companion HDF4 file 
+        and about its contents. The version attribute indicates the version of the 
+        schema that was used to create the HDF4map instance.
+    -->
+    <xs:complexType name="HDF4mapT">
+        <xs:sequence>
+            <xs:element name="HDF4FileInformation" type="h4:hdf4FileInformationT"/>
+            <xs:element name="HDF4FileContents" type="h4:hdf4FileContentsT"/>
+        </xs:sequence>
+        <xs:attribute name="version" type="h4:mapVersionT" use="required"/>
+    </xs:complexType>
+    <!--
+        mapVersionT: Enumerates valid versions of the HDF4map schema
+    -->
+    <xs:simpleType name="mapVersionT">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="1.0.0"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <!-- 
+        hdf4FileContentsT:  The "map" of the contents of the companion HDF4 file.
+
+        See comment block at the end of this schema document for the instructions 
+        included (by convention) in an HDF4 File Content Map before the 
+        HDF4FileContents element.
+    -->
+    <xs:complexType name="hdf4FileContentsT">
+        <xs:sequence>
+            <xs:element name="ExternalFile" type="h4:externalFileT" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:element name="FileAttribute" type="h4:fileAttributeT"/>
+                <xs:element name="Group" type="h4:groupT"/>
+                <xs:element name="Table" type="h4:tableT"/>
+                <xs:element name="Array" type="h4:arrayT"/>
+                <xs:element name="Raster" type="h4:rasterT"/>
+                <xs:element name="Palette" type="h4:paletteT"/>
+                <xs:element name="Dimension" type="h4:dimensionT"/>
+            </xs:choice>
+        </xs:sequence>
+    </xs:complexType>
+
+<!-- 
+***************************************************************************************
+******** Instructions included (by convention) in an HDF4 File Content Map ************
+******** as a comment block preceding the HDF4FileContents element.        ************
+***************************************************************************************
+-->
+<!-- 
+
+The HDF4FileContents element maps the contents of the companion HDF4 file.  
+Some contents are available directly from this element.  
+Other contents can be located in the HDF4 file and decoded using information in this element.
+
+Abbreviations:
+obj = HDF4 object
+elem = XML element
+attr = XML attribute
+Elem = Attribute, Group, Table, Array, Dimension, Raster or Palette elem
+Read bytes = Using information from byteStream elem, read the indicated number of bytes, starting at the indicated 
+  zero-based offset in the HDF4 file. If there are multiple byteStream elems for a given Elem, they will be subelems of
+  a byteStreamSet elem; read and concatenate the bytes from the multiple byteStreams in the order they appear.
+Process = Using information from the datum elem, process the bytes read on a datum-by-datum basis, applying byteOrder
+  transformations if needed.
+Access = Interpret the processed bytes based on the dataType to obtain the raw data values. Calibrate raw data values 
+  if Elem has calibration Attribute elems.
+
+HDF4FileContents:
+-uses elems to represent objs in the HDF4 file
+-uses nested elems and elem references to express relationships of objs to each other
+-uses byteStream elems to provide maps to bytes in the HDF4 file that hold raw data for objs
+-contains selected raw data values so the reader can verify binary data has been handled properly
+
+Representations:
+-Attribute elem represents Attribute or Annotation obj
+ -contains user metadata
+-Group elem represents Vgroup obj
+ -used to associate related objs
+ -can form directed graphs
+-Table elem represents Vdata obj
+ -organizes data into rows (records) and columns (fields)
+ -datatype specified per column
+ -number of entries per cell for a given column is constant for all rows and may be >1; all entries in a cell have 
+  same datatype
+-Array elem represents SDS obj
+ -organizes data into multi-dimensional array
+ -all cells have same datatype
+ -references Dimension elem for every dimension that has descriptive metadata
+-Dimension elem represents Dimension obj
+ -contains descriptive metadata (name, attribute, scale value/coordinate variable) about a dimension for one or more 
+  SDS objs
+-Raster elem represents RIS8 or GR obj
+ -two-dimensional [row,column] array of component values representing pixels
+ -row 0 corresponds to top of image; column 0 corresponds to left of image
+ -one component value per pixel; all values have single-byte datatype
+ -references Palette elem to correlate pixel values to colors
+-Palette elem represents Palette or Color Lookup Table obj
+ -provides colors for images
+ -each entry has 3 color components corresponding to Red, Green, Blue
+
+Bytes in HDF4 file (general):
+-Raw data are stored in binary format in the HDF4 file. The steps to convert bytes into meaningful raw data values 
+ depend on the elem and the HDF4 features used when obj was written
+-byteStream elems, together with other attrs and elems, provide the information required to convert the binary data
+-A datum elem defines the atomic unit of raw data for the obj it applies to
+-Each elem in this file that has raw data in the HDF4 file associated with it contains a datum subelem that describes 
+ the data type, size, and format
+ -The number at the end of the dataType is the number of bits per datum; divide by 8 to get number of bytes to process 
+  together
+ -Integers are twos-complement and floating point is IEEE 754-1985
+
+Conversion Instructions:
+==Attribute
+Raw data stored as single stream of bytes in HDF4 file
+-Read bytes
+ -If byteStreamSet elem for a given FileAttribute, multiple File Attribute objs were combined in the map file
+  Each byteStream elem can be processed separately to reproduce the contents of the individual objs if desired
+  (HDF4 limited the size of Attribute objs, so metadata was often split across multiple objs)
+-Process
+-Access
+Note: stringValue (dataType=char8) and numericValues (other dataTypes) let reader access user metadata without 
+converting binary data; these have been pre-processed to make them more human-readable.  They can also be used to 
+verify conversion
+
+==Table
+-If the Table does not have raw data content associated with it there will not be a tableData subelem
+ Only follow these instructions if tableData subelem
+
+Raw data
+ -stored as one or more streams of bytes in the HDF4 file or as single stream of bytes in another external file
+ -stored by row or by column
+-Read bytes
+ -If dataInExternalFile elem, get bytes from file in ExternalFile elem
+-Prepare to process
+ -If >1 row or >1 column, storageOrder indicates if data stored by row or by column
+ -If a column has >1 entry, the entries for a given cell are always stored together, regardless of the storageOrder
+-Process
+ -Follow storage order to determine "current" column and its datum element in this step
+-Access
+ -Follow storage order to determine dataType
+Note: comment block "row(s) for verification" can be used to verify conversion
+
+==Array
+-If the Array does not have raw data content associated with it there will not be an arrayData subelem
+ Only follow these instructions if arrayData subelem
+
+Raw data
+ -may be stored as a complete array (as a whole) or as multi-dimensional sub-arrays (as chunks), indicated by chunks 
+  subelem
+ -may be stored in a compressed format, indicated by compressionType attr
+ -are stored as one or more streams of bytes in the HDF4 file or as single stream of bytes in another external file
+ -are stored with either rightmost or leftmost array index varying fastest
+
+==Array stored as a whole
+-Read bytes
+ -If Array contains all fill values, there is a fillValues element and no bytes are read; use value in that element 
+  as raw data value for all cells in Array then skip to -Access step
+ -If dataInExternalFile elem, get bytes from file in ExternalFile elem
+-If data was compressed, uncompress using indicated algorithm
+-Prepare to process
+ -fastestVaryingDimension attr indicates storage order
+-Process
+ -Follow storage order when processing
+-Access
+Note: comment block "value(s) for verification" can be used to verify conversion
+
+==Array stored as chunks
+With chunked storage, the data for each chunk is processed individually and then positioned in the array
+A chunk (sub-array) has the same number of dimensions as the complete array, and the dimension sizes for all chunks 
+  are the same
+Special Notes:
+-When the dimension sizes for the complete array are not exact multiples of the dimension sizes for the chunks, 
+ extra "ghost cells" are stored. Data in ghost cells is not meaningful, but must be read and processed to get proper 
+ alignment of the actual array data values
+-When all data values in a given chunk are equal to the fill value, no bytes are written to the HDF4 file for that 
+ chunk. The data values for the chunk must all be set to the fill value.
+
+-Read bytes for a single chunk
+ -If chunk contains all fill values, there is a fillValues elem instead of byteStream elem for the chunk and no bytes 
+  are read; use value in fillValues elem as raw data value for all cells in chunk then skip to -Position data... step
+-If data was compressed, uncompress using indicated algorithm
+-Prepare to process 
+ -fastestVaryingDimension attr indicates storage order
+ -since data stored chunk-by-chunk, storage order applies on a per-chunk basis
+  e.g., for 3x5 array dims, 2x3 chunk dims, and fastestVaryingDimensionIndex=1, data values will be assigned to chunk
+  indices [0,0], [0,1], [0,2], [1,0], [1,1], [1,2] as it is processed in the next step
+-Process
+ -Follow storage order for chunk when processing
+ -Interpret the processed bytes based on the storage order and dataType to obtain the raw data values for the cells 
+  in the current chunk 
+-Position data values for chunk within allocated array
+ -If there are ghost cells, the elem allocatedDimensionSizes indicates the size of the allocated array. If this elem 
+  is not present, dataDimensionSizes (the dimensions for the actual array) indicates the size of the allocated array
+ -Use chunkPositionInArray offsets to position the data values for the current chunk within the allocated array
+  e.g., for 3x5 array, 2x4 chunks, 4x8 allocated array, and chunkPositionInArray of [2,4] for the data just read
+   allocated array[2,4] = chunk value[0,0] (only cell that isn't a ghost cell in this chunk)
+   allocated array[2,5] = chunk value[0,1]
+   allocated array[2,6] = chunk value[0,2]
+   ...
+   allocated array[3,7] = chunk value[1,3]
+-Repeat steps for each chunk in the array
+-Access
+ -Ghost cells do not contain meaningful data values
+Note: comment block "value(s) for verification" can be used to verify conversion
+
+==Dimension
+A Dimension elem will be present if a dimension has one or more of these: (1) a name (2) an attribute (3) values
+If there are no values, the Dimension elem does not have raw data content associated with it and will not contain a
+dimensionData subelem. Only follow these instructions when a dimensionData subelem exists
+
+Raw data stored as one or more streams of bytes in the HDF4 file
+-Read bytes
+-Process
+-Access
+Note: comment block "value(s) for verification" can be used to verify conversion
+
+==Raster
+-If the Raster does not have raw data content associated with it there will not be an rasterData subelem
+ Only follow these instructions if rasterData subelem
+
+Raw data stored as single stream of bytes in HDF4 file
+-Read bytes
+ -If Raster contains all fill values, there is a fillValues element and no bytes are read; use value in that element 
+  as raw data value for all cells in Raster then skip to -Access step
+-If data was compressed, uncompress using algorithm indicated by compressionType attr
+-Prepare to process
+ -dimensionStorageOrder attr indicates order of values in file; last dimension always varies the fastest
+-Process
+ -Follow storage order when processing
+-Access
+Note: comment block "value(s) for verification; [row,column]" can be used to verify conversion
+
+==Palette
+Raw data stored as single stream of bytes in HDF4 file
+-Read bytes
+-Prepare to process
+ -Storage order is entry[0][red]; entry[0][green]; entry[0][blue]; entry[1][red]...
+-Process
+ -Follow storage order when processing
+-Access
+Note: comment block "value(s) for verification; csv format" can be used to verify conversion
+
+Calibration:
+Calibration Attribute elems (calibrated_nt, scale_factor, scale_factor_err, add_offset, add_offset_err) provide 
+ calibration information for raw data values of an Elem. To compute original data values apply this formula: 
+  original_data_value = scale_factor * (raw_data_value - add_offset)
+scale_factor_err and offset_error give potential errors due to scaling and offset
+calibrated_nt is encoded datatype of original data values: 3=uchar8 4=char8 5=float32 6=float64 7=float128 
+ 20=int8 21=uint8 22=int16 23=uint16 24=int32 25=uint32 26=int64 27=uint64 28=int128 30=uint128 42=char16 43=uchar16
+Note: Some files may use the calibration attributes in a manner different than the standard way described.  
+Consult relevant data product specifications for your particular HDF4 files.
+
+Compression algorithms:
+-deflate: also known as gzip or zlib; see IETF RFC1951
+-rle: byte-wise run length encoding
+ Each run is preceded by a pseudo-count byte
+ Low seven bits of the byte indicate the adjusted number of bytes (n)
+ If high bit is 1, next byte should be replicated n+3 times
+ If high bit is 0, next n+1 bytes should be included in whole
+
+-->
+<!-- 
+***************************************************************************************
+******** End of Instructions included (by convention) in an HDF4 File Content Map *****
+***************************************************************************************
+-->
+
+</xs:schema>

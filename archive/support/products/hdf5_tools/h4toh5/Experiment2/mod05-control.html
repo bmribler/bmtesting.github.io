@@ -1,0 +1,114 @@
+<html>
+<body>
+<pre>
+HDF5 "mod05-control-1-2253.he5" {
+GROUP "/" {
+   GROUP "HDFEOS" {
+      GROUP "ADDITIONAL" {
+         GROUP "FILE_ATTRIBUTES" {
+         } 
+      } 
+      GROUP "SWATHS" {
+         GROUP "mod05" {
+            GROUP "Data Fields" {
+               DATASET "Cloud_Mask_QA" {
+                  DATATYPE  H5T_STD_I8LE  
+                  DATASPACE  SIMPLE { ( 2030, 1354 ) / ( 2030, 1354 ) } 
+                  ATTRIBUTE "_FillValue" {
+                     DATATYPE  H5T_STD_I8LE  
+                     DATASPACE  SIMPLE { ( 1 ) / ( 1 ) } 
+                  } 
+               } 
+               DATASET "Quality_Assurance_Infrared" {
+                  DATATYPE  H5T_STD_I8LE  
+                  DATASPACE  SIMPLE { ( 406, 270, 5 ) / ( 406, 270, 5 ) } 
+               } 
+               DATASET "Quality_Assurance_Near_Infrared" {
+                  DATATYPE  H5T_STD_I8LE  
+                  DATASPACE  SIMPLE { ( 2030, 1354, 1 ) / ( 2030, 1354, 1 ) } 
+                  ATTRIBUTE "_FillValue" {
+                     DATATYPE  H5T_STD_I8LE  
+                     DATASPACE  SIMPLE { ( 1 ) / ( 1 ) } 
+                  } 
+               } 
+               DATASET "Scan_Start_Time" {
+                  DATATYPE  H5T_IEEE_F64BE  
+                  DATASPACE  SIMPLE { ( 406, 270 ) / ( 406, 270 ) } 
+               } 
+               DATASET "Sensor_Azimuth" {
+                  DATATYPE  H5T_STD_I16BE  
+                  DATASPACE  SIMPLE { ( 406, 270 ) / ( 406, 270 ) } 
+               } 
+               DATASET "Sensor_Zenith" {
+                  DATATYPE  H5T_STD_I16BE  
+                  DATASPACE  SIMPLE { ( 406, 270 ) / ( 406, 270 ) } 
+               } 
+               DATASET "Solar_Azimuth" {
+                  DATATYPE  H5T_STD_I16BE  
+                  DATASPACE  SIMPLE { ( 406, 270 ) / ( 406, 270 ) } 
+               } 
+               DATASET "Solar_Zenith" {
+                  DATATYPE  H5T_STD_I16BE  
+                  DATASPACE  SIMPLE { ( 406, 270 ) / ( 406, 270 ) } 
+               } 
+               DATASET "Water_Vapor_Correction_Factors" {
+                  DATATYPE  H5T_STD_I16BE  
+                  DATASPACE  SIMPLE { ( 2030, 1354 ) / ( 2030, 1354 ) } 
+                  ATTRIBUTE "_FillValue" {
+                     DATATYPE  H5T_STD_I16BE  
+                     DATASPACE  SIMPLE { ( 1 ) / ( 1 ) } 
+                  } 
+               } 
+               DATASET "Water_Vapor_Infrared" {
+                  DATATYPE  H5T_STD_I16BE  
+                  DATASPACE  SIMPLE { ( 406, 270 ) / ( 406, 270 ) } 
+               } 
+               DATASET "Water_Vapor_Near_Infrared" {
+                  DATATYPE  H5T_STD_I16BE  
+                  DATASPACE  SIMPLE { ( 2030, 1354 ) / ( 2030, 1354 ) } 
+                  ATTRIBUTE "_FillValue" {
+                     DATATYPE  H5T_STD_I16BE  
+                     DATASPACE  SIMPLE { ( 1 ) / ( 1 ) } 
+                  } 
+               } 
+            } 
+            GROUP "Geolocation Fields" {
+               DATASET "Latitude" {
+                  DATATYPE  H5T_IEEE_F32BE  
+                  DATASPACE  SIMPLE { ( 406, 270 ) / ( 406, 270 ) } 
+               } 
+               DATASET "Longitude" {
+                  DATATYPE  H5T_IEEE_F32BE  
+                  DATASPACE  SIMPLE { ( 406, 270 ) / ( 406, 270 ) } 
+               } 
+            } 
+            GROUP "Profile Fields" {
+            } 
+         } 
+      } 
+   } 
+   GROUP "HDFEOS INFORMATION" {
+      ATTRIBUTE "HDFEOSVersion" {
+         DATATYPE  H5T_STRING {
+               STRSIZE 32;
+               STRPAD H5T_STR_NULLTERM;
+               CSET H5T_CSET_ASCII;
+               CTYPE H5T_C_S1;
+            }           
+         DATASPACE  SCALAR  
+      } 
+      DATASET "StructMetadata.0" {
+         DATATYPE  H5T_STRING {
+               STRSIZE 1000000;
+               STRPAD H5T_STR_NULLTERM;
+               CSET H5T_CSET_ASCII;
+               CTYPE H5T_C_S1;
+            }           
+         DATASPACE  SCALAR  
+      } 
+   } 
+} 
+} 
+</pre>
+</body>
+</html>

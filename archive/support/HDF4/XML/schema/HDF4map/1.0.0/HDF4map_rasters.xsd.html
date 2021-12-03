@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- HDF4map_rasters -->
+<xs:schema xmlns:h4="/HDF4/XML/schema/HDF4map/1.0.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="/HDF4/XML/schema/HDF4map/1.0.0" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0.0">
+    <!--    Include other h4 schema documents -->
+    <xs:include schemaLocation="HDF4map_palettes.xsd"/>
+    <xs:include schemaLocation="HDF4map_attributes.xsd"/>
+    <xs:include schemaLocation="HDF4map_byteStream_representations.xsd"/>
+    <xs:include schemaLocation="HDF4map_datum_representation.xsd"/>
+    <!-- 
+        Global definitions related to Raster element
+
+        HDF4 8-bit Raster Images, 24-bit Raster Images, and General Raster (GR) Images are mapped to Raster elements.
+
+        While the schema was designed to be extensible and to accommodate all of the possible HDF4 Raster Images, it
+        is currently restricted.  The schema is, however, more extensive than what is currently mapped by h4mapwriter.
+        Comments throughout this document make note of current limitations.
+    -->
+    <!--
+        rasterT: Raster element type
+
+        HDF4 8-bit Raster Images, 24-bit Raster Images, and General Raster (GR) Images are mapped to Raster elements.
+        HDF4 Palettes and LUTS (look-up tables) are mapped to Palettes, and referenced via the paletteRef element.
+        HDF4 number of rows (lines) in image is mapped to the height attribute.
+        HDF4 number of columns in image is mapped to the width attribute.
+        HDF4 interlace mode is mapped to dimensionStorageOrder attribute.
+    -->
+    <xs:complexType name="rasterT">
+        <xs:sequence>
+            <xs:element name="RasterAttribute" type="h4:attributeT" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="paletteRef" type="h4:paletteRefT" minOccurs="0" maxOccurs="1"/>
+            <!-- NOTE: h4mapwriter currently does not support 16-bit, 32-bit, or 64-bit data types for raster pixels -->
+            <xs:element name="datum" type="h4:datumTypeT"/>
+            <!-- NOTE: h4mapwriter currently does not support GR images stored non-contiguously or in external files -->
+            <!-- Schema Limitation: The current rasterData does not allow for non-contiguous or external storage -->
+            <xs:element name="rasterData" minOccurs="0">
+                <xs:complexType>
+                    <xs:choice>
+                        <!-- No raster data is written to the HDF4 file when all cells contain fill values. -->
+                        <xs:element name="fillValues" type="h4:fillValuesT"/>
+                        <!-- Contiguous -->
+                        <xs:element name="byteStream" type="h4:byteStreamT"/>
+                    </xs:choice>
+                    <xs:attribute name="dimensionStorageOrder" type="h4:rasterDimOrderT" use="optional" 
+                                  default="row,column"/>
+                    <xs:attributeGroup ref="h4:rasterCompressionAttributesG"/>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="name" type="xs:string" use="required"/>
+        <xs:attribute name="height" type="xs:positiveInteger" use="required"/>
+        <xs:attribute name="width" type="xs:positiveInteger" use="required"/>
+        <!-- NOTE: h4mapwriter currently does not support 24-bit Raster Images (nComponentsPerPixel = 3) -->
+        <!-- NOTE: h4mapwriter currently does not support GR Raster Images with > 1 component per pixel -->
+        <xs:attribute name="nComponentsPerPixel" type="xs:positiveInteger" use="optional" default="1"/>
+        <xs:attribute name="id" type="h4:rasterID" use="required"/>
+    </xs:complexType>
+    <!--
+        rasterDimOrderT: Raster dimension storage order attribute type
+
+        Indicates the order in which the dimensions of the raster data array are stored in the HDF4 file.
+        The last dimension in the list of dimensions always varies the fastest.
+        The dimensions of any raster array are row, column, and component (pixel depth).   
+
+        HDF4 raster interlace mode is mapped to the raster dimension storage order 
+        HDF4 pixel interlace is mapped to "row,column,component", which is equivalent to "row,column" when there is one
+           component per pixel in the raster.
+        HDF4 line interlace is mapped to "row,component,column"
+        HDF4 component interlace is mapped to "component,row,column"
+    -->
+    <xs:simpleType name="rasterDimOrderT">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="row,column,component"/>
+            <xs:enumeration value="row,column"/>
+            <!-- NOTE: h4mapwriter currently does not support "row,component,column" -->
+            <xs:enumeration value="row,component,column"/>
+            <!-- NOTE: h4mapwriter currently does not support "component,row,column" -->
+            <xs:enumeration value="component,row,column"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <!--
+        rasterID: Raster ID attribute type.
+
+        Uniquely identifies a Raster element in an XML document.
+        Does not correspond to any HDF4 file content.
+        Of the form "ID_R" followed by an integer.
+    -->
+    <xs:simpleType name="rasterID">
+        <xs:restriction base="xs:ID">
+            <xs:pattern value="ID_R\d+"/>
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>

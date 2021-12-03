@@ -1,0 +1,31 @@
+
+# set the location of your C compiler
+CC = /bin/cc
+
+# Use -n32 or -o32. Recommended: ON32 = -n32
+ON32 = -n32
+
+# If o32 is used, then use CCOPTS = -ansi -O -s
+# if n32 is used, then use CCOPTS = -ansi -mips3 -O -s
+CCOPTS = -ansi -mips3 -O -s
+
+#set the appropriate directory locations
+HDF_INCLUDE_DIR = /usr/4.1r2_irix6.2/include
+HDF_LIB_DIR = /usr/4.1r2_irix6.2/lib
+
+##########################################################################
+#Do not change anything below this line unless you are absolutely sure!  #
+
+HDF_LIBS = -lmfhdf -ldf -ljpeg -lz
+
+chunkbinary_static: chunkbinary_static.o
+	$(CC) $(ON32) $(CCOPTS) chunkbinary_static.o -o ../bin/chunkbinary_static \
+	-I$(HDF_INCLUDE_DIR) -L$(HDF_LIB_DIR) $(HDF_LIBS)
+
+chunkbinary_static.o: chunkbinary_static.c
+	$(CC) $(ON32) $(CCOPTS) -c chunkbinary_static.c -I$(HDF_INCLUDE_DIR) \
+	-L$(HDF_LIB_DIR) $(HDF_LIBS)
+
+clean:
+	rm ../bin/chunkbinary_static chunkbinary_static.o
+

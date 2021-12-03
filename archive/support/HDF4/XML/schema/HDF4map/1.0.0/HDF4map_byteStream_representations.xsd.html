@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- HDF4map_byteStream_representations -->
+<xs:schema xmlns:h4="/HDF4/XML/schema/HDF4map/1.0.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="/HDF4/XML/schema/HDF4map/1.0.0" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0.0">
+    <!-- 
+        Global definitions related to byteStream and fillValues elements and compression attributes.
+
+        byteStream elements relate to reading bytes from HDF4 companion or external files, and preparing them for 
+        interpretation as HDF4 datum values.
+
+        fillValues elements provide default values when the HDF4 object datum values are not stored individually in 
+        the file.
+
+        Complex types are defined for:
+            (1) data stored in a byte stream
+                if compression was used, the bytes should be uncompressed before being interpreted 
+            (2) data stored in a byte stream that needs to be positioned within a larger dataset
+                if compression was used, the bytes should be uncompressed before being positioned and interpreted.
+            (3) data stored in a set of byte streams that should be concatenated;
+                if compression was used, the concatenated bytes should be uncompressed before being interpreted 
+            (4) data stored in a set of byte streams that should be concatenated and positioned within a larger dataset
+                if compression was used, the concatenated bytes should be uncompressed before being positioned and 
+                interpreted.
+            (5) data stored in a set of byte streams that may or may not be concatenated, with information about the 
+                name of the HDF4 attribute that was the origin of each byte stream
+            (6) data not stored in the file, but populated from a fill value
+                fill value is given uncompressed, regardless of compression specified
+            (7) data populated from a fill value that needs to be positioned within a larger dataset
+                if compression was used, the fill values should not be uncompressed before being positioned and
+                interpreted
+
+        Compression attributes enumerate the various compression algorithms supported by HDF4, and are needed in order
+        to accurately interpret the retrieved bytes.
+    -->
+    <!-- 
+        byteStreamT: byte stream element type
+
+        This type represents a block of contiguous bytes (a byte stream) in the companion HDF4 or external file. 
+    -->
+    <xs:complexType name="byteStreamT">
+        <xs:attributeGroup ref="h4:offsetLengthG"/>
+    </xs:complexType>
+    <!--
+        offsetLengthG: Offset/Length attributes group
+
+        The zero-based offset and number of bytes needed to raw data value(s) for an HDF4 Object.
+        The HDF4 Data Descriptor's offset and length are mapped to these attributes. 
+    -->
+    <xs:attributeGroup name="offsetLengthG">
+        <xs:attribute name="offset" type="xs:nonNegativeInteger" use="required"/>
+        <xs:attribute name="nBytes" type="xs:nonNegativeInteger" use="required"/>
+    </xs:attributeGroup>
+    <!-- 
+        positionedByteStreamT: positioned byte stream element type
+
+        Extends byteStreamT with another attribute that says where the retrieved bytes should be positioned 
+        within the array of data being read. The attribute string should have the format [p0, p1, p2, ..., pn], 
+        where there is a px entry for each dimension in the array.
+
+        This bytestream representation is used when data is stored in the "chunked storage layout" in the HDF4 File. 
+        If compression was used, the bytestream should be uncompressed before the bytes are positioned in the 
+        read array and the datum values are interpreted.
+
+        The datum values from the bytestream must be positioned at the proper location in the multi-dimensional array. 
+        Some cells at the borders of the array may be ghost cells containing garbage values.  This will occur when 
+        the valid cells in the actual array (as defined by dataDimensionSizes in the the Array) are be padded at 
+        the edges of one or more dimension to completely fill out the chunk dimensions before the values are 
+        written to the HDF4 file.  The size of the array that is in the file, when it has ghost cells, is defined 
+        by allocatedDimensionSizes in the Array element. 
+    -->
+    <xs:complexType name="positionedByteStreamT">
+        <xs:complexContent>
+            <xs:extension base="h4:byteStreamT">
+                <xs:attribute name="chunkPositionInArray" type="xs:string" use="required"/>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <!-- 
+        byteStreamSetT: byte stream set element type
+
+        This type represents multiple blocks of contiguous bytes (a set of byte streams) in the companion HDF4 file.
+        HDF4 Linked Block Elements are mapped to this type.
+        The byteStreams in the set should be concatenated and processed together. Processing may include uncompression.
+    -->
+    <xs:complexType name="byteStreamSetT">
+        <xs:sequence>
+            <xs:element name="byteStream" type="h4:byteStreamT" minOccurs="2" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <!-- 
+        positionedByteStreamSetT: positioned byte stream set element type
+
+        A set of byteStreams that should be concatenated and uncompressed together, then positioned within 
+        the larger array.  The set of byteStreams contains the data for one chunk.
+
+        See documentation for positionedByteStreamT for discussion of attribute string format and positioning of 
+        data in the multi-dimensional array.
+    -->
+    <xs:complexType name="positionedByteStreamSetT">
+        <xs:complexContent>
+            <xs:extension base="h4:byteStreamSetT">
+                <xs:attribute name="chunkPositionInArray" type="xs:string" use="required"/>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <!-- 
+        fileAttributesByteStreamSetT: file attributes byte stream set
+
+        A set of byteStreams that may be concatenated to obtain the value of a FileAttribute.  Alternatively, 
+        each byteStream may be processed independently to obtain the value of the original attribute object 
+        in the HDF4 file.
+
+        The attribute "originalAttribute" gives the name of the original attribute object in the HDF4 file 
+        for each byteStream.
+    -->
+    <xs:complexType name="fileAttributesByteStreamSetT">
+        <xs:sequence>
+            <xs:element name="byteStream" minOccurs="2" maxOccurs="unbounded">
+                <xs:complexType>
+                    <xs:complexContent>
+                        <xs:extension base="h4:byteStreamT">
+                            <xs:attribute name="originalAttribute" type="xs:string" use="required"/>
+                        </xs:extension>
+                    </xs:complexContent>
+                </xs:complexType>
+           </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <!--
+        fillValuesT: fill values element type
+
+        This type is used when raw data values are not contained in a set of bytes in the companion HDF4 or 
+        external file, but instead are to be set using a common fill value. The fill value, given by 
+        the "value" attribute, is always expressed in uncompressed form.
+    -->
+    <xs:complexType name="fillValuesT">
+        <xs:attribute name="value" type="xs:string" use="required"/>
+    </xs:complexType>
+    <!--
+        positionedFillValuesT: positioned fill values element type
+
+        This representation is used when data is stored in the "chunked storage layout" in the HDF4 file 
+        if a chunk contains only fill values that are not explicitly stored in byte streams in the HDF4 file. 
+        Uncompression is never performed on the fill value in this representation.
+
+        Extends fillValueT with another attribute that says where the fill values should be positioned within 
+        the array of data being read.  The chunkPositionInArray attribute has the same format and meaning as
+        in positionedByteStreamT; refer to that type for documentation.
+    -->
+    <xs:complexType name="positionedFillValuesT">
+        <xs:complexContent>
+            <xs:extension base="h4:fillValuesT">
+                <xs:attribute name="chunkPositionInArray" type="xs:string" use="required"/>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <!--
+        compressionAttributesG: Array data compression attributes group
+
+        Indicates the compression algorithm and related parameters used for array data.
+
+        Schema Limitation: The current compressionTypeT definition does not support compression algorithms other 
+        than DEFLATE (Gzip) for array data. The other compression attributes are for parameters related to 
+        other possible compression algorithms. They are included but commented out in this version of the schema.
+    -->
+    <xs:attributeGroup name="compressionAttributesG">
+        <xs:attribute name="compressionType" type="h4:compressionTypeT" use="optional"/>
+        <xs:attribute name="deflate_level" type="h4:deflate_levelT" use="optional"/>
+        <!-- <xs:attribute name="adaptiveHuffman_skipSize" type="xs:positiveInteger" use="optional"/> -->
+        <!-- <xs:attribute name="szip_version" type="xs:nonNegativeInteger" use="optional"/> -->
+        <!-- <xs:attribute name="szip_pixels" type="xs:positiveInteger" use="optional"/> -->
+        <!-- <xs:attribute name="szip_pixelsPerScanline" type="xs:positiveInteger" use="optional"/> -->
+        <!-- <xs:attribute name="szip_optionMask" type="xs:positiveInteger" use="optional"/> -->
+        <!-- <xs:attribute name="szip_bitsPerPixel" type="xs:positiveInteger" use="optional"/> -->
+        <!-- <xs:attribute name="szip_pixelsPerBlock" type="xs:positiveInteger" use="optional"/> -->
+        <!-- <xs:attribute name="nbit_startBit" type="xs:nonNegativeInteger" use="optional"/> -->
+        <!-- <xs:attribute name="nbit_bitLen" type="xs:nonNegativeInteger" use="optional"/> -->
+        <!-- <xs:attribute name="nbit_signExtend" type="xs:nonNegativeInteger" use="optional"/> -->
+        <!-- <xs:attribute name="nbit_fillBit" type="xs:nonNegativeInteger" use="optional"/> -->
+    </xs:attributeGroup>
+    <!-- 
+        compressionTypeT: Array data compression attribute type
+
+        Indicates the compression algorithm used for array data.
+
+        Schema Limitation: The current compressionTypeT definition does not support compression algorithms other 
+        than "deflate" (gzip) for array data.  Other compression algorithms allowed by HDF4 are enumerated here, 
+        but commented out, because they have not been tested with arrays in HDF4 File Content Maps. 
+
+        Compression algorithm notes:
+        - deflate, also known as gzip or zlib compression. See IETF RFC1951 for algorithm description.  
+          See also the attribute "deflate_level" in compressionAttributesG.
+        - rle, also known as RLE or run-length-encoding. Supported by the schema and h4mapwriter and tested for 
+          raster data, but not for array data.
+          See documentation in rasterCompressionTypeT.
+        - adaptiveHuffman is known as Adaptive Huffman or Skipping Huffman.
+          See also the adaptiveHuffman related attribute "adaptiveHuffman_skipSize" in compressionAttributesG.
+        - szip is a licensed compression technology.
+          There are 2 versions of szip and they have slightly different representations in the HDF4 binary files. 
+          Keep that in mind if mapped later.  See also the three szip related attributes in compressionAttributesG.
+        - nbit will require considerable effort and additional information from the HDF4 library to implement. 
+          It may also require decoding at a different point in the data read/process pipeline than the other 
+          compression types.
+    -->
+    <xs:simpleType name="compressionTypeT">
+        <xs:restriction base="xs:string">
+            <!-- NOTE: h4mapwriter currently does not support compression algorithms other than "deflate" for Arrays -->
+            <xs:enumeration value="deflate"/>
+            <!-- <xs:enumeration value="rle"/> -->
+            <!-- <xs:enumeration value="adaptiveHuffman"/> -->
+            <!-- <xs:enumeration value="szip"/> -->
+            <!-- <xs:enumeration value="nbit"/> -->
+        </xs:restriction>
+    </xs:simpleType>
+    <!-- 
+        deflate_levelT: deflate level attribute type
+
+        The compression level specified when the DEFLATE algorithm was applied. The level is not 
+        needed to uncompress the data, but it is available in the HDF4 file so it mapped to this attribute.
+    -->
+    <xs:simpleType name="deflate_levelT">
+        <xs:restriction base="xs:nonNegativeInteger">
+            <xs:minInclusive value="0" fixed="true"/>
+            <xs:maxInclusive value="9" fixed="true"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <!--
+        rasterCompressionAttributesG: Raster data compression attributes group
+
+        Indicates the compression algorithm and related parameters used for the raster image data.
+
+        Schema Limitation: The current rasterCompressionTypeT definition does not support compression algorithms other 
+        than RLE (run-length-encoding) for raster image data. The other compression attributes are for parameters 
+        related to other possible compression algorithms. They are included but commented out in this version of 
+        the schema.
+    -->
+    <xs:attributeGroup name="rasterCompressionAttributesG">
+        <xs:attribute name="compressionType" type="h4:rasterCompressionTypeT" use="optional"/>
+        <!-- <xs:attribute name="deflate_level" type="h4:deflate_levelT" use="optional"/> -->
+        <!-- <xs:attribute name="adaptiveHuffman_skipSize" type="xs:positiveInteger" use="optional"/> -->
+        <!-- <xs:attribute name="szip_version" type="xs:nonNegativeInteger" use="optional"/> -->
+        <!-- <xs:attribute name="szip_optionsMask" type="xs:nonNegativeInteger" use="optional"/> -->
+        <!-- <xs:attribute name="szip_pixelsPerBlock" type="xs:nonNegativeInteger" use="optional"/> -->
+    </xs:attributeGroup>
+    <!--
+        rasterCompressionTypeT: Raster data compression attribute type
+
+        Indicates the compression algorithm used for the raster image data.
+
+        Schema Limitation: The current rasterCompressionTypeT definition does not support compression algorithms other 
+        than "rle" (run-length-encoding) for raster image data.  Other compression algorithms allowed by HDF4 are 
+        enumerated here, but commented out, because they have not been tested with rasters in HDF4 File Content Maps. 
+
+        Compression algorithm notes:
+        - rle, also known as RLE or run-length-encoding. Supported by the schema and h4mapwriter and tested.
+          While RLE is a fairly common lossless compression algorithm, the specifics of its implementation vary. 
+          As used in HDF4 files, it does byte-wise run length encoding.  Decoding process is as described:
+            Each run is preceded by a pseudo-count byte
+            Low seven bits of the byte indicate the adjusted number of bytes (n)
+            If high bit is 1, next byte should be replicated n+3 times
+            If high bit is 0, next n+1 bytes should be included in whole
+        - deflate, also known as gzip or zlib compression. Supported for HDF4 SDS data (Array elements), but not 
+          tested for raster data. 
+          See documentation in compressionTypeT.
+        - adaptiveHuffman is known as Adaptive Huffman or Skipping Huffman.
+          See documentation in compressionTypeT.
+        - szip is a licensed compression technology.
+          See documentation in compressionTypeT.
+        - jpeg
+          There are different versions of the jpeg algorithm, but it is not clear that the jpeg version is kept 
+          in the HDF4 file, or if it is needed to uncompress the data. Would require further investigation if this 
+          were to be supported.
+        - imcomp 
+          A lossy compression method used in early versions of HDF4. It is generally inferiour to JPEG and was not 
+          supported in later versions, other than for backward compatibility. Careful review of the HDF4 source 
+          would be needed to describe and support this compression method in the HDF4 File Content Maps.  
+    -->
+    <xs:simpleType name="rasterCompressionTypeT">
+        <xs:restriction base="xs:string">
+            <!-- NOTE: h4mapwriter currently does not support compression algorithms other than "rle" for Arrays. -->
+            <xs:enumeration value="rle"/>
+            <!-- <xs:enumeration value="deflate"/> -->
+            <!-- <xs:enumeration value="adaptiveHuffman"/> -->
+            <!-- <xs:enumeration value="szip"/> -->
+            <!-- <xs:enumeration value="jpeg"/> -->
+            <!-- <xs:enumeration value="imcomp"/> -->
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>

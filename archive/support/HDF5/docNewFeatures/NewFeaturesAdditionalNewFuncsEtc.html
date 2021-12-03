@@ -1,0 +1,387 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN"
+        "http://www.w3.org/TR/html4/frameset.dtd">
+<html>
+  <head>
+
+<!--
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+  * Copyright by The HDF Group.                                               *
+  * All rights reserved.                                                      *
+  *                                                                           *
+  * This file is part of HDF5.  The full HDF5 copyright notice, including     *
+  * terms governing use, modification, and redistribution, is contained in    *
+  * the files COPYING and Copyright.html.  COPYING can be found at the root   *
+  * of the source code distribution tree; Copyright.html can be found at the  *
+  * root level of an installed copy of the electronic HDF5 document set and   *
+  * is linked from the top-level documents page.  It can also be found at     *
+  * http://hdfgroup.org/HDF5/doc/Copyright.html.  If you do not have          *
+  * access to either file, you may request a copy from help@hdfgroup.org.     *
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ -->
+
+<link href="https://support.hdfgroup.org/HDF5/docNewFeatures/ed_styles/RMelect.css" rel="stylesheet" type="text/css">
+    <title>
+      Additional New APIs
+    </title>
+  </head>
+
+<body bgcolor="#ffffff">
+
+<font face="Tahoma, Arial, Verdana, Helvetica, sans-serif" size="3">
+
+<!-- BEGIN MAIN BODY -->
+
+
+
+<table width="100%" cellpadding="0" border="0"> 
+  <tr valign="top" align="left">
+    <td>
+      <a href="http://www.hdfgroup.org">
+      <img src="Graphics/THGnoTextSm.jpg" alt="The HDF Group logo" 
+        border="0" width="75"></a>
+        <font size="+2">The HDF Group</font>
+        </td>
+    <td align="right">
+      <img src="Graphics/binder.jpg" alt="Documentation" 
+        border="0" height="60">
+        </td></tr>
+
+<!--    #888888 is a dark gray (dark gray horizontal line under logo 
+        at top of web page. 
+        #004488 is a dark blue (dark horizontal line at top of web pages). 
+        #d2e6ef is a pale bluish gray or grayish aqua (nav bar background).
+        #fbfbfb is almost white (background for nav bar links) 
+        and is very close to #FFFFFF. 
+        #FF0000 is a bright red (use when troubleshooting).
+-->
+
+<tr><td colspan="2" bgcolor="#888888" height="3"></td></tr>
+
+<tr><td colspan="2" bgcolor="#004488" height="7" valign="bottom">&nbsp;
+<!--
+<font face="Tahoma, Arial, Verdana, Helvetica, sans-serif" size="3">&nbsp;</font>
+-->
+</td></tr>
+
+</table>
+
+<table border="0" width="100%" cellpadding="5">
+<!-- change border value from 1 to 0 when finished editing 2.18.2014 -->
+<tr><td rowspan="3" width="13%" bgcolor="#d2e6ef" valign="top" align="left">
+&nbsp;<br />
+<center>
+<table border="0" cellpadding="10">
+<tr><td bgcolor="#fbfbfb">
+    <center><font size="+1">Other HDF Links</font></center>
+    <hr />
+    <font size="-1">
+    <dl>
+    <dt><a href="../doc.html">HDF5 1.10 Documentation</a>
+        </dt><br />
+    <dt align="center"><hr size=4 color="gray">
+        <a href="index.html">New Features in HDF5 1.10</a>
+        <hr size=1>
+        </dt>
+    <dt><a href="NewFeaturesAdditionalNewFuncsEtc.html">
+        Additional New APIs</a>
+        </dt><br />
+    <dt><a href="NewFeaturesCollectiveMetadataIoDocs.html">
+        Collective Metadata I/O</a>
+        </dt><br />
+    <dt><a href="NewFeaturesFineTuningMetadataCacheDocs.html">
+        Fine-tuning the Metadata Cache</a>
+        </dt><br />
+    <dt><a href="NewFeaturesFileSpaceMgmtDocs.html">
+        File Space Management</a>
+        </dt><br />
+    <dt><a href="NewFeaturesPageBuffering.html">
+        Page Buffering</a>
+        </dt><br />
+    <dt><a href="NewFeaturesPartialEdgeChunkDocs.html">
+        Partial Edge Chunks</a>
+        </dt><br />
+    <dt><a href="NewFeaturesReferenceDocs.html">
+        Reference</a>
+        </dt><br />
+    <dt><a href="NewFeaturesSwmrDocs.html">
+        SWMR</a>
+        </dt><br />
+    <dt><a href="NewFeaturesVirtualDatasetDocs.html">
+        Virtual Datasets (VDS)</a>
+        </dt><br />
+
+    </dl>
+    </font>
+    </td></tr></table></center>
+    </td></tr>
+
+
+
+<!-- 
+The table data element below sets up the middle column 
+between the navigation frame on the left and the content of the 
+web page.
+-->
+<td rowspan="3" bgcolor="#FFFFFF" width="2%">&nbsp;</td>
+
+
+
+<!-- 
+The table data element below is used to hold the content of the 
+web page. 
+-->
+<td bgcolor="#FFFFFF" valign="top" align="center" width="85%">
+
+<table border="0" width="100%">
+<tr>
+<td bgcolor="#fbf3ef" align="center" valign="top" colspan="2">
+    <hr size="1"/>
+    <font size="5" color="#000000">Additional New APIs
+    </font>
+    <hr size="1"/>
+    </td>
+</tr>
+
+
+
+
+<tr>
+<td bgcolor="#FFFFFF" align="left" valign="top" colspan="2">
+    This page describes various new functions, a new struct, and new macros
+    that are either unrelated to new features described elsewhere
+    or have aspects that are unrelated to the feature where they are
+    otherwise described.
+    The page includes the following sections:
+    
+    <ul>
+    <li><a href="NewFeaturesAdditionalNewFuncsEtc.html#Versioned">Versioned Functions and Struct 
+           with Associated Macros</a></li>
+    <li><a href="NewFeaturesAdditionalNewFuncsEtc.html#PListEncode">Property List Encoding and Decoding 
+           Functions</a></li>
+    <li><a href="NewFeaturesAdditionalNewFuncsEtc.html#EFilePrefix">External File Prefix Functions</a></li>
+    </ul>
+    
+</tr>
+
+
+
+<tr>
+<td bgcolor="#FFFFFF" valign="top" align="center" colspan="2">
+    &nbsp;</td></tr>
+
+
+
+<tr>
+<td bgcolor="#FFFFFF" align="left" valign="top" colspan="2">
+    <font size="5" color="#004488"><a name="Versioned">
+    Versioned Functions and Struct with Associated Macros</a></font>
+    </td></tr>
+
+<tr>
+<td bgcolor="#FFFFFF" align="left" valign="top" colspan="2">
+    <p>
+    Two functions in the HDF5 C interface, 
+    and a struct associated with one of those functions,
+    have been versioned in this release.
+    At the same time, interface compatibility macros were created
+    for programmatic management of these functions.  See
+    <cite><a href="../doc/RM/APICompatMacros.html">API Compatibility 
+    Macros in HDF5</a></cite>
+    for a detailed discussion of versioned functions and structs
+    and the related macros.
+    </p>
+    <p>
+    These functions, struct, and macros are documented in the 
+    <cite>HDF5 Reference Manual</cite>:
+    <table width="90%" align="center" border="0"
+        <tr align="left"><td valign="middle">
+            <code><a href="../doc/RM/RM_H5F.html#File-GetInfo">H5Fget_info</a></code>
+            </td><td valign="top">
+            Macro for programmatic control of versioned functions
+        </td></tr>
+        <tr align="left"><td valign="middle">
+            <code><a href="../doc/RM/RM_H5F.html#File-GetInfo1">H5Fget_info1</a></code>
+            </td><td valign="top">
+            Original function
+        </td></tr>
+        <tr align="left"><td valign="middle">
+            <code><a href="../doc/RM/RM_H5F.html#File-GetInfo2">H5Fget_info2</a></code>
+            </td><td valign="top">
+            New version introduced at Release 1.10.0
+        </td></tr>
+        <tr align="left"><td valign="middle">
+            <code><a href="../doc/RM/RM_H5F.html#File-GetInfo2">H5F_info2_t</a></code>
+            </td><td valign="top">
+            Struct used by <code>H5Fget_info2</code>
+        </td></tr>
+
+        <tr align="left"><td colspan="2">
+            &nbsp;
+        </td></tr>
+
+        <tr align="left"><td valign="middle">
+            <code><a href="../doc/RM/RM_H5R.html#Reference-Dereference">H5Rdereference</a></code>
+            </td><td valign="top">
+            Macro for programmatic control of versioned functions
+        </td></tr>
+        <tr align="left"><td valign="middle">
+            <code><a href="../doc/RM/RM_H5R.html#Reference-Dereference1">H5Rdereference1</a>&nbsp;&nbsp;&nbsp;</code>
+            </td><td valign="top">
+            Original function
+        </td></tr>
+        <tr align="left"><td valign="middle">
+            <code><a href="../doc/RM/RM_H5R.html#Reference-Dereference2">H5Rdereference2</a></code>
+            </td><td valign="top">
+            New version introduced at Release 1.10.0
+        </td></tr>
+    </table>
+    </td>
+
+    
+</tr>
+
+
+
+
+<tr>
+<td bgcolor="#FFFFFF" valign="top" align="center" colspan="2">
+    &nbsp;</td></tr>
+
+
+
+
+
+<tr>
+<td bgcolor="#FFFFFF" align="left" valign="top" colspan="2">
+    <font size="5" color="#004488"><a name="PListEncode">
+    Property List Encoding and Decoding Functions</a></font>
+    </td></tr>
+
+<tr>
+<td bgcolor="#FFFFFF" align="left" valign="top" colspan="2">
+    <p>
+    Functions have been added in the HDF5 C interface to 
+    encode and decode property lists.  
+    </p>
+    <p>
+    These functions are documented in the 
+    <cite>HDF5 Reference Manual</cite>:
+    <ul>
+        <li><a href="../doc/RM/RM_H5P.html#Property-Encode">
+            <code>H5Pencode</code></a>
+            </li>
+        <li><a href="../doc/RM/RM_H5P.html#Property-Decode">
+            <code>H5Pdecode</code></a>
+            </li>
+    </ul>
+    </td>
+
+
+</tr>
+
+
+
+<tr>
+<td bgcolor="#FFFFFF" valign="top" align="center" colspan="2">
+    &nbsp;</td></tr>
+
+
+
+
+
+
+<tr>
+<td bgcolor="#FFFFFF" align="left" valign="top" colspan="2">
+    <font size="5" color="#004488"><a name="EFilePrefix">
+    External File Prefix Functions</a></font>
+    </td></tr>
+
+<tr>
+<td bgcolor="#FFFFFF" align="left" valign="top" colspan="2">
+    <p>
+    Datasets that store raw data in external files can be created in HDF5.
+    Functions have been added in the HDF5 C interface to enable such
+    external files to be located via a relative path from the 
+    directory where the HDF5 file containing such a dataset is located:
+    </p>
+    <p>
+    These functions are documented in the <cite>HDF5 Reference Manual</cite>:
+    <ul>
+        <li><a href="../doc/RM/RM_H5P.html#Property-SetEfilePrefix">
+            <code>H5Pset_efile_prefix</code></a>
+            </li>
+        <li><a href="../doc/RM/RM_H5P.html#Property-GetEfilePrefix">
+            <code>H5Pget_efile_prefix</code></a>
+            </li>
+    </ul>
+    </td>
+
+    
+</tr>
+
+
+<tr><td bgcolor="#FFFFFF" colspan="2">&nbsp;</td></tr>
+
+
+
+
+
+
+
+</table>
+<br />
+
+
+
+<!-- BEGIN FOOTER INFO -->
+
+<br />
+<hr />
+<table border="0" width="100%">
+    <tr><td width="45%" align="left" valign="bottom">
+        <font face="arial,helvetica" size="-1">
+        The HDF Group Help Desk: <img src="Graphics/help.png" align="top" 
+        height="14" alt="The HDF Group Help Desk"></font>
+<!--
+        <br />
+        Describes HDF5 Release 1.9.x (development snapshots)
+-->
+        <br />
+        <!-- hhmts start -->
+        <font face="arial,helvetica" size="-1">
+        Last modified: 11 April 2016
+        <!-- hhmts end -->
+
+        <p>
+        </font>
+    </td><td width="10%" rowspan="2">&nbsp;
+    </td><td width="45%" align="right" valign="top" rowspan="2">
+        <font face="arial,helvetica" size="-1">
+        <a href="https://support.hdfgroup.org/ftp/HDF5/releases/COPYING">Copyright</a> by The HDF Group.
+        <br />
+        All rights reserved.
+        </font>
+<!--
+        <a href="http://www.hdfgroup.org/">
+        <img border=0 src="Graphics/THGwTextSm.jpg" width=130 height="7"8 
+            alt="The HDF Group [Logo]"></a>
+        <a href="http://www.hdfgroup.org/">
+        <img border=0 src="Graphics/THGwTextSm.jpg" width=110 height=65 
+            alt="The HDF Group [Logo]"></a>
+        <a href="http://www.hdfgroup.org/">
+        <img border=0 src="Graphics/THGwTextSm.jpg" width=78 height=48 
+            alt="The HDF Group [Logo]"></a>
+        <a href="http://www.hdfgroup.org/">
+        <img border=0 src="Graphics/THGnoTextSm.jpg" width=78 height=41 
+            alt="The HDF Group [Logo]"></a>
+-->
+    </td></tr>
+</table>
+
+
+
+
+
+
+</body>
+</html>

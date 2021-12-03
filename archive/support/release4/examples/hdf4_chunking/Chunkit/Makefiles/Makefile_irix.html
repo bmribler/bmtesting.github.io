@@ -1,0 +1,31 @@
+
+# set the location of your C compiler
+CC = /bin/cc
+
+# Use -n32 or -o32. Recommended: ON32 = -n32
+ON32 = -n32
+
+# If o32 is used, then use CCOPTS = -ansi -O -s
+# if n32 is used, then use CCOPTS = -ansi -mips3 -O -s
+CCOPTS = -ansi -mips3 -O -s
+
+#set the appropriate directory locations
+HDF_INCLUDE_DIR = /afs/ncsa.uiuc.edu/packages/hdf/IRIX_6.2-n32/include
+HDF_LIB_DIR = /afs/ncsa.uiuc.edu/packages/hdf/IRIX_6.2-n32/lib
+
+##########################################################################
+#Do not change anything below this line unless you are absolutely sure!  #
+
+HDF_LIBS = -lmfhdf -ldf -ljpeg -lz -lm
+
+chunkit: chunkit.o
+	$(CC) $(ON32) $(CCOPTS) chunkit.o -o ../bin/chunkit \
+	-I$(HDF_INCLUDE_DIR) -L$(HDF_LIB_DIR) $(HDF_LIBS)
+
+chunkit.o: chunkit.c
+	$(CC) $(ON32) $(CCOPTS) -c chunkit.c -I$(HDF_INCLUDE_DIR) \
+	-L$(HDF_LIB_DIR) $(HDF_LIBS)
+
+clean:
+	rm ../bin/chunkit chunkit.o
+

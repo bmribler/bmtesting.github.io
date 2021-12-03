@@ -1,0 +1,5444 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml"
+xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+xmlns:m="http://schemas.microsoft.com/office/2004/12/omml"
+xmlns:mv="http://macVmlSchemaUri" xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta name=Title content="H5Edit User Guide">
+<meta http-equiv=Content-Type content="text/html; charset=macintosh">
+<meta name=ProgId content=Word.Document>
+<meta name=Generator content="Microsoft Word 14">
+<meta name=Originator content="Microsoft Word 14">
+<link rel=File-List href="H5edit_User_Guide_files/filelist.xml">
+<link rel=Edit-Time-Data href="H5edit_User_Guide_files/editdata.mso">
+<!--[if !mso]>
+<style>
+v\:* {behavior:url(#default#VML);}
+o\:* {behavior:url(#default#VML);}
+w\:* {behavior:url(#default#VML);}
+.shape {behavior:url(#default#VML);}
+</style>
+<![endif]-->
+<title>H5Edit User Guide</title>
+<!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Author>Albert Cheng</o:Author>
+  <o:Template>\Documents and Settings\jkm\My Documents\Downloads\RFC_Template.dotx</o:Template>
+  <o:LastAuthor>Albert Cheng</o:LastAuthor>
+  <o:Revision>2</o:Revision>
+  <o:TotalTime>32</o:TotalTime>
+  <o:LastPrinted>2013-08-09T00:37:00Z</o:LastPrinted>
+  <o:Created>2013-12-11T14:34:00Z</o:Created>
+  <o:LastSaved>2013-12-11T14:34:00Z</o:LastSaved>
+  <o:Pages>2</o:Pages>
+  <o:Words>2605</o:Words>
+  <o:Characters>14853</o:Characters>
+  <o:Company>The HDF Group</o:Company>
+  <o:Lines>123</o:Lines>
+  <o:Paragraphs>34</o:Paragraphs>
+  <o:CharactersWithSpaces>17424</o:CharactersWithSpaces>
+  <o:Version>14.0</o:Version>
+ </o:DocumentProperties>
+</xml><![endif]-->
+<link rel=dataStoreItem href="H5edit_User_Guide_files/item0001.xml"
+target=":H5edit_User_Guide_files:props0002.xml">
+<link rel=themeData href="H5edit_User_Guide_files/themedata.xml">
+<!--[if gte mso 9]><xml>
+ <w:WordDocument>
+  <w:Zoom>160</w:Zoom>
+  <w:TrackMoves>false</w:TrackMoves>
+  <w:TrackFormatting/>
+  <w:PunctuationKerning/>
+  <w:DrawingGridHorizontalSpacing>6 pt</w:DrawingGridHorizontalSpacing>
+  <w:DisplayHorizontalDrawingGridEvery>2</w:DisplayHorizontalDrawingGridEvery>
+  <w:ValidateAgainstSchemas/>
+  <w:SaveIfXMLInvalid>false</w:SaveIfXMLInvalid>
+  <w:IgnoreMixedContent>false</w:IgnoreMixedContent>
+  <w:AlwaysShowPlaceholderText>false</w:AlwaysShowPlaceholderText>
+  <w:DoNotPromoteQF/>
+  <w:LidThemeOther>EN-US</w:LidThemeOther>
+  <w:LidThemeAsian>JA</w:LidThemeAsian>
+  <w:LidThemeComplexScript>X-NONE</w:LidThemeComplexScript>
+  <w:Compatibility>
+   <w:BreakWrappedTables/>
+   <w:SnapToGridInCell/>
+   <w:WrapTextWithPunct/>
+   <w:UseAsianBreakRules/>
+   <w:DontGrowAutofit/>
+   <w:SplitPgBreakAndParaMark/>
+   <w:UseFELayout/>
+  </w:Compatibility>
+  <m:mathPr>
+   <m:mathFont m:val="Cambria Math"/>
+   <m:brkBin m:val="before"/>
+   <m:brkBinSub m:val="&#45;-"/>
+   <m:smallFrac m:val="off"/>
+   <m:dispDef/>
+   <m:lMargin m:val="0"/>
+   <m:rMargin m:val="0"/>
+   <m:defJc m:val="centerGroup"/>
+   <m:wrapIndent m:val="1440"/>
+   <m:intLim m:val="subSup"/>
+   <m:naryLim m:val="undOvr"/>
+  </m:mathPr></w:WordDocument>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:LatentStyles DefLockedState="false" DefUnhideWhenUsed="false"
+  DefSemiHidden="false" DefQFormat="false" LatentStyleCount="276">
+  <w:LsdException Locked="false" QFormat="true" Name="Normal"/>
+  <w:LsdException Locked="false" Priority="99" Name="footer"/>
+  <w:LsdException Locked="false" Priority="1" Name="Default Paragraph Font"/>
+  <w:LsdException Locked="false" Priority="22" QFormat="true" Name="Strong"/>
+  <w:LsdException Locked="false" Priority="20" QFormat="true" Name="Emphasis"/>
+  <w:LsdException Locked="false" Priority="99" Name="HTML Code"/>
+  <w:LsdException Locked="false" Priority="99" Name="HTML Preformatted"/>
+  <w:LsdException Locked="false" Priority="99" Name="No List"/>
+  <w:LsdException Locked="false" QFormat="true" Name="List Paragraph"/>
+  <w:LsdException Locked="false" Priority="72" Name="Colorful List Accent 6"/>
+  <w:LsdException Locked="false" Priority="73" Name="Colorful Grid Accent 6"/>
+  <w:LsdException Locked="false" Priority="19" QFormat="true"
+   Name="Subtle Emphasis"/>
+  <w:LsdException Locked="false" Priority="21" QFormat="true"
+   Name="Intense Emphasis"/>
+  <w:LsdException Locked="false" Priority="31" QFormat="true"
+   Name="Subtle Reference"/>
+  <w:LsdException Locked="false" Priority="32" QFormat="true"
+   Name="Intense Reference"/>
+  <w:LsdException Locked="false" Priority="33" QFormat="true" Name="Book Title"/>
+  <w:LsdException Locked="false" Priority="37" SemiHidden="true"
+   UnhideWhenUsed="true" Name="Bibliography"/>
+  <w:LsdException Locked="false" Priority="39" SemiHidden="true"
+   UnhideWhenUsed="true" QFormat="true" Name="TOC Heading"/>
+ </w:LatentStyles>
+</xml><![endif]-->
+<style>
+<!--
+ /* Font Definitions */
+@font-face
+	{font-family:"Courier New";
+	panose-1:2 7 3 9 2 2 5 2 4 4;
+	mso-font-charset:0;
+	mso-generic-font-family:auto;
+	mso-font-pitch:variable;
+	mso-font-signature:-536859905 -1073711037 9 0 511 0;}
+@font-face
+	{font-family:Wingdings;
+	panose-1:5 0 0 0 0 0 0 0 0 0;
+	mso-font-charset:2;
+	mso-generic-font-family:auto;
+	mso-font-pitch:variable;
+	mso-font-signature:0 268435456 0 0 -2147483648 0;}
+@font-face
+	{font-family:"\FF2D\FF33 \660E\671D";
+	mso-font-charset:78;
+	mso-generic-font-family:auto;
+	mso-font-pitch:variable;
+	mso-font-signature:-536870145 1791491579 18 0 131231 0;}
+@font-face
+	{font-family:"\FF2D\FF33 \660E\671D";
+	mso-font-charset:78;
+	mso-generic-font-family:auto;
+	mso-font-pitch:variable;
+	mso-font-signature:-536870145 1791491579 18 0 131231 0;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:auto;
+	mso-font-pitch:variable;
+	mso-font-signature:-520092929 1073786111 9 0 415 0;}
+@font-face
+	{font-family:Consolas;
+	panose-1:2 11 6 9 2 2 4 3 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:auto;
+	mso-font-pitch:variable;
+	mso-font-signature:-520092929 1073806591 9 0 415 0;}
+@font-face
+	{font-family:Tahoma;
+	panose-1:2 11 6 4 3 5 4 4 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:auto;
+	mso-font-pitch:variable;
+	mso-font-signature:-520082689 -1073717157 41 0 66047 0;}
+ /* Style Definitions */
+p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-parent:"";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:0in;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	mso-bidi-font-size:11.0pt;
+	font-family:Calibri;
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:minor-latin;
+	mso-fareast-font-family:"\FF2D\FF33 \660E\671D";
+	mso-fareast-theme-font:minor-fareast;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:minor-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:minor-bidi;}
+h1
+	{mso-style-update:auto;
+	mso-style-priority:2;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-link:"Heading 1 Char";
+	mso-style-next:Normal;
+	margin-top:.25in;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:.3in;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	text-indent:-.3in;
+	mso-pagination:widow-orphan lines-together;
+	page-break-after:avoid;
+	mso-outline-level:1;
+	mso-list:l32 level1 lfo35;
+	font-size:14.0pt;
+	font-family:Calibri;
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:major-latin;
+	mso-fareast-font-family:"\FF2D\FF33 \660E\671D";
+	mso-fareast-theme-font:major-fareast;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:major-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:major-bidi;
+	color:black;
+	mso-themecolor:text1;
+	mso-font-kerning:0pt;
+	mso-fareast-language:KO;}
+h2
+	{mso-style-update:auto;
+	mso-style-priority:2;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-link:"Heading 2 Char";
+	mso-style-next:Normal;
+	margin-top:10.0pt;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:.4in;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	text-indent:-.4in;
+	mso-pagination:widow-orphan lines-together;
+	page-break-after:avoid;
+	mso-outline-level:2;
+	mso-list:l32 level2 lfo35;
+	font-size:13.0pt;
+	font-family:Calibri;
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:major-latin;
+	mso-fareast-font-family:"\FF2D\FF33 \660E\671D";
+	mso-fareast-theme-font:major-fareast;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:major-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:major-bidi;
+	color:black;
+	mso-fareast-language:KO;}
+h3
+	{mso-style-update:auto;
+	mso-style-priority:2;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-link:"Heading 3 Char";
+	mso-style-next:Normal;
+	margin-top:10.0pt;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:.5in;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	text-indent:-.5in;
+	mso-pagination:widow-orphan lines-together;
+	page-break-after:avoid;
+	mso-outline-level:3;
+	mso-list:l32 level3 lfo35;
+	font-size:12.0pt;
+	mso-bidi-font-size:11.0pt;
+	font-family:Calibri;
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:major-latin;
+	mso-fareast-font-family:"\FF2D\FF33 \660E\671D";
+	mso-fareast-theme-font:major-fareast;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:major-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:major-bidi;
+	color:black;
+	mso-themecolor:text1;
+	mso-fareast-language:KO;}
+h4
+	{mso-style-update:auto;
+	mso-style-priority:16;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-link:"Heading 4 Char";
+	mso-style-next:Normal;
+	margin-top:10.0pt;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:.6in;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	text-indent:-.6in;
+	mso-pagination:widow-orphan lines-together;
+	page-break-after:avoid;
+	mso-outline-level:4;
+	mso-list:l32 level4 lfo35;
+	font-size:12.0pt;
+	mso-bidi-font-size:11.0pt;
+	font-family:Calibri;
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:major-latin;
+	mso-fareast-font-family:"\FF2D\FF33 \660E\671D";
+	mso-fareast-theme-font:major-fareast;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:major-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:major-bidi;
+	mso-fareast-language:KO;
+	mso-bidi-font-style:italic;}
+h5
+	{mso-style-update:auto;
+	mso-style-noshow:yes;
+	mso-style-priority:16;
+	mso-style-qformat:yes;
+	mso-style-link:"Heading 5 Char";
+	mso-style-next:Normal;
+	margin-top:10.0pt;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:.7in;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	text-indent:-.7in;
+	mso-pagination:widow-orphan lines-together;
+	page-break-after:avoid;
+	mso-outline-level:5;
+	mso-list:l32 level5 lfo35;
+	font-size:12.0pt;
+	mso-bidi-font-size:11.0pt;
+	font-family:Calibri;
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:major-latin;
+	mso-fareast-font-family:"\FF2D\FF33 \660E\671D";
+	mso-fareast-theme-font:major-fareast;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:major-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:major-bidi;
+	color:black;
+	mso-themecolor:text1;
+	font-weight:normal;
+	font-style:italic;
+	mso-bidi-font-style:normal;}
+h6
+	{mso-style-update:auto;
+	mso-style-priority:16;
+	mso-style-qformat:yes;
+	mso-style-link:"Heading 6 Char";
+	mso-style-next:Normal;
+	margin-top:10.0pt;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:.8in;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	text-indent:-.8in;
+	mso-pagination:widow-orphan lines-together;
+	page-break-after:avoid;
+	mso-outline-level:6;
+	mso-list:l32 level6 lfo35;
+	font-size:12.0pt;
+	mso-bidi-font-size:11.0pt;
+	font-family:Calibri;
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:major-latin;
+	mso-fareast-font-family:"\FF2D\FF33 \660E\671D";
+	mso-fareast-theme-font:major-fareast;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:major-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:major-bidi;
+	color:#262626;
+	mso-themecolor:text1;
+	mso-themetint:217;
+	font-weight:normal;
+	font-style:italic;}
+p.MsoHeading7, li.MsoHeading7, div.MsoHeading7
+	{mso-style-update:auto;
+	mso-style-noshow:yes;
+	mso-style-priority:16;
+	mso-style-qformat:yes;
+	mso-style-link:"Heading 7 Char";
+	mso-style-next:Normal;
+	margin-top:10.0pt;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:.9in;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	text-indent:-.9in;
+	mso-pagination:widow-orphan lines-together;
+	page-break-after:avoid;
+	mso-outline-level:7;
+	mso-list:l32 level7 lfo35;
+	font-size:12.0pt;
+	mso-bidi-font-size:11.0pt;
+	font-family:Calibri;
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:major-latin;
+	mso-fareast-font-family:"\FF2D\FF33 \660E\671D";
+	mso-fareast-theme-font:major-fareast;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:major-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:major-bidi;
+	color:#404040;
+	mso-themecolor:text1;
+	mso-themetint:191;
+	font-style:italic;}
+p.MsoHeading8, li.MsoHeading8, div.MsoHeading8
+	{mso-style-noshow:yes;
+	mso-style-priority:16;
+	mso-style-qformat:yes;
+	mso-style-link:"Heading 8 Char";
+	mso-style-next:Normal;
+	margin-top:10.0pt;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:1.0in;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	text-indent:-1.0in;
+	mso-pagination:widow-orphan lines-together;
+	page-break-after:avoid;
+	mso-outline-level:8;
+	mso-list:l32 level8 lfo35;
+	font-size:10.0pt;
+	font-family:Calibri;
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:major-latin;
+	mso-fareast-font-family:"\FF2D\FF33 \660E\671D";
+	mso-fareast-theme-font:major-fareast;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:major-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:major-bidi;
+	color:#404040;
+	mso-themecolor:text1;
+	mso-themetint:191;}
+p.MsoHeading9, li.MsoHeading9, div.MsoHeading9
+	{mso-style-noshow:yes;
+	mso-style-priority:16;
+	mso-style-qformat:yes;
+	mso-style-link:"Heading 9 Char";
+	mso-style-next:Normal;
+	margin-top:10.0pt;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:1.1in;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	text-indent:-1.1in;
+	mso-pagination:widow-orphan lines-together;
+	page-break-after:avoid;
+	mso-outline-level:9;
+	mso-list:l32 level9 lfo35;
+	font-size:10.0pt;
+	font-family:Calibri;
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:major-latin;
+	mso-fareast-font-family:"\FF2D\FF33 \660E\671D";
+	mso-fareast-theme-font:major-fareast;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:major-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:major-bidi;
+	color:#404040;
+	mso-themecolor:text1;
+	mso-themetint:191;
+	font-style:italic;}
+p.MsoFootnoteText, li.MsoFootnoteText, div.MsoFootnoteText
+	{mso-style-unhide:no;
+	mso-style-link:"Footnote Text Char";
+	margin:0in;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:Calibri;
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:minor-latin;
+	mso-fareast-font-family:"\FF2D\FF33 \660E\671D";
+	mso-fareast-theme-font:minor-fareast;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:minor-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:minor-bidi;}
+p.MsoCommentText, li.MsoCommentText, div.MsoCommentText
+	{mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-style-link:"Comment Text Char";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:0in;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:Calibri;
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:minor-latin;
+	mso-fareast-font-family:"\FF2D\FF33 \660E\671D";
+	mso-fareast-theme-font:minor-fareast;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:minor-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:minor-bidi;}
+p.MsoHeader, li.MsoHeader, div.MsoHeader
+	{mso-style-priority:99;
+	mso-style-link:"Header Char";
+	margin:0in;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	mso-pagination:widow-orphan;
+	tab-stops:center 3.25in right 6.5in;
+	font-size:12.0pt;
+	mso-bidi-font-size:11.0pt;
+	font-family:Calibri;
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:minor-latin;
+	mso-fareast-font-family:"\FF2D\FF33 \660E\671D";
+	mso-fareast-theme-font:minor-fareast;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:minor-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:minor-bidi;}
+p.MsoFooter, li.MsoFooter, div.MsoFooter
+	{mso-style-priority:99;
+	mso-style-unhide:no;
+	mso-style-link:"Footer Char";
+	margin:0in;
+	margin-bottom:.0001pt;
+	text-align:right;
+	mso-pagination:widow-orphan;
+	tab-stops:center 3.25in right 6.5in;
+	border:none;
+	mso-border-top-alt:solid #4F81BD 1.0pt;
+	mso-border-top-themecolor:accent1;
+	padding:0in;
+	mso-padding-alt:.25in 0in 0in 0in;
+	font-size:12.0pt;
+	mso-bidi-font-size:11.0pt;
+	font-family:Calibri;
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:minor-latin;
+	mso-fareast-font-family:"\FF2D\FF33 \660E\671D";
+	mso-fareast-theme-font:minor-fareast;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:minor-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:minor-bidi;}
+span.MsoFootnoteReference
+	{mso-style-unhide:no;
+	vertical-align:super;}
+span.MsoCommentReference
+	{mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-ansi-font-size:8.0pt;
+	mso-bidi-font-size:8.0pt;}
+p.MsoList, li.MsoList, div.MsoList
+	{mso-style-priority:5;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:.25in;
+	mso-add-space:auto;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	text-indent:-.25in;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	mso-bidi-font-size:11.0pt;
+	font-family:Calibri;
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:minor-latin;
+	mso-fareast-font-family:"\FF2D\FF33 \660E\671D";
+	mso-fareast-theme-font:minor-fareast;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:minor-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:minor-bidi;}
+p.MsoListCxSpFirst, li.MsoListCxSpFirst, div.MsoListCxSpFirst
+	{mso-style-priority:5;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-type:export-only;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.25in;
+	margin-bottom:.0001pt;
+	mso-add-space:auto;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	text-indent:-.25in;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	mso-bidi-font-size:11.0pt;
+	font-family:Calibri;
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:minor-latin;
+	mso-fareast-font-family:"\FF2D\FF33 \660E\671D";
+	mso-fareast-theme-font:minor-fareast;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:minor-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:minor-bidi;}
+p.MsoListCxSpMiddle, li.MsoListCxSpMiddle, div.MsoListCxSpMiddle
+	{mso-style-priority:5;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-type:export-only;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.25in;
+	margin-bottom:.0001pt;
+	mso-add-space:auto;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	text-indent:-.25in;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	mso-bidi-font-size:11.0pt;
+	font-family:Calibri;
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:minor-latin;
+	mso-fareast-font-family:"\FF2D\FF33 \660E\671D";
+	mso-fareast-theme-font:minor-fareast;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:minor-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:minor-bidi;}
+p.MsoListCxSpLast, li.MsoListCxSpLast, div.MsoListCxSpLast
+	{mso-style-priority:5;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-type:export-only;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:.25in;
+	mso-add-space:auto;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	text-indent:-.25in;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	mso-bidi-font-size:11.0pt;
+	font-family:Calibri;
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:minor-latin;
+	mso-fareast-font-family:"\FF2D\FF33 \660E\671D";
+	mso-fareast-theme-font:minor-fareast;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:minor-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:minor-bidi;}
+p.MsoListNumber, li.MsoListNumber, div.MsoListNumber
+	{mso-style-priority:5;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:.25in;
+	mso-add-space:auto;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	text-indent:-.25in;
+	mso-pagination:widow-orphan;
+	mso-list:l3 level1 lfo3;
+	font-size:12.0pt;
+	mso-bidi-font-size:11.0pt;
+	font-family:Calibri;
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:minor-latin;
+	mso-fareast-font-family:"\FF2D\FF33 \660E\671D";
+	mso-fareast-theme-font:minor-fareast;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:minor-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:minor-bidi;}
+p.MsoListNumberCxSpFirst, li.MsoListNumberCxSpFirst, div.MsoListNumberCxSpFirst
+	{mso-style-priority:5;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-type:export-only;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.25in;
+	margin-bottom:.0001pt;
+	mso-add-space:auto;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	text-indent:-.25in;
+	mso-pagination:widow-orphan;
+	mso-list:l3 level1 lfo3;
+	font-size:12.0pt;
+	mso-bidi-font-size:11.0pt;
+	font-family:Calibri;
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:minor-latin;
+	mso-fareast-font-family:"\FF2D\FF33 \660E\671D";
+	mso-fareast-theme-font:minor-fareast;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:minor-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:minor-bidi;}
+p.MsoListNumberCxSpMiddle, li.MsoListNumberCxSpMiddle, div.MsoListNumberCxSpMiddle
+	{mso-style-priority:5;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-type:export-only;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.25in;
+	margin-bottom:.0001pt;
+	mso-add-space:auto;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	text-indent:-.25in;
+	mso-pagination:widow-orphan;
+	mso-list:l3 level1 lfo3;
+	font-size:12.0pt;
+	mso-bidi-font-size:11.0pt;
+	font-family:Calibri;
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:minor-latin;
+	mso-fareast-font-family:"\FF2D\FF33 \660E\671D";
+	mso-fareast-theme-font:minor-fareast;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:minor-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:minor-bidi;}
+p.MsoListNumberCxSpLast, li.MsoListNumberCxSpLast, div.MsoListNumberCxSpLast
+	{mso-style-priority:5;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-type:export-only;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:.25in;
+	mso-add-space:auto;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	text-indent:-.25in;
+	mso-pagination:widow-orphan;
+	mso-list:l3 level1 lfo3;
+	font-size:12.0pt;
+	mso-bidi-font-size:11.0pt;
+	font-family:Calibri;
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:minor-latin;
+	mso-fareast-font-family:"\FF2D\FF33 \660E\671D";
+	mso-fareast-theme-font:minor-fareast;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:minor-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:minor-bidi;}
+p.MsoList2, li.MsoList2, div.MsoList2
+	{mso-style-priority:5;
+	mso-style-unhide:no;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:.5in;
+	mso-add-space:auto;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	text-indent:-.25in;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	mso-bidi-font-size:11.0pt;
+	font-family:Calibri;
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:minor-latin;
+	mso-fareast-font-family:"\FF2D\FF33 \660E\671D";
+	mso-fareast-theme-font:minor-fareast;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:minor-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:minor-bidi;}
+p.MsoList2CxSpFirst, li.MsoList2CxSpFirst, div.MsoList2CxSpFirst
+	{mso-style-priority:5;
+	mso-style-unhide:no;
+	mso-style-type:export-only;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	mso-add-space:auto;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	text-indent:-.25in;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	mso-bidi-font-size:11.0pt;
+	font-family:Calibri;
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:minor-latin;
+	mso-fareast-font-family:"\FF2D\FF33 \660E\671D";
+	mso-fareast-theme-font:minor-fareast;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:minor-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:minor-bidi;}
+p.MsoList2CxSpMiddle, li.MsoList2CxSpMiddle, div.MsoList2CxSpMiddle
+	{mso-style-priority:5;
+	mso-style-unhide:no;
+	mso-style-type:export-only;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	mso-add-space:auto;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	text-indent:-.25in;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	mso-bidi-font-size:11.0pt;
+	font-family:Calibri;
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:minor-latin;
+	mso-fareast-font-family:"\FF2D\FF33 \660E\671D";
+	mso-fareast-theme-font:minor-fareast;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:minor-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:minor-bidi;}
+p.MsoList2CxSpLast, li.MsoList2CxSpLast, div.MsoList2CxSpLast
+	{mso-style-priority:5;
+	mso-style-unhide:no;
+	mso-style-type:export-only;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:.5in;
+	mso-add-space:auto;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	text-indent:-.25in;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	mso-bidi-font-size:11.0pt;
+	font-family:Calibri;
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:minor-latin;
+	mso-fareast-font-family:"\FF2D\FF33 \660E\671D";
+	mso-fareast-theme-font:minor-fareast;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:minor-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:minor-bidi;}
+p.MsoListNumber2, li.MsoListNumber2, div.MsoListNumber2
+	{mso-style-priority:5;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:2.0pt;
+	margin-left:.5in;
+	text-indent:-.25in;
+	mso-pagination:widow-orphan;
+	mso-list:l27 level1 lfo2;
+	font-size:12.0pt;
+	font-family:Calibri;
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:minor-latin;
+	mso-fareast-font-family:"\FF2D\FF33 \660E\671D";
+	mso-fareast-theme-font:minor-fareast;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:minor-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:minor-bidi;}
+p.MsoListNumber3, li.MsoListNumber3, div.MsoListNumber3
+	{mso-style-update:auto;
+	mso-style-noshow:yes;
+	mso-style-priority:99;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:.75in;
+	mso-add-space:auto;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	text-indent:-.25in;
+	mso-pagination:widow-orphan;
+	mso-list:l2 level1 lfo4;
+	font-size:12.0pt;
+	mso-bidi-font-size:11.0pt;
+	font-family:Calibri;
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:minor-latin;
+	mso-fareast-font-family:"\FF2D\FF33 \660E\671D";
+	mso-fareast-theme-font:minor-fareast;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:minor-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:minor-bidi;}
+p.MsoListNumber3CxSpFirst, li.MsoListNumber3CxSpFirst, div.MsoListNumber3CxSpFirst
+	{mso-style-update:auto;
+	mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-style-type:export-only;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.75in;
+	margin-bottom:.0001pt;
+	mso-add-space:auto;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	text-indent:-.25in;
+	mso-pagination:widow-orphan;
+	mso-list:l2 level1 lfo4;
+	font-size:12.0pt;
+	mso-bidi-font-size:11.0pt;
+	font-family:Calibri;
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:minor-latin;
+	mso-fareast-font-family:"\FF2D\FF33 \660E\671D";
+	mso-fareast-theme-font:minor-fareast;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:minor-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:minor-bidi;}
+p.MsoListNumber3CxSpMiddle, li.MsoListNumber3CxSpMiddle, div.MsoListNumber3CxSpMiddle
+	{mso-style-update:auto;
+	mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-style-type:export-only;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.75in;
+	margin-bottom:.0001pt;
+	mso-add-space:auto;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	text-indent:-.25in;
+	mso-pagination:widow-orphan;
+	mso-list:l2 level1 lfo4;
+	font-size:12.0pt;
+	mso-bidi-font-size:11.0pt;
+	font-family:Calibri;
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:minor-latin;
+	mso-fareast-font-family:"\FF2D\FF33 \660E\671D";
+	mso-fareast-theme-font:minor-fareast;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:minor-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:minor-bidi;}
+p.MsoListNumber3CxSpLast, li.MsoListNumber3CxSpLast, div.MsoListNumber3CxSpLast
+	{mso-style-update:auto;
+	mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-style-type:export-only;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:.75in;
+	mso-add-space:auto;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	text-indent:-.25in;
+	mso-pagination:widow-orphan;
+	mso-list:l2 level1 lfo4;
+	font-size:12.0pt;
+	mso-bidi-font-size:11.0pt;
+	font-family:Calibri;
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:minor-latin;
+	mso-fareast-font-family:"\FF2D\FF33 \660E\671D";
+	mso-fareast-theme-font:minor-fareast;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:minor-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:minor-bidi;}
+p.MsoListNumber4, li.MsoListNumber4, div.MsoListNumber4
+	{mso-style-update:auto;
+	mso-style-noshow:yes;
+	mso-style-priority:99;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:1.0in;
+	mso-add-space:auto;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	text-indent:-.25in;
+	mso-pagination:widow-orphan;
+	mso-list:l1 level1 lfo5;
+	font-size:12.0pt;
+	mso-bidi-font-size:11.0pt;
+	font-family:Calibri;
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:minor-latin;
+	mso-fareast-font-family:"\FF2D\FF33 \660E\671D";
+	mso-fareast-theme-font:minor-fareast;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:minor-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:minor-bidi;}
+p.MsoListNumber4CxSpFirst, li.MsoListNumber4CxSpFirst, div.MsoListNumber4CxSpFirst
+	{mso-style-update:auto;
+	mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-style-type:export-only;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:1.0in;
+	margin-bottom:.0001pt;
+	mso-add-space:auto;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	text-indent:-.25in;
+	mso-pagination:widow-orphan;
+	mso-list:l1 level1 lfo5;
+	font-size:12.0pt;
+	mso-bidi-font-size:11.0pt;
+	font-family:Calibri;
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:minor-latin;
+	mso-fareast-font-family:"\FF2D\FF33 \660E\671D";
+	mso-fareast-theme-font:minor-fareast;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:minor-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:minor-bidi;}
+p.MsoListNumber4CxSpMiddle, li.MsoListNumber4CxSpMiddle, div.MsoListNumber4CxSpMiddle
+	{mso-style-update:auto;
+	mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-style-type:export-only;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:1.0in;
+	margin-bottom:.0001pt;
+	mso-add-space:auto;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	text-indent:-.25in;
+	mso-pagination:widow-orphan;
+	mso-list:l1 level1 lfo5;
+	font-size:12.0pt;
+	mso-bidi-font-size:11.0pt;
+	font-family:Calibri;
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:minor-latin;
+	mso-fareast-font-family:"\FF2D\FF33 \660E\671D";
+	mso-fareast-theme-font:minor-fareast;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:minor-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:minor-bidi;}
+p.MsoListNumber4CxSpLast, li.MsoListNumber4CxSpLast, div.MsoListNumber4CxSpLast
+	{mso-style-update:auto;
+	mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-style-type:export-only;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:1.0in;
+	mso-add-space:auto;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	text-indent:-.25in;
+	mso-pagination:widow-orphan;
+	mso-list:l1 level1 lfo5;
+	font-size:12.0pt;
+	mso-bidi-font-size:11.0pt;
+	font-family:Calibri;
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:minor-latin;
+	mso-fareast-font-family:"\FF2D\FF33 \660E\671D";
+	mso-fareast-theme-font:minor-fareast;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:minor-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:minor-bidi;}
+p.MsoListNumber5, li.MsoListNumber5, div.MsoListNumber5
+	{mso-style-update:auto;
+	mso-style-priority:99;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:1.25in;
+	mso-add-space:auto;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	text-indent:-.25in;
+	mso-pagination:widow-orphan;
+	mso-list:l0 level1 lfo6;
+	font-size:12.0pt;
+	mso-bidi-font-size:11.0pt;
+	font-family:Calibri;
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:minor-latin;
+	mso-fareast-font-family:"\FF2D\FF33 \660E\671D";
+	mso-fareast-theme-font:minor-fareast;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:minor-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:minor-bidi;}
+p.MsoListNumber5CxSpFirst, li.MsoListNumber5CxSpFirst, div.MsoListNumber5CxSpFirst
+	{mso-style-update:auto;
+	mso-style-priority:99;
+	mso-style-type:export-only;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:1.25in;
+	margin-bottom:.0001pt;
+	mso-add-space:auto;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	text-indent:-.25in;
+	mso-pagination:widow-orphan;
+	mso-list:l0 level1 lfo6;
+	font-size:12.0pt;
+	mso-bidi-font-size:11.0pt;
+	font-family:Calibri;
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:minor-latin;
+	mso-fareast-font-family:"\FF2D\FF33 \660E\671D";
+	mso-fareast-theme-font:minor-fareast;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:minor-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:minor-bidi;}
+p.MsoListNumber5CxSpMiddle, li.MsoListNumber5CxSpMiddle, div.MsoListNumber5CxSpMiddle
+	{mso-style-update:auto;
+	mso-style-priority:99;
+	mso-style-type:export-only;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:1.25in;
+	margin-bottom:.0001pt;
+	mso-add-space:auto;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	text-indent:-.25in;
+	mso-pagination:widow-orphan;
+	mso-list:l0 level1 lfo6;
+	font-size:12.0pt;
+	mso-bidi-font-size:11.0pt;
+	font-family:Calibri;
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:minor-latin;
+	mso-fareast-font-family:"\FF2D\FF33 \660E\671D";
+	mso-fareast-theme-font:minor-fareast;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:minor-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:minor-bidi;}
+p.MsoListNumber5CxSpLast, li.MsoListNumber5CxSpLast, div.MsoListNumber5CxSpLast
+	{mso-style-update:auto;
+	mso-style-priority:99;
+	mso-style-type:export-only;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:1.25in;
+	mso-add-space:auto;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	text-indent:-.25in;
+	mso-pagination:widow-orphan;
+	mso-list:l0 level1 lfo6;
+	font-size:12.0pt;
+	mso-bidi-font-size:11.0pt;
+	font-family:Calibri;
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:minor-latin;
+	mso-fareast-font-family:"\FF2D\FF33 \660E\671D";
+	mso-fareast-theme-font:minor-fareast;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:minor-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:minor-bidi;}
+p.MsoTitle, li.MsoTitle, div.MsoTitle
+	{mso-style-update:auto;
+	mso-style-priority:17;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-link:"Title Char";
+	mso-style-next:Author;
+	margin-top:.25in;
+	margin-right:0in;
+	margin-bottom:.25in;
+	margin-left:0in;
+	mso-add-space:auto;
+	text-align:center;
+	mso-pagination:widow-orphan;
+	font-size:18.0pt;
+	mso-bidi-font-size:26.0pt;
+	font-family:Calibri;
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:minor-latin;
+	mso-fareast-font-family:"\FF2D\FF33 \660E\671D";
+	mso-fareast-theme-font:major-fareast;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:minor-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:major-bidi;
+	color:black;
+	mso-themecolor:text1;
+	letter-spacing:.25pt;
+	mso-font-kerning:14.0pt;
+	font-weight:bold;
+	mso-bidi-font-weight:normal;}
+p.MsoTitleCxSpFirst, li.MsoTitleCxSpFirst, div.MsoTitleCxSpFirst
+	{mso-style-update:auto;
+	mso-style-priority:17;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-link:"Title Char";
+	mso-style-next:Author;
+	mso-style-type:export-only;
+	margin-top:.25in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:0in;
+	margin-bottom:.0001pt;
+	mso-add-space:auto;
+	text-align:center;
+	mso-pagination:widow-orphan;
+	font-size:18.0pt;
+	mso-bidi-font-size:26.0pt;
+	font-family:Calibri;
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:minor-latin;
+	mso-fareast-font-family:"\FF2D\FF33 \660E\671D";
+	mso-fareast-theme-font:major-fareast;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:minor-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:major-bidi;
+	color:black;
+	mso-themecolor:text1;
+	letter-spacing:.25pt;
+	mso-font-kerning:14.0pt;
+	font-weight:bold;
+	mso-bidi-font-weight:normal;}
+p.MsoTitleCxSpMiddle, li.MsoTitleCxSpMiddle, div.MsoTitleCxSpMiddle
+	{mso-style-update:auto;
+	mso-style-priority:17;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-link:"Title Char";
+	mso-style-next:Author;
+	mso-style-type:export-only;
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-add-space:auto;
+	text-align:center;
+	mso-pagination:widow-orphan;
+	font-size:18.0pt;
+	mso-bidi-font-size:26.0pt;
+	font-family:Calibri;
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:minor-latin;
+	mso-fareast-font-family:"\FF2D\FF33 \660E\671D";
+	mso-fareast-theme-font:major-fareast;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:minor-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:major-bidi;
+	color:black;
+	mso-themecolor:text1;
+	letter-spacing:.25pt;
+	mso-font-kerning:14.0pt;
+	font-weight:bold;
+	mso-bidi-font-weight:normal;}
+p.MsoTitleCxSpLast, li.MsoTitleCxSpLast, div.MsoTitleCxSpLast
+	{mso-style-update:auto;
+	mso-style-priority:17;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-link:"Title Char";
+	mso-style-next:Author;
+	mso-style-type:export-only;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:.25in;
+	margin-left:0in;
+	mso-add-space:auto;
+	text-align:center;
+	mso-pagination:widow-orphan;
+	font-size:18.0pt;
+	mso-bidi-font-size:26.0pt;
+	font-family:Calibri;
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:minor-latin;
+	mso-fareast-font-family:"\FF2D\FF33 \660E\671D";
+	mso-fareast-theme-font:major-fareast;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:minor-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:major-bidi;
+	color:black;
+	mso-themecolor:text1;
+	letter-spacing:.25pt;
+	mso-font-kerning:14.0pt;
+	font-weight:bold;
+	mso-bidi-font-weight:normal;}
+a:link, span.MsoHyperlink
+	{mso-style-priority:99;
+	color:blue;
+	mso-themecolor:hyperlink;
+	text-decoration:underline;
+	text-underline:single;}
+a:visited, span.MsoHyperlinkFollowed
+	{mso-style-unhide:no;
+	color:purple;
+	mso-themecolor:followedhyperlink;
+	text-decoration:underline;
+	text-underline:single;}
+p.MsoPlainText, li.MsoPlainText, div.MsoPlainText
+	{mso-style-priority:7;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-link:"Plain Text Char";
+	margin:0in;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	mso-pagination:widow-orphan;
+	font-size:10.5pt;
+	font-family:Consolas;
+	mso-fareast-font-family:"\FF2D\FF33 \660E\671D";
+	mso-fareast-theme-font:minor-fareast;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:minor-bidi;}
+code
+	{mso-style-priority:99;
+	font-family:"Courier New";
+	mso-ascii-font-family:"Courier New";
+	mso-fareast-font-family:"Times New Roman";
+	mso-hansi-font-family:"Courier New";
+	mso-bidi-font-family:"Courier New";}
+pre
+	{mso-style-priority:99;
+	mso-style-link:"HTML Preformatted Char";
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Courier New";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoCommentSubject, li.MsoCommentSubject, div.MsoCommentSubject
+	{mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-style-parent:"Comment Text";
+	mso-style-link:"Comment Subject Char";
+	mso-style-next:"Comment Text";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:0in;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:Calibri;
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:minor-latin;
+	mso-fareast-font-family:"\FF2D\FF33 \660E\671D";
+	mso-fareast-theme-font:minor-fareast;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:minor-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:minor-bidi;
+	font-weight:bold;}
+p.MsoAcetate, li.MsoAcetate, div.MsoAcetate
+	{mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-style-link:"Balloon Text Char";
+	margin:0in;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	mso-pagination:widow-orphan;
+	font-size:8.0pt;
+	font-family:Tahoma;
+	mso-fareast-font-family:"\FF2D\FF33 \660E\671D";
+	mso-fareast-theme-font:minor-fareast;}
+p.MsoNoSpacing, li.MsoNoSpacing, div.MsoNoSpacing
+	{mso-style-priority:24;
+	mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:11.0pt;
+	font-family:Calibri;
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:major-latin;
+	mso-fareast-font-family:"\FF2D\FF33 \660E\671D";
+	mso-fareast-theme-font:minor-fareast;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:major-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:minor-bidi;}
+p.MsoRMPane, li.MsoRMPane, div.MsoRMPane
+	{mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-style-unhide:no;
+	mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	mso-bidi-font-size:11.0pt;
+	font-family:Calibri;
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:major-latin;
+	mso-fareast-font-family:"\FF2D\FF33 \660E\671D";
+	mso-fareast-theme-font:minor-fareast;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:major-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:minor-bidi;}
+p.MsoListParagraph, li.MsoListParagraph, div.MsoListParagraph
+	{mso-style-name:"List Paragraph\,List Paragraph2";
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:.5in;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	mso-bidi-font-size:11.0pt;
+	font-family:Calibri;
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:minor-latin;
+	mso-fareast-font-family:"\FF2D\FF33 \660E\671D";
+	mso-fareast-theme-font:minor-fareast;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:minor-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:minor-bidi;}
+p.MsoQuote, li.MsoQuote, div.MsoQuote
+	{mso-style-priority:29;
+	mso-style-unhide:no;
+	mso-style-link:"Quote Char";
+	mso-style-next:Normal;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:0in;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	mso-bidi-font-size:11.0pt;
+	font-family:Calibri;
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:minor-latin;
+	mso-fareast-font-family:"\FF2D\FF33 \660E\671D";
+	mso-fareast-theme-font:minor-fareast;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:minor-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:minor-bidi;
+	color:black;
+	mso-themecolor:text1;
+	font-style:italic;}
+span.MsoIntenseEmphasis
+	{mso-style-priority:11;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	color:windowtext;
+	font-weight:bold;
+	font-style:italic;}
+span.MsoSubtleReference
+	{mso-style-priority:31;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	font-variant:small-caps;
+	color:#C0504D;
+	mso-themecolor:accent2;
+	text-decoration:underline;
+	text-underline:single;}
+span.PlainTextChar
+	{mso-style-name:"Plain Text Char";
+	mso-style-priority:7;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:"Plain Text";
+	mso-ansi-font-size:10.5pt;
+	mso-bidi-font-size:10.5pt;
+	font-family:Consolas;
+	mso-ascii-font-family:Consolas;
+	mso-hansi-font-family:Consolas;}
+span.HeaderChar
+	{mso-style-name:"Header Char";
+	mso-style-priority:99;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:Header;}
+span.FooterChar
+	{mso-style-name:"Footer Char";
+	mso-style-priority:99;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:Footer;
+	mso-ansi-font-size:12.0pt;
+	font-family:Calibri;
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:minor-latin;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:minor-latin;}
+span.BalloonTextChar
+	{mso-style-name:"Balloon Text Char";
+	mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:"Balloon Text";
+	mso-ansi-font-size:8.0pt;
+	mso-bidi-font-size:8.0pt;
+	font-family:Tahoma;
+	mso-ascii-font-family:Tahoma;
+	mso-hansi-font-family:Tahoma;
+	mso-bidi-font-family:Tahoma;}
+span.TitleChar
+	{mso-style-name:"Title Char";
+	mso-style-priority:17;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:Title;
+	mso-ansi-font-size:18.0pt;
+	mso-bidi-font-size:26.0pt;
+	font-family:Calibri;
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:minor-latin;
+	mso-fareast-font-family:"\FF2D\FF33 \660E\671D";
+	mso-fareast-theme-font:major-fareast;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:minor-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:major-bidi;
+	color:black;
+	mso-themecolor:text1;
+	letter-spacing:.25pt;
+	mso-font-kerning:14.0pt;
+	font-weight:bold;
+	mso-bidi-font-weight:normal;}
+span.Heading1Char
+	{mso-style-name:"Heading 1 Char";
+	mso-style-priority:2;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:"Heading 1";
+	mso-ansi-font-size:14.0pt;
+	mso-bidi-font-size:14.0pt;
+	font-family:"\FF2D\FF33 \660E\671D";
+	mso-fareast-font-family:"\FF2D\FF33 \660E\671D";
+	mso-fareast-theme-font:major-fareast;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:major-bidi;
+	color:black;
+	mso-themecolor:text1;
+	mso-fareast-language:KO;
+	font-weight:bold;}
+span.Heading2Char
+	{mso-style-name:"Heading 2 Char";
+	mso-style-priority:2;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:"Heading 2";
+	mso-ansi-font-size:13.0pt;
+	mso-bidi-font-size:13.0pt;
+	font-family:"\FF2D\FF33 \660E\671D";
+	mso-fareast-font-family:"\FF2D\FF33 \660E\671D";
+	mso-fareast-theme-font:major-fareast;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:major-bidi;
+	color:black;
+	mso-fareast-language:KO;
+	font-weight:bold;}
+span.Heading3Char
+	{mso-style-name:"Heading 3 Char";
+	mso-style-priority:2;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:"Heading 3";
+	mso-ansi-font-size:12.0pt;
+	font-family:"\FF2D\FF33 \660E\671D";
+	mso-fareast-font-family:"\FF2D\FF33 \660E\671D";
+	mso-fareast-theme-font:major-fareast;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:major-bidi;
+	color:black;
+	mso-themecolor:text1;
+	mso-fareast-language:KO;
+	font-weight:bold;}
+span.Heading4Char
+	{mso-style-name:"Heading 4 Char";
+	mso-style-priority:16;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:"Heading 4";
+	mso-ansi-font-size:12.0pt;
+	font-family:"\FF2D\FF33 \660E\671D";
+	mso-fareast-font-family:"\FF2D\FF33 \660E\671D";
+	mso-fareast-theme-font:major-fareast;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:major-bidi;
+	mso-fareast-language:KO;
+	font-weight:bold;
+	mso-bidi-font-style:italic;}
+span.Heading5Char
+	{mso-style-name:"Heading 5 Char";
+	mso-style-noshow:yes;
+	mso-style-priority:16;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:"Heading 5";
+	mso-ansi-font-size:12.0pt;
+	font-family:"\FF2D\FF33 \660E\671D";
+	mso-fareast-font-family:"\FF2D\FF33 \660E\671D";
+	mso-fareast-theme-font:major-fareast;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:major-bidi;
+	color:black;
+	mso-themecolor:text1;
+	font-style:italic;
+	mso-bidi-font-style:normal;}
+span.Heading6Char
+	{mso-style-name:"Heading 6 Char";
+	mso-style-priority:16;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:"Heading 6";
+	mso-ansi-font-size:12.0pt;
+	font-family:"\FF2D\FF33 \660E\671D";
+	mso-fareast-font-family:"\FF2D\FF33 \660E\671D";
+	mso-fareast-theme-font:major-fareast;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:major-bidi;
+	color:#262626;
+	mso-themecolor:text1;
+	mso-themetint:217;
+	font-style:italic;}
+span.Heading7Char
+	{mso-style-name:"Heading 7 Char";
+	mso-style-noshow:yes;
+	mso-style-priority:16;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:"Heading 7";
+	mso-ansi-font-size:12.0pt;
+	font-family:"\FF2D\FF33 \660E\671D";
+	mso-fareast-font-family:"\FF2D\FF33 \660E\671D";
+	mso-fareast-theme-font:major-fareast;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:major-bidi;
+	color:#404040;
+	mso-themecolor:text1;
+	mso-themetint:191;
+	font-style:italic;}
+span.Heading8Char
+	{mso-style-name:"Heading 8 Char";
+	mso-style-noshow:yes;
+	mso-style-priority:16;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:"Heading 8";
+	mso-ansi-font-size:10.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:"\FF2D\FF33 \660E\671D";
+	mso-fareast-font-family:"\FF2D\FF33 \660E\671D";
+	mso-fareast-theme-font:major-fareast;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:major-bidi;
+	color:#404040;
+	mso-themecolor:text1;
+	mso-themetint:191;}
+span.Heading9Char
+	{mso-style-name:"Heading 9 Char";
+	mso-style-noshow:yes;
+	mso-style-priority:16;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:"Heading 9";
+	mso-ansi-font-size:10.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:"\FF2D\FF33 \660E\671D";
+	mso-fareast-font-family:"\FF2D\FF33 \660E\671D";
+	mso-fareast-theme-font:major-fareast;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:major-bidi;
+	color:#404040;
+	mso-themecolor:text1;
+	mso-themetint:191;
+	font-style:italic;}
+span.CommentTextChar
+	{mso-style-name:"Comment Text Char";
+	mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:"Comment Text";
+	mso-ansi-font-size:10.0pt;
+	mso-bidi-font-size:10.0pt;}
+span.CommentSubjectChar
+	{mso-style-name:"Comment Subject Char";
+	mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-parent:"Comment Text Char";
+	mso-style-link:"Comment Subject";
+	mso-ansi-font-size:10.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-weight:bold;}
+p.Heading, li.Heading, div.Heading
+	{mso-style-name:Heading;
+	mso-style-update:auto;
+	mso-style-priority:2;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-parent:"Heading 1";
+	mso-style-next:Normal;
+	margin-top:.25in;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:0in;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	mso-pagination:widow-orphan lines-together;
+	page-break-after:avoid;
+	mso-outline-level:1;
+	font-size:14.0pt;
+	font-family:Calibri;
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:major-latin;
+	mso-fareast-font-family:"\FF2D\FF33 \660E\671D";
+	mso-fareast-theme-font:major-fareast;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:major-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:major-bidi;
+	mso-fareast-language:KO;
+	font-weight:bold;}
+p.Author, li.Author, div.Author
+	{mso-style-name:Author;
+	mso-style-update:auto;
+	mso-style-priority:18;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-parent:Title;
+	mso-style-link:"Author Char";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:15.0pt;
+	margin-left:0in;
+	mso-add-space:auto;
+	text-align:center;
+	mso-pagination:widow-orphan;
+	border:none;
+	mso-border-bottom-alt:solid #4F81BD 1.0pt;
+	mso-border-bottom-themecolor:accent1;
+	padding:0in;
+	mso-padding-alt:0in 0in 10.0pt 0in;
+	font-size:14.0pt;
+	mso-bidi-font-size:16.0pt;
+	font-family:Calibri;
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:minor-latin;
+	mso-fareast-font-family:"\FF2D\FF33 \660E\671D";
+	mso-fareast-theme-font:major-fareast;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:minor-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:major-bidi;
+	letter-spacing:.25pt;
+	mso-font-kerning:14.0pt;
+	font-weight:bold;
+	mso-bidi-font-weight:normal;}
+p.AuthorCxSpFirst, li.AuthorCxSpFirst, div.AuthorCxSpFirst
+	{mso-style-name:AuthorCxSpFirst;
+	mso-style-update:auto;
+	mso-style-priority:18;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-parent:Title;
+	mso-style-link:"Author Char";
+	mso-style-type:export-only;
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-add-space:auto;
+	text-align:center;
+	mso-pagination:widow-orphan;
+	border:none;
+	mso-border-bottom-alt:solid #4F81BD 1.0pt;
+	mso-border-bottom-themecolor:accent1;
+	padding:0in;
+	mso-padding-alt:0in 0in 10.0pt 0in;
+	font-size:14.0pt;
+	mso-bidi-font-size:16.0pt;
+	font-family:Calibri;
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:minor-latin;
+	mso-fareast-font-family:"\FF2D\FF33 \660E\671D";
+	mso-fareast-theme-font:major-fareast;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:minor-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:major-bidi;
+	letter-spacing:.25pt;
+	mso-font-kerning:14.0pt;
+	font-weight:bold;
+	mso-bidi-font-weight:normal;}
+p.AuthorCxSpMiddle, li.AuthorCxSpMiddle, div.AuthorCxSpMiddle
+	{mso-style-name:AuthorCxSpMiddle;
+	mso-style-update:auto;
+	mso-style-priority:18;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-parent:Title;
+	mso-style-link:"Author Char";
+	mso-style-type:export-only;
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-add-space:auto;
+	text-align:center;
+	mso-pagination:widow-orphan;
+	border:none;
+	mso-border-bottom-alt:solid #4F81BD 1.0pt;
+	mso-border-bottom-themecolor:accent1;
+	padding:0in;
+	mso-padding-alt:0in 0in 10.0pt 0in;
+	font-size:14.0pt;
+	mso-bidi-font-size:16.0pt;
+	font-family:Calibri;
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:minor-latin;
+	mso-fareast-font-family:"\FF2D\FF33 \660E\671D";
+	mso-fareast-theme-font:major-fareast;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:minor-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:major-bidi;
+	letter-spacing:.25pt;
+	mso-font-kerning:14.0pt;
+	font-weight:bold;
+	mso-bidi-font-weight:normal;}
+p.AuthorCxSpLast, li.AuthorCxSpLast, div.AuthorCxSpLast
+	{mso-style-name:AuthorCxSpLast;
+	mso-style-update:auto;
+	mso-style-priority:18;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-parent:Title;
+	mso-style-link:"Author Char";
+	mso-style-type:export-only;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:15.0pt;
+	margin-left:0in;
+	mso-add-space:auto;
+	text-align:center;
+	mso-pagination:widow-orphan;
+	border:none;
+	mso-border-bottom-alt:solid #4F81BD 1.0pt;
+	mso-border-bottom-themecolor:accent1;
+	padding:0in;
+	mso-padding-alt:0in 0in 10.0pt 0in;
+	font-size:14.0pt;
+	mso-bidi-font-size:16.0pt;
+	font-family:Calibri;
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:minor-latin;
+	mso-fareast-font-family:"\FF2D\FF33 \660E\671D";
+	mso-fareast-theme-font:major-fareast;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:minor-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:major-bidi;
+	letter-spacing:.25pt;
+	mso-font-kerning:14.0pt;
+	font-weight:bold;
+	mso-bidi-font-weight:normal;}
+p.NoNumHead2, li.NoNumHead2, div.NoNumHead2
+	{mso-style-name:"NoNum Head2";
+	mso-style-update:auto;
+	mso-style-priority:14;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-parent:Heading;
+	mso-style-next:Normal;
+	margin-top:10.0pt;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:0in;
+	mso-pagination:widow-orphan lines-together;
+	page-break-after:avoid;
+	mso-outline-level:1;
+	font-size:13.0pt;
+	mso-bidi-font-size:14.0pt;
+	font-family:Calibri;
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:major-latin;
+	mso-fareast-font-family:"\FF2D\FF33 \660E\671D";
+	mso-fareast-theme-font:major-fareast;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:major-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:major-bidi;
+	mso-fareast-language:KO;
+	font-weight:bold;}
+span.AuthorChar
+	{mso-style-name:"Author Char";
+	mso-style-priority:18;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-parent:"Title Char";
+	mso-style-link:Author;
+	mso-ansi-font-size:14.0pt;
+	mso-bidi-font-size:16.0pt;
+	font-family:Calibri;
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:minor-latin;
+	mso-fareast-font-family:"\FF2D\FF33 \660E\671D";
+	mso-fareast-theme-font:major-fareast;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:minor-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:major-bidi;
+	color:black;
+	mso-themecolor:text1;
+	letter-spacing:.25pt;
+	mso-font-kerning:14.0pt;
+	font-weight:bold;
+	mso-bidi-font-weight:normal;}
+span.QuoteChar
+	{mso-style-name:"Quote Char";
+	mso-style-priority:29;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:Quote;
+	mso-ansi-font-size:12.0pt;
+	font-family:Calibri;
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:minor-latin;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:minor-latin;
+	color:black;
+	mso-themecolor:text1;
+	font-style:italic;}
+p.ListAlpha3, li.ListAlpha3, div.ListAlpha3
+	{mso-style-name:"List Alpha 3";
+	mso-style-priority:6;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-parent:"List Number 2";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:2.0pt;
+	margin-left:.75in;
+	text-indent:-.25in;
+	mso-pagination:widow-orphan;
+	mso-list:l11 level1 lfo7;
+	font-size:12.0pt;
+	font-family:Calibri;
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:minor-latin;
+	mso-fareast-font-family:"\FF2D\FF33 \660E\671D";
+	mso-fareast-theme-font:minor-fareast;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:minor-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:minor-bidi;}
+p.HDFFooter, li.HDFFooter, div.HDFFooter
+	{mso-style-name:"HDF Footer";
+	mso-style-priority:23;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-parent:Footer;
+	mso-style-link:"HDF Footer Char";
+	margin:0in;
+	margin-bottom:.0001pt;
+	text-align:right;
+	mso-pagination:widow-orphan;
+	tab-stops:center 3.25in right 6.5in;
+	border:none;
+	mso-border-top-alt:solid #4F81BD 1.0pt;
+	mso-border-top-themecolor:accent1;
+	padding:0in;
+	mso-padding-alt:1.0pt 0in 0in 0in;
+	font-size:12.0pt;
+	mso-bidi-font-size:11.0pt;
+	font-family:Calibri;
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:minor-latin;
+	mso-fareast-font-family:"\FF2D\FF33 \660E\671D";
+	mso-fareast-theme-font:minor-fareast;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:minor-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:minor-bidi;}
+p.THGHeader, li.THGHeader, div.THGHeader
+	{mso-style-name:"THG Header";
+	mso-style-priority:21;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-parent:Header;
+	mso-style-link:"THG Header Char";
+	margin:0in;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	mso-pagination:widow-orphan;
+	tab-stops:center 3.25in right 6.5in;
+	font-size:12.0pt;
+	mso-bidi-font-size:11.0pt;
+	font-family:Calibri;
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:minor-latin;
+	mso-fareast-font-family:"\FF2D\FF33 \660E\671D";
+	mso-fareast-theme-font:minor-fareast;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:minor-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:minor-bidi;}
+span.HDFFooterChar
+	{mso-style-name:"HDF Footer Char";
+	mso-style-priority:23;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-parent:"Footer Char";
+	mso-style-link:"HDF Footer";
+	mso-ansi-font-size:12.0pt;
+	font-family:Calibri;
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:minor-latin;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:minor-latin;}
+p.THGHeader2, li.THGHeader2, div.THGHeader2
+	{mso-style-name:"THG Header2";
+	mso-style-priority:22;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-parent:Header;
+	mso-style-link:"THG Header2 Char";
+	margin:0in;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	mso-pagination:widow-orphan;
+	tab-stops:center 3.25in right 6.5in;
+	border:none;
+	mso-border-bottom-alt:solid #4F81BD 1.0pt;
+	mso-border-bottom-themecolor:accent1;
+	padding:0in;
+	mso-padding-alt:0in 0in 1.0pt 0in;
+	font-size:12.0pt;
+	mso-bidi-font-size:11.0pt;
+	font-family:Calibri;
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:minor-latin;
+	mso-fareast-font-family:"\FF2D\FF33 \660E\671D";
+	mso-fareast-theme-font:minor-fareast;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:minor-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:minor-bidi;}
+span.THGHeaderChar
+	{mso-style-name:"THG Header Char";
+	mso-style-priority:21;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-parent:"Header Char";
+	mso-style-link:"THG Header";
+	mso-ansi-font-size:12.0pt;
+	font-family:Calibri;
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:minor-latin;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:minor-latin;}
+span.THGHeader2Char
+	{mso-style-name:"THG Header2 Char";
+	mso-style-priority:22;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-parent:"Header Char";
+	mso-style-link:"THG Header2";
+	mso-ansi-font-size:12.0pt;
+	font-family:Calibri;
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:minor-latin;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:minor-latin;}
+p.Abstract, li.Abstract, div.Abstract
+	{mso-style-name:Abstract;
+	mso-style-priority:19;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	margin-top:0in;
+	margin-right:.5in;
+	margin-bottom:6.0pt;
+	margin-left:.5in;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	mso-bidi-font-size:11.0pt;
+	font-family:Calibri;
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:minor-latin;
+	mso-fareast-font-family:"\FF2D\FF33 \660E\671D";
+	mso-fareast-theme-font:minor-fareast;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:minor-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:minor-bidi;}
+p.Divider, li.Divider, div.Divider
+	{mso-style-name:Divider;
+	mso-style-priority:20;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-parent:Author;
+	mso-style-next:"Heading 1";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:15.0pt;
+	margin-left:0in;
+	mso-add-space:auto;
+	text-align:center;
+	line-height:5%;
+	mso-pagination:widow-orphan;
+	border:none;
+	mso-border-bottom-alt:solid #4F81BD 1.0pt;
+	mso-border-bottom-themecolor:accent1;
+	padding:0in;
+	mso-padding-alt:0in 0in 10.0pt 0in;
+	font-size:11.0pt;
+	mso-bidi-font-size:16.0pt;
+	font-family:Calibri;
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:minor-latin;
+	mso-fareast-font-family:"\FF2D\FF33 \660E\671D";
+	mso-fareast-theme-font:major-fareast;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:minor-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:major-bidi;
+	letter-spacing:.25pt;
+	mso-font-kerning:14.0pt;}
+p.DividerCxSpFirst, li.DividerCxSpFirst, div.DividerCxSpFirst
+	{mso-style-name:DividerCxSpFirst;
+	mso-style-priority:20;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-parent:Author;
+	mso-style-next:"Heading 1";
+	mso-style-type:export-only;
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-add-space:auto;
+	text-align:center;
+	line-height:5%;
+	mso-pagination:widow-orphan;
+	border:none;
+	mso-border-bottom-alt:solid #4F81BD 1.0pt;
+	mso-border-bottom-themecolor:accent1;
+	padding:0in;
+	mso-padding-alt:0in 0in 10.0pt 0in;
+	font-size:11.0pt;
+	mso-bidi-font-size:16.0pt;
+	font-family:Calibri;
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:minor-latin;
+	mso-fareast-font-family:"\FF2D\FF33 \660E\671D";
+	mso-fareast-theme-font:major-fareast;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:minor-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:major-bidi;
+	letter-spacing:.25pt;
+	mso-font-kerning:14.0pt;}
+p.DividerCxSpMiddle, li.DividerCxSpMiddle, div.DividerCxSpMiddle
+	{mso-style-name:DividerCxSpMiddle;
+	mso-style-priority:20;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-parent:Author;
+	mso-style-next:"Heading 1";
+	mso-style-type:export-only;
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-add-space:auto;
+	text-align:center;
+	line-height:5%;
+	mso-pagination:widow-orphan;
+	border:none;
+	mso-border-bottom-alt:solid #4F81BD 1.0pt;
+	mso-border-bottom-themecolor:accent1;
+	padding:0in;
+	mso-padding-alt:0in 0in 10.0pt 0in;
+	font-size:11.0pt;
+	mso-bidi-font-size:16.0pt;
+	font-family:Calibri;
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:minor-latin;
+	mso-fareast-font-family:"\FF2D\FF33 \660E\671D";
+	mso-fareast-theme-font:major-fareast;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:minor-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:major-bidi;
+	letter-spacing:.25pt;
+	mso-font-kerning:14.0pt;}
+p.DividerCxSpLast, li.DividerCxSpLast, div.DividerCxSpLast
+	{mso-style-name:DividerCxSpLast;
+	mso-style-priority:20;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-parent:Author;
+	mso-style-next:"Heading 1";
+	mso-style-type:export-only;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:15.0pt;
+	margin-left:0in;
+	mso-add-space:auto;
+	text-align:center;
+	line-height:5%;
+	mso-pagination:widow-orphan;
+	border:none;
+	mso-border-bottom-alt:solid #4F81BD 1.0pt;
+	mso-border-bottom-themecolor:accent1;
+	padding:0in;
+	mso-padding-alt:0in 0in 10.0pt 0in;
+	font-size:11.0pt;
+	mso-bidi-font-size:16.0pt;
+	font-family:Calibri;
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:minor-latin;
+	mso-fareast-font-family:"\FF2D\FF33 \660E\671D";
+	mso-fareast-theme-font:major-fareast;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:minor-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:major-bidi;
+	letter-spacing:.25pt;
+	mso-font-kerning:14.0pt;}
+span.apple-style-span
+	{mso-style-name:apple-style-span;
+	mso-style-unhide:no;}
+span.FootnoteTextChar
+	{mso-style-name:"Footnote Text Char";
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:"Footnote Text";
+	mso-ansi-font-size:10.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:Calibri;
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:minor-latin;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:minor-latin;}
+span.HTMLPreformattedChar
+	{mso-style-name:"HTML Preformatted Char";
+	mso-style-priority:99;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:"HTML Preformatted";
+	mso-ansi-font-size:10.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:"Courier New";
+	mso-ascii-font-family:"Courier New";
+	mso-fareast-font-family:"Times New Roman";
+	mso-hansi-font-family:"Courier New";
+	mso-bidi-font-family:"Courier New";}
+.MsoChpDefault
+	{mso-style-type:export-only;
+	mso-default-props:yes;
+	font-size:11.0pt;
+	mso-ansi-font-size:11.0pt;
+	mso-bidi-font-size:11.0pt;
+	font-family:Calibri;
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:major-latin;
+	mso-fareast-font-family:"\FF2D\FF33 \660E\671D";
+	mso-fareast-theme-font:minor-fareast;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:major-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:minor-bidi;}
+ /* Page Definitions */
+@page
+	{mso-page-border-surround-header:no;
+	mso-page-border-surround-footer:no;
+	mso-footnote-separator:url(":H5edit_User_Guide_files:header.htm") fs;
+	mso-footnote-continuation-separator:url(":H5edit_User_Guide_files:header.htm") fcs;
+	mso-endnote-separator:url(":H5edit_User_Guide_files:header.htm") es;
+	mso-endnote-continuation-separator:url(":H5edit_User_Guide_files:header.htm") ecs;}
+@page WordSection1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.0in 1.0in 1.0in;
+	mso-header-margin:.5in;
+	mso-footer-margin:.5in;
+	mso-footer:url(":H5edit_User_Guide_files:header.htm") f1;
+	mso-first-header:url(":H5edit_User_Guide_files:header.htm") fh1;
+	mso-first-footer:url(":H5edit_User_Guide_files:header.htm") ff1;
+	mso-paper-source:0;}
+div.WordSection1
+	{page:WordSection1;}
+ /* List Definitions */
+@list l0
+	{mso-list-id:-132;
+	mso-list-type:simple;
+	mso-list-template-ids:353639702;}
+@list l0:level1
+	{mso-level-style-link:"List Number 5";
+	mso-level-text:"%1\)";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:1.25in;
+	text-indent:-.25in;}
+@list l1
+	{mso-list-id:-131;
+	mso-list-type:simple;
+	mso-list-template-ids:1697575730;}
+@list l1:level1
+	{mso-level-style-link:"List Number 4";
+	mso-level-text:"%1\)";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:1.0in;
+	text-indent:-.25in;}
+@list l2
+	{mso-list-id:-130;
+	mso-list-type:simple;
+	mso-list-template-ids:-1223804746;}
+@list l2:level1
+	{mso-level-style-link:"List Number 3";
+	mso-level-text:"%1\)";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:.75in;
+	text-indent:-.25in;}
+@list l3
+	{mso-list-id:-120;
+	mso-list-type:simple;
+	mso-list-template-ids:421692110;}
+@list l3:level1
+	{mso-level-style-link:"List Number";
+	mso-level-text:"%1\)";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:.25in;
+	text-indent:-.25in;}
+@list l4
+	{mso-list-id:123279976;
+	mso-list-template-ids:-369746854;}
+@list l4:level1
+	{mso-level-text:%1;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:.3in;
+	text-indent:-.3in;
+	mso-ansi-font-size:14.0pt;
+	mso-bidi-font-size:14.0pt;}
+@list l4:level2
+	{mso-level-text:"%1\.%2";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:.4in;
+	text-indent:-.4in;
+	mso-ansi-font-size:13.0pt;
+	mso-bidi-font-size:13.0pt;}
+@list l4:level3
+	{mso-level-text:"%1\.%2\.%3";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:.5in;
+	text-indent:-.5in;}
+@list l4:level4
+	{mso-level-text:"%1\.%2\.%3\.%4";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:.6in;
+	text-indent:-.6in;}
+@list l4:level5
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:.7in;
+	text-indent:-.7in;}
+@list l4:level6
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.%6";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:.8in;
+	text-indent:-.8in;}
+@list l4:level7
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.%6\.%7";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:.9in;
+	text-indent:-.9in;}
+@list l4:level8
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.%6\.%7\.%8";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:1.0in;
+	text-indent:-1.0in;}
+@list l4:level9
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.%6\.%7\.%8\.%9";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:1.1in;
+	text-indent:-1.1in;}
+@list l5
+	{mso-list-id:188613894;
+	mso-list-type:hybrid;
+	mso-list-template-ids:155120762 67698689 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;}
+@list l5:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:.75in;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l5:level2
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:1.25in;
+	text-indent:-.25in;
+	font-family:"Courier New";
+	mso-bidi-font-family:Symbol;}
+@list l5:level3
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:1.75in;
+	text-indent:-.25in;
+	font-family:Wingdings;}
+@list l5:level4
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:2.25in;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l5:level5
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:2.75in;
+	text-indent:-.25in;
+	font-family:"Courier New";
+	mso-bidi-font-family:Symbol;}
+@list l5:level6
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:3.25in;
+	text-indent:-.25in;
+	font-family:Wingdings;}
+@list l5:level7
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:3.75in;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l5:level8
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:4.25in;
+	text-indent:-.25in;
+	font-family:"Courier New";
+	mso-bidi-font-family:Symbol;}
+@list l5:level9
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:4.75in;
+	text-indent:-.25in;
+	font-family:Wingdings;}
+@list l6
+	{mso-list-id:191696689;
+	mso-list-type:hybrid;
+	mso-list-template-ids:342771644 67698689 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;}
+@list l6:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:.25in;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l6:level2
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:.75in;
+	text-indent:-.25in;
+	font-family:"Courier New";}
+@list l6:level3
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:1.25in;
+	text-indent:-.25in;
+	font-family:Wingdings;}
+@list l6:level4
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:1.75in;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l6:level5
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:2.25in;
+	text-indent:-.25in;
+	font-family:"Courier New";}
+@list l6:level6
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:2.75in;
+	text-indent:-.25in;
+	font-family:Wingdings;}
+@list l6:level7
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:3.25in;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l6:level8
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:3.75in;
+	text-indent:-.25in;
+	font-family:"Courier New";}
+@list l6:level9
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:4.25in;
+	text-indent:-.25in;
+	font-family:Wingdings;}
+@list l7
+	{mso-list-id:287707505;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-1943664800 67698689 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;}
+@list l7:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:.75in;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l7:level2
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:1.25in;
+	text-indent:-.25in;
+	font-family:"Courier New";
+	mso-bidi-font-family:Symbol;}
+@list l7:level3
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:1.75in;
+	text-indent:-.25in;
+	font-family:Wingdings;}
+@list l7:level4
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:2.25in;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l7:level5
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:2.75in;
+	text-indent:-.25in;
+	font-family:"Courier New";
+	mso-bidi-font-family:Symbol;}
+@list l7:level6
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:3.25in;
+	text-indent:-.25in;
+	font-family:Wingdings;}
+@list l7:level7
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:3.75in;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l7:level8
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:4.25in;
+	text-indent:-.25in;
+	font-family:"Courier New";
+	mso-bidi-font-family:Symbol;}
+@list l7:level9
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:4.75in;
+	text-indent:-.25in;
+	font-family:Wingdings;}
+@list l8
+	{mso-list-id:384106752;
+	mso-list-template-ids:-1895790806;}
+@list l8:level1
+	{mso-level-text:%1;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:.3in;
+	text-indent:-.3in;
+	mso-ansi-font-size:14.0pt;
+	mso-bidi-font-size:14.0pt;}
+@list l8:level2
+	{mso-level-text:"%1\.%2";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:.4in;
+	text-indent:-.4in;
+	mso-ansi-font-size:13.0pt;
+	mso-bidi-font-size:13.0pt;}
+@list l8:level3
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:.5in;
+	text-indent:-.5in;
+	font-family:Symbol;}
+@list l8:level4
+	{mso-level-text:"%1\.%2\.%3\.%4";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:.6in;
+	text-indent:-.6in;}
+@list l8:level5
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:.7in;
+	text-indent:-.7in;}
+@list l8:level6
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.%6";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:.8in;
+	text-indent:-.8in;}
+@list l8:level7
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.%6\.%7";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:.9in;
+	text-indent:-.9in;}
+@list l8:level8
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.%6\.%7\.%8";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:1.0in;
+	text-indent:-1.0in;}
+@list l8:level9
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.%6\.%7\.%8\.%9";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:1.1in;
+	text-indent:-1.1in;}
+@list l9
+	{mso-list-id:410853435;
+	mso-list-type:hybrid;
+	mso-list-template-ids:1571709354 67698689 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;}
+@list l9:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l9:level2
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:"Courier New";}
+@list l9:level3
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Wingdings;}
+@list l9:level4
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l9:level5
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:"Courier New";}
+@list l9:level6
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Wingdings;}
+@list l9:level7
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l9:level8
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:"Courier New";}
+@list l9:level9
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Wingdings;}
+@list l10
+	{mso-list-id:483350565;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-296831752 -630544370 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;}
+@list l10:level1
+	{mso-level-start-at:0;
+	mso-level-number-format:bullet;
+	mso-level-text:\F0D8;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:.25in;
+	text-indent:-.25in;
+	font-family:Wingdings;
+	mso-fareast-font-family:"\FF2D\FF33 \660E\671D";
+	mso-fareast-theme-font:minor-fareast;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:minor-bidi;
+	mso-ansi-font-style:normal;}
+@list l10:level2
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:.75in;
+	text-indent:-.25in;
+	font-family:"Courier New";
+	mso-bidi-font-family:Symbol;}
+@list l10:level3
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:1.25in;
+	text-indent:-.25in;
+	font-family:Wingdings;}
+@list l10:level4
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:1.75in;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l10:level5
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:2.25in;
+	text-indent:-.25in;
+	font-family:"Courier New";
+	mso-bidi-font-family:Symbol;}
+@list l10:level6
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:2.75in;
+	text-indent:-.25in;
+	font-family:Wingdings;}
+@list l10:level7
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:3.25in;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l10:level8
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:3.75in;
+	text-indent:-.25in;
+	font-family:"Courier New";
+	mso-bidi-font-family:Symbol;}
+@list l10:level9
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:4.25in;
+	text-indent:-.25in;
+	font-family:Wingdings;}
+@list l11
+	{mso-list-id:527642120;
+	mso-list-type:hybrid;
+	mso-list-template-ids:1242469162 814234818 67698713 67698715 67698703 67698713 67698715 67698703 67698713 67698715;}
+@list l11:level1
+	{mso-level-number-format:alpha-lower;
+	mso-level-style-link:"List Alpha 3";
+	mso-level-text:"%1\)";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:.75in;
+	text-indent:-.25in;}
+@list l11:level2
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:1.25in;
+	text-indent:-.25in;}
+@list l11:level3
+	{mso-level-number-format:roman-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:right;
+	margin-left:1.75in;
+	text-indent:-9.0pt;}
+@list l11:level4
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:2.25in;
+	text-indent:-.25in;}
+@list l11:level5
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:2.75in;
+	text-indent:-.25in;}
+@list l11:level6
+	{mso-level-number-format:roman-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:right;
+	margin-left:3.25in;
+	text-indent:-9.0pt;}
+@list l11:level7
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:3.75in;
+	text-indent:-.25in;}
+@list l11:level8
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:4.25in;
+	text-indent:-.25in;}
+@list l11:level9
+	{mso-level-number-format:roman-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:right;
+	margin-left:4.75in;
+	text-indent:-9.0pt;}
+@list l12
+	{mso-list-id:643391761;
+	mso-list-type:hybrid;
+	mso-list-template-ids:843358734 67698689 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;}
+@list l12:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l12:level2
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:"Courier New";}
+@list l12:level3
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Wingdings;}
+@list l12:level4
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l12:level5
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:"Courier New";}
+@list l12:level6
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Wingdings;}
+@list l12:level7
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l12:level8
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:"Courier New";}
+@list l12:level9
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Wingdings;}
+@list l13
+	{mso-list-id:756174710;
+	mso-list-type:hybrid;
+	mso-list-template-ids:1155034104 67698689 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;}
+@list l13:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:.75in;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l13:level2
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:1.25in;
+	text-indent:-.25in;
+	font-family:"Courier New";
+	mso-bidi-font-family:Symbol;}
+@list l13:level3
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:1.75in;
+	text-indent:-.25in;
+	font-family:Wingdings;}
+@list l13:level4
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:2.25in;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l13:level5
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:2.75in;
+	text-indent:-.25in;
+	font-family:"Courier New";
+	mso-bidi-font-family:Symbol;}
+@list l13:level6
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:3.25in;
+	text-indent:-.25in;
+	font-family:Wingdings;}
+@list l13:level7
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:3.75in;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l13:level8
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:4.25in;
+	text-indent:-.25in;
+	font-family:"Courier New";
+	mso-bidi-font-family:Symbol;}
+@list l13:level9
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:4.75in;
+	text-indent:-.25in;
+	font-family:Wingdings;}
+@list l14
+	{mso-list-id:761025798;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-1502726258 67698689 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;}
+@list l14:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l14:level2
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:"Courier New";
+	mso-bidi-font-family:Symbol;}
+@list l14:level3
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Wingdings;}
+@list l14:level4
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l14:level5
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:"Courier New";
+	mso-bidi-font-family:Symbol;}
+@list l14:level6
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Wingdings;}
+@list l14:level7
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l14:level8
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:"Courier New";
+	mso-bidi-font-family:Symbol;}
+@list l14:level9
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Wingdings;}
+@list l15
+	{mso-list-id:847839750;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-1052357354 67698689 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;}
+@list l15:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l15:level2
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:"Courier New";
+	mso-bidi-font-family:"Times New Roman";}
+@list l15:level3
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Wingdings;}
+@list l15:level4
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l15:level5
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:"Courier New";
+	mso-bidi-font-family:"Times New Roman";}
+@list l15:level6
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Wingdings;}
+@list l15:level7
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l15:level8
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:"Courier New";
+	mso-bidi-font-family:"Times New Roman";}
+@list l15:level9
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Wingdings;}
+@list l16
+	{mso-list-id:864054396;
+	mso-list-type:hybrid;
+	mso-list-template-ids:1513808792 67698689 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;}
+@list l16:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l16:level2
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:"Courier New";
+	mso-bidi-font-family:Symbol;}
+@list l16:level3
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Wingdings;}
+@list l16:level4
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l16:level5
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:"Courier New";
+	mso-bidi-font-family:Symbol;}
+@list l16:level6
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Wingdings;}
+@list l16:level7
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l16:level8
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:"Courier New";
+	mso-bidi-font-family:Symbol;}
+@list l16:level9
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Wingdings;}
+@list l17
+	{mso-list-id:944077487;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-33652622 -630544370 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;}
+@list l17:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0D8;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Wingdings;
+	mso-fareast-font-family:"\FF2D\FF33 \660E\671D";
+	mso-fareast-theme-font:minor-fareast;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:minor-bidi;
+	mso-ansi-font-style:normal;}
+@list l17:level2
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:"Courier New";
+	mso-bidi-font-family:Symbol;}
+@list l17:level3
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Wingdings;}
+@list l17:level4
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l17:level5
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:"Courier New";
+	mso-bidi-font-family:Symbol;}
+@list l17:level6
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Wingdings;}
+@list l17:level7
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l17:level8
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:"Courier New";
+	mso-bidi-font-family:Symbol;}
+@list l17:level9
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Wingdings;}
+@list l18
+	{mso-list-id:1062680336;
+	mso-list-type:hybrid;
+	mso-list-template-ids:859870502 67698703 67698713 67698715 67698703 67698713 67698715 67698703 67698713 67698715;}
+@list l18:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l18:level2
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l18:level3
+	{mso-level-number-format:roman-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:right;
+	text-indent:-9.0pt;}
+@list l18:level4
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l18:level5
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l18:level6
+	{mso-level-number-format:roman-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:right;
+	text-indent:-9.0pt;}
+@list l18:level7
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l18:level8
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l18:level9
+	{mso-level-number-format:roman-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:right;
+	text-indent:-9.0pt;}
+@list l19
+	{mso-list-id:1412851274;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-1112654300 67698689 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;}
+@list l19:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l19:level2
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:"Courier New";
+	mso-bidi-font-family:Symbol;}
+@list l19:level3
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Wingdings;}
+@list l19:level4
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l19:level5
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:"Courier New";
+	mso-bidi-font-family:Symbol;}
+@list l19:level6
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Wingdings;}
+@list l19:level7
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l19:level8
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:"Courier New";
+	mso-bidi-font-family:Symbol;}
+@list l19:level9
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Wingdings;}
+@list l20
+	{mso-list-id:1497258740;
+	mso-list-type:hybrid;
+	mso-list-template-ids:276461694 67698689 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;}
+@list l20:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l20:level2
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:"Courier New";
+	mso-bidi-font-family:Symbol;}
+@list l20:level3
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Wingdings;}
+@list l20:level4
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l20:level5
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:"Courier New";
+	mso-bidi-font-family:Symbol;}
+@list l20:level6
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Wingdings;}
+@list l20:level7
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l20:level8
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:"Courier New";
+	mso-bidi-font-family:Symbol;}
+@list l20:level9
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Wingdings;}
+@list l21
+	{mso-list-id:1520587456;
+	mso-list-type:hybrid;
+	mso-list-template-ids:881365630 67698689 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;}
+@list l21:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l21:level2
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:"Courier New";
+	mso-bidi-font-family:Symbol;}
+@list l21:level3
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Wingdings;}
+@list l21:level4
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l21:level5
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:"Courier New";
+	mso-bidi-font-family:Symbol;}
+@list l21:level6
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Wingdings;}
+@list l21:level7
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l21:level8
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:"Courier New";
+	mso-bidi-font-family:Symbol;}
+@list l21:level9
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Wingdings;}
+@list l22
+	{mso-list-id:1534533606;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-1072786890 67698703 67698713 67698715 67698703 67698713 67698715 67698703 67698713 67698715;}
+@list l22:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:.9in;
+	text-indent:-.25in;}
+@list l22:level2
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:1.4in;
+	text-indent:-.25in;}
+@list l22:level3
+	{mso-level-number-format:roman-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:right;
+	margin-left:1.9in;
+	text-indent:-9.0pt;}
+@list l22:level4
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:2.4in;
+	text-indent:-.25in;}
+@list l22:level5
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:2.9in;
+	text-indent:-.25in;}
+@list l22:level6
+	{mso-level-number-format:roman-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:right;
+	margin-left:3.4in;
+	text-indent:-9.0pt;}
+@list l22:level7
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:3.9in;
+	text-indent:-.25in;}
+@list l22:level8
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:4.4in;
+	text-indent:-.25in;}
+@list l22:level9
+	{mso-level-number-format:roman-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:right;
+	margin-left:4.9in;
+	text-indent:-9.0pt;}
+@list l23
+	{mso-list-id:1546407383;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-684807898 67698703 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;}
+@list l23:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l23:level2
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:"Courier New";
+	mso-bidi-font-family:Symbol;}
+@list l23:level3
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Wingdings;}
+@list l23:level4
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l23:level5
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:"Courier New";
+	mso-bidi-font-family:Symbol;}
+@list l23:level6
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Wingdings;}
+@list l23:level7
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l23:level8
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:"Courier New";
+	mso-bidi-font-family:Symbol;}
+@list l23:level9
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Wingdings;}
+@list l24
+	{mso-list-id:1578635140;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-74647786 67698689 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;}
+@list l24:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l24:level2
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:"Courier New";
+	mso-bidi-font-family:Symbol;}
+@list l24:level3
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Wingdings;}
+@list l24:level4
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l24:level5
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:"Courier New";
+	mso-bidi-font-family:Symbol;}
+@list l24:level6
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Wingdings;}
+@list l24:level7
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l24:level8
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:"Courier New";
+	mso-bidi-font-family:Symbol;}
+@list l24:level9
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Wingdings;}
+@list l25
+	{mso-list-id:1655376175;
+	mso-list-type:hybrid;
+	mso-list-template-ids:475423920 67698703 67698713 67698715 67698703 67698713 67698715 67698703 67698713 67698715;}
+@list l25:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:38.65pt;
+	text-indent:-.25in;}
+@list l25:level2
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:74.65pt;
+	text-indent:-.25in;}
+@list l25:level3
+	{mso-level-number-format:roman-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:right;
+	margin-left:110.65pt;
+	text-indent:-9.0pt;}
+@list l25:level4
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:146.65pt;
+	text-indent:-.25in;}
+@list l25:level5
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:182.65pt;
+	text-indent:-.25in;}
+@list l25:level6
+	{mso-level-number-format:roman-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:right;
+	margin-left:218.65pt;
+	text-indent:-9.0pt;}
+@list l25:level7
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:254.65pt;
+	text-indent:-.25in;}
+@list l25:level8
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:290.65pt;
+	text-indent:-.25in;}
+@list l25:level9
+	{mso-level-number-format:roman-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:right;
+	margin-left:326.65pt;
+	text-indent:-9.0pt;}
+@list l26
+	{mso-list-id:1743137176;
+	mso-list-type:hybrid;
+	mso-list-template-ids:837347162 67698689 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;}
+@list l26:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:.75in;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l26:level2
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:1.25in;
+	text-indent:-.25in;
+	font-family:"Courier New";
+	mso-bidi-font-family:Symbol;}
+@list l26:level3
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:1.75in;
+	text-indent:-.25in;
+	font-family:Wingdings;}
+@list l26:level4
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:2.25in;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l26:level5
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:2.75in;
+	text-indent:-.25in;
+	font-family:"Courier New";
+	mso-bidi-font-family:Symbol;}
+@list l26:level6
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:3.25in;
+	text-indent:-.25in;
+	font-family:Wingdings;}
+@list l26:level7
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:3.75in;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l26:level8
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:4.25in;
+	text-indent:-.25in;
+	font-family:"Courier New";
+	mso-bidi-font-family:Symbol;}
+@list l26:level9
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:4.75in;
+	text-indent:-.25in;
+	font-family:Wingdings;}
+@list l27
+	{mso-list-id:1870877347;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-368438184 -217268662 67698713 67698715 67698703 67698713 67698715 67698703 67698713 67698715;}
+@list l27:level1
+	{mso-level-style-link:"List Number 2";
+	mso-level-text:"%1\)";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	mso-ansi-font-style:normal;}
+@list l27:level2
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l27:level3
+	{mso-level-number-format:roman-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:right;
+	text-indent:-9.0pt;}
+@list l27:level4
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l27:level5
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l27:level6
+	{mso-level-number-format:roman-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:right;
+	text-indent:-9.0pt;}
+@list l27:level7
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l27:level8
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l27:level9
+	{mso-level-number-format:roman-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:right;
+	text-indent:-9.0pt;}
+@list l28
+	{mso-list-id:1877504704;
+	mso-list-template-ids:-869750820;}
+@list l28:level1
+	{mso-level-text:%1;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:.3in;
+	text-indent:-.3in;
+	mso-ansi-font-size:14.0pt;
+	mso-bidi-font-size:14.0pt;}
+@list l28:level2
+	{mso-level-text:"%1\.%2";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:.4in;
+	text-indent:-.4in;
+	mso-ansi-font-size:13.0pt;
+	mso-bidi-font-size:13.0pt;}
+@list l28:level3
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:.5in;
+	text-indent:-.5in;
+	font-family:Symbol;}
+@list l28:level4
+	{mso-level-text:"%1\.%2\.%3\.%4";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:.6in;
+	text-indent:-.6in;}
+@list l28:level5
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:.7in;
+	text-indent:-.7in;}
+@list l28:level6
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.%6";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:.8in;
+	text-indent:-.8in;}
+@list l28:level7
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.%6\.%7";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:.9in;
+	text-indent:-.9in;}
+@list l28:level8
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.%6\.%7\.%8";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:1.0in;
+	text-indent:-1.0in;}
+@list l28:level9
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.%6\.%7\.%8\.%9";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:1.1in;
+	text-indent:-1.1in;}
+@list l29
+	{mso-list-id:2003462961;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-11371268 67698689 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;}
+@list l29:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:.25in;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l29:level2
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:.75in;
+	text-indent:-.25in;
+	font-family:"Courier New";
+	mso-bidi-font-family:Symbol;}
+@list l29:level3
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:1.25in;
+	text-indent:-.25in;
+	font-family:Wingdings;}
+@list l29:level4
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:1.75in;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l29:level5
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:2.25in;
+	text-indent:-.25in;
+	font-family:"Courier New";
+	mso-bidi-font-family:Symbol;}
+@list l29:level6
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:2.75in;
+	text-indent:-.25in;
+	font-family:Wingdings;}
+@list l29:level7
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:3.25in;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l29:level8
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:3.75in;
+	text-indent:-.25in;
+	font-family:"Courier New";
+	mso-bidi-font-family:Symbol;}
+@list l29:level9
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:4.25in;
+	text-indent:-.25in;
+	font-family:Wingdings;}
+@list l30
+	{mso-list-id:2061632571;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-1072786890 67698703 67698713 67698715 67698703 67698713 67698715 67698703 67698713 67698715;}
+@list l30:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:.9in;
+	text-indent:-.25in;}
+@list l30:level2
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:1.4in;
+	text-indent:-.25in;}
+@list l30:level3
+	{mso-level-number-format:roman-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:right;
+	margin-left:1.9in;
+	text-indent:-9.0pt;}
+@list l30:level4
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:2.4in;
+	text-indent:-.25in;}
+@list l30:level5
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:2.9in;
+	text-indent:-.25in;}
+@list l30:level6
+	{mso-level-number-format:roman-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:right;
+	margin-left:3.4in;
+	text-indent:-9.0pt;}
+@list l30:level7
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:3.9in;
+	text-indent:-.25in;}
+@list l30:level8
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:4.4in;
+	text-indent:-.25in;}
+@list l30:level9
+	{mso-level-number-format:roman-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:right;
+	margin-left:4.9in;
+	text-indent:-9.0pt;}
+@list l31
+	{mso-list-id:2080782362;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-574578592 -630544370 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;}
+@list l31:level1
+	{mso-level-start-at:0;
+	mso-level-number-format:bullet;
+	mso-level-text:\F0D8;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Wingdings;
+	mso-fareast-font-family:"\FF2D\FF33 \660E\671D";
+	mso-fareast-theme-font:minor-fareast;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:minor-bidi;
+	mso-ansi-font-style:normal;}
+@list l31:level2
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:"Courier New";
+	mso-bidi-font-family:Symbol;}
+@list l31:level3
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Wingdings;}
+@list l31:level4
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l31:level5
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:"Courier New";
+	mso-bidi-font-family:Symbol;}
+@list l31:level6
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Wingdings;}
+@list l31:level7
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l31:level8
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:"Courier New";
+	mso-bidi-font-family:Symbol;}
+@list l31:level9
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Wingdings;}
+@list l32
+	{mso-list-id:2118980961;
+	mso-list-template-ids:-1658673004;}
+@list l32:level1
+	{mso-level-style-link:"Heading 1";
+	mso-level-text:%1;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:.3in;
+	text-indent:-.3in;}
+@list l32:level2
+	{mso-level-style-link:"Heading 2";
+	mso-level-text:"%1\.%2";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:.4in;
+	text-indent:-.4in;}
+@list l32:level3
+	{mso-level-style-link:"Heading 3";
+	mso-level-text:"%1\.%2\.%3";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:.5in;
+	text-indent:-.5in;}
+@list l32:level4
+	{mso-level-style-link:"Heading 4";
+	mso-level-text:"%1\.%2\.%3\.%4";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:.6in;
+	text-indent:-.6in;}
+@list l32:level5
+	{mso-level-style-link:"Heading 5";
+	mso-level-text:"%1\.%2\.%3\.%4\.%5";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:.7in;
+	text-indent:-.7in;}
+@list l32:level6
+	{mso-level-style-link:"Heading 6";
+	mso-level-text:"%1\.%2\.%3\.%4\.%5\.%6";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:.8in;
+	text-indent:-.8in;}
+@list l32:level7
+	{mso-level-style-link:"Heading 7";
+	mso-level-text:"%1\.%2\.%3\.%4\.%5\.%6\.%7";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:.9in;
+	text-indent:-.9in;}
+@list l32:level8
+	{mso-level-style-link:"Heading 8";
+	mso-level-text:"%1\.%2\.%3\.%4\.%5\.%6\.%7\.%8";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:1.0in;
+	text-indent:-1.0in;}
+@list l32:level9
+	{mso-level-style-link:"Heading 9";
+	mso-level-text:"%1\.%2\.%3\.%4\.%5\.%6\.%7\.%8\.%9";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:1.1in;
+	text-indent:-1.1in;}
+@list l4:level1 lfo27
+	{mso-level-start-at:4;}
+ol
+	{margin-bottom:0in;}
+ul
+	{margin-bottom:0in;}
+-->
+</style>
+<!--[if gte mso 10]>
+<style>
+ /* Style Definitions */
+table.MsoNormalTable
+	{mso-style-name:"Table Normal";
+	mso-tstyle-rowband-size:0;
+	mso-tstyle-colband-size:0;
+	mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-style-parent:"";
+	mso-padding-alt:0in 5.4pt 0in 5.4pt;
+	mso-para-margin:0in;
+	mso-para-margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:11.0pt;
+	font-family:Calibri;
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:major-latin;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:major-latin;}
+table.MsoTableGrid
+	{mso-style-name:"Table Grid";
+	mso-tstyle-rowband-size:0;
+	mso-tstyle-colband-size:0;
+	mso-style-priority:59;
+	mso-style-unhide:no;
+	border:solid black 1.0pt;
+	mso-border-themecolor:text1;
+	mso-border-alt:solid black .5pt;
+	mso-border-themecolor:text1;
+	mso-padding-alt:0in 5.4pt 0in 5.4pt;
+	mso-border-insideh:.5pt solid black;
+	mso-border-insideh-themecolor:text1;
+	mso-border-insidev:.5pt solid black;
+	mso-border-insidev-themecolor:text1;
+	mso-para-margin:0in;
+	mso-para-margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:11.0pt;
+	font-family:Calibri;
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:major-latin;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:major-latin;}
+</style>
+<![endif]--><!--[if gte mso 9]><xml>
+ <o:shapedefaults v:ext="edit" spidmax="2051"/>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <o:shapelayout v:ext="edit">
+  <o:idmap v:ext="edit" data="1"/>
+ </o:shapelayout></xml><![endif]-->
+</head>
+
+<body lang=EN-US link=blue vlink=purple style='tab-interval:.5in'>
+
+<div class=WordSection1>
+
+<p class=MsoTitle>h5edit User Guide</p>
+
+<div style='mso-element:para-border-div;border:none;border-bottom:solid #4F81BD 1.0pt;
+mso-border-bottom-themecolor:accent1;padding:0in 0in 10.0pt 0in'>
+
+<p class=Author>Version 1.2.1</p>
+
+</div>
+
+<h1 style='mso-list:l32 level1 lfo35'><![if !supportLists]><span
+style='mso-fareast-font-family:Calibri;mso-fareast-theme-font:major-latin;
+mso-bidi-font-family:Calibri;mso-bidi-theme-font:major-latin'><span
+style='mso-list:Ignore'>1<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style='mso-fareast-font-family:"Times New Roman"'>Introduction<o:p></o:p></span></h1>
+
+<p class=MsoNormal><span style='mso-fareast-font-family:"Times New Roman"'>The
+h5edit tool is an HDF5 file editor. It supports commands to modify the contents
+of an existing HDF5 file. It enables HDF5 users to modify an HDF5 file without
+resorting to technical programming. Its intent is for small scale modification
+of the file. Data intensive changes to the file, such as those involving hundreds
+of data points, may not be executed in an efficient speed.<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='mso-fareast-font-family:"Times New Roman"'>Here
+are some simple examples of using the H5edit tool.<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left'><span style='font-size:
+10.0pt;font-family:"Courier New";mso-fareast-font-family:"Times New Roman"'>$
+h5edit -c ”DELETE /sta1/month12/temperature;” greenland.h5<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='mso-fareast-font-family:"Times New Roman"'>This
+deletes the attribute <i style='mso-bidi-font-style:normal'>temperature </i>from
+dataset <i style='mso-bidi-font-style:normal'>/sta1/month12 </i>in the HDF5
+data file g<i style='mso-bidi-font-style:normal'>reenland.h5.<o:p></o:p></i></span></p>
+
+<p class=MsoNormal align=left style='text-align:left'><span style='font-size:
+10.0pt;font-family:"Courier New";mso-fareast-font-family:"Times New Roman"'>$
+h5edit &#8211;c ”CREATE /sta1/month12/temperature {{-40.0}};” greenland.h5<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='mso-fareast-font-family:"Times New Roman"'>This
+creates in dataset /sta1/month12, a new attribute <i style='mso-bidi-font-style:
+normal'>temperature, </i>which is of the datatype of H5T_NATIVE_FLOAT and
+dataspace of SCALAR (single data) with the value of -40.0, in the HDF5 data
+file <i style='mso-bidi-font-style:normal'>greenland.h5.</i> Note that if the
+above two commands are executed in sequence, they have the net effect of changing
+the value of the attribute <i style='mso-bidi-font-style:normal'>temperature.</i>
+(The CHANGE command is not supported but will be implemented in the future.)<o:p></o:p></span></p>
+
+<h1 style='mso-list:l32 level1 lfo35'><![if !supportLists]><span
+style='mso-fareast-font-family:Calibri;mso-fareast-theme-font:major-latin;
+mso-bidi-font-family:Calibri;mso-bidi-theme-font:major-latin'><span
+style='mso-list:Ignore'>2<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style='mso-fareast-font-family:"Times New Roman"'>Commands
+Supported<o:p></o:p></span></h1>
+
+<h2 style='mso-list:l32 level2 lfo35'><![if !supportLists]><span
+style='mso-fareast-font-family:Calibri;mso-fareast-theme-font:major-latin;
+mso-bidi-font-family:Calibri;mso-bidi-theme-font:major-latin'><span
+style='mso-list:Ignore'>2.1<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>Kinds of Commands</h2>
+
+<p class=MsoNormal><span style='mso-fareast-language:KO'>This version of H5edit
+supports five kinds of commands, CREATE, COPY, DELETE, MODIFY, and RENAME. Their
+functions are described here and examples are shown in the Examples section.<o:p></o:p></span></p>
+
+<h3 style='mso-list:l32 level3 lfo35'><![if !supportLists]><span
+style='mso-fareast-font-family:Calibri;mso-fareast-theme-font:major-latin;
+mso-bidi-font-family:Calibri;mso-bidi-theme-font:major-latin'><span
+style='mso-list:Ignore'>2.1.1<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>CREATE</h3>
+
+<p class=MsoNormal><b style='mso-bidi-font-weight:normal'><span
+style='font-size:10.0pt;font-family:"Courier New";mso-fareast-font-family:"Times New Roman"'>CREATE</span></b><span
+style='font-size:10.0pt;font-family:"Courier New";mso-fareast-font-family:"Times New Roman"'>
+&lt;new_attribute_name&gt; &lt;attribute_definition&gt; ;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='mso-fareast-language:KO'>The CREATE command
+creates an attribute and attaches it to a specified target dataset or group in
+the HDF5 data file. The user needs to specify the name, datatype, dataspace,
+and data value of the attribute. Each command is terminated with a semicolon. <o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='mso-fareast-language:KO'>Note that the CREATE
+example above looks so simple because it makes use of the default values of the
+datatype and dataspace. Here is an example that specifies the values of
+datatype and dataspace explicitly. Note that even the attribute name,
+temperature, is defined separately from its intended target-object,
+/sta1/month12.<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left'><span style='font-size:
+10.0pt;font-family:"Courier New";mso-fareast-font-family:"Times New Roman"'>$
+h5edit --command ”CREATE /sta1/month12 temperature {DATATYPE H5T_FLOAT_NATIVE
+DATASPACE SCALAR DATA {-40.0}};” greenland.h5<o:p></o:p></span></p>
+
+<h3 style='mso-list:l32 level3 lfo35'><![if !supportLists]><span
+style='mso-fareast-font-family:Calibri;mso-fareast-theme-font:major-latin;
+mso-bidi-font-family:Calibri;mso-bidi-theme-font:major-latin'><span
+style='mso-list:Ignore'>2.1.2<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>COPY</h3>
+
+<p class=MsoNormal><b style='mso-bidi-font-weight:normal'><span
+style='font-size:10.0pt;font-family:"Courier New";mso-fareast-font-family:"Times New Roman"'>COPY</span></b><span
+style='font-size:10.0pt;font-family:"Courier New";mso-fareast-font-family:"Times New Roman"'>
+&lt;old_attribute_name&gt; &lt;new_attribute_name&gt; ;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='mso-fareast-language:KO'>The COPY </span>command
+creates an exact copy of an existing attribute as another attribute of the same
+or different target-object. If the new attribute is of the same target-object,
+it must use a different name.</p>
+
+<h3 style='mso-list:l32 level3 lfo35'><![if !supportLists]><span
+style='mso-fareast-font-family:Calibri;mso-fareast-theme-font:major-latin;
+mso-bidi-font-family:Calibri;mso-bidi-theme-font:major-latin'><span
+style='mso-list:Ignore'>2.1.3<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>DELETE</h3>
+
+<p class=MsoNormal><b style='mso-bidi-font-weight:normal'><span
+style='font-size:10.0pt;font-family:"Courier New";mso-fareast-font-family:"Times New Roman"'>DELETE</span></b><span
+style='font-size:10.0pt;font-family:"Courier New";mso-fareast-font-family:"Times New Roman"'>
+&lt;old_attribute_name&gt; ;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='mso-fareast-language:KO'>The DELETE command
+deletes an existing attribute from a specified dataset or group in the HDF5
+data file. The user needs to specify the name of the attribute.<o:p></o:p></span></p>
+
+<h3 style='mso-list:l32 level3 lfo35'><![if !supportLists]><span
+style='mso-fareast-font-family:Calibri;mso-fareast-theme-font:major-latin;
+mso-bidi-font-family:Calibri;mso-bidi-theme-font:major-latin'><span
+style='mso-list:Ignore'>2.1.4<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>MODIFY</h3>
+
+<p class=MsoNormal><b style='mso-bidi-font-weight:normal'><span
+style='font-size:10.0pt;font-family:"Courier New";mso-fareast-font-family:"Times New Roman"'>MODIFY</span></b><span
+style='font-size:10.0pt;font-family:"Courier New";mso-fareast-font-family:"Times New Roman"'>
+&lt;old_attribute_name&gt; &lt;attribute_data&gt; ;<o:p></o:p></span></p>
+
+<p class=MsoNormal>The MODIFY command modifies the value(s) of an existing
+attribute of a target-object with the given attribute data.</p>
+
+<h3 style='mso-list:l32 level3 lfo35'><![if !supportLists]><span
+style='mso-fareast-font-family:Calibri;mso-fareast-theme-font:major-latin;
+mso-bidi-font-family:Calibri;mso-bidi-theme-font:major-latin'><span
+style='mso-list:Ignore'>2.1.5<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>RENAME</h3>
+
+<p class=MsoNormal><b style='mso-bidi-font-weight:normal'><span
+style='font-size:10.0pt;font-family:"Courier New";mso-fareast-font-family:"Times New Roman"'>RENAME</span></b><span
+style='font-size:10.0pt;font-family:"Courier New";mso-fareast-font-family:"Times New Roman"'>
+&lt;old_attribute_name&gt; &lt;new_attribute_name&gt; ;<o:p></o:p></span></p>
+
+<p class=MsoNormal>The RENAME command changes the name of an existing attribute
+of a target-object to a different attribute name of the same object.</p>
+
+<h2 style='mso-list:l32 level2 lfo35'><![if !supportLists]><span
+style='mso-fareast-font-family:Calibri;mso-fareast-theme-font:major-latin;
+mso-bidi-font-family:Calibri;mso-bidi-theme-font:major-latin'><span
+style='mso-list:Ignore'>2.2<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style='mso-fareast-font-family:"Times New Roman"'>Dataspaces
+Supported<o:p></o:p></span></h2>
+
+<p class=MsoNormal><span style='mso-fareast-language:KO'>The attribute may have
+one of the following dataspaces. If not given, the default value is <i
+style='mso-bidi-font-style:normal'>scalar.<o:p></o:p></i></span></p>
+
+<h3 style='mso-list:l32 level3 lfo35'><![if !supportLists]><span
+style='mso-fareast-font-family:Calibri;mso-fareast-theme-font:major-latin;
+mso-bidi-font-family:Calibri;mso-bidi-theme-font:major-latin'><span
+style='mso-list:Ignore'>2.2.1<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>Scalar space</h3>
+
+<p class=MsoNormal><span style='mso-fareast-language:KO'>This is indicated by
+the keyword, <b style='mso-bidi-font-weight:normal'>SCALAR</b>, and it means
+the attribute has a single data element.<o:p></o:p></span></p>
+
+<h3 style='mso-list:l32 level3 lfo35'><![if !supportLists]><span
+style='mso-fareast-font-family:Calibri;mso-fareast-theme-font:major-latin;
+mso-bidi-font-family:Calibri;mso-bidi-theme-font:major-latin'><span
+style='mso-list:Ignore'>2.2.2<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>Dimension space</h3>
+
+<p class=MsoNormal><span style='mso-fareast-language:KO'>This is indicated by
+the keyword, <b style='mso-bidi-font-weight:normal'>SIMPLE</b>, followed by the
+dimension sizes enclosed in a pair of parenthesis. The rank of the dimension is
+deduced from the number of dimension sizes specified. It means the attribute is
+a multiple dimensional array. For example,<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='mso-fareast-language:KO'>SIMPLE (2,3,4)<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='mso-fareast-language:KO'>is a 3-dimensional
+array of 24 data elements total.<o:p></o:p></span></p>
+
+<h3 style='mso-list:l32 level3 lfo35'><![if !supportLists]><span
+style='mso-fareast-font-family:Calibri;mso-fareast-theme-font:major-latin;
+mso-bidi-font-family:Calibri;mso-bidi-theme-font:major-latin'><span
+style='mso-list:Ignore'>2.2.3<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>Other dataspaces</h3>
+
+<p class=MsoNormal><span style='mso-fareast-language:KO'>The HDF5 library
+supports the <b style='mso-bidi-font-weight:normal'>NULL</b> dataspace and also
+unlimited dimension sizes. Neither of them is supported by this version of
+H5edit.<o:p></o:p></span></p>
+
+<h2 style='mso-list:l32 level2 lfo35'><![if !supportLists]><span
+style='mso-fareast-font-family:Calibri;mso-fareast-theme-font:major-latin;
+mso-bidi-font-family:Calibri;mso-bidi-theme-font:major-latin'><span
+style='mso-list:Ignore'>2.3<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style='mso-fareast-font-family:"Times New Roman"'>Datatypes
+Supported<o:p></o:p></span></h2>
+
+<p class=MsoNormal>The attribute may have one of the following datatypes. If
+not given, the default value is <i style='mso-bidi-font-style:normal'>H5T_NATIVE_FLOAT.<o:p></o:p></i></p>
+
+<h3 style='mso-list:l32 level3 lfo35'><![if !supportLists]><span
+style='mso-fareast-font-family:Calibri;mso-fareast-theme-font:major-latin;
+mso-bidi-font-family:Calibri;mso-bidi-theme-font:major-latin'><span
+style='mso-list:Ignore'>2.3.1<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>Integer Types</h3>
+
+<p class=MsoNormal><span style='mso-fareast-language:KO'>The following integer
+types are supported and are indicated by the corresponding keywords:<o:p></o:p></span></p>
+
+<pre><b style='mso-bidi-font-weight:normal'>H5T_STD_I8BE</b>, <b
+style='mso-bidi-font-weight:normal'>H5T_STD_I16BE, H5T_STD_I32BE</b>, <b
+style='mso-bidi-font-weight:normal'>H5T_STD_I64BE</b>, <b style='mso-bidi-font-weight:
+normal'>H5T_STD_I64BE:<o:p></o:p></b></pre>
+
+<p class=MsoNormal style='margin-left:.5in'>Signed big endian 8, 16, 32 and 64
+bits integers.</p>
+
+<pre><b style='mso-bidi-font-weight:normal'><o:p>&nbsp;</o:p></b></pre><pre><b
+style='mso-bidi-font-weight:normal'>H5T_STD_I8LE</b>, <b style='mso-bidi-font-weight:
+normal'>H5T_STD_I16LE, H5T_STD_I32LE</b>, <b style='mso-bidi-font-weight:normal'>H5T_STD_I64LE</b>, <b
+style='mso-bidi-font-weight:normal'>H5T_STD_I64LE:<o:p></o:p></b></pre>
+
+<p class=MsoNormal style='margin-left:.5in'>Signed little endian 8, 16, 32 and
+64 bits integers.</p>
+
+<pre><b style='mso-bidi-font-weight:normal'><o:p>&nbsp;</o:p></b></pre><pre><b
+style='mso-bidi-font-weight:normal'>H5T_STD_U8BE</b>, <b style='mso-bidi-font-weight:
+normal'>H5T_STD_U16BE, H5T_STD_U32BE</b>, <b style='mso-bidi-font-weight:normal'>H5T_STD_U64BE</b>, <b
+style='mso-bidi-font-weight:normal'>H5T_STD_U64BE:<o:p></o:p></b></pre>
+
+<p class=MsoNormal style='margin-left:.5in'>Unsigned big endian 8, 16, 32 and
+64 bits integers.</p>
+
+<pre><b style='mso-bidi-font-weight:normal'><o:p>&nbsp;</o:p></b></pre><pre><b
+style='mso-bidi-font-weight:normal'>H5T_STD_U8LE</b>, <b style='mso-bidi-font-weight:
+normal'>H5T_STD_U16LE, H5T_STD_U32LE</b>, <b style='mso-bidi-font-weight:normal'>H5T_STD_U64LE</b>, <b
+style='mso-bidi-font-weight:normal'>H5T_STD_U64LE:<o:p></o:p></b></pre>
+
+<p class=MsoNormal style='margin-left:.5in'>Unsigned little endian 8, 16, 32
+and 64 bits integers.</p>
+
+<pre><b style='mso-bidi-font-weight:normal'><o:p>&nbsp;</o:p></b></pre>
+
+<p class=MsoNormal>The following integer types are of the C programming
+language and are machine dependent. They are indicated by the following
+keywords:</p>
+
+<pre><b style='mso-bidi-font-weight:normal'>H5T_NATIVE_CHAR</b>, <b
+style='mso-bidi-font-weight:normal'>H5T_NATIVE_UCHAR</b>:<b style='mso-bidi-font-weight:
+normal'><o:p></o:p></b></pre>
+
+<p class=MsoNormal style='margin-left:.5in'>Native char and unsigned char
+types.</p>
+
+<pre><b style='mso-bidi-font-weight:normal'><o:p>&nbsp;</o:p></b></pre><pre><b
+style='mso-bidi-font-weight:normal'>H5T_NATIVE_SHORT, H5T_NATIVE_INT, H5T_NATIVE_LONG, H5T_NATIVE_LLONG:<o:p></o:p></b></pre>
+
+<p class=MsoNormal style='margin-left:.5in'>Native signed short, int, long and
+long long type.</p>
+
+<pre><b style='mso-bidi-font-weight:normal'><o:p>&nbsp;</o:p></b></pre><pre><b
+style='mso-bidi-font-weight:normal'>H5T_NATIVE_USHORT, H5T_NATIVE_UINT, H5T_NATIVE_ULONG, H5T_NATIVE_ULLONG:<o:p></o:p></b></pre>
+
+<p class=MsoNormal style='margin-left:.5in'>Native unsigned short, int, long
+and long long type.</p>
+
+<h3 style='mso-list:l32 level3 lfo35'><![if !supportLists]><span
+style='mso-fareast-font-family:Calibri;mso-fareast-theme-font:major-latin;
+mso-bidi-font-family:Calibri;mso-bidi-theme-font:major-latin'><span
+style='mso-list:Ignore'>2.3.2<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>Floating Point Types</h3>
+
+<p class=MsoNormal><span style='mso-fareast-language:KO'>The following floating
+point types are supported and are indicated by the corresponding keywords:<o:p></o:p></span></p>
+
+<pre><b style='mso-bidi-font-weight:normal'>H5T_IEEE_F32BE, H5T_IEEE_F64BE:<o:p></o:p></b></pre>
+
+<p class=MsoNormal style='margin-left:.5in'>IEEE big endian 32 and 64 bits
+floating point types.</p>
+
+<pre><o:p>&nbsp;</o:p></pre><pre><b style='mso-bidi-font-weight:normal'>H5T_IEEE_F32LE, H5T_IEEE_F64LE:<o:p></o:p></b></pre>
+
+<p class=MsoNormal style='margin-left:.5in'>IEEE little endian 32 and 64 bits
+floating point types.</p>
+
+<pre><b style='mso-bidi-font-weight:normal'><o:p>&nbsp;</o:p></b></pre>
+
+<p class=MsoNormal>The following floating point types are of the C programming
+language and are machine dependent. They are indicated by the following
+keywords:</p>
+
+<pre><b style='mso-bidi-font-weight:normal'>H5T_NATIVE_FLOAT, H5T_NATIVE_DOUBLE, H5T_NATIVE_LDOUBLE:<o:p></o:p></b></pre>
+
+<p class=MsoNormal style='margin-left:.5in'>Native float, double, and long
+double types.</p>
+
+<pre><b style='mso-bidi-font-weight:normal'><o:p>&nbsp;</o:p></b></pre>
+
+<h3 style='mso-list:l32 level3 lfo35'><![if !supportLists]><span
+style='mso-fareast-font-family:Calibri;mso-fareast-theme-font:major-latin;
+mso-bidi-font-family:Calibri;mso-bidi-theme-font:major-latin'><span
+style='mso-list:Ignore'>2.3.3<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>String Types</h3>
+
+<p class=MsoNormal>The string type is supported and is indicated by the keyword,
+<b style='mso-bidi-font-weight:normal'>H5T_STRING</b>. The string type consists
+of two more specifications, namely the size of the string and the padding
+mechanism.</p>
+
+<p class=MsoNormal>The string size is indicated by the keyword, <b
+style='mso-bidi-font-weight:normal'>STRSIZE</b>, followed by a positive integer
+value of the string size.</p>
+
+<p class=MsoNormal>The padding mechanism is indicated by the keyword, <b
+style='mso-bidi-font-weight:normal'>STRPAD</b>, following by one of the
+following keywords:</p>
+
+<p class=MsoNormal align=left style='margin-bottom:0in;margin-bottom:.0001pt;
+text-align:left'><span style='font-size:10.0pt;font-family:"Courier New";
+mso-fareast-font-family:"Times New Roman"'>H5T_STR_NULLTERM:<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='mso-fareast-font-family:
+"Times New Roman"'>Null terminated as in the C programming language<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:0in;margin-bottom:.0001pt;
+text-align:left'><span style='font-size:10.0pt;font-family:"Courier New";
+mso-fareast-font-family:"Times New Roman"'>H5T_STR_NULLPAD:<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='mso-fareast-font-family:
+"Times New Roman"'>Padded with zeros <o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:0in;margin-bottom:.0001pt;
+text-align:left'><span style='font-size:10.0pt;font-family:"Courier New";
+mso-fareast-font-family:"Times New Roman"'>H5T_STR_SPACEPAD:<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='mso-fareast-font-family:
+"Times New Roman"'>Padded with spaces as in the Fortran programming language<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='mso-fareast-font-family:"Times New Roman"'>Note
+that this version of H5edit supports only fixed size strings and null
+terminated padding. The other padding mechanisms will be implemented in the
+future.<o:p></o:p></span></p>
+
+<h3 style='mso-list:l32 level3 lfo35'><![if !supportLists]><span
+style='mso-fareast-font-family:Calibri;mso-fareast-theme-font:major-latin;
+mso-bidi-font-family:Calibri;mso-bidi-theme-font:major-latin'><span
+style='mso-list:Ignore'>2.3.4<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style='mso-fareast-font-family:"Times New Roman"'>Other
+HDF5 Types<o:p></o:p></span></h3>
+
+<p class=MsoNormal><span style='mso-fareast-language:KO'>HDF5 supports other
+types such as Compound, Opaque, Enum, etc. These types will be implemented in
+the future.<o:p></o:p></span></p>
+
+<h1 style='mso-list:l32 level1 lfo35'><![if !supportLists]><span
+style='mso-fareast-font-family:Calibri;mso-fareast-theme-font:major-latin;
+mso-bidi-font-family:Calibri;mso-bidi-theme-font:major-latin'><span
+style='mso-list:Ignore'>3<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style='mso-fareast-font-family:"Times New Roman"'>Command
+line options<o:p></o:p></span></h1>
+
+<h2 style='mso-list:l32 level2 lfo35'><![if !supportLists]><span
+style='mso-fareast-font-family:Calibri;mso-fareast-theme-font:major-latin;
+mso-bidi-font-family:Calibri;mso-bidi-theme-font:major-latin'><span
+style='mso-list:Ignore'>3.1<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>Command File</h2>
+
+<p class=MsoNormal><span style='mso-fareast-language:KO'>When the H5edit
+commands are specified via the command line option, they must be specified as
+one single argument separated by semicolons. The command file feature will
+allow the commands be stored in a text file in free format. This will be easier
+for users as they need not worry about the shell meta-character issues.<span
+style="mso-spacerun:yes">&nbsp; </span>For example:<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left'><span style='font-size:
+10.0pt;font-family:"Courier New";mso-fareast-font-family:"Times New Roman"'>$
+h5edit --command ”CREATE /sta1/month12/ScalarString {DATATYPE { H5T_STRING {
+STRSIZE 15 }} DATASPACE { SCALAR } DATA {\”scalar string\”}}; CREATE <span
+style="mso-spacerun:yes">&nbsp;</span>/sta1/month12/ArrayString {DATATYPE {
+H5T_STRING { STRSIZE 10 }} DATASPACE { SIMPLE ( 3 ) } DATA {\”an\”, \”array\”, \”string\”}};
+” greenland.h5<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='mso-fareast-font-family:"Times New Roman"'>Note
+that the double quotes inside of the command string must be escaped so that the
+Unix shell will not treat them as the closing quotes.<span
+style="mso-spacerun:yes">&nbsp; </span>The same can be achieved by a command
+file which is much more readable.<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left'><span style='font-size:
+10.0pt;font-family:"Courier New";mso-fareast-font-family:"Times New Roman"'>$
+h5edit -&#8211;command-file strings_attributes greenland.h5<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left'><span style='font-size:
+10.0pt;font-family:"Courier New";mso-fareast-font-family:"Times New Roman"'>$
+cat strings_attributes<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left'><span style='font-size:
+10.0pt;font-family:"Courier New";mso-fareast-font-family:"Times New Roman"'>CREATE
+/sta1/month12/ScalarString<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left'><span style='font-size:
+10.0pt;font-family:"Courier New";mso-fareast-font-family:"Times New Roman"'><span
+style="mso-spacerun:yes">&nbsp;&nbsp; </span>{DATATYPE {H5T_STRING {STRSIZE 15}}<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left'><span style='font-size:
+10.0pt;font-family:"Courier New";mso-fareast-font-family:"Times New Roman"'><span
+style="mso-spacerun:yes">&nbsp;&nbsp;&nbsp; </span>DATASPACE {SCALAR}<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left'><span style='font-size:
+10.0pt;font-family:"Courier New";mso-fareast-font-family:"Times New Roman"'><span
+style="mso-spacerun:yes">&nbsp;&nbsp;&nbsp; </span>DATA {”scalar string”}<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left'><span style='font-size:
+10.0pt;font-family:"Courier New";mso-fareast-font-family:"Times New Roman"'><span
+style="mso-spacerun:yes">&nbsp;&nbsp; </span>};<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left'><span style='font-size:
+10.0pt;font-family:"Courier New";mso-fareast-font-family:"Times New Roman"'>CREATE
+/sta1/month12/ArrayString<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left'><span style='font-size:
+10.0pt;font-family:"Courier New";mso-fareast-font-family:"Times New Roman"'><span
+style="mso-spacerun:yes">&nbsp;&nbsp; </span>{DATATYPE {H5T_STRING { STRSIZE
+10}}<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left'><span style='font-size:
+10.0pt;font-family:"Courier New";mso-fareast-font-family:"Times New Roman"'><span
+style="mso-spacerun:yes">&nbsp;&nbsp;&nbsp; </span>DATASPACE {SIMPLE ( 3 )}<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left'><span style='font-size:
+10.0pt;font-family:"Courier New";mso-fareast-font-family:"Times New Roman"'><span
+style="mso-spacerun:yes">&nbsp;&nbsp; </span><span
+style="mso-spacerun:yes">&nbsp;</span>DATA {”an”, ”array”, ”string”}<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left'><span style='font-size:
+10.0pt;font-family:"Courier New";mso-fareast-font-family:"Times New Roman"'><span
+style="mso-spacerun:yes">&nbsp;&nbsp; </span>};<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left'><span style='font-family:
+"Courier New";mso-fareast-font-family:"Times New Roman"'><o:p>&nbsp;</o:p></span></p>
+
+<h2 style='mso-list:l32 level2 lfo35'><![if !supportLists]><span
+style='mso-fareast-font-family:Calibri;mso-fareast-theme-font:major-latin;
+mso-bidi-font-family:Calibri;mso-bidi-theme-font:major-latin'><span
+style='mso-list:Ignore'>3.2<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>Command Atomicity</h2>
+
+<p class=MsoNormal><span style='mso-fareast-language:KO'>It is important to
+users’ production data file that the H5edit will execute the commands in an
+atomic manner, that is, it is either all success or no changes if there is any
+error. Otherwise, the HDF5 data file can be partially changed, which is not
+necessary desirable for all cases. Worse yet, if the H5edit fails in the middle
+of a command, the HDF5 file may be left in an unstable state, resulting in a
+total loss of access to the remaining information in the file. This is not an
+acceptable behavior for production files.<o:p></o:p></span></p>
+
+<p class=MsoNormal>The H5edit tool creates and maintains a backup copy of the
+original data file being edited by the tool. The Atomicity option (--atomic)
+controls the manner the backup copy is managed. In case of user commands errors
+or system failures, the data file can be recovered from the backup copy by
+replacing the data file with the backup copy.</p>
+
+<p class=MsoNormal>When the tool starts, after it has opened the data file
+successfully, it will make a backup copy of the data file before applying the
+input commands. If the tool encounters any error, the user may recover the data
+file from the backup copy.</p>
+
+<h3 style='mso-list:l32 level3 lfo35'><![if !supportLists]><span
+style='mso-fareast-font-family:Calibri;mso-fareast-theme-font:major-latin;
+mso-bidi-font-family:Calibri;mso-bidi-theme-font:major-latin'><span
+style='mso-list:Ignore'>3.2.1<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>Backup File Name Convention</h3>
+
+<p class=MsoNormal>A backup copy of the data file shall have a file name that
+is composed of the file name of the data file but proceeded with a period and
+appended with “.bck”.<span style="mso-spacerun:yes">&nbsp; </span>For example,
+if the data file name is “2010_10_01_data.h5”, the backup file name will be
+“.2010_10_01_data.h5.bck”.</p>
+
+<h3 style='mso-list:l32 level3 lfo35'><![if !supportLists]><span
+style='mso-fareast-font-family:Calibri;mso-fareast-theme-font:major-latin;
+mso-bidi-font-family:Calibri;mso-bidi-theme-font:major-latin'><span
+style='mso-list:Ignore'>3.2.2<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>Atomicity option</h3>
+
+<p class=MsoNormal>The Atomicity option, --atomic, supports 3 levels, <i
+style='mso-bidi-font-style:normal'>yes</i>, <i style='mso-bidi-font-style:normal'>no</i>,
+and <i style='mso-bidi-font-style:normal'>inc</i>. (Note that the function
+atomic level of <i style='mso-bidi-font-style:normal'>inc</i> is not
+implemented yet for this beta release. It has the same effect as the atomic
+level of <i style='mso-bidi-font-style:normal'>yes</i>.)<i style='mso-bidi-font-style:
+normal'><o:p></o:p></i></p>
+
+<p class=MsoListParagraphCxSpFirst style='margin-bottom:0in;margin-bottom:.0001pt;
+mso-add-space:auto;text-indent:-.25in;mso-list:l15 level1 lfo36'><![if !supportLists]><span
+style='font-family:Symbol;mso-fareast-font-family:Symbol;mso-bidi-font-family:
+Symbol'><span style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>--atomic yes applies the input commands in an
+all or none manner. That is, either all input commands are applied to the data
+file, or none is applied. This is achieved by creating the backup file at the
+start of the tool. If the tool encounters any error, it will exit with a
+non-zero code and leave the backup file behind for recovery. If the tool does
+not encounter any error, when it ends, it will remove the backup file and exit
+with a zero code.</p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-bottom:0in;margin-bottom:
+.0001pt;mso-add-space:auto;text-indent:-.25in;mso-list:l15 level1 lfo36'><![if !supportLists]><span
+style='font-family:Symbol;mso-fareast-font-family:Symbol;mso-bidi-font-family:
+Symbol'><span style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>--atomic no will not make the backup copy and
+apply the input commands as much as possible. The user may use this if he is
+sure of the validity of the input commands or he is not concern if the data
+file is partially modified or corrupted.</p>
+
+<p class=MsoListParagraphCxSpLast style='margin-bottom:0in;margin-bottom:.0001pt;
+mso-add-space:auto;text-indent:-.25in;mso-list:l15 level1 lfo36'><![if !supportLists]><span
+style='font-family:Symbol;mso-fareast-font-family:Symbol;mso-bidi-font-family:
+Symbol'><span style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>--atomic inc (default) will apply the changes in
+an all or none manner but at a command level. When a command is completed
+successfully, the tool will “flush” all data out to the data file and update
+the backup file to the same state as the data file.<br>
+If the tool encounters any error, it will exit with a non-zero code and leave
+the backup file behind for recovery. If the tool does not encounter any error,
+when it ends, it will remove the backup file and exit with a zero code.</p>
+
+<h3 style='mso-list:l32 level3 lfo35'><![if !supportLists]><span
+style='mso-fareast-font-family:Calibri;mso-fareast-theme-font:major-latin;
+mso-bidi-font-family:Calibri;mso-bidi-theme-font:major-latin'><span
+style='mso-list:Ignore'>3.2.3<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>How to recover the data file in case of error</h3>
+
+<p class=MsoNormal>If the tool encounters some errors, it will exit with a
+non-zero code and leave the backup file behind. The user may first inspect the
+data file to see if he wishes to keep it. If he does not want to accept the
+modified data file, he may recover the original data file by copying the backup
+file over the data file.</p>
+
+<h1 style='mso-list:l32 level1 lfo35'><![if !supportLists]><span
+style='mso-fareast-font-family:Calibri;mso-fareast-theme-font:major-latin;
+mso-bidi-font-family:Calibri;mso-bidi-theme-font:major-latin'><span
+style='mso-list:Ignore'>4<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style='mso-fareast-font-family:"Times New Roman"'>Other
+not yet Implemented Features<o:p></o:p></span></h1>
+
+<p class=MsoNormal><span style='mso-fareast-language:KO'>The following are some
+other features that will be implemented in the future.<o:p></o:p></span></p>
+
+<h2 style='mso-list:l32 level2 lfo35'><![if !supportLists]><span
+style='mso-fareast-font-family:Calibri;mso-fareast-theme-font:major-latin;
+mso-bidi-font-family:Calibri;mso-bidi-theme-font:major-latin'><span
+style='mso-list:Ignore'>4.1<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>Commands</h2>
+
+<p class=MsoNormal>These commands are to be supported in the future:</p>
+
+<p class=MsoNormal><b style='mso-bidi-font-weight:normal'><span
+style='font-family:"Courier New";mso-bidi-font-family:"Times New Roman";
+mso-bidi-theme-font:minor-bidi'>MOVE</span></b><span style='font-family:"Courier New";
+mso-bidi-font-family:"Times New Roman";mso-bidi-theme-font:minor-bidi'>:<span
+style="mso-spacerun:yes">&nbsp;&nbsp; </span></span>move an existing attribute
+from one object to another object </p>
+
+<p class=MsoNormal><b style='mso-bidi-font-weight:normal'><span
+style='font-family:"Courier New";mso-bidi-font-family:"Times New Roman";
+mso-bidi-theme-font:minor-bidi'>EXISTS</span></b><span style='font-family:"Courier New";
+mso-bidi-font-family:"Times New Roman";mso-bidi-theme-font:minor-bidi'>:</span><span
+style="mso-spacerun:yes">&nbsp; </span>check if an attribute exists</p>
+
+<h2 style='mso-list:l32 level2 lfo35'><![if !supportLists]><span
+style='mso-fareast-font-family:Calibri;mso-fareast-theme-font:major-latin;
+mso-bidi-font-family:Calibri;mso-bidi-theme-font:major-latin'><span
+style='mso-list:Ignore'>4.2<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>Dryrun Option</h2>
+
+<p class=MsoNormal><span style='mso-fareast-language:KO'>This option will allow
+H5edit checks the syntax correctness of the commands without making any real
+change to the HDF5 data file. This will be implemented in the future.<o:p></o:p></span></p>
+
+<h1 style='mso-list:l32 level1 lfo35'><![if !supportLists]><span
+style='mso-fareast-font-family:Calibri;mso-fareast-theme-font:major-latin;
+mso-bidi-font-family:Calibri;mso-bidi-theme-font:major-latin'><span
+style='mso-list:Ignore'>5<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style='mso-fareast-font-family:"Times New Roman"'>Tool
+Command Syntax<o:p></o:p></span></h1>
+
+<p class=MsoNormal><strong><span style='font-family:Calibri;mso-ascii-theme-font:
+minor-latin;mso-hansi-theme-font:minor-latin;mso-bidi-font-family:"Times New Roman";
+mso-bidi-theme-font:minor-bidi'>Syntax:</span></strong> </p>
+
+<p class=MsoNormal style='margin-left:.5in'><code><span style='font-size:10.0pt;
+mso-fareast-font-family:"\FF2D\FF33 \660E\671D";mso-fareast-theme-font:minor-fareast'>h5edit
+</span></code>[<code><span style='font-size:10.0pt;mso-fareast-font-family:
+"\FF2D\FF33 \660E\671D";mso-fareast-theme-font:minor-fareast'>-h </span></code>|<code><span
+style='font-size:10.0pt;mso-fareast-font-family:"\FF2D\FF33 \660E\671D";
+mso-fareast-theme-font:minor-fareast'> --help</span></code>] </p>
+
+<p class=MsoNormal style='margin-left:.5in'><code><span style='font-size:10.0pt;
+mso-fareast-font-family:"\FF2D\FF33 \660E\671D";mso-fareast-theme-font:minor-fareast'>h5edit
+</span></code><em><span style='font-family:Calibri;mso-ascii-theme-font:minor-latin;
+mso-hansi-theme-font:minor-latin;mso-bidi-font-family:"Times New Roman";
+mso-bidi-theme-font:minor-bidi'>options parameter</span></em> <i>h5file</i></p>
+
+<p class=MsoNormal><strong><span style='font-family:Calibri;mso-ascii-theme-font:
+minor-latin;mso-hansi-theme-font:minor-latin;mso-bidi-font-family:"Times New Roman";
+mso-bidi-theme-font:minor-bidi'>Purpose:</span></strong> </p>
+
+<p class=MsoNormal style='margin-left:.5in'>An HDF5 file editor. </p>
+
+<p class=MsoNormal><strong><span style='font-family:Calibri;mso-ascii-theme-font:
+minor-latin;mso-hansi-theme-font:minor-latin;mso-bidi-font-family:"Times New Roman";
+mso-bidi-theme-font:minor-bidi'>Description:</span></strong> </p>
+
+<p class=MsoNormal style='margin-left:.5in'><code><span style='font-size:10.0pt;
+mso-fareast-font-family:"\FF2D\FF33 \660E\671D";mso-fareast-theme-font:minor-fareast'>h5edit</span></code>
+is a tool for editing an HDF5 file. The tool can read in a command file,
+written in the H5edit Command Language, to edit the file accordingly. Commands
+can be given as command line option. This is intended for simple and short
+commands. The H5edit Command Language is defined in “Definition of the H5edit
+Command Language”.</p>
+
+<p class=MsoNormal><strong><span style='font-family:Calibri;mso-ascii-theme-font:
+minor-latin;mso-hansi-theme-font:minor-latin;mso-bidi-font-family:"Times New Roman";
+mso-bidi-theme-font:minor-bidi'>Options and Parameters:</span></strong> </p>
+
+<table class=MsoNormalTable border=0 cellpadding=0 width="100%"
+ style='width:100.0%;mso-cellspacing:1.5pt;margin-left:.5in;mso-yfti-tbllook:
+ 1184;mso-padding-alt:0in 5.4pt 0in 5.4pt'>
+ <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;mso-yfti-lastrow:yes'>
+  <td valign=top style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal>These terms are used as follows in this section:</p>
+  <p class=MsoNormal><span style='font-family:"Courier New"'>-h, --help<o:p></o:p></span></p>
+  <p class=MsoNormal style='margin-left:.5in'>Prints a usage message and exits.</p>
+  <p class=MsoNormal><span style='font-family:"Courier New"'>-c <i
+  style='mso-bidi-font-style:normal'>command</i>, --command <i
+  style='mso-bidi-font-style:normal'>command</i><o:p></o:p></span></p>
+  <p class=MsoNormal style='margin-left:.5in'>Specifies an H5edit command to
+  apply to the file <i style='mso-bidi-font-style:normal'>h5file.<o:p></o:p></i></p>
+  <p class=MsoNormal><span style='font-family:"Courier New"'>--command-file <i
+  style='mso-bidi-font-style:normal'>commfile<o:p></o:p></i></span></p>
+  <p class=MsoNormal style='margin-left:.5in'>Specifies a command file, <i
+  style='mso-bidi-font-style:normal'><span style='font-family:"Courier New"'>commfile</span></i>,
+  which contains H5edit commands written in the H5edit Command Language, to
+  apply to the file <i style='mso-bidi-font-style:normal'>h5file.</i> </p>
+  <p class=MsoNormal><span style='font-family:"Courier New"'>--atomic[=<i
+  style='mso-bidi-font-style:normal'>atomic-level</i>]<i style='mso-bidi-font-style:
+  normal'><o:p></o:p></i></span></p>
+  <p class=MsoNormal style='margin-left:.5in'>Specifies the atomic level:</p>
+  <p class=MsoNormal style='margin-left:1.0in'><i style='mso-bidi-font-style:
+  normal'><span style='font-family:"Courier New"'>Yes: </span></i>This is the
+  default. It means the changes must be done as all or nothing. The original
+  data file is restored in case of any command failures.</p>
+  <p class=MsoNormal style='margin-left:1.0in'><i style='mso-bidi-font-style:
+  normal'><span style='font-family:"Courier New"'>no: </span></i><span
+  style='mso-fareast-language:KO'>No atomicity is desired. Do as much changes
+  as possible.<o:p></o:p></span></p>
+  <p class=MsoNormal style='margin-left:.5in'><i style='mso-bidi-font-style:
+  normal'><span style='font-family:"Courier New"'>inc:</span></i><span
+  style='font-family:"Courier New"'> </span>This is the default. <span
+  style='mso-fareast-language:KO'>Atomicity of changes at individual command
+  level is desired, not the entire execution.</span><i style='mso-bidi-font-style:
+  normal'><o:p></o:p></i></p>
+  <p class=MsoNormal><span style='font-family:"Courier New"'>--dryrun<i
+  style='mso-bidi-font-style:normal'><o:p></o:p></i></span></p>
+  <p class=MsoNormal style='margin-left:.5in'><i style='mso-bidi-font-style:
+  normal'>(To be supported in future implementation)<o:p></o:p></i></p>
+  <p class=MsoNormal style='margin-left:.5in'>Just check the syntax of the
+  H5edit commands against the HDF5 file without making the actual changes to
+  the HDF5 file.<span style='mso-fareast-language:KO'><o:p></o:p></span></p>
+  </td>
+ </tr>
+</table>
+
+<h1 style='mso-list:l32 level1 lfo35'><![if !supportLists]><span
+style='mso-fareast-font-family:Calibri;mso-fareast-theme-font:major-latin;
+mso-bidi-font-family:Calibri;mso-bidi-theme-font:major-latin'><span
+style='mso-list:Ignore'>6<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style='mso-fareast-font-family:"Times New Roman"'>Examples<o:p></o:p></span></h1>
+
+<h2 style='mso-list:l32 level2 lfo35'><![if !supportLists]><span
+style='mso-fareast-font-family:Calibri;mso-fareast-theme-font:major-latin;
+mso-bidi-font-family:Calibri;mso-bidi-theme-font:major-latin'><span
+style='mso-list:Ignore'>6.1<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>Add Attributes to a File</h2>
+
+<p class=MsoNormal><span style='mso-fareast-language:KO'>This command adds 4
+attributes to the file SVM01_ter_ grav_dev.h5.<span
+style="mso-spacerun:yes">&nbsp; </span>First two are unsigned short (2 bytes)
+attributes. The third one is a string type attribute. The last one is a floating
+point attribute. Note that the backslash indicates a line continuation for the
+Unix shell. This is needed by some Unix shells such as C shell.<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left'><span style='font-size:
+10.0pt;font-family:"Courier New";mso-fareast-font-family:"Times New Roman"'>$ h5edit
+-c &quot; \<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left'><span style='font-size:
+10.0pt;font-family:"Courier New";mso-fareast-font-family:"Times New Roman"'>CREATE
+/All_Data/VIIRS-M1-SDR_All/Radiance/FillValue-SOUB_UINT16_FILL {DATATYPE H5T_STD_U16LE
+DATASPACE SCALAR DATA {65528}} ; \<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left'><span style='font-size:
+10.0pt;font-family:"Courier New";mso-fareast-font-family:"Times New Roman"'>CREATE
+/All_Data/VIIRS-M1-SDR_All/Radiance/FillValue-NA_UINT16_FILL {DATATYPE
+H5T_STD_U16LE DATASPACE SCALAR DATA {65535}} ; \<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left'><span style='font-size:
+10.0pt;font-family:"Courier New";mso-fareast-font-family:"Times New Roman"'>CREATE
+/All_Data/VIIRS-M1-SDR_All/Radiance/MeasurmentUnits {DATATYPE H5T_STRING {STRSIZE
+6 } DATASPACE SCALAR DATA { \&quot;W/m^2\&quot; }} ; \<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left'><span style='font-size:
+10.0pt;font-family:"Courier New";mso-fareast-font-family:"Times New Roman"'>CREATE
+/All_Data/VIIRS-M1-SDR_All/Radiance/MaxValue {DATATYPE H5T_NATIVE_FLOAT
+DATASPACE SCALAR DATA {100.00}} ; \<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left'><span style='font-size:
+10.0pt;font-family:"Courier New";mso-fareast-font-family:"Times New Roman"'>&quot;
+\<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left'><span style='font-size:
+10.0pt;font-family:"Courier New";mso-fareast-font-family:"Times New Roman"'>SVM01_ter_
+grav_dev.h5<o:p></o:p></span></p>
+
+<h2 style='mso-list:l32 level2 lfo35'><![if !supportLists]><span
+style='mso-fareast-font-family:Calibri;mso-fareast-theme-font:major-latin;
+mso-bidi-font-family:Calibri;mso-bidi-theme-font:major-latin'><span
+style='mso-list:Ignore'>6.2<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style='mso-fareast-font-family:"Times New Roman"'>Delete
+Attributes from a File<o:p></o:p></span></h2>
+
+<p class=MsoNormal><span style='mso-fareast-language:KO'>This deletes all the
+attributes just created by the command above.<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left'><span style='font-size:
+10.0pt;font-family:"Courier New";mso-fareast-font-family:"Times New Roman"'>$ h5edit
+-c &quot; \<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left'><span style='font-size:
+10.0pt;font-family:"Courier New";mso-fareast-font-family:"Times New Roman"'>DELETE
+/All_Data/VIIRS-M1-SDR_All/Radiance/FillValue-SOUB_UINT16_FILL; \<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left'><span style='font-size:
+10.0pt;font-family:"Courier New";mso-fareast-font-family:"Times New Roman"'>DELETE
+/All_Data/VIIRS-M1-SDR_All/Radiance/FillValue-NA_UINT16_FILL; \<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left'><span style='font-size:
+10.0pt;font-family:"Courier New";mso-fareast-font-family:"Times New Roman"'>DELETE
+/All_Data/VIIRS-M1-SDR_All/Radiance/MeasurmentUnits; \<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left'><span style='font-size:
+10.0pt;font-family:"Courier New";mso-fareast-font-family:"Times New Roman"'>DELETE
+/All_Data/VIIRS-M1-SDR_All/Radiance/MaxValue; \&quot; \<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left'><span style='font-size:
+10.0pt;font-family:"Courier New";mso-fareast-font-family:"Times New Roman"'>SVM01_ter_
+grav_dev.h5<o:p></o:p></span></p>
+
+<h2 style='mso-list:l32 level2 lfo35'><![if !supportLists]><span
+style='mso-fareast-font-family:Calibri;mso-fareast-theme-font:major-latin;
+mso-bidi-font-family:Calibri;mso-bidi-theme-font:major-latin'><span
+style='mso-list:Ignore'>6.3<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>Copy Attributes from an object to another</h2>
+
+<p class=MsoNormal align=left style='text-align:left'><span style='font-size:
+10.0pt;font-family:"Courier New";mso-bidi-font-family:"Times New Roman";
+mso-bidi-theme-font:minor-bidi'>COPY /group1/dataset1 attribute1
+/group1/dataset2 attribute2_new; <o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left'>A copy of attribute1 of
+/group1/dataset1 is created with the name as attribute2_new of
+/group1/dataset2. Both attributes exist as two separated attributes. </p>
+
+<p class=MsoNormal align=left style='text-align:left'><span style='font-size:
+10.0pt;font-family:"Courier New";mso-bidi-font-family:"Times New Roman";
+mso-bidi-theme-font:minor-bidi'>COPY /group1/dataset1/attribute1
+/group1/dataset2/attribute2_new; <o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left'>Same effect as the
+previous example.</p>
+
+<p class=MsoNormal align=left style='text-align:left'><span style='font-size:
+10.0pt;font-family:"Courier New";mso-bidi-font-family:"Times New Roman";
+mso-bidi-theme-font:minor-bidi'>COPY /group1/dataset1/attribute1
+attribute1_new; <o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left'>A copy of attribute1 of
+/group1/dataset1 is created with the name as attribute1_new of the same
+/group1/dataset1. Both attributes exist as two separated attributes of the same
+dataset.</p>
+
+<p class=MsoNormal align=left style='text-align:left'><span style='font-size:
+10.0pt;font-family:"Courier New";mso-bidi-font-family:"Times New Roman";
+mso-bidi-theme-font:minor-bidi'>COPY /group1/dataset1/attribute1
+/group1/dataset1/attribute1_new; <o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left'>Same as the previous
+example.</p>
+
+<p class=MsoNormal align=left style='text-align:left'><span style='font-size:
+10.0pt;font-family:"Courier New";mso-bidi-font-family:"Times New Roman";
+mso-bidi-theme-font:minor-bidi'>COPY /group1/dataset1 attribute1
+/group1/dataset1 attribute1_new; <o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left'>Same as the previous
+example.</p>
+
+<h2 style='mso-list:l32 level2 lfo35'><![if !supportLists]><span
+style='mso-fareast-font-family:Calibri;mso-fareast-theme-font:major-latin;
+mso-bidi-font-family:Calibri;mso-bidi-theme-font:major-latin'><span
+style='mso-list:Ignore'>6.4<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>Modify Attributes</h2>
+
+<p class=MsoNormal align=left style='text-align:left'><span style='font-size:
+10.0pt;font-family:"Courier New";mso-fareast-font-family:"Times New Roman"'>MODIFY
+/All_Data/VIIRS-M1-SDR_All/Radiance/MeasurmentUnits {’W/m/m’} ;<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left'>The value of attribute
+MeasurmentUnits is changed to “W/m/m”.</p>
+
+<p class=MsoNormal align=left style='text-align:left'><span style='font-size:
+10.0pt;font-family:"Courier New";mso-bidi-font-family:"Times New Roman";
+mso-bidi-theme-font:minor-bidi'>MODIFY /</span><span style='font-size:10.0pt;
+font-family:"Courier New";mso-fareast-font-family:"Times New Roman"'>All_Data/VIIRS-M1-SDR_All/Radiance
+MaxValue {150.0};<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left'>The value of attribute
+MaxValue is increased to 150.0.</p>
+
+<p class=MsoNormal align=left style='text-align:left'><span style='font-size:
+10.0pt;font-family:"Courier New";mso-bidi-font-family:"Times New Roman";
+mso-bidi-theme-font:minor-bidi'>MODIFY /</span><span style='font-size:10.0pt;
+font-family:"Courier New";mso-fareast-font-family:"Times New Roman"'>All_Data/VIIRS-M1-SDR_All/Radiance/MaxValue
+{150.0}</span><span style='font-size:10.0pt;font-family:"Courier New";
+mso-bidi-font-family:"Times New Roman";mso-bidi-theme-font:minor-bidi'>; <o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left'>Same effect as the
+previous example.</p>
+
+<p class=MsoNormal align=left style='text-align:left'><span style='font-size:
+10.0pt;font-family:"Courier New";mso-bidi-font-family:"Times New Roman";
+mso-bidi-theme-font:minor-bidi'>MODIFY /</span><span style='font-size:10.0pt;
+font-family:"Courier New";mso-fareast-font-family:"Times New Roman"'>All_Data/VIIRS-M1-SDR_All/Radiance
+MaxValue {150}</span><span style='font-size:10.0pt;font-family:"Courier New";
+mso-bidi-font-family:"Times New Roman";mso-bidi-theme-font:minor-bidi'>; <o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left'>This is illegal because
+the attribute is of the float type but the data is of the integer type. A
+decimal point would indicate this is a floating point value.</p>
+
+<h2 style='mso-list:l32 level2 lfo35'><![if !supportLists]><span
+style='mso-fareast-font-family:Calibri;mso-fareast-theme-font:major-latin;
+mso-bidi-font-family:Calibri;mso-bidi-theme-font:major-latin'><span
+style='mso-list:Ignore'>6.5<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>Rename Attributes</h2>
+
+<p class=MsoNormal align=left style='text-align:left'><span style='font-size:
+10.0pt;font-family:"Courier New";mso-bidi-font-family:"Times New Roman";
+mso-bidi-theme-font:minor-bidi'>RENAME /group1/dataset1 attribute1 attribute2; <o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left'>The attribute1 of
+/group1/dataset1 becomes attribute2 of /group1/dataset1. Attribute1 does not
+exist any more.</p>
+
+<p class=MsoNormal align=left style='text-align:left'><span style='font-size:
+10.0pt;font-family:"Courier New";mso-bidi-font-family:"Times New Roman";
+mso-bidi-theme-font:minor-bidi'>RENAME /group1/dataset1/attribute1 attribute2; <o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left'>Same effect as the
+previous example.</p>
+
+<p class=MsoNormal align=left style='text-align:left'><span style='font-size:
+10.0pt;font-family:"Courier New";mso-bidi-font-family:"Times New Roman";
+mso-bidi-theme-font:minor-bidi'>RENAME /group1/dataset1/attribute1
+/group1/dataset1/attribute2; <o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left'>This is illegal because
+the &lt;new_attributename&gt; should be an attribute name, not as a full path
+name.</p>
+
+<h2 style='mso-list:l32 level2 lfo35'><![if !supportLists]><span
+style='mso-fareast-font-family:Calibri;mso-fareast-theme-font:major-latin;
+mso-bidi-font-family:Calibri;mso-bidi-theme-font:major-latin'><span
+style='mso-list:Ignore'>6.6<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style='mso-fareast-font-family:"Times New Roman"'>Using
+command-file option<o:p></o:p></span></h2>
+
+<p class=MsoNormal><span style='mso-fareast-language:KO'>The following 2 h5edit
+commands use the command-file option to do the same as the example in 6.1 and
+6.2.<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left'><span style='font-size:
+10.0pt;font-family:"Courier New";mso-fareast-font-family:"Times New Roman"'>$
+h5edit &#8211;command-file add_attr SVM01_ter_ grav_dev.h5<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;tab-stops:192.2pt'><span
+style='font-size:10.0pt;font-family:"Courier New";mso-fareast-font-family:"Times New Roman"'>$
+cat add_attr<span style='mso-tab-count:1'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left'><span style='font-size:
+10.0pt;font-family:"Courier New";mso-fareast-font-family:"Times New Roman"'>CREATE
+/All_Data/VIIRS-M1-SDR_All/Radiance/FillValue-SOUB_UINT16_FILL<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left'><span style='font-size:
+10.0pt;font-family:"Courier New";mso-fareast-font-family:"Times New Roman"'><span
+style="mso-spacerun:yes">&nbsp;&nbsp;&nbsp; </span>{DATATYPE H5T_STD_U16LE
+DATASPACE SCALAR DATA {65528}};<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left'><span style='font-size:
+10.0pt;font-family:"Courier New";mso-fareast-font-family:"Times New Roman"'>CREATE
+/All_Data/VIIRS-M1-SDR_All/Radiance/FillValue-NA_UINT16_FILL<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left'><span style='font-size:
+10.0pt;font-family:"Courier New";mso-fareast-font-family:"Times New Roman"'><span
+style="mso-spacerun:yes">&nbsp;&nbsp; </span><span
+style="mso-spacerun:yes">&nbsp;</span>{DATATYPE H5T_STD_U16LE DATASPACE SCALAR
+DATA {65535}};<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left'><span style='font-size:
+10.0pt;font-family:"Courier New";mso-fareast-font-family:"Times New Roman"'>CREATE
+/All_Data/VIIRS-M1-SDR_All/Radiance/MeasurmentUnits <o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left'><span style='font-size:
+10.0pt;font-family:"Courier New";mso-fareast-font-family:"Times New Roman"'><span
+style="mso-spacerun:yes">&nbsp;&nbsp;&nbsp; </span>{DATATYPE H5T_STRING
+{STRSIZE 6} DATASPACE SCALAR DATA { \&quot;W/m^2\&quot; }};<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left'><span style='font-size:
+10.0pt;font-family:"Courier New";mso-fareast-font-family:"Times New Roman"'>CREATE
+/All_Data/VIIRS-M1-SDR_All/Radiance/MaxValue<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left'><span style='font-size:
+10.0pt;font-family:"Courier New";mso-fareast-font-family:"Times New Roman"'><span
+style="mso-spacerun:yes">&nbsp;&nbsp;&nbsp; </span>{DATATYPE H5T_NATIVE_FLOAT DATASPACE
+SCALAR DATA {100.00}};<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:10.0pt;font-family:"Courier New";
+mso-fareast-font-family:"Times New Roman"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left'><span style='font-size:
+10.0pt;font-family:"Courier New";mso-fareast-font-family:"Times New Roman"'>$
+h5edit &#8211;command-file delete_attr SVM01_ter_ grav_dev.h5<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;tab-stops:192.2pt'><span
+style='font-size:10.0pt;font-family:"Courier New";mso-fareast-font-family:"Times New Roman"'>$
+cat delete_attr<span style='mso-tab-count:1'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left'><span style='font-size:
+10.0pt;font-family:"Courier New";mso-fareast-font-family:"Times New Roman"'>DELETE
+/All_Data/VIIRS-M1-SDR_All/Radiance/FillValue-SOUB_UINT16_FILL;<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left'><span style='font-size:
+10.0pt;font-family:"Courier New";mso-fareast-font-family:"Times New Roman"'>DELETE
+/All_Data/VIIRS-M1-SDR_All/Radiance/FillValue-NA_UINT16_FILL;<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left'><span style='font-size:
+10.0pt;font-family:"Courier New";mso-fareast-font-family:"Times New Roman"'>DELETE
+/All_Data/VIIRS-M1-SDR_All/Radiance/MeasurmentUnits;<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left'><span style='font-size:
+10.0pt;font-family:"Courier New";mso-fareast-font-family:"Times New Roman"'>DELETE
+/All_Data/VIIRS-M1-SDR_All/Radiance/MaxValue;<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left'><span style='font-family:
+"Courier New";mso-fareast-font-family:"Times New Roman"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span style='mso-fareast-font-family:"Times New Roman"'>As
+the above examples illustrate that it is more desirable to use the command-file
+option since one does not need to worry about meta-characters that are
+interpreted by the Unix Shell.<o:p></o:p></span></p>
+
+<h2 style='mso-list:l32 level2 lfo35'><![if !supportLists]><span
+style='mso-fareast-font-family:Calibri;mso-fareast-theme-font:major-latin;
+mso-bidi-font-family:Calibri;mso-bidi-theme-font:major-latin'><span
+style='mso-list:Ignore'>6.7<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>Atomicity</h2>
+
+<p class=MsoNormal>Say the data file, mydata.h5, contains two group attributes
+called /attr1 and /attr2 but not /attr_a. The following command will result in
+an error.</p>
+
+<p class=MsoNormal align=left style='text-align:left'><span style='font-size:
+10.0pt;font-family:"Courier New";mso-fareast-font-family:"Times New Roman"'>$
+h5edit -c &quot;DELETE /attr1; DELETE /attr_a; DELETE /attr2;” mydata.h5<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left'>The data file mydata.h5
+is partially edited. The user may recover the data file and try again.</p>
+
+<p class=MsoNormal align=left style='text-align:left'><span style='font-size:
+10.0pt;font-family:"Courier New";mso-fareast-font-family:"Times New Roman"'>$ cp
+.mydata.h5.bck mydata.h5<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left'><span style='font-size:
+10.0pt;font-family:"Courier New";mso-fareast-font-family:"Times New Roman"'>$
+rm .mydata.h5.bck<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left'><span style='font-size:
+10.0pt;font-family:"Courier New";mso-fareast-font-family:"Times New Roman"'>$ h5edit
+-c &quot;DELETE /attr1; DELETE /attr2;” mydata.h5<o:p></o:p></span></p>
+
+<h1 style='mso-list:l32 level1 lfo35'><![if !supportLists]><span
+style='mso-fareast-font-family:Calibri;mso-fareast-theme-font:major-latin;
+mso-bidi-font-family:Calibri;mso-bidi-theme-font:major-latin'><span
+style='mso-list:Ignore'>7<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style='mso-fareast-font-family:"Times New Roman"'>Comments<o:p></o:p></span></h1>
+
+<p class=MsoNormal><span style='mso-fareast-language:KO'>Please send us your comments
+and suggestions to </span><a href="mailto:help@hdfgroup.org"><span
+style='mso-fareast-language:KO'>help@hdfgroup.org</span></a><span
+style='mso-fareast-language:KO'>.<o:p></o:p></span></p>
+
+<div class=MsoNormal align=center style='text-align:center'>
+
+<hr size=2 width="100%" align=center>
+
+</div>
+
+<p class=MsoNormal>Last revised: 2013/12/10</p>
+
+</div>
+
+</body>
+
+</html>

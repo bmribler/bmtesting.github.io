@@ -1,0 +1,893 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+<!-- If no var is set for $page_title on the top of each page than default title will be HDF Group -->
+
+<title>
+Software using HDF5: Descriptions</title>
+	<meta name="keywords" content="hdf, hdfeos, blog, hdf blog, hdf5 blog, hdf5, hdf4, hdf tools, hdf libraries, hdf viewer, hdf format, hdf file, hdf java, nafxcw.lib, phdf5, open source, hierarchical data format, ncsa, database, python hdf, mike folk, hdfview, hdf5 parallel" />
+	<meta name="description" content="The HDF Group is a not-for-profit corporation with the mission of sustaining the HDF technologies and supporting HDF user communities worldwide with production-quality software and services." />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="expires" content="Wed, 26 Feb 2010 08:21:57 GMT" />
+	<meta name="verify-v1" content="/m03HNmaDgGAcDe0PFtEVnXGtCkoeOocjr/Jwey2gdI=" />
+	<link href="/css/layout.css" rel="stylesheet" type="text/css" media="screen, projection" />
+	<link href="/css/print.css" rel="stylesheet" type="text/css" media="print" />
+	<link rel="stylesheet" type="text/css" href="/css/js_style.css" />
+	<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/prototype/1.7.2.0/prototype.js"></script>
+	<!--<script type="text/javascript" src="/scriptaculous/lib/prototype.js"></script>-->
+	<script type="text/javascript" src="/scriptaculous/src/effects.js"></script>
+	<script type="text/javascript" src="/scriptaculous/validation.js"></script>
+	<script type="text/javascript" src="/scriptaculous/animatedcollapse.js"></script>
+	<script type="text/javascript" src="/scriptaculous/rollover.js"></script>	
+	<script type="text/javascript" src="/scriptaculous/functions.js"></script>
+	<script type="text/javascript" src="/scriptaculous/sorttable.js"></script>
+	<!--<script type="text/javascript" src="/jquery-1.2.2.pack.js"></script>-->
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript" src="/scriptaculous/jssor.slider.min.js"></script>
+
+ 	<link rel="stylesheet" type="text/css" href="/featuredcontentglider.css" />
+    <script type="text/javascript" src="/featuredcontentglider.js"></script>
+
+	</head>
+	<body>
+	<div id="mast_head">
+		<a href="https://www.hdfgroup.org/"><img src="/images/hdf_logo.jpg" height="70" style="display:block; padding-left:10px;" align="left" alt="hdf images" /></a>
+		<img src="/images/logo_5.jpg" height="70" style="display:block;" align="right" alt="hdf images" />
+	</div> 
+				
+	<div id="nav_wrapper">
+		<div>
+		<div id="section-">
+			<ul id="nav">
+				<li id="t-index"><a href="https://www.hdfgroup.org/">Home</a> </li>
+				<li id="t-products"><a href="/products/">Products</a></li>
+				<li id="t-services"><a href="/services/">Services</a></li>
+				<li id="t-about"><a href="/about/">About Us</a></li>
+				<li id="t-news"><a href="/news/">News</a> </li>
+				<li id="t-blog"><a href="https://www.hdfgroup.org/blog">Blog</a></li>
+				<li id="t-contact"><a href="/about/contact.html">Contact Us</a></li> 
+			</ul>
+			<script type="text/javascript">
+			
+  (function() {
+    var cx = '007250492606109219119:sb2eg2bgoyy';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:search></gcse:search>	
+					<script type="text/javascript">
+					    jQuery(document).ready(function ($) {
+					        // var options = {
+					        //     $ArrowNavigatorOptions: {
+					        //         $Class: $JssorArrowNavigator$,
+					        //         $ChanceToShow: 2
+					        //     }
+					        // };					    	
+
+
+							var options = { 
+											$AutoPlay: true, $SlideshowOptions: { $Class: $JssorSlideshowRunner$, $Transitions: [{ $Duration:5000, $Fade: true, $Opacity:2 }] } , 
+											$ArrowNavigatorOptions: { 
+												$Class: $JssorArrowNavigator$, 
+												$ChanceToShow: 2
+											}
+										  };
+
+
+					        var jssor_slider1 = new $JssorSlider$('slider1_container', options);
+					    });
+					</script>
+									                  
+			
+		</div>
+		</div>             
+	</div>
+				
+<!--START: MAIN -->
+<div id="wrapper" style="margin-top:-15px;"> 
+
+<!--START: SIDE_BAR -->
+<div id="side_bar">
+
+<form method="get" action="" class="form" >
+	<select onchange="window.open(this.options[this.selectedIndex].value,'_top')" name="" style="border:2px solid #c1c1c1;">
+		<option value="" class="ql1">- - Quick Links - -</option>
+		<option value="/HDF5/" class="ql">HDF5</option>
+		<option value="/products/hdf4/" class="ql">HDF4</option>
+		<option value="/tools/" class="ql">Tools</option>
+		<option value="/projects/" class="ql">Projects</option>
+		<option value="/downloads/" class="ql">Downloads</option>
+		<option value="/documentation/" class="ql">Documentation</option>
+	        <option value="/pubs/" class="ql">Publications</option>
+		<option value="/about/" class="ql">Contact Us</option>
+	</select>
+</form>
+<ul style="border:1px solid #c1c1c1; margin-top:25px;"> 
+
+	<li style="background:url(/images/menubg.png); padding:0px; padding-left:7px; color:#27343C; font-weight:500; text-align:left;">
+	LINKS</li><li><a href="https://www.hdfgroup.org/">Main Website</a></li><li><a  href="/HDF5/whatishdf5.html">What is HDF5?</a></li><li><a  href="/about/HDF5Brochure_2012.pdf">Online Brochure</a></li><li><a  href="/downloads/index.html">Downloads</a></li><li><a  href="/HDF5/doc/index.html">Documentation</a></li><li><a  href="/products/hdf5_tools/">Software using HDF5</a></li><li><a  href="/HDF5/users5.html">HDF5 Users</a></li><li><a  href="/HDF5/hdf5-files.html">Sample HDF5 Files</a></li><li><a  href="/HDF5/acknowledge5.html">Acknowledgments</a></li><li><a  href="/products/licenses.html">Licenses</a></li></ul> 
+
+</div>
+
+<!--END: SIDE_BAR -->
+
+<!--START: CONTENT -->
+<div id="content">
+<p><font color="red"><center><strong>This web site is no longer maintained (but will remain online).<br /> Please see The HDF Group's new <a href="https://portal.hdfgroup.org">Support Portal</a> for the latest information.</strong></center></font></p>
+	<div class=bc><p style="color:orange; ";><a href="/" title="HOME">HOME</a> &gt; <a href="/HDF5/" title="HDF5">HDF5</a></p></div><fieldset><h1>Software using HDF5: Descriptions</h1></fieldset>
+
+
+
+<P>
+
+  <ul class="ul">
+  <p>
+  <a href="#1">Freely Available Software</a><br />
+  <a href="#2">Commercial Software</a> </p>
+  </ul>
+
+
+<A NAME="1"> </a>
+<B><H2>Freely Available Software</H2></B>
+<DL>
+
+<A NAME="opennav"> </a>
+<DT><A HREF="http://www.opennavsurf.org/">Bathymetric Attributed Grid data format</A>
+<DD> The Open Navigation Surface Working Group has collaborated on the 
+Bathymetric Attributed Grid data format, which relies on HDF5 for the 
+underlying file structure.  We also provide an API for interacting with 
+this data, driven by the needs of the community.  In the tradition of
+open source, the code base is openly available.
+
+<P>
+<A NAME="bear"> </a>
+<DT><A HREF="http://bear.sf.net">Bear</A>
+<DD>Bear is a tool for computing Bers slices and 
+holonomy representations of complex projective structures 
+on punctured tori.  It uses HDF5 as its primary output file 
+format.
+
+<P>
+<A NAME="beat"> </a>
+<DT><A HREF="http://www.science-and-technology.nl/beat/">BEAT</A>
+<DD>The Basic ENVISAT Atmospheric Toolbox (BEAT) is an open source toolbox
+that includes data access to a wide range of atmospheric data products, 
+including HDF4 and HDF5. The BEAT project, funded by the European Space
+Agency,  aims to provide scientists with tools for ingesting, processing, 
+and analyzing atmospheric remote sensing data.   
+<P>
+<DT><A HREF="http://www.cactuscode.org/">Cactus</A>
+<DD>Cactus is an open source problem solving environment designed for scientists
+and engineers.
+<P>
+It uses HDF5 as one of its underlying I/O libraries and data formats to
+read/write simulation data and to implement user level-based checkpointing
+and recovery.
+<P>
+<A NAME="chombo"> </a>
+<DT><A HREF="https://commons.lbl.gov/display/chombo/Chombo+-+Software+for+Adaptive+Solutions+of+Partial+Differential+Equations">Chombo</A>
+<DD>The Chombo package provides a set of tools for implementing finite
+difference methods for the solution
+of partial differential equations on block-structured adaptively refined
+rectangular grids. Both elliptic
+and time-dependent modules are included. Uses HDF5 to support parallel
+platforms and standardized
+self-describing file formats.
+<P>
+Chombo provides a distributed infrastructure for parallel calculations
+over block-structured, adaptively
+refined grids. Chombo's design is uniquely flexible and accessible. Any
+collaborator will be able to
+develop parallel applications to solve the partial differential
+equations in which she is interested with far
+shorter development times than would be possible without the
+infrastructure. Very careful design and
+documentation allows said collaborator to enter the software at many
+levels. She will be able to use
+Chombo to investigate deep technical issues of adaptive mesh refinement
+algorithms or to simply
+adapt the example applications to solve different scientific problems.
+</p>
+
+<!-- 
+<P>
+<A NAME="chombovis"> </a>
+<DT><A HREF="http://SEESAR.LBL.GOV/anag/chombo/chombovis.html">ChomboVis</A>
+<DD>
+ChomboVis is a program for visualization of 2D and 3D AMR data sets. It
+is layered on top of the Visualization Toolkit (VTK) and provides a
+simple graphical user interface for interacting with a 2D or 3D data
+set. 
+-->
+
+<P>
+<DT><A HREF="https://support.hdfgroup.org/ftp/HDF5/contrib/">Contributed 
+Software</A>
+<DD>This is software contributed by HDF users, which is available from 
+The HDF Group ftp server.  
+<P>
+
+<!--
+<A NAME="cstables"> </a>
+<DT><A HREF="http://www.cstables.org">CSTables</A>
+<DD>CSTables is a Python client-server database layer library that
+provides concurrency, client metadata cache, lock system, authentication
+and other features. It is built on top of HDF5 and PyTables.
+<P>
+-->
+
+<A NAME="dxhdf5"> </a>
+<DT><A HREF="http://www-beams.colorado.edu/dxhdf5">dxhdf5</A>
+<DD>The dxhdf5 package consists of software for importing HDF5 data 
+into OpenDX.
+
+<P>
+
+<a name="cgns">  </a>
+<dt><a href="http://cgns.sourceforge.net/index.html">CGNS</a>
+<dd><p>The CFD General Notation System (CGNS) provides a general, portable, and
+extensible standard for the storage and retrieval of computational fluid 
+dynamics (CFD) analysis data. It consists of a collection of conventions, 
+and free and open software implementing those conventions.  HDF5 has
+been chosen as the default data storage mechanism for the CGNS software.
+</p>
+
+<A NAME="flash"> </a>
+<DT><A HREF="http://flash.uchicago.edu/website/home/">FLASH</A>
+<DD>The 
+<A HREF="http://flash.uchicago.edu/">ASCI/Alliances Center for Astrophysical Thermonuclear 
+Flashes</A> at the University of Chicago  has developed a tool called 
+FLASH</A> to aid in the study of 
+thermonuclear flashes on the surfaces of compact stars.  The FLASH code is a modular, 
+adaptive, parallel simulation code capable of handling general compressible flow problems 
+in astrophysical environments. It uses parallel HDF5.
+<P>
+<A NAME="goctave"></a>
+<DT><A HREF="http://www.octave.org/">GNU Octave</A>
+<DD>This is a MATLAB-like program, which  
+supports reading and writing HDF5 files as a native file format.  You can 
+save/restore all of your variables and data structures in an Octave session 
+to/from an HDF5 file.  Complicated HDF5 files (with nested groups of varying 
+data types) are supported via Octave "structure" types.  <br />
+</p>
+
+<P>
+
+<A NAME="griksl"> </a>
+<DT>GriKSL (April 2002-March 2004)
+<DD>The German GriKSL project developed Grid-based simulation and visualization
+techniques for the Cactus framework (<A HREF="http://www.cactuscode.org">http://www.cactuscode.org</A>). 
+
+<p>
+Two virtual file drivers were added to the HDF5 library to provide
+transparent access to (a) live simulation data streamed via TCP socket 
+connections, and (b) to file-based data located on remote GridFTP servers.
+</p>
+
+<p>
+Visualization programs such as the OpenDX toolkit could make use of these 
+drivers in order to provide remote online/offline visualizations of Cactus data.
+</p>
+
+
+<a name="h5part"> </a>
+   <dt><p><a href="http://www-vis.lbl.gov/Research/H5hut/">H5hut</a>
+   <dd>
+      The H5hut library is an implementation of several data models for particle-based 
+      simulations that encapsulates the complexity of parallel HDF5 and is simple to use, 
+      yet does not compromise performance.
+
+<A NAME="hdfeos"> </a>
+
+   <DT><p><A HREF="http://hdfeos.org/">HDF-EOS</A>
+   <DD>The HDF-EOS software used by NASA on the
+   <A HREF="http://www.earth.nasa.gov/">Earth Science Enterprise</A>
+   project, expands the capabilities of HDF, adding datatypes that
+   are specifically designed for the storage of geophysical data.  These
+   datatypes are called swath, grid, and point.</p>
+  <P>
+
+<!--
+<A NAME="hdfexp"> </a>
+	<DT><A HREF="http://www.space-research.org/">HDF Explorer (Basic)</A>
+    <DD>
+ HDF Explorer (Basic version) is a free HDF and HDF5 reader. Data is readily explored in a
+tree-like interface, and datasets are displayed in a grid window. It 
+ is available for Windows NT/95. More information about HDF
+Explorer is available from
+<A HREF="http://www.space-research.org/">Space Research, Inc.</A>
+<P>
+-->
+
+<a name="hdfql"></a>
+<dt>
+<dt><a href="http://www.hdfql.com">HDFql</a>
+<dd>
+High-level language to manage and manipulate HDF5 data. Designed to be as simple
+and powerful as SQL, HDFql dramatically reduces the learning effort and time
+needed to handle HDF files. Built on a simple syntax, the tool offers a clean
+compact interface, which reads and writes HDF data across programming languages
+(C, C++, Java, Python, C# and Fortran) and platforms (Linux, Windows and Mac OS
+X). Used by research organizations, universities, datadriven corporations,
+scientists and students across the globe, HDFql is free.
+<p>
+
+<!--
+<DT><A HREF="https://gamma.hdfgroup.org/papers/prototypes/mesh/">HDF5 Mesh API </A> &nbsp; <I>prototype</I>
+<DD> An organizational structure and API for HDF5 to support the data and
+attributes used commonly by computational fluid dynamics (CFD), finite
+element analysis (FEA) and fluid-structure interaction (FSI).  Includes a 
+utility to convert EnSight data into HDF5.
+<P>
+-->
+
+<A NAME="hl-hdf"> </a>
+<DT><A HREF="http://git.baltrad.eu/manual/hlhdf/index.html">HL-HDF</A> (C and Python)
+<DD>HL-HDF is a high level interface to HDF5. It is designed to focus on 
+selected HDF5 functionality and make it available to users at a high level 
+of abstraction to facilitate management of virtually any scientific
+data.  It includes a
+<a href="http://www.python.org/">Python</a> programming language interface,
+called PyHL.  HL-HDF was developed at the 
+<A HREF="http://www.smhi.se/">Swedish Meteorological and 
+Hydrological Institute</A> (SMHI).  
+<P>
+
+<a name="h5py"></a>
+<p>
+<dt><a href="http://www.h5py.org">h5py</a>
+<dd>The h5py package provides both a high- and low-level interface to the HDF5 library from Python. The low-level interface is intended to be a complete wrapping of the HDF5 API, while the high-level component supports Python-style object-oriented access to HDF5 files, datasets and groups.  It is available on
+Linux, Mac OS-X and Windows.
+</p>
+
+<p>
+<DT><A HREF="http://ab-initio.mit.edu/h5utils">h5utils</A>
+<DD>This package contains the following utilities for HDF5 visualization:
+<P>
+<CODE>h5fromh4</CODE>:<br />
+<UL>A program to convert single-dataset HDF(4) files into HDF5 files.
+</UL>
+<br />
+<CODE>h5fromtxt</CODE>:<br />
+<UL>A program to convert simple text input into
+    multi-dimensional numeric HDF5 datasets.
+</UL>
+<br />
+<CODE>h5read.oct</CODE>:<br />
+<UL> A plug-in for GNU Octave (a 
+free Matlab-like program) allowing Octave to import slices from HDF5 files.  
+</UL>
+<br />
+<CODE>h5topng</CODE>: <br />
+<UL>A utility for 
+extracting 2d slices from HDF5 datasets and exporting them 
+as images in PNG format.
+</UL>
+<br />
+<CODE>h5totxt</CODE>:<br /> 
+<UL>A program for extracting 2D slices 
+of HDF5 datasets and exporting them as comma-delimited text for import 
+into spreadsheets, etc.
+</UL>
+<br />
+<A NAME="h5tov5d"> </a>
+<CODE>h5tov5d</CODE>:<br />
+<UL>A program to convert multidimensional HDF5 datasets to v5d
+format for visualization in <A HREF="http://www.ssec.wisc.edu/~billh/vis5d.html">Vis5d</A>, a free volumetric visualization tool
+for 3d, 4d, and even 5d data.
+</UL>
+<A NAME="h5tovtk"> </a>
+<CODE>h5tovtk</CODE>:<br />
+<UL>A program to convert HDF5 datasets into VTK format
+for use in the Visualization ToolKit (VTK) and supporting software.
+</UL>
+<P>
+<!--
+<DT><A HREF="http://zeus.ncsa.uiuc.edu/~miksa/LCAVision.html">LCAVision</A>
+<DD>LCAVision is a free open-source application for, among many other things, 
+visualisation of 3D advanced mesh refinement data sets in the Chombo and
+FlexIO file formats.  It also uses the streaming capabilities of the hdf5 
+stream vfd stream driver to visualise unigrid datasets live from a running
+cactus code simulation.  It is built and tested on SGI/Irix, Linux, and
+SunOS.
+<P>
+The original 3D AMR visualisation tool, now over three years
+in development, LCAVision provides many advanced ways of visualising and
+navigating hdf5 (Chombo) amr data and hdf5 and hdf4 and FlexIO unigrid
+data, including isos, slices of many flavors, vector visualisation, and
+time animation. 
+<P>
+LCAVision uses the fast light toolkit (FLTK) to provide the simplest most
+powerful graphical user interface to drive the Visualization Toolkit (VTK)
+visualisation pipelines underneath.  And all with the click of a button or
+two (no complicated networks or interfaces to have to set up or decipher).
+<P>
+<DT><A HREF="http://ab-initio.mit.edu/mpb/">MIT Photonic-Bands (MPB)</A>
+<DD>The MIT Photonic-Bands package computes the band structures 
+(dispersion relations) and electromagnetic modes of periodic dielectric 
+structures.  It outputs its fields and dielectric functions in HDF5 format. 
+-->
+<P>
+
+<A NAME="h5ws"> </a>
+<DT><!--<A HREF="https://collaborate.txcorp.com/distributed-technologies/fusion-data-grids-project/fusion-data-grids-project-home-page"> -->H5WS
+<DD>The HDF5 Web Service (H5WS) is an API for working with remote data.  It 
+partially mirrors the high level HDF5 Lite API, but allows users to query
+and work with remote data.  It is implemented using the client-server 
+infrastructure provided by Globus, gridFTP and HDF5.
+
+<P>
+<DT><A HREF="/products/hdf5_tools/">The HDF Group HDF5 Tools</A>
+
+
+<DD>The HDF5 utilities that are available for analyzing and converting HDF5 files. 
+<P>
+<DT>
+<!--
+<img src="/image/new.gif" ALT="NEW!"> 
+-->
+<A HREF="/products/java/index.html">
+The HDF Group HDF Java Products</A>
+<DD>The HDF Java Products are a revised and reorganized version of the earlier Java HDF Products.  They include: a) the Java HDF Interface for HDF4, b) the
+Java HDF5 Interface for HDF5, c) a NEW hdf-object package, which is a pure Java
+implementation of an abstract model of data and can read either HDF4 or HDF5
+files, and d) HDFView, a Java-based tool for browsing and editing HDF4 and
+HDF5 files.
+
+<p>
+<a name="igv"></a>
+<dt><a href="http://www.broadinstitute.org/software/igv/">Integrative Genomics
+Viewer (IGV)</a>
+<dd>The Integrative Genomics Viewer (IGV) is a high-performance visualization tool for interactive exploration of large, integrated datasets. It supports a wide variety of data types including sequence alignments, microarrays, and genomic annotations.
+</p>
+
+
+<p>
+<a name="libgpiv"> </a>
+<dt><a href="http://libgpiv.sourceforge.net/">LIBGPIV</a>
+<dd>LIBGPIV is a software library for the (Digital) Particle Image Velocimetry 
+technique (PIV).  It contains core functions for image evaluation, validation
+of PIV data,  post-processing, input/output functions, and utility functions. 
+Data in LIBGPIV can be read from and stored in an HDF5 file. 
+
+<P>
+<A NAME="lvhdf5"> </a>
+<DT><A HREF="http://h5labview.sourceforge.net/">h5labview</A>
+<DD>H5labview provides an interface between National
+Instruments LabVIEW and the HDF5 library. It provides a simple, high-level
+interface to common HDF5 tasks, which making available the full power of HDF5
+at the low level.
+</P>
+
+<P>
+<A NAME="ossim"></a>
+    <DT><A HREF="http://www.ossim.org">OSSIM</A>
+    <DD>The Open Source Software Image Map (OSSIM) library is used
+    in image processing for geospatial solutions.   (3/05)
+</P>
+
+<P>
+<A NAME="paramesh"></a>
+<DT><A HREF="http://www.physics.drexel.edu/~olson/paramesh-doc/Users_manual/amr.html">PARAMESH</A>
+<DD> PARAMESH is a package of Fortran 90 subroutines designed to provide an application developer with an easy route to extend an existing serial code which uses a logically cartesian structured mesh into a parallel code with adaptive mesh refinement(AMR).
+<P>
+<A NAME="paraview"></a>
+<DT><A HREF="http://www.paraview.org">ParaView</A>
+<DD>ParaView is an application designed with the need to visualize large
+data sets in mind. It runs on distributed and shared memory in parallel as
+well as on single processor systems and has been successfully tested on
+Windows, Linux and various Unix workstations and clusters. Under the
+hood, ParaView uses the Visualization Toolkit as the data processing and
+rendering engine and has a user interface written using a unique blend
+of Tcl/Tk and C .
+
+<p>
+<a name="pomegranate"></a>
+<dt><a href="http://pomegranate.nasa.gov">Pomegranate</a>
+<dd>Pomegranate is an open source python application that implements w10n-sci API.
+It can be installed to provide web services for remote access of science data files,
+or used as a standalone library/command line tool.
+Supported formats include NetCDF, HDF4, HDF5, GRIB and FITS.
+</p>
+
+<p>
+<A NAME="pytables"> </a>
+<DT><A HREF="http://pytables.sourceforge.net/">PyTables</A>
+<DD>PyTables is a Python package that enables the end user to easily organize
+and manipulate scientific data tables as well as Numeric and numarray data
+objects that reside on disk.
+PyTables is intended to be easy-to-use, and tries to
+be a high-performance interface to HDF5.  <!--An article
+entitled <i>Portable Data with PyTables</i>, published in the 
+<a href="http://pymag.phparch.com/c/issue/view/71">April 2008 issue of Python 
+magazine</a> gives a good idea of how PyTables is helping users 
+to easily work with HDF5 files.
+-->
+
+<P>
+
+<A NAME="q5cost"> </a>
+<dt><a href="http://abigrid.cineca.it/">Q5Cost</a>
+<dd>Q5Cost is a library and interface built on top of HDF5, 
+that provides a common data format for Quantum Chemistry
+applications.  It allows tree structures of the data, is portable 
+between different platforms and operating systems, and makes code 
+interoperability and communications much easier.
+
+<p>
+<A NAME="rams"> </a>
+<DT><A HREF="http://atmet.com">RAMS</A>
+<DD>RAMS, the Regional Atmospheric Modeling System, is a limited area
+model for simulating and forecasting meteorological phenomena, and
+for depicting results.  As of RAMS version 6.0, all intermediate and
+output files are written in HDF5.
+<P>
+<A NAME="Rsys"> </a>
+<DT><A HREF="http://lib.stat.cmu.edu/R/CRAN/">R</A>
+<DD>R is a system for statistical computation and graphics.  It consists of 
+a language plus a run-time environment with graphics, a debugger, access to 
+certain system functions, and the ability to run programs stored in script 
+files. As of version R0.99, hdf5 support is available as a separate package, 
+which, like other R addons, is a library that is loadable at runtime. 
+R runs on many Unix platforms, Windows NT/95, and the Power Macintosh.
+<P>
+<!--
+<DT>RPMS for HDF5
+<DD>For RedHat 7 users, hdf5 rpms and srpms are available in this
+directory:
+<PRE>
+  <A HREF="http://lark.cc.ukans.edu/~pauljohn/Swarm/miscSupportSoftware/">http://lark.cc.ukans.edu/~pauljohn/Swarm/miscSupportSoftware/</A>
+</PRE>
+-->
+<!--
+Note that there are new HDF5 rpms for RH7.2 systems which include the 
+change in RedHat's ssl library:
+<PRE>
+  <A HREF="http://lark.cc.ukans.edu/~pauljohn/software/hdf5-1.4.2-1RH72.i386.rpm">http://lark.cc.ukans.edu/~pauljohn/software/hdf5-1.4.2-1RH72.i386.rpm</A>
+  <A HREF="http://lark.cc.ukans.edu/~pauljohn/software/hdf5-1.4.2-1RH72.src.rpm">http://lark.cc.ukans.edu/~pauljohn/software/hdf5-1.4.2-1RH72.src.rpm</A>
+</PRE>
+
+They have a version number that includes RH72, in order to stay clear and
+away from the other HDF5 rpms for earlier RH systems:
+<PRE>
+  <A HREF="http://lark.cc.ukans.edu/~pauljohn/software/hdf5-1.4.2-1.i386.rpm">http://lark.cc.ukans.edu/~pauljohn/software/hdf5-1.4.2-1.i386.rpm</A>
+  <A HREF="http://lark.cc.ukans.edu/~pauljohn/software/hdf5-1.4.2-1.src.rpm">http://lark.cc.ukans.edu/~pauljohn/software/hdf5-1.4.2-1.src.rpm</A>
+
+</PRE>
+
+Send questions to Paul Johnson at: <CODE>pauljohn@ukans.edu</CODE>
+-->
+
+<A NAME="slh5"> </a>
+<P>
+<DT><A HREF="http://space.mit.edu/cxc/software/slang/modules/slh5/">SLh5</A>
+<DD>SLh5 is an open-source HDF5 module for <A HREF="http://www.s-lang.org">S-Lang
+</A>.
+The S-Lang interpreter provides a scripting environment well-suited for
+scientific and engineering tasks, due to the powerful vectorized numerical
+capabilities that are native to the language.
+<P>
+SLh5 provides a fast, high-level interface which makes it very easy to
+create multidimensional S-Lang objects from HDF5 files, or vice versa.
+The SLh5 interface is also unique in that it is <em>vectorized</em>
+for S-Lang, allowing multiple HDF5 files to be opened or created, or
+multiple datasets or attributes to be read, in a single call.
+<P>
+SLh5 may be imported at runtime into any suitable application which embeds
+the S-Lang interpreter, such as the
+ <A HREF="http://space.mit.edu/CXC/isis/">ISIS</A> astrophysical modeling
+and analysis system.
+
+
+<A NAME="swarm"> </a>
+<P>
+<DT><A HREF="http://www.swarm.org/index.php/Main_Page">Swarm</A>
+<DD>Swarm is a simulator that provides fine-grained, composable
+scheduling.  It is eventually intended to work in both distributed and
+multithreaded shared-memory configurations.  HDF5 is the primary object 
+serialization backend in Swarm.  Object storage in HDF5 is expected to be 
+a natural substrate for parallel, high performance random read/write access 
+to objects in Swarm models.
+<p>
+Swarm has another backend that reads and writes objects in Scheme, so
+Swarm can be used to convert HDF5 files to and from Scheme. 
+</p>
+
+<p>
+<A NAME="swx"> </a>
+<DT><A HREF="http://ccmc.gsfc.nasa.gov/SWX/swxweb.php">SWX: Space Weather 
+Explorer</A>
+<DD>The SWX: Space Weather Explorer from CCMC/NASA/GSFC is a program 
+written to visualize in 3D output from space weather models. (EOS User, 03/02)
+<P>
+<DT><A HREF="http://www.ssec.wisc.edu/~billh/vis5d.html">Vis5d</A>
+<DD>See <A HREF="#h5tov5d">h5tov5d</A> above.
+</p>
+
+<P>
+<A NAME="visad"> </a>
+<DT><A HREF="http://www.ssec.wisc.edu/~billh/visad.html">VisAD</A>
+<DD>
+VisAD is a Java toolkit for constructing interactive and collaborative visualization and analysis of numerical data.  VisAD is
+a product of the University of Wisconsin-Madison and collaborators.  
+</p>
+
+<p>
+<a name="visit"> </a>
+<dt><a href="http://visit.llnl.gov">VisIt</a></dt>
+<dd>VisIt is a free interactive parallel visualization and graphical
+analysis tool for viewing scientific data on Unix/Linux, Mac and Windows
+platforms. It is used to visualize scalar and vector fields defined on a
+wide variety of two- and three-dimensional (2D and 3D) meshes. VisIt
+reads a wide variety of HDF5 formatted scientific data files including
+Chombo, SAMRAI, Flash and XDMF.</dd>
+</p>
+
+<p>
+<a name="vitables"> </a>
+<DT><A HREF="http://vitables.org/">ViTables</A>
+<img src="/image/user/vitables1-32.png" align=LEFT>
+<DD>ViTables is a graphical tool for browsing and editing files in both 
+PyTables and HDF5 formats.  It is written on top of PyTables, and, as with the
+entire PyTables family, its main strength is its ability to easily manage 
+very large datasets.  Also, it was designed to be a multi-platform
+application, running on Unix, Windows, and MacOS X.
+</p>
+
+<p>
+<A NAME="zori"> </a>
+<DT>
+<em>Zori</em>
+<DD>Zori is an open-source program for the calculation of properties of
+atoms and molecules using the quantum Monte Carlo method. It outputs
+its checkpoint files and output files in HDF5 format, and interfaces
+with visualization programs that support HDF5.
+</DL>
+<hr>
+<A NAME="2"> </a>
+<B><H2>Commercial Software</H2></B>
+<DL>
+<!--
+<DT><A HREF="http://www.amira.com/">Amira</A>
+<DD>Amira is an advanced 3D visualization and volume modeling 
+application.  There is a Fiber Bundle HDF5 I/O layer, which is
+available as an extension to Amira.
+-->
+
+<P>
+<A NAME="arrvis"> </a>
+<DT><em>Array Visualizer</em>
+<DD>
+The <b> Intel&#174; Array Visualizer</b> is a software package included with 
+Intel Fortran for Windows that can be used to read, write, and display HDF4 
+and HDF5 data.  Array Visualizer can be used with C, Fortran, .Net, or 
+script languages .  The product also includes <b>Array Viewer&#174;</b>, a 
+Windows application that can be used to browse and edit HDF4 and HDF5 files. 
+</P>
+
+<P>
+<A NAME="datavis"> </a>
+<DT><A HREF="http://www.omatrix.com/datavis.html">Data Visualizer for
+O-Matrix</A> <DD>The <I>Data Visualizer for <nobr>O-Matrix</nobr></I>
+provides an <nobr>O-Matrix</nobr> command-line interface for
+manipulating, and rendering plots and data in the 
+Intel&#174 Array Visualizer.
+
+<A NAME="ensight"> </a>
+<P>
+
+<DT><A HREF="http://www.ensight.com">EnSight - Extreme Visualization Software</A>
+<DD>CEI offers a suite of tools for engineering and scientific simulation, 
+including meshing, plotting, animation and data visualization. The company's 
+software can be run on every type of computer, from laptops to clusters to 
+supercomputers. It interfaces seamlessly to all popular CAE software and most
+scientific research codes, and can drive the most advanced VR displays. CEI 
+has corporate headquarters in Apex, N.C., and authorized distributors around 
+the world.</P>
+
+<p>
+<A NAME="hexp"> </a>
+	<DT><A HREF="http://www.space-research.org/">HDF Explorer</A>
+<img src="/image/user/hdfexp80.gif" align=LEFT>
+    <DD>
+HDF Explorer is a data visualization program designed to read HDF and HDF5
+files. Its main features are: reads all HDF data types, supports image
+generation from both scalar and vector data, easy browsing through 3D
+datasets, data exporting facilities, and an easy-to-use yet powerful
+interface. HDF Explorer is available for Windows NT/95.</P> 
+
+
+
+<P>
+<A NAME="idl"> </a>
+<DT><A HREF="http://www.ittvis.com/">IDL-HDF5 Interface</A>
+<DD>IDL now supports tools for querying and reading HDF5 files.  The HDF5
+module is included as part of the standard IDL application.  The IDL
+application consists of a dynamically loadable module that provides a
+set of IDL software routines to directly access The HDF Group HDF5 C library.
+<!--
+In addition the IDL HDF5 module has the ability to parse entire HDF5 files 
+into IDL structures, and contains an HDF5 Browser which lets users 
+interactively explore files and import data into IDL. 
+-->
+<P>
+<!--
+<A NAME="labview"> </a>
+  <DT><A HREF="http://www.ni.com/">LabVIEW</A>
+   <DD>
+  National Instruments' Scope Soft Front Panel version 1.5 contains support
+for HDF5. The Scope Soft Front Panel is used to control all high speed
+digitizers from National Instruments.  Included in the distribution are
+LabVIEW VIs to read and write the HDF5 files used by the Soft Front Panel.
+The distribution can be downloaded from 
+<A HREF="http://ni.com">http://ni.com</A>.  Questions regarding
+this product should be directed to the support group at National
+Instruments.
+-->
+<P>
+
+<A NAME="igor"> </a>
+<DT><A HREF="http://www.wavemetrics.com">Igor Pro</A>
+<DD><P>Igor Pro is a scientific graphing and data analysis program that
+runs on Macintosh and Windows. It supports 1D, 2D and 3D graphics and
+data analysis. Its 
+<A HREF="http://www.wavemetrics.com/products/igorpro/dataaccess/hdf5.htm">HDF5
+support</A> includes an HDF5 browser, reading and writing datasets,
+attributes and groups, and reading and writing HDF5 images formatted
+according to the HDF5 Image and Palette Specification.</P>
+<P>
+
+<A NAME="maqbox"></a>
+<DT><A HREF="http://www.acqiris.com">MAQbox</A>
+<DD>Acqiris offers a portable data acquisition system, the MAQbox,
+that offers oscilliscope capabilities in a small package.  The
+MAQbox software also includes an Autostore mode that allows streaming
+of a series of acquisitions to disk for storage in the HDF5 format. 
+<!--
+See the <A HREF="http://www.acqiris.com/news/2005/july-18-2005.html">
+news article</A> regarding this. 
+-->
+<P>
+<A NAME="matlab"> </a>
+<DT><A HREF="http://www.mathworks.com">MATLAB</A>
+<DD>MATLAB from The MathWorks, Inc. supports the HDF5 format
+It is a high-level programming language for technical computing that combines 
+numeric computation, advanced graphics and visualization.
+<br />
+See:
+<a href="http://www.mathworks.com/help/techdoc/ref/hdf5.html">Summary of MATLAB HDF5 Capabilities</a>
+</p>
+
+<P>
+
+<A NAME="mathematica"> </a>
+<DT><A HREF="http://www.wolfram.com/mathematica">Mathematica</A>
+<DD>Mathematica 5.1 from Wolfram Research  supports HDF5.
+Mathematica provides a comprehensive environment for technical
+computing tasks, ranging from simple computations, to visualizing
+or modeling data.  Also see the user-contributed
+<a href="https://support.hdfgroup.org/ftp/HDF5/contrib/mathematica/">HDF5 Mathematica Wrappers and Examples</a>. The examples correspond to the C examples in
+the HDF5 Introductory Tutorial.
+<P>
+
+<A NAME="ni-hws"> </a>
+<DT><A HREF="http://www.ni.com/">NI-HWS</A>
+<DD>NI-HWS is a library that exposes a limited subset of the HDF5 functionality
+to store and retrieve waveforms and some predefined attributes of those
+waveforms.  It was written to provide easy access to the waveforms created
+by the National Instruments Analog and Digital waveform editors.  NI-HWS is
+distributed with the National Instrument analog and digital waveform
+editors and the NI-SCOPE, NI-FGEN, and NI-HSDIO instrument drivers.
+Questions regarding these product should be directed to the support group
+at National Instruments.   For more information, visit 
+<A HREF="http://www.ni.com/">http://www.ni.com/</A>.
+<P>
+<A NAME="o-m"> </a>
+<DT><A HREF="http://www.omatrix.com/">O-Matrix</A>
+<DD>O-Matrix is an interpreted matrix language for data analysis and
+visualization.
+The newest release now includes <A HREF="http://www.omatrix.com/manual/h5read.htm">functions for reading and writing HDF5 data files</A>.  See the 
+<A HREF="http://www.omatrix.com/overview.html">overview of O-Matrix</A> 
+for further details. 
+<P>
+
+<a name="pvwave"> </a>
+<dt><a href="http://www.roguewave.com/products/pv-wave-family/pv-wave.aspx">PV-WAVE</a></dt>
+
+<dd>PV-WAVE is a proprietary data visualization and analysis
+language and environment, with which users write and compile their own
+applications in the PV-WAVE language.  Support for HDF5 in PV-WAVE
+includes full read and write capabilities, with support for 
+everything but opaque datatypes and iterators. (It includes full
+support for variable length types.)  
+</dd>
+</p>
+
+<p>
+<a name="systemat"> </a>
+    <dt><a href="http://www.systema.astrium.eads.net/">SYSTEMA / THERMICA</a>
+    <dd>SYSTEMA V4 is a framework designed for space analysis tools. It includes
+        a powerful 3D modeler, a trajectory, a kinematics and a mission module. 
+        Analysis tools can then be plugged to this framework, get all the 
+        data generated as inputs and return the results in HDF5 files. SYSTEMA 
+        can then display all the results with the animation of the spacecraft
+        and can also export videos of the results.
+        <p>THERMICA is the major tool plugged into SYSTEMA. It deals with 
+        thermal simulation for space systems i.e. radiation, conduction, 
+        external fluxes (solar, planet IR, planet Albedo), internal 
+        dissipations, thermal controls, temperature computation (steady-state 
+        and transient analysis).  For more information, visit 
+        <a href="http://www.systema.astrium.eads.net/">http://www.systema.astrium.eads.net</a>.
+
+
+<A NAME="tecplot"> </a>
+    <DT><A HREF="http://www.tecplot.com/">Tecplot</A>
+    <DD>Tecplot, from Amtec Engineering Inc., is a fast, interactive
+        visualization program that allows
+        users to view their data in a wide variety of ways:  wire-mesh
+        plots, contour lines and flooding, vector fields, light-source
+        shared plots, and many types of XY plots.  It supports reading of 
+        HDF5 files <!-- (see
+ <A HREF="http://www.tecplot.com/showcase/contours/issue_25/issue_25.htm">
+Tecplot's online newsletter, <I>Contours</I>, Issue 25 - April 2004</A>).-->  Tecplot runs on most UNIX platforms and on
+        IBM PCs running most versions of MicroSoft Windows (and soon on VMS).
+
+<p>
+<a name="theseus-fe"> </a>
+<dt><a href="http://www.theseus-fe.com">THESEUS-FE</a>
+<dd>THESEUS-FE is a professional software tool for steady-state and
+fully transient thermal management applications. It is designed for
+use in the automotive, transportation and aerospace industries, but is
+applicable to other markets, as well.  It is based on an implicit
+Finite-Element solver methodology, which handles all kinds of 
+heat transfer.</p> 
+
+<hr />
+
+</DL>
+
+
+<i>
+- - Last modified: 14 June 2017</i>
+	   </div>
+	   <!--END: CONTENT -->
+<!--END: WRAPPER -->
+<script src="/scriptaculous/gatag.js" type="text/javascript"></script>
+
+<!-- <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script> -->
+				
+<!--
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-3782034-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+-->
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-3782034-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+</body>
+</html>

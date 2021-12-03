@@ -1,0 +1,839 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+<!-- If no var is set for $page_title on the top of each page than default title will be HDF Group -->
+
+<title>
+HDF Group News</title>
+	<meta name="keywords" content="hdf, hdfeos, blog, hdf blog, hdf5 blog, hdf5, hdf4, hdf tools, hdf libraries, hdf viewer, hdf format, hdf file, hdf java, nafxcw.lib, phdf5, open source, hierarchical data format, ncsa, database, python hdf, mike folk, hdfview, hdf5 parallel" />
+	<meta name="description" content="The HDF Group is a not-for-profit corporation with the mission of sustaining the HDF technologies and supporting HDF user communities worldwide with production-quality software and services." />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="expires" content="Wed, 26 Feb 2010 08:21:57 GMT" />
+	<meta name="verify-v1" content="/m03HNmaDgGAcDe0PFtEVnXGtCkoeOocjr/Jwey2gdI=" />
+	<link href="/css/layout.css" rel="stylesheet" type="text/css" media="screen, projection" />
+	<link href="/css/print.css" rel="stylesheet" type="text/css" media="print" />
+	<link rel="stylesheet" type="text/css" href="/css/js_style.css" />
+	<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/prototype/1.7.2.0/prototype.js"></script>
+	<!--<script type="text/javascript" src="/scriptaculous/lib/prototype.js"></script>-->
+	<script type="text/javascript" src="/scriptaculous/src/effects.js"></script>
+	<script type="text/javascript" src="/scriptaculous/validation.js"></script>
+	<script type="text/javascript" src="/scriptaculous/animatedcollapse.js"></script>
+	<script type="text/javascript" src="/scriptaculous/rollover.js"></script>	
+	<script type="text/javascript" src="/scriptaculous/functions.js"></script>
+	<script type="text/javascript" src="/scriptaculous/sorttable.js"></script>
+	<!--<script type="text/javascript" src="/jquery-1.2.2.pack.js"></script>-->
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript" src="/scriptaculous/jssor.slider.min.js"></script>
+
+ 	<link rel="stylesheet" type="text/css" href="/featuredcontentglider.css" />
+    <script type="text/javascript" src="/featuredcontentglider.js"></script>
+
+	</head>
+	<body>
+	<div id="mast_head">
+		<a href="https://www.hdfgroup.org/"><img src="/images/hdf_logo.jpg" height="70" style="display:block; padding-left:10px;" align="left" alt="hdf images" /></a>
+		<img src="/images/logo_3.jpg" height="70" style="display:block;" align="right" alt="hdf images" />
+	</div> 
+				
+	<div id="nav_wrapper">
+		<div>
+		<div id="section-news">
+			<ul id="nav">
+				<li id="t-index"><a href="https://www.hdfgroup.org/">Home</a> </li>
+				<li id="t-products"><a href="/products/">Products</a></li>
+				<li id="t-services"><a href="/services/">Services</a></li>
+				<li id="t-about"><a href="/about/">About Us</a></li>
+				<li id="t-news"><a href="/news/">News</a> </li>
+				<li id="t-blog"><a href="https://www.hdfgroup.org/blog">Blog</a></li>
+				<li id="t-contact"><a href="/about/contact.html">Contact Us</a></li> 
+			</ul>
+			<script type="text/javascript">
+			
+  (function() {
+    var cx = '007250492606109219119:sb2eg2bgoyy';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:search></gcse:search>	
+					<script type="text/javascript">
+					    jQuery(document).ready(function ($) {
+					        // var options = {
+					        //     $ArrowNavigatorOptions: {
+					        //         $Class: $JssorArrowNavigator$,
+					        //         $ChanceToShow: 2
+					        //     }
+					        // };					    	
+
+
+							var options = { 
+											$AutoPlay: true, $SlideshowOptions: { $Class: $JssorSlideshowRunner$, $Transitions: [{ $Duration:5000, $Fade: true, $Opacity:2 }] } , 
+											$ArrowNavigatorOptions: { 
+												$Class: $JssorArrowNavigator$, 
+												$ChanceToShow: 2
+											}
+										  };
+
+
+					        var jssor_slider1 = new $JssorSlider$('slider1_container', options);
+					    });
+					</script>
+									                  
+			
+		</div>
+		</div>             
+	</div>
+				
+<!--START: MAIN -->
+<div id="wrapper" style="margin-top:-15px;"> 
+
+<!--START: SIDE_BAR -->
+<div id="side_bar">
+
+<form method="get" action="" class="form" >
+	<select onchange="window.open(this.options[this.selectedIndex].value,'_top')" name="" style="border:2px solid #c1c1c1;">
+		<option value="" class="ql1">- - Quick Links - -</option>
+		<option value="/HDF5/" class="ql">HDF5</option>
+		<option value="/products/hdf4/" class="ql">HDF4</option>
+		<option value="/tools/" class="ql">Tools</option>
+		<option value="/projects/" class="ql">Projects</option>
+		<option value="/downloads/" class="ql">Downloads</option>
+		<option value="/documentation/" class="ql">Documentation</option>
+	        <option value="/pubs/" class="ql">Publications</option>
+		<option value="/about/" class="ql">Contact Us</option>
+	</select>
+</form>
+<ul style="border:1px solid #c1c1c1; margin-top:25px;"> 
+
+	<li style="background:url(/images/menubg.png); padding:0px; padding-left:7px; color:#27343C; font-weight:500; text-align:left;">
+	LINKS</li><li><a href="https://www.hdfgroup.org/">Main Website</a></li><li><a href="/HDF5/">HDF5</a></li><li><a href="/products/hdf4/">HDF4</a></li><li><a href="/tools/">Tools</a></li><li><a href="/projects/">Projects</a></li><li><a href="/downloads/">Downloads</a></li><li><a href="/documentation/">Documentation</a></li><li><a  href="/pubs/">Publications</a></li></ul> 
+
+</div>
+
+<!--END: SIDE_BAR -->
+
+<!--START: CONTENT -->
+<div id="content">
+<p><font color="red"><center><strong>This web site is no longer maintained (but will remain online).<br /> Please see The HDF Group's new <a href="https://portal.hdfgroup.org">Support Portal</a> for the latest information.</strong></center></font></p>
+	<div class=bc><p style="color:orange; ";><a href="/" title="HOME">HOME</a> &gt; <a href="/news/" title="NEWS">NEWS</a></p></div><fieldset><h1>News Bulletin Archives</H1></fieldset>
+
+
+<h3>June 3, 2015:</h3>
+<p><strong><a href="../newsletters/bulletin20150603.html">Bulletin: HDF5-1.8.15 Patch 1 Release</a></strong></p>
+<p>HDF5-1.8.15 Patch 1 was released to correct a problem in  HDF5-1.8.15 that caused compile failures in C++
+applications depending on the order that header files where included.
+</p>
+
+<hr />
+
+<a name="pyhexad"></a>
+
+<h3>May 1, 2015:</h3>
+<p><strong><a href="announcements/AnnouncingPyHexad.pdf">Announcing PyHexad – an HDF5 Add-in for Excel</a> </strong><img src="/images/pdf.gif"></img></p>
+
+<p>We are proud to announce the availability of PyHexad 0.1!
+</p>
+<p>
+ PyHexad is a Python-based Excel add-in for HDF5 that can be used to read or write data in HDF5 files from Microsoft Excel on Windows.
+ This functionality is made available to Excel users through a set of about a dozen user-defined functions and includes endpoints for
+ displaying file contents, reading and writing arrays, tables, and attributes, as well as displaying images stored in HDF5 datasets.
+</p>
+
+<p>
+The software can be downloaded from GitHub at:
+<pre>
+   <a href="https://github.com/HDFGroup/PyHexad">https://github.com/HDFGroup/PyHexad</a>
+</pre>
+</p>
+
+<p>
+For this first version, the emphasis was on functionality and there are no graphical frills or embellishments.
+It is meant for intermediate to advanced users, who are looking for just a few useful functions, which they can integrate into their workbooks. In the end, only an in-depth discussion can reveal where additional development is needed, and we would like to invite you to participate in that discussion.
+</p>
+<p>
+Please join the discussion on the <a href="/services/community_support.html">HDF-Forum</a>, report problems, suggest improvements, submit patches, or support the development in
+other creative ways!
+</p>
+<p>
+See the announcement above for more details.
+</p>
+
+<hr />
+
+<a name="powers"></a>
+
+<h3>May 1, 2015:</h3>
+<p><strong>Dr. Lindsay Powers Joins The HDF Group's Earth Science Division, Boulder Office</a></strong><img src="/images/pdf.gif"></img></p>
+<p>
+Champaign, IL -- Dr. Lindsay Powers has joined The HDF Group's Boulder Office as Deputy Director of Earth
+Science.  An interdisciplinary earth scientist who holds a Ph.D. in Water Resources Science from the
+University of Minnesota, St. Paul, she has a strong research and project management background with
+extensive experience in national and international scientific collaborations.
+</p>
+<p>
+For complete details click on the link above.
+</p>
+
+<hr />
+
+<a name="blog"></a>
+
+<h3>March 5, 2015:</h3>
+<p><strong>Announcing the HDF Blog</strong></p>
+
+<p>
+We are excited to introduce a blog series as another means to share knowledge about HDF.  We've
+posted an introductory blog and a short history of HDF.  Many interesting topics are in the pipeline,
+including information about HDF technologies, uses of HDF, plans for HDF, and anything else that
+might be of interest to HDF users and others who could enjoy the benefits of HDF.  We invite you
+to subscribe to the blog and make comments and suggestions.  Our staff will post regularly on the
+blog, but we also welcome guest bloggers from the community.  If you'd like to do a post, please
+send an email message to:
+</p>
+<p>
+&nbsp; &nbsp; &nbsp; <img src="/images/blog.gif">
+</p>
+
+<p>
+You'll find our blog at <a href="https://www.hdfgroup.org/blog/">blog.hdfgroup.org</a>.  We're looking
+forward to a lively and informative dialogue.
+</p>
+<p>
+Thank you,
+</p>
+<p>
+Mike Folk<br />
+President<br />
+The HDF Group
+</p>
+
+<hr />
+
+<a name="hdfserver"></a>
+<h3>February 27, 2015:</h3>
+<p><strong><a href="/projects/hdfserver/index.html">Announcing HDF REST Server (h5serv) 0.1.0</a></strong></p>
+
+<p>
+We are proud to announce the availability of HDF REST Server (h5serv) 0.1.0!
+</p>
+<p> HDF REST server is a Python-based web service that can be used to send and receive HDF5 data using an HTTP-based REST interface. HDF Server supports CRUD (create, read, update, delete) operations on the full spectrum of HDF5 objects including: groups, links, datasets, attributes, and committed data types. As a REST service a variety of clients can be developed in JavaScript, Python, C, and other common languages.
+</p>
+<p>
+The HDF Server extends the HDF5 data model to efficiently store large data objects (e.g. up to multi-TB data arrays) and access them over the web using a RESTful API. As datasets get larger and larger, it becomes impractical to download files to access data. Using HDF Server, data can be kept in one central location and content vended via well-defined URIs. This enables exploration and analysis of the data while minimizing the number of bytes that need to be transmitted over the network.
+</p>
+
+<p>
+Since HDF Server supports both reading and writing of data, it enables some interesting scenarios such as:
+<ul class="ul">
+<li class="li3">
+    Collaborative annotation of data sets
+</li>
+<li class="li3">
+    Compute clusters that use HDF Server for data access
+</li>
+<li class="li3">
+    Continually updated data shares (e.g. Stock Market quotes, sensor data)
+</li>
+<li class="li3">
+    Storing the analysis of the data (say a visualization) with the original source data
+</li>
+</ul>
+</p>
+<p>
+In addition to these, we would like to hear your ideas of how HDF Server could be utilized (as well as any other feedback you might have).
+</p>
+<p>
+Thanks to everyone who helped and advised on this project.
+</p>
+
+<hr />
+<a name="MMLA-Award2015"></a>
+<h3>January 14, 2015:</h3>
+<p>
+Champaign, IL -- Dr. Ted Habermann, Director of Earth Science at The HDF Group, was recognized
+last week by the Federation for Earth Science Information Partners (ESIP) in Washington D.C. with
+the Martha Maiden Lifetime Achievement Award. The award acknowledges significant lifetime leadership,
+dedication and a collaborative spirit in advancing the field of Earth Science information.
+</p>
+
+<p>
+Dr. Habermann leads the Earth Science Division of The HDF Group.
+His team supports NASA's <a href="https://earthdata.nasa.gov/">Earth Observing System</a>, which collects and studies massive quantities of earth observation from all over the world. Dr. Habermann is recognized for his work in national and international
+standards for documenting data across many processing systems and data centers so that scientists,
+decision-makers, and the general public can understand and trust data collected by U.S. Federal
+agencies and the academic community. He is also widely recognized as an expert in data management
+and in architectures of observing systems, data archives, and distribution systems.
+</p>
+
+
+<hr />
+
+<a name="bkparallel"></a>
+
+<h3>October 24, 2014:</h3>
+<p>
+Book Release: &nbsp; <a href="http://www.crcpress.com/product/isbn/9781466582347">High Performance Parallel I/O</a> by Prabhat (Berkeley Lab) and Quincey Koziol (The HDF Group).
+</p>
+<p>
+Parallel I/O is an integral component of modern high performance computing (HPC), especially in storing and processing very large datasets to
+facilitate scientific discovery. Revealing the state of the art in this field, this book draws on insights from
+leading practitioners, researchers, software architects, developers, and scientists who shed light on the parallel I/O ecosystem.
+Also see: <a href="https://cs.lbl.gov/news-media/news/2014/a-comprehensive-look-at-high-performance-parallel-i-o/">A Comprehensive Look at High Performance Parallel I/O</a>
+</p>
+
+<hr />
+
+<a name="lvhdf5"></a>
+<h3>September 16, 2014:</h3>
+<p>
+<a href="http://www.upvi.net/main/index.php/products/lvhdf5">LVHDF5 Toolkit</a> v1.0 provides nearly complete interface between LabVIEW and HDF5.
+</p>
+
+
+<hr />
+
+<a name="ceemple"></a>
+<h3>September 2014:</h3>
+<p>
+Ceemple v0.6.9 (C++ technical computing environment) now includes the latest version of HDF5. It is available from
+the <a href="http://www.ceemple.com">Ceemple</a> web site.
+</p>
+
+<hr />
+
+<a name="newmembers"> </a>
+<h3>January 7, 2014:</h3>
+<p>
+The HDF Group is excited to welcome two new members to the HDF team.
+</p>
+
+<p>
+<strong>Dr. Aleksandar Jelenak</strong> is joining the Earth Science team at The HDF Group. Aleksandar is an expert in satellite data access and
+management. Formerly at NOAA's National Environmental Satellite, Data, and Information Service (NESDIS), Aleksandar was lead designer
+and implementer of the JPSS Data Repository at the Center for Satellite Applications Research (STAR) and the data management lead for
+the international WMO Global Space-based Inter-Calibration System (GSICS) Project. Aleksandar brings many years of experience with
+HDF, netCDF, CF, THREDDS, IDL, MATLAB and Python to The HDF Group and will contribute to many on-going and new projects.
+</p>
+
+<p>
+<strong>Dr. Scot Breitenfeld</strong> will work with our applications and High Performance Computing teams. Scot has been a student programmer for
+The HDF Group while working on his PhD in Aerospace Engineering at the University of Illinois. At The HDF Group Scot specialized
+in the Fortran APIs for HDF4, HDF5 and High-Level Libraries for HDF5. Scot just received his PhD and is now joining us full time
+to provide support for applications on high end systems. His first two assignments will be to assist applications teams in using
+HDF5 on the new Blue Waters petascale system and on Lawrence Berkeley Laboratory's high end systems.
+</p>
+
+<p>
+HDF Group President Mike Folk says of the new staff members, "Aleksandar and Scot help fill an increasing need to provide
+application-specific services to users of HDF data. Aleksandar and Scot are not just HDF experts; they also have a deep
+understanding of the data needs and challenges scientists and engineers face. At the end of the day, people use HDF to help
+them solve problems and make discoveries. Aleksandar and Scot make us much better at helping our users in the earth sciences
+and HPC applications do just that."
+</p>
+
+<p>
+Welcome, Aleksandar and Scot!
+</p>
+
+<hr />
+
+<a name="h5pyhdf5"></a>
+
+<h3>November 2013:
+<p>
+<a target="_blank"
+   href="http://shop.oreilly.com/product/0636920030249.do">Book Release of &quot;Python and HDF5&quot;</a></h3>
+</p>
+<p>
+Python users, be sure to check out &quot;<a href="http://shop.oreilly.com/product/0636920030249.do">Python and HDF5: Unlocking Scientific Data</a>&quot; by Andrew
+Collette, published by O'Reilly.  Andrew has implemented h5py, a powerful python interface to HDF5.
+This book is an excellent guide to learning h5py, with loads of exercises and real-world examples.
+</p>
+
+<p>
+You should also have a look at this <a href="http://esipfed.org/ESIPInnovator-AndrewCollette">interview
+of Andrew Collette</a>, given at the launching of the book in November 2013.
+</p>
+
+
+<hr />
+
+
+<h3>June 28, 2013: <a target="_blank" href="http://www.hpcwire.com/hpcwire/2013-06-27/putting_the_squeeze_on_climate_data.html">Samplify Releases APAX HDF Storage Library  </a></h3>
+<p>June 28, 2013 -- <a href="http://www.samplify.com/" target="_blank">Samplify Systems, Inc.</a>,  announced the availability of its APAX HDF Storage Library at the recent  International Supercomputing Conference in Leipzig, Germany. Samplify provides  software and hardware solutions for solving memory, I/O, and storage  bottlenecks in HPC, Big Data, cloud computing, consumer electronics and mobile  devices. Its APAX technology is a universal numerical data encoder that  operates on any integer or floating point data type and can achieve typical  encoding rates of 3:1 to 8:1 without affecting the results of computing  applications.<br />
+  <br />
+According to the <a href="http://www.samplify.com/wp-content/uploads/2013/06/APAX-HDF-Product-Brief.pdf" target="_blank">APAX HDF Product Brief</a>, &quot;Using HDF&rsquo;s plug-in  capability, APAX HDF inserts Samplify&rsquo;s APAX encoder into the write pipeline,  and the APAX decoder in the read pipeline, to automatically save and  access&nbsp;dataset chunks in APAX compressed format.&nbsp;&nbsp;Any  application which already uses HDF as its storage format can take advantage of  Samplify&rsquo;s APAX HDF storage library WITH NO CODING REQUIRED!&nbsp; Unlike other  plug-ins, Samplify&rsquo;s APAX HDF requires no modification to solver  applications.&quot;<br />
+<br />
+See the <a href="http://www.samplify.com/products/apax-sw/apax-hdf/" target="_blank">APAX HDF</a> web page on Samplify's website for more  information.</p>
+
+<hr />
+<a name="trillion"></a>
+<h3>May 31, 2013: <a target="_blank" href="http://www.nersc.gov/news-publications/news/science-news/2013/trillion-particle-simulation-on-hopper-honored-with-best-paper/">Unprecedented "Trillion Particle" Simulation Relies on HDF5 to Store Data </a></h3>
+<p>A team of researchers from Lawrence Berkeley National Laboratory (Berkeley Lab) and Cray Inc. performed a trillion-particle simulation on the National Energy Research Scientific Computing Centerâ(NERSCâ Cray XE6 âpperâThe experiment pushed the machine's capabilities by using more than 120,000 processors and generating approximately 350 terabytes of data. The team recently won the Best Paper award at the 2013 Cray User Group conference for their description of the simulation and its findings.</p>
+
+<p>"This is the largest I/O job ever undertaken by a NERSC application. It is quite a feat when you consider that even the smallest bottleneck in a production I/O stack can degrade performance at scale," says Prabhat, a researcher in Berkeley Lab's Scientific Visualization Group and co-author of the paper. He further explained how progress made by the ExaHDF5 team over the course of the project made it possible "to demonstrate that HDF5 can scale to petascale platforms like Hopper and achieve near peak I/O rates."</p>
+
+<p>ExaHDF5 is a Department of Energy funded collaboration, led by Prabhat, to develop high performance I/O and analysis strategies for future exascale computers. A primary goal of the project has been to expand the capabilities of HDF5 for petascale and future exascale platforms.</p>
+
+<p>"The outcome of this work was truly ideal,â ran a state-of-the-art simulation code at scale, which ww
+asnâpossible before, using the best computing resources and expertise, and this effort produced a first-time science result that no one had ever seen before. Computer science researchers always hope for such an outcome, but rarely do things come together in this fashion."
+</p>
+
+<hr />
+
+<a name="earthobserver"></a>
+<h3>April 2, 2013: "The Earth Observer" Article Covers HDF and HDF-EOS Earth Science Data Formats, HDF-EOS Website </h3>
+<p>The <a href="http://eospso.gsfc.nasa.gov/eos_observ/pdf/March_April_2013_508_color.pdf" target="_blank">March-April issue of NASA's &quot;The Earth Observer&quot;</a> includes an interesting article entitled &quot;Working with NASA&rsquo;s HDF and  HDF-EOS Earth Science Data Formats&quot;, written by Jennifer Brennan of NASA's  Goddard Space Flight Center and H. Joe Lee, MuQun Yang, Mike Folk, and Elena  Pourmal of The HDF Group.</p><p> The article provides a brief overview of how the HDF  and HDF-EOS formats are used in the NASA Earth Observing System (EOS) followed  by an excellent description of examples available on the <a href="http://www.hdfeos.org/">HDF-EOS Tools and Information Center website.</a></p>
+
+
+
+<hr />
+
+<a name="bgropp"> </a>
+<h3>February 7, 2013: &nbsp; The HDF Group Board Member Recognized as 2013 "Person to Watch" in High-Performance Computing</h3>
+<p>
+HPCWire, <q>the #1 news and information portal covering the fastest computers in the world and the
+people who run them</q> announced on January 25 that it has published its <a href="http://www.hpcwire.com/specialfeatures/people_to_watch_2013/WilliamGropp.html">HPCwire People to Watch 2013</a>  list, and we are
+proud to congratulate The HDF Group board member Dr. William D. (Bill) Gropp for his selection to the list.
+</p>
+<p>
+As stated in the announcement, <q>The annual list is comprised of an elite group of the best and brightest minds in HPC whose research, dedication and hard work will be making a difference in the HPC community and in the world with their contributions.</q>
+</p>
+
+<p>
+At the University of Illinois at Urbana-Champaign Dr. Gropp is the Paul and Cynthia Saylor Professor
+of Computer Science, Director of the Parallel Computing Institute, and Deputy Director for Research
+at the Institute for Advanced Computing Applications and Technologies. He joined the board of
+The HDF Group in 2011.
+</p>
+
+<p>
+Dr. Gropp is also General Chair for Supercomputing 2013, the International Conference for High
+Performance Computing, Networking, Storage and Analysis.
+</p>
+
+<p>
+About receiving this recognition Dr. Gropp remarked, <q>It's a great honor to be part of this year's
+group of people to watch in HPC.  I'll be watching to see how our predictions turn out!</q>
+<br />&nbsp;
+</p>
+
+<hr />
+
+<a name="exxon"></a>
+<h3>November 7, 2012: &nbsp; <a href="http://www.marketwatch.com/story/exxonmobil-enhances-energistics-standards-devkit-2012-11-07">ExxonMobil Upstream Research's Standards DevKit Uses HDF5DotNet</a></h3>
+<p>
+"HOUSTON, TX -- (Marketwire) -- 11/07/12 -- The Energistics Consortium
+announced today that ExxonMobil Upstream Research Company has provided an enhanced version
+of the Standards DevKit that adds support for RESQML 1.1, including managing the HDF5
+file format. This enhanced version of the Standards DevKit will support RESQML,
+the Energistics reservoir data exchange standards as well as WITSML."
+</p>
+
+<p>
+ The HDF Group
+ worked with the Energistics Consortium in 2011 to provide additional functionality
+in the .NET C++/CLI wrapper of the HDF5 library and supported the wrapper on Windows
+ XP and Windows 7 for a limited period.
+</p>
+
+<p>
+"<a href="http://www.energistics.org/reservoir/resqml-standards/current-standards">RESQML</a> is an XML-based data exchange standard that helps to address the
+data-incompatibility and data-integrity challenges faced by petro-technical
+professionals when using the multiple software technologies required along
+the entire subsurface workflow, for analysis, interpretation, modeling, and
+simulation." (<a href="http://w3.energistics.org/schema/resqml_v1.1.0_support/RESQML_v1.1_Overview_Guide.pdf">Energistics Guide</a>)
+</p>
+
+<p>
+For more information about the HDF5DotNet wrapper, please visit <a href="http://www.hdf5.net/">hdf5.net</a>.
+<br />&nbsp;
+</p>
+
+<hr />
+
+<h3>August 2, 2012: &nbsp;<a href="http://www.opendap.org/">Major Upgrade of HDF5 OPenDAP handler</a>
+</h3>
+<p>
+A major upgrade of the HDF5 OPeNDAP handler was released at <a href="http://www.opendap.org">opendap.org</a>.  The upgraded version greatly improves the accessibility of NASA Earth
+Sciences HDF5 data via OPeNDAP. It includes support for more HDF5 data
+and much better support for the CF conventions. The enhanced CF
+support will greatly improve interoperability with those clients that
+understand CF.
+<br />&nbsp;
+</p>
+
+<hr />
+<p>
+<h3>July 12, 2012: &nbsp;<a href="http://www.hpcwire.com/hpcwire/2012-07-12/doe_primes_pump_for_exascale_supercomputers.html?page=1">DOE Primes Pump for Exascale Supercomputers</a></h3>
+<p>
+
+<p>
+Article  published in <a href="http://www.hpcwire.com">HPC Wire</a> about The HDF Group collaboration with Whamcloud and Cray on July 10, 2012.
+<br />&nbsp;
+</p>
+
+<hr />
+
+<h3>July 10, 2012: &nbsp;<a href="http://www.whamcloud.com/news/whamcloud-leads-group-of-hpc-experts-winning-doe-fastforward-storage-and-io-project/">Whamcloud Leads Group of HPC Experts Winning DOE FastForward Storage and IO Project</a></h3>
+<p>The HDF Group is collaborating with Cray and Whamcloud on the FastForward
+program. FastForward is a jointly funded project between the Department of
+Energy (DOE) and National Nuclear Security Administration (NNSA) to
+accelerate the research and development (R & D) of critical technologies
+needed for extreme scale computing. Exascale computing is essentially a
+grand challenge to provide the next level of computational power required
+to help ensure the prosperity and security of the United States.
+<br />&nbsp;
+</p>
+
+<hr />
+<h3>March 23, 2012: &nbsp; <a href="/newsletters/bulletin20120323.html">HDF 4.2.7-patch1</a></h3>
+<p>
+A patched version of the HDF 4.2.7 source code,
+<a href="/ftp/HDF/releases/HDF4.2.7/src/">HDF 4.2.7-patch1</a>, is
+now available to correct a configure issue with compilers that contain a '-' in the name.
+<br />&nbsp;
+</p>
+
+<hr />
+<h3>December 19, 2011: &nbsp; <a href="http://hdf5.net/">HDF5DotNet 1.8.8 now available</a></h3>
+<p>
+HDF5DotNet 1.8.8 is now available for download. This release supports HDF5-1.8.8.
+See the HDF5DotNet home page for detailed information regarding this release:
+<pre>
+   <a href="http://hdf5.net/">http://hdf5.net/</a>
+
+</pre>
+</p>
+
+<hr />
+
+<p>
+<a name="npp"> </a>
+<h3>October 28, 2011: &nbsp; <a href="http://www.nasa.gov/mission_pages/NPP/launch/index.html">NASA NPP
+Spacecraft Launches on Earth Observing Mission</a></h3>
+
+<p>
+The NPOESS Preparatory Project (NPP) spacecraft lifted off at 5:48 a.m. EDT on Oct. 28, 2011, to begin its
+earth observation mission. NPP is the first of several satellites, all of whose data will be stored in HDF5.
+<br /> &nbsp;
+</p>
+
+<h3>June 1, 2011: &nbsp;
+<a href="ogcmember.html">The HDF Group joins OGC</a></h3>
+
+<p>Announcement that The HDF Group has joined the <a href="http://www.opengeospatial.org">Open
+Geospatial Consortium (OGC)</a> as an Associate Member.
+<br /> &nbsp;
+</p>
+
+<hr />
+
+<p>
+<h3>December 5, 2010: &nbsp;
+<a href="move.html">HDF Group's growth, move prompts news coverage</a></h3>
+<p>Link to an article in the Champaign, Illinois, <em>News-Gazette</em>.
+<br /> &nbsp;
+</p>
+
+<hr />
+
+<a name="smap"> </a>
+<h3>October 12, 2010: &nbsp;
+<a href=" http://smap.jpl.nasa.gov/science/dataproducts/">SMAP Data Products in HDF5</a></h3>
+<p><a href="http://smap.jpl.nasa.gov/">SMAP</a> (Soil Moisture Active &
+Passive) data products will be delivered in the HDF5 Format.  SMAP is
+one of four <em>Tier-1</em> missions recommended by the U.S. National Research Council
+Committee on Earth Science and Applications from Space. It will provide global measurements
+of soil moisture and its freeze/thaw state.  These measurements will be used to enhance
+understanding of processes that link the water, energy and carbon cycles and
+extend the capabilities of weather and climate prediction models. SMAP
+data will also be used to quantify net carbon flux in boreal landscapes and
+improve flood prediction and drought monitoring capabilities.
+</p>
+
+<hr />
+
+<h3>July 29, 2010: &nbsp;
+<a href="http://www.prnewswire.com/news-releases/sony-pictures-imageworks-and-industrial-light--magic-join-forces-on-alembic-99337884.html">Sony Pictures Imageworks and Industrial Light & Magic Join
+Forces on <em>ALEMBIC</em></h3>
+
+<p>
+<a href="http://www.imageworks.com/">Sony Pictures Imageworks</a> and <a href="http://www.ilm.com">
+Industrial Light and Magic (ILM)</a> have collaborated to create <a href="http://www.alembic.io">ALEMBIC</a>, an open source exchange format that aims to become the standard for exchanging
+animated computer graphics scenes between content creation software packages.
+</p>
+
+<hr />
+<h3>February 26, 2010:  &nbsp;
+<a href="../newsletters/bulletin20100226.html">HDF5 1.8 Corruption Problem</a></h3>
+<p>
+A corruption problem was found in HDF5 1.8, which affected releases
+1.8.0 through 1.8.4.  The problem was fixed in HDF5 1.8.4 Patch 1.
+</p>
+
+<br /> &nbsp;
+
+</p>
+<hr />
+
+<p>
+<a NAME="field3d"></a>
+<h3>October 2, 2009: <br>
+<a href="http://opensource.imageworks.com/?p=field3d">
+Award-winning Sony Pictures Imageworks uses HDF5</a></h3>
+<p />
+<a href="http://www.imageworks.com/">Sony Pictures Imageworks</a>,
+the award-winning visual effects and digital character animation unit of
+Sony Pictures Digital Productions, is launching an open source development
+program, which includes the Field3d technology.
+
+<p />
+<a href="http://opensource.imageworks.com/?p=field3d">Field3</a>,
+a voxel data storage library, provides C++ classes that handle storage
+in memory, as well as a file format based on <strong>HDF5</strong> that allows the C++
+objects to easily be written to and read from disk.
+<p />
+
+<hr>
+<h3>May 8, 2009:<br />
+<a target="_blank" href="http://www.rce-cast.com/index.php/Podcast/rce-09-hdf5.html">Latest HDF5 and HDF Group Podcast</a></h3>
+
+<p>
+   Mike Folk and Quincey Koziol of The HDF Group speak about the HDF5 file API.
+<br /> &nbsp;
+</p>
+
+
+<hr>
+<h3>May 29, 2009: <br />
+<img src="../images/pdf.gif"><a href ="/pubs/rfcs/RFC_h5diff_NonComparable.pdf">RFC: Reporting of Non-Comparable Datasets by h5diff</a>
+</h3>
+
+<p>A Request for Comments (RFC) on the handling of non-comparable datasets
+by h5diff has just been published.  The HDF Group is soliciting feedback on
+this RFC.
+<br /> &nbsp;
+</p>
+<hr>
+
+<h3>March 3, 2009:<br />
+<a href="/newsletters/bulletin20090302.html">HDF5 Chunking Performance Improvement</a>
+</h3>
+
+<p>
+A recent bug fix resulted in a significant improvement in chunking
+performance. This fix will be available in releases HDF5 1.6.9 and
+HDF5 1.8.3, due out in May, but the fix is in the latest snapshots.
+<br /> &nbsp;
+</p>
+
+<hr>
+<h3>January 14, 2009:<br />
+<a href="http://ams.confex.com/ams/89annual/">American Meteorological Society 89th Annual Meeting</a>
+</h3>
+
+<p>Extended abstracts on work done by The HDF Group were
+presented at the 89th Annual AMS meeting:
+</p>
+&nbsp; &nbsp; <a href="http://ams.confex.com/ams/89annual/techprogram/paper_148062.htm">Investigation of using HDF5 Archival Information Packages (AIP) to store
+NASA ECS Data</a> <br />
+&nbsp; &nbsp; <a href="http://ams.confex.com/ams/89annual/techprogram/paper_148069.htm">Using a friendly OPeNDAP client library to access HDF5 data</a>
+</p>
+<p>These abstracts can also be found on The HDF Group <a href="/pubs/presentations/">presentations</a> page.
+<br> &nbsp;
+</p>
+
+<hr>
+<h3>January 7, 2009:<br />
+<a href="http://www.linuxclustersinstitute.org/conferences/program.html">HDF5 and netCDF-4 Tutorial @ 10th LCI Conference</a>
+</h3>
+
+<p>
+The tutorial, <a href="/news/LCI2009-Tutorial.pdf">HDF5 and netCDF-4: Two Solutions for Data Management Problems based on One File Format</a> will be
+presented on March 9, 2009 at the
+<a href="http://www.linuxclustersinstitute.org/conferences/program.html">10th
+LCI International Conference on High-Performance Clustered Computing</a> in Boulder,Colorado.
+</p>
+
+<!--
+<p>
+<a href="https://www-s.continuinged.uiuc.edu/conferences/index.cfm?formid=3c8dbacd-65
+b3-eb80-ae32-27618efd7dcaa">Registration</a> is now open.
+-->
+<br /> &nbsp;
+
+</p>
+<hr>
+
+<h3>Bulletin <i>December 12, 2008</i></h3>
+
+<p>
+<a href="/pubs/rfcs/RFC_chunk_cache_functions.pdf">RFC:
+Setting Raw Data Chunk Cache Parameters in HDF5</a>
+</p>
+
+<p>
+A Request for Comments (RFC) on new functions for setting individual
+chunk cache parameters for each dataset in HDF5 has just been published.
+</p>
+
+<p>
+The HDF Group is currently soliciting feedback on this RFC.   Community
+comments will be one of the factors considered by The HDF Group in making
+the final design and implementation decisions.
+</p>
+
+
+
+<hr />
+<h3>Bulletin <i>November 3, 2008</i></h3>
+<p>
+<b>HDF5 Users BOF @ SC08</b>
+</p>
+
+<p>
+The HDF Group will host a Birds-of-a-Feather  (BOF) session for HDF5 Users at 
+<a href="http://sc08.supercomputing.org/">SC08</a> on November 19th. Quincey Koziol, 
+Chief Architect for The HDF Group, will discuss features currently under development, 
+answer questions, and gather input for future directions. 
+</p>
+
+<p>
+Please see the following page for more details: 
+<a href="/news/hdf5_bof.html">HDF5 BOF Information</a>
+</p>
+
+
+<hr />
+<h3>Bulletin <i>October 7, 2008</i></h3>
+<p><b>NASA Commits 3.1M to The HDF Group for Earth System Science</b>
+</p>
+<p>
+As reported on 
+<a href="http://www.hpcwire.com/industry/government/NASA_Commits_31M_to_The_H
+DF_Group_for_Earth_System_Science.html">October 1st, 2008 in HPCWire</a>, 
+the HDF Group has 
+received a 3-year contract from the National Aeronautics and Space 
+Administration (NASA) to provide ongoing development and support for 
+the HDF technologies used by NASA's Earth Observing System (EOS).  
+</p>
+<p>The contract will be announced at the upcoming 
+<a href="http://www.hdfeos.org/workshops/ws12/workshop_twelve.php">12th HDF & HDF-EOS Workshop</a> in Aurora, Colorado, October 15th through 17th.
+</p>
+
+<hr />
+
+<h3>Bulletin <i>October 3, 2008</i></h3>
+<p><b>RFC: Native Time Types in HDF5</b></p>
+<p>An RFC has been published for handling Native Time Types in
+HDF5.  The HDF Group is currently soliciting feedback on this RFC.
+[ <a href="/pubs/rfcs/RFC_Native_Time_Types.pdf">PDF</a> ]
+
+<hr />
+
+<h3>Bulletin <i>September 2, 2008</i></h3>
+<p><b>RFC: Special Values in HDF5</b></p>
+<p>
+A new Request for Comment on the 
+<a href="/pubs/rfcs/RFC_Special_Values_in_HDF5.pdf">handling of Special Values in HDF5</a> 
+has been published. The HDF Group is currently soliciting feedback on this RFC.
+Community comments will be one of the factors considered by The HDF Group in 
+making the final design and implementation decision.   Comments may be
+sent to the The HDF Group Heldesk.
+</p>
+
+
+<hr />
+
+<h3>Bulletin <i>August 14, 2008</i></h3>
+<p>
+<b>HDF5-OPeNDAP Used In Tracking Beijing Air Quality</b>
+</p>
+<p>
+The HDF5-OPeNDAP Project has been used to facilitate the use of 
+HDF-EOS Data to track Beijing air quality.  For more information
+on this, see:
+  <a href="/pubs/briefs/2008-08_hdf5_opendap_brief.pdf">HDF5 OPeNDAP Brief 8/14/08</a> [pdf]
+</p>
+
+
+<hr>
+<h3>Bulletin <i>June 24, 2008</i></h3>
+<p>
+<b>NetCDF-4 Performance Report</b>
+</p>
+<p>
+NetCDF-4 is an I/O software package that retains the original netCDF
+APIs while using HDF5 to store the data.  Sponsored by NASA ESTO,
+netCDF-4 is the result of a collaboration between Unidata and The HDF
+Group.
+</p>
+
+<p>
+The HDF Group has prepared a report on the performance of netCDF-4
+that uses benchmarks and examples to:
+<ul class="ul">
+<li class="li">compare the performance of netCDF-3 and netCDF-4</li>
+<li class="li">discuss performance tuning with netCDF-4</li>
+<li class="li">discuss performance pitfalls with netCDF-4</li>
+</ul>
+</p>
+<p>
+Some of the performance tuning and pitfalls discussions may also be of
+interest to users of HDF5 who do not use netCDF-4.
+The report is available at:
+<pre>
+   <a href="/pubs/papers/2008-06_netcdf4_perf_report.pdf">2008-06_netcdf4_perf_report.pdf</a>
+
+</pre>
+</p>
+
+
+<hr />
+
+
+
+<i>
+- - Last modified: 24 January 2017</i>
+	   </div>
+	   <!--END: CONTENT -->
+<!--END: WRAPPER -->
+<script src="/scriptaculous/gatag.js" type="text/javascript"></script>
+
+<!-- <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script> -->
+				
+<!--
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-3782034-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+-->
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-3782034-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+</body>
+</html>

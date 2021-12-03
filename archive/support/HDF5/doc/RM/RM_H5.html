@@ -1,0 +1,2058 @@
+<html>
+<head><title>
+HDF5/H5 API Specification
+</title>
+<link href="../ed_styles/RMelect.css" rel="stylesheet" type="text/css">
+</head> 
+
+<body bgcolor="#FFFFFF">
+
+<!-- #BeginLibraryItem "/ed_libs/styles_RM.lbi" -->
+<!--
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+  * Copyright by The HDF Group.                                               *
+  * Copyright by the Board of Trustees of the University of Illinois.         *
+  * All rights reserved.                                                      *
+  *                                                                           *
+  * This file is part of HDF5.  The full HDF5 copyright notice, including     *
+  * terms governing use, modification, and redistribution, is contained in    *
+  * the files COPYING and Copyright.html.  COPYING can be found at the root   *
+  * of the source code distribution tree; Copyright.html can be found at the  *
+  * root level of an installed copy of the electronic HDF5 document set and   *
+  * is linked from the top-level documents page.  It can also be found at     *
+  * http://www.hdfgroup.org/HDF5/doc/Copyright.html.  If you do not have      *
+  * access to either file, you may request a copy from help@hdfgroup.org.     *
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ -->
+<!-- #EndLibraryItem --><!-- #BeginLibraryItem "/ed_libs/NavBar_RM.lbi" -->
+<hr>
+<center>
+<table border=0 width=98%>
+<tr><td valign="top" align=left>
+<a href="../index.html">HDF5 documents and links</a>&nbsp;<br>
+<a href="../H5.intro.html">Introduction to HDF5</a>&nbsp;<br>
+<a href="../UG/HDF5_Users_Guide-Responsive&#32;HTML5/index.html">HDF5 User&rsquo;s Guide</a>&nbsp;<br>
+<!--
+<a href="Glossary.html">Glossary</a><br>
+-->
+</td>
+<td valign="top" align=right>
+In the 
+<a href="RM_H5Front.html">HDF5 Reference Manual</a>&nbsp;
+<font size=-1>
+<br>
+<a href="../HL/RM_H5DS.html">H5DS</a>&nbsp;&nbsp;
+<a href="../HL/RM_H5IM.html">H5IM</a>&nbsp;&nbsp;
+<a href="../HL/RM_H5LT.html">H5LT</a>&nbsp;&nbsp;
+<a href="../HL/RM_H5PT.html">H5PT</a>&nbsp;&nbsp;
+<a href="../HL/RM_H5TB.html">H5TB</a>&nbsp;
+<a href="../HL/RM_HDF5Optimized.html">Optimized</a>&nbsp;
+<br>
+<a href="RM_H5.html">H5</a>&nbsp;&nbsp;
+<a href="RM_H5A.html">H5A</a>&nbsp;&nbsp;
+<a href="RM_H5D.html">H5D</a>&nbsp;&nbsp;
+<a href="RM_H5E.html">H5E</a>&nbsp;&nbsp;
+<a href="RM_H5F.html">H5F</a>&nbsp;&nbsp;
+<a href="RM_H5G.html">H5G</a>&nbsp;&nbsp;
+<a href="RM_H5I.html">H5I</a>&nbsp;&nbsp;
+<a href="RM_H5L.html">H5L</a>&nbsp;
+<br>
+<a href="RM_H5O.html">H5O</a>&nbsp;&nbsp;
+<a href="RM_H5P.html">H5P</a>&nbsp;&nbsp;
+<a href="RM_H5PL.html">H5PL</a>&nbsp;&nbsp;
+<a href="RM_H5R.html">H5R</a>&nbsp;&nbsp;
+<a href="RM_H5S.html">H5S</a>&nbsp;&nbsp;
+<a href="RM_H5T.html">H5T</a>&nbsp;&nbsp;
+<a href="RM_H5Z.html">H5Z</a>&nbsp;
+<br>
+<a href="Tools.html">Tools</a>&nbsp;&nbsp;
+<a href="PredefDTypes.html">Datatypes</a>&nbsp;&nbsp;
+<a href="../fortran/index.html">Fortran</a>&nbsp;&nbsp;
+<a href="APICompatMacros.html">Compatibility Macros</a>&nbsp;
+<br>
+<a href="CollectiveCalls.html">Collective Calls in Parallel</a>&nbsp;
+<!--
+<br>
+<i><font size=-1>(Printable <a href="http://hdfgroup.org/HDF5/doc/PSandPDF/HDF5_RefManual.PDF">PDF</a> of this Reference Manual)</font></i>&nbsp;
+-->
+</font>
+</td></tr>
+</table>
+</center>
+<hr>
+<!-- #EndLibraryItem --><center>
+<h1>H5: General Library Functions</h1>
+</center>
+
+These functions and macros serve general-purpose needs of the HDF5 
+library and its users.
+
+<p>
+<strong>The C Interfaces:</strong>
+
+<table border="0" width="100%">
+<tr>
+<td valign="top" width="15%">
+<ul>
+    <li><a href="RM_H5.html#Library-Open">H5open</a></li>
+    <li><a href="RM_H5.html#Library-Close">H5close</a></li>
+    <li><a href="RM_H5.html#Library-DontAtExit">H5dont_atexit</a></li>
+    <li><a href="RM_H5.html#Library-SetFreeListLimits">H5set_free_list_limits</a></li>
+    <li><a href="RM_H5.html#Library-GarbageCollect">H5garbage_collect</a></li>
+</ul>
+</td>
+<td valign="top" width="15%">
+<ul>
+    <li><a href="RM_H5.html#Library-AllocateMemory">H5allocate_memory</a></li>
+    <li><a href="RM_H5.html#Library-ResizeMemory">H5resize_memory</a></li>
+    <li><a href="RM_H5.html#Library-FreeMemory">H5free_memory</a></li>
+    <li><a href="RM_H5.html#Library-Version">H5get_libversion</a></li>
+    <li><a href="RM_H5.html#Library-VersCheck">H5check_version</a></li>
+</ul>
+</td>
+
+<td valign="top" width="70%">
+
+<ul>
+    <li><a href="RM_H5.html#Library-VersionGE">H5_VERSION_GE</a></li>
+    <li><a href="RM_H5.html#Library-VersionLE">H5_VERSION_LE</a></li>
+    <li><a href="RM_H5.html#Library-IsLibraryThreadsafe">H5is_library_threadsafe</a></li>
+</ul>
+
+</td>
+</tr>
+</table>
+<br>
+
+<i>Alphabetical Listing</i>
+
+<table border="0" width="100%">
+  <tr>
+
+    <td valign="top" width="15%">
+	<ul>
+      <li><a href="RM_H5.html#Library-AllocateMemory">H5allocate_memory</a></li>
+      <li><a href="RM_H5.html#Library-VersCheck">H5check_version</a></li>
+      <li><a href="RM_H5.html#Library-Close">H5close</a></li>
+      <li><a href="RM_H5.html#Library-DontAtExit">H5dont_atexit</a></li>
+      <li><a href="RM_H5.html#Library-FreeMemory">H5free_memory</a></li>
+	</ul>
+    </td>
+    
+    <td valign="top" width="15%">
+	<ul>
+      <li><a href="RM_H5.html#Library-GarbageCollect">H5garbage_collect</a></li>
+      <li><a href="RM_H5.html#Library-Version">H5get_libversion</a></li>
+      <li><a href="RM_H5.html#Library-IsLibraryThreadsafe">H5is_library_threadsafe</a></li>
+      <li><a href="RM_H5.html#Library-Open">H5open</a></li>
+      <li><a href="RM_H5.html#Library-ResizeMemory">H5resize_memory</a></li>
+	</ul>
+    </td>
+    
+    <td valign="top" width="70%">
+	<ul>
+      <li><a href="RM_H5.html#Library-SetFreeListLimits">H5set_free_list_limits</a></li>
+      <li><a href="RM_H5.html#Library-VersionGE">H5_VERSION_GE</a></li>
+      <li><a href="RM_H5.html#Library-VersionLE">H5_VERSION_LE</a></li>
+	</ul>
+    </td>
+  </tr>
+</table>
+
+<br>
+<strong>The Fortran Interface:</strong>
+<br>
+In general, each Fortran subroutine performs exactly the same task 
+as the corresponding C function.  
+<br>
+
+<table width="100%">
+<tr>
+<td valign="top" width="15%">
+<ul>
+    <li><a href="RM_H5.html#Library-Open">h5open_f</a></li>
+    <li><a href="RM_H5.html#Library-Close">h5close_f</a></li>
+</ul>
+</td>
+<td valign="top" width="15%">
+<ul>
+    <li><a href="RM_H5.html#Library-Version">h5get_libversion_f</a></li>
+    <li><a href="RM_H5.html#Library-VersCheck">h5check_version_f</a></li>
+</ul>
+</td>
+<td valign="top" width="70%">
+<ul>
+<!--<li><a href="#Library-SetFreeListLimits">h5set_free_list_limits_f</a>  -->
+<!--<li><a href="#Library-AllocateMemory">H5allocate_memory</a></li>       -->
+<!--<li><a href="#Library-ResizeMemory">H5resize_memory</a></li>           -->
+    <li><a href="RM_H5.html#Library-GarbageCollect">h5garbage_collect_f</a></li>
+    <li><a href="RM_H5.html#Library-DontAtExit">h5dont_atexit_f</a></li>
+</ul>
+</td></tr>
+</table>
+
+<!-- NEW PAGE -->
+<!-- HEADER RIGHT " " -->
+
+<!--  ---  ---  ---  ---  ---  ---  ---  ---  ---  ---  ---  -->
+<!--       Include special topic files                       -->
+<!--  ---  ---  ---  ---  ---  ---  ---  ---  ---  ---  ---  -->
+
+
+<!--  ---  ---  ---  ---  ---  ---  ---  ---  ---  ---  ---  -->
+<!--       Include function files                            -->
+<!--  ---  ---  ---  ---  ---  ---  ---  ---  ---  ---  ---  -->
+
+
+<!--
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+  * Copyright by The HDF Group.                                               *
+  * All rights reserved.                                                      *
+  *                                                                           *
+  * This file is part of HDF5.  The full HDF5 copyright notice, including     *
+  * terms governing use, modification, and redistribution, is contained in    *
+  * the files COPYING and Copyright.html.  COPYING can be found at the root   *
+  * of the source code distribution tree; Copyright.html can be found at the  *
+  * root level of an installed copy of the electronic HDF5 document set and   *
+  * is linked from the top-level documents page.  It can also be found at     *
+  * http://www.hdfgroup.org/HDF5/doc/Copyright.html.  If you do not have      *
+  * access to either file, you may request a copy from help@hdfgroup.org.     *
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ -->
+
+
+
+<!--__ ***********************************************************  -->
+<!--__ Do not alter the next line; it is used by the PDF generator. -->
+<!--__ ***********************************************************  -->
+<!-- NEW PAGE -->
+
+
+<!--__ *** HEADER RIGHT ******************************************  -->
+<!-- HEADER RIGHT "H5allocate_memroy" -->
+
+<hr />
+<dl>
+
+<dt><div align="right"><font color="999999" size="-1"><i>
+    Last modified: 1 May 2015
+    </i></font></div></dt>
+    <br />
+
+<dt><strong>Name:</strong> <a name="Library-AllocateMemory">H5allocate_memory</a></dt><br />
+<dt><strong>Signature:</strong>
+    <dd><code><em>void *</em> H5allocate_memory(
+        <em>size_t</em> size,
+        <em>hbool_t</em> clear
+        )</code>
+    </dd></dt>
+    <br />
+
+<dt><strong>Purpose:</strong>
+    <dd>Allocates memory that will later be freed internally 
+        by the HDF5 Library.
+    </dd></dt>
+    <br />
+
+<dt><strong>Description:</strong>
+    <dd><code>H5allocate_memory</code> allocates a memory buffer of
+        <code>size</code> bytes that will later be freed internally 
+        by the HDF5 Library.
+
+        <p />
+        The boolean <code>clear</code> parameter specifies whether 
+        the buffer should be initialized.
+        If <code>clear</code> is <code>TRUE</code>,
+        all bits in the buffer are to be set to <code>0</code> (zero);
+        if <code>clear</code> is <code>FALSE</code>,
+        the buffer will not be initialized.
+
+        <p />
+        This function is intended to have the semantics of 
+        <code>malloc()</code> and <code>calloc()</code>.
+        However, unlike <code>malloc()</code> and <code>calloc()</code>
+        which allow for a &ldquo;special&rdquo; pointer to be returned 
+        instead of <code>NULL</code>, this function always returns 
+        <code>NULL</code> on failure or when <code>size</code> 
+        is set to <code>0</code> (zero).
+
+        <p />
+        <i>
+        At this time, the only intended use for this function is to 
+        allocate memory that will be returned to the library 
+        as a data buffer from a third-party filter.
+        </i>
+    </dd></dt>
+    <br />
+
+<dt><strong>Notes:</strong>
+    <dd>To avoid heap corruption, allocated memory should be freed 
+        using the same library that initially allocated it.  
+        In most cases, the HDF5 API uses resources that are 
+        allocated and freed either entirely by the user or 
+        entirely by the library, so this is not a problem.  
+        In rare cases, however, HDF5 API calls will free memory that 
+        the user allocated.  
+        This function allows the user to safely allocate this memory.
+
+        <p />
+        It is particularly important to use this function to allocate memory 
+        in Microsoft Windows envrionments.  In Windows, 
+        the C standard library is implemented in dynamic link libraries (DLLs) 
+        known as the C run-time (CRT).  Each version of Visual Studio comes 
+        with multiple versions of the CRT DLLs (debug, release, et cetera) 
+        and allocating and freeing memory across DLL boundaries can cause 
+        resource leaks and subtle bugs due to heap corruption.
+
+        <p />
+        Even when using this function, it is best where possible to ensure 
+        that all components of a C application are built with the 
+        same version of Visual Studio and configuration (Debug or Release), 
+        and thus linked against the same CRT.
+
+        <p />
+        Use this function only to allocate memory inside third-party 
+        HDF5 filters.  It will generally not be safe to use this function 
+        to allocate memory for any other purpose.
+    </dd></dt>
+    <br />
+    
+<dt><strong>Parameters:</strong>
+    <dd><table width="100%">
+        <tr>
+            <td valign="top"><code><em>size_t</em> 
+                size</code></td>
+            <td width="5%"><code>&nbsp;</code></td>
+            <td valign="top">IN: Specifies the size in bytes of the buffer 
+                to be allocated.</td>
+        </tr><tr>
+            <td valign="top"><code><em>hbool_t</em>&nbsp;clear</code></td>
+            <td><code>&nbsp;</code></td>
+            <td valign="top">IN: Specifies whether the new buffer 
+                is to be initialized to <code>0</code> (zero).</td>
+        </tr>
+    </table></dd>
+    </dt>
+    <br />
+    
+<dt><strong>Returns:</strong>
+    <dd>On success, returns pointer to newly allocated buffer or
+        returns <code>NULL</code> if <code>size</code> is <code>0</code>
+        (zero).
+        <br />
+        Returns <code>NULL</code> on failure.</dd>
+    </dt>
+    <br />
+
+<dt><strong>Fortran Interface:</strong></dt>
+    <dd>None</dd>
+    </dt>
+    <br />
+
+<dt><strong>See Also:</strong></dt>
+    <table width="100%" border="0">
+    <tr><td width="50%"align="left" valign="top">
+        <ul>
+<!--
+          <li><a href="#Library-AllocateMemory">H5allocate_memory</a></li>
+-->
+          <li><a href="RM_H5.html#Library-FreeMemory">H5free_memory</a></li>
+          <li><a href="RM_H5.html#Library-ResizeMemory">H5resize_memory</a></li>
+        </ul>
+    </td></tr>
+    </table>
+    <br />
+
+<dt><strong>History:</strong></dt>
+    <dd>
+    <table width="90%">
+    <tr>
+        <td valign="top" align="left" width="10%">
+        <strong>Release</strong>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        <td valign="top" align="left">
+        <strong>Change</strong></td>
+    </tr><tr>
+        <td valign="top">1.8.15</td>
+        <td valign="top">
+        C function introduced with this release.</td>
+    </tr>
+    </table>
+    </dd>
+
+</dl>
+<br />
+<br />
+<br />
+
+
+
+
+
+<!--
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+  * Copyright by The HDF Group.                                               *
+  * Copyright by the Board of Trustees of the University of Illinois.         *
+  * All rights reserved.                                                      *
+  *                                                                           *
+  * This file is part of HDF5.  The full HDF5 copyright notice, including     *
+  * terms governing use, modification, and redistribution, is contained in    *
+  * the files COPYING and Copyright.html.  COPYING can be found at the root   *
+  * of the source code distribution tree; Copyright.html can be found at the  *
+  * root level of an installed copy of the electronic HDF5 document set and   *
+  * is linked from the top-level documents page.  It can also be found at     *
+  * http://hdfgroup.org/HDF5/doc/Copyright.html.  If you do not have          *
+  * access to either file, you may request a copy from help@hdfgroup.org.     *
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ -->
+
+
+<!-- NEW PAGE -->
+<!-- HEADER RIGHT "H5check_version" -->
+<hr>
+<dl>
+
+<dt><div align=right><font color=999999 size=-1><i>
+    Last modified: 25 October 2011
+    </i></font></div>
+
+<dt><strong>Name:</strong> <a name="Library-VersCheck">H5check_version</a>
+<dt><strong>Signature:</strong>
+    <dd><em>herr_t</em> <code>H5check_version</code>(
+            <em>unsigned</em> <code>majnum</code>,
+            <em>unsigned</em> <code>minnum</code>,
+            <em>unsigned</em> <code>relnum</code>
+        )
+
+<p>
+<dt><strong>Purpose:</strong>
+    <dd>Verifies that HDF5 library versions are consistent.
+
+<p>
+<dt><strong>Description:</strong>
+    <dd><code>H5check_version</code> verifies that the version of the HDF5
+        library with which an application was compiled, as indicated by
+        the passed parameters, matches the version of the HDF5 library 
+        against which the application is currently linked.
+        <p>
+        <code>majnum</code> is the major version number of the HDF library 
+        with which the application was compiled,
+        <code>minnum</code> is the minor version number, and 
+        <code>relnum</code> is the release number.
+        Consider the following illustration:
+        <dir>
+            An official HDF5 release is labelled as follows:
+            <br>
+                <code>&nbsp;&nbsp;&nbsp;&nbsp;</code>
+                HDF5 Release &lt;<code>majnum</code>&gt;<strong>.</strong>&lt;<code>minnum</code>&gt;<strong>.</strong>&lt;<code>relnum</code>&gt;
+            <br>
+            For example, in HDF5 Release 1.8.5:
+            <ul>
+                <li>1 is the major version number, <code>majnum</code>.
+                <li>8 is the minor version number, <code>minnum</code>.
+                <li>5 is the release number, <code>relnum</code>.
+            </ul>
+        </dir>  
+        <p>
+
+        As stated above,
+        <code>H5check_version</code> first verifies that the version 
+        of the HDF5 library with which an application was compiled 
+        matches the version of the HDF5 library against which the 
+        application is currently linked. 
+        If this check fails, <code>H5check_version</code> causes the 
+        application to abort 
+        (by means of a standard C <code>abort()</code> call)
+        and prints information that is usually useful for debugging.
+        This precaution is is taken to avoid the risks of data corruption 
+        or segmentation faults. 
+        <p>
+        The most common cause of this failure is that an application 
+        was compiled with one version of HDF5 and is dynamically linked 
+        with a different version different version.
+        <p>
+
+        If the above test passes, <code>H5check_version</code> proceeds to 
+        verify the consistency of additional library version information.
+        This is designed to catch source code inconsistencies that 
+        do not normally cause failures;  
+        if this check reveals an inconsistency, an informational warning
+        is printed but the application is allowed to run.  
+
+<p>
+<dt><strong>Parameters:</strong>
+    <ul><table>
+        <tr>
+            <td valign="top"><em>unsigned </em><code>majnum</code></td>
+            <td valign="top">IN: HDF5 library major version number.</td></tr>
+        <tr>
+            <td valign="top"><em>unsigned&nbsp;</em><code>minnum&nbsp;&nbsp;&nbsp;&nbsp;</code></td>
+            <td valign="top">IN: HDF5 library minor version number.</td></tr>
+        <tr>
+            <td valign="top"><em>unsigned </em><code>relnum</code></td>
+            <td valign="top">IN: HDF5 library release number.</td></tr>
+    </table></ul>
+
+<p>
+<dt><strong>Returns:</strong>
+    <dd>Returns a non-negative value if successful.
+        Upon failure, this function causes the application to abort.
+
+
+<!-- NEW PAGE -->
+<p>
+<dt><strong>Fortran90 Interface:</strong> h5check_version_f
+    <dd>
+
+        <a name="H5LIB2fh5check5fversion5ff"></a>
+<a name="robo88"></a>
+
+<strong>Signature:</strong></p>
+<pre class="source">  SUBROUTINE <strong>h5check_version_f</strong>(majnum, minnum, relnum, error)
+    INTEGER, INTENT(IN)  :: majnum, minnum, relnum
+    INTEGER, INTENT(OUT) :: error
+</pre>
+<p class="item_name"><strong><strong>Inputs:</strong></strong></p>
+<pre>  majnum - major version of the library
+  minum  - minor version of the library
+  relnum - release version of the library
+</pre>
+<p class="item_name"><strong>Outputs:</strong></p>
+<pre>  error - Returns 0 if successful and -1 if fails
+</pre>
+
+
+  <p>
+  <dt><strong>History:</strong>
+	<ul><table width="90%">
+        <tr>
+          <td valign="top" align="left" width="10%">
+            <strong>Release</strong>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <td valign="top" align="left">
+            <strong>Change</strong></td></tr>
+        <tr>
+          <td valign="top">1.4.5</td>
+          <td valign="top">
+            Fortran subroutine introduced in this release.</td></tr>
+        <tr>
+          <td valign="top">1.8.8</td>
+          <td valign="top">
+            Fortran updated to Fortran 2003.</td></tr>
+    </table></ul>
+</dl>
+
+
+
+<!--
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+  * Copyright by The HDF Group.                                               *
+  * Copyright by the Board of Trustees of the University of Illinois.         *
+  * All rights reserved.                                                      *
+  *                                                                           *
+  * This file is part of HDF5.  The full HDF5 copyright notice, including     *
+  * terms governing use, modification, and redistribution, is contained in    *
+  * the files COPYING and Copyright.html.  COPYING can be found at the root   *
+  * of the source code distribution tree; Copyright.html can be found at the  *
+  * root level of an installed copy of the electronic HDF5 document set and   *
+  * is linked from the top-level documents page.  It can also be found at     *
+  * http://hdfgroup.org/HDF5/doc/Copyright.html.  If you do not have          *
+  * access to either file, you may request a copy from help@hdfgroup.org.     *
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ -->
+
+
+<!-- NEW PAGE -->
+<!-- HEADER RIGHT "H5close" -->
+<hr>
+<dl>
+
+<dt><div align=right><font color=999999 size=-1><i>
+    Last modified: 25 October 2011
+    </i></font></div>
+
+<dt><strong>Name:</strong> <a name="Library-Close">H5close</a>
+<dt><strong>Signature:</strong>
+    <dd><em>herr_t</em> <code>H5close</code>(<em>void</em>)
+
+<p>
+<dt><strong>Purpose:</strong>
+    <dd>Flushes all data to disk, closes all open identifiers, and cleans up memory.
+
+<p>
+<dt><strong>Description:</strong>
+    <dd><code>H5close</code> flushes all data to disk, 
+        closes all open HDF5 identifiers, and cleans up all memory used by
+        the HDF5 library.  This function is generally called when the 
+        application calls <code>exit()</code>, but may be called earlier 
+        in the event of an emergency shutdown or out of a desire to free all 
+        resources used by the HDF5 library.
+        <p>
+        When the HDF5 Library is employed in a Fortran90 application,
+        <code>h5close_f</code> closes the HDF5 Fortran interface
+        but does not shut down the HDF5 Library, leaving HDF5 available
+        to other software that may require the resource.
+        <code>h5open_f</code> and <code>h5close_f</code> are 
+        required calls in HDF5 Fortran applications.	
+
+<p>
+<dt><strong>Parameters:</strong>
+    <dd>None.
+
+<p>
+<dt><strong>Returns:</strong>
+    <dd>Returns a non-negative value if successful;
+        otherwise returns a negative value.
+
+<p>
+<dt><strong>Fortran90 Interface:</strong> h5close_f
+    <dd>
+
+        <a name="H5LIB2fh5close5ff"></a>
+<a name="robo89"></a>
+
+<strong>Signature:</strong></p>
+<pre class="source">  SUBROUTINE <strong>h5close_f</strong>(error)
+    INTEGER, INTENT(OUT) :: error
+</pre>
+<p class="item_name"><strong>Outputs:</strong></p>
+<pre>  error - Returns 0 if successful and -1 if fails
+</pre>
+
+
+<p>
+<dt><strong>History:</strong>
+    <dd><table width="90%">
+        <tr>
+          <td valign="top" align="left" width="10%">
+              <strong>Release</strong>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <td valign="top" align="left">
+              <strong>Change</strong></td></tr>
+        <tr>
+          <td valign="top">1.8.8</td>
+          <td valign="top">
+              Fortran subroutine updated modified so that it does not 
+              shut down the HDF5 Library.</td></tr>
+    </table>
+
+</dl>
+
+
+
+<!--
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+  * Copyright by The HDF Group.                                               *
+  * Copyright by the Board of Trustees of the University of Illinois.         *
+  * All rights reserved.                                                      *
+  *                                                                           *
+  * This file is part of HDF5.  The full HDF5 copyright notice, including     *
+  * terms governing use, modification, and redistribution, is contained in    *
+  * the files COPYING and Copyright.html.  COPYING can be found at the root   *
+  * of the source code distribution tree; Copyright.html can be found at the  *
+  * root level of an installed copy of the electronic HDF5 document set and   *
+  * is linked from the top-level documents page.  It can also be found at     *
+  * http://hdfgroup.org/HDF5/doc/Copyright.html.  If you do not have          *
+  * access to either file, you may request a copy from help@hdfgroup.org.     *
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ -->
+
+
+<!-- NEW PAGE -->
+<!-- HEADER RIGHT "H5H5dont_atexit" -->
+<hr>
+<dl>
+
+<dt><div align=right><font color=999999 size=-1><i>
+    Last modified: 25 October 2011
+    </i></font></div>
+
+<dt><strong>Name:</strong> <a name="Library-DontAtExit">H5dont_atexit</a>
+<dt><strong>Signature:</strong>
+    <dd><em>herr_t</em> <code>H5dont_atexit</code>(<em>void</em>)
+
+<p>
+<dt><strong>Purpose:</strong>
+    <dd>Instructs library not to install <code>atexit</code> cleanup routine.
+
+<p>
+<dt><strong>Description:</strong>
+    <dd><code>H5dont_atexit</code> indicates to the library that an 
+        <code>atexit()</code> cleanup routine should not be installed.  
+        The major purpose for this is in situations where the 
+        library is dynamically linked into an application and is 
+        un-linked from the application before <code>exit()</code> gets 
+        called.  In those situations, a routine installed with 
+        <code>atexit()</code> would jump to a routine which was 
+        no longer in memory, causing errors.
+        <p>
+        In order to be effective, this routine <em>must</em> be called 
+        before any other HDF function calls, and must be called each 
+        time the library is loaded/linked into the application 
+        (the first time and after it's been un-loaded).
+
+<p>
+<dt><strong>Parameters:</strong>
+    <dd>
+        None.
+    </dd>
+
+<p>
+<dt><strong>Returns:</strong>
+    <dd>Returns a non-negative value if successful;
+        otherwise returns a negative value.
+
+<p>
+<dt><strong>Fortran90 Interface:</strong> h5dont_atexit_f
+    <dd>
+
+        <a name="H5LIB2fh5dont5fatexit5ff"></a>
+<a name="robo99"></a>
+
+<strong>Signature:</strong></p>
+<pre class="source">  SUBROUTINE <strong>h5dont_atexit_f</strong>(error)
+    INTEGER, INTENT(OUT) :: error
+</pre>
+<p class="item_name"><strong>Outputs:</strong></p>
+<pre>  error - Returns 0 if successful and -1 if fails
+</pre>
+
+
+<p>
+<dt><strong>History:</strong>
+    <dd><table width="90%">
+      <tr>
+          <td valign="top" align="left" width="10%">
+              <strong>Release</strong>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <td valign="top" align="left">
+              <strong>Change</strong></td></tr>
+      <tr>
+          <td valign="top">1.4.5</td>
+          <td valign="top">
+              Fortran subroutine introduced in this release.</td></tr>
+        <tr>
+          <td valign="top">1.8.8</td>
+          <td valign="top">
+            Fortran subroutine updated in this release.</td></tr>
+    </table></dd>
+</dl>
+
+
+
+
+<!--
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+  * Copyright by The HDF Group.                                               *
+  * All rights reserved.                                                      *
+  *                                                                           *
+  * This file is part of HDF5.  The full HDF5 copyright notice, including     *
+  * terms governing use, modification, and redistribution, is contained in    *
+  * the files COPYING and Copyright.html.  COPYING can be found at the root   *
+  * of the source code distribution tree; Copyright.html can be found at the  *
+  * root level of an installed copy of the electronic HDF5 document set and   *
+  * is linked from the top-level documents page.  It can also be found at     *
+  * http://www.hdfgroup.org/HDF5/doc/Copyright.html.  If you do not have      *
+  * access to either file, you may request a copy from help@hdfgroup.org.     *
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ -->
+
+
+
+<!--__ ***********************************************************  -->
+<!--__ Do not alter the next line; it is used by the PDF generator. -->
+<!--__ ***********************************************************  -->
+<!-- NEW PAGE -->
+
+<!-- HEADER RIGHT "H5free_memory" -->
+
+<hr />
+<dl>
+
+<dt><div align="right"><font color="999999" size="-1"><i>
+    Last modified: 19 May 2016
+    </i></font></div></dt>
+    <br />
+
+<dt><strong>Name:</strong> 
+    <a name="Library-FreeMemory">H5free_memory</a></dt>
+    <br />
+
+<dt><strong>Signature:</strong></dt>
+    <dd><code><em>herr_t</em> H5free_memory(<em>void</em> *buf)</code></dd>
+    <br />
+
+<dt><strong>Purpose:</strong></dt>
+    <dd>Frees memory allocated by the HDF5 Library.</dd>
+    <br />
+
+<dt><strong>Description:</strong></dt>
+    <dd><code>H5free_memory</code> frees memory that has been allocated
+    by the caller with 
+    <a href="RM_H5.html#Library-AllocMemory"><code>H5alloc_memory</code></a> 
+    or by the HDF5 Library on behalf of the caller.
+    </p>
+    <p>
+    <a href="RM_H5T.html#Datatype-GetMemberName"><code>H5Tget_member_name</code></a>
+    provides an example of memory allocation on behalf of the caller:
+    The function returns a buffer containing the name of a compound datatype 
+    member.  It is the caller&rsquo;s responsibility to eventually free 
+    that buffer with <code>H5free_memory</code>.
+    </dd>
+    <br />
+
+<dt><strong>Notes:</strong></dt>
+    <dd>It is especially important to use this function to free memory 
+    allocated by the library on Windows. The C standard library is 
+    implemented in dynamic link libraries (DLLs) known as the C run-time 
+    (CRT). Each version of Visual Studio comes with two CRT DLLs 
+    (debug and release) and allocating and freeing across DLL boundaries 
+    can cause resource leaks and subtle bugs due to heap corruption.
+    
+    <p>Only use this function to free memory allocated by the HDF5 Library. 
+    It will generally not be safe to use this function to free memory 
+    allocated by any other means.</p>
+    
+    <p>Even when using this function, it is still best to ensure that all 
+    components of a C application are built with the same version of 
+    Visual Studio and build (debug or release) and thus linked against 
+    the same CRT.</p></dd>
+    <br />
+
+<dt><strong>Parameters:</strong></dt>
+    <dd>
+    <table width="100%">
+    <tr valign="bottom">
+    <td width="10%"><code><em>void</em>&nbsp;*mem&nbsp;&nbsp;&nbsp;</code></td>
+    <td width="90%">IN: Buffer to be freed. Can be <code>NULL</code>.</td></tr>
+    </table>
+    </dd>
+    <br />
+
+<dt><strong>Returns:</strong></dt>
+    <dd>Returns a non-negative value if successful. Otherwise returns 
+    a negative value.</dd>
+    <br />
+
+<dt><strong>Fortran Interface:</strong></dt>
+    <dd>None</dd>
+    <br />
+
+
+<dt><strong>See Also:</strong></dt>
+    <table width="100%" border="0">
+    <tr><td width="50%"align="left" valign="top">
+        <ul>
+          <li><a href="RM_H5.html#Library-AllocateMemory">H5allocate_memory</a></li>
+<!--
+          <li><a href="#Library-FreeMemory">H5free_memory</a></li>
+-->
+          <li><a href="RM_H5.html#Library-ResizeMemory">H5resize_memory</a></li>
+          <li><a href="http://www.hdfgroup.org/HDF5/doc/Advanced/FreeingMemory/FreeingMemoryAllocatedByTheHdf5Library.pdf">
+              <em>Freeing Memory Allocated by the HDF5 Library</em></a>
+              in <a href="http://www.hdfgroup.org/HDF5/doc/Advanced.html">
+              &ldquo;Advanced Topics&rdquo;</a>.
+        </ul>
+    </dd>
+    <br />
+
+<dt><strong>History:</strong></dt>
+<dd><table width="100%">
+    <tr>
+    <td valign="top" align="left" width="10%">
+    <strong>Release</strong></td>
+    <td valign="top" align="left" width="90%">
+    <strong>Change</strong></td></tr>
+    <tr>
+    <td valign="top">1.8.13</td>
+    <td valign="top">
+    C function introduced with this release. </td></tr>
+    </table></dd>
+</dl>
+<br />
+<br />
+<br />
+
+
+
+
+
+<!--
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+  * Copyright by The HDF Group.                                               *
+  * Copyright by the Board of Trustees of the University of Illinois.         *
+  * All rights reserved.                                                      *
+  *                                                                           *
+  * This file is part of HDF5.  The full HDF5 copyright notice, including     *
+  * terms governing use, modification, and redistribution, is contained in    *
+  * the files COPYING and Copyright.html.  COPYING can be found at the root   *
+  * of the source code distribution tree; Copyright.html can be found at the  *
+  * root level of an installed copy of the electronic HDF5 document set and   *
+  * is linked from the top-level documents page.  It can also be found at     *
+  * http://hdfgroup.org/HDF5/doc/Copyright.html.  If you do not have          *
+  * access to either file, you may request a copy from help@hdfgroup.org.     *
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ -->
+
+
+<!-- NEW PAGE -->
+<!-- HEADER RIGHT "H5garbage_collect" -->
+<hr>
+<dl>
+
+<dt><div align=right><font color=999999 size=-1><i>
+    Last modified: 25 October 2011
+    </i></font></div>
+
+<dt><strong>Name:</strong> <a name="Library-GarbageCollect">H5garbage_collect</a>
+<dt><strong>Signature:</strong>
+    <dd><em>herr_t</em> <code>H5garbage_collect</code>(<em>void</em>)
+
+<p>
+<dt><strong>Purpose:</strong>
+    <dd>Garbage collects on all free-lists of all types.
+
+<p>
+<dt><strong>Description:</strong>
+    <dd><code>H5garbage_collect</code> walks through all the garbage 
+        collection routines of the library, freeing any unused memory. 
+        <p>
+        It is not required that <code>H5garbage_collect</code> be called 
+        at any particular time; it is only necessary in certain situations 
+        where the application has performed actions that cause the library 
+        to allocate many objects.  The application should call
+        <code>H5garbage_collect</code> if it eventually releases those 
+        objects and wants to reduce the memory used by the library from
+        the peak usage required.  
+        <p>
+        The library automatically garbage collects all the free lists 
+        when the application ends.
+
+<p>
+<dt><strong>Parameters:</strong>
+    <dd>
+        None.
+    </dd>
+
+<p>
+<dt><strong>Returns:</strong>
+    <dd>Returns a non-negative value if successful;
+        otherwise returns a negative value.
+
+<p>
+<dt><strong>Fortran90 Interface:</strong> h5garbage_collect_f
+    <dd>
+
+        <a name="H5LIB2fh5garbage5fcollect5ff"></a>
+<a name="robo127"></a>
+
+<strong>Signature:</strong></p>
+<pre class="source">  SUBROUTINE <strong>h5garbage_collect_f</strong>(error)
+    INTEGER, INTENT(OUT) :: error
+</pre>
+<p class="item_name"><strong>Outputs:</strong></p>
+<pre>  error - Returns 0 if successful and -1 if fails
+</pre>
+
+
+<p>
+<dt><strong>History:</strong>
+  <dd><table width="90%">
+      <tr>
+          <td valign="top" align="left" width="10%">
+              <strong>Release</strong>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <td valign="top" align="left">
+              <strong>Fortran90</strong></td></tr>
+      <tr>
+          <td valign="top">1.4.5</td>
+          <td valign="top">
+              Function introduced in this release.</td></tr>
+        <tr>
+          <td valign="top">1.8.8</td>
+          <td valign="top">
+            Fortran subroutine updated in this release.</td></tr>
+  </table></dd>
+</dl>
+
+
+
+<!--
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+  * Copyright by The HDF Group.                                               *
+  * Copyright by the Board of Trustees of the University of Illinois.         *
+  * All rights reserved.                                                      *
+  *                                                                           *
+  * This file is part of HDF5.  The full HDF5 copyright notice, including     *
+  * terms governing use, modification, and redistribution, is contained in    *
+  * the files COPYING and Copyright.html.  COPYING can be found at the root   *
+  * of the source code distribution tree; Copyright.html can be found at the  *
+  * root level of an installed copy of the electronic HDF5 document set and   *
+  * is linked from the top-level documents page.  It can also be found at     *
+  * http://hdfgroup.org/HDF5/doc/Copyright.html.  If you do not have          *
+  * access to either file, you may request a copy from help@hdfgroup.org.     *
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ -->
+
+
+<!-- NEW PAGE -->
+<!-- HEADER RIGHT "H5get_libversion" -->
+<hr>
+<dl>
+
+<dt><div align=right><font color=999999 size=-1><i>
+    Last modified: 25 October 2011
+    </i></font></div>
+
+<dt><strong>Name:</strong> <a name="Library-Version">H5get_libversion</a>
+<dt><strong>Signature:</strong>
+    <dd><em>herr_t</em> <code>H5get_libversion</code>(
+            <em>unsigned *</em><code>majnum</code>,
+            <em>unsigned *</em><code>minnum</code>,
+            <em>unsigned *</em><code>relnum</code>
+        )
+
+<p>
+<dt><strong>Purpose:</strong>
+    <dd>Returns the HDF library release number.
+
+<p>
+<dt><strong>Description:</strong>
+    <dd><code>H5get_libversion</code> retrieves the major, minor, and release
+        numbers of the version of the HDF library which is linked to 
+        the application.
+
+<p>
+<dt><strong>Parameters:</strong>
+    <dd><table>
+        <tr>
+            <td valign="top"><em>unsigned *</em><code>majnum</code></td>
+            <td valign="top">OUT: The major version of the library.</td></tr>
+        <tr>
+            <td valign="top"><em>unsigned&nbsp;*</em><code>minnum&nbsp;&nbsp;&nbsp;&nbsp;</code></td>
+            <td valign="top">OUT: The minor version of the library.</td></tr>
+        <tr>
+            <td valign="top"><em>unsigned *</em><code>relnum</code></td>
+            <td valign="top">OUT: The release number of the library.</td></tr>
+    </table></dd>
+
+<p>
+<dt><strong>Returns:</strong>
+    <dd>Returns a non-negative value if successful;
+        otherwise returns a negative value.
+
+<p>
+<dt><strong>Fortran90 Interface:</strong> h5get_libversion_f
+    <dd>
+
+        <a name="H5LIB2fh5get5flibversion5ff"></a>
+<a name="robo131"></a>
+
+<strong>Signature:</strong></p>
+<pre class="source">  SUBROUTINE <strong>h5get_libversion_f</strong>(majnum, minnum, relnum, error)
+    INTEGER, INTENT(OUT) :: majnum, minnum, relnum, error
+</pre>
+<p class="item_name"><strong>Outputs:</strong></p>
+<pre>  majnum - major version of the library
+  minum  - minor version of the library
+  relnum - release version of the library
+  error  - Returns 0 if successful and -1 if fails
+</pre>
+
+
+<p>
+<dt><strong>History:</strong>
+    <dd><table width="90%">
+        <tr>
+          <td valign="top" align="left" width="10%">
+            <strong>Release</strong>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <td valign="top" align="left">
+            <strong>Change</strong></td></tr>
+        <tr>
+          <td valign="top">1.4.5</td>
+          <td valign="top">
+            Fortran subroutine introduced in this release.</td></tr>
+        <tr>
+          <td valign="top">1.8.8</td>
+          <td valign="top">
+            Fortran subroutine updated in this release.</td></tr>
+    </table></dd>
+</dl>
+
+
+
+
+<!--
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+  * Copyright by The HDF Group.                                               *
+  * All rights reserved.                                                      *
+  *                                                                           *
+  * This file is part of HDF5.  The full HDF5 copyright notice, including     *
+  * terms governing use, modification, and redistribution, is contained in    *
+  * the files COPYING and Copyright.html.  COPYING can be found at the root   *
+  * of the source code distribution tree; Copyright.html can be found at the  *
+  * root level of an installed copy of the electronic HDF5 document set and   *
+  * is linked from the top-level documents page.  It can also be found at     *
+  * http://www.hdfgroup.org/HDF5/doc/Copyright.html.  If you do not have      *
+  * access to either file, you may request a copy from help@hdfgroup.org.     *
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ -->
+
+
+
+<!--__ ***********************************************************  -->
+<!--__ Do not alter the next line; it is used by the PDF generator. -->
+<!--__ ***********************************************************  -->
+<!-- NEW PAGE -->
+
+
+<!--__ *** HEADER RIGHT ******************************************  -->
+<!--__ Update H5function_name; leave remainder of line unchanged    -->
+<!--__ as it is also used by the PDF generator.                     -->
+<!--__ ***********************************************************  -->
+<!-- HEADER RIGHT "H5is_library_threadsafe" -->
+
+<hr />
+<dl>
+
+<dt><div align="right"><font color="999999" size="-1"><i>
+    Last modified: 29 September 2015
+    </i></font></div></dt>
+    <br />
+
+<dt><strong>Name:</strong> 
+    <a name="Library-IsLibraryThreadsafe">H5is_library_threadsafe</a></dt>
+    <br />
+
+<dt><strong>Signature:</strong></dt>
+    <dd><code><em>herr_t</em> H5is_library_threadsafe(/*OUT*/ 
+    <em>hbool_t*</em> is_ts)</code></dd>
+    <br />
+
+<dt><strong>Purpose:</strong></dt>
+    <dd>Determine whether the HDF5 Library was built with the thread-safety 
+    feature enabled.</dd>
+    <br />
+
+<dt><strong>Description:</strong></dt>
+    <dd>The HDF5 Library, although not internally multithreaded, can 
+    optionally be built with a thread-safety feature enabled that 
+    protects internal data structures with a mutex. In certain 
+    circumstances, it may be useful to determine, at run-time, whether 
+    the linked HDF5 Library was built with this thread-safety feature 
+    enabled.</dd>
+    <br />
+
+<dt><strong>Parameters:</strong></dt>
+    <dd><table width="100%">
+        <tr>
+            <td valign="top" width="15%"><code><em>hbool_t*</em>&nbsp;is_ts&nbsp;&nbsp;&nbsp;&nbsp;</code></td>
+            <td valign="top">OUT: Boolean value indicating 
+                whether the library was built with thread-safety enabled.</td>
+        </tr></table></dd>
+    <br />
+
+<dt><strong>Returns:</strong></dt>
+    <dd>Returns a non-negative value if successful. Otherwise, returns 
+    a negative value.</dd>
+    <br />
+
+<dt><strong>Fortran Interface:</strong></dt>
+    <dd>None</dd>
+    <br />
+
+  <dt><strong>History:</strong></dt>
+    <dd>
+    <table width="90%">
+    <tr>
+        <td valign="top" align="left" width="10%">
+        <strong>Release</strong>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        <td valign="top" align="left">
+        <strong>Change</strong></td>
+    </tr><tr>
+        <td valign="top">1.8.16</td>
+        <td valign="top">
+        C function introduced with this release.</td>
+    </tr>
+    </table>
+</dd>
+    <br />
+</dl>
+<br />
+<br />
+<br />
+
+
+
+
+
+<!--
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+  * Copyright by The HDF Group.                                               *
+  * Copyright by the Board of Trustees of the University of Illinois.         *
+  * All rights reserved.                                                      *
+  *                                                                           *
+  * This file is part of HDF5.  The full HDF5 copyright notice, including     *
+  * terms governing use, modification, and redistribution, is contained in    *
+  * the files COPYING and Copyright.html.  COPYING can be found at the root   *
+  * of the source code distribution tree; Copyright.html can be found at the  *
+  * root level of an installed copy of the electronic HDF5 document set and   *
+  * is linked from the top-level documents page.  It can also be found at     *
+  * http://hdfgroup.org/HDF5/doc/Copyright.html.  If you do not have          *
+  * access to either file, you may request a copy from help@hdfgroup.org.     *
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ -->
+
+
+<!-- NEW PAGE -->
+<!-- HEADER RIGHT "H5open" -->
+<hr>
+<dl>
+
+<dt><div align=right><font color=999999 size=-1><i>
+    Last modified: 25 October 2011
+    </i></font></div>
+
+<dt><strong>Name:</strong> <a name="Library-Open">H5open</a>
+<dt><strong>Signature:</strong>
+    <dd><em>herr_t</em> <code>H5open</code>(<em>void</em>)
+
+<p>
+<dt><strong>Purpose:</strong>
+    <dd>Initializes the HDF5 library.
+
+<p>
+<dt><strong>Description:</strong>
+    <dd><code>H5open</code> initialize the library.  
+        <p>
+        When the HDF5 Library is employed in a C application,
+        this function is normally called automatically, but if you 
+        find that an HDF5 library function is failing inexplicably, 
+        try calling this function first.
+        If you wish to elimnate this possibility, it is safe to 
+        routinely call <code>H5open</code> before an application 
+        starts working with the library as there are no damaging 
+        side-effects in calling it more than once.
+        <p>
+        When the HDF5 Library is employed in a Fortran90 application,
+        <code>h5open_f</code> initializes global variables 
+        (for example, predefined types) and performs other tasks required 
+        to initialize the HDF5 Fortran Library.
+        <code>h5open_f</code> and <code>h5close_f</code> are 
+        required calls in HDF5 Fortran applications.
+
+<p>
+<dt><strong>Parameters:</strong>
+    <dd>None.
+
+<p>
+<dt><strong>Returns:</strong>
+    <dd>Returns a non-negative value if successful;
+        otherwise returns a negative value.
+
+<p>
+<dt><strong>Fortran90 Interface:</strong> h5open_f
+    <dd>
+
+        <a name="H5LIB2fh5open5ff"></a>
+<a name="robo175"></a>
+
+<strong>Signature:</strong></p>
+<pre class="source">  SUBROUTINE <strong>h5open_f</strong>(error)
+    INTEGER, INTENT(OUT) :: error
+</pre>
+<p class="item_name"><strong>Outputs:</strong></p>
+<pre>  error - Returns 0 if successful and -1 if fails
+</pre>
+
+
+<p>
+<dt><strong>History:</strong>
+    <dd><table width="90%">
+        <tr>
+          <td valign="top" align="left" width="10%">
+              <strong>Release</strong>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <td valign="top" align="left">
+              <strong>Change</strong></td></tr>
+        <tr>
+          <td valign="top">1.8.8</td>
+          <td valign="top">
+              Fortran subroutine updated in this release.</td></tr>
+    </table>
+
+</dl>
+
+
+<!--
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+  * Copyright by The HDF Group.                                               *
+  * All rights reserved.                                                      *
+  *                                                                           *
+  * This file is part of HDF5.  The full HDF5 copyright notice, including     *
+  * terms governing use, modification, and redistribution, is contained in    *
+  * the files COPYING and Copyright.html.  COPYING can be found at the root   *
+  * of the source code distribution tree; Copyright.html can be found at the  *
+  * root level of an installed copy of the electronic HDF5 document set and   *
+  * is linked from the top-level documents page.  It can also be found at     *
+  * http://www.hdfgroup.org/HDF5/doc/Copyright.html.  If you do not have      *
+  * access to either file, you may request a copy from help@hdfgroup.org.     *
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ -->
+
+
+
+<!--__ ***********************************************************  -->
+<!--__ Do not alter the next line; it is used by the PDF generator. -->
+<!--__ ***********************************************************  -->
+<!-- NEW PAGE -->
+
+
+<!--__ *** HEADER RIGHT ******************************************  -->
+<!-- HEADER RIGHT "H5resize_memory" -->
+
+<hr />
+<dl>
+
+<dt><div align="right"><font color="999999" size="-1"><i>
+    Last modified: 1 May 2015
+    </i></font></div></dt>
+    <br />
+
+<dt><strong>Name:</strong> <a name="Library-ResizeMemory">H5resize_memory</a>
+    </dt>
+    <br />
+
+<dt><strong>Signature:</strong>
+    <dd><code><em>void *</em> H5resize_memory(
+        <em>void *</em>mem,
+        <em>size_t</em> size
+        )</code>
+    </dd></dt>
+    <br />
+
+<dt><strong>Purpose:</strong>
+    <dd>Resizes and possibly re-allocates memory 
+        that will later be freed internally by the HDF5 Library.
+    </dd></dt>
+    <br />
+
+<dt><strong>Description:</strong>
+    <dd><code>H5resize_memory</code> takes a pointer to an existing buffer 
+        and resizes the buffer to match the value in <code>size</code>.
+        If necessary, the buffer is reallocated.
+        If <code>size</code> is <code>0</code>, the buffer is released.
+
+        <p />
+        The input buffer must either be <code>NULL</code> 
+        or have been allocated by <code>H5allocate_memory</code> 
+        since the input buffer may be freed by the library.
+
+        <p />
+        For certain behaviors, the pointer <code>mem</code> 
+        may be passed in as <code>NULL</code>.
+
+        <p />
+        This function is intended to have the semantics of 
+        <code>realloc()</code>:
+        <table>
+        <tr align="left" valign="top">
+            <td><code>&nbsp;&nbsp;&nbsp;&nbsp;</code></td>
+            <td><code>H5resize_memory(buffer,&nbsp;size)&nbsp;&nbsp;&nbsp;</code>
+                </td>
+            <td>Resizes buffer.
+                <br />
+                Returns pointer to resized buffer.</td>
+        </tr>
+        <tr align="left" valign="top">
+            <td><code>&nbsp;&nbsp;&nbsp;&nbsp;</code></td>
+	    <td><code>H5resize_memory(NULL, size)</td>
+            <td>Allocates memory using HDF5 Library allocator.
+                <br />
+                Returns pointer to new buffer</td>
+        </tr>
+        <tr align="left" valign="top">
+            <td><code>&nbsp;&nbsp;&nbsp;&nbsp;</code></td>
+	    <td><code>H5resize_memory(buffer, 0)</td>
+            <td>Frees memory using HDF5 Library allocator.
+                <br />
+                Returns NULL.</td>
+        </tr>
+        <tr align="left" valign="top">
+            <td><code>&nbsp;&nbsp;&nbsp;&nbsp;</code></td>
+            <td><code>H5resize_memory(NULL, 0)</td>
+            <td>Returns NULL (undefined in C standard).</td>
+        </tr>
+        </table>
+
+        <p />
+        Unlike <code>realloc()</code>, which allows for a 
+        &ldquo;special&rdquo; pointer to be returned instead of 
+        <code>NULL</code>, this function always returns <code>NULL</code>
+        on failure or when <code>size</code> is <code>0</code> (zero).
+
+        <p />
+        <i>
+        At this time, the only intended use for this function 
+        is to resize or reallocate memory that will be returned 
+        to the library (and eventually to the user) as a data buffer 
+        from a third-party HDF5 filter.
+        </i>
+    </dd></dt>
+    <br />
+
+<dt><strong>Notes:</strong>
+    <dd>To avoid heap corruption, allocated memory should be freed using 
+        the same library that initially allocated it. In most cases, 
+        the HDF5 API uses resources that are allocated and freed 
+        either entirely by the user or entirely by the library,
+        so this is not a problem. 
+        In rare cases, however, HDF5 API calls will free memory 
+        that the user allocated. 
+        This function allows the user to safely allocate this memory.
+
+        <p />
+        It is particularly important to use this function to resize memory 
+        on Microsoft Windows systems.  In Windows, the C standard library 
+        is implemented in dynamic link libraries (DLLs) known as the 
+        C run-time (CRT).  Each version of Visual Studio comes with 
+        multiple versions of the CRT DLLs (debug, release, et cetera) 
+        and allocating and freeing memory across DLL boundaries can 
+        cause resource leaks and subtle bugs due to heap corruption.
+
+        <p />
+        Even when using this function, it is still best to ensure 
+        that all components of a C application are built with the 
+        same version of Visual Studio and the same configuration 
+        (Debug or Release), and thus linked against the same CRT.
+
+        <p />
+        Only use this function to resize memory inside third-party 
+        HDF5 filters.  It will generally not be safe to use this function 
+        to resize memory for any other purpose.
+        
+    </dd></dt>
+    <br />
+    
+<dt><strong>Parameters:</strong>
+    <dd><table width="100%">
+        <tr>
+            <td valign="top"><code><em>void *</em>mem</code></td>
+            <td width="5%"><code>&nbsp;</code></td>
+            <td valign="top">IN: Pointer to a buffer to be resized.
+                <br/>
+                May be <code>NULL</code>.</td>
+        </tr><tr>
+            <td valign="top"><code><em>size_t</em>&nbsp;size</code></td>
+            <td><code>&nbsp;</code></td>
+            <td valign="top">IN: New size of the buffer, in bytes</td>
+        </tr>
+    </table></dd>
+    </dt>
+    <br />
+    
+<dt><strong>Returns:</strong>
+    <dd>On success, returns pointer to resized or reallocated buffer or
+        returns <code>NULL</code> if <code>size</code> is <code>0</code>
+        (zero).
+        <br />
+        Returns <code>NULL</code> on failure.</dd>
+    </dt>
+    <br />
+
+<dt><strong>Fortran Interface:</strong></dt>
+    <dd>None</dd>
+    </dt>
+    <br />
+
+<dt><strong>See Also:</strong></dt>
+    <table width="100%" border="0">
+    <tr><td width="50%"align="left" valign="top">
+        <ul>
+          <li><a href="RM_H5.html#Library-AllocateMemory">H5allocate_memory</a></li>
+          <li><a href="RM_H5.html#Library-FreeMemory">H5free_memory</a></li>
+<!--
+          <li><a href="#Library-ResizeMemory">H5resize_memory</a></li>
+-->
+        </ul>
+    </td></tr>
+    </table>
+    <br />
+
+<dt><strong>History:</strong></dt>
+    <dd>
+    <table width="90%">
+    <tr>
+        <td valign="top" align="left" width="10%">
+        <strong>Release</strong>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        <td valign="top" align="left">
+        <strong>Change</strong></td>
+    </tr><tr>
+        <td valign="top">1.8.15</td>
+        <td valign="top">
+        C function introduced with this release.</td>
+    </tr>
+    </table>
+    </dd>
+
+</dl>
+<br />
+<br />
+<br />
+
+
+
+
+
+<!--
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+  * Copyright by The HDF Group.                                               *
+  * Copyright by the Board of Trustees of the University of Illinois.         *
+  * All rights reserved.                                                      *
+  *                                                                           *
+  * This file is part of HDF5.  The full HDF5 copyright notice, including     *
+  * terms governing use, modification, and redistribution, is contained in    *
+  * the files COPYING and Copyright.html.  COPYING can be found at the root   *
+  * of the source code distribution tree; Copyright.html can be found at the  *
+  * root level of an installed copy of the electronic HDF5 document set and   *
+  * is linked from the top-level documents page.  It can also be found at     *
+  * http://hdfgroup.org/HDF5/doc/Copyright.html.  If you do not have          *
+  * access to either file, you may request a copy from help@hdfgroup.org.     *
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ -->
+
+
+<!-- NEW PAGE -->
+<!-- HEADER RIGHT "H5set_free_list_limits" -->
+<hr>
+<dl>
+
+<dt><div align=right><font color=999999 size=-1><i>
+    Last modified: 6 May 2010
+    </i></font></div>
+
+<dt><strong>Name:</strong> <a name="Library-SetFreeListLimits">H5set_free_list_limits</a>
+
+<dt><strong>Signature:</strong>
+    <dd><em>herr_t</em> <code>H5set_free_list_limits</code>(
+                        <em>int</em> <code>reg_global_lim</code>, 
+                        <em>int</em> <code>reg_list_lim</code>, 
+                        <em>int</em> <code>arr_global_lim</code>,
+                        <em>int</em> <code>arr_list_lim</code>, 
+                        <em>int</em> <code>blk_global_lim</code>, 
+                        <em>int</em> <code>blk_list_lim</code>
+                        )
+
+<p>
+<dt><strong>Purpose:</strong>
+    <dd>Sets free-list size limits.
+
+<p>
+<dt><strong>Description:</strong>
+    <dd><code>H5set_free_list_limits</code> sets size limits 
+        on all types of free lists.
+        The HDF5 library uses free lists internally to manage memory.
+        The types of free lists used are as follows:
+        <ul><li><span class=termDef>Regular</span> 
+                free lists manage memory for single internal data structures.
+            <li><span class=termDef>Array</span> 
+                free lists manage memory for arrays of internal data structures.
+            <li><span class=termDef>Block</span> 
+                free lists manage memory for arbitrarily-sized blocks of bytes.
+            <li><span class=termDef>Factory</span>
+                free lists manage memory for fixed-size blocks of bytes.
+        </ul> 
+        <p>
+        The parameters specify global and per-list limits; for example,
+        <code>reg_global_limit</code> and <code>reg_list_limit</code> limit the
+        accumulated size of all regular free lists and the size of each
+        individual regular free list, respectively. Therefore, if an application
+        sets a 1Mb limit on each of the global lists, up to 4Mb of total storage
+        might be allocated, 1Mb for each of the regular, array, block, and
+        factory type lists.
+        <p>
+        The settings specified for block free lists are duplicated for
+        factory free lists.  Therefore, increasing the global limit on block
+        free lists by <i>x</i> bytes will increase the potential free list
+        memory usage by 2<i>x</i> bytes.
+        <p>
+        Using a value of <code>-1</code> for a limit means that 
+        no limit is set for the specified type of free list.  
+
+<p>
+<dt><strong>Parameters:</strong>
+    <ul><table>
+        <tr>
+            <td valign="top"><em>int</em>&nbsp;<code>reg_global_lim&nbsp;&nbsp;&nbsp;&nbsp;</code></td>
+            <td valign="top">IN: The cumulative limit, in bytes, 
+                on memory used for all regular free lists 
+                <br>
+                (Default: 1MB)</td></tr>
+        <tr>
+            <td valign="top"><em>int</em> <code>reg_list_lim</code></td>
+            <td valign="top">IN: The limit, in bytes, 
+                on memory used for each regular free list
+                <br>
+                (Default: 64KB)</td></tr>
+        <tr>
+            <td valign="top"><em>int</em> <code>arr_global_lim</code></td>
+            <td valign="top">IN: The cumulative limit, in bytes, 
+                on memory used for all array free lists 
+                <br>
+                (Default: 4MB)</td></tr>
+        <tr>
+            <td valign="top"><em>int</em> <code>arr_list_lim</code></td>
+            <td valign="top">IN: The limit, in bytes, 
+                on memory used for each array free list
+                <br>
+                (Default: 256KB)</td></tr>
+        <tr>
+            <td valign="top"><em>int</em> <code>blk_global_lim</code></td>
+            <td valign="top">IN: The cumulative limit, in bytes, 
+                on memory used for all block free lists and, separately, 
+                for all factory free lists 
+                <br>
+                (Default: 16MB)</td></tr>
+        <tr>
+            <td valign="top"><em>int</em> <code>blk_list_lim</code></td>
+            <td valign="top">IN: The limit, in bytes, 
+                on memory used for each block or factory free list
+                <br>
+                (Default: 1MB)</td></tr>
+    </table></ul>
+
+<p>
+<dt><strong>Returns:</strong>
+    <dd>Returns a non-negative value if successful;
+        otherwise returns a negative value.
+
+<p>
+<dt><strong>Fortran90 Interface:</strong>
+    <dd>None.
+<!--
+    <pre>
+SUBROUTINE
+    </pre>
+-->
+
+<p>
+<dt><strong>History:</strong>
+    <ul><table width="90%">
+        <tr>
+          <td valign="top" align="left" width="10%">
+            <strong>Release</strong>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <td valign="top" align="left">
+            <strong>C</strong></td></tr>
+        <tr>
+          <td valign="top">1.6.0</td>
+          <td valign="top">
+            Function introduced in this release.</td></tr>
+        <tr>
+          <td valign="top">1.8.3</td>
+          <td valign="top">
+            Function changed in this release to set factory free list memory
+            limits.</td></tr>
+    </table></ul>
+</dl>
+
+
+
+<!--
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+  * Copyright by The HDF Group.                                               *
+  * Copyright by the Board of Trustees of the University of Illinois.         *
+  * All rights reserved.                                                      *
+  *                                                                           *
+  * This file is part of HDF5.  The full HDF5 copyright notice, including     *
+  * terms governing use, modification, and redistribution, is contained in    *
+  * the files COPYING and Copyright.html.  COPYING can be found at the root   *
+  * of the source code distribution tree; Copyright.html can be found at the  *
+  * root level of an installed copy of the electronic HDF5 document set and   *
+  * is linked from the top-level documents page.  It can also be found at     *
+  * http://hdfgroup.org/HDF5/doc/Copyright.html.  If you do not have          *
+  * access to either file, you may request a copy from help@hdfgroup.org.     *
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ -->
+
+
+<!-- NEW PAGE -->
+<!-- HEADER RIGHT "H5_VERSION_GE" -->
+<hr />
+<dl>
+
+<dt><div align=right><font color=999999 size=-1><i>
+    Last modified: 22 April 2011
+    </i></font></div></dt>
+
+<dt><strong>Name:</strong> <a name="Library-VersionGE">H5_VERSION_GE</a></dt>
+<dt><strong>Signature:</strong></dt>
+    <dd><code>H5_VERSION_GE(
+        <em>int</em> maj, 
+        <em>int</em> min, 
+        <em>int</em> rel
+        )</code></dd>
+
+<p />
+<dt><strong>Purpose:</strong></dt>
+    <dd>Determines whether the version of the library being used is 
+        greater than or equal to the specified version.</dd>
+
+<p />
+<dt><strong>Motivation:</strong></dt>
+    <dd>The <a href="RM_H5.html#Library-VersionGE"><code>H5_VERSION_GE</code></a>
+        and <a href="RM_H5.html#Library-VersionLE"><code>H5_VERSION_LE</code></a>
+        macros are used at compile time to conditionally include or exclude 
+        code based on the version of the HDF5 library against which 
+        an application will be linked.</p>
+
+<p />
+<dt><strong>Description:</strong></dt>
+    <dd>The <code>H5_VERSION_GE</code> macro compares the version of 
+        the HDF5 library being used against the version number specified 
+        in the parameters. </p>
+        <p>
+        For more information, see &ldquo;HDF5 Software Updates&rdquo; at 
+        <a href="http://www.hdfgroup.org/HDF5/doc/TechNotes/Version.html">
+        <code>www.hdfgroup.org/HDF5/doc/TechNotes/Version.html</code></a>.</p>
+    </dd>
+
+<p />
+<dt><strong>Parameters:</strong></dt>
+    <dd><table>
+        <tr>
+            <td valign="top"><em>int</em>&nbsp;<code>maj&nbsp;&nbsp;&nbsp;&nbsp;</code></td>
+            <td valign="top">IN: Major version number<br>
+                             A non-negative integer value</td></tr>
+        <tr>
+            <td valign="top"><em>int</em> <code>min</code></td>
+            <td valign="top">IN: Minor version number<br>
+                             A non-negative integer value</td></tr>
+        <tr>
+            <td valign="top"><em>int</em> <code>rel</code></td>
+            <td valign="top">IN: Release number<br>
+                             A non-negative integer value</td></tr>
+        </table></dd>
+
+<p />
+<dt><strong>Returns:</strong></dt>
+    <dd><table>
+        <tr>
+            <td><code>TRUE</code></td>
+            <td>If the library version is 
+                greater than or equal to the version number specified</td>
+            </tr>
+        <tr>
+            <td><code>FALSE&nbsp;&nbsp;&nbsp;&nbsp;</code></td>
+            <td>If the library version is 
+                less than the version number specified</td>
+            </tr>
+        </table>
+
+        <p>
+        A library version is greater than the specified version number if its
+        major version is larger than the specified major version number.
+        If the major version numbers are the same, it is greater than the 
+        specified version number if its minor version is larger than the
+        specified minor version number.  If the minor version numbers are 
+        the same, then a library version would be greater than the specified
+        version number if its release number is larger than the specified
+        release number.
+        </dd>
+
+<p />
+<dt><strong>Fortran Interface:</strong></dt>
+    <dd>None</dd>
+
+<!-- NEW PAGE -->
+<p />
+<dt><strong>Example Usage:</strong></dt>
+    <dd>Suppose an application wants to call different functions based 
+        on the version of the HDF5 library to which an application will be 
+        linked. 
+        For example, the link functions, <code>H5Lxxx</code>, 
+        are new in the 1.8 versions of HDF5, 
+        and some group functions, <code>H5Gxxx</code>, 
+        are deprecated in the 1.8 versions. 
+        The following code uses <code>H5Ldelete</code> if the library version 
+        is 1.8.0 or greater or uses <code>H5Gunlink</code> if the 
+        library version is not greater than 1.8.0. 
+        Similarly, the code calls <code>H5Lexists</code> or 
+        <code>H5Gopen</code> to make sure the group has been deleted. </p>
+
+        <pre>
+    #if H5_VERSION_GE(1,8,0)
+        ret = H5Ldelete(file, "Group", H5P_DEFAULT);
+        CHECK(ret, FAIL, "H5Lunlink");
+
+        status = H5Lexists(file, "Group", H5P_DEFAULT);
+        VERIFY(status, FALSE, "H5Lexists");
+    #else
+        ret = H5Gunlink(file, "Group");
+        CHECK(ret, FAIL, "H5Gunlink");
+
+        H5E_BEGIN_TRY {
+            grp = H5Gopen(file, "Group");
+        } H5E_END_TRY;
+        VERIFY(grp, FAIL, "H5Gopen");
+    #endif
+        </pre></dd>
+
+<p />
+<dt><strong>History:</strong></dt>
+    <dd><table>
+        <tr>
+          <td>
+            <strong>Release<code>&nbsp;&nbsp;&nbsp;&nbsp;</code></strong></td>
+          <td>
+            <strong>Change</strong></td></tr>
+        <tr>
+          <td>1.8.7</td>
+          <td>C macro introduced in this release.</td></tr>
+        </table></dd>
+</dl>
+
+
+
+<!--
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+  * Copyright by The HDF Group.                                               *
+  * Copyright by the Board of Trustees of the University of Illinois.         *
+  * All rights reserved.                                                      *
+  *                                                                           *
+  * This file is part of HDF5.  The full HDF5 copyright notice, including     *
+  * terms governing use, modification, and redistribution, is contained in    *
+  * the files COPYING and Copyright.html.  COPYING can be found at the root   *
+  * of the source code distribution tree; Copyright.html can be found at the  *
+  * root level of an installed copy of the electronic HDF5 document set and   *
+  * is linked from the top-level documents page.  It can also be found at     *
+  * http://hdfgroup.org/HDF5/doc/Copyright.html.  If you do not have          *
+  * access to either file, you may request a copy from help@hdfgroup.org.     *
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ -->
+
+
+<!-- NEW PAGE -->
+<!-- HEADER RIGHT "H5_VERSION_LE" -->
+<hr />
+<dl>
+
+<dt><div align=right><font color=999999 size=-1><i>
+    Last modified: 22 April 2011
+    </i></font></div></dt>
+
+<dt><strong>Name:</strong> <a name="Library-VersionLE">H5_VERSION_LE</a></dt>
+<dt><strong>Signature:</strong></dt>
+    <dd><code>H5_VERSION_LE( 
+        <em>int</em> maj, 
+        <em>int</em> min, 
+        <em>int</em> rel
+        )</code></dd>
+
+<p />
+<dt><strong>Purpose:</strong></dt>
+    <dd>Determines whether the version of the library being used is 
+        less than or equal to the specified version.</dd>
+
+<p />
+<dt><strong>Motivation:</strong></dt>
+    <dd>The <a href="RM_H5.html#Library-VersionGE"><code>H5_VERSION_GE</code></a>
+        and <a href="RM_H5.html#Library-VersionLE"><code>H5_VERSION_LE</code></a>
+        macros are used at compile time to conditionally include or exclude 
+        code based on the version of the HDF5 library against which 
+        an application will be linked.</p>
+
+<p />
+<dt><strong>Description:</strong></dt>
+    <dd>The <code>H5_VERSION_LE</code> macro compares the version of 
+        the HDF5 library being used against the version number specified 
+        in the parameters.</p>
+        <p>
+        For more information, see &ldquo;HDF5 Software Updates&rdquo; at 
+        <a href="http://www.hdfgroup.org/HDF5/doc/TechNotes/Version.html">
+        <code>www.hdfgroup.org/HDF5/doc/TechNotes/Version.html</code></a>.</p>
+        </dd>
+
+<p />
+<dt><strong>Parameters:</strong></dt>
+    <dd><table>
+        <tr>
+            <td valign="top"><em>int</em>&nbsp;<code>maj&nbsp;&nbsp;&nbsp;&nbsp;</code></td>
+            <td valign="top">IN: Major version number<br>
+                             A non-negative integer value</td></tr>
+        <tr>
+            <td valign="top"><em>int</em> <code>min</code></td>
+            <td valign="top">IN: Minor version number<br>
+                             A non-negative integer value</td></tr>
+        <tr>
+            <td valign="top"><em>int</em> <code>rel</code></td>
+            <td valign="top">IN: Release number<br>
+                             A non-negative integer value</td></tr>
+        </table></dd>
+
+<p />
+<dt><strong>Returns:</strong></dt>
+    <dd><table>
+        <tr>
+            <td><code>TRUE</code></td>
+            <td>If the library version is 
+            less than or equal to the version number specified </td>
+            </tr>
+        <tr>
+            <td><code>FALSE&nbsp;&nbsp;&nbsp;&nbsp;</code></td>
+            <td>If the library version is greater than the 
+            version number specified</td>
+            </tr>
+        </table>
+
+        <p>
+        A library version is less than the specified version number if its
+        major version is smaller than the specified major version number.
+        If the major version numbers are the same, it is less than the 
+        specified version number if its minor version is smaller than the
+        specified minor version number.  If the minor version numbers are 
+        the same, then a library version would be less than the specified
+        version number if its release number is smaller than the specified
+        release number.
+        </dd>
+
+<p />
+<dt><strong>Fortran Interface:</strong></dt>
+    <dd>None</dd>
+
+<!-- NEW PAGE -->
+<p />
+<dt><strong>Example Usage:</strong></dt>
+    <dd>
+        Suppose an application wants to call different functions based 
+        on the version of the HDF5 library to which an application will be 
+        linked. For example, the link functions, <code>H5Lxxx</code>, 
+        are new in the 1.8 versions of HDF5, and some group functions, 
+        <code>H5Gxxx</code>, are deprecated in the 1.8 versions. 
+        The following code uses <code>H5Gunlink</code> if the 
+        library version is 1.6.10 or earlier or uses <code>H5Ldelete</code> 
+        if the library version is not 1.6.10 or earlier. Similarly, the code 
+        calls <code>H5Gopen</code> or <code>H5Lexists</code> 
+        to make sure the group has been deleted. </p>
+
+        <pre>
+    #if H5_VERSION_LE(1,6,10)
+        ret = H5Gunlink(file, "Group");
+        CHECK(ret, FAIL, "H5Gunlink");
+
+        H5E_BEGIN_TRY {
+            grp = H5Gopen(file, "Group");
+        } H5E_END_TRY;
+        VERIFY(grp, FAIL, "H5Gopen");
+    #else
+        ret = H5Ldelete(file, "Group", H5P_DEFAULT);
+        CHECK(ret, FAIL, "H5Lunlink");
+
+        status = H5Lexists(file, "Group", H5P_DEFAULT);
+        VERIFY(status, FALSE, "H5Lexists");
+    #endif
+        </pre></dd>
+
+<p />
+<dt><strong>History:</strong></dt>
+    <dd><table>
+        <tr>
+          <td>
+            <strong>Release<code>&nbsp;&nbsp;&nbsp;&nbsp;</code></strong></td>
+          <td>
+            <strong>Change</strong></td></tr>
+        <tr>
+          <td>1.8.7</td>
+          <td>C macro introduced in this release.</td></tr>
+        </table></dd>
+</dl>
+
+
+
+<!-- HEADER RIGHT " " -->
+<!-- #BeginLibraryItem "/ed_libs/NavBar_RM.lbi" -->
+<hr>
+<center>
+<table border="0" width="98%">
+<tr><td valign="top" align="left">
+<a href="../index.html">HDF5 documents and links</a>&nbsp;<br>
+<a href="../H5.intro.html">Introduction to HDF5</a>&nbsp;<br>
+<a href="../UG/HDF5_Users_Guide-Responsive&#32;HTML5/index.html">HDF5 User&rsquo;s Guide</a>&nbsp;<br>
+<!--
+<a href="Glossary.html">Glossary</a><br>
+-->
+</td>
+<td valign="top" align="right">
+In the 
+<a href="RM_H5Front.html">HDF5 Reference Manual</a>&nbsp;
+<font size="-1">
+<br>
+<a href="../HL/RM_H5DS.html">H5DS</a>&nbsp;&nbsp;
+<a href="../HL/RM_H5IM.html">H5IM</a>&nbsp;&nbsp;
+<a href="../HL/RM_H5LT.html">H5LT</a>&nbsp;&nbsp;
+<a href="../HL/RM_H5PT.html">H5PT</a>&nbsp;&nbsp;
+<a href="../HL/RM_H5TB.html">H5TB</a>&nbsp;
+<a href="../HL/RM_HDF5Optimized.html">Optimized</a>&nbsp;
+<br>
+<a href="RM_H5.html">H5</a>&nbsp;&nbsp;
+<a href="RM_H5A.html">H5A</a>&nbsp;&nbsp;
+<a href="RM_H5D.html">H5D</a>&nbsp;&nbsp;
+<a href="RM_H5E.html">H5E</a>&nbsp;&nbsp;
+<a href="RM_H5F.html">H5F</a>&nbsp;&nbsp;
+<a href="RM_H5G.html">H5G</a>&nbsp;&nbsp;
+<a href="RM_H5I.html">H5I</a>&nbsp;&nbsp;
+<a href="RM_H5L.html">H5L</a>&nbsp;
+<br>
+<a href="RM_H5O.html">H5O</a>&nbsp;&nbsp;
+<a href="RM_H5P.html">H5P</a>&nbsp;&nbsp;
+<a href="RM_H5PL.html">H5PL</a>&nbsp;&nbsp;
+<a href="RM_H5R.html">H5R</a>&nbsp;&nbsp;
+<a href="RM_H5S.html">H5S</a>&nbsp;&nbsp;
+<a href="RM_H5T.html">H5T</a>&nbsp;&nbsp;
+<a href="RM_H5Z.html">H5Z</a>&nbsp;
+<br>
+<a href="Tools.html">Tools</a>&nbsp;&nbsp;
+<a href="PredefDTypes.html">Datatypes</a>&nbsp;&nbsp;
+<a href="../fortran/index.html">Fortran</a>&nbsp;&nbsp;
+<a href="APICompatMacros.html">Compatibility Macros</a>&nbsp;
+<br>
+<a href="CollectiveCalls.html">Collective Calls in Parallel</a>&nbsp;
+<!--
+<br>
+<i><font size=-1>(Printable <a href="http://hdfgroup.org/HDF5/doc/PSandPDF/HDF5_RefManual.PDF">PDF</a> of this Reference Manual)</font></i>&nbsp;
+-->
+</font>
+</td></tr>
+</table>
+</center>
+<hr>
+<!-- #EndLibraryItem -->
+
+
+<!-- INCLUDE VIA PHP FROM <doc_root>/ed_libs/Footer2.htm -->
+
+<address>
+<table width="100%" border="0">
+  <tr valign="top">
+      <td align="left">
+          <address>
+          The HDF Group Help Desk: <img src="../Graphics/help.png" align=top height=16>
+          <br>
+          Describes HDF5 Release 1.10.
+          </address>
+      </td><td width="5%">&nbsp;</td>
+      <td align="right">
+          <a href="https://support.hdfgroup.org/ftp/HDF5/releases/COPYING">Copyright</a> by
+          <a href="https://www.hdfgroup.org">The HDF Group</a>
+          <br>
+          and the Board of Trustees of the University of Illinois
+      </td>   
+  </tr>   
+</table>
+</address>
+
+<!-- END PHP INCLUDE FROM <doc_root>/ed_libs/Footer2.htm -->
+
+
+<SCRIPT LANGUAGE="JAVASCRIPT">
+<!--
+document.writeln("Last modified: February 2017");
+-->
+</SCRIPT>
+
+</body>
+</html>
+

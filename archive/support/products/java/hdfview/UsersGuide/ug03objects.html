@@ -1,0 +1,499 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+<!-- If no var is set for $page_title on the top of each page than default title will be HDF Group -->
+
+<title>
+HDFView User's Guide -- HDF Object Model</title>
+	<meta name="keywords" content="hdf, hdfeos, blog, hdf blog, hdf5 blog, hdf5, hdf4, hdf tools, hdf libraries, hdf viewer, hdf format, hdf file, hdf java, nafxcw.lib, phdf5, open source, hierarchical data format, ncsa, database, python hdf, mike folk, hdfview, hdf5 parallel" />
+	<meta name="description" content="The HDF Group is a not-for-profit corporation with the mission of sustaining the HDF technologies and supporting HDF user communities worldwide with production-quality software and services." />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="expires" content="Wed, 26 Feb 2010 08:21:57 GMT" />
+	<meta name="verify-v1" content="/m03HNmaDgGAcDe0PFtEVnXGtCkoeOocjr/Jwey2gdI=" />
+	<link href="../../../../css/layout.css" rel="stylesheet" type="text/css" media="screen, projection" />
+	<link href="../../../../css/print.css" rel="stylesheet" type="text/css" media="print" />
+	<link rel="stylesheet" type="text/css" href="../../../../css/js_style.css" />
+	<link rel="shortcut icon" href="../../../../images/favicon.ico" type="image/x-icon" />
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/prototype/1.7.2.0/prototype.js"></script>
+	<!--<script type="text/javascript" src="/scriptaculous/lib/prototype.js"></script>-->
+	<script type="text/javascript" src="../../../../scriptaculous/src/effects.js"></script>
+	<script type="text/javascript" src="../../../../scriptaculous/validation.js"></script>
+	<script type="text/javascript" src="../../../../scriptaculous/animatedcollapse.js"></script>
+	<script type="text/javascript" src="../../../../scriptaculous/rollover.js"></script>	
+	<script type="text/javascript" src="../../../../scriptaculous/functions.js"></script>
+	<script type="text/javascript" src="../../../../scriptaculous/sorttable.js"></script>
+	<!--<script type="text/javascript" src="/jquery-1.2.2.pack.js"></script>-->
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript" src="../../../../scriptaculous/jssor.slider.min.js"></script>
+
+ 	<link rel="stylesheet" type="text/css" href="../../../../featuredcontentglider.css" />
+    <script type="text/javascript" src="../../../../featuredcontentglider.js"></script>
+
+	</head>
+	<body>
+	<div id="mast_head">
+		<a href="https://www.hdfgroup.org/"><img src="../../../../images/hdf_logo.jpg" height="70" style="display:block; padding-left:10px;" align="left" alt="hdf images" /></a>
+		<img src="../../../../images/logo_5.jpg" height="70" style="display:block;" align="right" alt="hdf images" />
+	</div> 
+				
+	<div id="nav_wrapper">
+		<div>
+		<div id="section-">
+			<ul id="nav">
+				<li id="t-index"><a href="https://www.hdfgroup.org/">Home</a> </li>
+				<li id="t-products"><a href="../../../index.html">Products</a></li>
+				<li id="t-services"><a href="../../../../services/index.html">Services</a></li>
+				<li id="t-about"><a href="../../../../about/index.html">About Us</a></li>
+				<li id="t-news"><a href="../../../../news/index.html">News</a> </li>
+				<li id="t-blog"><a href="https://www.hdfgroup.org/blog">Blog</a></li>
+				<li id="t-contact"><a href="../../../../about/contact.html">Contact Us</a></li> 
+			</ul>
+			<script type="text/javascript">
+			
+  (function() {
+    var cx = '007250492606109219119:sb2eg2bgoyy';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:search></gcse:search>	
+					<script type="text/javascript">
+					    jQuery(document).ready(function ($) {
+					        // var options = {
+					        //     $ArrowNavigatorOptions: {
+					        //         $Class: $JssorArrowNavigator$,
+					        //         $ChanceToShow: 2
+					        //     }
+					        // };					    	
+
+
+							var options = { 
+											$AutoPlay: true, $SlideshowOptions: { $Class: $JssorSlideshowRunner$, $Transitions: [{ $Duration:5000, $Fade: true, $Opacity:2 }] } , 
+											$ArrowNavigatorOptions: { 
+												$Class: $JssorArrowNavigator$, 
+												$ChanceToShow: 2
+											}
+										  };
+
+
+					        var jssor_slider1 = new $JssorSlider$('slider1_container', options);
+					    });
+					</script>
+									                  
+			
+		</div>
+		</div>             
+	</div>
+				
+<!--START: MAIN -->
+<div id="wrapper" style="margin-top:-15px;"> 
+
+<!--START: SIDE_BAR -->
+<div id="side_bar">
+
+<form method="get" action="ug03objects.html" class="form" >
+	<select onchange="window.open(this.options[this.selectedIndex].value,'_top')" name="" style="border:2px solid #c1c1c1;">
+		<option value="" class="ql1">- - Quick Links - -</option>
+		<option value="/HDF5/" class="ql">HDF5</option>
+		<option value="/products/hdf4/" class="ql">HDF4</option>
+		<option value="/tools/" class="ql">Tools</option>
+		<option value="/projects/" class="ql">Projects</option>
+		<option value="/downloads/" class="ql">Downloads</option>
+		<option value="/documentation/" class="ql">Documentation</option>
+	        <option value="/pubs/" class="ql">Publications</option>
+		<option value="/about/" class="ql">Contact Us</option>
+	</select>
+</form>
+<ul style="border:1px solid #c1c1c1; margin-top:25px;"> 
+
+	<li style="background:url(../../../../images/menubg.png); padding:0px; padding-left:7px; color:#27343C; font-weight:500; text-align:left;">
+	LINKS</li><li><a href="https://www.hdfgroup.org/">Main Website</a></li><li><a  href="../../../../downloads/index.html">Downloads</a></li><li><a  href="https://support.hdfgroup.org/products/java/hdfview/">HDFView</a></li><li><a  href="../../JNI3/index.html">JNI3 Libraries</a></li><li><a  href="../../../../HDF5/hdf5-files.html">Sample HDF5 Files</a></li><li><a  href="../../../licenses.html">Licenses</a></li></ul> 
+
+</div>
+
+<!--END: SIDE_BAR -->
+
+<!--START: CONTENT -->
+<div id="content">
+<p><font color="red"><center><strong>This web site is no longer maintained (but will remain online).<br /> Please see The HDF Group's new <a href="https://portal.hdfgroup.org">Support Portal</a> for the latest information.</strong></center></font></p>
+	<div class=bc><p style="color:orange; ";><a href="../../../../index.html" title="HOME">HOME</a> &gt; <a href="../../../index.html" title="PRODUCTS">PRODUCTS</a> &gt; <a href="../../index.html" title="JAVA">JAVA</a> &gt; <a href="https://support.hdfgroup.org/products/java/hdfview/" title="HDFVIEW">HDFVIEW</a> &gt; <a href="index.html" title="USERSGUIDE">USERSGUIDE</a></p></div><link href="https://support.hdfgroup.org/products/java/hdfview/UsersGuide/edit.css" rel="stylesheet" type="text/css" />
+ 
+<p>
+<a href="../../hdf-java-html/hdfview/UsersGuide/index.html">[Index]</a>
+<a href="../../hdf-java-html/hdfview/UsersGuide/ug01introduction.html">[1]</a>
+<a href="ug02start.html">[2]</a>
+<a href="ug03objects.html">[3]</a>
+<a href="ug04treeview.html">[4]</a>
+<a href="ug05spreadsheet.html">[5]</a>
+<a href="ug06imageview.html">[6]</a>
+<a href="ug07textview.html">[7]</a>
+<a href="ug08useroptions.html">[8]</a></p>
+
+<h1>
+<fieldset>Chapter 3: HDF Object Model</fieldset></h1>
+
+<p>
+This chapter provides basic information about the <a href="../../hdf-object/index.html">HDF Object Model</a>. 
+</p>
+<ul class="ul">
+  <li class="add"><a href="ug03objects.html#ug03overview">3.1 Overview</a></li>
+  <li class="add"><a href="ug03objects.html#ug03definition">3.2 The HDF Object Package</a></li>
+  <li class="add"><a href="ug03objects.html#ug03hierarchy">3.3 Class Hierarchy</a></li>
+  <li class="add"><a href="ug03objects.html#ug03application">3.4 Using the HDF Object Package</a></li>
+</ul>
+<hr noshade="noshade" size="1" />
+<h2> <a name="ug03overview" id="ug03overview"></a>3.1 Overview</h2>
+<p>HDF files may contain many types of data objects that a scientist
+  might need. HDFView displays the data objects appropriately according to their
+  types. For example, a two-dimension dataset with an associated palette
+  will be displayed as an image. When you open an HDF file with HDFView,
+  you see the tree structure of an HDF file, showing the objects and their
+  groupings. You can select an object from the tree to view its content.</p>
+<p>
+HDF4 (i.e. HDF version 4) is based on the original 1988 version of HDF.
+Versions 1, 2, 3, and 4 of HDF were all backward compatible, and HDF4
+can access files created by all earlier versions. HDF5 is a completely
+new format and library.  Although they are conceptually related, HDF5 files 
+cannot be read by the HDF4 library and vice versa.  HDF5 was
+designed to address some of the limitations of HDF4 and to address
+and exploit current and anticipated requirements of modern systems and
+applications.</p>
+
+<p>
+HDFView is built on a common HDF object model and suports both versions of HDF.
+The HDF object model was designed in such a way that the HDF4 and HDF5 objects
+interact with users through a common object layer so the user interface
+design will be independent of the file format (HDF4 or HDF5). Such a design
+allows the HDFView to support and convert objects of different formats
+(HDF4 and HDF5).</p>
+
+<hr noshade size=1 />
+
+<h2>
+<a name="ug03definition"></a>3.2 The HDF Object Package</h2>
+<p>
+The <b>HDF Object Package</b> is a Java package that implements HDF4 and
+HDF5 data objects in an object-oriented form. The HDF Java Object Package
+provides common standard Java APIs to access both HDF4 and HDF5 files.</p>
+<p>The HDF Object Package is <b>NOT</b> a &ldquo;wrapper&rdquo; for the native HDF
+libraries, and it requires the HDF4 and HDF5 wrappers.
+The HDF4 and HDF5 wrappers are separate HDF Java products. For
+details about the HDF4 and HDF5 native interfaces, read
+<a href="../../JNI3/jhi/index.html">
+Java HDF Interface (JHI)</a>
+and
+<a href="../../JNI3/jhi5/index.html">
+Java HDF5 Interface (JHI5)</a>.</p>
+
+<p>
+The HDF Object Package implements higher
+level APIs and encapsulates HDF library calls into an object-oriented fashion
+for easy access to HDF files. For example, to retrieve data content from an
+HDF5 dataset by using the HDF5 library APIs directly, you have to make many
+calls, such as: get the datatype information (datatype class, size, sign,
+and etc), get the dataspace information (number of dimension, dimension
+sizes), and allocate the data buffer. The HDF Object Package puts all these
+calls into a single call - read().</p>
+
+<p>The HDF Object Package, <i>hdf.object</i>, provides classes that
+reflect fundamental concepts to the design of HDF objects. Objects
+of HDF5 (group and dataset) and HDF4 (group, multi-dimension array, raster
+image, vdata and annotation) are presented as Java classes.</p>
+
+<p>The HDF Object Package has two major goals. First, it simplifies the
+process of reading information from or writing data to a file because the
+details of accessing the HDF library are encapsulated into respective
+classes. Second, HDF4 and HDF5 objects are inherited from the same common object
+and interface. Applications can use the HDF Object Package to access
+objects from either HDF4 or HDF5 in a uniform way, without accessing the
+libraries directly. The following diagram explains the relationship of the
+object package, HDF JNI, and application.</p>
+
+<p><b>
+HDF Applications &lt;==> HDF Object Package &lt;==> HDF4/5 Java Wrapper (JNI4/5) &lt;==> HDF File
+</b></p>
+
+<h2>
+<a name="ug03hierarchy"></a>3.3 Class Hierarchy</h2>
+<p>
+The HDF Object Package implements an abstract data model, and the objects
+of the HDF4 and HDF5 data models are represented as instances of the abstract
+objects. The abstract class <b>HObject</b> has two fundamental abstract
+classes, <b>Group</b> and <b>Dataset</b>, and all HDF5 and HDF4 objects
+are a sub-type of one of these abstract classes.</p>
+
+<p>The following figure shows the class hierarchy of the HDF Object Package. In the
+following, we give a brief description of these Java classes of HDF objects.
+For details, see the Javadocs from the <a href="../../index.html">HDF Java Products</a> page. 
+</p>
+
+<p>
+The classes at the top of the class hierarchy are interfaces and abstract
+classes. These interfaces and abstract classes define all the necessary public
+APIs to retrieve information and data from HDF files. The classes at the bottom
+are the implementing classes, which implement the public APIs defined by the
+top classes.</p>
+
+<center>
+<p><img src="images/class_diagram_object.jpg" />
+<br /><b>The class hierarchy of HDF objects</b></p></center>
+
+<br />
+<table border="1" cellpadding="3" cellspacing="0" width="100%">
+<tr bgcolor="#dbeaf5" class="TableHeadingColor">
+<td colspan=2><h2>Interface Summary</h2></td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><i>DataFormat</i></b></td>
+<td>DataFormat describes general I/O operations of a data object,
+ such as read data content or data attributes into memory, write
+ data content or data attributes onto disk.</td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><i>FileFormat</i></b></td>
+<td>FileFormat defines general I/O accessing interface to file resources,
+ such as open/close a file, and retrieve the file structure.</td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><i>Metadata</i></b></td>
+<td>Metadata is a general interface about supporting data.</td>
+</tr>
+</table>
+<br />
+<table border="1" cellpadding="3" cellspacing="0" width="100%">
+<tr bgcolor="#dbeaf5" class="TableHeadingColor">
+<td colspan=2>
+<h2>Class Summary</h2></td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b>Attribute</b></td>
+<td>Attribute holds a (name, value) pair of an HDF4/5 attribute.</td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b>CompoundDS</b></td>
+<td>CompoundDS is the superclass for HDF4 and HDF5 Compound Dataset.</td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b>Dataset</b></td>
+<td>Dataset is the superclass for HDF4/5 Dataset, inheriting the HObject.</td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b>Datatype</b></td>
+<td>Datatype holds a (name, value) pair of an HDF4/5 attribute.</td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b>Group</b></td>
+<td>Group is the superclass for HDF4 and HDF5 group, inheriting the HObject.</td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b>H4Datatype</b></td>
+<td>H4Datatype holds a (name, value) pair of an HDF4/5 attribute.</td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b>H4File</b></td>
+<td>H4File provides file level APIs.</td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b>H4GRImage</b></td>
+<td>H4GRImage describes a HDF4 general raster(GR) image and operations performed on
+ the GR image.</td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b>H4Group</b></td>
+<td>H4Group is a vgroup in HDF4, inheriting from Group.</td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b>H4SDS</b></td>
+<td>H4SDS describes HDF4 Scientific Data Sets (SDS) and operations performed on
+ the SDS.</td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b>H4Vdata</b></td>
+<td>H4Vdata describes a multi-dimension array of HDF4 vdata, inheriting CompoundDS.</td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b>H5CompoundDS</b></td>
+<td>H5CompoundDS describes a multi-dimension array of HDF5 compound dataset,
+ inheriting CompoundDS.</td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b>H5Datatype</b></td>
+<td>H5Datatype holds a (name, value) pair of an HDF4/5 attribute.</td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b>H5File</b></td>
+<td>H4File provides file level APIs.</td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b>H5Group</b></td>
+<td>H5Group represents a HDF5 group, inheriting from Group.</td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b>H5ScalarDS</b></td>
+<td>H5ScalarDS describes a multi-dimension array of HDF5 scalar or atomic data
+ types and operations performed on the scalar dataset, such as byte, int,
+ short, long, float, double, and string.</td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b>HObject</b></td>
+<td>HObject is the superclass for the HDF data hierarchy, inheriting the DataFormat
+ interface.</td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b>ScalarDS</b></td>
+<td>ScalarDS is the superclass for HDF4/5 ScalarDS, inheriting Dataset.</td>
+</tr>
+</table>
+
+<br />
+<h2>
+<a name="ug03application"></a>3.4 Using the HDF Object Package</h2>
+<p>
+The HDF Object Package is used by Java applications to access HDF4 and
+HDF5 files without directly calling the HDF4 and HDF5 library APIs. Library
+calls are encapsulated into respective classes. The HDF Object Package
+requires the
+<a href="../../JNI3/jhi/index.html">
+Java HDF Interface (JHI)</a>
+and the
+<a href="../../JNI3/jhi5/index.html">
+Java HDF5 Interface (JHI5)</a>.</p>
+
+<center>
+<p><img SRC="images/hdf-obj.jpg" />
+<br><b>The software packages</b></p></center>
+<br />
+
+<p>
+The following examples show how to retrieve file hierarchy using
+the HDF Object Package.</p>
+
+<h3>Example 3.1: Retrieve and print HDF5 objects </h3>
+
+<pre>
+import hdf.object.*;     // include the common HDF object package
+import hdf.object.h5.*;  // include the HDF5 object package
+import hdf.hdf5lib.*;    // include the Java HDF5 interface
+
+/**
+ * Retreve and print HDF5 objects from file hdf5_test.h5
+ *
+ */
+public class TestH5File
+{
+    public static void main(String[] argv)
+    {
+        // create an H5File object
+        H5File h5file = new H5File("hdf5_test.h5", HDF5Constants.H5F_ACC_RDONLY);
+
+        try
+        {
+            // open file and retrieve the file structure
+            h5file.open();
+        }
+        catch (Exception ex)
+        {
+            System.out.println(ex);
+        }
+
+        javax.swing.tree.MutableTreeNode root = h5file.getRootNode();
+        if (root != null)
+        {
+            printNode(root, "    ");
+        }
+
+        try { h5file.close(); }
+        catch (Exception ex ) {}
+    }
+
+    // print out the data object recusively
+    private static void printNode(javax.swing.tree.TreeNode node, String indent)
+    {
+        System.out.println(indent+node);
+
+        int n = node.getChildCount();
+        for (int i=0; i&lt;n; i++)
+        {
+            printNode(node.getChildAt(i), indent+"    ");
+        }
+    }
+}
+</pre>
+
+<h3>Example 3.2: Retrieve and print HDF4 objects </h3>
+
+<pre>
+import hdf.object.*;    // include the common HDF object package
+import hdf.object.h4.*; // include the HDF4 object package
+import hdf.hdflib.*;    // include the Java HDF5 interface
+
+/**
+ * Retreve and print HDF4 objects from file annras.hdf.
+ *
+ */
+
+public class TestH4File
+{
+    public static void main(String[] argv)
+    {
+        // create an H4File object
+        H4File h4file = new H4File("annras.hdf", HDFConstants.DFACC_READ);
+
+        try
+        {
+            // open file and retrieve the file structure
+            h4file.open();
+        }
+        catch (Exception ex)
+        {
+            System.out.println(ex);
+        }
+
+        javax.swing.tree.MutableTreeNode root = h4file.getRootNode();
+        if (root != null)
+        {
+            printNode(root, "    ");
+        }
+
+        try { h4file.close(); }
+        catch (Exception ex ) {}
+    }
+
+    // print out the data object recusively
+    private static void printNode(javax.swing.tree.TreeNode node, String indent)
+    {
+        System.out.println(indent+node);
+
+        int n = node.getChildCount();
+        for (int i=0; i&lt;n; i++)
+        {
+            printNode(node.getChildAt(i), indent+"    ");
+        }
+    }
+}
+
+</pre>
+
+<!-- BEGIN OF FOOTER INFO -->
+<hr noshade size=1 />
+<p>
+<a href="../../hdf-java-html/hdfview/UsersGuide/index.html">[Index]</a>
+<a href="../../hdf-java-html/hdfview/UsersGuide/ug01introduction.html">[1]</a>
+<a href="ug02start.html">[2]</a>
+<a href="ug03objects.html">[3]</a>
+<a href="ug04treeview.html">[4]</a>
+<a href="ug05spreadsheet.html">[5]</a>
+<a href="ug06imageview.html">[6]</a>
+<a href="ug07textview.html">[7]</a>
+<a href="ug08useroptions.html">[8]</a></p>
+
+<!-- END OF FOOTER INFO -->
+
+</body>
+</html>

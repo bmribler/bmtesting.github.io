@@ -1,5 +1,5 @@
 #+title: Archive
 
 - [[./hdf5doc/][HDF5 Documentation]] :: A snapshot of the HDF5 documentation from April 2017
-- [[https://support.hdfgroup.org/][HDF5 Support]] :: A snapshot of The HDF Group’s Support website from Month(?)
+- [[./support/][HDF5 Support]] :: A snapshot of The HDF Group’s Support website from Month(?)
    Year(?)

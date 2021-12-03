@@ -1,0 +1,1897 @@
+<html xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:x="urn:schemas-microsoft-com:office:excel"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=ProgId content=Excel.Sheet>
+<meta name=Generator content="Microsoft Excel 14">
+<link rel=File-List href="SWSummarybyName_files/filelist.xml">
+<style id="SWSummarybyName_10346_Styles">
+<!--table
+	{mso-displayed-decimal-separator:"\.";
+	mso-displayed-thousand-separator:"\,";}
+.xl1510346
+	{padding-top:1px;
+	padding-right:1px;
+	padding-left:1px;
+	mso-ignore:padding;
+	color:black;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:Calibri, sans-serif;
+	mso-font-charset:0;
+	mso-number-format:General;
+	text-align:general;
+	vertical-align:bottom;
+	mso-background-source:auto;
+	mso-pattern:auto;
+	white-space:nowrap;}
+.xl6410346
+	{padding-top:1px;
+	padding-right:1px;
+	padding-left:1px;
+	mso-ignore:padding;
+	color:black;
+	font-size:16.0pt;
+	font-weight:700;
+	font-style:normal;
+	text-decoration:none;
+	font-family:Calibri, sans-serif;
+	mso-font-charset:0;
+	mso-number-format:General;
+	text-align:general;
+	vertical-align:bottom;
+	mso-background-source:auto;
+	mso-pattern:auto;
+	white-space:nowrap;}
+.xl6510346
+	{padding-top:1px;
+	padding-right:1px;
+	padding-left:1px;
+	mso-ignore:padding;
+	color:black;
+	font-size:18.0pt;
+	font-weight:700;
+	font-style:normal;
+	text-decoration:none;
+	font-family:Calibri, sans-serif;
+	mso-font-charset:0;
+	mso-number-format:General;
+	text-align:general;
+	vertical-align:bottom;
+	mso-background-source:auto;
+	mso-pattern:auto;
+	white-space:nowrap;}
+.xl6610346
+	{padding-top:1px;
+	padding-right:1px;
+	padding-left:1px;
+	mso-ignore:padding;
+	color:black;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:Calibri, sans-serif;
+	mso-font-charset:0;
+	mso-number-format:General;
+	text-align:general;
+	vertical-align:bottom;
+	mso-background-source:auto;
+	mso-pattern:auto;
+	white-space:normal;}
+.xl6710346
+	{padding-top:1px;
+	padding-right:1px;
+	padding-left:1px;
+	mso-ignore:padding;
+	color:black;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:Calibri, sans-serif;
+	mso-font-charset:0;
+	mso-number-format:General;
+	text-align:general;
+	vertical-align:bottom;
+	border:.5pt solid windowtext;
+	mso-background-source:auto;
+	mso-pattern:auto;
+	white-space:nowrap;}
+.xl6810346
+	{padding-top:1px;
+	padding-right:1px;
+	padding-left:1px;
+	mso-ignore:padding;
+	color:blue;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:underline;
+	text-underline-style:single;
+	font-family:Calibri, sans-serif;
+	mso-font-charset:0;
+	mso-number-format:"\@";
+	text-align:general;
+	vertical-align:bottom;
+	border:.5pt solid windowtext;
+	mso-background-source:auto;
+	mso-pattern:auto;
+	white-space:normal;}
+.xl6910346
+	{padding-top:1px;
+	padding-right:1px;
+	padding-left:1px;
+	mso-ignore:padding;
+	color:blue;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:underline;
+	text-underline-style:single;
+	font-family:Calibri, sans-serif;
+	mso-font-charset:0;
+	mso-number-format:General;
+	text-align:general;
+	vertical-align:bottom;
+	border:.5pt solid windowtext;
+	mso-background-source:auto;
+	mso-pattern:auto;
+	white-space:normal;}
+.xl7010346
+	{padding-top:1px;
+	padding-right:1px;
+	padding-left:1px;
+	mso-ignore:padding;
+	color:blue;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:underline;
+	text-underline-style:single;
+	font-family:Calibri, sans-serif;
+	mso-font-charset:0;
+	mso-number-format:General;
+	text-align:general;
+	vertical-align:bottom;
+	border:.5pt solid windowtext;
+	mso-background-source:auto;
+	mso-pattern:auto;
+	white-space:nowrap;}
+.xl7110346
+	{padding-top:1px;
+	padding-right:1px;
+	padding-left:1px;
+	mso-ignore:padding;
+	color:black;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:Calibri, sans-serif;
+	mso-font-charset:0;
+	mso-number-format:General;
+	text-align:general;
+	vertical-align:bottom;
+	border:.5pt solid windowtext;
+	mso-background-source:auto;
+	mso-pattern:auto;
+	white-space:normal;}
+.xl7210346
+	{padding-top:1px;
+	padding-right:1px;
+	padding-left:1px;
+	mso-ignore:padding;
+	color:black;
+	font-size:12.0pt;
+	font-weight:700;
+	font-style:normal;
+	text-decoration:none;
+	font-family:Calibri, sans-serif;
+	mso-font-charset:0;
+	mso-number-format:General;
+	text-align:general;
+	vertical-align:bottom;
+	border:.5pt solid windowtext;
+	background:#F2F2F2;
+	mso-pattern:black none;
+	white-space:normal;}
+.xl7310346
+	{padding-top:1px;
+	padding-right:1px;
+	padding-left:1px;
+	mso-ignore:padding;
+	color:black;
+	font-size:12.0pt;
+	font-weight:700;
+	font-style:normal;
+	text-decoration:none;
+	font-family:Calibri, sans-serif;
+	mso-font-charset:0;
+	mso-number-format:General;
+	text-align:general;
+	vertical-align:bottom;
+	border:.5pt solid windowtext;
+	background:#F2F2F2;
+	mso-pattern:black none;
+	white-space:nowrap;}
+.xl7410346
+	{padding-top:1px;
+	padding-right:1px;
+	padding-left:1px;
+	mso-ignore:padding;
+	color:black;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:Calibri, sans-serif;
+	mso-font-charset:0;
+	mso-number-format:General;
+	text-align:general;
+	vertical-align:middle;
+	border:.5pt solid windowtext;
+	mso-background-source:auto;
+	mso-pattern:auto;
+	white-space:nowrap;}
+.xl7510346
+	{padding-top:1px;
+	padding-right:1px;
+	padding-left:1px;
+	mso-ignore:padding;
+	color:blue;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:underline;
+	text-underline-style:single;
+	font-family:Calibri, sans-serif;
+	mso-font-charset:0;
+	mso-number-format:General;
+	text-align:general;
+	vertical-align:bottom;
+	border-top:none;
+	border-right:.5pt solid windowtext;
+	border-bottom:.5pt solid windowtext;
+	border-left:.5pt solid windowtext;
+	mso-background-source:auto;
+	mso-pattern:auto;
+	white-space:nowrap;}
+.xl7610346
+	{padding-top:1px;
+	padding-right:1px;
+	padding-left:1px;
+	mso-ignore:padding;
+	color:blue;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:underline;
+	text-underline-style:single;
+	font-family:Calibri, sans-serif;
+	mso-font-charset:0;
+	mso-number-format:General;
+	text-align:general;
+	vertical-align:bottom;
+	border-top:none;
+	border-right:.5pt solid windowtext;
+	border-bottom:.5pt solid windowtext;
+	border-left:.5pt solid windowtext;
+	mso-background-source:auto;
+	mso-pattern:auto;
+	white-space:normal;}
+.xl7710346
+	{padding-top:1px;
+	padding-right:1px;
+	padding-left:1px;
+	mso-ignore:padding;
+	color:black;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:Calibri, sans-serif;
+	mso-font-charset:0;
+	mso-number-format:General;
+	text-align:general;
+	vertical-align:top;
+	border:.5pt solid windowtext;
+	mso-background-source:auto;
+	mso-pattern:auto;
+	white-space:normal;}
+.xl7810346
+	{padding-top:1px;
+	padding-right:1px;
+	padding-left:1px;
+	mso-ignore:padding;
+	color:blue;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:underline;
+	text-underline-style:single;
+	font-family:Calibri, sans-serif;
+	mso-font-charset:0;
+	mso-number-format:General;
+	text-align:general;
+	vertical-align:bottom;
+	mso-background-source:auto;
+	mso-pattern:auto;
+	white-space:nowrap;}
+-->
+</style>
+</head>
+
+<body>
+<!--[if !excel]>&nbsp;&nbsp;<![endif]-->
+<!--The following information was generated by Microsoft Excel's Publish as Web
+Page wizard.-->
+<!--If the same item is republished from Excel, all information between the DIV
+tags will be replaced.-->
+<!----------------------------->
+<!--START OF OUTPUT FROM EXCEL PUBLISH AS WEB PAGE WIZARD -->
+<!----------------------------->
+
+<div id="SWSummarybyName_10346" align=center x:publishsource="Excel">
+
+<table border=0 cellpadding=0 cellspacing=0 width=758 style='border-collapse:
+ collapse;table-layout:fixed;width:569pt'>
+ <col width=152 style='mso-width-source:userset;mso-width-alt:5558;width:114pt'>
+ <col width=145 style='mso-width-source:userset;mso-width-alt:5302;width:109pt'>
+ <col width=89 style='mso-width-source:userset;mso-width-alt:3254;width:67pt'>
+ <col width=96 span=2 style='mso-width-source:userset;mso-width-alt:3510;
+ width:72pt'>
+ <col class=xl6610346 width=180 style='mso-width-source:userset;mso-width-alt:
+ 6582;width:135pt'>
+ <tr height=31 style='height:23.25pt'>
+  <td height=31 class=xl6510346 colspan=6 width=758 style='height:23.25pt;
+  width:569pt'><a name="RANGE!A1:F97">Summary of Software Using HDF5 by
+  Name<span style='mso-spacerun:yes'>  </span>(December 2017)<span
+  style='mso-spacerun:yes'> </span></a></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl1510346 style='height:15.0pt'></td>
+  <td class=xl1510346></td>
+  <td class=xl1510346></td>
+  <td class=xl1510346></td>
+  <td class=xl1510346></td>
+  <td class=xl6610346 width=180 style='width:135pt'></td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl7210346 width=152 style='height:65.1pt;width:114pt'>Name
+  (with Product URL)</td>
+  <td class=xl7310346 style='border-left:none'>Application Type</td>
+  <td class=xl7210346 width=89 style='border-left:none;width:67pt'>Open Source
+  / Commercial</td>
+  <td class=xl7310346 style='border-left:none'>Platforms</td>
+  <td class=xl7310346 style='border-left:none'>Languages</td>
+  <td class=xl7210346 width=180 style='border-left:none;width:135pt'>Short
+  Description</td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl6910346 width=152 style='height:65.1pt;border-top:none;
+  width:114pt'><a href="http://www.activepapers.org/"><span style='color:blue;
+  font-weight:400;text-decoration:underline;text-underline-style:single'>ActivePapers
+  (http://www.activepapers.org)</span></a></td>
+  <td class=xl7110346 width=145 style='border-top:none;border-left:none;
+  width:109pt'>General Problem Solving</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Open Source</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl7110346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>File format for storing computations.<span
+  style='mso-spacerun:yes'> </span></td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl7610346 width=152 style='height:65.1pt;width:114pt'><a
+  href="https://www.dkrz.de/redmine/projects/aec/wiki/Downloads">Adaptive
+  Entropy Encoding Library</a></td>
+  <td class=xl7110346 width=145 style='border-top:none;border-left:none;
+  width:109pt'>Special Purpose</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Open Source</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl7110346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>Freely available SZIP implementation available from the German
+  Climate Computing Center</td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl7510346 style='height:65.1pt'><a
+  href="https://www.olcf.ornl.gov/center-projects/adios/">ADIOS</a></td>
+  <td class=xl7110346 width=145 style='border-top:none;border-left:none;
+  width:109pt'>Special Purpose</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Open Source</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl7110346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>IO componentization of different IO transport methods</td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl7510346 style='height:65.1pt'><a
+  href="http://www.scripps.edu/tainer/arvai/adxv.html">Adxv</a></td>
+  <td class=xl7110346 width=145 style='border-top:none;border-left:none;
+  width:109pt'>Visualization/Analysis</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Open Source</td>
+  <td class=xl7110346 width=96 style='border-top:none;border-left:none;
+  width:72pt'>Linux, Mac, Windows</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'><span
+  style='mso-spacerun:yes'> </span></td>
+  <td class=xl7110346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>Software for the display and analysis of X-Ray diffraction
+  images</td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl7010346 style='height:65.1pt;border-top:none'><a
+  href="http://www.alembic.io/">Alembic</a></td>
+  <td class=xl7110346 width=145 style='border-top:none;border-left:none;
+  width:109pt'>Visualization</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Open Source</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl7110346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>Computer graphics interchange framework</td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl7010346 style='height:65.1pt;border-top:none'><a
+  href="http://code.google.com/p/amelet-hdf/">Amelet-HDF</a></td>
+  <td class=xl7110346 width=145 style='border-top:none;border-left:none;
+  width:109pt'>Special Purpose</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Open Source</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl7110346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>API to provide standard for working with electromagnetic data</td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl6810346 width=152 style='height:65.1pt;border-top:none;
+  width:114pt'><a href="http://www.opennavsurf.org/">Bathymetric Attributed
+  Grid Data Format</a></td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Special Purpose</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Open Source</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Linux, Win32</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl7110346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>File format for storing bathymetric data</td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl7010346 style='height:65.1pt;border-top:none'><a
+  href="http://www.brockmann-consult.de/beam/doc/help/general/BeamOverview.html">BEAM</a></td>
+  <td class=xl7110346 width=145 style='border-top:none;border-left:none;
+  width:109pt'>Special Purpose</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Open Source</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl7110346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>Basic ENVISAT Toolbox for (A)ATSR and MERIS data</td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl7010346 style='height:65.1pt;border-top:none'><a
+  href="http://bear.sourceforge.net/">Bear</a></td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Special Purpose</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Open Source</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl7110346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>Bers slices and holomy representations</td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl7010346 style='height:65.1pt;border-top:none'><a
+  href="http://www.stcorp.nl/beat/">BEAT</a></td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Visualization/Analysis</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Open Source</td>
+  <td class=xl7110346 width=96 style='border-top:none;border-left:none;
+  width:72pt'>Unix, Windows,Mac</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl7110346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>Toolkit for working w/atmospheric data</td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl7010346 style='height:65.1pt;border-top:none'><a
+  href="http://www.cactuscode.org/">Cactus</a></td>
+  <td class=xl7110346 width=145 style='border-top:none;border-left:none;
+  width:109pt'>General Problem Solving</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl7110346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>Problem solving environment</td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl7010346 style='height:65.1pt;border-top:none'><a
+  href="http://www.ceemple.com/">Ceemple</a></td>
+  <td class=xl7110346 width=145 style='border-top:none;border-left:none;
+  width:109pt'>Special Purpose</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Commercial</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>C++</td>
+  <td class=xl7110346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>Rapid C++ technical computing environment,with built-in HDF
+  support</td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl7010346 style='height:65.1pt;border-top:none'><a
+  href="http://cgns.sourceforge.net/index.html">CGNS</a></td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Special Purpose</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Open Source</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl7110346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>Software for working with CFD Analysis data</td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl7010346 style='height:65.1pt;border-top:none'><a
+  href="https://commons.lbl.gov/display/chombo/Chombo+-+Software+for+Adaptive+Solutions+of+Partial+Differential+Equations">Chombo</a></td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Special Purpose</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Open Source</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl7110346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>Tools for working with partial differential equations</td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl7010346 style='height:65.1pt;border-top:none'><a
+  href="https://terralimno.com/software">CSP</a></td>
+  <td class=xl7110346 width=145 style='border-top:none;border-left:none;
+  width:109pt'>Format Conversion</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Open Source</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl7110346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>Command-line tool to<span style='mso-spacerun:yes'> 
+  </span>convert/plot a Perkin Elmer sp3 spectra file into HDF5</td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl6910346 width=152 style='height:65.1pt;border-top:none;
+  width:114pt'><a href="https://project.inria.fr/damaris/">Damaris</a></td>
+  <td class=xl7110346 width=145 style='border-top:none;border-left:none;
+  width:109pt'>Visualization/Analysis</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Open Source</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>C++, Fortran</td>
+  <td class=xl7710346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>Middleware for in-situ data analysis and visualization in
+  support of HPC simulations</td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl6910346 width=152 style='height:65.1pt;border-top:none;
+  width:114pt'><a href="http://www.omatrix.com/datavis.html">Data Visualizer
+  for O-Matrix</a></td>
+  <td class=xl7110346 width=145 style='border-top:none;border-left:none;
+  width:109pt'>Visualization/Analysis</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Commercial</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Windows</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl7110346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>O-Matrix command-line interface that works with Intel Array
+  Visualizer</td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl7010346 style='height:65.1pt;border-top:none'><a
+  href="http://www.dawnsci.org/">Dawn</a></td>
+  <td class=xl7110346 width=145 style='border-top:none;border-left:none;
+  width:109pt'>Visualization/Analysis</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Open Source</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Python</td>
+  <td class=xl7110346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>Visualization and Analysis platform for synchrotron data</td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl7010346 style='height:65.1pt;border-top:none'><a
+  href="http://gmesdata.esa.int/web/gsc/derby">Derby</a></td>
+  <td class=xl7110346 width=145 style='border-top:none;border-left:none;
+  width:109pt'>Special Purpose</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Open Source</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl7110346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>Data browser for exploring product types from GCM</td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl6910346 width=152 style='height:65.1pt;border-top:none;
+  width:114pt'><a href="http://www.ni.com/">DIAdem (HDF5 DataPlugin)</a></td>
+  <td class=xl7110346 width=145 style='border-top:none;border-left:none;
+  width:109pt'>Sci Data Mgmt</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Commercial</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl7110346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>Helps engineers and scientists to quickly locate, inspect,
+  analyze, and report on measurement data</td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl7010346 style='height:65.1pt;border-top:none'><a
+  href="http://dream3d.bluequartz.net/">DREAM.3D</a></td>
+  <td class=xl7110346 width=145 style='border-top:none;border-left:none;
+  width:109pt'>Visualization/Analysis</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Open Source</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl7110346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>A software environment for analyzing digital microstructure
+  dataA</td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl7010346 style='height:65.1pt;border-top:none'><a
+  href="http://www-beams.colorado.edu/dxhdf5">dxhdf5</a></td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Format
+  Conversion</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Open Source</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl7110346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>Import HDF5 data into Open DX</td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl7010346 style='height:65.1pt;border-top:none'><a
+  href="http://www.ensight.com/">EnSight</a></td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Visualization/Analysis</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Commercial</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Many</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl7110346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>Tools for engineering and scientific simulation</td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl7010346 style='height:65.1pt;border-top:none'><a
+  href="http://www.fiberbundle.net/">Fiberbundle HDF5 (F5)</a></td>
+  <td class=xl7110346 width=145 style='border-top:none;border-left:none;
+  width:109pt'>Visualization/Analysis</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Open Source</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>C</td>
+  <td class=xl7110346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>I/O library that implements a common data model for scientific
+  visualization</td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl7010346 style='height:65.1pt;border-top:none'><a
+  href="http://opensource.imageworks.com/?p=field3d">Field3D</a></td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Visualization</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Open Source</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Linux, Mac<span
+  style='mso-spacerun:yes'> </span></td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>C++</td>
+  <td class=xl7110346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>Library/format for storing voxel data</td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl7010346 style='height:65.1pt;border-top:none'><a
+  href="http://flash.uchicago.edu/website/home/">FLASH</a></td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Special Purpose</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Open Source</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl7110346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>Code for simulation of thermonuclear flashes</td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl6910346 width=152 style='height:65.1pt;border-top:none;
+  width:114pt'><a href="https://github.com/EL-Bakkali-Jaafar/G4Linac_MT">G4Linac_MT</a></td>
+  <td class=xl7110346 width=145 style='border-top:none;border-left:none;
+  width:109pt'>Special Purpose</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Open Source</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>C++</td>
+  <td class=xl7710346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>A Geant4 application to model a Medical Linear Accelerator, used
+  in Radiotherapy to treat cancer diseases by employing ionizing radiation</td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl7010346 style='height:65.1pt;border-top:none'><a
+  href="https://sites.google.com/site/galacticusmodel/">Galacticus</a></td>
+  <td class=xl7110346 width=145 style='border-top:none;border-left:none;
+  width:109pt'>Special Purpose</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Open Source</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl7110346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>A semi-analytic model of galaxy formation</td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl7010346 style='height:65.1pt;border-top:none'><a
+  href="http://www.pcigeomatics.com/">Geomatica</a></td>
+  <td class=xl7110346 width=145 style='border-top:none;border-left:none;
+  width:109pt'>Visualization/Analysis</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Commercial</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl7110346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>Integrated software system for remote sensing and image
+  processing</td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl7010346 style='height:65.1pt;border-top:none'><a
+  href="http://www.globeclaritas.com/">Globe Claritas</a></td>
+  <td class=xl7110346 width=145 style='border-top:none;border-left:none;
+  width:109pt'>Special Purpose</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Commercial</td>
+  <td class=xl7110346 width=96 style='border-top:none;border-left:none;
+  width:72pt'>Linux, Windows, Solaris</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl7110346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>Seismic processing software (geophysics)</td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl7010346 style='height:65.1pt;border-top:none'><a
+  href="http://www.octave.org/">GNU Octave</a></td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Visualization/Analysis</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Open Source</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl7110346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>MATLAB-like tool</td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl6710346 style='height:65.1pt;border-top:none'>GriKSL</td>
+  <td class=xl7110346 width=145 style='border-top:none;border-left:none;
+  width:109pt'>General Problem Solving</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Open Source</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl7110346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>Develop grid-based simulation and viz techniques for CACTUS</td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl6910346 width=152 style='height:65.1pt;border-top:none;
+  width:114pt'><a
+  href="https://support.hdfgroup.org/products/hdf5_tools/h5check.html">h5check</a></td>
+  <td class=xl7110346 width=145 style='border-top:none;border-left:none;
+  width:109pt'>HDF Tools</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Open Source</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Linux, Solaris</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl7110346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>A tool to check the validity of an HDF5 file</td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl7010346 style='height:65.1pt;border-top:none'><a
+  href="https://support.hdfgroup.org/projects/jpss/h5edit_index.html">h5edit</a></td>
+  <td class=xl7110346 width=145 style='border-top:none;border-left:none;
+  width:109pt'>General Problem Solving</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Open Source</td>
+  <td class=xl7110346 width=96 style='border-top:none;border-left:none;
+  width:72pt'>Linux, Windows</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl7110346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>Command-line tool to edit HDF5 files. Currently limited to
+  operations on attributes</td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl7010346 style='height:65.1pt;border-top:none'><a
+  href="http://www-vis.lbl.gov/Research/H5hut/">H5hut</a></td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Special Purpose</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Open Source</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Many</td>
+  <td class=xl7110346 width=96 style='border-top:none;border-left:none;
+  width:72pt'>C, C++, Fortran</td>
+  <td class=xl7110346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>High performance I/O library for particle based simulations.</td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl7010346 style='height:65.1pt;border-top:none'><a
+  href="http://h5labview.sourceforge.net/">h5labview</a></td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Instrumentation</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Open Source</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl7110346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>Interface between NI LabVIEW and HDF5</td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl7010346 style='height:65.1pt;border-top:none'><a
+  href="http://nongnu.org/h5md/">H5MD</a></td>
+  <td class=xl7110346 width=145 style='border-top:none;border-left:none;
+  width:109pt'>API for HDF5</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Open Source</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl7110346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>File format specification for efficient and portable storage of
+  molecular data<span style='mso-spacerun:yes'> </span></td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl7010346 style='height:65.1pt;border-top:none'><a
+  href="http://www.h5py.org/">h5py</a></td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>API for HDF5</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Open Source</td>
+  <td class=xl7110346 width=96 style='border-top:none;border-left:none;
+  width:72pt'>Linux, Mac, Windows</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Python</td>
+  <td class=xl7110346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>Python interface to HDF5</td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl7010346 style='height:65.1pt;border-top:none'><a
+  href="http://ab-initio.mit.edu/wiki/index.php/H5utils">H5utils</a></td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Format
+  Conversion</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Open Source</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl7110346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>Conversion and Visualization tools for HDF5<span
+  style='mso-spacerun:yes'> </span></td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl6710346 style='height:65.1pt;border-top:none'>H5WS API</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Remote Access</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Open Source</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Linux</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>C<span
+  style='mso-spacerun:yes'> </span></td>
+  <td class=xl7110346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>API that allows remote HDF5 data access using Web Services.</td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl7010346 style='height:65.1pt;border-top:none'><a
+  href="https://support.hdfgroup.org/projects/compass/">HDF Compass</a></td>
+  <td class=xl7110346 width=145 style='border-top:none;border-left:none;
+  width:109pt'>Visualization</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Open Source</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl7110346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>A visual tool to navigate HDF5 files</td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl7010346 style='height:65.1pt;border-top:none'><a
+  href="http://www.space-research.org/">HDF Explorer</a></td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Browser/Editor</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Commercial</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Windows</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl7110346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>Data Visualization program for HDF and HDF5</td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl7010346 style='height:65.1pt;border-top:none'><a
+  href="https://support.hdfgroup.org/products/java/index.html">HDF Java
+  Products</a></td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>API for HDF5</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Open Source</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Many</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Java</td>
+  <td class=xl7110346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>Java API for HDF and HDF5 and HDFView tool</td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl7010346 style='height:65.1pt;border-top:none'><a
+  href="https://support.hdfgroup.org/projects/hdfserver/">HDF Server</a></td>
+  <td class=xl7110346 width=145 style='border-top:none;border-left:none;
+  width:109pt'>Remote Access</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Open Source</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl7110346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>Python-based web service to send/receive HDF5 data using
+  HTTP-based REST interface</td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl6910346 width=152 style='height:65.1pt;border-top:none;
+  width:114pt'><a
+  href="https://support.hdfgroup.org/products/hdf5_tools/h4toh5/">HDF4 to HDF5
+  Conversion Library</a></td>
+  <td class=xl7110346 width=145 style='border-top:none;border-left:none;
+  width:109pt'>Format Conversion</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Open Source</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Linux, Solaris</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl7110346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>Library and tools to convert HDF4 files to HDF5 files</td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl7010346 style='height:65.1pt;border-top:none'><a
+  href="https://support.hdfgroup.org/projects/hdf.net/index.html">HDF5<span
+  style='mso-spacerun:yes'>  </span>and .NET</a></td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>API for HDF5</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Open Source</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl7110346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>P/Invoke declarations for core HDF5 C-API</td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl6910346 width=152 style='height:65.1pt;border-top:none;
+  width:114pt'><a
+  href="http://hdf-forum.184993.n3.nabble.com/Delphi-interface-for-hdf5-dll-1-8-12-tt4026998.html">HDF5
+  bindings for Delphi</a></td>
+  <td class=xl7110346 width=145 style='border-top:none;border-left:none;
+  width:109pt'>API for HDF5</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Open Source</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl7110346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>Delphi module with HDF5 bindings</td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl7010346 style='height:65.1pt;border-top:none'><a
+  href="https://support.hdfgroup.org/HDF5/doc/HL/">HDF5 High Level APIs</a></td>
+  <td class=xl7110346 width=145 style='border-top:none;border-left:none;
+  width:109pt'>API for HDF5</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Open Source</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>C, Fortran</td>
+  <td class=xl7110346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>High Level APIs that come with HDF5 to simplify code and provide
+  standards</td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl7110346 width=152 style='height:65.1pt;border-top:none;
+  width:114pt'>HDF5 Indexing Prototype</td>
+  <td class=xl7110346 width=145 style='border-top:none;border-left:none;
+  width:109pt'>API for fast querying in HDF5</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Open Source</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl7710346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>Prototype for storing bitmap and projection indices in HDF5</td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl7010346 style='height:65.1pt;border-top:none'><a
+  href="https://gamma.hdfgroup.org/papers/prototypes/mesh/">HDF5 Mesh API</a></td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Sci Data Mgmt</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Open Source</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>C</td>
+  <td class=xl7110346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>Prototype for storing structured and unstructured grids in HDF5</td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl6910346 width=152 style='height:65.1pt;border-top:none;
+  width:114pt'><a
+  href="http://lmb.informatik.uni-freiburg.de/resources/opensource/imagej_plugins/hdf5.html">HDF5
+  Plugin for ImageJ and Fiji</a></td>
+  <td class=xl7110346 width=145 style='border-top:none;border-left:none;
+  width:109pt'>Special Purpose</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Open Source</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl7110346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>Java plugin for ImageJ and Fij image processing package</td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl6910346 width=152 style='height:65.1pt;border-top:none;
+  width:114pt'><a
+  href="https://support.hdfgroup.org/products/hdf5_tools/#h5dist">HDF5
+  Utilities</a></td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>HDF Tools</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Open Source</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>All</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl7110346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>Utilities that come with HDF5 for analyzing and converting HDF5
+  files and compiling HDF5 applications</td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl6910346 width=152 style='height:65.1pt;border-top:none;
+  width:114pt'><a href="https://support.hdfgroup.org/HDF5/XML/">HDF5 XML</a></td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Format
+  Conversion</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Open Source</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl7110346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>An HDF5 DTD and tool</td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl7010346 style='height:65.1pt;border-top:none'><a
+  href="http://www-vis.lbl.gov/Events/SC05/HDF5FastQuery/">HDF5-FastQuery</a></td>
+  <td class=xl7110346 width=145 style='border-top:none;border-left:none;
+  width:109pt'>API for fast querying in HDF5</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl7110346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>APIs to extend HDF5 selection and accelerate queries</td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl7010346 style='height:65.1pt;border-top:none'><a
+  href="http://uv-vis.aeronomie.be/software/tools/hdf5read.php">hdf5read</a></td>
+  <td class=xl7110346 width=145 style='border-top:none;border-left:none;
+  width:109pt'>General Problem Solving</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Open Source</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Fortran 90</td>
+  <td class=xl7110346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>Module to read selected datasets and attributes from
+  HDF5/HDF-EOS data files</td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl7010346 style='height:65.1pt;border-top:none'><a
+  href="http://www.hdfeos.org/">HDF-EOS</a></td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Special Purpose</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Open Source</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl7110346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>Software for working with remote-sensed data from Earth
+  Observing System</td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl7010346 style='height:65.1pt;border-top:none'><a
+  href="http://www.hdfql.com/">HDFql</a></td>
+  <td class=xl7110346 width=145 style='border-top:none;border-left:none;
+  width:109pt'>High-level language for HDF5 (similar to SQL)</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Open Source</td>
+  <td class=xl7110346 width=96 style='border-top:none;border-left:none;
+  width:72pt'>Windows, Linux and Mac OS X</td>
+  <td class=xl7110346 width=96 style='border-top:none;border-left:none;
+  width:72pt'>C, C++, Java, Python, C#, Fortran</td>
+  <td class=xl7110346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>Tool to manage HDF5 files. Reads and writes HDF data through a
+  simple and clean interface.</td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl7010346 style='height:65.1pt;border-top:none'><a
+  href="https://support.hdfgroup.org/products/java/index.html">HDFView</a></td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Browser/Editor</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Open Source</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Many</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl7110346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>Java-based tool for viewing and editing HDF and HDF5 files</td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl7010346 style='height:65.1pt;border-top:none'><a
+  href="http://git.baltrad.eu/manual/hlhdf/index.html">HL-HDF</a></td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Sci Data Mgmt</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Open Source</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>C, Python</td>
+  <td class=xl7110346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>C &amp; Python high level library for scientific data in HDF5</td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl7010346 style='height:65.1pt;border-top:none'><a
+  href="http://www.ahm.co.at/">HydroVISH</a></td>
+  <td class=xl7110346 width=145 style='border-top:none;border-left:none;
+  width:109pt'>Visualization/Analysis</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Commercial</td>
+  <td class=xl7110346 width=96 style='border-top:none;border-left:none;
+  width:72pt'>Linux, Mac, Windows</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>C++</td>
+  <td class=xl7110346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>Visualization framework built on top of Vish for lidar and
+  multisensor mass data</td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl7010346 style='height:65.1pt;border-top:none'><a
+  href="http://www.ittvis.com/">IDL</a></td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Visualization/Analysis</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Commercial</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Many</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>IDL</td>
+  <td class=xl7110346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>Visualize and analyze HDF data with IDL. Query, read HDF files.</td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl7010346 style='height:65.1pt;border-top:none'><a
+  href="http://www.wavemetrics.com/">Igor Pro</a></td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Visualization/Analysis</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Commercial</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Windows, Mac</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>C, Igor</td>
+  <td class=xl7110346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>Visualize/analyze 1D, 2D, 3D data</td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl7010346 style='height:65.1pt;border-top:none'><a
+  href="http://www.intel.com/cd/software/products/asmo-na/eng/compilers/226302.htm">Intel
+  Array Visualizer</a></td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Visualization/Analysis</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Commercial</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Windows</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl7110346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>Windows app to read, write, display array data from HDF4, HDF5,
+  others</td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl7010346 style='height:65.1pt;border-top:none'><a
+  href="http://www.itk.org/ITK/project/about.html">ITK</a></td>
+  <td class=xl7110346 width=145 style='border-top:none;border-left:none;
+  width:109pt'>Special Purpose</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Open Source</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Many</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Many</td>
+  <td class=xl7110346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>Toolkit for performing registration and segmentation of medical
+  images</td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl7010346 style='height:65.1pt;border-top:none'><a
+  href="https://wiki-bsse.ethz.ch/display/JHDF5/JHDF5+(HDF5+for+Java)">JHDF5</a></td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>API for HDF5</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Open Source</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Java</td>
+  <td class=xl7110346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>High Level Java API for HDF5</td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl7010346 style='height:65.1pt;border-top:none'><a
+  href="http://libgpiv.sourceforge.net/">LIBGPIV</a></td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Special Purpose</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Open Source</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl7110346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>Library for (Digital) Particle Image Velocimetry Technique</td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl7010346 style='height:65.1pt;border-top:none'><a
+  href="http://www.upvi.net/main/index.php/products/lvhdf5">lvhdf5</a></td>
+  <td class=xl7110346 width=145 style='border-top:none;border-left:none;
+  width:109pt'>API for HDF5<span style='mso-spacerun:yes'> </span></td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Open Source</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl7110346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>HDF5 API for Labview</td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl7010346 style='height:65.1pt;border-top:none'><a
+  href="http://www.wolfram.com/mathematica">Mathematica</a></td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Visualization/Analysis</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Commercial</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl7110346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>Environment for technical tasks ranging from computations to
+  visualizing or modeling data</td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl7010346 style='height:65.1pt;border-top:none'><a
+  href="http://www.mathworks.com/">MATLAB</a></td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Visualization/Analysis</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Commercial</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Many</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl7110346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>Numeric computation, advanced graphics and visualization. Query,
+  read HDF files<span style='mso-spacerun:yes'> </span></td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl7010346 style='height:65.1pt;border-top:none'><a
+  href="http://www.mdsplus.org/index.php/Introduction">MDSplus</a></td>
+  <td class=xl7110346 width=145 style='border-top:none;border-left:none;
+  width:109pt'>Management and Access</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Open Source</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl7110346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>Tools for data acquisition and storage; methodology for
+  management of complex scientific data</td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl7010346 style='height:65.1pt;border-top:none'><a
+  href="http://www.salome-platform.org/about/med/">MED</a></td>
+  <td class=xl7110346 width=145 style='border-top:none;border-left:none;
+  width:109pt'>Special Purpose</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Open Source</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl7110346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>Standard for storing and recovering data associated with
+  numerical meshes and fields.</td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl7010346 style='height:65.1pt;border-top:none'><a
+  href="http://www.meteothinker.com/">MeteoInfo</a></td>
+  <td class=xl7110346 width=145 style='border-top:none;border-left:none;
+  width:109pt'>Visualization/Analysis</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Open Source</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>C#</td>
+  <td class=xl7110346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>Software to view and analyze meteorological and spatial data
+  interactively</td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl7010346 style='height:65.1pt;border-top:none'><a
+  href="http://labrosa.ee.columbia.edu/millionsong/">Million Song Dataset</a></td>
+  <td class=xl7110346 width=145 style='border-top:none;border-left:none;
+  width:109pt'>Special Purpose</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Open Source</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl7110346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>Collection of audio features and metadata for a million
+  contemporary music tracks</td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl7010346 style='height:65.1pt;border-top:none'><a
+  href="http://mirador.gsfc.nasa.gov/index.shtml">Mirador</a></td>
+  <td class=xl7110346 width=145 style='border-top:none;border-left:none;
+  width:109pt'>Management and Access</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl7110346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>Earth Science Data Search Tool</td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl7010346 style='height:65.1pt;border-top:none'><a
+  href="http://trac.mcs.anl.gov/projects/ITAPS/wiki/MOAB">MOAB</a></td>
+  <td class=xl7110346 width=145 style='border-top:none;border-left:none;
+  width:109pt'>Special Purpose</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Open Source</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Linux/Unix</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>C++</td>
+  <td class=xl7110346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>Component for representing and evaluating mesh data</td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl7010346 style='height:65.1pt;border-top:none'><a
+  href="https://mosaik.offis.de/">Mosaik</a></td>
+  <td class=xl7110346 width=145 style='border-top:none;border-left:none;
+  width:109pt'>Special Purpose</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Python</td>
+  <td class=xl7110346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>A flexible smart grid co-simulation framework</td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl7010346 style='height:65.1pt;border-top:none'><a
+  href="https://engineering.purdue.edu/~biehl/MultiSpec/">MultiSpec</a></td>
+  <td class=xl7110346 width=145 style='border-top:none;border-left:none;
+  width:109pt'>Visualization/Analysis</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Open Source</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl7110346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>Remote sensing analysis<span style='mso-spacerun:yes'> 
+  </span>application for multispectral and hyperspectral data</td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl7010346 style='height:65.1pt;border-top:none'><a
+  href="http://mxa.web.cmu.edu/">MXA</a></td>
+  <td class=xl7110346 width=145 style='border-top:none;border-left:none;
+  width:109pt'>API for HDF5</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Open Source</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl7110346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>File format and API for managing data from scientific
+  experiments using XML</td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl7810346 style='height:65.1pt'><a
+  href="http://software.steenlab.org/mz5">mz5</a></td>
+  <td class=xl7110346 width=145 style='border-top:none;width:109pt'>Special
+  Purpose</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Open Source</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl7110346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>Space- and time-efficient storage of mass spectrometry data sets</td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl6910346 width=152 style='height:65.1pt;width:114pt'><a
+  href="http://www.ncl.ucar.edu/">NCL (NCAR Command Language)</a></td>
+  <td class=xl7110346 width=145 style='border-top:none;border-left:none;
+  width:109pt'>Visualization/Analysis</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Open Source</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl7110346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>Interpreted language for sci data analysis and visualization</td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl7010346 style='height:65.1pt;border-top:none'><a
+  href="http://www.unidata.ucar.edu/software/netcdf/index.html">NetCDF-4</a></td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>API for HDF5</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Open Source</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Many</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Fortran, C++, Ja<span
+  style='display:none'>va</span></td>
+  <td class=xl7110346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>Set of interfaces for array-oriented data access</td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl7010346 style='height:65.1pt;border-top:none'><a
+  href="https://neurohdf.readthedocs.org/en/latest/index.html">NeuroHDF</a></td>
+  <td class=xl7110346 width=145 style='border-top:none;border-left:none;
+  width:109pt'>Special Purpose</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Open Source</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl7110346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>Software to manage neuroscience data</td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl7010346 style='height:65.1pt;border-top:none'><a
+  href="http://www.nexusformat.org/Main_Page">NeXus</a></td>
+  <td class=xl7110346 width=145 style='border-top:none;border-left:none;
+  width:109pt'>API for HDF5</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Open Source</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl7110346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>Common data format for neutron, x-ray and muon science</td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl7010346 style='height:65.1pt;border-top:none'><a
+  href="http://www.ni.com/">NI-HWS</a></td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Instrumentation</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Commercial</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl7110346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>Uses limited subset of HDF5 for storage and retrieval of
+  waveforms and attributes</td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl7010346 style='height:65.1pt;border-top:none'><a
+  href="http://www.omatrix.com/">O-Matrix</a></td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Visualization/Analysis</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Commercial</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl7110346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>Interpreted matrix language for data analysis and visualization</td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl7010346 style='height:65.1pt;border-top:none'><a
+  href="http://opencv.org/">OpenCV</a></td>
+  <td class=xl7110346 width=145 style='border-top:none;border-left:none;
+  width:109pt'>Visualization/Analysis</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Open Source</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl7710346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>Computer vision and machine learning software library</td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl7010346 style='height:65.1pt;border-top:none'><a
+  href="http://opendap.org/">OPeNDAP</a></td>
+  <td class=xl7110346 width=145 style='border-top:none;border-left:none;
+  width:109pt'>Management and Access</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>N/A</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl7110346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>Software framework for remote scientific data transfer and
+  access</td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl7010346 style='height:65.1pt;border-top:none'><a
+  href="http://www.opticks.org/">Opticks</a></td>
+  <td class=xl7110346 width=145 style='border-top:none;border-left:none;
+  width:109pt'>Visualization/Analysis</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Open Source</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl7110346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>Expandable remote sensing and imagery analysis platform</td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl7010346 style='height:65.1pt;border-top:none'><a
+  href="http://sourceforge.net/projects/opticsbenchui/">OpticsBenchUI</a></td>
+  <td class=xl7110346 width=145 style='border-top:none;border-left:none;
+  width:109pt'>Special Purpose</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Open Source</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Linux</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>C, Fortran</td>
+  <td class=xl7110346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>Demo of integrated solution to manage a simple optics bench of
+  cameras, motors and DACs</td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl7010346 style='height:65.1pt;border-top:none'><a
+  href="http://www.ossim.org/">OSSIM</a></td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Visualization</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Open Source</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl7110346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>Open Source Software Image Map library for geospatial image
+  processing</td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl7010346 style='height:65.1pt;border-top:none'><a
+  href="http://www.esi-group.com/">PAM-CRASH</a></td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Special Purpose</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Commercial</td>
+  <td class=xl7110346 width=96 style='border-top:none;border-left:none;
+  width:72pt'>Unix, Linux, Windows</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>C, Fortran</td>
+  <td class=xl7110346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>ESI's open HDF5 database format to store results of FEM-based
+  simulations</td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl6910346 width=152 style='height:65.1pt;border-top:none;
+  width:114pt'><a href="http://pandas.pydata.org/">pandas
+  (http://pandas.pydata.org/)</a></td>
+  <td class=xl7110346 width=145 style='border-top:none;border-left:none;
+  width:109pt'>API for HDF5</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Open Source</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl7410346 style='border-top:none;border-left:none'>Python Data
+  Analysis Library</td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl7010346 style='height:65.1pt;border-top:none'><a
+  href="http://www.physics.drexel.edu/~olson/paramesh-doc/Users_manual/amr.html">Paramesh</a></td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Special Purpose</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Open Source</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl7110346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>Fortran subroutines to extend serial AMR code to parallel</td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl7010346 style='height:65.1pt;border-top:none'><a
+  href="http://www.paraview.org/">ParaView</a></td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Visualization/Analysis</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Open Source</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl7110346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>Visualize large data sets in serial or parallel environments,
+  using VTK</td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl7010346 style='height:65.1pt;border-top:none'><a
+  href="http://www.brockmann-consult.de/beam/doc/help/general/PConvertUsage.html">pconvert</a></td>
+  <td class=xl7110346 width=145 style='border-top:none;border-left:none;
+  width:109pt'>Special Purpose</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Open Source</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl7110346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>Command-line tool to convert BEAM and ENVISAT products to HDF5</td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl7010346 style='height:65.1pt;border-top:none'><a
+  href="http://www.phdsoft.com/">PhDC4D</a></td>
+  <td class=xl7110346 width=145 style='border-top:none;border-left:none;
+  width:109pt'>Special Purpose</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Commercial</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl7110346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>Software for maintenance management of ships, offshore
+  structures and static equipment</td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl7010346 style='height:65.1pt;border-top:none'><a
+  href="http://pomegranate.nasa.gov/">Pomegranate</a></td>
+  <td class=xl7110346 width=145 style='border-top:none;border-left:none;
+  width:109pt'>Management and Access</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Open Source</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Independent</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Python</td>
+  <td class=xl7110346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>Web service software, web API, library and command line tool</td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl7010346 style='height:65.1pt;border-top:none'><a
+  href="https://support.hdfgroup.org/projects/PSH5X/">PSH5X</a></td>
+  <td class=xl7110346 width=145 style='border-top:none;border-left:none;
+  width:109pt'>General Problem Solving</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Open Source</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Windows</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl7110346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>Windows powershell module for HDF5</td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl7010346 style='height:65.1pt;border-top:none'><a
+  href="http://www.vni.com/">PV-WAVE</a></td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Visualization/Analysis</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Commercial</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Many</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>PV-WAVE</td>
+  <td class=xl7110346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>Visualization and Analysis language and environment</td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl7010346 style='height:65.1pt;border-top:none'><a
+  href="https://support.hdfgroup.org/projects/pyhexad/">PyHexad</a></td>
+  <td class=xl7110346 width=145 style='border-top:none;border-left:none;
+  width:109pt'>General Problem Solving</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Open Source</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl7110346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>Python-based Excel add-in for HDF5</td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl7010346 style='height:65.1pt;border-top:none'><a
+  href="https://gitorious.org/pyqt-h5browser">pyqt-h5browser</a></td>
+  <td class=xl7110346 width=145 style='border-top:none;border-left:none;
+  width:109pt'>Browser/Editor</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Open Source</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl7110346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>HDF5 Python browser</td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl7010346 style='height:65.1pt;border-top:none'><a
+  href="https://github.com/mrbell/pyrat">pyrat</a></td>
+  <td class=xl7110346 width=145 style='border-top:none;border-left:none;
+  width:109pt'>Special Purpose</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Open Source</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Python</td>
+  <td class=xl7110346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>Simplifies handling of large multi-frequency radio
+  interferometric visibility datasets and images</td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl7010346 style='height:65.1pt;border-top:none'><a
+  href="http://pytables.sourceforge.net/">PyTables</a></td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Database</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Open Source</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Python</td>
+  <td class=xl7110346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>Python API to organize and manipulate scientific data tables and
+  other numeric objects</td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl7010346 style='height:65.1pt;border-top:none'><a
+  href="http://abigrid.cineca.it/">Q5Cost</a></td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Special Purpose</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Fortran</td>
+  <td class=xl7110346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>Library and interface used in Quantum Chemistry</td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl7010346 style='height:65.1pt;border-top:none'><a
+  href="http://lib.stat.cmu.edu/R/CRAN/">R</a></td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Statistics,
+  Graphics</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Open Source</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>R</td>
+  <td class=xl7110346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>System for statistical computation and graphics, has HDF5
+  interface</td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl7010346 style='height:65.1pt;border-top:none'><a
+  href="http://atmet.com/">RAMS</a></td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Special Purpose</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Open Source</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl7110346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>Atmospheric Modeling System</td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl7010346 style='height:65.1pt;border-top:none'><a
+  href="http://www.energistics.org/reservoir/resqml-standards/current-standards">RESQML</a></td>
+  <td class=xl7110346 width=145 style='border-top:none;border-left:none;
+  width:109pt'>Special Purpose</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Open Source</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl7110346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>Exchange standard for subsurface data</td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl7010346 style='height:65.1pt;border-top:none'><a
+  href="http://www.rybnogeodata.com/">Rybo Geo Data</a></td>
+  <td class=xl7110346 width=145 style='border-top:none;border-left:none;
+  width:109pt'>Special Purpose</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl7110346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>Processing of Airborne Geophysical Data</td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl7010346 style='height:65.1pt;border-top:none'><a
+  href="https://github.com/sadaszewski/H5FD_sec2j">Salome</a></td>
+  <td class=xl7110346 width=145 style='border-top:none;border-left:none;
+  width:109pt'>General Problem Solving</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Open Source</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl7110346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>A journaling filesystem driver for HDF5 based on SEC2 driver</td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl7010346 style='height:65.1pt;border-top:none'><a
+  href="http://www.salome-platform.org/">Salome</a></td>
+  <td class=xl7110346 width=145 style='border-top:none;border-left:none;
+  width:109pt'>Special Purpose</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Open Source</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Linux</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl7110346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>CAD/CAE integration and development platform</td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl7010346 style='height:65.1pt;border-top:none'><a
+  href="http://www.scilab.org/">Scilab</a></td>
+  <td class=xl7110346 width=145 style='border-top:none;border-left:none;
+  width:109pt'>Special Purpose</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Open Source</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl7110346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>Scientific software package for numerical computations</td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl7010346 style='height:65.1pt;border-top:none'><a
+  href="scils.de">SCiLS Lab</a></td>
+  <td class=xl7110346 width=145 style='border-top:none;border-left:none;
+  width:109pt'>Visualization/Analysis</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Commercial</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl7110346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>Software for statistical analysis of MALDI imaging data</td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl7010346 style='height:65.1pt;border-top:none'><a
+  href="http://www.software.slb.com/newsandevents/supportnews/Pages/SeisHD-plug-in-for-Petrel-2013-now-available.aspx">SeisHDF
+  plug-in</a></td>
+  <td class=xl7110346 width=145 style='border-top:none;border-left:none;
+  width:109pt'>Special Purpose</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Commercial</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl7110346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>Plug-in for Petrel 2013<span style='mso-spacerun:yes'> 
+  </span>for exporting to and importing from HDF5 files.</td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl7010346 style='height:65.1pt;border-top:none'><a
+  href="https://wci.llnl.gov/simulation/computer-codes/silo">Silo</a></td>
+  <td class=xl7110346 width=145 style='border-top:none;border-left:none;
+  width:109pt'>Special Purpose</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Open Source</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>C, C++</td>
+  <td class=xl7110346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>A mesh and field I/O library and scientific database</td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl7010346 style='height:65.1pt;border-top:none'><a
+  href="http://space.mit.edu/cxc/software/slang/modules/slh5/">SLh5</a></td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Visualization/Analysis</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Open Source</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>S-Lang</td>
+  <td class=xl7110346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>Open source HDF5 module for S-Lang</td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl7010346 style='height:65.1pt;border-top:none'><a
+  href="http://www.spdlib.org/doku.php">SPDLib</a></td>
+  <td class=xl7110346 width=145 style='border-top:none;border-left:none;
+  width:109pt'>API for HDF5</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Open Source</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl7110346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>Software for processing laser scanning data (i.e., LiDAR)<span
+  style='mso-spacerun:yes'> </span></td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl7010346 style='height:65.1pt;border-top:none'><a
+  href="http://www.cd-adapco.com/products/star_ccm_plus/">STAR-CCM+</a></td>
+  <td class=xl7110346 width=145 style='border-top:none;border-left:none;
+  width:109pt'>Special Purpose</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Commercial</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl7110346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>CFD software</td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl7010346 style='height:65.1pt;border-top:none'><a
+  href="http://www.swarm.org/">Swarm</a></td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Special Purpose</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Open Source</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl7110346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>Simulator for fine-grained, composable scheduling</td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl6710346 style='height:65.1pt;border-top:none'>SWX</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Special Purpose</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Open Source</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl7110346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>Space Weather Explorer to visualize space weather model output
+  in 3D</td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl7010346 style='height:65.1pt;border-top:none'><a
+  href="http://www.systema.astrium.eads.net/">SYSTEMA / THERMICA</a></td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Visualization/Analysis</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Commercial</td>
+  <td class=xl7110346 width=96 style='border-top:none;border-left:none;
+  width:72pt'>Linux, Solaris, Windows</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl7110346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>Spacecraft modeler and thermal analyser</td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl7010346 style='height:65.1pt;border-top:none'><a
+  href="http://www.tecplot.com/">Tecplot</a></td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Visualization</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Commercial</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Many</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl7110346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>Interactive visualization program</td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl7010346 style='height:65.1pt;border-top:none'><a
+  href="http://www.theseus-fe.com/">THESEUS-FE</a></td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Special Purpose</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Commercial</td>
+  <td class=xl7110346 width=96 style='border-top:none;border-left:none;
+  width:72pt'>Linux, Windows</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl7110346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>Simulation software based on Finite-Element solver methodology
+  for handling thermal radiation</td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl7010346 style='height:65.1pt;border-top:none'><a
+  href="http://www.elsys-instruments.com/support/tpc5.php">TPC5</a></td>
+  <td class=xl7110346 width=145 style='border-top:none;border-left:none;
+  width:109pt'>Special Purpose</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Commercial</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl7110346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>HDF5-based format for multi-channel data acquisition</td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl7010346 style='height:65.1pt;border-top:none'><a
+  href="https://veusz.github.io/">Veusz</a></td>
+  <td class=xl7110346 width=145 style='border-top:none;border-left:none;
+  width:109pt'>Visualization/Analysis</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Open Source</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Many</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl7110346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>Scientific plotting and graphing package to provide
+  publication-ready output and edit/view data.</td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl7010346 style='height:65.1pt;border-top:none'><a
+  href="http://www.ssec.wisc.edu/~billh/visad.html">VisAD</a></td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Visualization/Analysis</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Open Source</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Java</td>
+  <td class=xl7110346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>Java toolkit for interactive and collaborative viz and analysis</td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl7010346 style='height:65.1pt;border-top:none'><a
+  href="vish.fiberbundle.net">Vish</a></td>
+  <td class=xl7110346 width=145 style='border-top:none;border-left:none;
+  width:109pt'>Visualization/Analysis</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Open Source</td>
+  <td class=xl7110346 width=96 style='border-top:none;border-left:none;
+  width:72pt'>Linux, Mac, Windows</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'><span
+  style='mso-spacerun:yes'> </span></td>
+  <td class=xl7110346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>Flexible software environment<span style='mso-spacerun:yes'> 
+  </span>for processing and visualizing spatio-temporal data (uses F5)</td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl7010346 style='height:65.1pt;border-top:none'><a
+  href="http://visit.llnl.gov/">VisIt</a></td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Visualization/Analysis</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Open Source</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl7110346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>Tool for visualizing fields in 2D and 3D meshes</td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl7010346 style='height:65.1pt;border-top:none'><a
+  href="http://vitables.org/">ViTables</a></td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Browser/Editor</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Open Source</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Many</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl7110346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>PyTables and HDF5 file viewer and editor</td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl7010346 style='height:65.1pt;border-top:none'><a
+  href="http://www.txcorp.com/home/vsim/vsim-overview">VSIM</a></td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Special Purpose</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Commercial</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Many</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>C++, GUI</td>
+  <td class=xl7110346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>PIC (particle-in-cell)<span style='mso-spacerun:yes'> 
+  </span>simulation tool to run plasma, electromagnetic and electrostatic
+  problems</td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl7010346 style='height:65.1pt;border-top:none'><a
+  href="http://www.yellowsys.com/">WaveCut</a></td>
+  <td class=xl7110346 width=145 style='border-top:none;border-left:none;
+  width:109pt'>Special Purpose</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Commercial</td>
+  <td class=xl7110346 width=96 style='border-top:none;border-left:none;
+  width:72pt'>Linux, Windows</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'><span
+  style='mso-spacerun:yes'> </span></td>
+  <td class=xl7110346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>Application with GUI for analyzing large amounts of signal
+  waveform data</td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl7010346 style='height:65.1pt;border-top:none'><a
+  href="http://www.xdmf.org/index.php/Main_Page">XDMF</a></td>
+  <td class=xl7110346 width=145 style='border-top:none;border-left:none;
+  width:109pt'>Special Purpose</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Open Source</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Many</td>
+  <td class=xl7110346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>Data format and library using XML and HDF5 in High Performance
+  Computing</td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl7010346 style='height:65.1pt;border-top:none'><a
+  href="http://yorick.sourceforge.net/">Yorick</a></td>
+  <td class=xl7110346 width=145 style='border-top:none;border-left:none;
+  width:109pt'>Visualization/Analysis</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Open Source</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Many</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Yorick</td>
+  <td class=xl7110346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>Interpreted programming language</td>
+ </tr>
+ <tr height=86 style='mso-height-source:userset;height:65.1pt'>
+  <td height=86 class=xl7010346 style='height:65.1pt;border-top:none'><a
+  href="http://zori.aspuru.com/">Zori</a></td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Special Purpose</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>Open Source</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl6710346 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl7110346 width=180 style='border-top:none;border-left:none;
+  width:135pt'>Calculate properties of atoms/molecules using quantum Monte
+  Carlo methods</td>
+ </tr>
+ <![if supportMisalignedColumns]>
+ <tr height=0 style='display:none'>
+  <td width=152 style='width:114pt'></td>
+  <td width=145 style='width:109pt'></td>
+  <td width=89 style='width:67pt'></td>
+  <td width=96 style='width:72pt'></td>
+  <td width=96 style='width:72pt'></td>
+  <td width=180 style='width:135pt'></td>
+ </tr>
+ <![endif]>
+</table>
+
+</div>
+
+
+<!----------------------------->
+<!--END OF OUTPUT FROM EXCEL PUBLISH AS WEB PAGE WIZARD-->
+<!----------------------------->
+</body>
+
+</html>

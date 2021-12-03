@@ -1,0 +1,114 @@
+<html>
+<body>
+<pre>
+HDF5 "mod35-control-1-2253.he5" {
+GROUP "/" {
+   GROUP "HDFEOS" {
+      GROUP "ADDITIONAL" {
+         GROUP "FILE_ATTRIBUTES" {
+         } 
+      } 
+      GROUP "SWATHS" {
+         GROUP "mod35" {
+            GROUP "Data Fields" {
+               DATASET "Byte_Segment" {
+                  DATATYPE  H5T_STD_I32BE  
+                  DATASPACE  SIMPLE { ( 6 ) / ( 6 ) } 
+               } 
+               DATASET "Cloud_Mask" {
+                  DATATYPE  H5T_STD_I8LE  
+                  DATASPACE  SIMPLE { ( 6, 2030, 1354 ) / ( 6, 2030, 1354 ) } 
+                  ATTRIBUTE "_FillValue" {
+                     DATATYPE  H5T_STD_I8LE  
+                     DATASPACE  SIMPLE { ( 1 ) / ( 1 ) } 
+                  } 
+               } 
+               DATASET "Quality_Assurance" {
+                  DATATYPE  H5T_STD_I8LE  
+                  DATASPACE  SIMPLE { ( 2030, 1354, 10 ) / ( 2030, 1354, 10 ) } 
+                  ATTRIBUTE "_FillValue" {
+                     DATATYPE  H5T_STD_I8LE  
+                     DATASPACE  SIMPLE { ( 1 ) / ( 1 ) } 
+                  } 
+               } 
+               DATASET "Scan_Start_Time" {
+                  DATATYPE  H5T_IEEE_F64BE  
+                  DATASPACE  SIMPLE { ( 406, 270 ) / ( 406, 270 ) } 
+                  ATTRIBUTE "_FillValue" {
+                     DATATYPE  H5T_IEEE_F64BE  
+                     DATASPACE  SIMPLE { ( 1 ) / ( 1 ) } 
+                  } 
+               } 
+               DATASET "Sensor_Azimuth" {
+                  DATATYPE  H5T_STD_I16BE  
+                  DATASPACE  SIMPLE { ( 406, 270 ) / ( 406, 270 ) } 
+                  ATTRIBUTE "_FillValue" {
+                     DATATYPE  H5T_STD_I16BE  
+                     DATASPACE  SIMPLE { ( 1 ) / ( 1 ) } 
+                  } 
+               } 
+               DATASET "Sensor_Zenith" {
+                  DATATYPE  H5T_STD_I16BE  
+                  DATASPACE  SIMPLE { ( 406, 270 ) / ( 406, 270 ) } 
+                  ATTRIBUTE "_FillValue" {
+                     DATATYPE  H5T_STD_I16BE  
+                     DATASPACE  SIMPLE { ( 1 ) / ( 1 ) } 
+                  } 
+               } 
+               DATASET "Solar_Azimuth" {
+                  DATATYPE  H5T_STD_I16BE  
+                  DATASPACE  SIMPLE { ( 406, 270 ) / ( 406, 270 ) } 
+                  ATTRIBUTE "_FillValue" {
+                     DATATYPE  H5T_STD_I16BE  
+                     DATASPACE  SIMPLE { ( 1 ) / ( 1 ) } 
+                  } 
+               } 
+               DATASET "Solar_Zenith" {
+                  DATATYPE  H5T_STD_I16BE  
+                  DATASPACE  SIMPLE { ( 406, 270 ) / ( 406, 270 ) } 
+                  ATTRIBUTE "_FillValue" {
+                     DATATYPE  H5T_STD_I16BE  
+                     DATASPACE  SIMPLE { ( 1 ) / ( 1 ) } 
+                  } 
+               } 
+            } 
+            GROUP "Geolocation Fields" {
+               DATASET "Latitude" {
+                  DATATYPE  H5T_IEEE_F32BE  
+                  DATASPACE  SIMPLE { ( 406, 270 ) / ( 406, 270 ) } 
+               } 
+               DATASET "Longitude" {
+                  DATATYPE  H5T_IEEE_F32BE  
+                  DATASPACE  SIMPLE { ( 406, 270 ) / ( 406, 270 ) } 
+               } 
+            } 
+            GROUP "Profile Fields" {
+            } 
+         } 
+      } 
+   } 
+   GROUP "HDFEOS INFORMATION" {
+      ATTRIBUTE "HDFEOSVersion" {
+         DATATYPE  H5T_STRING {
+               STRSIZE 32;
+               STRPAD H5T_STR_NULLTERM;
+               CSET H5T_CSET_ASCII;
+               CTYPE H5T_C_S1;
+            }           
+         DATASPACE  SCALAR  
+      } 
+      DATASET "StructMetadata.0" {
+         DATATYPE  H5T_STRING {
+               STRSIZE 1000000;
+               STRPAD H5T_STR_NULLTERM;
+               CSET H5T_CSET_ASCII;
+               CTYPE H5T_C_S1;
+            }           
+         DATASPACE  SCALAR  
+      } 
+   } 
+} 
+} 
+</pre>
+</body>
+</html>

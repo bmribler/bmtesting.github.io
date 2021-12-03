@@ -1,0 +1,320 @@
+<HTML>
+<head>
+</head>
+<body>
+
+<P>These tables summarize the library's fill value writing behavior for various
+property list settings and compare serial I/O vs. parallel I/O.
+</P>
+
+<hr>
+<H3>Serial I/O</H3>
+
+<P>
+    Allocation time default settings are dependent on the dataset storage
+    method: <br> <br>
+    <table border=1>
+        <tr align=center>
+            <td></td>
+            <td colspan=3><strong>Dataset Storage Method</strong></td>
+        </tr>
+        <tr align=center>
+            <td></td>
+            <td>Contiguous</td>
+            <td>Chunked</td>
+            <td>Compact</td>
+        </tr>
+        <tr align=center>
+            <td><strong>Allocation Time</strong></td>
+            <td>Early</td>
+            <td>Incremental</td>
+            <td>Late</td>
+        </tr>
+    </table>
+</P>
+
+<P>
+    Fill Value default is "Library Default" (all zero bytes for datatype).
+</P>
+<P>
+    Fill Time default is "If Set".
+</P>
+
+<table border=1 width="100%">
+ <th colspan=6>Serial I/O results</th>
+ <tr align=center>
+  <td colspan=3></td>
+  <td colspan=3><strong>Dataset Storage Method</strong></td>
+ </tr>
+ <tr align=center>
+  <td><strong>Fill Value</strong></td>
+  <td><strong>Fill Time</strong></td>
+  <td><strong>Allocation Time</strong></td>
+  <td>Contiguous</td>
+  <td>Chunked</td>
+  <td>Compact</td>
+ </tr>
+ <tr>
+  <td rowspan=9>Library Default*</td>
+  <td rowspan=3>Never</td>
+  <td>Early</td>
+  <td>No Fill Value Written</td>
+  <td>No Fill Value Written</td>
+  <td>No Fill Value Written</td>
+ </tr>
+ <tr>
+  <td>Incremental</td>
+  <td><em>Same as Late</em></td>
+  <td>No Fill Value Written</td>
+  <td>Error</td>
+ </tr>
+ <tr>
+  <td>Late</td>
+  <td>No Fill Value Written</td>
+  <td>No Fill Value Written</td>
+  <td>Error</td>
+ </tr>
+ <tr>
+  <td rowspan=3>If Set*</td>
+  <td>Early</td>
+  <td>No Fill Value Written</td>
+  <td>No Fill Value Written</td>
+  <td>No Fill Value Written*</td>
+ </tr>
+ <tr>
+  <td>Incremental</td>
+  <td><em>Same as Late</em></td>
+  <td>No Fill Value Written*</td>
+  <td>Error</td>
+ </tr>
+ <tr>
+  <td>Late</td>
+  <td>No Fill Value Written*</td>
+  <td>No Fill Value Written</td>
+  <td>Error</td>
+ </tr>
+ <tr>
+  <td rowspan=3>Allocation</td>
+  <td>Early</td>
+  <td>Library Fill Value Written During Creation</td>
+  <td>Library Fill Value Written To All Chunks During Create</td>
+  <td>Library Fill Value Written During Creation</td>
+ </tr>
+ <tr>
+  <td>Incremental</td>
+  <td><em>Same as Late</em></td>
+  <td>Library Fill Value Set In Each Chunk Accessed During Write</td>
+  <td>Error</td>
+ </tr>
+ <tr>
+  <td>Late</td>
+  <td>Library Fill Value Written During Write</td>
+  <td>Library Fill Value Written To All Chunks During Write</td>
+  <td>Error</td>
+ </tr>
+ <tr>
+  <td rowspan=9>User-defined</td>
+  <td rowspan=3>Never</td>
+  <td>Early</td>
+  <td>No Fill Value Written</td>
+  <td>No Fill Value Written</td>
+  <td>No Fill Value Written</td>
+ </tr>
+ <tr>
+  <td>Incremental</td>
+  <td><em>Same as Late</em></td>
+  <td>No Fill Value Written</td>
+  <td>Error</td>
+ </tr>
+ <tr>
+  <td>Late</td>
+  <td>No Fill Value Written</td>
+  <td>No Fill Value Written</td>
+  <td>Error</td>
+ </tr>
+ <tr>
+  <td rowspan=3>If Set*</td>
+  <td>Early</td>
+  <td>User Fill Value Written During Creation</td>
+  <td>User Fill Value Written To All Chunks During Create</td>
+  <td>User Fill Value Written During Creation*</td>
+ </tr>
+ <tr>
+  <td>Incremental</td>
+  <td><em>Same as Late</em></td>
+  <td>User Fill Value Set In Each Chunk Accessed During Write*</td>
+  <td>Error</td>
+ </tr>
+ <tr>
+  <td>Late</td>
+  <td>User Fill Value Written During Write*</td>
+  <td>User Fill Value Written To All Chunks During Write</td>
+  <td>Error</td>
+ </tr>
+ <tr>
+  <td rowspan=3>Allocation</td>
+  <td>Early</td>
+  <td>User Fill Value Written During Creation</td>
+  <td>User Fill Value Written To All Chunks During Create</td>
+  <td>User Fill Value Written During Creation</td>
+ </tr>
+ <tr>
+  <td>Incremental</td>
+  <td><em>Same as Late</em></td>
+  <td>User Fill Value Set In Each Chunk Accessed During Write</td>
+  <td>Error</td>
+ </tr>
+ <tr>
+  <td>Late</td>
+  <td>User Fill Value Written During Write</td>
+  <td>User Fill Value Written To All Chunks During Write</td>
+  <td>Error</td>
+ </tr>
+ <tr>
+  <td rowspan=9>Undefined</td>
+  <td rowspan=3>Never</td>
+  <td>Early</td>
+  <td>No Fill Value Written</td>
+  <td>No Fill Value Written</td>
+  <td>No Fill Value Written</td>
+ </tr>
+ <tr>
+  <td>Incremental</td>
+  <td><em>Same as Late</em></td>
+  <td>No Fill Value Written</td>
+  <td>Error</td>
+ </tr>
+ <tr>
+  <td>Late</td>
+  <td>No Fill Value Written</td>
+  <td>No Fill Value Written</td>
+  <td>Error</td>
+ </tr>
+ <tr>
+  <td rowspan=3>If Set*</td>
+  <td>Early</td>
+  <td>No Fill Value Written</td>
+  <td>No Fill Value Written</td>
+  <td>No Fill Value Written*</td>
+ </tr>
+ <tr>
+  <td>Incremental</td>
+  <td><em>Same as Late</em></td>
+  <td>No Fill Value Written*</td>
+  <td>Error</td>
+ </tr>
+ <tr>
+  <td>Late</td>
+  <td>No Fill Value Written*</td>
+  <td>No Fill Value Written</td>
+  <td>Error</td>
+ </tr>
+ <tr>
+  <td rowspan=3>Allocation</td>
+  <td>Early</td>
+  <td>Error</td>
+  <td>Error</td>
+  <td>Error</td>
+ </tr>
+ <tr>
+  <td>Incremental</td>
+  <td><em>Same as Late</em></td>
+  <td>Error</td>
+  <td>Error</td>
+ </tr>
+ <tr>
+  <td>Late</td>
+  <td>Error</td>
+  <td>Error</td>
+  <td>Error</td>
+ </tr>
+</table>
+
+<P>* - Default setting.
+</P>
+
+<hr>
+<H3>Parallel I/O</H3>
+
+<P>For parallel I/O, the allocation time setting in the dataset creation
+property list is <em>ignored</em> and H5D_ALLOC_TIME_EARLY is used for all
+dataset creation calls.  The fill value and fill time default settings are
+the same as for serial I/O.
+</P>
+
+<table border=1 width="100%">
+ <th colspan=5>Parallel I/O results</th>
+ <tr align=center>
+  <td colspan=2></td>
+  <td colspan=3><strong>Dataset Storage Method</strong></td>
+ </tr>
+ <tr align=center>
+  <td><strong>Fill Value</strong></td>
+  <td><strong>Fill Time</strong></td>
+  <td>Contiguous</td>
+  <td>Chunked</td>
+  <td>Compact</td>
+ </tr>
+ <tr>
+  <td rowspan=3>Library Default*</td>
+  <td>Never</td>
+  <td>No Fill Value Written</td>
+  <td>No Fill Value Written</td>
+  <td>No Fill Value Written</td>
+ </tr>
+ <tr>
+  <td>If Set*</td>
+  <td>No Fill Value Written</td>
+  <td>No Fill Value Written</td>
+  <td>No Fill Value Written</td>
+ </tr>
+ <tr>
+  <td>Allocation</td>
+  <td>Library Fill Value Written During Creation</td>
+  <td>Library Fill Value Written To All Chunks During Create</td>
+  <td>Library Fill Value Written During Creation</td>
+ </tr>
+ <tr>
+  <td rowspan=3>User-defined</td>
+  <td>Never</td>
+  <td>No Fill Value Written</td>
+  <td>No Fill Value Written</td>
+  <td>No Fill Value Written</td>
+ </tr>
+ <tr>
+  <td>If Set*</td>
+  <td>User Fill Value Written During Creation</td>
+  <td>User Fill Value Written To All Chunks During Create</td>
+  <td>User Fill Value Written During Creation</td>
+ </tr>
+ <tr>
+  <td>Allocation</td>
+  <td>User Fill Value Written During Creation</td>
+  <td>User Fill Value Written To All Chunks During Create</td>
+  <td>User Fill Value Written During Creation</td>
+ </tr>
+ <tr>
+  <td rowspan=3>Undefined</td>
+  <td>Never</td>
+  <td>No Fill Value Written</td>
+  <td>No Fill Value Written</td>
+  <td>No Fill Value Written</td>
+ </tr>
+ <tr>
+  <td>If Set*</td>
+  <td>No Fill Value Written</td>
+  <td>No Fill Value Written</td>
+  <td>No Fill Value Written</td>
+ </tr>
+ <tr>
+  <td>Allocation</td>
+  <td>Error</td>
+  <td>Error</td>
+  <td>Error</td>
+ </tr>
+</table>
+
+</body>
+
+</html>
+

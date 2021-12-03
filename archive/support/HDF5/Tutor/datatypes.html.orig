@@ -1,0 +1,527 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+<!-- If no var is set for $page_title on the top of each page than default title will be HDF Group -->
+
+<title>
+The HDF Group - Information, Support, and Software</title>
+	<meta name="keywords" content="hdf, hdfeos, blog, hdf blog, hdf5 blog, hdf5, hdf4, hdf tools, hdf libraries, hdf viewer, hdf format, hdf file, hdf java, nafxcw.lib, phdf5, open source, hierarchical data format, ncsa, database, python hdf, mike folk, hdfview, hdf5 parallel" />
+	<meta name="description" content="The HDF Group is a not-for-profit corporation with the mission of sustaining the HDF technologies and supporting HDF user communities worldwide with production-quality software and services." />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="expires" content="Wed, 26 Feb 2010 08:21:57 GMT" />
+	<meta name="verify-v1" content="/m03HNmaDgGAcDe0PFtEVnXGtCkoeOocjr/Jwey2gdI=" />
+	<link href="/css/layout.css" rel="stylesheet" type="text/css" media="screen, projection" />
+	<link href="/css/print.css" rel="stylesheet" type="text/css" media="print" />
+	<link rel="stylesheet" type="text/css" href="/css/js_style.css" />
+	<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/prototype/1.7.2.0/prototype.js"></script>
+	<!--<script type="text/javascript" src="/scriptaculous/lib/prototype.js"></script>-->
+	<script type="text/javascript" src="/scriptaculous/src/effects.js"></script>
+	<script type="text/javascript" src="/scriptaculous/validation.js"></script>
+	<script type="text/javascript" src="/scriptaculous/animatedcollapse.js"></script>
+	<script type="text/javascript" src="/scriptaculous/rollover.js"></script>	
+	<script type="text/javascript" src="/scriptaculous/functions.js"></script>
+	<script type="text/javascript" src="/scriptaculous/sorttable.js"></script>
+	<!--<script type="text/javascript" src="/jquery-1.2.2.pack.js"></script>-->
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript" src="/scriptaculous/jssor.slider.min.js"></script>
+
+ 	<link rel="stylesheet" type="text/css" href="/featuredcontentglider.css" />
+    <script type="text/javascript" src="/featuredcontentglider.js"></script>
+
+	</head>
+	<body>
+	<div id="mast_head">
+		<a href="https://www.hdfgroup.org/"><img src="/images/hdf_logo.jpg" height="70" style="display:block; padding-left:10px;" align="left" alt="hdf images" /></a>
+		<img src="/images/logo_5.jpg" height="70" style="display:block;" align="right" alt="hdf images" />
+	</div> 
+				
+	<div id="nav_wrapper">
+		<div>
+		<div id="section-">
+			<ul id="nav">
+				<li id="t-index"><a href="https://www.hdfgroup.org/">Home</a> </li>
+				<li id="t-products"><a href="/products/">Products</a></li>
+				<li id="t-services"><a href="/services/">Services</a></li>
+				<li id="t-about"><a href="/about/">About Us</a></li>
+				<li id="t-news"><a href="/news/">News</a> </li>
+				<li id="t-blog"><a href="https://www.hdfgroup.org/blog">Blog</a></li>
+				<li id="t-contact"><a href="/about/contact.html">Contact Us</a></li> 
+			</ul>
+			<script type="text/javascript">
+			
+  (function() {
+    var cx = '007250492606109219119:sb2eg2bgoyy';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:search></gcse:search>	
+					<script type="text/javascript">
+					    jQuery(document).ready(function ($) {
+					        // var options = {
+					        //     $ArrowNavigatorOptions: {
+					        //         $Class: $JssorArrowNavigator$,
+					        //         $ChanceToShow: 2
+					        //     }
+					        // };					    	
+
+
+							var options = { 
+											$AutoPlay: true, $SlideshowOptions: { $Class: $JssorSlideshowRunner$, $Transitions: [{ $Duration:5000, $Fade: true, $Opacity:2 }] } , 
+											$ArrowNavigatorOptions: { 
+												$Class: $JssorArrowNavigator$, 
+												$ChanceToShow: 2
+											}
+										  };
+
+
+					        var jssor_slider1 = new $JssorSlider$('slider1_container', options);
+					    });
+					</script>
+									                  
+			
+		</div>
+		</div>             
+	</div>
+				
+<!--START: MAIN -->
+<div id="wrapper" style="margin-top:-15px;"> 
+
+<!--START: SIDE_BAR -->
+<div id="side_bar">
+
+<form method="get" action="" class="form" >
+	<select onchange="window.open(this.options[this.selectedIndex].value,'_top')" name="" style="border:2px solid #c1c1c1;">
+		<option value="" class="ql1">- - Quick Links - -</option>
+		<option value="/HDF5/" class="ql">HDF5</option>
+		<option value="/products/hdf4/" class="ql">HDF4</option>
+		<option value="/tools/" class="ql">Tools</option>
+		<option value="/projects/" class="ql">Projects</option>
+		<option value="/downloads/" class="ql">Downloads</option>
+		<option value="/documentation/" class="ql">Documentation</option>
+	        <option value="/pubs/" class="ql">Publications</option>
+		<option value="/about/" class="ql">Contact Us</option>
+	</select>
+</form>
+<ul style="border:1px solid #c1c1c1; margin-top:25px;"> 
+
+	<li style="background:url(/images/menubg.png); padding:0px; padding-left:7px; color:#27343C; font-weight:500; text-align:left;">
+	LINKS</li><li><a href="https://www.hdfgroup.org/">Main Website</a></li><li><a  href="/HDF5/whatishdf5.html">What is HDF5?</a></li><li><a  href="/about/HDF5Brochure_2012.pdf">Online Brochure</a></li><li><a  href="/downloads/index.html">Downloads</a></li><li><a  href="/HDF5/doc/index.html">Documentation</a></li><li><a  href="/products/hdf5_tools/">Software using HDF5</a></li><li><a  href="/HDF5/users5.html">HDF5 Users</a></li><li><a  href="/HDF5/hdf5-files.html">Sample HDF5 Files</a></li><li><a  href="/HDF5/acknowledge5.html">Acknowledgments</a></li><li><a  href="/products/licenses.html">Licenses</a></li></ul> 
+
+</div>
+
+<!--END: SIDE_BAR -->
+
+<!--START: CONTENT -->
+<div id="content">
+<p><font color="red"><center><strong>This web site is no longer maintained (but will remain online).<br /> Please see The HDF Group's new <a href="https://portal.hdfgroup.org">Support Portal</a> for the latest information.</strong></center></font></p>
+	<div class=bc><p style="color:orange; ";><a href="/" title="HOME">HOME</a> &gt; <a href="/HDF5/" title="HDF5">HDF5</a> &gt; <a href="/HDF5/Tutor/" title="TUTOR">TUTOR</a></p></div>
+<fieldset><h1>HDF5 Tutorial: &nbsp; Learning The Basics<br /> Datatypes</h1></fieldset>
+
+<H2>Contents:</H2>
+<ul class="ul">
+  <li class="li3"><A HREF="#def">What is a Datatype</A> ?</li>
+
+  <li class="li3"><A HREF="#predef">Pre-defined Datatypes</A>
+       <ul class="ul">
+         <li class="li3"><A HREF="#standard">Standard</A></li>
+         <li class="li3"><A HREF="#native">Native</A></li>
+         <li class="li3"><A HREF="#native-types">Table of Native and Corresponding
+                                     file types for C/F90</A> </li>
+       </UL>
+       </li>
+  <li class="li3"><A HREF="#der">Derived Datatypes</A><br />
+                 &nbsp; &nbsp; <a href="#string">Character Strings</a></li>
+  <li class="li3"><a href="/ftp/HDF5/examples/examples-by-api/api18-c.html#dtyp">Examples of Using Datatypes in HDF5</a>
+</li>
+         <UL>
+         </UL>
+   
+</UL>
+<HR>
+
+<A NAME="def"> </a>
+<H2>What is a Datatype?</H2>
+
+ A datatype is a collection of datatype properties which provide complete
+information for data conversion to or from that datatype. 
+<P>
+ Datatypes in HDF5 can be grouped as follows: 
+<ul class="ul">
+  <LI><B>Pre-Defined Datatypes: </B> &nbsp;
+   These are datatypes that are created by HDF5.  They are actually
+       opened (and closed) by HDF5, and can have a different
+       value from one HDF5 session to the next.
+ <P> 
+  <LI><B>Derived Datatypes:</B> &nbsp;
+  These are datatypes that are created or derived from the pre-defined
+      datatypes.  Although created from pre-defined types, they 
+      represent a category unto themselves. An example of a commonly
+      used derived datatype is a string of more than one character.
+</UL>
+
+
+<A NAME="predef"> </a>
+<H2>Pre-Defined Datatypes</H2> 
+
+The properties of pre-defined datatypes are:
+<P>
+<ul class="ul">
+<P>
+<li class="li3"> Pre-defined datatypes are opened and closed by HDF5. 
+<P>
+<li class="li3">A pre-defined datatype is a handle and is <I>NOT PERSISTENT</I>.
+    Its value can be different from one HDF5 session to the next.
+<P>
+<li class="li3">Pre-defined datatypes are Read-Only. 
+<P>
+<li class="li3">As mentioned, other datatypes can be derived from pre-defined datatypes.
+</UL>
+<P>
+There are two types of pre-defined datatypes, <I>standard (file)</I> and <I>native</I>:
+<ul class="ul">
+ 
+<LI><A NAME="standard"><B>STANDARD</B></A>
+<P>
+A standard (or file) datatype can be:
+<P>
+  <ul class="ul">
+    <LI><B>Atomic:</B> 
+    A datatype which cannot be decomposed into smaller datatype units at 
+    the API level. 
+<BR>
+    The atomic datatypes are: &nbsp; <CODE>integer</CODE>, <CODE>float</CODE>, <CODE>string</CODE>,
+    <CODE>date and time</CODE>,  <CODE>bitfield</CODE>, <CODE>reference</CODE>, <CODE>opaque</CODE>
+    <P>
+    <P>
+    <LI><B>Composite:</B> 
+    An aggregation of one or more datatypes.
+    <BR>
+    Composite datatypes include: &nbsp;  <CODE>array, variable length, enumeration, compound datatypes</CODE> 
+  <P>
+    Array, variable length, and enumeration datatypes are defined in terms 
+    of a single atomic datatype, whereas a compound datatype is a datatype 
+    composed of a sequence of datatypes.  
+<P>
+</UL>
+<P>
+
+<table bgcolor="#ccddcc" BORDER=1 CELLSPACING=0 COLS=1 >
+<TD>
+<P>
+<ul class="ul"><B>Notes:</B>
+<P>
+<LI>1. Standard pre-defined datatypes are the <B>SAME</B> on all platforms.
+<P>
+<LI>2. They are the datatypes that you see in an HDF5 file.
+<P>
+<LI>3. They are typically used when <I>creating</I> a dataset.
+<BR>&nbsp;
+</ul>
+</TD></TABLE> 
+<P>
+
+<LI><A NAME="native"><B>NATIVE</B></A>
+<P>
+Native pre-defined datatypes are used for memory operations, such
+as reading and writing.  They are <B>NOT THE SAME</B> on 
+different platforms.  They are similar to C type names, and are aliased 
+to the appropriate HDF5 standard pre-defined datatype for a given platform.  
+<P>
+For example, when on an Intel based PC, H5T_NATIVE_INT is aliased to the 
+standard pre-defined type, H5T_STD_I32LE.  On a MIPS machine, it is aliased 
+to H5T_STD_I32BE.  
+<P>
+
+<table bgcolor="#ccddcc" BORDER=1 CELLSPACING=0 COLS=1 >
+<TD>
+<P>
+<ul class="ul"><B>Notes:</B>
+<P>
+<LI>1. Native datatypes are <B>NOT THE SAME</B> on all platforms.
+<P>
+<LI>2. Native datatypes simplify memory operations (read/write).  The HDF5
+   library automatically converts as needed.
+<P>
+<LI>3. Native datatypes are <B>NOT</B> in an HDF5 File. The standard
+pre-defined datatype that a native datatype corresponds to is what you
+will see in the file. 
+
+<BR>
+&nbsp; 
+
+</TD></TABLE>
+&nbsp;
+</UL>
+
+The following table shows the native types and the standard pre-defined 
+datatypes they correspond to. (Keep in mind that HDF5 can convert between
+datatypes, so you can specify a buffer of a larger type for a dataset of a
+given type. For example, you can read a dataset that has a short datatype into
+a long integer buffer.)
+
+<P>
+<A NAME="native-types"> </A>
+
+ <B>Fig. 1</B> &nbsp;  <I>HDF5 pre-defined native datatypes and corresponding standard (file) type</I>
+<table border="1" cellpadding="2">
+<!--  <tr bgcolor="#ccddcc" bordercolor="#FFFFFF">
+-->
+  <tr bgcolor="#ccddcc">
+   <td><b>&nbsp; C Type</b></td>
+   <td><b>&nbsp; HDF5 Memory Type</b> &nbsp; </td>
+   <td><b>&nbsp; HDF5 File Type *</b></td>
+  </tr>
+
+
+<!--
+ <tr bgcolor="#ccdddf">
+   <td>  <B>Character:</B> </td>
+   </tr>
+  <tr>
+   <td>&nbsp; char</td>
+   <td>&nbsp; <code>H5T_NATIVE_(U)CHAR</code></td>
+   <td>&nbsp; <code>H5T_C_S1</code></td>
+   </tr>
+-->
+
+  <tr bgcolor="#ccdddf">
+   <td> <B>Integer:</B> </td>
+   </tr>
+  <tr>
+   <td>&nbsp; int</td>
+   <td>&nbsp; <code>H5T_NATIVE_INT</code></td>
+   <td>&nbsp; <code>H5T_STD_I32BE or H5T_STD_I32LE</code></td>
+   </tr>
+  <tr>
+   <td>&nbsp; short</td>
+   <td>&nbsp; <code>H5T_NATIVE_SHORT</td>
+   <td>&nbsp; <code>H5T_STD_I16BE or H5T_STD_I16LE</code></td>
+   </tr>
+  <tr>
+   <td>&nbsp; long</td>
+   <td>&nbsp; <code>H5T_NATIVE_LONG</code></td>
+   <td>&nbsp; <code>H5T_STD_I32BE, H5T_STD_I32LE</code>, 
+           <BR>&nbsp; <code>H5T_STD_I64BE or H5T_STD_I64LE</code></td>
+   </tr>
+  <tr>
+   <td>&nbsp; long long &nbsp;</td>
+   <td>&nbsp; <code>H5T_NATIVE_LLONG</code></td>
+   <td>&nbsp; <code>H5T_STD_I64BE or H5T_STD_I64LE</code></td>
+   </tr>
+  <tr>
+   <td>&nbsp; unsigned int</td>
+   <td>&nbsp; <code>H5T_NATIVE_UINT</code></td>
+   <td>&nbsp; <code>H5T_STD_U32BE or H5T_STD_U32LE</code></td>
+   </tr>
+  <tr>
+   <td>&nbsp;  unsigned short</td>
+   <td>&nbsp;  <code>H5T_NATIVE_USHORT</code></td>
+   <td>&nbsp;  <code>H5T_STD_U16BE or H5T_STD_U16LE</code></td>
+   </tr>
+  <tr>
+   <td>&nbsp; unsigned long</td>
+   <td>&nbsp; <code>H5T_NATIVE_ULONG</code></td>
+   <td>&nbsp; <code>H5T_STD_U32BE,  H5T_STD_U32LE</code>, 
+          <BR>&nbsp; <code>H5T_STD_U64BE or H5T_STD_U64LE</code></td>
+   </tr>
+  <tr>
+   <td>&nbsp; unsigned long<BR>&nbsp; &nbsp; long</td>
+   <td>&nbsp; <code>H5T_NATIVE_ULLONG</code></td>
+   <td>&nbsp; <code>H5T_STD_U64BE or H5T_STD_U64LE</code></td>
+   </tr>
+
+ <tr bgcolor="#ccdddf">
+   <td > <B>Float:</B> </td>
+   </tr>
+  <tr>
+   <td>&nbsp; float</td>
+   <td>&nbsp; <code>H5T_NATIVE_FLOAT</code></td>
+   <td>&nbsp; <code>H5T_IEEE_F32BE or H5T_IEEE_F32LE</code> &nbsp;</td>
+   </tr>
+  <tr>
+   <td>&nbsp; double</td>
+   <td>&nbsp; <code>H5T_NATIVE_DOUBLE</code></td>
+   <td>&nbsp; <code>H5T_IEEE_F64BE or H5T_IEEE_F64LE</code> &nbsp;</td>
+   </tr>
+</table>
+<P>
+<table border="1" cellpadding="2">
+  <tr bgcolor="#ccddcc">
+   <td><b>&nbsp; F90 Type </b>  </td>
+   <td><b>&nbsp; HDF5 Memory Type </b> </td>
+   <td><b>&nbsp; HDF5 File Type *</b></td>
+  </tr>
+
+<!--
+  <tr>
+   <td>&nbsp; character</td>
+   <td>&nbsp; <code>H5T_NATIVE_CHARACTER</code> &nbsp; </td>
+   <td>&nbsp; <code>H5T_FORTRAN_S1</code></td>
+   </tr>
+-->
+  <tr>
+   <td>&nbsp; integer &nbsp; </td>
+   <td>&nbsp; <code>H5T_NATIVE_INTEGER</code></td>
+   <td>&nbsp; <code>H5T_STD_I32(8,16)BE or H5T_STD_I32(8,16)LE</code></td>
+   </tr>
+  <tr>
+   <td>&nbsp; real</td>
+   <td>&nbsp; <code>H5T_NATIVE_REAL</code></td>
+   <td>&nbsp; <code>H5T_IEEE_F32BE or H5T_IEEE_F32LE</code>&nbsp;</td>
+   </tr>
+  <tr>
+   <td>&nbsp; double-<BR>&nbsp; &nbsp;precision</td>
+   <td>&nbsp; <code>H5T_NATIVE_DOUBLE</code></td>
+   <td>&nbsp; <code>H5T_IEEE_F64BE or H5T_IEEE_F64LE</code>&nbsp;</td>
+   </tr>
+</table>
+<P>
+<!--
+<FONT SIZE="2" FACE="arial,sans-serif">
+-->
+<table bgcolor="#ccddcc">
+<tr><td>
+<B>*</B> Note that the HDF5 File Types listed are those that are most
+commonly created.
+<BR> &nbsp;  
+The file type created depends on the compiler switches and platforms being
+<BR> &nbsp;  
+used.  For example, on the Cray an integer is 64-bit, and using
+  <code>H5T_NATIVE_INT</code> (C)
+<BR> &nbsp;  
+ or <code>H5T_NATIVE_INTEGER</code> (F90) 
+would result in an <code>H5T_STD_I64BE</code> file type. 
+</td></tr></table>
+<!--
+</font>
+-->
+<P>		
+The following code is an example of when you would use <I>standard</I>
+pre-defined datatypes vs. <I>native</I> types: 
+<PRE>
+   #include "hdf5.h"
+
+   main() {
+
+      hid_t       file_id, dataset_id, dataspace_id;  
+      herr_t      status;
+      hsize_t     dims[2]={4,6};
+      int         i, j, dset_data[4][6];
+
+      for (i = 0; i < 4; i++)
+           for (j = 0; j < 6; j++)
+            dset_data[i][j] = i * 6 + j + 1;
+
+      file_id = H5Fcreate ("dtypes.h5", H5F_ACC_TRUNC, H5P_DEFAULT, H5P_DEFAULT);
+
+      dataspace_id = H5Screate_simple (2, dims, NULL);
+
+      dataset_id = H5Dcreate (file_id, "/dset", <B>H5T_STD_I32BE</B>, dataspace_id, 
+                              H5P_DEFAULT);
+
+      status = H5Dwrite (dataset_id, <B>H5T_NATIVE_INT</B>, H5S_ALL, H5S_ALL, 
+                         H5P_DEFAULT, dset_data);
+
+      status = H5Dclose (dataset_id);
+
+      status = H5Fclose (file_id);
+   }
+</PRE>
+By using the native types when reading and writing, the code that reads 
+from or writes to a dataset can be the same for different platforms.  
+<P>
+Can native types also be used when creating a dataset?  Yes. However, 
+just be aware that the resulting datatype in the file will be one of the 
+standard pre-defined types and may be different than expected.
+<P>
+What happens if you do not use the correct native datatype for a
+standard (file) datatype?   Your data may be incorrect or not what 
+you expect.
+<P>
+<A NAME="der">
+<H2>Derived Datatypes</H2></A>
+
+ANY pre-defined datatype can be used to derive user-defined datatypes.
+<P>
+To create a datatype derived from a pre-defined type:
+<ul class="ul">
+<LI>Make a copy of the pre-defined datatype:
+<PRE>
+    tid = H5Tcopy (H5T_STD_I32BE);
+</PRE>
+<LI><I>Change</I> the datatype.
+<P>  There are numerous datatype
+functions that allow a user to alter a pre-defined datatype. Refer
+to the <A HREF="/HDF5/doc/RM/RM_H5T.html">Datatype 
+Interface</A> in the 
+<A HREF="/HDF5/doc/RM/RM_H5Front.html">HDF5 Reference 
+Manual</A>.  Example functions are <I>H5Tset_size</I> and <I>H5Tset_precision</I>.
+</ul>
+<a name="string"></a>
+<p><strong>Character Strings:</strong></p>
+
+<P>
+A simple example of creating a derived datatype is using the string datatype,
+H5T_C_S1 (H5T_FORTRAN_S1), to create strings of more than one character:
+<ul class="ul">
+<PRE>
+hid_t strtype;                     /* Datatype ID */
+herr_t status;
+
+strtype = H5Tcopy (H5T_C_S1);
+status = H5Tset_size (strtype, 5); /* create string of length 5 */
+</PRE>
+</UL>
+
+The ability to derive datatypes from pre-defined types allows users
+to create any number of datatypes, from simple to very complex.
+
+<!-- BEGIN FOOTER INFO -->
+
+<hr>
+<i>
+- - Last modified: 21 December 2016</i>
+	   </div>
+	   <!--END: CONTENT -->
+<!--END: WRAPPER -->
+<script src="/scriptaculous/gatag.js" type="text/javascript"></script>
+
+<!-- <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script> -->
+				
+<!--
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-3782034-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+-->
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-3782034-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+</body>
+</html>
+

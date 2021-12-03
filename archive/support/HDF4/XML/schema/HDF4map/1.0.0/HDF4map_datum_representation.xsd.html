@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- HDF4map_datum_representation -->
+<xs:schema xmlns:h4="/HDF4/XML/schema/HDF4map/1.0.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="/HDF4/XML/schema/HDF4map/1.0.0" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0.0">
+    <!-- 
+        Global definitions related to how a single datum is represented in HDF4.
+        
+        Simple types are defined for:
+            (1) the possible atomic data types of datum (in dataTypeT), 
+            (2) the possible byte orders (in byteOrderT), 
+            (3) the possible floating point representations (in floatingPointFormatT).
+            
+        These simple types are used as attributes in the definition of complex types for full 
+        representation of datum (in datumT).
+
+        Schema Limitation: The schema does not handle data elements of non-standard lengths that may be used in 
+        SD datasets via the SDsetnbitdataset API.   See also comments for compressionTypeT.
+        NOTE: h4mapwriter currently does not handle data elements of non-standard lengths that HDF4 allows in 
+        SD datasets.
+    -->
+    <!-- 
+        dataTypeT: Data type 
+
+        HDF4 atomic types are mapped to dataTypeT, as shown by ->.
+        All dataTypeT can be represented as XML Schema Simple Types, as shown in ()'s.
+            
+            CHAR8, type=ASCII -> char8 (String)
+            UCHAR8, type=ASCII -> char8 (String)
+            CHAR8, type=BYTE -> byte8 (byte)
+            UCHAR8, type=BYTE -> ubyte8 (unsignedByte)
+            INT8 -> int8 (byte)
+            UINT8 -> uint8 (unsignedByte)
+            INT16 -> int16 (short)
+            UINT16 -> uint16 (unsignedShort)
+            INT32 -> int32 (int)
+            UINT32 -> uint32 (unsignedInt)
+            FLOAT32, type=IEEE -> float32 (float)
+            FLOAT64, type=IEEE -> float64 (double)
+    -->
+    <xs:simpleType name="dataTypeT">
+        <xs:restriction base="xs:token">
+            <xs:enumeration value="char8"/>
+            <xs:enumeration value="byte8"/>
+            <xs:enumeration value="ubyte8"/>
+            <xs:enumeration value="int8"/>
+            <xs:enumeration value="uint8"/>
+            <xs:enumeration value="int16"/>
+            <xs:enumeration value="uint16"/>
+            <xs:enumeration value="int32"/>
+            <xs:enumeration value="uint32"/>
+            <xs:enumeration value="float32"/>
+            <xs:enumeration value="float64"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <!-- 
+        byteOrderT: Byte Order attribute type
+
+        Byte orders supported by HDF4
+    -->
+    <xs:simpleType name="byteOrderT">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="bigEndian"/>
+            <!-- NOTE: h4mapwriter currently does not support littleEndian or middleEndian. -->
+            <xs:enumeration value="littleEndian"/>
+            <xs:enumeration value="middleEndian"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <!-- 
+        floatingPointFormatT: Floating point format attribute type
+
+        Floating point formats supported by HDF4
+    -->
+    <xs:simpleType name="floatingPointFormatT">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="IEEE"/>
+            <!-- NOTE: h4mapwriter currently does not support VAX, Cray, Convex, or Fujitsu. -->
+            <xs:enumeration value="VAX"/>
+            <xs:enumeration value="Cray"/>
+            <xs:enumeration value="Convex"/>
+            <xs:enumeration value="Fujitsu"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <!-- 
+        datumTypeT: Datum element type. 
+
+        Complete information about how a single value (a datum) is represented in HDF4.
+        + byteOrder is used for all dataTypes more than one byte long, i.e., those not ending in '8'
+        + floatingPointFormat is used when dataType is float32 or float64
+        + typeUsesNBytes is used when the number of bytes holding the value is different than what dataType indicates. 
+             Typically nBytes = ( nBits from dataType ) / 8.
+             See Section 2.5.2.2 "Native Data Type Format" in the HDF User's Guide for explanation of when this might 
+             occur.    
+    -->
+    <xs:complexType name="datumTypeT">
+        <xs:attribute name="dataType" type="h4:dataTypeT" use="required"/>
+        <xs:attribute name="byteOrder" type="h4:byteOrderT" use="optional"/>
+        <xs:attribute name="floatingPointFormat" type="h4:floatingPointFormatT" use="optional"/>
+        <!-- NOTE: h4mapwriter currently does not support typeUsesNBytes -->
+        <xs:attribute name="typeUsesNBytes" type="xs:nonNegativeInteger" use="optional"/>
+    </xs:complexType>
+</xs:schema>

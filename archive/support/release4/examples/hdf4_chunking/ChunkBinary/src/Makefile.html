@@ -1,0 +1,32 @@
+
+# set the location of your C compiler
+CC = /bin/cc
+
+# Use -n32 or -o32. Recommended: ON32 = -n32
+ON32 = -n32
+
+# If o32 is used, then use CCOPTS = -ansi -O -s
+# if n32 is used, then use CCOPTS = -ansi -mips3 -O -s
+#CCOPTS = -ansi -mips3 -O 
+CCOPTS = -mips3 -O 
+
+#set the appropriate directory locations
+HDF_INCLUDE_DIR = /u/usr/HDF4.1r2/NewHDF/include
+HDF_LIB_DIR = /u/usr/HDF4.1r2/NewHDF/lib
+
+##########################################################################
+#Do not change anything below this line unless you are absolutely sure!  #
+
+HDF_LIBS = -lmfhdf -ldf -ljpeg -lz
+
+chunkbinary: chunkbinary.o
+	$(CC) $(ON32) $(CCOPTS) chunkbinary.o -o ../bin/chunkbinary \
+	-I$(HDF_INCLUDE_DIR) -L$(HDF_LIB_DIR) $(HDF_LIBS)
+
+chunkbinary.o: chunkbinary.c
+	$(CC) $(ON32) $(CCOPTS) -c chunkbinary.c -I$(HDF_INCLUDE_DIR) \
+	-L$(HDF_LIB_DIR) $(HDF_LIBS)
+
+clean:
+	rm ../bin/chunkbinary chunkbinary.o
+
