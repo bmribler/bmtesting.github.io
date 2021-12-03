@@ -11,5 +11,5 @@ changes don't show up in an instant.
 You can preview your page(s) by opening the =index.html= from the corresponding
 folder in a browser.
 
-For Emacs users, there is the [[https://melpa.org/#/simple-httpd][=simple-httpd=]] package.
+For Emacs users, there is the [[https://melpa.org/#/simple-httpd][simple-httpd]] package.
 Just =M-x httpd-serve-directory= and enjoy the show!
