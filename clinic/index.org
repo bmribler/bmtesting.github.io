@@ -641,7 +641,7 @@ GROUP "/" {
 * Clinic 2021-09-28
 ** Your Questions
 - Q :: Will the HDF5 1.12.1 file locking changes be brought to 1.10.8?
-  - Did Elena will answer that?
+  - Did Elena answer that?
 ** Last week's highlights
 *** Announcements
 **** [[https://forum.hdfgroup.org/t/hdf5-user-group-meeting-october-12-15-2021/9003][HUG 2021 Agenda posted]]
