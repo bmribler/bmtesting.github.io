@@ -26,6 +26,7 @@ Can't find what you're looking for? Visit [docs.hdfgroup.org](https://docs.hdfgr
 * [HDF4 Specification and Developers Guide](https://github.com/HDFGroup/hdf4doc/blob/master/DSpec/html_FM/DS.pdf) 
 * [Build and Install HDF4 Applications with CMake](https://raw.githubusercontent.com/HDFGroup/hdf4/master/release_notes/USING_HDF4_CMake.txt)
 * [Build and Install HDF4 C, C++, Fortran Libraries and tools with CMake](https://raw.githubusercontent.com/HDFGroup/hdf4/master/release_notes/INSTALL_CMake.txt)
+* [HDF 4.2 to 4.3 Migration Guide](https://raw.githubusercontent.com/HDFGroup/hdf4/master/doc/HDF-4.2-to-4.3-migration.md) 
 
 ### h4h5Tools
 * [Mapping HDF4 Objects to HDF5 Objects](https://docs.hdfgroup.org/archive/support/HDF5/doc/ADGuide/H4toH5Mapping.pdf) 
