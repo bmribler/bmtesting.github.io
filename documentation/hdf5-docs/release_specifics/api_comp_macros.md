@@ -45,7 +45,8 @@ To determine the mapping for a given API compatibility macro in a given applicat
 What compatibility macro configuration option was used to build the HDF5 library? We refer to this selection as the library mapping.
 
 Was a compatibility macro global compile-time option specified when the application was built? We refer to this (optional) selection as the application mapping. If an application mapping exists, it overrides the library mapping. (See adjacent notes.)
-                                                                                                Were any compatibility macro function-level compile-time options specified when the application was built? We refer to these (optional) selections as function mappings. If function mappings exist, they override library and application mappings for the relevant API compatibility macros. (See adjacent notes.)
+
+Were any compatibility macro function-level compile-time options specified when the application was built? We refer to these (optional) selections as function mappings. If function mappings exist, they override library and application mappings for the relevant API compatibility macros. (See adjacent notes.)
 
 Notes: An application mapping can map APIs to the same version or to a version older than the configured library mapping. When the application attempts to map APIs to a newer version of the API than the library was configured with, it will fail to "upgrade" the mapping (and may fail silently).
 When it is necessary to "upgrade" the macro mappings from those set in the library mapping, it must be done at the per-function level, using the function-level mappings. As long as one does not try to map a function to a version that was compiled out in the library mapping, individual functions can be upgraded or downgraded freely.
@@ -79,7 +80,8 @@ Refer to the file libhdf5.settings in the directory where the HDF5 library is in
 When an application using HDF5 APIs is built and linked with the HDF5 library, compile-time options to h5cc can be used to control the API compatibility macro mapping behavior exhibited by the application. The application mapping overrides the behavior specified by the library mapping, and can be overridden on a function-by-function basis by the function mappings.
 
 If the HDF5 library was configured with the --disable-deprecated-symbols flag, then the deprecated functions will not be available, regardless of the application mapping options.
-                                                                                                Table 2:  Application Mapping Options
+
+Table 2:  Application Mapping Options
 
 | h5cc option | Macros map to release<br>(versioned function; H5Lvisit shown) | Deprecated functions available?<br>(H5Lvisit1) |
 | -------------- | ------------------------------------------------------------- | ---------------------------------------------- |
@@ -98,151 +100,52 @@ Function mappings are specified when the application is built. These mappings ca
 
 If the HDF5 library was configured with the --disable-deprecated-symbols flag, or -DH5\_NO\_DEPRECATED\_SYMBOLS is used to compile the application, then the deprecated functions will not be available, regardless of the function mapping options.
 
-For every function with multiple available versions, a compile-time version flag can be defined to selectively map the function macro to the desired versioned function. The function mapping consists of the function name followed by "\s" which is mapped by number to a specific function or struct:
+For every function with multiple available versions, a compile-time version flag can be defined to selectively map the function macro to the desired versioned function. The function mapping consists of the function name followed by "\_vers" which is mapped by number to a specific function or struct:
 
 | Macro | Function Mapping | Mapped to function or struct |
 | ----- | --------------------- | -------------------------- |
-| H5xxx |  H5xxxs=1  |  H5xxx1 |
-|       |  H5xxxs=2  |  H5xxx2 |
+| H5xxx |  H5xxx\_vers=1  |  H5xxx1 |
+|       |  H5xxx\_vers=2  |  H5xxx2 |
 
-For example, in version 1.10 the H5Rreference macro can be mapped to either H5Rreference1 or H5Rreference2. When used, the value of the H5Rreferences compile-time version flag determines which function will be called:
+For example, in version 1.10 the H5Rreference macro can be mapped to either H5Rreference1 or H5Rreference2. When used, the value of the H5Rreference\_vers compile-time version flag determines which function will be called:
 
-* When H5Rreferences is set to 1, the macro H5Rreference will be mapped to H5Rreference1.
-     h5cc ... -DH5Rreferences=1 ...
-
-
-* When H5Rdereferences is set to 2, the macro H5Rdereference will be mapped to H5Rdereference2.
-     h5cc ... -DH5Rreferences=2 ...
+* When H5Rreference\_vers is set to 1, the macro H5Rreference will be mapped to H5Rreference1.
+     h5cc ... -DH5Rreference\_vers=1 ...
 
 
-* When H5Rreferences is not set, the macro H5Rreference will be mapped to either H5Rreference1 or H5Rreference2, based on the application mapping, if one was specified, or on the library mapping.
+* When H5Rdereference\_vers is set to 2, the macro H5Rdereference will be mapped to H5Rdereference2.
+     h5cc ... -DH5Rreference\_vers=2 ...
+
+
+* When H5Rreference\_vers is not set, the macro H5Rreference will be mapped to either H5Rreference1 or H5Rreference2, based on the application mapping, if one was specified, or on the library mapping.
      h5cc ...
 
 ~~~
 Please be aware that some function mappings use mapped structures, as well.  If compiling an application with a function mapping that uses a mapped structure, you must include each function and mapped structure plus EVERY function that uses the mapped structure, whether or not that function is used in the application. In 1.12, mappings of structures are used by the H5L and H5O function mappings.
 
-For example, the application h5ex\_g\_iterate.c (found on the Examples by API page under "Groups") only calls H5Lvisit , H5Ovisit , and H5Oget\_info\_by\_name. <br>To compile this application with 1.10 APIs in 1.12 with the function specific mappings, then not only must H5Lvisits, H5Ovisit\_vers, and H5Oget\_info\_by\_name\_vers be specified on the command line, but the mapped structures and every function that uses the mapped structures must be included, as well. <br> The full compile line is shown below:
+For example, the application h5ex\_g\_iterate.c (found on the Examples by API page under "Groups") only calls H5Lvisit , H5Ovisit , and H5Oget\_info\_by\_name. <br>To compile this application with 1.10 APIs in 1.12 with the function specific mappings, then not only must H5Lvisit\_vers, H5Ovisit\_vers, and H5Oget\_info\_by\_name\_vers be specified on the command line, but the mapped structures and every function that uses the mapped structures must be included, as well. <br> The full compile line is shown below:
                                                                                                 
-h5cc -DH5Lvisits=1 -DH5Ovisit\_vers=1 -DH5Oget\_info\_by\_name\_vers=1 -DH5Lvisit\_by\_name\_vers=1 -DH5Literate\_vers=1 -DH5Literate\_by\_name\_vers=1 -DH5O\_info\_t\_vers=1 -DH5L\_info\_t\_vers=1 -DH5L\_iterate\_t\_vers=1 -DH5Lget\_info\_by\_idx\_vers=1 -DH5Lget\_info\_vers=1 h5ex\_g\_visit.c
+h5cc -DH5Lvisit\_vers=1 -DH5Ovisit\_vers=1 -DH5Oget\_info\_by\_name\_vers=1 -DH5Lvisit\_by\_name\_vers=1 -DH5Literate\_vers=1 -DH5Literate\_by\_name\_vers=1 -DH5O\_info\_t\_vers=1 -DH5L\_info\_t\_vers=1 -DH5L\_iterate\_t\_vers=1 -DH5Lget\_info\_by\_idx\_vers=1 -DH5Lget\_info\_vers=1 h5ex\_g\_visit.c
 ~~~
 
 #### Function Mapping Options in Releases 1.12.x
 
-|       Macro         | Default function used<br>(if no macro specified) | Introduced in   | h5cc version flag and value | Mapped to function or struct |
-| ------------------- | ----------------------------- | ------------ | ------------------------------------- | ------------------------------------ |
-| H5L\_GET\_INFO
-H5L\_GET\_INFO2
+|   Macro<br>H5xxx    | Default function used if no macro specified)<br> Function/struct mapping: H5xxx\_vers=N | Function used if specifying 1.10<br>Function/struct mapping: H5xxx\_vers=1 |
+| ------------------- | ------------------------------------------------ | --------------------------- |
+| H5L\_GET\_INFO      | H5L\_GET\_INFO2<br>* Function mapping: H5Lget\_info\_vers=2<br>* Struct mapping: H5L\_info\_vers=2 | H5L\_GET\_INFO1<br>* Function mapping H5Lget\_info\_vers=1<br>* Struct mapping: H5L\_info\_t\_vers=1 |
+| H5L\_GET\_INFO\_BY\_IDX | H5L\_GET\_INFO\_BY\_IDX2<br> * Function mapping: H5Lget\_info\_by\_idx\_vers=2<br> * Struct mapping: H5L\_info\_t\_vers=2 | H5L\_GET\_INFO\_BY\_IDX1<br> * Function mapping: H5Lget\_info\_by\_idx\_vers=1<br> * Struct mapping: H5L\_info\_t\_vers=1 |
+| H5L\_ITERATE | H5L\_ITERATE2<br> * Function mapping: H5Literate\_vers=2<br> * Struct mapping: H5L\_iterate\_t\_vers=2<br> | H5L\_ITERATE1<br> * Function mapping: H5Literate\_vers=1<br> * Struct mapping: H5L\_iterate\_t\_vers=1<br> |
+| H5L\_ITERATE\_BY\_NAME | H5L\_ITERATE\_BY\_NAME2<br> * Function mapping: H5Literate\_by\_name\_vers=2<br> * Struct mapping: H5L\_iterate\_t\_vers=2 | H5L\_ITERATE\_BY\_NAME1<br> * Function mapping: H5Literate\_by\_name\_vers=1<br> * Struct mapping: H5L\_iterate\_t\_vers=1 |
+| H5L\_VISIT | H5L\_VISIT2<br> * Function mapping: H5Lvisit\_vers=2<br> * Struct mapping: H5L\_iterate\_t\_vers=2 | H5L\_VISIT1<br> * Function mapping: H5Lvisit\_vers=1<br> * Struct mapping: H5L\_iterate\_t\_vers=1<br>  |
+| H5L\_VISIT\_BY\_NAME | H5L\_VISIT\_BY\_NAME2<br> * Function mapping: H5Lvisit\_by\_name\_vers=2<br> * Struct mapping: H5L\_iterate\_t\_vers=2 | H5L\_VISIT\_BY\_NAME1<br> * Function mapping: H5Lvisit\_by\_name\_vers=1<br> * Struct mapping: H5L\_iterate\_t\_vers=1 |
+| H5O\_GET\_INFO | H5O\_GET\_INFO3<br> * Function mapping: H5Oget\_info\_vers=3<br> * Struct mapping: H5O\_info\_t\_vers=2 | H5O\_GET\_INFO1<br> * Function mapping: H5Oget\_info\_vers=1<br> * Struct mapping: H5O\_info\_t\_vers=1 |
+| H5O\_GET\_INFO\_BY\_IDX | H5O\_GET\_INFO\_BY\_IDX3<br> * Function mapping: H5Oget\_info\_by\_idx\_vers=3<br> * Struct mapping: H5O\_info\_t\_vers=2 | H5O\_GET\_INFO\_BY\_IDX1<br> * Function mapping: H5Oget\_info\_by\_idx\_vers=1<br> * Struct mapping: H5O\_info\_t\_vers=1 |
+| H5O\_GET\_INFO\_BY\_NAME | H5O\_GET\_INFO\_BY\_NAME3<br> * Function mapping: H5O\_get\_info\_by\_name\_vers=3<br> * Struct mapping: H5O\_info\_t\_vers=2 | H5O\_GET\_INFO\_BY\_NAME1<br> * Function mapping: H5O\_get\_info\_by\_name\_vers=1<br> * Struct mapping: H5O\_info\_t\_vers=1 |
+| H5O\_VISIT | H5O\_VISIT3<br> * Function mapping: H5Ovisit\_vers=3<br> * Struct mapping: H5O\_iterate\_t\_vers=2 | H5O\_VISIT1<br> * Function mapping: H5Ovisit\_vers=1<br> * Struct mapping: H5O\_iterate\_t\_vers=1 |
+| H5O\_VISIT\_BY\_NAME | H5O\_VISIT\_BY\_NAME3<br> * Function mapping: H5Ovisit\_by\_name\_vers=3<br> * Struct mapping: H5O\_iterate\_t\_vers=2 | H5O\_VISIT\_BY\_NAME1<br> * Function mapping: H5Ovisit\_by\_name\_vers=1<br> * Struct mapping: H5O\_iterate\_t\_vers=1 |
+| H5P\_ENCODE | H5P\_ENCODE2<br> * Function mapping: H5Pencode\_vers=2 | H5P\_ENCODE1<br> * Function mapping: H5Pencode\_vers=1 |
+| H5S\_ENCODE | H5S\_ENCODE2<br> * Function mapping: H5Sencode\_vers=2 | H5S\_ENCODE1<br> * Function mapping: H5Sencode\_vers=1 |
 
-Function mapping: H5Lget\_infos=2
-Struct mapping: H5L\_info\_ts=2
-H5L\_GET\_INFO1
-
-Function mapping H5Lget\_infos=1
-Struct mapping: H5L\_info\_ts=1
-| H5L\_GET\_INFO\_BY\_IDX
-H5L\_GET\_INFO\_BY\_IDX2
-
-Function mapping: H5Lget\_info\_by\_idxs=2
-Struct mapping: H5L\_info\_ts=2
-H5L\_GET\_INFO\_BY\_IDX1
-
-Function mapping: H5Lget\_info\_by\_idxs=1
-Struct mapping: H5L\_info\_ts=1
-| H5L\_ITERATE
-H5L\_ITERATE2
-
-Function mapping: H5Literates=2
-Struct mapping: H5L\_iterate\_ts=2
-H5L\_ITERATE1
-
-Function mapping: H5Literates=1
-Struct mapping: H5L\_iterate\_ts=1
-| H5L\_ITERATE\_BY\_NAME
-H5L\_ITERATE\_BY\_NAME2
-
-Function mapping: H5Literate\_by\_names=2
-Struct mapping: H5L\_iterate\_ts=2
-H5L\_ITERATE\_BY\_NAME1
-
-Function mapping: H5Literate\_by\_names=1
-Struct mapping: H5L\_iterate\_ts=1
-| H5L\_VISIT
-H5L\_VISIT2
-
-Function mapping: H5Lvisits=2
-Struct mapping: H5L\_iterate\_ts=2
-H5L\_VISIT1
-
-Function mapping: H5Lvisits=1
-Struct mapping: H5L\_iterate\_ts=1
-| H5L\_VISIT\_BY\_NAME
-H5L\_VISIT\_BY\_NAME2
-
-Function mapping: H5Lvisit\_by\_names=2
-Struct mapping: H5L\_iterate\_ts=2
-H5L\_VISIT\_BY\_NAME1
-
-Function mapping: H5Lvisit\_by\_names=1
-Struct mapping: H5L\_iterate\_ts=1
-| H5O\_GET\_INFO
-H5O\_GET\_INFO3
-
-Function mapping: H5Oget\_infos=3
-Struct mapping: H5O\_info\_ts=2
-H5O\_GET\_INFO1
-
-Function mapping: H5Oget\_infos=1
-Struct mapping: H5O\_info\_ts=1
-| H5O\_GET\_INFO\_BY\_IDX
-H5O\_GET\_INFO\_BY\_IDX3
-
-Function mapping: H5Oget\_info\_by\_idxs=3
-Struct mapping: H5O\_info\_ts=2
-H5O\_GET\_INFO\_BY\_IDX1
-
-Function mapping: H5Oget\_info\_by\_idxs=1
-Struct mapping: H5O\_info\_ts=1
-| H5O\_GET\_INFO\_BY\_NAME
-H5O\_GET\_INFO\_BY\_NAME3
-
-Function mapping: H5O\_get\_info\_by\_names=3
-Struct mapping: H5O\_info\_ts=2
-H5O\_GET\_INFO\_BY\_NAME1
-
-Function mapping: H5O\_get\_info\_by\_names=1
-Struct mapping: H5O\_info\_ts=1
-| H5O\_VISIT
-H5O\_VISIT3
-
-Function mapping: H5Ovisits=3
-Struct mapping: H5O\_iterate\_ts=2
-H5O\_VISIT1
-
-Function mapping: H5Ovisits=1
-Struct mapping: H5O\_iterate\_ts=1
-| H5O\_VISIT\_BY\_NAME
-H5O\_VISIT\_BY\_NAME3
-
-Function mapping: H5Ovisit\_by\_names=3
-Struct mapping: H5O\_iterate\_ts=2
-H5O\_VISIT\_BY\_NAME1
-
-Function mapping: H5Ovisit\_by\_names=1
-Struct mapping: H5O\_iterate\_ts=1
-| H5P\_ENCODE
-H5P\_ENCODE2
-
-Function mapping: H5Pencodes=2
-H5P\_ENCODE1
-
-Function mapping: H5Pencodes=1
-| H5S\_ENCODE
-H5S\_ENCODE2
-
-Function mapping: H5Sencodes=2
-H5S\_ENCODE1
-
-Function mapping: H5Sencodes=1
 
 #### Function Mapping Options in Releases 1.10.x
 
@@ -255,20 +158,20 @@ In 1.12 there is a version 3 of all 5 functions which uses version 2 H5Oinfo2\_t
 
 |       Macro         | Default function used<br>(if no macro specified) | Introduced in   | h5cc version flag and value | Mapped to function or struct |
 | ------------------- | ----------------------------- | ------------ | ------------------------------------- | ------------------------------------ |
-| H5Rdereference | H5Rdereference2 | 1.10.0 | -DH5Rdereferences=1 | H5Rdereference1 |
-|                |                 |             | -DH5Rdereferences=2 | H5Rdereference2 |
-| H5Fget\_info   | H5Fget\_info2   | 1.10.0 | -DH5Fget\_infos=1   | H5Fget\_info1 with struct H5F\_info1\_t |
-|                |                 |             | -DH5Fget\_infos=2    H5Fget\_info2 with struct H5F\_info2\_t |
-| H5Oget\_info   | H5Oget\_info1   | 1.10.3 | -DH5Oget\_infos=1    H5Oget\_info1 |
-|                |                 |             | -DH5Oget\_infos=2    H5Oget\_info2 |
-| H5Oget\_info\_by\_idx | H5Oget\_info\_by\_idx1 | 1.10.3 | -DH5Oget\_info\_by\_idxs=1 | H5Oget\_info\_by\_idx1 |
-|                |                 |             | -DH5Oget\_info\_by\_idxs=2 H5Oget\_info\_by\_idx2 |
-| H5Oget\_info\_by\_name | H5Oget\_info\_by\_name1 | 1.10.3 | -DH5Oget\_info\_by\_names=1 | H5Oget\_info\_by\_name1 |
-|                |                 |             | -DH5Oget\_info\_by\_names=2    H5Oget\_info\_by\_name2 |
-| H5Ovisit       | H5Ovisit1       | 1.10.3 | -DH5Ovisits=1 |   H5Ovisit1 |
-|                |                 |             | -DH5Ovisits=2 | H5Ovisit2 |
-| H5Ovisit\_by\_name | H5Ovisit\_by\_name1 | 1.10.3 | -DH5Ovisit\_by\_names=1 | H5Ovisit\_by\_name1 |
-|                |                 |             | -DH5Ovisit\_by\_names=2    H5Ovisit\_by\_name2 |
+| H5Rdereference | H5Rdereference2 | 1.10.0 | -DH5Rdereference\_vers=1 | H5Rdereference1 |
+|                |                 |             | -DH5Rdereference\_vers=2 | H5Rdereference2 |
+| H5Fget\_info   | H5Fget\_info2   | 1.10.0 | -DH5Fget\_info\_vers=1   | H5Fget\_info1 with struct H5F\_info1\_t |
+|                |                 |             | -DH5Fget\_info\_vers=2    H5Fget\_info2 with struct H5F\_info2\_t |
+| H5Oget\_info   | H5Oget\_info1   | 1.10.3 | -DH5Oget\_info\_vers=1    H5Oget\_info1 |
+|                |                 |             | -DH5Oget\_info\_vers=2    H5Oget\_info2 |
+| H5Oget\_info\_by\_idx | H5Oget\_info\_by\_idx1 | 1.10.3 | -DH5Oget\_info\_by\_idx\_vers=1 | H5Oget\_info\_by\_idx1 |
+|                |                 |             | -DH5Oget\_info\_by\_idx\_vers=2 H5Oget\_info\_by\_idx2 |
+| H5Oget\_info\_by\_name | H5Oget\_info\_by\_name1 | 1.10.3 | -DH5Oget\_info\_by\_name\_vers=1 | H5Oget\_info\_by\_name1 |
+|                |                 |             | -DH5Oget\_info\_by\_name\_vers=2    H5Oget\_info\_by\_name2 |
+| H5Ovisit       | H5Ovisit1       | 1.10.3 | -DH5Ovisit\_vers=1 |   H5Ovisit1 |
+|                |                 |             | -DH5Ovisit\_vers=2 | H5Ovisit2 |
+| H5Ovisit\_by\_name | H5Ovisit\_by\_name1 | 1.10.3 | -DH5Ovisit\_by\_name\_vers=1 | H5Ovisit\_by\_name1 |
+|                |                 |             | -DH5Ovisit\_by\_name\_vers=2    H5Ovisit\_by\_name2 |
 
 #### Function Mapping Options in Releases 1.8.x
 
@@ -279,52 +182,52 @@ At release 1.8.0, the API compatibility macros, function mapping compile-time ve
 
 | Macro  |  h5cc version flag and value  |  Mapped to function or struct |
 | ------ | ----------------------------- | ----------------------------- |
-| H5Acreate | -DH5Acreates=1   | H5Acreate1 |
-|        | -DH5Acreates=2  | H5Acreate2 |
-| H5Aiterate | -DH5Aiterates=1 |   H5Aiterate1 <br>with struct H5A\_operator1\_t |
-|            | -DH5Aiterates=2 |   H5Aiterate2 <br>with struct H5A\_operator2\_t |
-| H5Dcreate  | -DH5Dcreates=1 |   H5Dcreate1 |
-|            | -DH5Dcreates=2 |   H5Dcreate2 |
-| H5Dopen    | -DH5Dopens=1 |   H5Dopen1 |
-|            | -DH5Dopens=2 |   H5Dopen2 |
-| H5Eclear   | -DH5Eclears=1 |   H5Eclear1 |
-|            | -DH5Eclears=2 |   H5Eclear2 |
-| H5Eprint   | -DH5Eprints=1 |   H5Eprint1 |
-|            | -DH5Eprints=2 |   H5Eprint2 |
-| H5Epush    |-DH5Epushs=1 |   H5Epush1 |
-|            | -DH5Epushs=2 |   H5Epush2 |
-| H5Eset\_auto |   -DH5Eset\_autos=1 |   H5Eset\_auto1 |
-|            | -DH5Eset\_autos=2 |   H5Eset\_auto2 |
-| H5Eget\_auto |   -DH5Eget\_autos=1 |   H5Eget\_auto1 |
-|            | -DH5Eget\_autos=2 |   H5Eget\_auto2 |
-| H5E\_auto\_t<br>Struct for H5Eset\_auto<br>and H5Eget\_auto |   -DH5E\_auto\_ts=1 |  H5E\_auto1\_t |
-|            | -DH5E\_auto\_ts=2 |   H5E\_auto2\_t |
-| H5Ewalk    | -DH5Ewalks=1 |    H5Ewalk1 with callback H5E\_walk1\_t and struct H5E\_error1\_t |
-|            | -DH5Ewalks=2 |   H5Ewalk2 with callback H5E\_walk2\_t and struct H5E\_error2\_t |
-| H5Gcreate  | -DH5Gcreates=1 |   H5Gcreate1 |
-|            | -DH5Gcreates=2    H5Gcreate2 |
-| H5Gopen    | -DH5Gopens=1 |   H5Gopen1 |
-|            | -DH5Gopens=2 |   H5Gopen2 |
-| H5Pget\_filter |   -DH5Pget\_filters=1 |   H5Pget\_filter1 |
-|            | -DH5Pget\_filters=2 |   H5Pget\_filter2 |
-| H5Pget\_filter\_by\_id |   -DH5Pget\_filter\_by\_ids=1 |   H5Pget\_filter\_by\_id1 |
-|            | -DH5Pget\_filter\_by\_ids=2 |   H5Pget\_filter\_by\_id2 |
-| H5Pinsert  | -DH5Pinserts=1 |   H5Pinsert1 |
-|            | -DH5Pinserts=2 |   H5Pinsert2 |
-| H5Pregister   | -DH5Pregisters=1 |   H5Pregister1 |
-|            | -DH5Pregisters=2 |   H5Pregister2 |
-| H5Rget\_obj\_type   | -DH5Rget\_obj\_typevers=1 |   H5Rget\_obj\_type1 |
-|            | -DH5Rget\_obj\_types=2 |   H5Rget\_obj\_type2 |
-| H5Tarray\_create   | -DH5Tarray\_creates=1 |   H5Tarray\_create1 |
-|            | -DH5Tarray\_creates=2 |   H5Tarray\_create2 |
-| H5Tcommit  | -DH5Tcommits=1 |   H5Tcommit1 |
-|            | -DH5Tcommits=2 |   H5Tcommit2 |
-| H5Tget\_array\_dims   | -DH5Tget\_array\_dimss=1 |   H5Tget\_array\_dims1 |
-|            | -DH5Tget\_array\_dimss=2 |   H5Tget\_array\_dims2 |
-| H5Topen    | -DH5Topens=1  |  H5Topen1 |
-|            | -DH5Topens=2  |  H5Topen2 |
-| H5Z\_class\_t Struct for H5Zregister |  -DH5Z\_class\_ts=1 |   H5Z\_class1\_t |
-|            | -DH5Z\_class\_ts=2 |   H5Z\_class2\_t |
+| H5Acreate | -DH5Acreate\_vers=1   | H5Acreate1 |
+|        | -DH5Acreate\_vers=2  | H5Acreate2 |
+| H5Aiterate | -DH5Aiterate\_vers=1 |   H5Aiterate1 <br>with struct H5A\_operator1\_t |
+|            | -DH5Aiterate\_vers=2 |   H5Aiterate2 <br>with struct H5A\_operator2\_t |
+| H5Dcreate  | -DH5Dcreate\_vers=1 |   H5Dcreate1 |
+|            | -DH5Dcreate\_vers=2 |   H5Dcreate2 |
+| H5Dopen    | -DH5Dopen\_vers=1 |   H5Dopen1 |
+|            | -DH5Dopen\_vers=2 |   H5Dopen2 |
+| H5Eclear   | -DH5Eclear\_vers=1 |   H5Eclear1 |
+|            | -DH5Eclear\_vers=2 |   H5Eclear2 |
+| H5Eprint   | -DH5Eprint\_vers=1 |   H5Eprint1 |
+|            | -DH5Eprint\_vers=2 |   H5Eprint2 |
+| H5Epush    |-DH5Epush\_vers=1 |   H5Epush1 |
+|            | -DH5Epush\_vers=2 |   H5Epush2 |
+| H5Eset\_auto |   -DH5Eset\_auto\_vers=1 |   H5Eset\_auto1 |
+|            | -DH5Eset\_auto\_vers=2 |   H5Eset\_auto2 |
+| H5Eget\_auto |   -DH5Eget\_auto\_vers=1 |   H5Eget\_auto1 |
+|            | -DH5Eget\_auto\_vers=2 |   H5Eget\_auto2 |
+| H5E\_auto\_t<br>Struct for H5Eset\_auto<br>and H5Eget\_auto |   -DH5E\_auto\_t\_vers=1 |  H5E\_auto1\_t |
+|            | -DH5E\_auto\_t\_vers=2 |   H5E\_auto2\_t |
+| H5Ewalk    | -DH5Ewalk\_vers=1 |    H5Ewalk1 with callback H5E\_walk1\_t and struct H5E\_error1\_t |
+|            | -DH5Ewalk\_vers=2 |   H5Ewalk2 with callback H5E\_walk2\_t and struct H5E\_error2\_t |
+| H5Gcreate  | -DH5Gcreate\_vers=1 |   H5Gcreate1 |
+|            | -DH5Gcreate\_vers=2    H5Gcreate2 |
+| H5Gopen    | -DH5Gopen\_vers=1 |   H5Gopen1 |
+|            | -DH5Gopen\_vers=2 |   H5Gopen2 |
+| H5Pget\_filter |   -DH5Pget\_filter\_vers=1 |   H5Pget\_filter1 |
+|            | -DH5Pget\_filter\_vers=2 |   H5Pget\_filter2 |
+| H5Pget\_filter\_by\_id |   -DH5Pget\_filter\_by\_id\_vers=1 |   H5Pget\_filter\_by\_id1 |
+|            | -DH5Pget\_filter\_by\_id\_vers=2 |   H5Pget\_filter\_by\_id2 |
+| H5Pinsert  | -DH5Pinsert\_vers=1 |   H5Pinsert1 |
+|            | -DH5Pinsert\_vers=2 |   H5Pinsert2 |
+| H5Pregister   | -DH5Pregister\_vers=1 |   H5Pregister1 |
+|            | -DH5Pregister\_vers=2 |   H5Pregister2 |
+| H5Rget\_obj\_type   | -DH5Rget\_obj\_typever\_vers=1 |   H5Rget\_obj\_type1 |
+|            | -DH5Rget\_obj\_type\_vers=2 |   H5Rget\_obj\_type2 |
+| H5Tarray\_create   | -DH5Tarray\_create\_vers=1 |   H5Tarray\_create1 |
+|            | -DH5Tarray\_create\_vers=2 |   H5Tarray\_create2 |
+| H5Tcommit  | -DH5Tcommit\_vers=1 |   H5Tcommit1 |
+|            | -DH5Tcommit\_vers=2 |   H5Tcommit2 |
+| H5Tget\_array\_dims   | -DH5Tget\_array\_dims\_vers=1 |   H5Tget\_array\_dims1 |
+|            | -DH5Tget\_array\_dims\_vers=2 |   H5Tget\_array\_dims2 |
+| H5Topen    | -DH5Topen\_vers=1  |  H5Topen1 |
+|            | -DH5Topen\_vers=2  |  H5Topen2 |
+| H5Z\_class\_t Struct for H5Zregister |  -DH5Z\_class\_t\_vers=1 |   H5Z\_class1\_t |
+|            | -DH5Z\_class\_t\_vers=2 |   H5Z\_class2\_t |
 
 _Further Information_
 
@@ -332,13 +235,13 @@ See the [HDF5 Reference Manual]()  for complete descriptions of all API compatib
 
 It is possible to specify multiple function mappings for a single application build:
 
-h5cc ... -DH5Rdereferences=1 -DH5Fget\_info\_vers=2 ...As a result of the function and struct mappings in this compile example, all occurrences of the macro H5Rdereference will be mapped to H5Rdereference1 and all occurrences of the macro H5Fget\_info will be mapped to H5Fget\_info2 for the application being built.
+h5cc ... -DH5Rdereference\_vers=1 -DH5Fget\_info\_vers=2 ...As a result of the function and struct mappings in this compile example, all occurrences of the macro H5Rdereference will be mapped to H5Rdereference1 and all occurrences of the macro H5Fget\_info will be mapped to H5Fget\_info2 for the application being built.
 
 The function and struct mappings can be used to guarantee that a given API compatibility macro will be mapped to the desired underlying function or struct version regardless of the library or application mappings. In cases where an application may benefit greatly from features offered by some of the later APIs, or must continue to use some earlier API versions for compatibility reasons, this fine-grained control may be very important.
 
-As noted earlier, the function mappings can only reference versioned functions that are included in the HDF5 library, as determined by the configure flag used to build the library. For example, if the HDF5 library being linked with the application was built with the --disable-deprecated-symbols option, version 1 of the underlying functions would not be available, and the example above that defined H5Rdereferences=1 would not be supported.
+As noted earlier, the function mappings can only reference versioned functions that are included in the HDF5 library, as determined by the configure flag used to build the library. For example, if the HDF5 library being linked with the application was built with the --disable-deprecated-symbols option, version 1 of the underlying functions would not be available, and the example above that defined H5Rdereference\_vers=1 would not be supported.
 
-The function mappings do not negate any available functions. If H5Rdereference1 is available in the installed version of the HDF5 library, and the application was not compiled with the -DH5\_NO\_DEPRECATED\_SYMBOLS flag, the function H5Rdereference1 will remain available to the application through its versioned name. Similarly, H5Rdereference2 will remain available to the application as H5Rdereference2. The function mapping version flag H5Rdereferences only controls the mapping of the API compatibility macro H5Rdereference to one of the two available functions.
+The function mappings do not negate any available functions. If H5Rdereference1 is available in the installed version of the HDF5 library, and the application was not compiled with the -DH5\_NO\_DEPRECATED\_SYMBOLS flag, the function H5Rdereference1 will remain available to the application through its versioned name. Similarly, H5Rdereference2 will remain available to the application as H5Rdereference2. The function mapping version flag H5Rdereference\_vers only controls the mapping of the API compatibility macro H5Rdereference to one of the two available functions.
 
 This can be especially useful in any case where the programmer does not have direct control over global macro definitions, such as when writing code meant to be copied to multiple applications or when writing code in a header file.
 
@@ -355,7 +258,7 @@ A common scenario where the API compatibility macros may be helpful is the migra
 
 2. Compile the application with the -DH5\_USE\_NN\_API application mapping option if it was written for use with an earlier HDF5 library.  Because the application mapping overrides the library mapping, the macros will all be mapped to the earlier versions of the functions.
 
-3. Remap one API compatibility macro at a time (or sets of macros), to use the current HDF5 versions. At each stage, use the function mappings to map the macros being worked on to the current versions. For example, use the -DH5Rdereferences=2 version flag setting to remap the H5Rdereference macro to H5Rdereference2, the 1.10.x version. <br>
+3. Remap one API compatibility macro at a time (or sets of macros), to use the current HDF5 versions. At each stage, use the function mappings to map the macros being worked on to the current versions. For example, use the -DH5Rdereference\_vers=2 version flag setting to remap the H5Rdereference macro to H5Rdereference2, the 1.10.x version. <br>
 During this step, the application code will need to be modified to change the calling parameters used with the API compatibility macros to match the number and type of the 1.10.x versioned functions. The macro name, for example H5Rdereference, should continue to be used in the code, to allow for possible re-mappings to later versioned functions in a future release.
 
 4. After all macros have been migrated to the latest versioned functions in step 3, compile the application without any application or function mappings. This build uses the library mappings set in step 1, and maps API compatibility macros to the latest versions.
