@@ -537,7 +537,7 @@ The function H5Pset_core_write_tracking has been modified to enforce the limitat
 H5Pset_core_write_tracking
 The following performance optimization has been implemented in the Parallel HDF5 library:
 
-The algoritm for writing chunk fill values for new datasets has been optimized to write out all chunk fill values collectively in a single MPI-IO call. This was previously done independently by rank 0 (zero) one block at a time. This optimization should produce a significant performance improvement when creating chunked datasets in parallel, most notably when chunk dimensions are relatively small. This optimization will be evident in use of the following function:
+The algorithm for writing chunk fill values for new datasets has been optimized to write out all chunk fill values collectively in a single MPI-IO call. This was previously done independently by rank 0 (zero) one block at a time. This optimization should produce a significant performance improvement when creating chunked datasets in parallel, most notably when chunk dimensions are relatively small. This optimization will be evident in use of the following function:
 
 H5Dcreate
 In the high-level library C Interface
@@ -1221,7 +1221,7 @@ As of this release, the default driver on Windows systems is changed to SEC2; it
 If you wish to use the Windows driver in an application, it remains fully available. In such cases, the driver must be set explicitly with a H5Pset_fapl_windows call.
 
 Command-line Utilities with Changed Behavior
-h5jam now checks the file that is to be inserted into the user block and does not allow the insertion if it is an HDF5 file. This is necessary because an HDF5 file in the user block will make the original HDF5 portion of the file inaccessable.
+h5jam now checks the file that is to be inserted into the user block and does not allow the insertion if it is an HDF5 file. This is necessary because an HDF5 file in the user block will make the original HDF5 portion of the file inaccessible.
 
 h5diff with the --delta option reports two NaN values as equal regardless of the type of NaN (as described in the reference manual entry).
 
@@ -1478,7 +1478,7 @@ These values previously began with the string 'H5L_LINK_'.
 CMake
 This release includes an adaptation enabling HDF5 builds with CMake. This early-stage adaptation is distributed to provide an opportunity for early access and experimentation; the CMake-related files should not be viewed as final and may change before the next release.
 
-While the initial development effort has been focussed on Microsoft Windows platforms, the HDF5 Library has been successfully built with CMake on Linux and Mac OS X.
+While the initial development effort has been focused on Microsoft Windows platforms, the HDF5 Library has been successfully built with CMake on Linux and Mac OS X.
 
 See the file CMake.txt in the distributed HDF5 source code (hdf5/release_docs/CMake.txt) for details.
 
@@ -2030,7 +2030,7 @@ Tools with changed syntax:
 
 The command-line syntax of h5repack was changed in Release 1.8.0 to the following:
      h5repack [OPTIONS] in_file out_file
-Since this would be imcompatible with existing user scripts, the original syntax has be re-enabled in this release:
+Since this would be incompatible with existing user scripts, the original syntax has be re-enabled in this release:
      h5repack -i in_file -o out_file [OPTIONS]
 
 h5repack now understands either syntax.
@@ -2079,7 +2079,7 @@ The patch that was required for Cygwin with HDF5 Release 1.8.0 has been rolled i
 
 HDF5 Release 1.8.0 is a major release with several new features and a variety of bugfixes, optimizations, and portability enhancements.
 
-See the document [Whats New in HDF5 1.8.0](Whats New in HDF5 1.8.0) for a high-level overview of the new functionality in this release. The following pages assume a familiarity with that overview.
+See the document [What's New in HDF5 1.8.0](What's New in HDF5 1.8.0) for a high-level overview of the new functionality in this release. The following pages assume a familiarity with that overview.
 
 This section provides details of the API-level changes that have been made in the transition to HDF5 Release 1.8.0 from the Release 1.6.x series.
 

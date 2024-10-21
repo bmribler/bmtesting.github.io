@@ -35,4 +35,4 @@ The way optional operations are handled in the virtual object layer (VOL) change
 The virtual file layer has changed in HDF5 1.14.0. Existing virtual file drivers (VFDs) will have to be updated to work with this version of the library.
 
 ## Virtual Object Layer (VOL) Changes
-The virtual object layer has changed significantly in HDF5 1.14.0 and the 1.12 VOL API is now considered deprecated and unsupported. Existing virtual object layer connectors shoul be updated to work with this version of the library.
+The virtual object layer has changed significantly in HDF5 1.14.0 and the 1.12 VOL API is now considered deprecated and unsupported. Existing virtual object layer connectors should be updated to work with this version of the library.

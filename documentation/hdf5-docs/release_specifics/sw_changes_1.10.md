@@ -18,7 +18,7 @@ Note that bug fixes and performance enhancements in the C library are automatica
 
 The following information is included below.
 
-* <a href="#compatiblity">Compatiblity and Performance Issues</a>
+* <a href="#compatibility">Compatibility and Performance Issues</a>
 * <a href="#9versus8">Release 1.10.9 versus 1.10.8]</a>
 * <a href="#8versus7">Release 1.10.8 versus 1.10.7</a>
 * <a href="#7versus6">Release 1.10.7 versus 1.10.6</a>
@@ -32,7 +32,7 @@ The following information is included below.
 
 See [API Compatibility Reports for 1.10]() for information regarding compatibility with previous releases.
 
-<h2 id="compatiblity">Compatiblity and Performance Issues</h2>
+<h2 id="compatibility">Compatibility and Performance Issues</h2>
 
 Not all HDF5-1.10 releases are compatible. Users should NOT be using 1.10 releases prior to HDF5-1.10.3. See the compatibility matrix below for details on compatibility between 1.10 releases:
 
@@ -529,7 +529,7 @@ hid\_t
 
 Changed from a 32-bit to a 64-bit value.
 
-hid\_t is the type is used for all HDF5 identifiers. This change, which is necessary to accomodate the capacities of modern computing systems, therefore affects all HDF5 applications. If an application has been using HDF5's hid\_t the type, recompilation will normally be sufficient to take advantage of HDF5 Release 1.10.0. If an application uses an integer type instead of HDF5's hid\_t type, those identifiers must be changed to a 64-bit type when the application is ported to the 1.10.x series.
+hid\_t is the type is used for all HDF5 identifiers. This change, which is necessary to accommodate the capacities of modern computing systems, therefore affects all HDF5 applications. If an application has been using HDF5's hid\_t the type, recompilation will normally be sufficient to take advantage of HDF5 Release 1.10.0. If an application uses an integer type instead of HDF5's hid\_t type, those identifiers must be changed to a 64-bit type when the application is ported to the 1.10.x series.
 
 New Features and Feature Sets
 Several new features are introduced in HDF5 Release 1.10.0.
@@ -998,7 +998,7 @@ The original function is renamed to H5Fget\_info1 and deprecated.
 
 A new version of the function, H5Fget\_info2, is introduced.
 
-The compatiblity macro H5Fget\_info is introduced.
+The compatibility macro H5Fget\_info is introduced.
 
 H5F\_info\_t
 
@@ -1008,7 +1008,7 @@ The original struct is renamed to H5F\_info1\_t and deprecated.
 
 A new version of the struct, H5F\_info2\_t, is introduced.
 
-The compatiblity macro H5F\_info\_t is introduced.
+The compatibility macro H5F\_info\_t is introduced.
 
 H5Rdereference
 
@@ -1016,7 +1016,7 @@ The original function is renamed to H5Rdereference1 and deprecated.
 
 A new version of the function, H5Rdereference2, is introduced.
 
-The compatiblity macro H5Rdereference is introduced.
+The compatibility macro H5Rdereference is introduced.
 
 ### Autotools Configuration and Large File Support
 Autotools configuration has been extensively reworked and autotool's handling of large file support has been overhauled in this release.

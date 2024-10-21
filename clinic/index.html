@@ -1089,7 +1089,7 @@ world
 hello
 finished at 12:05:23
 </pre></li>
-<li>Noticable speedup but not a panacea</li>
+<li>Noticeable speedup but not a panacea</li>
 </ul>
 <blockquote>
 <p>
@@ -1235,7 +1235,7 @@ can yield a good read performance.
 </p>
 </blockquote>
 <ul class="org-ul">
-<li>Intersting suggestions
+<li>Interesting suggestions
 <ul class="org-ul">
 <li>Elena suggested to first create all datasets with <code>H5D_ALLOC_TIME_LATE</code></li>
 <li>Mark suggested to <code>H5Pget_meta_block_size</code> to set aside sufficient
@@ -1993,7 +1993,7 @@ of files extracted/converted?  –Robert
 <dt>A</dt><dd>Currently, the code will skip entries &gt;64K, because the underlying
 <code>H5Dcreate</code> will fail. (The logic and code can be much improved.) It's better
 to first run <code>archive_checker_64k</code> and see if there are any size warnings.
-The <code>h5compactor</code> and <code>h5shredder</code> were sucessfully run on TAR archives with
+The <code>h5compactor</code> and <code>h5shredder</code> were successfully run on TAR archives with
 tens of millions of small images (&lt;64K).</dd>
 </dl>
 </div>
@@ -2850,7 +2850,7 @@ large-scale supercomputers.
 </p>
 <blockquote>
 <p>
-DIARITSup is a chain of various softwares following the concept of ”system of
+DIARITSup is a chain of various software following the concept of ”system of
 systems”. It interconnects hardware and software layers dedicated to in-situ
 monitoring of structures or critical components. It embeds data assimilation
 capabilities combined with specific Physical or Statistical models like
@@ -3048,7 +3048,7 @@ Total space: 1317996 bytes
 <li><a id="org37c37ac"></a>SWMR (old) and compression "issues" - take 2<br />
 <div class="outline-text-4" id="text-org37c37ac">
 <ul class="org-ul">
-<li>Free-space managment is disabled in the original SWMR implementation</li>
+<li>Free-space management is disabled in the original SWMR implementation</li>
 <li>Can lead to file bloat when compression is enabled &amp; overly aggressive
 flushing</li>
 <li><b><b>Question:</b></b> How does the new SWMR VFD implementation behave?
@@ -3709,7 +3709,7 @@ the chunky versions?
 <li>Watch this!</li>
 </ul></li>
 <li><p>
-How would you repesent something like this in HDF5? (Example from Jim's video)
+How would you represent something like this in HDF5? (Example from Jim's video)
 </p>
 <div class="org-src-container">
 <pre class="src src-python"><span style="color: #0000FF;">import</span> awkward <span style="color: #0000FF;">as</span> ak
@@ -4142,7 +4142,7 @@ Reproducer
     retval = EXIT_FAILURE;
     <span style="color: #0000FF;">goto</span> <span style="color: #D0372D;">fail_write</span>;
   }
-  printf(<span style="color: #008000;">"Write successed.\n"</span>);
+  printf(<span style="color: #008000;">"Write succeeded.\n"</span>);
 
   <span style="color: #0000FF;">if</span> (H5Fflush(file, H5F_SCOPE_GLOBAL) &lt; 0) {
     retval = EXIT_FAILURE;
@@ -4476,7 +4476,7 @@ This brings us to today's &#x2026;
 <p>
 The expression below is a [templated] Class datatype in C++, placed in a
 non-contiguous memory location, requiring scatter-gather operators and a
-mechanism to dis-assemble reassemble the components. Becuase of the complexity
+mechanism to dis-assemble reassemble the components. Because of the complexity
 AFAIK there is no automatic support for this sort of operation.
 </p>
 
@@ -4808,7 +4808,7 @@ Try common household tools
 </div>
 </li>
 
-<li><a id="org7c5d313"></a>ASCR Workshop January 2022 on the Managment and Storage of Scientific Data<br />
+<li><a id="org7c5d313"></a>ASCR Workshop January 2022 on the Management and Storage of Scientific Data<br />
 <div class="outline-text-5" id="text-org7c5d313">
 <ul class="org-ul">
 <li><a href="https://www.osti.gov/biblio/1843500-position-papers-ascr-workshop-management-storage-scientific-data">Position Papers</a></li>
@@ -5606,7 +5606,7 @@ Alas, those "file consistency checking utilities" never materialized.
 <li><a id="org9c922dc"></a>How do HDF5-UDF work?<br />
 <div class="outline-text-4" id="text-org9c922dc">
 <p>
-Currently, they are repesented as chunked datasets with a single chunk. That's
+Currently, they are represented as chunked datasets with a single chunk. That's
 why they work fine with existing tools. The UDF itself is executed as part of the
 HDF5 filter pipeline. Its code is stored in the dataset blob data plus metadata
 and managed by the UDF handler.
@@ -6278,9 +6278,9 @@ if I set it to a big value (1024).
 <p>
 I wasn’t able to find how parallelism is exactly implemented. From the above
 behaviour it looks like the file is being locked which then blocks my whole
-programm, especially if the stride is big (more time for the other ranks to run
-into a lock and be idle inbetween). Is that really the case? I write data
-continously, so theoretically there is no need for a lock. Is is possible to
+program, especially if the stride is big (more time for the other ranks to run
+into a lock and be idle in between). Is that really the case? I write data
+continuously, so theoretically there is no need for a lock. Is is possible to
 tell the driver “don’t lock the file”?
 </p>
 </blockquote>
@@ -7310,7 +7310,7 @@ Does this work in parallel?
 $<span style="color: #BA36A5;">HOME</span>/Sandbox/HDF5/GITHUB/hdf5/tools/testfiles
 [ bin]$ more show-h5dump-h5files.log
 ---------
-Command: ./h5dump -n /home/riwarren/Sandbox/HDF5/GITHUB/hdf5/tools/testfiles/tne<span style="background-color: #ff0000;">s</span>tedcmpddt.h5
+Command: ./h5dump -n /home/riwarren/Sandbox/HDF5/GITHUB/hdf5/tools/testfiles/the<span style="background-color: #ff0000;">s</span>tedcmpddt.h5
 HDF5 <span style="color: #008000;">"/home/riwarren/Sandbox/HDF5/GITHUB/hdf5/tools/testfiles/tnestedcmpddt.h5"</span> <span style="background-color: #ff0000;">{</span>
 FILE_CONTENTS {
   group /
@@ -7545,7 +7545,7 @@ Does this work in parallel?
 </div>
 
 <ul class="org-ul">
-<li>The ouput file produce looks like this:</li>
+<li>The output file produce looks like this:</li>
 </ul>
 
 <pre class="example" id="org8e3b48b">
@@ -7879,7 +7879,7 @@ Does this work in parallel?</dd>
 </ul>
 </div>
 </li>
-<li><a id="orgf43894f"></a><a href="https://forum.hdfgroup.org/t/read-write-specific-coordiantes-in-multi-dimensional-dataset/9137">Read/write specific coordiantes in multi-dimensional dataset?</a><br />
+<li><a id="orgf43894f"></a><a href="https://forum.hdfgroup.org/t/read-write-specific-coordinates-in-multi-dimensional-dataset/9137">Read/write specific coordinates in multi-dimensional dataset?</a><br />
 <div class="outline-text-5" id="text-orgf43894f">
 <ul class="org-ul">
 <li><p>

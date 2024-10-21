@@ -16,7 +16,7 @@ redirect_from:
 
 ## HDFView 
 
-* [User Guide (lastest)](/documentation/hdfview/latest/) 
+* [User Guide (latest)](/documentation/hdfview/latest/) 
 
 ## HDF5/JSON
 

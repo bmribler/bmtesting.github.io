@@ -185,7 +185,7 @@ understand the context.
   : world
   : hello
   : finished at 08:25:33
-- Noticable speedup but not a panacea
+- Noticeable speedup but not a panacea
 #+begin_quote
 Eventually I hope to have a version of =h5pyd= that supports =async= (or maybe
 an entirely new package), that would make it a little easier to use.
@@ -250,7 +250,7 @@ I have an application that reads groups as units and all the datasets
 use the contiguous data layout. I believe this option, if available,
 can yield a good read performance.
 #+end_quote
-- Intersting suggestions
+- Interesting suggestions
   - Elena suggested to first create all datasets with =H5D_ALLOC_TIME_LATE=
   - Mark suggested to =H5Pget_meta_block_size= to set aside sufficient
     "group space" (Maybe also =H5Pset_est_link_info=?)
@@ -674,7 +674,7 @@ int main()
 - A :: Currently, the code will skip entries >64K, because the underlying
   =H5Dcreate= will fail. (The logic and code can be much improved.) It's better
   to first run =archive_checker_64k= and see if there are any size warnings.
-  The =h5compactor= and =h5shredder= were sucessfully run on TAR archives with
+  The =h5compactor= and =h5shredder= were successfully run on TAR archives with
   tens of millions of small images (<64K).
 ** Last week's highlights
 *** Announcements
@@ -1126,7 +1126,7 @@ However, I cannot get this to work with h5py.
   #+end_quote
 - [[https://meetingorganizer.copernicus.org/EGU22/EGU22-11201.html][DIARITSup: a framework to supervise live measurements, Digital Twins modelscomputations and predictions for structures monitoring.]]
   #+begin_quote
-  DIARITSup is a chain of various softwares following the concept of ”system of
+  DIARITSup is a chain of various software following the concept of ”system of
   systems”. It interconnects hardware and software layers dedicated to in-situ
   monitoring of structures or critical components. It embeds data assimilation
   capabilities combined with specific Physical or Statistical models like
@@ -1227,7 +1227,7 @@ HDFS?
 
 ** Tips, tricks, & insights
 *** SWMR (old) and compression "issues" - take 2
-- Free-space managment is disabled in the original SWMR implementation
+- Free-space management is disabled in the original SWMR implementation
 - Can lead to file bloat when compression is enabled & overly aggressive
   flushing
 - **Question:** How does the new SWMR VFD implementation behave?
@@ -1486,7 +1486,7 @@ DATASET "/equilibrium/vacuum_toroidal_field&b0" {
 - [[https://www.youtube.com/watch?v=WlnUF3LRBj4][Awkward Array: Manipulating JSON-like Data with NumPy-like Idioms]]
   - SciPy 2020 presentation by Jim Pivarski
   - Watch this!
-- How would you repesent something like this in HDF5? (Example from Jim's video)
+- How would you represent something like this in HDF5? (Example from Jim's video)
   #+begin_src python
   import awkward as ak
   array = ak.Array([
@@ -1708,7 +1708,7 @@ Next time...
       retval = EXIT_FAILURE;
       goto fail_write;
     }
-    printf("Write successed.\n");
+    printf("Write succeeded.\n");
 
     if (H5Fflush(file, H5F_SCOPE_GLOBAL) < 0) {
       retval = EXIT_FAILURE;
@@ -1889,7 +1889,7 @@ This brings us to today's ...
 
 The expression below is a [templated] Class datatype in C++, placed in a
 non-contiguous memory location, requiring scatter-gather operators and a
-mechanism to dis-assemble reassemble the components. Becuase of the complexity
+mechanism to dis-assemble reassemble the components. Because of the complexity
 AFAIK there is no automatic support for this sort of operation.
 
 #+begin_src C++
@@ -2091,7 +2091,7 @@ the process writing to the file was killed.
 - Face-to-face at [[https://www.iter.org/][ITER]] in Saint Paul-lez-Durance, France
 - Reserve your spot before telling your friends! =;-)=
 
-**** ASCR Workshop January 2022 on the Managment and Storage of Scientific Data
+**** ASCR Workshop January 2022 on the Management and Storage of Scientific Data
 - [[https://www.osti.gov/biblio/1843500-position-papers-ascr-workshop-management-storage-scientific-data][Position Papers]]
 - [[https://www.osti.gov/biblio/1845705][Technical Report]]
 
@@ -2572,7 +2572,7 @@ All solutions come with different trade-offs!
 
 ** Tips, tricks, & insights
 *** How do HDF5-UDF work?
-Currently, they are repesented as chunked datasets with a single chunk. That's
+Currently, they are represented as chunked datasets with a single chunk. That's
 why they work fine with existing tools. The UDF itself is executed as part of the
 HDF5 filter pipeline. Its code is stored in the dataset blob data plus metadata
 and managed by the UDF handler.
@@ -2950,9 +2950,9 @@ if I set it to a big value (1024).
 
 I wasn’t able to find how parallelism is exactly implemented. From the above
 behaviour it looks like the file is being locked which then blocks my whole
-programm, especially if the stride is big (more time for the other ranks to run
-into a lock and be idle inbetween). Is that really the case? I write data
-continously, so theoretically there is no need for a lock. Is is possible to
+program, especially if the stride is big (more time for the other ranks to run
+into a lock and be idle in between). Is that really the case? I write data
+continuously, so theoretically there is no need for a lock. Is is possible to
 tell the driver “don’t lock the file”?
 #+end_quote
 - What's a 'stride'? (not a hyperslab stride...)
@@ -3649,7 +3649,7 @@ fail_file:
 
 #+END_SRC
 
-- The ouput file produce looks like this:
+- The output file produce looks like this:
 
 #+BEGIN_EXAMPLE
 
@@ -3791,7 +3791,7 @@ export HDF5_USE_FILE_LOCKING="FALSE"
 - "Partial I/O gets in the way" - sorting fields by name or offset
   - Happens on each write call => overhead
 - Can this be avoided? User might provide a patch...
-**** [[https://forum.hdfgroup.org/t/read-write-specific-coordiantes-in-multi-dimensional-dataset/9137][Read/write specific coordiantes in multi-dimensional dataset?]]
+**** [[https://forum.hdfgroup.org/t/read-write-specific-coordinates-in-multi-dimensional-dataset/9137][Read/write specific coordinates in multi-dimensional dataset?]]
 - Thomas is looking for use cases from =h5py= users
   #+BEGIN_SRC python
 

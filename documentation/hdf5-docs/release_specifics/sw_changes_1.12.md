@@ -94,7 +94,7 @@ For a description of the major new features that were introduced, please see [Ne
 
 ### In the C/Fortran Interface (main library)
 
-Folllowing are the new or changed APIs introduced in HDF5-1.12.0. Those introduced with a new feature list the specific new feature that they were added for.
+Following are the new or changed APIs introduced in HDF5-1.12.0. Those introduced with a new feature list the specific new feature that they were added for.
 
 | Function              | Fortran      | Description                                  |
 | ----------------------|------------- | -------------------------------------------- |

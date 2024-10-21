@@ -62,7 +62,7 @@ Code to accumulate statistics is included at compile time by using the --enable-
 | hl | No  | Local heaps |
 | i  | Yes | Interface abstraction |
 | mf | No  | File memory management |
-| mm | Yes | Library memory managment |
+| mm | Yes | Library memory management |
 | o  | No  | Object headers and messages |
 | p  | Yes | Property lists |
 | s  | Yes | Data spaces |
